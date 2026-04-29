@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolução Histórica da Nuvem</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* CONFIGURAÇÕES BASE */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #f1f5f9; display: flex; flex-direction: column; gap: 50px; align-items: center; padding: 50px 0; }
+
+        .slide-container {
+            width: 1280px; height: 720px;
+            background-color: #ffffff;
+            font-family: "DM Sans", sans-serif;
+            position: relative; overflow: hidden;
+            display: flex; flex-direction: column;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        /* ELEMENTO VISUAL DE FUNDO */
+        .slide-container::after {
+            content: ''; position: absolute; bottom: -100px; left: -100px;
+            width: 400px; height: 400px;
+            background: rgba(59, 130, 246, 0.03);
+            border-radius: 50%; z-index: 0;
+        }
+
+        /* TIPOGRAFIA */
+        h1, h2, h3 { font-family: "Merriweather", serif; color: #1e293b; z-index: 1; }
+        p, li { color: #475569; font-size: 22px; line-height: 1.6; z-index: 1; }
+
+        .slide-title {
+            font-size: 44px; font-weight: 700;
+            padding: 50px 80px 10px; text-align: left;
+            border-bottom: 4px solid #3b82f6;
+            margin: 0 60px; display: inline-block;
+        }
+
+        .content-area {
+            flex-grow: 1; padding: 40px 80px 60px;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+
+        /* LAYOUTS ESPECÍFICOS */
+        .title-layout { text-align: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); color: #ffffff; }
+        .title-layout h1 { color: #ffffff; font-size: 72px; margin-bottom: 20px; }
+        .title-layout p { color: #94a3b8; font-size: 26px; }
+
+        .era-tag {
+            background: #3b82f6; color: white; padding: 8px 20px;
+            border-radius: 50px; font-weight: bold; font-size: 18px;
+            display: inline-block; margin-bottom: 20px;
+        }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        
+        .timeline-box {
+            background: #f8fafc; border-radius: 12px; padding: 30px;
+            border-top: 6px solid #3b82f6; position: relative;
+        }
+
+        .highlight-text { font-size: 28px; color: #1e40af; font-weight: 500; border-left: 6px solid #3b82f6; padding-left: 20px; }
+
+        .icon-large { font-size: 80px; color: #3b82f6; margin-bottom: 20px; opacity: 0.8; }
+
+        /* LISTAS CUSTOMIZADAS */
+        .check-list { list-style: none; }
+        .check-list li { margin-bottom: 15px; position: relative; padding-left: 40px; }
+        .check-list li::before { 
+            content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+            position: absolute; left: 0; color: #10b981;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: Capa -->
+<div class="slide-container">
+    <div class="title-layout">
+        <div class="era-tag">A Jornada da Tecnologia</div>
+        <h1>Evolução Histórica</h1>
+        <p>A Trajetória da Computação em Nuvem</p>
+        <div style="margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; width: 300px;">
+            ADS - Cloud Computing
+        </div>
+    </div>
+</div>
+
+<!-- Slide 2: Introdução -->
+<div class="slide-container">
+    <h2 class="slide-title">História ou Evolução?</h2>
+    <div class="content-area">
+        <div class="grid-2">
+            <p class="highlight-text">"A Nuvem não é uma tecnologia nova que surgiu do nada, mas sim uma evolução da forma como consumimos recursos computacionais."</p>
+            <div>
+                <p>Nesta aula, veremos como passamos de máquinas que ocupavam salas inteiras para uma infraestrutura invisível e global.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 3: 1950 - A Era dos Mainframes -->
+<div class="slide-container">
+    <h2 class="slide-title">Anos 50-60: Mainframes</h2>
+    <div class="content-area">
+        <div class="grid-2">
+            <div>
+                <div class="era-tag">Início</div>
+                <ul class="check-list">
+                    <li>Computadores gigantes e caríssimos.</li>
+                    <li>Processamento centralizado.</li>
+                    <li>Terminais Burros (apenas exibiam dados).</li>
+                </ul>
+            </div>
+            <div class="timeline-box">
+                <i class="fa-solid fa-microchip icon-large"></i>
+                <p>O hardware era o ativo mais valioso de uma empresa, muitas vezes alugado de gigantes como a IBM.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 4: 1961 - A Profecia de John McCarthy -->
+<div class="slide-container">
+    <h2 class="slide-title">1961: John McCarthy</h2>
+    <div class="content-area">
+        <div style="text-align: center;">
+            <i class="fa-solid fa-quote-left" style="font-size: 50px; color: #cbd5e1; margin-bottom: 20px;"></i>
+            <h3 style="font-size: 38px; font-style: italic; margin-bottom: 30px;">"A computação pode algum dia ser organizada como uma utilidade pública..."</h3>
+            <p>McCarthy previu o <b>Utility Computing</b>: pagar por computação como pagamos por água ou eletricidade.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 5: 1970 - Virtualização (IBM) -->
+<div class="slide-container">
+    <h2 class="slide-title">1970: Virtualização</h2>
+    <div class="content-area">
+        <div class="grid-2">
+            <div class="timeline-box">
+                <i class="fa-solid fa-layer-group icon-large"></i>
+                <p>O sistema IBM VM/370 permitiu que um mainframe rodasse múltiplos sistemas operacionais simultaneamente.</p>
+            </div>
+            <div>
+                <h3>O Pilar da Nuvem</h3>
+                <p>A virtualização permitiu o isolamento de recursos, transformando um hardware físico em várias "máquinas virtuais" independentes.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 6: 1980/90 - A Era da Conectividade -->
+<div class="slide-container">
+    <h2 class="slide-title">Anos 80 e 90: Redes</h2>
+    <div class="content-area">
+        <ul class="check-list">
+            <li><b>Redes Locais (LAN):</b> O processamento sai do mainframe e vai para as estações de trabalho.</li>
+            <li><b>Surgimento da Internet:</b> A conectividade global começa a tornar o conceito de "acesso remoto" uma realidade.</li>
+            <li><b>Símbolo da Nuvem:</b> Engenheiros começam a usar o desenho de uma nuvem em diagramas para representar redes complexas que eles não controlavam.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Slide 7: Por que uma Nuvem? -->
+<div class="slide-container">
+    <h2 class="slide-title">Por que o símbolo da Nuvem?</h2>
+    <div class="content-area">
+        <div class="grid-2">
+            <p class="highlight-text">A nuvem representa a abstração da infraestrutura.</p>
+            <div style="text-align: center;">
+                <i class="fa-solid fa-cloud" style="font-size: 180px; color: #3b82f6;"></i>
+                <p style="margin-top: 20px;">Você sabe o que ela faz, mas não precisa saber como os cabos estão conectados dentro dela.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 8: 1999 - Salesforce (SaaS) -->
+<div class="slide-container">
+    <h2 class="slide-title">1999: O Surgimento do SaaS</h2>
+    <div class="content-area">
+        <div class="grid-2">
+            <div>
+                <h3>Salesforce.com</h3>
+                <p>A primeira grande empresa a entregar um software corporativo complexo (CRM) totalmente via navegador.</p>
+            </div>
+            <div class="timeline-box">
+                <p><b>"The End of Software"</b> era o slogan deles. Eles provaram que empresas não precisavam instalar programas em seus servidores.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 9: 2006 - O Big Bang (AWS) -->
+<div class="slide-container">
+    <h2 class="slide-title">2006: O Nascimento do IaaS</h2>
+    <div class="content-area">
+        <div class="grid-2">
+            <div style="text-align: center;">
+                <i class="fa-brands fa-aws" style="font-size: 150px; color: #232f3e;"></i>
+            </div>
+            <div>
+                <h3>Amazon Web Services</h3>
+                <p>A Amazon lança o <b>S3</b> (Armazenamento) e o <b>EC2</b> (Servidores Virtuais). Pela primeira vez, infraestrutura era alugada por hora via API.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 10: 2008-2010: A Guerra das Nuvens -->
+<div class="slide-container">
+    <h2 class="slide-title">2008-2010: Expansão</h2>
+    <div class="content-area">
+        <div class="grid-2">
+            <div class="timeline-box">
+                <i class="fa-brands fa-google icon-large"></i>
+                <p>Google lança o <b>App Engine</b> (PaaS), focando nos desenvolvedores.</p>
+            </div>
+            <div class="timeline-box">
+                <i class="fa-brands fa-microsoft icon-large"></i>
+                <p>Microsoft anuncia o <b>Windows Azure</b>, trazendo o poder do ecossistema Windows para a nuvem.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 11: 2013-2015: Era dos Containers -->
+<div class="slide-container">
+    <h2 class="slide-title">2013: Docker e Kubernetes</h2>
+    <div class="content-area">
+        <ul class="check-list">
+            <li><b>Docker:</b> Populariza o isolamento a nível de sistema operacional (Containers).</li>
+            <li><b>Kubernetes (K8s):</b> Criado pelo Google, torna-se o padrão para orquestrar esses containers em larga escala.</li>
+            <li>A nuvem deixa de ser apenas sobre "Máquinas Virtuais" e passa a ser sobre <b>Serviços Micro-fragmentados</b>.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Slide 12: O Futuro: Serverless e Edge -->
+<div class="slide-container">
+    <h2 class="slide-title">Hoje e Amanhã</h2>
+    <div class="content-area">
+        <div class="grid-2">
+            <div class="timeline-box">
+                <h3>Serverless</h3>
+                <p>Você escreve o código e o provedor cuida de toda a execução e escala automaticamente.</p>
+            </div>
+            <div class="timeline-box">
+                <h3>Edge Computing</h3>
+                <p>Levar o processamento para mais perto do usuário (IoT, 5G, Baixa latência).</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 13: Encerramento -->
+<div class="slide-container">
+    <div class="title-layout">
+        <h1>Dúvidas sobre a Jornada?</h1>
+        <p>A história da nuvem é a história da democratização do acesso ao poder computacional.</p>
+        <div style="margin-top: 40px; font-size: 18px; color: #94a3b8;">
+            Próximo tópico: Modelos de Serviço (IaaS, PaaS, SaaS)
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

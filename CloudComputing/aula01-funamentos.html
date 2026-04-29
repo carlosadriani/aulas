@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Computing - Aula 01</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* CONFIGURAÇÕES BASE */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #e2e8f0; display: flex; flex-direction: column; gap: 40px; align-items: center; padding: 40px 0; }
+
+        .slide-container {
+            width: 1280px; height: 720px;
+            background-color: #FDFBF7; /* Creme suave acadêmico */
+            font-family: "DM Sans", sans-serif;
+            position: relative; overflow: hidden;
+            display: flex; flex-direction: column;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        /* DESIGN DE FUNDO - ABSTRACT SHAPES */
+        .slide-container::before {
+            content: ''; position: absolute; top: -100px; right: -100px;
+            width: 400px; height: 400px;
+            background: rgba(0, 51, 102, 0.05);
+            border-radius: 50%; z-index: 0;
+        }
+
+        /* TIPOGRAFIA */
+        h1, h2, h3 { font-family: "Merriweather", serif; color: #003366; z-index: 1; }
+        p, li { color: #444; font-size: 22px; line-height: 1.6; z-index: 1; }
+
+        .slide-title {
+            font-size: 48px; font-weight: 700;
+            padding: 60px 80px 20px; text-align: left;
+            border-left: 10px solid #003366; margin-top: 40px; margin-left: 40px;
+        }
+
+        .content-area {
+            flex-grow: 1; padding: 20px 80px 60px;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+
+        /* LAYOUTS ESPECÍFICOS */
+        .title-layout { text-align: center; justify-content: center; height: 100%; background: #003366; color: #FDFBF7; }
+        .title-layout h1 { color: #FDFBF7; font-size: 80px; margin-bottom: 20px; }
+        .title-layout p { color: #d1d5db; font-size: 28px; }
+
+        .section-title-layout { text-align: center; justify-content: center; height: 100%; }
+        .section-title-layout h2 { font-size: 65px; position: relative; display: inline-block; }
+        .section-title-layout h2::after { content: ''; display: block; width: 60%; height: 6px; background: #003366; margin: 20px auto; }
+
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+        .tiled-box { background: #f8fafc; padding: 30px; border-radius: 12px; border: 1px solid #e2e8f0; }
+        .tiled-box h3 { font-size: 28px; margin-bottom: 15px; }
+
+        .tiled-content { display: flex; gap: 30px; width: 100%; }
+        .tile { flex: 1; background: white; padding: 30px; border-radius: 15px; border-top: 5px solid #003366; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .tile i { font-size: 40px; color: #003366; margin-bottom: 20px; }
+
+        .timeline { position: relative; display: flex; justify-content: space-between; align-items: flex-start; padding-top: 100px; }
+        .timeline::before { content: ''; position: absolute; top: 120px; left: 0; width: 100%; height: 4px; background: #003366; }
+        .timeline-item { width: 18%; text-align: center; position: relative; }
+        .timeline-item::after { content: ''; position: absolute; top: 11px; left: 50%; transform: translateX(-50%); width: 24px; height: 24px; background: white; border: 4px solid #003366; border-radius: 50%; }
+        .timeline-item h3 { font-size: 22px; margin-bottom: 40px; }
+
+        .image-wrapper { width: 100%; height: 400px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; background: #eee; }
+
+        .highlight-number { font-size: 150px; font-weight: 700; color: #003366; line-height: 1; }
+        
+        /* TABELAS E GRÁFICOS */
+        .chart-container { width: 100%; margin-top: 30px; }
+        .bar { display: flex; align-items: center; margin-bottom: 25px; }
+        .bar-label { width: 200px; font-weight: bold; text-align: right; margin-right: 20px; }
+        .bar-bg { flex-grow: 1; height: 40px; background: #e2e8f0; border-radius: 20px; overflow: hidden; }
+        .bar-fill { height: 100%; display: flex; align-items: center; padding-left: 20px; color: white; font-weight: bold; }
+
+        .bullet-list { list-style: none; }
+        .bullet-list li { margin-bottom: 20px; padding-left: 40px; position: relative; }
+        .bullet-list li::before { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; color: #003366; font-size: 24px; }
+    </style>
+</head>
+<body>
+
+<!-- Slide 1 -->
+<div class="slide-container">
+    <div class="title-layout">
+        <h1>Cloud Computing</h1>
+        <p>Aula 01: Fundamentos e Evolução</p>
+        <p style="font-size: 20px; margin-top: 40px; opacity: 0.8;">Análise e Desenvolvimento de Sistemas</p>
+    </div>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide-container">
+    <div class="section-title-layout">
+        <h2>Introdução ao Mundo Cloud</h2>
+        <p>Por que paramos de comprar servidores?</p>
+    </div>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide-container">
+    <h2 class="slide-title">O que é Computação em Nuvem?</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="tiled-box">
+                <h3>Definição NIST</h3>
+                <p>Um modelo que permite acesso onipresente, conveniente e sob demanda à rede para um pool compartilhado de recursos computacionais configuráveis.</p>
+            </div>
+            <div class="tiled-box">
+                <h3>A Metáfora da Utilidade</h3>
+                <p>Funciona como eletricidade ou água: você não constrói uma usina para ter luz; você se conecta à rede e paga apenas pelo que consome.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 4 -->
+<div class="slide-container">
+    <h2 class="slide-title">A Jornada da Nuvem</h2>
+    <div class="content-area">
+        <div class="timeline">
+            <div class="timeline-item"><h3>1960</h3><p>Mainframes e a ideia de "Utility Computing"</p></div>
+            <div class="timeline-item"><h3>1970</h3><p>Surgimento da Virtualização</p></div>
+            <div class="timeline-item"><h3>1999</h3><p>Salesforce: O primeiro SaaS de sucesso</p></div>
+            <div class="timeline-item"><h3>2006</h3><p>Amazon lança o EC2 (Início da AWS)</p></div>
+            <div class="timeline-item"><h3>Hoje</h3><p>Multicloud e IA Generativa</p></div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 5 -->
+<div class="slide-container">
+    <h2 class="slide-title">Infra Tradicional vs. Nuvem</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p>No modelo tradicional (On-Premise), você é responsável por tudo: desde o hardware físico e eletricidade até o sistema operacional.</p>
+                <br>
+                <p>Na nuvem, o foco muda do <b>gerenciamento de hardware</b> para o <b>valor de negócio</b> e desenvolvimento.</p>
+            </div>
+            <div class="image-wrapper">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 6 -->
+<div class="slide-container">
+    <h2 class="slide-title">A Mudança de Paradigma</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper">
+                [Image of Network Cloud Infrastructure Diagram]
+            </div>
+            <div>
+                <p>A nuvem não é apenas "o computador de outra pessoa". É um ecossistema de <b>automação</b>, <b>escala</b> e <b>disponibilidade</b>.</p>
+                <br>
+                <p>Para o desenvolvedor, a infraestrutura torna-se <b>software</b> (Infrastructure as Code).</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 7 -->
+<div class="slide-container">
+    <div class="section-title-layout">
+        <h2>Características Essenciais</h2>
+        <p>Segundo o padrão NIST 800-145</p>
+    </div>
+</div>
+
+<!-- Slide 8 -->
+<div class="slide-container">
+    <h2 class="slide-title">Pilares do Cloud (Parte 1)</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <i class="fa-solid fa-hand-pointer"></i>
+                <h3>Auto-atendimento</h3>
+                <p>O usuário provisiona recursos (CPU, Storage) automaticamente, sem intervenção humana do provedor.</p>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-globe"></i>
+                <h3>Amplo Acesso</h3>
+                <p>Recursos disponíveis através da rede e acessíveis por mecanismos padrão (celulares, laptops).</p>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-layer-group"></i>
+                <h3>Pool de Recursos</h3>
+                <p>Os recursos físicos são agrupados para servir múltiplos consumidores (Multi-tenancy).</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 9 -->
+<div class="slide-container">
+    <h2 class="slide-title">Pilares do Cloud (Parte 2)</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <i class="fa-solid fa-arrows-left-right"></i>
+                <h3>Elasticidade Rápida</h3>
+                <p>Capacidade de escalar recursos para cima ou para baixo instantaneamente conforme a demanda.</p>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-gauge-high"></i>
+                <h3>Serviço Mensurado</h3>
+                <p>O uso dos recursos é monitorado e controlado, garantindo o modelo de pagamento por uso (Pay-as-you-go).</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 10 -->
+<div class="slide-container">
+    <h2 class="slide-title">O Ponto de Inflexão</h2>
+    <div class="content-area">
+        <div class="two-column" style="align-items: center;">
+            <div class="highlight-number">2006</div>
+            <div>
+                <h3>O Nascimento da AWS</h3>
+                <p>Com o lançamento do S3 (armazenamento) e EC2 (computação), a Amazon transformou a infraestrutura em um serviço acessível por APIs para o mundo.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 11 -->
+<div class="slide-container">
+    <h2 class="slide-title">CapEx vs. OpEx</h2>
+    <div class="content-area">
+        <div class="chart-container">
+            <div class="bar">
+                <div class="bar-label">Tradicional (CapEx)</div>
+                <div class="bar-bg"><div class="bar-fill" style="width: 90%; background: #ef4444;">Alto Investimento Inicial (Hardware)</div></div>
+            </div>
+            <div class="bar">
+                <div class="bar-label">Cloud (OpEx)</div>
+                <div class="bar-bg"><div class="bar-fill" style="width: 40%; background: #10b981;">Custo Operacional Variável</div></div>
+            </div>
+        </div>
+        <p style="text-align: center; font-style: italic; margin-top: 40px;">"Pague pelo que usar, em vez de investir em ativos que depreciam."</p>
+    </div>
+</div>
+
+<!-- Slide 12 -->
+<div class="slide-container">
+    <h2 class="slide-title">Visão para o Desenvolvedor ADS</h2>
+    <div class="content-area">
+        <ul class="bullet-list">
+            <li><b>Agilidade:</b> Teste uma ideia em minutos, não em semanas esperando servidores.</li>
+            <li><b>Escala Global:</b> Coloque sua aplicação perto do usuário final em qualquer país.</li>
+            <li><b>Foco no Código:</b> Menos tempo configurando cabos, mais tempo criando lógica.</li>
+            <li><b>Resiliência:</b> Ferramentas nativas para backup e alta disponibilidade.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Slide 13 -->
+<div class="slide-container" style="background: #003366; color: white;">
+    <div class="content-area" style="text-align: center;">
+        <h2 style="color: white; font-size: 60px; margin-bottom: 30px;">Dúvidas?</h2>
+        <p style="color: #cbd5e1;"><b>Próxima Aula:</b> Modelos de Serviço (IaaS, PaaS, SaaS) e a analogia da Pizza.</p>
+        <div style="margin-top: 60px; font-size: 18px; opacity: 0.6;">
+            ADS - Computação em Nuvem | Prof. [Seu Nome]
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

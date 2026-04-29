@@ -1,51 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADS/UPF</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <title>Portal de Aulas - Prof. ADS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: #f1f5f9; font-family: "DM Sans", sans-serif; color: #334155; }
-        .slide { 
-            width: 1280px; height: 720px; background: white; 
-            margin: 40px auto; border-radius: 12px; overflow: hidden;
-            display: flex; flex-direction: column; box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            page-break-after: always; position: relative;
-        }
-        .header { padding: 40px 60px; border-bottom: 4px solid #003366; }
-        h1, h2 { font-family: "Merriweather", serif; color: #003366; }
-        .content { flex-grow: 1; padding: 40px 60px; }
-        
-        /* Layouts */
-        .hero { background: #003366; color: white; justify-content: center; align-items: center; text-align: center; }
-        .hero h1 { color: white; font-size: 80px; }
-        
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        .card { background: #f8fafc; border-left: 5px solid #003366; padding: 20px; border-radius: 4px; height: 100%; }
-        
-        .table { width: 100%; border-collapse: collapse; }
-        .table th { background: #003366; color: white; padding: 15px; text-align: left; }
-        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; font-size: 16px; }
-        
-        .quiz-option { border: 2px solid #e2e8f0; padding: 15px; margin-bottom: 10px; border-radius: 8px; cursor: pointer; }
-        .quiz-option:hover { background: #f1f5f9; border-color: #003366; }
-
-        .footer { padding: 20px 60px; background: #f8fafc; font-size: 14px; opacity: 0.6; }
+        body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body>
-    <header>
-        Universidade de Passo Fundo
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-[#003366] text-white py-12 shadow-lg">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl font-bold mb-2">Cloud Computing</h1>
+            <p class="text-blue-100 text-lg">Materiais de Aula - Análise e Desenvolvimento de Sistemas</p>
+        </div>
     </header>
-    <main>
-        <a href="CloudComputing">CloudComputing</a>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12 flex-grow">
+        <div class="grid md:grid-cols-3 gap-8">
+            
+            <!-- Aula 01: Fundamentos -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
+                <div class="p-6">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fa-solid fa-cloud-sun text-4xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold mb-2">01. Fundamentos</h2>
+                    <p class="text-slate-600 mb-6 text-sm">Conceitos iniciais, definição NIST e o modelo de utilidade da nuvem.</p>
+                    <a href="aula01_fundamentos.html" class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
+                        Ver Slides
+                    </a>
+                </div>
+            </div>
+
+            <!-- Aula 01: Glossário -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
+                <div class="p-6">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fa-solid fa-book text-4xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold mb-2">01. Glossário Técnico</h2>
+                    <p class="text-slate-600 mb-6 text-sm">Dicionário completo de termos: CapEx, OpEx, Elasticidade e mais.</p>
+                    <a href="aula01_glossario.html" class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
+                        Ver Glossário
+                    </a>
+                </div>
+            </div>
+
+            <!-- Aula 01: Evolução -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
+                <div class="p-6">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fa-solid fa-timeline text-4xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold mb-2">01. Evolução Histórica</h2>
+                    <p class="text-slate-600 mb-6 text-sm">A jornada desde os Mainframes até o Serverless moderno.</p>
+                    <a href="aula01_evolucao.html" class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
+                        Ver História
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Seção de Recursos Extras -->
+        <div class="mt-16 bg-blue-50 rounded-2xl p-8 border border-blue-100">
+            <h3 class="text-2xl font-bold mb-4 text-[#003366]">Recursos Adicionais</h3>
+            <ul class="space-y-3">
+                <li class="flex items-center text-slate-700">
+                    <i class="fa-solid fa-check-circle text-green-500 mr-3"></i>
+                    Quiz de fixação incluso nos slides.
+                </li>
+                <li class="flex items-center text-slate-700">
+                    <i class="fa-solid fa-check-circle text-green-500 mr-3"></i>
+                    Materiais otimizados para leitura mobile.
+                </li>
+            </ul>
+        </div>
     </main>
-    <footer>
-        Carlos Adriani Lara Schaeffer
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 mt-auto">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 Prof. ADS | Disciplina de Cloud Computing</p>
+        </div>
     </footer>
+
 </body>
 </html>
