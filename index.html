@@ -3,7 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disciplinas</title>
+    <title>ADS/UPF</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #f1f5f9; font-family: "DM Sans", sans-serif; color: #334155; }
+        .slide { 
+            width: 1280px; height: 720px; background: white; 
+            margin: 40px auto; border-radius: 12px; overflow: hidden;
+            display: flex; flex-direction: column; box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            page-break-after: always; position: relative;
+        }
+        .header { padding: 40px 60px; border-bottom: 4px solid #003366; }
+        h1, h2 { font-family: "Merriweather", serif; color: #003366; }
+        .content { flex-grow: 1; padding: 40px 60px; }
+        
+        /* Layouts */
+        .hero { background: #003366; color: white; justify-content: center; align-items: center; text-align: center; }
+        .hero h1 { color: white; font-size: 80px; }
+        
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .card { background: #f8fafc; border-left: 5px solid #003366; padding: 20px; border-radius: 4px; height: 100%; }
+        
+        .table { width: 100%; border-collapse: collapse; }
+        .table th { background: #003366; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; font-size: 16px; }
+        
+        .quiz-option { border: 2px solid #e2e8f0; padding: 15px; margin-bottom: 10px; border-radius: 8px; cursor: pointer; }
+        .quiz-option:hover { background: #f1f5f9; border-color: #003366; }
+
+        .footer { padding: 20px 60px; background: #f8fafc; font-size: 14px; opacity: 0.6; }
+    </style>
 </head>
 <body>
     <header>
