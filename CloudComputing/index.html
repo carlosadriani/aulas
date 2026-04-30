@@ -3,113 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADS - Cloud Computing Aula 01</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <title>Portal de Aulas - Prof. ADS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: #f1f5f9; font-family: "DM Sans", sans-serif; color: #334155; }
-        .slide { 
-            width: 1280px; height: 720px; background: white; 
-            margin: 40px auto; border-radius: 12px; overflow: hidden;
-            display: flex; flex-direction: column; box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            page-break-after: always; position: relative;
-        }
-        .header { padding: 40px 60px; border-bottom: 4px solid #003366; }
-        h1, h2 { font-family: "Merriweather", serif; color: #003366; }
-        .content { flex-grow: 1; padding: 40px 60px; }
-        
-        /* Layouts */
-        .hero { background: #003366; color: white; justify-content: center; align-items: center; text-align: center; }
-        .hero h1 { color: white; font-size: 80px; }
-        
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        .card { background: #f8fafc; border-left: 5px solid #003366; padding: 20px; border-radius: 4px; height: 100%; }
-        
-        .table { width: 100%; border-collapse: collapse; }
-        .table th { background: #003366; color: white; padding: 15px; text-align: left; }
-        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; font-size: 16px; }
-        
-        .quiz-option { border: 2px solid #e2e8f0; padding: 15px; margin-bottom: 10px; border-radius: 8px; cursor: pointer; }
-        .quiz-option:hover { background: #f1f5f9; border-color: #003366; }
-
-        .footer { padding: 20px 60px; background: #f8fafc; font-size: 14px; opacity: 0.6; }
+        body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
 
-<div class="slide hero">
-    <h1>Cloud Computing</h1>
-    <p style="font-size: 24px; opacity: 0.8;">Aula 01: Fundamentos, História e Glossário</p>
-    <p style="margin-top: 40px;">Curso: Análise e Desenvolvimento de Sistemas</p>
-</div>
-
-<div class="slide">
-    <div class="header"><h2>O que é Cloud Computing?</h2></div>
-    <div class="content">
-        <div class="grid">
-            <div>
-                <p style="font-size: 22px;">É o fornecimento de serviços de computação (servidores, armazenamento, bancos de dados, rede, software) pela Internet ("a nuvem").</p>
-                <br>
-                <p><b>Modelo de Utilidade:</b> Assim como a energia elétrica, você consome o que precisa e paga apenas pelo que foi utilizado.</p>
-            </div>
-            <div style="background: #e2e8f0; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                 <i class="fa-solid fa-cloud" style="font-size: 150px; color: #003366;"></i>
-            </div>
+    <!-- Header -->
+    <header class="bg-[#003366] text-white py-12 shadow-lg">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl font-bold mb-2">Cloud Computing</h1>
+            <p class="text-blue-100 text-lg">Materiais de Aula - Análise e Desenvolvimento de Sistemas</p>
         </div>
-    </div>
-</div>
+    </header>
 
-<div class="slide">
-    <div class="header"><h2>Evolução Histórica</h2></div>
-    <div class="content">
-        <div class="grid">
-            <div class="card">
-                <h3>1960: Mainframes</h3>
-                <p>Surgimento do Time-Sharing: múltiplos usuários dividindo o poder de processamento de uma única máquina central.</p>
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12 flex-grow">
+        <div class="grid md:grid-cols-3 gap-8">
+            
+            <!-- Aula 01: Fundamentos -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
+                <div class="p-6">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fa-solid fa-cloud-sun text-4xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold mb-2">01. Fundamentos</h2>
+                    <p class="text-slate-600 mb-6 text-sm">Conceitos iniciais, definição NIST e o modelo de utilidade da nuvem.</p>
+                    <a href="CloudComputing/aula01-fundamentos.html" class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
+                        Ver Slides
+                    </a>
+                </div>
             </div>
-            <div class="card">
-                <h3>1999: Salesforce</h3>
-                <p>Primeiro grande exemplo de Software como Serviço (SaaS) entregue via navegador.</p>
+
+            <!-- Aula 01: Glossário -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
+                <div class="p-6">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fa-solid fa-book text-4xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold mb-2">01. Glossário Técnico</h2>
+                    <p class="text-slate-600 mb-6 text-sm">Dicionário completo de termos: CapEx, OpEx, Elasticidade e mais.</p>
+                    <a href="CloudComputing/aula01-glossario.html" class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
+                        Ver Glossário
+                    </a>
+                </div>
             </div>
-            <div class="card">
-                <h3>2006: AWS</h3>
-                <p>Lançamento do EC2 e S3. A infraestrutura passa a ser tratada como código e serviço.</p>
+
+            <!-- Aula 01: Evolução -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
+                <div class="p-6">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fa-solid fa-timeline text-4xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold mb-2">01. Evolução Histórica</h2>
+                    <p class="text-slate-600 mb-6 text-sm">A jornada desde os Mainframes até o Serverless moderno.</p>
+                    <a href="CloudComputing/aula01-evolucaohistorica.html" class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
+                        Ver História
+                    </a>
+                </div>
             </div>
-            <div class="card">
-                <h3>Hoje: Cloud Native</h3>
-                <p>Uso de Containers, Microserviços e Inteligência Artificial integrada na infraestrutura.</p>
-            </div>
+
         </div>
-    </div>
-</div>
 
-<div class="slide">
-    <div class="header"><h2>Glossário Essencial</h2></div>
-    <div class="content">
-        <table class="table">
-            <tr><th>Termo</th><th>Definição</th></tr>
-            <tr><td><b>NIST</b></td><td>Órgão que define os padrões de Cloud (5 características, 3 modelos).</td></tr>
-            <tr><td><b>CapEx</b></td><td>Investimento em ativos físicos (comprar o servidor).</td></tr>
-            <tr><td><b>OpEx</b></td><td>Despesa operacional (pagar a conta mensal da nuvem).</td></tr>
-            <tr><td><b>Elasticidade</b></td><td>Capacidade de aumentar/diminuir recursos automaticamente.</td></tr>
-            <tr><td><b>Multitenancy</b></td><td>Vários clientes compartilhando o mesmo recurso físico isoladamente.</td></tr>
-        </table>
-    </div>
-</div>
+        <!-- Seção de Recursos Extras -->
+        <div class="mt-16 bg-blue-50 rounded-2xl p-8 border border-blue-100">
+            <h3 class="text-2xl font-bold mb-4 text-[#003366]">Recursos Adicionais</h3>
+            <ul class="space-y-3">
+                <li class="flex items-center text-slate-700">
+                    <i class="fa-solid fa-check-circle text-green-500 mr-3"></i>
+                    Quiz de fixação incluso nos slides.
+                </li>
+                <li class="flex items-center text-slate-700">
+                    <i class="fa-solid fa-check-circle text-green-500 mr-3"></i>
+                    Materiais otimizados para leitura mobile.
+                </li>
+            </ul>
+        </div>
+    </main>
 
-<div class="slide">
-    <div class="header"><h2>Verificação de Aprendizagem</h2></div>
-    <div class="content">
-        <p style="margin-bottom: 20px; font-weight: bold;">Se uma aplicação aumenta o número de servidores durante a Black Friday, qual característica NIST está sendo usada?</p>
-        <div class="quiz-option">A) Amplo Acesso à Rede</div>
-        <div class="quiz-option">B) Pool de Recursos</div>
-        <div class="quiz-option">C) Elasticidade Rápida</div>
-        <div class="quiz-option">D) Autoatendimento</div>
-    </div>
-    <div class="footer">Dica: A resposta correta é a letra C.</div>
-</div>
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 mt-auto">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 Prof. ADS | Disciplina de Cloud Computing</p>
+        </div>
+    </footer>
 
 </body>
 </html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Org. Computadores - Aula 01</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; display: flex; flex-direction: column; align-items: center; gap: 50px; padding: 50px 0; }
+        
+        .slide { 
+            width: 1280px; height: 720px; background: #ffffff; color: #1e293b;
+            border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); position: relative;
+        }
+
+        /* Capa e Seções */
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        
+        /* Grid e Componentes */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 24px; border-left: 8px solid #3b82f6; }
+        
+        .bit-container { display: flex; gap: 10px; justify-content: center; margin-top: 20px; }
+        .bit { width: 60px; height: 80px; background: #3b82f6; color: white; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; border-radius: 4px; }
+        
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #3b82f6; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; }
+
+        .highlight { color: #3b82f6; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: Capa -->
+<div class="slide hero">
+    <i class="fa-solid fa-microchip" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+    <h1>Organização de Computadores</h1>
+    <p style="font-size: 24px; opacity: 0.8;">Aula 01: Bases Numéricas e Representação de Dados</p>
+    <div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">ADS - 1º Semestre</div>
+</div>
+
+<!-- Slide 2: Por que Bases Numéricas? -->
+<div class="slide">
+    <div class="header"><h2>Por que ADS estuda isso?</h2></div>
+    <div class="content">
+        <div class="grid">
+            <div>
+                <ul style="font-size: 24px; line-height: 1.8;">
+                    <li><span class="highlight">O Computador é Digital:</span> Ele só entende níveis de tensão (0 e 1).</li>
+                    <li><span class="highlight">Depuração:</span> Analisar logs em Hexadecimal.</li>
+                    <li><span class="highlight">Cores e Web:</span> O padrão <span class="highlight">#FF5733</span>.</li>
+                    <li><span class="highlight">Otimização:</span> Manipulação de bits (Bitwise).</li>
+                </ul>
+            </div>
+            <div class="code-box">
+                // Em C / JavaScript<br>
+                let cor = 0xFF0000;<br>
+                let mask = 0b101010;
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 3: O Sistema Binário -->
+<div class="slide">
+    <div class="header"><h2>Base 2: O Alfabeto da Máquina</h2></div>
+    <div class="content">
+        <p style="font-size: 22px; margin-bottom: 30px;">O termo <b>BIT</b> vem de <i>Binary Digit</i>.</p>
+        <div class="bit-container">
+            <div class="bit">1</div><div class="bit">0</div><div class="bit">1</div><div class="bit">1</div>
+            <div class="bit">0</div><div class="bit">0</div><div class="bit">1</div><div class="bit">0</div>
+        </div>
+        <p style="text-align: center; margin-top: 20px; font-weight: bold;">8 BITS = 1 BYTE</p>
+    </div>
+</div>
+
+<!-- Slide 4: Conversão Binário -> Decimal -->
+<div class="slide">
+    <div class="header"><h2>Convertendo: Binário para Decimal</h2></div>
+    <div class="content">
+        <p>Utilizamos potências de base 2:</p>
+        <table class="table">
+            <tr><th>2⁷</th><th>2⁶</th><th>2⁵</th><th>2⁴</th><th>2³</th><th>2²</th><th>2¹</th><th>2⁰</th></tr>
+            <tr><td>128</td><td>64</td><td>32</td><td>16</td><td>8</td><td>4</td><td>2</td><td>1</td></tr>
+            <tr style="background: #f0f9ff;"><td><b>1</b></td><td><b>0</b></td><td><b>0</b></td><td><b>0</b></td><td><b>0</b></td><td><b>0</b></td><td><b>1</b></td><td><b>1</b></td></tr>
+        </table>
+        <p style="margin-top: 30px; font-size: 24px; text-align: center;">128 + 2 + 1 = <span class="highlight">131</span></p>
+    </div>
+</div>
+
+<!-- Slide 5: Conversão Decimal -> Binário -->
+<div class="slide">
+    <div class="header"><h2>Convertendo: Decimal para Binário</h2></div>
+    <div class="content">
+        <div class="grid">
+            <div class="code-box">
+                Método das Divisões Sucessivas:<br>
+                13 / 2 = 6 (Sobra 1)<br>
+                6 / 2 = 3 (Sobra 0)<br>
+                3 / 2 = 1 (Sobra 1)<br>
+                1 / 2 = 0 (Sobra 1)<br><br>
+                Resultado: 1101
+            </div>
+            <div>
+                <p>Dividimos o número por 2 sucessivamente até que o quociente seja 0. O resultado é a sequência dos restos lida de baixo para cima.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 6: O Sistema Hexadecimal -->
+<div class="slide">
+    <div class="header"><h2>Base 16: Hexadecimal</h2></div>
+    <div class="content">
+        <p>Usado para simplificar a leitura de grandes cadeias binárias.</p>
+        <table class="table">
+            <tr><td>0-9</td><td>Valores normais</td></tr>
+            <tr><td>10, 11, 12, 13, 14, 15</td><td><span class="highlight">A, B, C, D, E, F</span></td></tr>
+        </table>
+        <p style="margin-top: 20px;">Cada dígito Hexadecimal representa exatamente <b>4 bits</b> (Nibble).</p>
+    </div>
+</div>
+
+<!-- Slide 7: Tabela de Equivalência -->
+<div class="slide">
+    <div class="header"><h2>Equivalência Dec-Bin-Hex</h2></div>
+    <div class="content">
+        <div class="grid">
+            <table class="table">
+                <tr><th>Dec</th><th>Bin</th><th>Hex</th></tr>
+                <tr><td>10</td><td>1010</td><td>A</td></tr>
+                <tr><td>11</td><td>1011</td><td>B</td></tr>
+                <tr><td>12</td><td>1100</td><td>C</td></tr>
+            </table>
+            <table class="table">
+                <tr><th>Dec</th><th>Bin</th><th>Hex</th></tr>
+                <tr><td>13</td><td>1101</td><td>D</td></tr>
+                <tr><td>14</td><td>1110</td><td>E</td></tr>
+                <tr><td>15</td><td>1111</td><td>F</td></tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 8: Bits, Bytes e Prefixos -->
+<div class="slide">
+    <div class="header"><h2>Unidades de Armazenamento</h2></div>
+    <div class="content">
+        <ul style="font-size: 22px; list-style: none;">
+            <li>1 <span class="highlight">KB</span> (Kilobyte) = 1024 Bytes</li>
+            <li>1 <span class="highlight">MB</span> (Megabyte) = 1024 KB</li>
+            <li>1 <span class="highlight">GB</span> (Gigabyte) = 1024 MB</li>
+            <li>1 <span class="highlight">TB</span> (Terabyte) = 1024 GB</li>
+        </ul>
+        <p style="margin-top: 20px; font-size: 18px; color: #64748b;">*Nota: Para fabricantes de disco, 1KB costuma ser 1000. Para o SO, é 1024.</p>
+    </div>
+</div>
+
+<!-- Slide 9: Representação de Texto -->
+<div class="slide">
+    <div class="header"><h2>Como o texto vira bit?</h2></div>
+    <div class="content">
+        <div class="grid">
+            <div>
+                <h3>Tabela ASCII</h3>
+                <p>O caractere 'A' é o número 65 decimal.</p>
+                <p>65 em binário: <span class="highlight">0100 0001</span></p>
+            </div>
+            <div>
+                <h3>Unicode / UTF-8</h3>
+                <p>Padrão moderno que permite representar emojis e caracteres de todas as línguas.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 10: TI Verde (Introdução) -->
+<div class="slide">
+    <div class="header"><h2>TI Verde: Por que importa?</h2></div>
+    <div class="content">
+        <p>Produzir e descartar hardware tem um custo ambiental altíssimo.</p>
+        <ul style="margin-top: 20px;">
+            <li><span class="highlight">Lixo Eletrônico:</span> Contaminação por metais pesados.</li>
+            <li><span class="highlight">Eficiência:</span> Software mal otimizado gasta mais energia/bateria.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Slide 11: Quiz Rápido -->
+<div class="slide">
+    <div class="header"><h2>Desafio de Aula</h2></div>
+    <div class="content">
+        <p style="font-size: 24px; margin-bottom: 20px;">Converta o número decimal <span class="highlight">20</span> para Binário:</p>
+        <div class="quiz-option" style="padding: 15px; border: 2px solid #e2e8f0; margin-bottom: 10px; border-radius: 8px;">A) 10100</div>
+        <div class="quiz-option" style="padding: 15px; border: 2px solid #e2e8f0; margin-bottom: 10px; border-radius: 8px;">B) 11000</div>
+        <div class="quiz-option" style="padding: 15px; border: 2px solid #e2e8f0; margin-bottom: 10px; border-radius: 8px;">C) 10001</div>
+    </div>
+</div>
+
+<!-- Slide 12: Glossário da Aula -->
+<div class="slide">
+    <div class="header"><h2>Glossário Aula 01</h2></div>
+    <div class="content">
+        <table class="table">
+            <tr><td><b>Bit</b></td><td>Menor unidade de informação (0 ou 1).</td></tr>
+            <tr><td><b>Byte</b></td><td>Conjunto de 8 bits.</td></tr>
+            <tr><td><b>Nibble</b></td><td>Conjunto de 4 bits (meio byte).</td></tr>
+            <tr><td><b>Hex</b></td><td>Base 16, facilita a leitura de binários.</td></tr>
+        </table>
+    </div>
+</div>
+
+<!-- Slide 13: Encerramento -->
+<div class="slide hero">
+    <h1>Até a próxima aula!</h1>
+    <p>Tema da Aula 02: Arquitetura Von Neumann e Memórias</p>
+    <div style="margin-top: 40px; opacity: 0.6;">ADS - Prof. Paraninfo</div>
+</div>
+
+</body>
+</html>
