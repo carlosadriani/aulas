@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História da Computação - Aula Especial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #1a1a1a; font-family: "DM Sans", sans-serif; color: #333; display: flex; flex-direction: column; align-items: center; gap: 40px; padding: 40px 0; }
+        
+        .slide { 
+            width: 1280px; height: 720px; background: #fff; 
+            border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4); position: relative;
+        }
+
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #d4af37; }
+        h1 { font-family: "Merriweather", serif; font-size: 60px; color: #1a1a1a; }
+        h2 { font-family: "Merriweather", serif; font-size: 38px; color: #1a1a1a; }
+
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        
+        .hero { background: #1a1a1a; color: #d4af37; justify-content: center; align-items: center; text-align: center; }
+        .hero h1 { color: #d4af37; }
+
+        .timeline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .year-badge { background: #d4af37; color: #000; padding: 5px 15px; border-radius: 4px; font-weight: bold; font-size: 20px; margin-bottom: 15px; display: inline-block; }
+        
+        .highlight-box { border-left: 5px solid #d4af37; padding: 20px; background: #fdfdfd; margin-top: 20px; }
+        
+        .footer { padding: 20px 60px; background: #f8fafc; font-size: 14px; color: #888; text-align: right; }
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: Capa -->
+<div class="slide hero">
+    <i class="fa-solid fa-clock-rotate-left" style="font-size: 80px; margin-bottom: 20px;"></i>
+    <h1>A Evolução das Máquinas</h1>
+    <p style="font-size: 24px; opacity: 0.8;">Da Máquina de Turing à Computação Ubíqua</p>
+    <div style="margin-top: 40px; font-weight: bold; letter-spacing: 2px;">ORGANIZAÇÃO DE COMPUTADORES</div>
+</div>
+
+<!-- Slide 2: A Base Teórica -->
+<div class="slide">
+    <div class="header"><h2>1936: Alan Turing</h2></div>
+    <div class="content">
+        <div class="timeline-grid">
+            <div>
+                <span class="year-badge">O Pai da Computação</span>
+                <p>Alan Turing propôs a <b>Máquina Universal de Turing</b>, um modelo teórico que provou que uma máquina poderia simular qualquer algoritmo lógico.</p>
+                <div class="highlight-box">
+                    <p>Conceito: Se pode ser resolvido logicamente, pode ser resolvido por uma máquina.</p>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                 <i class="fa-solid fa-gears" style="font-size: 150px; color: #d4af37;"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 3: 1ª Geração: Válvulas -->
+<div class="slide">
+    <div class="header"><h2>Anos 40: A Era das Válvulas</h2></div>
+    <div class="content">
+        <div class="timeline-grid">
+            <div class="highlight-box">
+                <h3>ENIAC (1945)</h3>
+                <p>O primeiro computador eletrônico digital de propósito geral. Pesava 30 toneladas e usava 18.000 válvulas.</p>
+            </div>
+            <div>
+                <ul style="font-size: 22px; line-height: 1.8;">
+                    <li>Consumo altíssimo de energia.</li>
+                    <li>Válvulas queimavam constantemente.</li>
+                    <li>Programação via painéis e cabos (físico).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 4: Arquitetura Von Neumann -->
+<div class="slide">
+    <div class="header"><h2>1945: O Modelo Von Neumann</h2></div>
+    <div class="content">
+        <p style="font-size: 24px; margin-bottom: 30px;">John von Neumann propôs que o programa e os dados fossem armazenados na <b>mesma memória</b>.</p>
+        <div style="display: flex; justify-content: space-around; text-align: center;">
+            <div style="background: #eee; padding: 20px; border-radius: 8px; width: 200px;">CPU</div>
+            <div style="background: #eee; padding: 20px; border-radius: 8px; width: 200px;">Memória</div>
+            <div style="background: #eee; padding: 20px; border-radius: 8px; width: 200px;">I/O</div>
+        </div>
+        <p style="margin-top: 30px; text-align: center;">Este modelo é a base de quase todos os computadores atuais.</p>
+    </div>
+</div>
+
+<!-- Slide 5: 2ª Geração: Transistores -->
+<div class="slide">
+    <div class="header"><h2>Anos 50: O Transistor</h2></div>
+    <div class="content">
+        <div class="timeline-grid">
+            <div>
+                <span class="year-badge">1947: Bell Labs</span>
+                <p>O transistor substituiu a válvula. Era menor, mais rápido, mais barato e não esquentava tanto.</p>
+            </div>
+            <div class="highlight-box">
+                <p>Isso permitiu que computadores saíssem de salas gigantes para armários menores.</p>
+                <p style="margin-top: 10px;"><b>Surgem as linguagens FORTRAN e COBOL.</b></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 6: 3ª Geração: Circuitos Integrados -->
+<div class="slide">
+    <div class="header"><h2>Anos 60: Circuitos Integrados</h2></div>
+    <div class="content">
+        <p>Vários transistores em uma única pastilha de silício (o "chip").</p>
+        <div class="timeline-grid" style="margin-top: 30px;">
+            <div style="background: #f8fafc; padding: 20px; border-radius: 8px;">
+                <h3>IBM System/360</h3>
+                <p>Uma família de computadores que usavam o mesmo software, revolucionando o mercado corporativo.</p>
+            </div>
+            <div>
+                <i class="fa-solid fa-microchip" style="font-size: 100px; color: #d4af37;"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 7: 4ª Geração: Microprocessadores -->
+<div class="slide">
+    <div class="header"><h2>1971: O Intel 4004</h2></div>
+    <div class="content">
+        <p style="font-size: 24px;">O nascimento da CPU moderna em um único chip.</p>
+        <div class="highlight-box" style="margin-top: 30px;">
+            <ul style="font-size: 22px; line-height: 2;">
+                <li>Permitiu a criação dos Computadores Pessoais (PCs).</li>
+                <li>Alta escala de integração (VLSI).</li>
+                <li>Alta velocidade e baixo custo.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 8: A Revolução do PC -->
+<div class="slide">
+    <div class="header"><h2>Anos 70-80: PCs</h2></div>
+    <div class="content">
+        <div class="timeline-grid">
+            <div>
+                <h3>Apple II e IBM PC</h3>
+                <p>A computação chega às casas e escritórios.</p>
+            </div>
+            <div style="background: #1a1a1a; color: #fff; padding: 20px; border-radius: 8px;">
+                <p>"Um computador em cada mesa e em cada casa" - O sonho de Bill Gates.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 9: Interface Gráfica e Mouse -->
+<div class="slide">
+    <div class="header"><h2>Xerox PARC e Macintosh</h2></div>
+    <div class="content">
+        <p>A computação deixa de ser apenas linhas de comando (CLI) e passa a ser visual (GUI).</p>
+        <div style="display: flex; justify-content: center; gap: 40px; margin-top: 40px;">
+            <div style="text-align: center;"><i class="fa-solid fa-mouse" style="font-size: 50px;"></i><p>Mouse</p></div>
+            <div style="text-align: center;"><i class="fa-solid fa-window-restore" style="font-size: 50px;"></i><p>Janelas</p></div>
+            <div style="text-align: center;"><i class="fa-solid fa-folder-open" style="font-size: 50px;"></i><p>Pastas</p></div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 10: A Era da Internet -->
+<div class="slide">
+    <div class="header"><h2>Anos 90: Conectividade</h2></div>
+    <div class="content">
+        <span class="year-badge">World Wide Web</span>
+        <p>O computador deixa de ser uma máquina isolada e torna-se um terminal de comunicação global.</p>
+        <div class="highlight-box">
+            <p>Surgimento dos navegadores e da economia digital.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 11: Mobilidade -->
+<div class="slide">
+    <div class="header"><h2>2007: O Smartphone</h2></div>
+    <div class="content">
+        <div class="timeline-grid">
+            <div>
+                <p>O iPhone transforma o computador em um dispositivo de bolso, sempre ligado e sempre conectado.</p>
+            </div>
+            <div style="text-align: center;">
+                <i class="fa-solid fa-mobile-screen-button" style="font-size: 150px; color: #d4af37;"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 12: Atuais e Futuro -->
+<div class="slide">
+    <div class="header"><h2>Hoje: Nuvem e IA</h2></div>
+    <div class="content">
+        <div class="timeline-grid">
+            <ul style="font-size: 22px; list-style: none;">
+                <li><i class="fa-solid fa-cloud"></i> <b>Computação em Nuvem:</b> Processamento remoto.</li>
+                <li><i class="fa-solid fa-brain"></i> <b>IA Generativa:</b> Máquinas que criam.</li>
+                <li><i class="fa-solid fa-atom"></i> <b>Computação Quântica:</b> O próximo salto.</li>
+            </ul>
+            <div style="background: #fdf6e3; padding: 20px; border-radius: 8px; border: 1px solid #eee;">
+                <p>A computação tornou-se invisível (está em tudo, da geladeira ao carro).</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 13: Conclusão -->
+<div class="slide hero">
+    <h2>"A melhor maneira de prever o futuro é inventá-lo."</h2>
+    <p style="margin-top: 20px; opacity: 0.6;">Alan Kay</p>
+    <div style="margin-top: 60px;">
+        <a href="index.html" style="color: #d4af37; text-decoration: none; border: 1px solid #d4af37; padding: 10px 20px;">Fim da Jornada</a>
+    </div>
+</div>
+
+<div class="footer">História da Computação | ADS | Prof. Paraninfo</div>
+
+</body>
+</html>
