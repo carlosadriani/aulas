@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introdução às Redes de Computadores</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        /* CONFIGURAÇÕES BASE */
+        body {
+            background-color: #f1f5f9;
+        }
+
+        .slide-container {
+            background-color: #ffffff;
+            font-family: "DM Sans", sans-serif;
+        }
+
+        /* DECORAÇÃO DE FUNDO */
+        .slide-container::after {
+            content: '';
+            position: absolute;
+            bottom: -120px;
+            right: -120px;
+            width: 380px;
+            height: 380px;
+            background: rgba(0, 51, 102, 0.04);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        /* TIPOGRAFIA */
+        h1, h2, h3 {
+            font-family: "Merriweather", serif;
+            color: #003366;
+            z-index: 1;
+        }
+
+        p, li {
+            color: #475569;
+            font-size: 22px;
+            line-height: 1.6;
+            z-index: 1;
+        }
+
+        .slide-title {
+            font-size: 44px;
+            font-weight: 700;
+            padding: 50px 80px 10px;
+            text-align: left;
+            border-bottom: 4px solid #003366;
+            margin: 0 60px;
+            display: inline-block;
+        }
+
+        .content-area {
+            flex-grow: 1;
+            padding: 30px 80px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        /* LAYOUTS */
+        .title-layout {
+            text-align: center;
+            justify-content: center;
+            height: 100%;
+            background: linear-gradient(135deg, #003366 0%, #001a33 100%);
+            color: #ffffff;
+        }
+
+        .title-layout h1 {
+            color: #ffffff;
+            font-size: 70px;
+            margin-bottom: 20px;
+        }
+
+        .title-layout p {
+            color: #cbd5e1;
+            font-size: 26px;
+        }
+
+        .topic-tag {
+            background: #3b82f6;
+            color: white;
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 18px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .info-box {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 28px;
+            border-top: 6px solid #003366;
+            text-align: center;
+        }
+
+        .info-box i {
+            font-size: 48px;
+            color: #003366;
+            margin-bottom: 14px;
+        }
+
+        .info-box h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .info-box p {
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .highlight-text {
+            font-size: 28px;
+            color: #1e40af;
+            font-weight: 500;
+            border-left: 6px solid #3b82f6;
+            padding-left: 20px;
+            line-height: 1.4;
+        }
+
+        .icon-large {
+            font-size: 90px;
+            color: #003366;
+            opacity: 0.85;
+        }
+
+        .check-list {
+            list-style: none;
+        }
+
+        .check-list li {
+            margin-bottom: 14px;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .check-list li::before {
+            content: '\f058';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #10b981;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .comparison-table th {
+            background: #003366;
+            color: white;
+            padding: 14px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #475569;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 28px;
+            color: #1e293b;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .nav-footer {
+            position: absolute;
+            bottom: 18px;
+            right: 30px;
+            font-size: 13px;
+            color: #94a3b8;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Slide 1: Capa -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag">Tópico 01</div>
+            <h1>Introdução às Redes</h1>
+            <p>Conceitos, Histórico e Tipos de Redes de Computadores</p>
+            <div style="margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 18px; width: 320px;">
+                ADS - Serviços de Redes
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2: O que é uma rede? -->
+    <div class="slide-container">
+        <h2 class="slide-title">O que é uma Rede?</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <p class="highlight-text">"Uma rede de computadores é um conjunto de dois ou mais dispositivos interconectados, capazes de trocar informações e compartilhar recursos."</p>
+                <div style="text-align: center;">
+                    <i class="fa-solid fa-network-wired icon-large"></i>
+                    <p style="margin-top: 18px;">Hardware + Software + Meio de Transmissão + Protocolos</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">01 / 14</div>
+    </div>
+
+    <!-- Slide 3: Por que conectar? -->
+    <div class="slide-container">
+        <h2 class="slide-title">Por que conectar dispositivos?</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <ul class="check-list">
+                    <li><b>Compartilhamento de recursos:</b> impressoras, arquivos, conexão à internet.</li>
+                    <li><b>Comunicação:</b> e-mail, mensagens, chamadas, videoconferência.</li>
+                    <li><b>Acesso a informações remotas:</b> bancos de dados, web, serviços em nuvem.</li>
+                    <li><b>Redução de custos:</b> infraestrutura compartilhada entre vários usuários.</li>
+                    <li><b>Escalabilidade:</b> facilidade de crescer adicionando novos dispositivos.</li>
+                </ul>
+                <div style="text-align: center;">
+                    <i class="fa-solid fa-share-nodes icon-large"></i>
+                    <p style="margin-top: 20px; font-style: italic;">"O valor de uma rede cresce com o número de conexões." — Lei de Metcalfe</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">02 / 14</div>
+    </div>
+
+    <!-- Slide 4: Histórico - Anos 60 -->
+    <div class="slide-container">
+        <h2 class="slide-title">Anos 60: O Início — ARPANET</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <div class="topic-tag">1969</div>
+                    <ul class="check-list">
+                        <li>Projeto militar do <b>Departamento de Defesa dos EUA</b> (DARPA).</li>
+                        <li>Objetivo: manter comunicação mesmo após ataques nucleares.</li>
+                        <li>Primeira conexão: <b>UCLA ↔ Stanford</b> (29/10/1969).</li>
+                        <li>Apenas 4 nós iniciais: UCLA, Stanford, UCSB e Utah.</li>
+                    </ul>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-microchip"></i>
+                    <h3>Comutação de Pacotes</h3>
+                    <p>Em vez de circuitos dedicados (como na telefonia), a mensagem é dividida em pequenos pacotes que viajam por caminhos diferentes.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">03 / 14</div>
+    </div>
+
+    <!-- Slide 5: Histórico - Anos 70 -->
+    <div class="slide-container">
+        <h2 class="slide-title">Anos 70: Protocolos e E-mail</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div class="info-box" style="border-top-color: #3b82f6;">
+                    <i class="fa-solid fa-envelope" style="color: #3b82f6;"></i>
+                    <h3>1971: O E-mail Nasce</h3>
+                    <p>Ray Tomlinson envia a primeira mensagem entre máquinas e adota o símbolo <b>@</b> para separar usuário e servidor.</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 26px; margin-bottom: 14px;">A Base do TCP/IP</h3>
+                    <p><b>Vint Cerf</b> e <b>Bob Kahn</b> publicam, em 1974, o trabalho que define o protocolo TCP — alicerce da Internet moderna.</p>
+                    <p style="margin-top: 12px;">A ideia: protocolos universais para que <i>qualquer</i> rede possa conversar com outra.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">04 / 14</div>
+    </div>
+
+    <!-- Slide 6: Histórico - Anos 80 -->
+    <div class="slide-container">
+        <h2 class="slide-title">Anos 80: Nasce a "Internet"</h2>
+        <div class="content-area">
+            <ul class="check-list">
+                <li><b>1983 — TCP/IP torna-se padrão:</b> a ARPANET migra oficialmente para o protocolo, marcando o nascimento da Internet como a conhecemos.</li>
+                <li><b>1984 — DNS:</b> Paul Mockapetris cria o Sistema de Nomes de Domínio. Em vez de decorar IPs como <span style="font-family: monospace; background: #f1f5f9; padding: 2px 6px; border-radius: 4px;">128.10.0.1</span>, surgem nomes como <span style="font-family: monospace; background: #f1f5f9; padding: 2px 6px; border-radius: 4px;">stanford.edu</span> ou <span style="font-family: monospace; background: #f1f5f9; padding: 2px 6px; border-radius: 4px;">upf.br</span>.</li>
+                <li><b>1986 — NSFNET:</b> A National Science Foundation cria um backbone acadêmico que interconecta universidades dos EUA.</li>
+                <li>O termo <b>"Internet"</b> consolida-se como o nome dessa interconexão de redes.</li>
+            </ul>
+        </div>
+        <div class="nav-footer">05 / 14</div>
+    </div>
+
+    <!-- Slide 7: Histórico - Anos 90 -->
+    <div class="slide-container">
+        <h2 class="slide-title">Anos 90: A Web e o Boom Comercial</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <div class="topic-tag">1989-1991</div>
+                    <p><b>Tim Berners-Lee</b>, no CERN (Suíça), cria a <b>World Wide Web</b> — propondo:</p>
+                    <ul class="check-list" style="margin-top: 12px;">
+                        <li>HTML (linguagem)</li>
+                        <li>HTTP (protocolo)</li>
+                        <li>URL (endereçamento)</li>
+                    </ul>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-globe"></i>
+                    <h3>Internet Comercial</h3>
+                    <p>1993: navegador <b>Mosaic</b>.<br>1994: <b>Netscape</b>.<br>1995: <b>Amazon</b> e <b>eBay</b>.</p>
+                    <p style="margin-top: 8px;">A rede sai da academia e entra na vida das pessoas.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">06 / 14</div>
+    </div>
+
+    <!-- Slide 8: Anos 2000+ -->
+    <div class="slide-container">
+        <h2 class="slide-title">2000+: Mobilidade, Nuvem e IoT</h2>
+        <div class="content-area">
+            <div class="grid-4">
+                <div class="info-box">
+                    <i class="fa-solid fa-wifi"></i>
+                    <h3>Wi-Fi</h3>
+                    <p>Conexão sem fio chega a casas e escritórios.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    <h3>Mobile</h3>
+                    <p>Smartphones (2007+) tornam a internet onipresente.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-cloud"></i>
+                    <h3>Nuvem</h3>
+                    <p>AWS (2006), Azure, GCP: serviços sob demanda.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-house-signal"></i>
+                    <h3>IoT &amp; 5G</h3>
+                    <p>Bilhões de dispositivos conectados em tempo real.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">07 / 14</div>
+    </div>
+
+    <!-- Slide 9: Componentes Essenciais -->
+    <div class="slide-container">
+        <h2 class="slide-title">Componentes Essenciais de uma Rede</h2>
+        <div class="content-area">
+            <div class="grid-4">
+                <div class="info-box">
+                    <i class="fa-solid fa-circle-nodes"></i>
+                    <h3>Nós (Hosts)</h3>
+                    <p>Dispositivos que enviam ou recebem dados: computadores, celulares, servidores, sensores.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-ethernet"></i>
+                    <h3>Enlaces</h3>
+                    <p>Meios de transmissão que conectam os nós: cabos, fibra óptica, ondas de rádio.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-route"></i>
+                    <h3>Equipamentos</h3>
+                    <p>Switches, roteadores, access points — encaminham o tráfego pela rede.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-handshake"></i>
+                    <h3>Protocolos</h3>
+                    <p>Regras que definem como os dados são formatados, enviados e interpretados.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">08 / 14</div>
+    </div>
+
+    <!-- Slide 10: Classificação por Abrangência -->
+    <div class="slide-container">
+        <h2 class="slide-title">Classificação por Abrangência</h2>
+        <div class="content-area">
+            <div class="grid-4">
+                <div class="info-box">
+                    <i class="fa-solid fa-bluetooth-b"></i>
+                    <h3>PAN</h3>
+                    <p><b>Personal Area Network</b><br>~10 metros<br><i>Bluetooth, smartwatch</i></p>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-building"></i>
+                    <h3>LAN</h3>
+                    <p><b>Local Area Network</b><br>~1 km<br><i>Escritório, residência</i></p>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-city"></i>
+                    <h3>MAN</h3>
+                    <p><b>Metropolitan Area Network</b><br>~10 km<br><i>Cidade, campus</i></p>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-earth-americas"></i>
+                    <h3>WAN</h3>
+                    <p><b>Wide Area Network</b><br>Países, continentes<br><i>Internet</i></p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">09 / 14</div>
+    </div>
+
+    <!-- Slide 11: Tabela comparativa -->
+    <div class="slide-container">
+        <h2 class="slide-title">Comparativo: PAN, LAN, MAN, WAN</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr>
+                    <th>Tipo</th>
+                    <th>Abrangência</th>
+                    <th>Velocidade típica</th>
+                    <th>Exemplos</th>
+                </tr>
+                <tr>
+                    <td><b>PAN</b></td>
+                    <td>Até ~10 m</td>
+                    <td>1 Mbps – 1 Gbps</td>
+                    <td>Bluetooth, ZigBee, USB</td>
+                </tr>
+                <tr>
+                    <td><b>LAN</b></td>
+                    <td>Até ~1 km</td>
+                    <td>100 Mbps – 10 Gbps</td>
+                    <td>Ethernet, Wi-Fi doméstico</td>
+                </tr>
+                <tr>
+                    <td><b>MAN</b></td>
+                    <td>Até ~50 km</td>
+                    <td>100 Mbps – 10 Gbps</td>
+                    <td>Rede de campus, TV a cabo</td>
+                </tr>
+                <tr>
+                    <td><b>WAN</b></td>
+                    <td>Sem limite prático</td>
+                    <td>Mbps – Tbps</td>
+                    <td>Internet, MPLS, links de operadora</td>
+                </tr>
+            </table>
+        </div>
+        <div class="nav-footer">10 / 14</div>
+    </div>
+
+    <!-- Slide 12: Topologias -->
+    <div class="slide-container">
+        <h2 class="slide-title">Topologias Físicas</h2>
+        <div class="content-area">
+            <div class="grid-4">
+                <div class="info-box">
+                    <i class="fa-solid fa-star"></i>
+                    <h3>Estrela</h3>
+                    <p>Todos os nós ligados a um nó central (switch). <b>Mais comum hoje.</b></p>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-grip-lines"></i>
+                    <h3>Barramento</h3>
+                    <p>Todos compartilham um único cabo (legado). Simples mas frágil.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-circle-notch"></i>
+                    <h3>Anel</h3>
+                    <p>Cada nó conecta-se a outros dois, formando um círculo. Falha de um afeta todos.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <h3>Malha</h3>
+                    <p>Vários caminhos entre nós. Alta tolerância a falhas (usada na Internet).</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">11 / 14</div>
+    </div>
+
+    <!-- Slide 13: Meios de Transmissão -->
+    <div class="slide-container">
+        <h2 class="slide-title">Meios de Transmissão</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <h3 style="font-size: 26px; margin-bottom: 14px;"><i class="fa-solid fa-ethernet" style="color: #003366;"></i> Guiados (com fio)</h3>
+                    <ul class="check-list">
+                        <li><b>Par trançado:</b> Cabo Cat5e/Cat6 — barato e padrão em LANs.</li>
+                        <li><b>Cabo coaxial:</b> Histórico, hoje usado em TV a cabo.</li>
+                        <li><b>Fibra óptica:</b> Altíssima velocidade e longa distância — base da Internet.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="font-size: 26px; margin-bottom: 14px;"><i class="fa-solid fa-tower-broadcast" style="color: #003366;"></i> Não guiados (sem fio)</h3>
+                    <ul class="check-list">
+                        <li><b>Wi-Fi:</b> Padrão IEEE 802.11 para LANs sem fio.</li>
+                        <li><b>Bluetooth:</b> Curta distância, baixo consumo.</li>
+                        <li><b>Rádio / Celular (4G, 5G):</b> Cobertura ampla com mobilidade.</li>
+                        <li><b>Satélite:</b> Cobertura global, latência maior.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">12 / 14</div>
+    </div>
+
+    <!-- Slide 14: Modos de operação -->
+    <div class="slide-container">
+        <h2 class="slide-title">Modelos de Comunicação</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div class="info-box" style="text-align: left;">
+                    <h3 style="text-align: center;"><i class="fa-solid fa-server" style="font-size: 36px; display: block; margin-bottom: 8px;"></i>Cliente-Servidor</h3>
+                    <p>Um <b>servidor</b> centraliza recursos e os disponibiliza para vários <b>clientes</b> que os solicitam.</p>
+                    <p style="margin-top: 8px;"><i>Exemplos: Web (HTTP), e-mail, banco de dados.</i></p>
+                </div>
+                <div class="info-box" style="text-align: left; border-top-color: #3b82f6;">
+                    <h3 style="text-align: center;"><i class="fa-solid fa-users" style="font-size: 36px; display: block; margin-bottom: 8px; color: #3b82f6;"></i>P2P (Ponto a Ponto)</h3>
+                    <p>Todos os nós são equivalentes — cada um é cliente e servidor ao mesmo tempo.</p>
+                    <p style="margin-top: 8px;"><i>Exemplos: BitTorrent, blockchain, algumas redes locais simples.</i></p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">13 / 14</div>
+    </div>
+
+    <!-- Slide 15: Encerramento -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <i class="fa-solid fa-circle-question" style="font-size: 60px; margin-bottom: 20px; color: #3b82f6;"></i>
+            <h1>Dúvidas?</h1>
+            <p>Conectamos os pontos: do mainframe isolado à Internet global.</p>
+            <div style="margin-top: 40px; font-size: 18px; color: #94a3b8;">
+                Próximo tópico: <b style="color: #ffffff;">Arquiteturas de Redes</b>
+            </div>
+            <div style="margin-top: 40px;">
+                <a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+                    <i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
