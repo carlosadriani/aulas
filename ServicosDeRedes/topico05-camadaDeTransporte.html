@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolos de Transporte: TCP e UDP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* =========================================
+           1. CONFIGURAÇÕES BASE E DESIGN SYSTEM
+           ========================================= */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0f172a; /* Fundo escuro externo */
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 1fr;
+            min-height: 100vh;
+            place-items: center;
+            padding: 20px 0;
+        }
+
+        /* Contentor Principal do Slide (Formato 16:9) */
+        .slide-container {
+            align-items: center;
+            background-color: #020617; /* Slate Escuro - Tema tecnológico premium */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            height: 720px;
+            justify-content: center;
+            overflow: hidden;
+            padding: 60px;
+            position: relative;
+            width: 1280px;
+            z-index: 1;
+        }
+
+        /* Brilho Abstrato de Fundo */
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 60%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .slide-container > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* =========================================
+           2. TIPOGRAFIA COERENTE
+           ========================================= */
+        h1, h2, h3, h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #F8FAFC;
+            margin: 0;
+        }
+
+        p, li, td, th, blockquote, cite {
+            font-family: 'Inter', sans-serif;
+            color: #CBD5E1;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Tamanhos de Títulos */
+        .slide-container h1 { font-size: 64px; font-weight: 700; line-height: 1.1; }
+        .slide-container .slide-title { font-size: 44px; font-weight: 700; color: #06B6D4; width: 100%; text-align: left; margin-bottom: 40px; }
+        .slide-container h3 { font-size: 28px; font-weight: 600; margin-bottom: 12px; }
+
+        /* Corpo de Texto */
+        .slide-container p { font-size: 20px; margin-bottom: 15px; }
+        .slide-container .subtitle { font-size: 24px; color: #94A3B8; font-weight: 400; margin-top: 20px; }
+
+        /* Destaque em Ciano */
+        .accent-text { color: #06B6D4; }
+
+        /* Área de Conteúdo Útil */
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* =========================================
+           3. ESTRUTURAS DE LAYOUT
+           ========================================= */
+        
+        /* --- Slide de Título --- */
+        .title-layout { text-align: center; max-width: 1000px; margin: 0 auto; }
+        
+        /* --- Divisor de Secções --- */
+        .section-title-layout {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+        }
+        .section-title-layout hr {
+            background-color: #06B6D4;
+            border: none;
+            height: 4px;
+            margin: 0 auto 30px auto;
+            width: 80px;
+            border-radius: 2px;
+        }
+        .section-title-layout h2 { font-size: 56px; margin-bottom: 20px; color: #F8FAFC; }
+        .section-title-layout p { font-size: 24px; max-width: 800px; margin: 0 auto; color: #94A3B8;}
+
+        /* --- Layout em Duas Colunas --- */
+        .two-column {
+            align-items: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            width: 100%;
+        }
+        .two-column ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .two-column li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 22px;
+            font-size: 20px;
+        }
+        .two-column li::before {
+            content: '▹';
+            color: #06B6D4;
+            position: absolute;
+            left: 0;
+            top: -2px;
+            font-size: 26px;
+        }
+        .two-column li strong { color: #F8FAFC; }
+
+        /* Moldura de Imagem */
+        .image-wrapper {
+            border-radius: 16px;
+            border: 1px solid #1E293B;
+            height: 400px;
+            overflow: hidden;
+            width: 100%;
+            background-color: #0F172A;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+        .image-wrapper img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+            padding: 10px;
+        }
+
+        /* --- Grelha de Mosaicos com Ícones --- */
+        .tiled-content {
+            align-items: stretch;
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            width: 100%;
+        }
+        .tile {
+            align-items: flex-start;
+            background-color: #0F172A;
+            border-radius: 16px;
+            border: 1px solid #1E293B;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 40px 30px;
+            text-align: left;
+        }
+        .tile .icon {
+            color: #06B6D4;
+            font-size: 40px;
+            margin-bottom: 25px;
+            background: #020617;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            border: 1px solid #1E293B;
+        }
+        .tile p { font-size: 18px; margin-bottom: 0; }
+
+        /* --- Estrutura de Tabelas --- */
+        .table-layout { width: 100%; }
+        .table-layout table {
+            border-collapse: collapse;
+            width: 100%;
+            table-layout: fixed;
+            background-color: #0F172A;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .table-layout th, .table-layout td {
+            padding: 20px 24px;
+            text-align: left;
+            border-bottom: 1px solid #1E293B;
+        }
+        .table-layout th {
+            background-color: #020617;
+            color: #06B6D4;
+            font-size: 20px;
+            font-weight: 700;
+            border-bottom: 2px solid #1E293B;
+        }
+        .table-layout td { font-size: 18px; }
+        .table-layout tr:last-child td { border-bottom: none; }
+        .table-layout th:nth-child(1) { width: 40%; }
+        .table-layout th:nth-child(2) { width: 60%; }
+
+        /* --- Layout de Imagem Lateral Sangrada --- */
+        .slide-container.bleed-image-layout {
+            align-items: start;
+            display: grid;
+            gap: 0;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            padding: 0;
+        }
+        .slide-container.bleed-image-layout > .content-container {
+            padding: 60px 50px 60px 60px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .slide-container.bleed-image-layout > .image-container {
+            height: 100%;
+            overflow: hidden;
+            width: 100%;
+        }
+        .slide-container.bleed-image-layout img.bleed-image-side {
+            display: block;
+            height: 720px;
+            object-fit: cover;
+            object-position: center;
+            width: 100%;
+        }
+
+        /* --- Números em Grande Destaque --- */
+        .highlight-numbers-layout {
+            align-items: center;
+        }
+        .highlight-numbers-layout > div:first-child {
+            flex: 0 0 40%;
+            text-align: center;
+        }
+        .highlight-numbers-layout .number {
+            color: #06B6D4;
+            font-size: 160px;
+            font-weight: 700;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1;
+            text-shadow: 0 10px 30px rgba(6, 182, 212, 0.15);
+        }
+        .highlight-numbers-layout .number-label {
+            font-size: 28px;
+            font-weight: 600;
+            color: #F8FAFC;
+            margin-top: 10px;
+        }
+
+        /* --- Lista de Tópicos Estilizada --- */
+        .bullet-list {
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .bullet-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        .bullet-list li {
+            font-size: 20px;
+            margin-bottom: 30px;
+            padding-left: 60px;
+            position: relative;
+            background-color: #0F172A;
+            padding-top: 25px;
+            padding-bottom: 25px;
+            padding-right: 30px;
+            border-radius: 12px;
+            border: 1px solid #1E293B;
+        }
+        .bullet-list i {
+            color: #06B6D4;
+            font-size: 28px;
+            position: absolute;
+            left: 20px;
+            top: 25px;
+        }
+        .bullet-list li strong { color: #F8FAFC; font-weight: 600; }
+
+        /* --- Layout de Encerramento (Perguntas) --- */
+        .qa-layout {
+            text-align: center;
+            width: 100%;
+        }
+        .qa-layout h2 { font-size: 80px; margin-bottom: 20px; color: #06B6D4; }
+        .qa-layout p { font-size: 28px; color: #F8FAFC; }
+        .qa-layout .contact-info {
+            color: #94A3B8;
+            font-size: 20px;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #1E293B;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: Título -->
+    <div class="slide-container" id="slide1">
+        <div class="title-layout">
+            <h1>Protocolos de <span class="accent-text">Transporte</span></h1>
+            <p class="subtitle">Uma Análise Profunda sobre TCP e UDP<br>Aula de Engenharia e Redes de Computadores</p>
+        </div>
+    </div>
+
+    <!-- Slide 2: Introdução TCP -->
+    <div class="slide-container" id="slide2">
+        <div class="section-title-layout">
+            <hr>
+            <h2>O Protocolo TCP</h2>
+            <p>Transmission Control Protocol — Foco em Fiabilidade e Controlo Estrito</p>
+        </div>
+    </div>
+
+    <!-- Slide 3: Detalhes TCP -->
+    <div class="slide-container" id="slide3">
+        <h2 class="slide-title">Características Principais do TCP</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <ul>
+                        <li><strong>Orientado à Conexão:</strong> Estabelece uma sessão dedicada (circuito virtual) antes de iniciar qualquer transmissão de dados útil.</li>
+                        <li><strong>Handshake de 3 Vias:</strong> Utiliza a sequência SYN, SYN-ACK e ACK para inicializar números de sequência de ambas as partes.</li>
+                        <li><strong>Entrega Garantida:</strong> Implementa confirmações positivas (ACK) e retransmissões automáticas (ARQ) em caso de perda de segmentos.</li>
+                        <li><strong>Ordenação de Bytes:</strong> Garante que os segmentos recebidos fora de ordem sejam reorganizados na ordem correta antes de serem entregues à aplicação.</li>
+                        <li><strong>Controlo de Fluxo:</strong> Ajusta o ritmo com base na capacidade de buffer do destinatário, mitigando o transbordo.</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="image-wrapper">
+                        <!-- Representação visual de ligação e segurança -->
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Pilares TCP -->
+    <div class="slide-container" id="slide4">
+        <h2 class="slide-title">Mecanismos de Proteção do TCP</h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Fiabilidade Absoluta</h3>
+                    <p>Calcula somas de verificação (checksum) avançadas e descarta dados corrompidos, solicitando imediatamente o reenvio de pacotes em falta.</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-water"></i></div>
+                    <h3>Janela Deslizante</h3>
+                    <p>O recetor dita o tamanho da janela de receção, gerindo dinamicamente a taxa de bytes permitida em trânsito sem necessidade de confirmação imediata.</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-traffic-light"></i></div>
+                    <h3>Controlo de Congestionamento</h3>
+                    <p>Gere algoritmos como Slow Start, Congestion Avoidance e Fast Recovery para prevenir que a infraestrutura física de rede atinja o colapso.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Cabeçalho TCP -->
+    <div class="slide-container" id="slide5">
+        <h2 class="slide-title">Estrutura do Cabeçalho TCP</h2>
+        <div class="content-area">
+            <div class="table-layout">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Campo do Cabeçalho</th>
+                            <th>Função Técnica na Ligação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Portas de Origem / Destino</strong> (16 bits cada)</td>
+                            <td>Encaminham o segmento de transporte para o processo/aplicação correto no sistema operativo.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Número de Sequência</strong> (32 bits)</td>
+                            <td>Determina a posição do primeiro byte do segmento no fluxo geral de dados.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Número de Confirmação (ACK)</strong> (32 bits)</td>
+                            <td>Indica o valor do próximo byte esperado pelo recetor da transmissão.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bits de Controlo / Flags</strong> (9 bits)</td>
+                            <td>Flags lógicas fundamentais para gerir o estado da sessão (SYN, ACK, FIN, RST, PSH, URG).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Janela de Receção (Window Size)</strong> (16 bits)</td>
+                            <td>Define a largura do buffer livre no recetor para fins de controlo de fluxo de dados.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Introdução UDP -->
+    <div class="slide-container" id="slide6">
+        <div class="section-title-layout">
+            <hr>
+            <h2>O Protocolo UDP</h2>
+            <p>User Datagram Protocol — Desempenho Máximo com Latência Mínima</p>
+        </div>
+    </div>
+
+    <!-- Slide 7: Detalhes UDP -->
+    <div class="slide-container bleed-image-layout" id="slide7">
+        <div class="content-container">
+            <h2 class="slide-title">A Filosofia do UDP</h2>
+            <div class="content-area">
+                <div class="bleed-text-side">
+                    <p>O UDP foca-se na transmissão rápida de dados sem ligações prévias ou estados ativos. Funciona sob o paradigma do "melhor esforço" (best-effort).</p>
+                    <p>Não há confirmação de entrega, reordenação de pacotes nem retransmissões automáticas. Cada datagrama é tratado como uma entidade independente de rede, reduzindo a latência local ao mínimo absoluto e permitindo taxas de débito elevadas em canais estáveis.</p>
+                </div>
+            </div>
+        </div>
+        <div class="image-container">
+            <img class="bleed-image-side" src="https://images.unsplash.com/photo-1544256718-3bcf237f3974?auto=format&fit=crop&w=600&q=80" alt="">
+        </div>
+    </div>
+
+    <!-- Slide 8: Cabeçalho UDP -->
+    <div class="slide-container" id="slide8">
+        <h2 class="slide-title">O Cabeçalho UDP Minimalista</h2>
+        <div class="content-area">
+            <div class="table-layout">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Campo no Cabeçalho</th>
+                            <th>Objetivo do Campo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Porta de Origem</strong> (16 bits)</td>
+                            <td>Identifica a aplicação de origem no emissor (opcional no IPv4).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Porta de Destino</strong> (16 bits)</td>
+                            <td>Direciona o datagrama para o processo recetor correto no anfitrião de destino.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Comprimento (Length)</strong> (16 bits)</td>
+                            <td>Especifica o tamanho total do datagrama (cabeçalho + carga útil de dados).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Soma de Verificação (Checksum)</strong> (16 bits)</td>
+                            <td>Protege o datagrama contra corrupção básica de bits durante a transmissão de rede.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Comparação Técnica -->
+    <div class="slide-container" id="slide9">
+        <h2 class="slide-title">Comparação de Peso e Sobrecarga</h2>
+        <div class="content-area">
+            <div class="two-column highlight-numbers-layout">
+                <div>
+                    <div class="number">60%</div>
+                    <div class="number-label">Menor Sobrecarga de Cabeçalho</div>
+                </div>
+                <div>
+                    <h3>Estrutura de Cabeçalho Leve</h3>
+                    <p>O cabeçalho TCP requer no mínimo <strong>20 bytes</strong> de metadados para operar as suas extensas máquinas de estado e manter os registos da sessão ativos.</p>
+                    <p>Em contrapartida, o UDP consome apenas <strong>8 bytes</strong> fixos no cabeçalho. Isto traduz-se em menos largura de banda desperdiçada com cabeçalhos e menos processamento computacional nos nós terminais para decodificar os pacotes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Casos de Uso -->
+    <div class="slide-container" id="slide10">
+        <h2 class="slide-title">Cenários de Aplicação Prática</h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-globe"></i></div>
+                    <h3>Integridade de Ficheiros (TCP)</h3>
+                    <p>Aplicações como HTTP/HTTPS (Web), SMTP (Email), SSH (Acesso Remoto) e FTP (Transferência de Ficheiros) dependem de dados sem qualquer margem de erro ou corrupção de bits.</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-video"></i></div>
+                    <h3>Comunicação em Tempo Real (UDP)</h3>
+                    <p>Chamadas de Voz sobre IP (VoIP), transmissões de vídeo em tempo real (RTP) e videoconferências toleram perdas mínimas mas não toleram atrasos acumulados ou paragens bruscas.</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-gamepad"></i></div>
+                    <h3>Serviços Instantâneos (UDP)</h3>
+                    <p>Resolução de nomes DNS, atribuição de IPs via DHCP e troca de estados rápidos em jogos online competitivos exigem reações imediatas sem overhead de conexão prévia.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 11: Perguntas para Aula -->
+    <div class="slide-container" id="slide11">
+        <h2 class="slide-title">Tópicos para Discussão</h2>
+        <div class="content-area">
+            <div class="bullet-list">
+                <ul>
+                    <li><i class="fa-solid fa-circle-question"></i> <strong>Perda de Dados com UDP:</strong> Como é que aplicações modernas VoIP lidam com a eventual perda de pacotes de voz sem que o utilizador note quebras acústicas severas?</li>
+                    <li><i class="fa-solid fa-bolt"></i> <strong>A Ascensão do HTTP/3:</strong> O protocolo HTTP/3 trocou o TCP pelo UDP (com a camada QUIC). Quais as vantagens e desafios desta decisão estrutural na infraestrutura da Web?</li>
+                    <li><i class="fa-solid fa-server"></i> <strong>Ataques de Redes:</strong> Por que razão os ataques de negação de serviço por ampliação (amplification attacks) utilizam maioritariamente o UDP em detrimento do TCP?</li>
+                    <li><i class="fa-solid fa-shield-halved"></i> <strong>Controlo no UDP:</strong> É viável ou recomendável programar mecanismos de retransmissão e controlo diretamente na camada aplicacional quando se opta pelo UDP?</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 12: Conclusão -->
+    <div class="slide-container" id="slide12">
+        <div class="qa-layout">
+            <h2>Perguntas & Respostas</h2>
+            <p>Espaço para debate académico sobre a camada de transporte.</p>
+            <div class="contact-info">
+                Sistemas de Redes de Computadores | Unidade Curricular de Engenharia
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

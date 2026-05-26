@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercícios - Organização de Computadores</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
@@ -16,13 +18,22 @@
             --text-dim: #94a3b8;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+        }
 
         body {
             background-color: var(--bg);
             color: var(--text);
             font-family: 'Inter', sans-serif;
-            padding: 40px;
+            padding: clamp(16px, 4vw, 40px);
             line-height: 1.6;
         }
 
@@ -33,43 +44,70 @@
 
         header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: clamp(28px, 6vw, 50px);
             border-bottom: 2px solid var(--card-bg);
             padding-bottom: 20px;
         }
 
-        h1 { font-size: 2.5rem; color: var(--accent); margin-bottom: 10px; }
-        .subtitle { color: var(--text-dim); font-size: 1.1rem; }
+        h1 {
+            font-size: clamp(1.6rem, 5vw, 2.5rem);
+            color: var(--accent);
+            margin-bottom: 10px;
+            line-height: 1.15;
+        }
+
+        .subtitle {
+            color: var(--text-dim);
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+        }
 
         .section {
             background: var(--card-bg);
-            padding: 30px;
+            padding: clamp(18px, 4vw, 30px);
             border-radius: 12px;
-            margin-bottom: 30px;
+            margin-bottom: clamp(18px, 4vw, 30px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
             border-left: 5px solid var(--accent);
         }
 
         h2 {
             font-family: 'Fira Code', monospace;
-            font-size: 1.5rem;
+            font-size: clamp(1.15rem, 3.5vw, 1.5rem);
             margin-bottom: 20px;
             display: flex;
             align-items: center;
             color: var(--accent);
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
-        h2 i { margin-right: 15px; font-size: 1.2rem; }
+        h2 i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
 
-        ol { margin-left: 25px; }
-        li { margin-bottom: 15px; font-size: 1.1rem; }
+        ol {
+            margin-left: clamp(18px, 4vw, 25px);
+        }
+
+        li {
+            margin-bottom: 15px;
+            font-size: clamp(0.95rem, 2.8vw, 1.1rem);
+        }
 
         .code {
+            display: inline-block;
+            word-break: break-word;
+        }
+
+        span.code {
             font-family: 'Fira Code', monospace;
             background: #0f172a;
             padding: 2px 8px;
             border-radius: 4px;
             color: #fbbf24;
+            word-break: break-word;
         }
 
         .hint {
@@ -83,7 +121,10 @@
         .challenge {
             border-left-color: #f472b6;
         }
-        .challenge h2 { color: #f472b6; }
+
+        .challenge h2 {
+            color: #f472b6;
+        }
 
         footer {
             text-align: center;
@@ -93,12 +134,26 @@
         }
 
         @media print {
-            body { background: white; color: black; padding: 0; }
-            .section { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
-            .code { background: #eee; color: black; }
+            body {
+                background: white;
+                color: black;
+                padding: 0;
+            }
+
+            .section {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+            }
+
+            .code {
+                background: #eee;
+                color: black;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <div class="container">
@@ -114,7 +169,7 @@
                 <li>Converta o binário <span class="code">1010</span></li>
                 <li>Converta o binário <span class="code">11001</span></li>
                 <li>Converta o binário <span class="code">101010</span></li>
-                <li>Converta o binário <span class="code">11111111</span> 
+                <li>Converta o binário <span class="code">11111111</span>
                     <span class="hint">Dica: este é o valor máximo de 1 Byte (8 bits).</span>
                 </li>
             </ol>
@@ -140,7 +195,8 @@
                     <span class="hint">Dica: Divida em dois grupos de 4 bits (nibbles).</span>
                 </li>
                 <li>Qual o valor decimal do hexadecimal <span class="code">1A</span>?</li>
-                <li>Cores Web: Se a cor branca é <span class="code">#FFFFFF</span>, qual o valor decimal de cada canal (R, G, B) individualmente?</li>
+                <li>Cores Web: Se a cor branca é <span class="code">#FFFFFF</span>, qual o valor decimal de cada canal
+                    (R, G, B) individualmente?</li>
             </ol>
         </div>
 
@@ -148,15 +204,22 @@
         <div class="section challenge">
             <h2><i class="fa-solid fa-rocket"></i> 4. Desafio ADS (Contextualizado)</h2>
             <ol>
-                <li>Um arquivo de configuração possui <span class="code">2 KB</span>. Quantos <b>Bytes</b> ele possui exatamente? E quantos <b>Bits</b>?</li>
-                <li>Se um processador antigo possui um barramento de endereços de apenas <span class="code">4 bits</span>, quantas posições de memória (endereços) diferentes ele consegue acessar no máximo?</li>
+                <li>Um arquivo de configuração possui <span class="code">2 KB</span>. Quantos <b>Bytes</b> ele possui
+                    exatamente? E quantos <b>Bits</b>?</li>
+                <li>Se um processador antigo possui um barramento de endereços de apenas <span class="code">4
+                        bits</span>, quantas posições de memória (endereços) diferentes ele consegue acessar no máximo?
+                </li>
             </ol>
         </div>
 
-        <footer>
-            <p>Organização de Computadores | ADS | UPF</p>
+        <!-- Footer -->
+        <footer class="bg-slate-900 text-slate-400 py-6 sm:py-8 mt-auto">
+            <div class="container mx-auto px-4 sm:px-6 text-center text-sm sm:text-base">
+                <p>&copy; 2026 Prof. ADS | Organização de Computadoress</p>
+            </div>
         </footer>
     </div>
 
 </body>
+
 </html>

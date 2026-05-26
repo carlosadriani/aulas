@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introdução às Redes de Computadores</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        /* CONFIGURAÇÕES BASE */
+        body {
+            background-color: #f1f5f9;
+        }
+
+        .slide-container {
+            background-color: #ffffff;
+            font-family: "DM Sans", sans-serif;
+        }
+
+        /* DECORAÇÃO DE FUNDO */
+        .slide-container::after {
+            content: '';
+            position: absolute;
+            bottom: -120px;
+            right: -120px;
+            width: 380px;
+            height: 380px;
+            background: rgba(0, 51, 102, 0.04);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        /* TIPOGRAFIA */
+        h1, h2, h3 {
+            font-family: "Merriweather", serif;
+            color: #003366;
+            z-index: 1;
+        }
+
+        p, li {
+            color: #475569;
+            font-size: 22px;
+            line-height: 1.6;
+            z-index: 1;
+        }
+
+        .slide-title {
+            font-size: 44px;
+            font-weight: 700;
+            padding: 50px 80px 10px;
+            text-align: left;
+            border-bottom: 4px solid #003366;
+            margin: 0 60px;
+            display: inline-block;
+        }
+
+        .content-area {
+            flex-grow: 1;
+            padding: 30px 80px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        /* LAYOUTS */
+        .title-layout {
+            text-align: center;
+            justify-content: center;
+            height: 100%;
+            background: linear-gradient(135deg, #003366 0%, #001a33 100%);
+            color: #ffffff;
+        }
+
+        .title-layout h1 {
+            color: #ffffff;
+            font-size: 70px;
+            margin-bottom: 20px;
+        }
+
+        .title-layout p {
+            color: #cbd5e1;
+            font-size: 26px;
+        }
+
+        .topic-tag {
+            background: #3b82f6;
+            color: white;
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 18px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .info-box {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 28px;
+            border-top: 6px solid #003366;
+            text-align: center;
+        }
+
+        .info-box i {
+            font-size: 48px;
+            color: #003366;
+            margin-bottom: 14px;
+        }
+
+        .info-box h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .info-box p {
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .highlight-text {
+            font-size: 28px;
+            color: #1e40af;
+            font-weight: 500;
+            border-left: 6px solid #3b82f6;
+            padding-left: 20px;
+            line-height: 1.4;
+        }
+
+        .icon-large {
+            font-size: 90px;
+            color: #003366;
+            opacity: 0.85;
+        }
+
+        .check-list {
+            list-style: none;
+        }
+
+        .check-list li {
+            margin-bottom: 14px;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .check-list li::before {
+            content: '\f058';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #10b981;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .comparison-table th {
+            background: #003366;
+            color: white;
+            padding: 14px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #475569;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 28px;
+            color: #1e293b;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .nav-footer {
+            position: absolute;
+            bottom: 18px;
+            right: 30px;
+            font-size: 13px;
+            color: #94a3b8;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Slide 1: Capa -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag">Tópico 01</div>
+            <h1>Arquiteturas de Redes</h1>
+            <p>Conteúdo ainda em construção</p>
+            <div style="margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 18px; width: 320px;">
+                ADS - Serviços de Redes
+            </div>
+        </div>
+    </div>
+
+
+<div class="slide-container">
+        <div class="title-layout">
+            <i class="fa-solid fa-circle-question" style="font-size: 60px; margin-bottom: 20px; color: #3b82f6;"></i>
+            <div style="margin-top: 40px; font-size: 18px; color: #94a3b8;">
+                Próximo tópico: <b style="color: #ffffff;">Protocolos de Comunicação</b>
+            </div>
+            <div style="margin-top: 40px;">
+                <a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+                    <i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

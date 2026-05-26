@@ -1,0 +1,339 @@
+/* ============================================================
+   slides.css — Folha de estilo compartilhada e responsiva
+   ------------------------------------------------------------
+   Objetivo:
+   - Manter o visual de "slide" 1280×720 em telas grandes.
+   - Escalar de forma fluida em tablets (entre ~640px e 1280px).
+   - Reorganizar o conteúdo verticalmente em smartphones
+     (≤ 640px), com tipografia legível e elementos em coluna única.
+   - Funciona com as duas convenções usadas no projeto:
+       .slide-container  (CloudComputing)
+       .slide            (OrganizacaoDeComputadores)
+   ============================================================ */
+
+/* ---------- Reset básico ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    /* Impede scroll horizontal indesejado em telas pequenas */
+    overflow-x: hidden;
+}
+
+/* ---------- Tipografia base ---------- */
+body {
+    font-family: "DM Sans", "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    line-height: 1.55;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(20px, 3vw, 50px);
+    padding: clamp(20px, 3vw, 50px) clamp(10px, 2.5vw, 30px);
+}
+
+img,
+svg,
+video,
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ============================================================
+   Container "slide"
+   ============================================================ */
+.slide-container,
+.slide {
+    /* Largura fluida: até 1280px, mas nunca ultrapassa a viewport */
+    width: min(1280px, 100%) !important;
+    /* Sobrepõe alturas fixas legadas (height: 720px) */
+    height: auto !important;
+    /* Mantém proporção 16:9 sem altura fixa em px */
+    aspect-ratio: 16 / 9;
+    /* Habilita unidades de container query (cqw) para escalar textos */
+    container-type: inline-size;
+
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+    max-width: 100%;
+}
+
+/* ============================================================
+   Escala FLUIDA de tipografia (Tablet / Desktop)
+   ------------------------------------------------------------
+   As unidades cqw são 1% da largura do container .slide(-container).
+   Em 1280px de largura:  1cqw ≈ 12.8px.
+   Os clamp() limitam o crescimento/encolhimento em valores
+   confortáveis para os extremos. !important garante override
+   sobre os font-size em px e os style="..." inline.
+   ============================================================ */
+.slide-container h1,
+.slide h1 {
+    font-size: clamp(26px, 4.7cqw, 60px) !important;
+    line-height: 1.15;
+}
+
+.slide-container h2,
+.slide h2 {
+    font-size: clamp(22px, 3.5cqw, 44px) !important;
+    line-height: 1.2;
+}
+
+.slide-container h3,
+.slide h3 {
+    font-size: clamp(18px, 2.4cqw, 30px) !important;
+    line-height: 1.25;
+}
+
+.slide-container p,
+.slide p,
+.slide-container li,
+.slide li,
+.slide-container td,
+.slide td,
+.slide-container th,
+.slide th {
+    font-size: clamp(13px, 1.75cqw, 22px) !important;
+    line-height: 1.55;
+}
+
+.slide-container .highlight-number {
+    font-size: clamp(48px, 12cqw, 150px) !important;
+}
+
+.slide-container .icon-large,
+.slide .icon-large {
+    font-size: clamp(48px, 6.5cqw, 80px) !important;
+}
+
+/* ============================================================
+   TABLET (≤ 1024px) — pequenos ajustes de respiro
+   ============================================================ */
+@media (max-width: 1024px) {
+
+    .slide-container,
+    .slide {
+        border-radius: 8px;
+    }
+}
+
+/* ============================================================
+   MOBILE (≤ 640px) — reflow vertical
+   ------------------------------------------------------------
+   Aqui descartamos o aspect-ratio fixo, permitindo que o slide
+   flua verticalmente como uma página web normal.
+   ============================================================ */
+@media (max-width: 640px) {
+    body {
+        gap: 18px;
+        padding: 14px 10px;
+    }
+
+    .slide-container,
+    .slide {
+        /* Remove a "moldura" de slide e libera a altura */
+        width: 100%;
+        aspect-ratio: auto;
+        min-height: auto;
+        height: auto;
+        padding: 22px 0;
+        border-radius: 10px;
+        /* Em mobile, cqw deixa de ser ideal — fontes em vw/px abaixo */
+    }
+
+    /* Tipografia em mobile (substitui as regras cqw acima) */
+    .slide-container h1,
+    .slide h1 {
+        font-size: clamp(24px, 7vw, 34px) !important;
+    }
+
+    .slide-container h2,
+    .slide h2 {
+        font-size: clamp(20px, 6vw, 28px) !important;
+    }
+
+    .slide-container h3,
+    .slide h3 {
+        font-size: clamp(17px, 5vw, 22px) !important;
+    }
+
+    .slide-container p,
+    .slide p,
+    .slide-container li,
+    .slide li,
+    .slide-container td,
+    .slide td,
+    .slide-container th,
+    .slide th {
+        font-size: clamp(14px, 4vw, 17px) !important;
+        line-height: 1.6;
+    }
+
+    /* Esconde decorações de fundo (círculos abstratos) em mobile */
+    .slide-container::before,
+    .slide-container::after,
+    .slide::before,
+    .slide::after {
+        display: none !important;
+    }
+
+    /* Reduz padding interno das seções */
+    .content,
+    .content-area {
+        padding: 16px 18px !important;
+        justify-content: flex-start !important;
+    }
+
+    .header {
+        padding: 18px 18px !important;
+    }
+
+    /* Títulos com padding excessivo originalmente */
+    .slide-title {
+        padding: 24px 20px 8px !important;
+        margin: 0 !important;
+        font-size: clamp(20px, 6vw, 28px) !important;
+        border-left-width: 6px !important;
+    }
+
+    /* Quebra todos os grids 2-colunas em coluna única */
+    .grid,
+    .grid-2,
+    .timeline-grid,
+    .two-column,
+    .tiled-content {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+    }
+
+    /* Bits binários em wrap para caber */
+    .bit-container {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 6px !important;
+    }
+
+    .bit {
+        width: 36px !important;
+        height: 50px !important;
+        font-size: 18px !important;
+    }
+
+    /* Ajustes em "title-layout" (slide-capa) */
+    .title-layout {
+        justify-content: flex-start !important;
+        padding: 30px 16px !important;
+    }
+
+    .title-layout h1 {
+        font-size: clamp(26px, 8vw, 40px) !important;
+    }
+
+    .title-layout p {
+        font-size: clamp(15px, 4.5vw, 18px) !important;
+    }
+
+    /* Slide "hero" no estilo Organização de Computadores */
+    .hero {
+        padding: 30px 16px !important;
+        text-align: center;
+    }
+
+    /* Caixas decoradas — menos padding */
+    .tiled-box,
+    .tile,
+    .timeline-box,
+    .highlight-box,
+    .code-box {
+        padding: 16px !important;
+    }
+
+    /* Códigos longos: permitir quebra e scroll horizontal se preciso */
+    .code-box {
+        font-size: 14px !important;
+        line-height: 1.5;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+
+    /* Tabelas: scroll horizontal quando muitas colunas */
+    .table,
+    table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* Timeline linear vira lista vertical no mobile */
+    .timeline {
+        flex-direction: column !important;
+        padding-top: 0 !important;
+        gap: 16px;
+    }
+
+    .timeline::before {
+        display: none !important;
+    }
+
+    .timeline-item {
+        width: 100% !important;
+        text-align: left !important;
+    }
+
+    .timeline-item::after {
+        display: none !important;
+    }
+
+    /* Ícones gigantes em mobile não fazem sentido */
+    [style*="font-size: 150px"],
+    [style*="font-size:150px"],
+    [style*="font-size: 180px"],
+    [style*="font-size:180px"],
+    [style*="font-size: 100px"],
+    [style*="font-size:100px"],
+    [style*="font-size: 80px"],
+    [style*="font-size:80px"] {
+        font-size: 64px !important;
+    }
+
+    /* Bars (charts) — ajustar */
+    .bar-label {
+        width: 90px !important;
+        font-size: 13px !important;
+    }
+}
+
+/* ============================================================
+   Auxiliares — pequenas correções de qualidade
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+
+    .slide-container,
+    .slide {
+        transition: box-shadow 200ms ease;
+    }
+}
+
+/* Focável e acessível */
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid #38bdf8;
+    outline-offset: 2px;
+    border-radius: 4px;
+}

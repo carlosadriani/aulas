@@ -11,6 +11,14 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Fallback para o caso do Tailwind CDN não carregar */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
         }
     </style>
 </head>
@@ -18,21 +26,21 @@
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
 
     <!-- Header -->
-    <header class="bg-[#003366] text-white py-12 shadow-lg">
-        <div class="container mx-auto px-6">
-            <h1 class="text-4xl font-bold mb-2">Carlos Schaeffer</h1>
-            <p class="text-blue-100 text-lg">Análise e Desenvolvimento de Sistemas</p>
+    <header class="bg-[#003366] text-white py-8 sm:py-12 shadow-lg">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">Carlos Schaeffer</h1>
+            <p class="text-blue-100 text-base sm:text-lg">Análise e Desenvolvimento de Sistemas</p>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-6 py-12 flex-grow">
-        <div class="grid md:grid-cols-3 gap-8">
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex-grow w-full">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
 
             <!-- Cloud Computing -->
             <div
                 class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
-                <div class="p-6">
+                <div class="p-5 sm:p-6">
                     <div class="text-blue-600 mb-4">
                         <i class="fa-solid fa-cloud-sun text-4xl"></i>
                         <label class="text-slate-600 mb-6 text-sm">Nível III</label>
@@ -45,10 +53,25 @@
                 </div>
             </div>
 
-            <!-- Organização de Computadores -->
+            <!-- Serviços de Redes -->
             <div
                 class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
-                <div class="p-6">
+                <div class="p-5 sm:p-6">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fa-solid fa-network-wired text-4xl"></i>
+                        <label class="text-slate-600 mb-6 text-sm">Nível III</label>
+                    </div>
+                    <!-- <h2 class="text-xl font-bold mb-2">Serviços de Redes</h2> -->
+                    <a href="ServicosDeRedes"
+                        class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
+                        Serviços de Redes
+                    </a>
+                </div>
+            </div>
+
+            <!-- Organização de Computadores -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
+                <div class="p-5 sm:p-6">
                     <div class="text-blue-600 mb-4">
                         <i class="fa-solid fa-book text-4xl"></i>
                         <label class="text-slate-600 mb-6 text-sm">Nível I</label>
@@ -61,7 +84,7 @@
                 </div>
             </div>
         </div>
-
+        
         <!-- Seção de Recursos Extras 
         <div class="mt-16 bg-blue-50 rounded-2xl p-8 border border-blue-100">
             <h3 class="text-2xl font-bold mb-4 text-[#003366]">Recursos Adicionais</h3>
@@ -80,8 +103,8 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-8 mt-auto">
-        <div class="container mx-auto px-6 text-center">
+    <footer class="bg-slate-900 text-slate-400 py-6 sm:py-8 mt-auto">
+        <div class="container mx-auto px-4 sm:px-6 text-center text-sm sm:text-base">
             <p>&copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer</p>
         </div>
     </footer>
