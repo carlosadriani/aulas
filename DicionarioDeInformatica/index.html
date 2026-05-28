@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dicionário de Informática - Catálogo de Vídeos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <h1><i class="fa-solid fa-book-intellectual"></i> Dicionário de Informática</h1>
+            <a href="https://www.youtube.com/@dicionariodeinformatica5370" target="_blank" class="btn-channel">
+                <i class="fa-brands fa-youtube"></i> Visitar Canal
+            </a>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="toolbar">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Pesquisar por título ou descrição...">
+            </div>
+            
+            <div class="filters-box">
+                <select id="filterCategory">
+                    <option value="todos">Todas as Categorias</option>
+                    </select>
+
+                <select id="sortOrder">
+                    <option value="padrao">Ordem Personalizada</option>
+                    <option value="titulo-az">Título (A-Z)</option>
+                    <option value="titulo-za">Título (Z-A)</option>
+                    <option value="favoritos">Apenas Favoritos</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="catalog-grid" id="catalogGrid">
+            </section>
+    </main>
+
+    <script src="dados.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
