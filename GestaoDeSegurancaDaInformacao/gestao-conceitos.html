@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Segurança - Alinhamento Conceitual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; }
+        h1 { font-size: 58px; color: #fff; }
+        h2 { font-size: 38px; color: #1e293b; }
+        h3 { color: #1e3a8a; margin-top: 0; }
+        .content { flex-grow: 1; padding: 40px 70px; display: flex; flex-direction: column; justify-content: center; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 22px; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+        .lead { font-size: 23px; line-height: 1.6; }
+        .example { background: #f0f9ff; border-left: 4px solid #3b82f6; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-top: 12px; font-size: 16px; }
+        .example b { color: #1e40af; }
+        .formula { background: #0f172a; color: #38bdf8; padding: 14px; border-radius: 8px; text-align: center; font-family: "Fira Code", monospace; margin-top: 12px; }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light">
+
+    <div class="slide hero">
+        <i class="fa-solid fa-diagram-project" style="font-size: 76px; margin-bottom: 26px; color: #3b82f6;"></i>
+        <h1>Alinhamento Conceitual</h1>
+        <p style="font-size: 23px; opacity: 0.85;">Framework de avaliação de riscos (ISO/IEC 27005 · NIST SP 800-30)</p>
+        <div style="margin-top: 36px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">Gestão de Segurança da Informação</div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>Por que unificar os termos?</h2></div>
+        <div class="content">
+            <p class="lead">Para gerenciar ativos digitais de forma estratégica é preciso unificar a terminologia
+                segundo as normas internacionais. Confundir esses termos compromete a análise <span class="highlight">quantitativa
+                e qualitativa</span> de riscos.</p>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>Os seis conceitos fundamentais</h2></div>
+        <div class="content">
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Vulnerabilidade</h3>
+                    <p>Fraqueza ou brecha em um ativo que pode ser explorada. Não causa dano sozinha.</p>
+                    <div class="example"><b>Ex.:</b> falta de validação de inputs (SQLi); servidores sem patch.</div>
+                </div>
+                <div class="card">
+                    <h3>Ameaça</h3>
+                    <p>Causa potencial de um incidente indesejado; a força com potencial agressivo.</p>
+                    <div class="example"><b>Ex.:</b> cibercriminosos, agentes internos, desastres naturais.</div>
+                </div>
+                <div class="card">
+                    <h3>Ataque</h3>
+                    <p>A materialização da ameaça: ação deliberada que explora a vulnerabilidade.</p>
+                    <div class="example"><b>Ex.:</b> envio de payloads para injetar comandos no banco.</div>
+                </div>
+                <div class="card">
+                    <h3>Incidente</h3>
+                    <p>Evento que compromete a confidencialidade, integridade ou disponibilidade (tríade CID).</p>
+                    <div class="example"><b>Ex.:</b> parada das operações por ransomware.</div>
+                </div>
+                <div class="card">
+                    <h3>Risco</h3>
+                    <p>Probabilidade de uma ameaça explorar uma vulnerabilidade e gerar impacto.</p>
+                    <div class="formula" style="font-size:14px;">Risco = (Ameaça × Vulnerab.) × Impacto</div>
+                </div>
+                <div class="card">
+                    <h3>Impacto</h3>
+                    <p>Severidade da perda caso o incidente ocorra: financeira, operacional, legal, reputacional.</p>
+                    <div class="example"><b>Ex.:</b> multas da ANPD (LGPD), quebra de SLA.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide hero">
+        <h1 style="color:#3b82f6;">Resumo</h1>
+        <p style="font-size: 22px; max-width: 820px; opacity: 0.9;">Vulnerabilidade é a brecha; ameaça é quem pode
+            explorá-la; ataque é a ação; incidente é o evento que compromete a tríade CID; risco é a probabilidade ×
+            impacto; impacto é a severidade da perda.</p>
+        <div style="margin-top: 34px;">
+            <a class="slide-back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Gestão de Segurança da Informação</p>
+    </footer>
+
+</body>
+
+</html>

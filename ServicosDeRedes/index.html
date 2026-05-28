@@ -4,139 +4,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serviços de Redes - Prof. ADS</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Serviços de Redes - Prof. Carlos Schaeffer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
-        html, body { margin: 0; padding: 0; }
-    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
 </head>
 
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
+<body class="site-body">
 
-    <!-- Header -->
-    <header class="bg-[#003366] text-white py-8 sm:py-12 shadow-lg">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">Serviços de Redes</h1>
-            <p class="text-blue-100 text-base sm:text-lg">Materiais de Aula - Análise e Desenvolvimento de Sistemas</p>
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__back" href="../index.html"><i class="fa-solid fa-arrow-left"></i> Portal de Aulas</a>
+            <span class="eyebrow">Materiais de Aula</span>
+            <h1>Serviços de Redes</h1>
+            <p>Análise e Desenvolvimento de Sistemas</p>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex-grow w-full">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
+    <main class="site-main">
 
-            <!-- Tópico 01: Introdução às Redes -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
-                <div class="p-5 sm:p-6">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fa-solid fa-network-wired text-4xl"></i>
-                    </div>
-                    <h2 class="text-xl font-bold mb-2">01. Introdução às Redes</h2>
-                    <p class="text-slate-600 mb-6 text-sm">Conceitos fundamentais, histórico e tipos de redes de computadores.</p>
-                    <a href="topico01-introducao.html"
-                        class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
-                        Ver Tópico
-                    </a>
-                </div>
+        <div class="toolbar">
+            <div class="toolbar__search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" data-role="search" placeholder="Pesquisar tópico por conteúdo..." aria-label="Pesquisar tópicos">
             </div>
+            <button class="toolbar__btn" data-role="fav-filter" type="button">
+                <i class="fa-solid fa-star"></i> Só favoritos
+            </button>
+            <p class="toolbar__hint">Clique na estrela para favoritar e arraste os cards para reordenar — suas escolhas ficam salvas neste navegador.</p>
+        </div>
 
-            <!-- Tópico 02: Arquiteturas de Redes -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
-                <div class="p-5 sm:p-6">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fa-solid fa-sitemap text-4xl"></i>
-                    </div>
-                    <h2 class="text-xl font-bold mb-2">02. Arquiteturas de Redes</h2>
-                    <p class="text-slate-600 mb-6 text-sm">Topologias, classificação por abrangência (LAN, MAN, WAN) e modelos cliente-servidor.</p>
-                    <a href="topico02-arquiteturas.html"
-                        class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
-                        Ver Tópico
-                    </a>
-                </div>
-            </div>
+        <div class="topic-grid" data-course="redes" id="topicGrid">
 
-            <!-- Tópico 03: Protocolos de Comunicação -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
-                <div class="p-5 sm:p-6">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fa-solid fa-handshake text-4xl"></i>
-                    </div>
-                    <h2 class="text-xl font-bold mb-2">03. Protocolos de Comunicação</h2>
-                    <p class="text-slate-600 mb-6 text-sm">Regras e padrões que viabilizam a troca de informações entre dispositivos em rede.</p>
-                    <a href="topico03-protocolos.html"
-                        class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
-                        Ver Tópico
-                    </a>
-                </div>
-            </div>
+            <article class="topic-card" data-id="introducao" data-keywords="introdução redes fundamentos histórico tipos lan man wan pan">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-network-wired"></i></div>
+                <h2 class="topic-card__title">01. Introdução às Redes</h2>
+                <p class="topic-card__desc">Conceitos fundamentais, histórico e tipos de redes de computadores.</p>
+                <a class="topic-card__link" href="topico01-introducao.html">Ver Tópico</a>
+            </article>
 
-            <!-- Tópico 04: Modelos OSI e TCP/IP -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
-                <div class="p-5 sm:p-6">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fa-solid fa-layer-group text-4xl"></i>
-                    </div>
-                    <h2 class="text-xl font-bold mb-2">04. Modelos OSI e TCP/IP</h2>
-                    <p class="text-slate-600 mb-6 text-sm">As 7 camadas do modelo OSI e a comparação com a pilha TCP/IP.</p>
-                    <a href="topico04-modelos-osi-tcpip.html"
-                        class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
-                        Ver Tópico
-                    </a>
-                </div>
-            </div>
+            <article class="topic-card" data-id="arquiteturas" data-keywords="arquiteturas topologias lan man wan cliente servidor p2p abrangência">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-sitemap"></i></div>
+                <h2 class="topic-card__title">02. Arquiteturas de Redes</h2>
+                <p class="topic-card__desc">Topologias, classificação por abrangência (LAN, MAN, WAN) e modelos cliente-servidor.</p>
+                <a class="topic-card__link" href="topico02-arquiteturas.html">Ver Tópico</a>
+            </article>
 
-            <!-- Tópico 05: Interconexão de Redes e a Internet -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
-                <div class="p-5 sm:p-6">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fa-solid fa-earth-americas text-4xl"></i>
-                    </div>
-                    <h2 class="text-xl font-bold mb-2">05. Interconexão de Redes e a Internet</h2>
-                    <p class="text-slate-600 mb-6 text-sm">Roteadores, gateways, sub-redes, NAT e o funcionamento da Internet global.</p>
-                    <a href="topico05-interconexao-internet.html"
-                        class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
-                        Ver Tópico
-                    </a>
-                </div>
-            </div>
-
-            <!-- Tópico 06: Packet Tracer (Simulador) -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
-                <div class="p-5 sm:p-6">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fa-solid fa-laptop-code text-4xl"></i>
-                    </div>
-                    <h2 class="text-xl font-bold mb-2">06. Simulador Packet Tracer</h2>
-                    <p class="text-slate-600 mb-6 text-sm">Instalação, configuração e simulação prática de serviços básicos de redes.</p>
-                    <a href="topico06-packet-tracer.html"
-                        class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
-                        Ver Tópico
-                    </a>
-                </div>
-            </div>
+            <article class="topic-card" data-id="transporte" data-keywords="camada transporte tcp udp portas segmentos handshake confiabilidade">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-arrows-left-right"></i></div>
+                <h2 class="topic-card__title">05. Camada de Transporte</h2>
+                <p class="topic-card__desc">Protocolos TCP e UDP: portas, confiabilidade, controle de fluxo e casos de uso.</p>
+                <a class="topic-card__link" href="topico05-camadaDeTransporte.html">Ver Tópico</a>
+            </article>
 
         </div>
 
-        <!-- Voltar ao portal -->
-        <div class="mt-10 sm:mt-16 text-center">
-            <a href="../index.html"
-                class="inline-flex items-center gap-2 text-[#003366] hover:text-blue-800 font-semibold transition-colors">
-                <i class="fa-solid fa-arrow-left"></i>
-                Voltar ao Portal de Aulas
-            </a>
+        <p class="topic-empty" data-role="empty" hidden>Nenhum tópico encontrado para sua busca.</p>
+
+        <div class="back-portal">
+            <a href="../index.html"><i class="fa-solid fa-arrow-left"></i> Voltar ao Portal de Aulas</a>
         </div>
+
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-6 sm:py-8 mt-auto">
-        <div class="container mx-auto px-4 sm:px-6 text-center text-sm sm:text-base">
-            <p>&copy; 2026 Prof. ADS | Disciplina de Serviços de Redes</p>
-        </div>
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Disciplina de Serviços de Redes</p>
     </footer>
 
+    <script src="../assets/js/cards.js"></script>
 </body>
 
 </html>

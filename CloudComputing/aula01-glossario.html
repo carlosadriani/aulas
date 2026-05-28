@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Computing - Glossário Técnico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; }
+        h1 { font-size: 60px; color: #fff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .table th { background: #3b82f6; color: #fff; padding: 14px; text-align: left; }
+        .table td { padding: 12px 14px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .table td.term { font-weight: 700; color: #1e40af; width: 32%; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light">
+
+    <div class="slide hero">
+        <i class="fa-solid fa-book" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+        <h1>Glossário Técnico</h1>
+        <p style="font-size: 24px; opacity: 0.85;">Termos essenciais de Cloud Computing</p>
+        <div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">Cloud Computing - ADS</div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>Modelos econômicos</h2></div>
+        <div class="content">
+            <table class="table">
+                <tr><th>Termo</th><th>Definição</th></tr>
+                <tr><td class="term">CapEx</td><td>Despesa de capital: investimento inicial em ativos físicos (servidores, data center). Modelo tradicional de TI própria.</td></tr>
+                <tr><td class="term">OpEx</td><td>Despesa operacional: pagamento conforme o uso (pay-as-you-go). Modelo típico da nuvem, sem grande investimento inicial.</td></tr>
+                <tr><td class="term">TCO</td><td>Custo total de propriedade: soma de todos os custos diretos e indiretos de uma solução ao longo do tempo.</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>Características da nuvem (NIST)</h2></div>
+        <div class="content">
+            <table class="table">
+                <tr><th>Termo</th><th>Definição</th></tr>
+                <tr><td class="term">Autosserviço sob demanda</td><td>O usuário provisiona recursos automaticamente, sem interação humana com o provedor.</td></tr>
+                <tr><td class="term">Elasticidade</td><td>Capacidade de aumentar ou reduzir recursos rapidamente, conforme a carga, parecendo ilimitada ao usuário.</td></tr>
+                <tr><td class="term">Escalabilidade</td><td>Capacidade de crescer para atender maior demanda — vertical (mais potência) ou horizontal (mais instâncias).</td></tr>
+                <tr><td class="term">Pool de recursos</td><td>Recursos compartilhados entre vários clientes (multitenancy), alocados dinamicamente.</td></tr>
+                <tr><td class="term">Medição de serviço</td><td>Uso monitorado e medido de forma transparente, permitindo cobrança proporcional.</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>Modelos de serviço</h2></div>
+        <div class="content">
+            <table class="table">
+                <tr><th>Termo</th><th>Definição</th></tr>
+                <tr><td class="term">IaaS</td><td>Infraestrutura como Serviço: aluguel de máquinas virtuais, rede e armazenamento. Ex.: AWS EC2.</td></tr>
+                <tr><td class="term">PaaS</td><td>Plataforma como Serviço: ambiente pronto para desenvolver e publicar aplicações. Ex.: App Engine.</td></tr>
+                <tr><td class="term">SaaS</td><td>Software como Serviço: aplicação pronta acessada pelo navegador. Ex.: Gmail, Office 365.</td></tr>
+                <tr><td class="term">Serverless / FaaS</td><td>Função como Serviço: executa código sob demanda sem gerenciar servidores. Ex.: AWS Lambda.</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>Modelos de implantação</h2></div>
+        <div class="content">
+            <table class="table">
+                <tr><th>Termo</th><th>Definição</th></tr>
+                <tr><td class="term">Nuvem pública</td><td>Infraestrutura compartilhada de um provedor, acessível pela internet.</td></tr>
+                <tr><td class="term">Nuvem privada</td><td>Infraestrutura dedicada a uma única organização.</td></tr>
+                <tr><td class="term">Nuvem híbrida</td><td>Combinação de nuvem pública e privada, com integração entre elas.</td></tr>
+                <tr><td class="term">Multicloud</td><td>Uso de vários provedores de nuvem pública simultaneamente.</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>Outros termos comuns</h2></div>
+        <div class="content">
+            <table class="table">
+                <tr><th>Termo</th><th>Definição</th></tr>
+                <tr><td class="term">SLA</td><td>Acordo de nível de serviço: contrato que define disponibilidade e desempenho garantidos (ex.: 99,9%).</td></tr>
+                <tr><td class="term">Virtualização</td><td>Criação de versões virtuais de recursos (servidores, redes), base técnica da nuvem.</td></tr>
+                <tr><td class="term">Contêiner</td><td>Empacotamento leve de uma aplicação e suas dependências. Ex.: Docker.</td></tr>
+                <tr><td class="term">Disponibilidade</td><td>Percentual de tempo em que o serviço está operacional e acessível.</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="slide hero">
+        <h1 style="color:#3b82f6;">Bons estudos!</h1>
+        <p style="font-size: 22px; max-width: 760px; opacity: 0.9;">Use este glossário como referência rápida ao longo da disciplina de Cloud Computing.</p>
+        <div style="margin-top: 36px;">
+            <a class="slide-back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Disciplina de Cloud Computing</p>
+    </footer>
+
+</body>
+
+</html>

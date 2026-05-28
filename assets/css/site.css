@@ -1,0 +1,412 @@
+/* ============================================================
+   site.css — Tema CLARO unificado do Portal de Aulas
+   ------------------------------------------------------------
+   Cobre:
+   1. Variáveis e base.
+   2. Cabeçalho (banner) e rodapé padrão.
+   3. Páginas de ÍNDICE: toolbar de busca + grid de cards
+      com favoritar (estrela) e reordenar (arrastar).
+   4. Normalização de tema claro para as páginas de slides
+      (backdrop claro entre os slides).
+   ============================================================ */
+
+:root {
+    --navy: #003366;
+    --navy-2: #1e3a8a;
+    --blue: #3b82f6;
+    --blue-ink: #1e40af;
+    --bg: #f1f5f9;
+    --surface: #ffffff;
+    --ink: #0f172a;
+    --ink-soft: #475569;
+    --line: #e2e8f0;
+    --gold: #f59e0b;
+    --radius: 14px;
+    --shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    --shadow-hover: 0 18px 40px rgba(15, 23, 42, 0.16);
+    --font: "Inter", "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ---------- Base ---------- */
+.site-body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-body * { box-sizing: border-box; }
+
+/* ---------- Cabeçalho (banner) ---------- */
+.site-header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+    color: #fff;
+    padding: clamp(28px, 5vw, 56px) 0;
+    box-shadow: 0 8px 24px rgba(0, 51, 102, 0.25);
+}
+
+.site-header__inner {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    padding: 0 clamp(16px, 4vw, 40px);
+}
+
+.site-header__inner .eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #bfdbfe;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 5px 14px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+}
+
+.site-header h1 {
+    margin: 0 0 8px;
+    font-size: clamp(1.6rem, 4.5vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.site-header p { margin: 0; color: #c7d7ee; font-size: clamp(0.95rem, 2.4vw, 1.15rem); }
+
+.site-header__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    color: #c7d7ee;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.site-header__back:hover { color: #fff; }
+
+/* ---------- Conteúdo principal ---------- */
+.site-main {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    padding: clamp(20px, 4vw, 44px) clamp(16px, 4vw, 40px);
+    flex: 1 0 auto;
+}
+
+/* ---------- Toolbar (busca + filtro de favoritos) ---------- */
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: clamp(18px, 3vw, 30px);
+}
+
+.toolbar__search {
+    position: relative;
+    flex: 1 1 280px;
+}
+
+.toolbar__search i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    pointer-events: none;
+}
+
+.toolbar__search input {
+    width: 100%;
+    padding: 13px 16px 13px 44px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--ink);
+    box-shadow: var(--shadow);
+    transition: border-color .15s, box-shadow .15s;
+}
+.toolbar__search input:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+}
+
+.toolbar__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: all .15s;
+}
+.toolbar__btn:hover { border-color: var(--blue); color: var(--blue-ink); }
+.toolbar__btn.is-active {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: #fff;
+}
+.toolbar__btn i { color: var(--gold); }
+.toolbar__btn.is-active i { color: #fff; }
+
+.toolbar__hint {
+    width: 100%;
+    font-size: 0.82rem;
+    color: #94a3b8;
+    margin: 0;
+}
+
+/* ---------- Grid de cards ---------- */
+.topic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: clamp(16px, 2.5vw, 26px);
+}
+
+.topic-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 24px 22px 22px;
+    box-shadow: var(--shadow);
+    transition: transform .15s, box-shadow .15s, border-color .15s, opacity .15s;
+}
+.topic-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+
+.topic-card.is-dragging { opacity: 0.4; }
+.topic-card.drop-before { border-top: 3px solid var(--blue); }
+.topic-card.drop-after { border-bottom: 3px solid var(--blue); }
+.topic-card[hidden] { display: none; }
+
+.topic-card__icon {
+    font-size: 2.2rem;
+    color: var(--blue);
+    margin-bottom: 16px;
+}
+
+.topic-card__badge {
+    align-self: flex-start;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--blue-ink);
+    background: rgba(59, 130, 246, 0.1);
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+}
+
+.topic-card__title {
+    margin: 0 0 8px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--ink);
+    padding-right: 56px; /* espaço p/ estrela e grip */
+}
+
+.topic-card__desc {
+    margin: 0 0 20px;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    flex: 1 0 auto;
+}
+
+.topic-card__link {
+    display: block;
+    text-align: center;
+    background: var(--navy);
+    color: #fff;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background .15s;
+}
+.topic-card__link:hover { background: var(--navy-2); }
+
+/* Estrela de favorito */
+.topic-card__fav {
+    position: absolute;
+    top: 16px;
+    right: 14px;
+    width: 34px;
+    height: 34px;
+    border: none;
+    background: transparent;
+    color: #cbd5e1;
+    font-size: 1.15rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: color .15s, background .15s, transform .15s;
+}
+.topic-card__fav:hover { background: #fef3c7; color: var(--gold); transform: scale(1.1); }
+.topic-card__fav.is-fav { color: var(--gold); }
+
+/* Alça de arrastar */
+.topic-card__drag {
+    position: absolute;
+    top: 18px;
+    right: 50px;
+    color: #cbd5e1;
+    cursor: grab;
+    font-size: 1rem;
+    user-select: none;
+}
+.topic-card__drag:active { cursor: grabbing; }
+.topic-card:hover .topic-card__drag { color: #94a3b8; }
+
+/* Mensagem de busca vazia */
+.topic-empty {
+    text-align: center;
+    color: #94a3b8;
+    font-size: 1rem;
+    padding: 50px 0;
+}
+.topic-empty[hidden] { display: none; }
+
+/* ---------- Voltar ao portal ---------- */
+.back-portal {
+    margin-top: clamp(28px, 5vw, 56px);
+    text-align: center;
+}
+.back-portal a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--navy);
+    font-weight: 600;
+    text-decoration: none;
+}
+.back-portal a:hover { color: var(--navy-2); }
+
+/* ---------- Rodapé padrão ---------- */
+.site-footer {
+    background: #0f172a;
+    color: #94a3b8;
+    text-align: center;
+    padding: clamp(18px, 3vw, 32px) 16px;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+.site-footer p { margin: 4px 0; }
+
+/* ============================================================
+   Normalização de TEMA CLARO para as páginas de SLIDES
+   ------------------------------------------------------------
+   As páginas de conteúdo usam .slide ou .slide-container e
+   já trazem slides claros; aqui apenas garantimos um backdrop
+   claro entre os slides (alguns arquivos usavam fundo escuro).
+   ============================================================ */
+body.slides-light {
+    background: var(--bg) !important;
+    color: var(--ink);
+}
+
+/* Banner de capa unificado (vale para .hero e .title-layout) */
+body.slides-light .hero,
+body.slides-light .title-layout {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%) !important;
+    color: #fff !important;
+}
+body.slides-light .hero h1,
+body.slides-light .title-layout h1 { color: #fff !important; }
+
+/* Botão "voltar" dos slides */
+.slide-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 30px;
+    color: #e2e8f0;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+}
+.slide-back:hover { background: rgba(255, 255, 255, 0.12); }
+
+/* ============================================================
+   Páginas de ARTIGO (conteúdo em texto corrido) — tema claro
+   Estrutura: <body class="site-body"> + <main class="site-main doc">
+   ============================================================ */
+.doc {
+    background: var(--surface);
+    max-width: 900px;
+}
+.doc h2 {
+    color: var(--navy);
+    border-bottom: 2px solid var(--blue);
+    padding-bottom: 8px;
+    margin: 34px 0 14px;
+    font-size: 1.5rem;
+}
+.doc h3 { color: var(--blue-ink); margin: 22px 0 10px; font-size: 1.2rem; }
+.doc p { color: var(--ink-soft); margin: 0 0 16px; line-height: 1.7; }
+.doc ul, .doc ol { color: var(--ink-soft); margin: 0 0 16px; padding-left: 22px; line-height: 1.7; }
+.doc li { margin-bottom: 8px; }
+.doc strong { color: var(--ink); }
+.doc .highlight {
+    background: #fef3c7;
+    color: #92400e;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+.doc .info-box, .doc .highlight-box {
+    border-left: 5px solid var(--blue);
+    background: #f0f9ff;
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin: 18px 0;
+}
+.doc .formula {
+    background: #0f172a;
+    color: #38bdf8;
+    padding: 14px;
+    border-radius: 8px;
+    text-align: center;
+    font-family: "Fira Code", ui-monospace, monospace;
+    margin: 18px 0;
+}
+.doc .diagram-placeholder {
+    background: #eef2f7;
+    border: 2px dashed #cbd5e1;
+    padding: 26px;
+    text-align: center;
+    color: #64748b;
+    border-radius: 8px;
+    margin: 18px 0;
+}
+
+/* ---------- Acessibilidade ---------- */
+a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: 2px;
+    border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+}

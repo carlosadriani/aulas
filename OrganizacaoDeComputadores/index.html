@@ -4,88 +4,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serviços de Redes - Prof. ADS</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Organização de Computadores - Prof. Carlos Schaeffer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
-        html, body { margin: 0; padding: 0; }
-    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
 </head>
 
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
+<body class="site-body">
 
-    <!-- Header -->
-    <header class="bg-[#003366] text-white py-8 sm:py-12 shadow-lg">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">Organização de Computadores</h1>
-            <p class="text-blue-100 text-base sm:text-lg">Materiais de Aula - Análise e Desenvolvimento de Sistemas</p>
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__back" href="../index.html"><i class="fa-solid fa-arrow-left"></i> Portal de Aulas</a>
+            <span class="eyebrow">Materiais de Aula</span>
+            <h1>Organização de Computadores</h1>
+            <p>Análise e Desenvolvimento de Sistemas</p>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex-grow w-full">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
-            
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
-                <div class="p-5 sm:p-6">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fa-solid fa-network-wired text-4xl"></i>
-                    </div>
-                    <h2 class="text-xl font-bold mb-2">01. Informática Básica</h2>
-                    <p class="text-slate-600 mb-6 text-sm">Conceitos fundamentais, histórico e tipos de computadores.</p>
-                    <a href="aula01-historico.html" class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
-                        Ver Tópico
-                    </a>
-                </div>
-            </div>
-           
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
-                <div class="p-5 sm:p-6">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fa-solid fa-sitemap text-4xl"></i>
-                    </div>
-                    <h2 class="text-xl font-bold mb-2">01. Introdução</h2>
-                    <p class="text-slate-600 mb-6 text-sm">Topologias, classificação por abrangência (LAN, MAN, WAN) e modelos cliente-servidor.</p>
-                    <a href="aula01-Introducao.html"
-                        class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
-                        Ver Tópico
-                    </a>
-                </div>
-            </div>
+    <main class="site-main">
 
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
-                <div class="p-5 sm:p-6">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fa-solid fa-handshake text-4xl"></i>
-                    </div>
-                    <h2 class="text-xl font-bold mb-2">Histórico</h2>
-                    <p class="text-slate-600 mb-6 text-sm">Evolução histórica</p>
-                    <a href="aula01-historico.html"
-                        class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
-                        Ver Tópico
-                    </a>
-                </div>
+        <div class="toolbar">
+            <div class="toolbar__search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" data-role="search" placeholder="Pesquisar tópico por conteúdo..." aria-label="Pesquisar tópicos">
             </div>
-
-        <!-- Voltar ao portal -->
-        <div class="mt-10 sm:mt-16 text-center">
-            <a href="../index.html"
-                class="inline-flex items-center gap-2 text-[#003366] hover:text-blue-800 font-semibold transition-colors">
-                <i class="fa-solid fa-arrow-left"></i>
-                Voltar ao Portal de Aulas
-            </a>
+            <button class="toolbar__btn" data-role="fav-filter" type="button">
+                <i class="fa-solid fa-star"></i> Só favoritos
+            </button>
+            <p class="toolbar__hint">Clique na estrela para favoritar e arraste os cards para reordenar — suas escolhas ficam salvas neste navegador.</p>
         </div>
+
+        <div class="topic-grid" data-course="org-comp" id="topicGrid">
+
+            <!-- Introdução / história -->
+            <article class="topic-card" data-id="historico" data-keywords="histórico história evolução válvulas transistor microprocessador gerações computadores">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                <span class="topic-card__badge">Histórico</span>
+                <h2 class="topic-card__title">História da Computação</h2>
+                <p class="topic-card__desc">Evolução das máquinas: das válvulas à nuvem e à IA.</p>
+                <a class="topic-card__link" href="aula01-historico.html">Ver Tópico</a>
+            </article>
+
+            <article class="topic-card" data-id="intro-slides" data-keywords="introdução bases numéricas representação dados binário hexadecimal slides aula 01">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-microchip"></i></div>
+                <span class="topic-card__badge">Aula 01</span>
+                <h2 class="topic-card__title">Introdução: Bases e Dados</h2>
+                <p class="topic-card__desc">Slides introdutórios sobre bases numéricas e representação de dados.</p>
+                <a class="topic-card__link" href="aula01-Introducao.html">Ver Slides</a>
+            </article>
+
+            <!-- Conjunto detalhado (slides) -->
+            <article class="topic-card" data-id="slides-org-basica" data-keywords="organização básica von neumann componentes barramentos ciclo instrução slides">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-sitemap"></i></div>
+                <span class="topic-card__badge">Slides detalhados</span>
+                <h2 class="topic-card__title">Organização Básica</h2>
+                <p class="topic-card__desc">Modelo de von Neumann, componentes, barramentos e o ciclo de instrução.</p>
+                <a class="topic-card__link" href="topico-organizacao-basica.html">Ver Slides</a>
+            </article>
+
+            <article class="topic-card" data-id="slides-memorias" data-keywords="memórias hierarquia ram rom cache armazenamento unidades bit byte slides">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-memory"></i></div>
+                <span class="topic-card__badge">Slides detalhados</span>
+                <h2 class="topic-card__title">Memórias</h2>
+                <p class="topic-card__desc">Hierarquia de memória, RAM, ROM, cache e unidades de armazenamento.</p>
+                <a class="topic-card__link" href="topico-memorias.html">Ver Slides</a>
+            </article>
+
+            <article class="topic-card" data-id="slides-cpu" data-keywords="cpu ula uc registradores pipeline isa risc cisc núcleos slides">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-gauge-high"></i></div>
+                <span class="topic-card__badge">Slides detalhados</span>
+                <h2 class="topic-card__title">CPU</h2>
+                <p class="topic-card__desc">Organização interna, registradores, pipeline e ISA (RISC x CISC).</p>
+                <a class="topic-card__link" href="topico-cpu.html">Ver Slides</a>
+            </article>
+
+            <article class="topic-card" data-id="slides-io" data-keywords="entrada saída periféricos controladores polling interrupção dma barramentos slides">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-plug"></i></div>
+                <span class="topic-card__badge">Slides detalhados</span>
+                <h2 class="topic-card__title">Entrada e Saída</h2>
+                <p class="topic-card__desc">Periféricos, controladores, polling, interrupções e DMA.</p>
+                <a class="topic-card__link" href="topico-entrada-saida.html">Ver Slides</a>
+            </article>
+
+            <article class="topic-card" data-id="slides-bases" data-keywords="bases numéricas binário octal decimal hexadecimal conversões aritmética slides">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-calculator"></i></div>
+                <span class="topic-card__badge">Slides detalhados</span>
+                <h2 class="topic-card__title">Bases Numéricas</h2>
+                <p class="topic-card__desc">Binário, octal, decimal, hexadecimal e conversões.</p>
+                <a class="topic-card__link" href="topico-bases-numericas.html">Ver Slides</a>
+            </article>
+
+            <article class="topic-card" data-id="slides-dados" data-keywords="representação dados inteiros complemento de 2 ponto flutuante ieee 754 ascii unicode slides">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-shapes"></i></div>
+                <span class="topic-card__badge">Slides detalhados</span>
+                <h2 class="topic-card__title">Representação de Dados</h2>
+                <p class="topic-card__desc">Inteiros, complemento de 2, ponto flutuante, ASCII/Unicode e mídia.</p>
+                <a class="topic-card__link" href="topico-representacao-dados.html">Ver Slides</a>
+            </article>
+
+            <article class="topic-card" data-id="slides-so" data-keywords="sistemas operacionais processos memória virtual arquivos kernel software de sistema slides">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-layer-group"></i></div>
+                <span class="topic-card__badge">Slides detalhados</span>
+                <h2 class="topic-card__title">Sistemas Operacionais</h2>
+                <p class="topic-card__desc">Funções do SO, processos, memória, arquivos e softwares de sistema.</p>
+                <a class="topic-card__link" href="topico-sistemas-operacionais.html">Ver Slides</a>
+            </article>
+
+            <!-- Conjunto resumo (aula 02) -->
+            <article class="topic-card" data-id="resumo-org-basica" data-keywords="organização básica resumo aula 02 sistemas computacionais">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-diagram-project"></i></div>
+                <span class="topic-card__badge">Resumo</span>
+                <h2 class="topic-card__title">1. Organização Básica</h2>
+                <p class="topic-card__desc">Versão resumida: organização básica de sistemas computacionais.</p>
+                <a class="topic-card__link" href="aula02-item01-organizacaoBasica.html">Ver Resumo</a>
+            </article>
+
+            <article class="topic-card" data-id="resumo-memorias" data-keywords="memórias resumo aula 02 armazenamento unidades">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-hard-drive"></i></div>
+                <span class="topic-card__badge">Resumo</span>
+                <h2 class="topic-card__title">2. Memórias</h2>
+                <p class="topic-card__desc">Versão resumida: memórias e unidades de armazenamento.</p>
+                <a class="topic-card__link" href="aula02-item02-memorias.html">Ver Resumo</a>
+            </article>
+
+            <article class="topic-card" data-id="resumo-cpu" data-keywords="cpu resumo aula 02 conjunto de instruções arquitetura">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-microchip"></i></div>
+                <span class="topic-card__badge">Resumo</span>
+                <h2 class="topic-card__title">3. CPU</h2>
+                <p class="topic-card__desc">Versão resumida: CPU e arquitetura de conjunto de instruções.</p>
+                <a class="topic-card__link" href="aula02-item03-cpu.html">Ver Resumo</a>
+            </article>
+
+            <article class="topic-card" data-id="resumo-io" data-keywords="entrada saída io resumo aula 02 dispositivos periféricos">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-plug"></i></div>
+                <span class="topic-card__badge">Resumo</span>
+                <h2 class="topic-card__title">4. Entrada e Saída (I/O)</h2>
+                <p class="topic-card__desc">Versão resumida: dispositivos de entrada e saída.</p>
+                <a class="topic-card__link" href="aula02-item04-io.html">Ver Resumo</a>
+            </article>
+
+            <article class="topic-card" data-id="resumo-bases" data-keywords="bases numéricas resumo aula 02 binário hexadecimal">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-calculator"></i></div>
+                <span class="topic-card__badge">Resumo</span>
+                <h2 class="topic-card__title">5. Bases Numéricas</h2>
+                <p class="topic-card__desc">Versão resumida: bases numéricas computacionais.</p>
+                <a class="topic-card__link" href="aula02-item05-basesnumericas.html">Ver Resumo</a>
+            </article>
+
+            <article class="topic-card" data-id="resumo-dados" data-keywords="representação dados resumo aula 02 ascii binário">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-shapes"></i></div>
+                <span class="topic-card__badge">Resumo</span>
+                <h2 class="topic-card__title">6. Representação de Dados</h2>
+                <p class="topic-card__desc">Versão resumida: representação de dados.</p>
+                <a class="topic-card__link" href="aula02-item06-dados.html">Ver Resumo</a>
+            </article>
+
+            <article class="topic-card" data-id="resumo-so" data-keywords="sistemas operacionais resumo aula 02 software de sistema">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-layer-group"></i></div>
+                <span class="topic-card__badge">Resumo</span>
+                <h2 class="topic-card__title">7. Sistemas Operacionais</h2>
+                <p class="topic-card__desc">Versão resumida: sistemas operacionais e softwares de sistema.</p>
+                <a class="topic-card__link" href="aula02-item07-sistemasOperacionais.html">Ver Resumo</a>
+            </article>
+
+            <!-- Material extra e exercícios -->
+            <article class="topic-card" data-id="material-extra" data-keywords="material apoio organização computadores texto complementar">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-file-lines"></i></div>
+                <span class="topic-card__badge">Material</span>
+                <h2 class="topic-card__title">Material de Apoio</h2>
+                <p class="topic-card__desc">Texto complementar de organização de computadores.</p>
+                <a class="topic-card__link" href="organizacao-001.html">Ver Material</a>
+            </article>
+
+            <article class="topic-card" data-id="exercicios" data-keywords="exercícios questões fixação prática desafios bases conversões">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-pen-to-square"></i></div>
+                <span class="topic-card__badge">Exercícios</span>
+                <h2 class="topic-card__title">Exercícios</h2>
+                <p class="topic-card__desc">Questões de fixação dos conteúdos da disciplina.</p>
+                <a class="topic-card__link" href="aula01-questoes.html">Ver Exercícios</a>
+            </article>
+
+        </div>
+
+        <p class="topic-empty" data-role="empty" hidden>Nenhum tópico encontrado para sua busca.</p>
+
+        <div class="back-portal">
+            <a href="../index.html"><i class="fa-solid fa-arrow-left"></i> Voltar ao Portal de Aulas</a>
+        </div>
+
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-6 sm:py-8 mt-auto">
-        <div class="container mx-auto px-4 sm:px-6 text-center text-sm sm:text-base">
-            <p>&copy; 2026 Prof. ADS | Organização de Computadoress</p>
-        </div>
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Organização de Computadores</p>
     </footer>
 
+    <script src="../assets/js/cards.js"></script>
 </body>
 
 </html>

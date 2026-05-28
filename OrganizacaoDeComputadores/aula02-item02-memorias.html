@@ -1,27 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2. Memórias e Unidades de Armazenamento</title>
-    <style>
-        body { font-family: system-ui, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; color: #333; }
-        header { background: #34495e; color: white; padding: 20px; border-radius: 8px; text-align: center; }
-        h2 { color: #34495e; border-bottom: 2px solid #e67e22; padding-bottom: 8px; }
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
-        th { background-color: #34495e; color: white; }
-        tr:nth-child(even) { background-color: #f9f9f9; }
-        .box { background: #fdf6e3; border-left: 4px solid #b58900; padding: 15px; margin: 20px 0; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
 </head>
-<body>
-    <header>
-        <h1>Capítulo 2: Memórias</h1>
-        <p>Hierarquia, tecnologias SRAM/DRAM e métricas de armazenamento</p>
+
+<body class="site-body">
+
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+            <span class="eyebrow">Organização de Computadores</span>
+            <h1>Capítulo 2: Memórias</h1>
+            <p>Hierarquia, tecnologias SRAM/DRAM e métricas de armazenamento</p>
+        </div>
     </header>
 
-    <main>
-        <h2>O Princípio da Localidade</h2>
+    <main class="site-main doc">
+<h2>O Princípio da Localidade</h2>
         <p>A organização da memória baseia-se em um comportamento estatístico do software conhecido como <strong>Princípio da Localidade</strong>:</p>
         <ul>
             <li><strong>Localidade Temporal:</strong> Se um dado foi acessado agora, há uma alta probabilidade de ele ser acessado novamente em breve (ex: variáveis dentro de loops).</li>
@@ -83,6 +84,15 @@
         <div class="box">
             <strong>Nota Técnica:</strong> Para evitar ambiguidade entre os padrões de mercado (onde 1 GB = 1.000.000.000 bytes) e o padrão binário, a IEC introduziu os termos <strong>Kibibyte (KiB = 1024 B)</strong>, <strong>Mebibyte (MiB)</strong> e <strong>Gibibyte (GiB)</strong>, embora a nomenclatura tradicional ainda seja amplamente utilizada em sistemas operacionais como o macOS e distribuições Linux.
         </div>
+        <div class="back-portal">
+            <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
     </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Organização de Computadores</p>
+    </footer>
+
 </body>
+
 </html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Org. Computadores - Dispositivos de Entrada e Saída</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #3b82f6; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #3b82f6; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+        .info-box { border-left: 5px solid #3b82f6; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #3b82f6; font-size: 26px; }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light">
+
+    <!-- Capa -->
+    <div class="slide hero">
+        <i class="fa-solid fa-plug" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+        <h1>Entrada e Saída</h1>
+        <p style="font-size: 24px; opacity: 0.8;">Como o computador se comunica com o mundo</p>
+        <div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Organização de Computadores - ADS</div>
+    </div>
+
+    <!-- O que é E/S -->
+    <div class="slide">
+        <div class="header"><h2>O que são dispositivos de E/S?</h2></div>
+        <div class="content">
+            <p class="lead">Dispositivos de <span class="highlight">Entrada e Saída</span> (E/S ou I/O) são os
+                periféricos que conectam o computador ao mundo externo: pessoas, outros equipamentos e redes.</p>
+            <div class="info-box">
+                <p>A CPU e a memória sozinhas seriam inúteis: sem entrada não há o que processar, sem saída não há como
+                    ver o resultado. A E/S fecha o ciclo <b>entrada → processamento → saída</b>.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Classificação -->
+    <div class="slide">
+        <div class="header"><h2>Classificação dos periféricos</h2></div>
+        <div class="content">
+            <div class="grid-3">
+                <div class="card">
+                    <h3><i class="fa-solid fa-arrow-right-to-bracket"></i> Entrada</h3>
+                    <p>Levam dados para dentro.</p>
+                    <p style="margin-top:8px;">Teclado, mouse, scanner, microfone, câmera, sensores, leitor biométrico.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fa-solid fa-arrow-right-from-bracket"></i> Saída</h3>
+                    <p>Levam dados para fora.</p>
+                    <p style="margin-top:8px;">Monitor, impressora, alto-falante, projetor.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fa-solid fa-right-left"></i> Entrada e Saída</h3>
+                    <p>Fazem os dois.</p>
+                    <p style="margin-top:8px;">Tela sensível ao toque, placa de rede, HD/SSD, headset, pendrive.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Como a CPU enxerga -->
+    <div class="slide">
+        <div class="header"><h2>Como a CPU "enxerga" um periférico</h2></div>
+        <div class="content">
+            <p>A CPU não fala diretamente com o periférico. Entre eles há o <span class="highlight">controlador de
+                E/S</span> (placa/chip) que traduz comandos e adapta velocidades.</p>
+            <div class="flow">
+                <div class="node">CPU</div>
+                <span class="arrow"><i class="fa-solid fa-arrows-left-right"></i></span>
+                <div class="node">Barramento</div>
+                <span class="arrow"><i class="fa-solid fa-arrows-left-right"></i></span>
+                <div class="node" style="background:#3b82f6;">Controlador<br>de E/S</div>
+                <span class="arrow"><i class="fa-solid fa-arrows-left-right"></i></span>
+                <div class="node">Periférico</div>
+            </div>
+            <div class="info-box">
+                <p>O controlador expõe <b>registradores</b> (de dados, de status e de controle). A CPU lê/escreve nesses
+                    registradores para comandar o dispositivo e saber se ele está pronto.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Endereçamento -->
+    <div class="slide">
+        <div class="header"><h2>Como a CPU endereça a E/S</h2></div>
+        <div class="content">
+            <div class="grid">
+                <div class="card">
+                    <h3>E/S mapeada em memória</h3>
+                    <p>Os registradores do dispositivo ocupam endereços do mesmo espaço da memória. A CPU usa as mesmas
+                        instruções de load/store. (Usado por ARM, RISC-V.)</p>
+                </div>
+                <div class="card">
+                    <h3>E/S isolada (por portas)</h3>
+                    <p>Há um espaço de endereços separado e instruções específicas (IN/OUT). (Usado pelo x86.)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Técnicas de comunicação -->
+    <div class="slide">
+        <div class="header"><h2>Três formas de gerenciar a E/S</h2></div>
+        <div class="content">
+            <table class="table">
+                <tr><th>Técnica</th><th>Como funciona</th><th>Custo para a CPU</th></tr>
+                <tr><td><b>Programada (Polling)</b></td><td>A CPU fica perguntando repetidamente se o dispositivo está
+                    pronto.</td><td>Alto — desperdiça tempo em espera ativa</td></tr>
+                <tr><td><b>Por Interrupção</b></td><td>O dispositivo avisa a CPU quando está pronto; a CPU faz outra
+                    coisa enquanto isso.</td><td>Médio — só atende quando necessário</td></tr>
+                <tr><td><b>DMA</b> (Acesso Direto à Memória)</td><td>Um controlador transfere dados direto entre o
+                    dispositivo e a memória, sem passar pela CPU.</td><td>Baixo — a CPU só inicia e é avisada no fim</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Interrupção detalhe -->
+    <div class="slide">
+        <div class="header"><h2>Interrupções em detalhe</h2></div>
+        <div class="content">
+            <div class="grid">
+                <ul class="spaced">
+                    <li>O dispositivo envia um sinal de <span class="highlight">interrupção</span>.</li>
+                    <li>A CPU termina a instrução atual e <b>salva seu estado</b>.</li>
+                    <li>Executa a <span class="highlight">rotina de tratamento</span> (ISR) correspondente.</li>
+                    <li>Restaura o estado e <b>continua</b> de onde parou.</li>
+                </ul>
+                <div class="code-box">
+// CPU trabalhando...<br>
+[INT do teclado]<br>
+&nbsp;&nbsp;salva contexto<br>
+&nbsp;&nbsp;trata tecla<br>
+&nbsp;&nbsp;restaura contexto<br>
+// volta ao trabalho
+                </div>
+            </div>
+            <div class="info-box">
+                <p>Interrupções permitem que o computador seja <b>reativo</b>: ele não precisa ficar checando o teclado
+                    o tempo todo — só age quando uma tecla é pressionada.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- DMA detalhe -->
+    <div class="slide">
+        <div class="header"><h2>DMA: liberando a CPU</h2></div>
+        <div class="content">
+            <p>No <span class="highlight">DMA</span>, um controlador dedicado move grandes blocos de dados diretamente
+                entre o periférico e a memória, deixando a CPU livre para processar.</p>
+            <div class="flow">
+                <div class="node">Disco/Rede</div>
+                <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                <div class="node" style="background:#3b82f6;">Controlador<br>DMA</div>
+                <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                <div class="node">Memória</div>
+            </div>
+            <div class="info-box">
+                <p>Essencial para transferências pesadas (HD/SSD, placa de rede, placa de som). Sem DMA, copiar um
+                    arquivo grande consumiria a CPU inteira.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Barramentos e portas -->
+    <div class="slide">
+        <div class="header"><h2>Barramentos e portas de conexão</h2></div>
+        <div class="content">
+            <table class="table">
+                <tr><th>Interface</th><th>Uso típico</th></tr>
+                <tr><td><b>USB</b></td><td>Padrão universal: teclado, mouse, pendrive, impressora</td></tr>
+                <tr><td><b>PCI Express (PCIe)</b></td><td>Placas internas de alta velocidade: GPU, SSD NVMe</td></tr>
+                <tr><td><b>SATA</b></td><td>Discos rígidos e SSDs convencionais</td></tr>
+                <tr><td><b>HDMI / DisplayPort</b></td><td>Vídeo e áudio para monitores e TVs</td></tr>
+                <tr><td><b>Ethernet</b></td><td>Conexão de rede com fio</td></tr>
+                <tr><td><b>Bluetooth / Wi-Fi</b></td><td>Conexões sem fio</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Drivers -->
+    <div class="slide">
+        <div class="header"><h2>Drivers: o software da E/S</h2></div>
+        <div class="content">
+            <p class="lead">Um <span class="highlight">driver</span> é o programa que ensina o sistema operacional a
+                conversar com um dispositivo específico.</p>
+            <div class="info-box">
+                <p>Cada dispositivo tem suas particularidades. O driver esconde esses detalhes e oferece uma interface
+                    padronizada ao SO. É por isso que, ao conectar uma impressora nova, às vezes é preciso instalar o
+                    driver correspondente.</p>
+            </div>
+            <p style="margin-top:16px;">A <b>velocidade</b> dos periféricos varia enormemente: um teclado envia poucos
+                bytes por segundo; uma GPU ou SSD movimenta gigabytes por segundo. Buffers e DMA ajudam a casar esses
+                ritmos diferentes.</p>
+        </div>
+    </div>
+
+    <!-- Glossário -->
+    <div class="slide">
+        <div class="header"><h2>Glossário do tópico</h2></div>
+        <div class="content">
+            <table class="table">
+                <tr><td><b>Periférico</b></td><td>Dispositivo de E/S conectado ao computador.</td></tr>
+                <tr><td><b>Controlador de E/S</b></td><td>Intermediário entre CPU e periférico.</td></tr>
+                <tr><td><b>Polling</b></td><td>CPU verifica repetidamente o estado do dispositivo.</td></tr>
+                <tr><td><b>Interrupção</b></td><td>Sinal que avisa a CPU de um evento.</td></tr>
+                <tr><td><b>DMA</b></td><td>Transferência direta dispositivo↔memória sem a CPU.</td></tr>
+                <tr><td><b>Driver</b></td><td>Software que controla um dispositivo.</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Encerramento -->
+    <div class="slide hero">
+        <h1 style="color:#3b82f6;">Resumindo</h1>
+        <p style="font-size: 22px; max-width: 820px; opacity: 0.9;">Os dispositivos de E/S conectam o computador ao
+            mundo. A CPU os acessa por controladores, usando polling, interrupções ou DMA, através de barramentos e
+            portas como USB e PCIe — e os drivers fazem o software falar com cada hardware.</p>
+        <div style="margin-top: 40px;">
+            <a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+                <i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 sm:py-8 mt-auto">
+        <div class="container mx-auto px-4 sm:px-6 text-center text-sm sm:text-base" style="color: white;">
+            <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Organização de Computadores</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

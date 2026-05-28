@@ -1,23 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>5. Bases Numéricas Computacionais</title>
-    <style>
-        body { font-family: system-ui, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; color: #333; }
-        header { background: #8e44ad; color: white; padding: 20px; border-radius: 8px; text-align: center; }
-        h2 { color: #8e44ad; border-bottom: 2px solid #2c3e50; padding-bottom: 8px; }
-        .math-box { background: #f4ecf7; border: 1px solid #d2b4de; padding: 15px; border-radius: 6px; font-family: 'Times New Roman', Times, serif; font-size: 1.15rem; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
 </head>
-<body>
-    <header>
-        <h1>Capítulo 5: Bases Numéricas</h1>
-        <p>A matemática posicional por trás dos circuitos de chaveamento binário</p>
+
+<body class="site-body">
+
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+            <span class="eyebrow">Organização de Computadores</span>
+            <h1>Capítulo 5: Bases Numéricas</h1>
+            <p>A matemática posicional por trás dos circuitos de chaveamento binário</p>
+        </div>
     </header>
 
-    <main>
-        <h2>Sistemas Numéricos Posicionais</h2>
+    <main class="site-main doc">
+<h2>Sistemas Numéricos Posicionais</h2>
         <p>Em sistemas posicionais, o valor representado por um dígito depende estritamente da sua posição relativa na string numérica. O valor total é a soma ponderada de cada dígito multiplicado por potências sucessivas do valor da base.</p>
         
         <div class="math-box">
@@ -41,6 +46,15 @@
         <h3>2. De Binário para Hexadecimal (Mapeamento Direto)</h3>
         <p>Como 16 é uma potência exata de 2 ($2^4$), a conversão não exige cálculos aritméticos pesados. Basta agrupar a string binária em quartetos de bits a partir da direita (LSD) e substituir cada bloco pelo seu caractere correspondente na tabela hexadecimal.</p>
         <p>Exemplo: <code>1101 0011_2</code> &rarr; <code>1101_2 = D_{16}</code> e <code>0011_2 = 3_{16}</code> &rarr; Resultado: <code>D3_{16}</code>.</p>
+        <div class="back-portal">
+            <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
     </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Organização de Computadores</p>
+    </footer>
+
 </body>
+
 </html>

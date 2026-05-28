@@ -1,24 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1. Organização Básica de Sistemas Computacionais</title>
-    <style>
-        body { font-family: system-ui, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; color: #333; }
-        header { background: #2c3e50; color: white; padding: 20px; border-radius: 8px; text-align: center; }
-        h2 { color: #2c3e50; border-bottom: 2px solid #18bc9c; padding-bottom: 8px; }
-        .diagram-placeholder { background: #eef2f7; border: 2px dashed #bdc3c7; padding: 30px; text-align: center; margin: 20px 0; font-style: italic; }
-        .highlight { background-color: #fff3cd; padding: 2px 5px; border-radius: 4px; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
 </head>
-<body>
-    <header>
-        <h1>Capítulo 1: Organização Básica de Sistemas Computacionais</h1>
-        <p>A arquitetura clássica de Von Neumann e os barramentos de sistema</p>
+
+<body class="site-body">
+
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+            <span class="eyebrow">Organização de Computadores</span>
+            <h1>Capítulo 1: Organização Básica de Sistemas Computacionais</h1>
+            <p>A arquitetura clássica de Von Neumann e os barramentos de sistema</p>
+        </div>
     </header>
 
-    <main>
-        <h2>Introdução ao Modelo de Von Neumann</h2>
+    <main class="site-main doc">
+<h2>Introdução ao Modelo de Von Neumann</h2>
         <p>Proposta em 1945 pelo matemático John von Neumann, esta arquitetura define um computador digital eletrônico com subsistemas específicos trabalhando de forma integrada. O grande marco foi o conceito de <strong>Programa Armazenado</strong>, onde os dados de trabalho e as instruções do programa compartilham o mesmo espaço de endereçamento de memória física.</p>
 
         <h2>Os Três Pilares do Hardware</h2>
@@ -42,6 +46,15 @@
             <li><strong>Barramento de Endereços (Address Bus):</strong> Unidirecional (gerado pela CPU). Determina a origem ou o destino do dado no barramento. A largura desse barramento define a capacidade máxima de memória mapeável (ex: $2^{32}$ endereços para 32 bits).</li>
             <li><strong>Barramento de Controle (Control Bus):</strong> Misto. Conduz sinais de sincronismo e ordens do sistema, como comandos de leitura (Read), escrita (Write) e requisições de interrupção (IRQ).</li>
         </ol>
+        <div class="back-portal">
+            <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
     </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Organização de Computadores</p>
+    </footer>
+
 </body>
+
 </html>
