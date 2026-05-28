@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manual de Arquitetura e Organização de Computadores</title>
+    <title>Organização de Computadores</title>
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -135,19 +135,19 @@
 <body>
 
     <header>
-        <h1>Tratado de Arquitetura e Organização de Computadores</h1>
+        <h1>Arquitetura e Organização de Computadores</h1>
         <p>Um guia de engenharia e fundamentos para sistemas computacionais modernos</p>
     </header>
 
     <nav>
         <ul>
-            <li><a href="#organizacao-basica">1. Organização Básica</a></li>
-            <li><a href="#memorias">2. Memórias</a></li>
-            <li><a href="#cpu">3. CPU e ISA</a></li>
-            <li><a href="#io">4. Entrada e Saída</a></li>
-            <li><a href="#bases-numericas">5. Bases Numéricas</a></li>
-            <li><a href="#representacao-dados">6. Representação de Dados</a></li>
-            <li><a href="#so-software">7. SO e Software</a></li>
+            <li><a href="aula02-item01-organizacaoBasica.html">1. Organização Básica</a></li>
+            <li><a href="aula02-item02-memorias.html">2. Memórias</a></li>
+            <li><a href="aula02-item03-cpu.html">3. CPU e ISA</a></li>
+            <li><a href="aula02-item04-io.html">4. Entrada e Saída</a></li>
+            <li><a href="aula02-item05-basesnumericas.html">5. Bases Numéricas</a></li>
+            <li><a href="aula02-item06-dados.html">6. Representação de Dados</a></li>
+            <li><a href="aula02-item07-sistemasOperacionais.html">7. SO e Software</a></li>
         </ul>
     </nav>
 
@@ -301,12 +301,12 @@
             
             <h3>Inteiros com Sinal</h3>
             <p>Para mapear números negativos e positivos em arquiteturas digitais, utiliza-se o sistema de <strong>Complemento de Dois</strong>, que simplifica o design de circuitos aritméticos eliminando a necessidade de lógica de subtração dedicada (subtrair torna-se somar um número negativo).</p>
-            <p>Para obter o complemento de dois de um número de $n$ bits:</p>
+            <p>Para obter o complemento de dois de um número de <strong><i>n<i></strong> bits:</p>
             <ol>
                 <li>Inverta todos os bits do número binário original (Complemento de Um).</li>
                 <li>Some 1 ao resultado binário obtido.</li>
             </ol>
-            <p>Exemplo com 8 bits: $+5_{10} = 00000101_2$. Inversão: $11111010_2$. Somando 1: $-5_{10} = 11111011_2$.</p>
+            <p>Exemplo com 8 bits: +5(d) = 00000101(b). Inversão: 11111010(b). Somando 1: -5(d) = 11111011(b)).</p>
 
             <h3>Números Reais (Ponto Flutuante)</h3>
             <p>A representação de números fracionários segue estritamente a norma internacional <strong>IEEE 754</strong>, estruturada em três componentes fundamentais:</p>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>6. Representação de Dados</title>
+    <style>
+        body { font-family: system-ui, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; color: #333; }
+        header { background: #2980b9; color: white; padding: 20px; border-radius: 8px; text-align: center; }
+        h2 { color: #2980b9; border-bottom: 2px solid #34495e; padding-bottom: 8px; }
+        .step-box { background: #ebf5fb; border-left: 5px solid #2980b9; padding: 15px; margin: 15px 0; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Capítulo 6: Representação de Dados</h1>
+        <p>Complemento de dois, sinal-magnitude e padronização IEEE 754 para ponto flutuante</p>
+    </header>
+
+    <main>
+        <h2>Representação de Inteiros com Sinal</h2>
+        <p>Em sistemas binários puros, todos os dígitos são 0 ou 1, o que impede o uso de um caractere físico de traço ("-") para denotar negatividade. Três principais técnicas foram desenvolvidas ao longo da história computacional:</p>
+
+        <h3>1. Sinal e Magnitude</h3>
+        <p>O bit mais significativo à esquerda (MSB) é isolado exclusivamente para funcionar como o indicador de sinal ($0 = \text{positivo}$, $1 = \text{negativo}$). Os bits restantes codificam o valor absoluto absoluto. Seu grande defeito é a existência de duas representações para o valor zero (ex: $+0 \rightarrow 00000000$ e $-0 \rightarrow 10000000$), o que complica o circuito lógico interno.</p>
+
+        <h3>2. O Padrão Moderno: Complemento de Dois ($2's\text{ Complement}$)</h3>
+        <p>É a técnica universalmente adotada pelas CPUs contemporâneas para inteiros com sinal. O bit mais significativo possui um peso aritmético negativo de $-2^{n-1}$. Isso unifica as operações de adição e subtração em um único circuito somador digital comum de hardware.</p>
+        
+        <div class="step-box">
+            <strong>Algoritmo de Obtenção do Complemento de Dois para Números Negativos:</strong>
+            <p>Deseja-se mapear o valor $-6$ utilizando uma arquitetura de 8 bits:</p>
+            <ol>
+                <li>Obtenha a representação binária do valor absoluto positivo: $+6_{10} = 00000110_2$</li>
+                <li>Inverta todos os bits (Operação lógica NOT / Complemento de Um): $11111001_2$</li>
+                <li>Some $1_2$ ao resultado obtido: $11111001_2 + 00000001_2 = 11111010_2$</li>
+            </ol>
+            <p>Portanto, no barramento de dados, a palavra binária <code>11111010</code> é interpretada nativamente como $-6_{10}$.</p>
+        </div>
+
+        <h2>Representação de Números Reais (Ponto Flutuante - IEEE 754)</h2>
+        <p>Para codificar números reais de precisão fracionária fracionária ou valores com escalas massivas, as arquiteturas abandonam o modelo de ponto fixo e adotam o padrão internacional <strong>IEEE 754</strong>, inspirado na notação científica clássica.</p>
+        
+        <p>O número é estruturado dividindo sua palavra binária em três campos distintos:</p>
+        <ul>
+            <li><strong>Bit de Sinal (S):</strong> 1 bit que define se o número é positivo (0) ou negativo (1).</li>
+            <li><strong>Expoente Biased (E):</strong> Controla a magnitude e o deslocamento do ponto (baseado em um viés fixo para evitar armazenamento de sinais no próprio expoente).</li>
+            <li><strong>Fracionário/Mantissa (M):</strong> Armazena os dígitos significativos da precisão real numérica, assumindo de forma implícita um bit de valor 1 à esquerda do ponto (normalização).</li>
+        </ul>
+
+        <p>A equação matemática que rege essa decodificação de hardware é:</p>
+        <p style="text-align:center; font-style: italic; background:#f4f6f7; padding: 10px;">
+            $$V = (-1)^S \cdot (1 + \text{Mantissa}) \cdot 2^{(\text{Expoente} - \text{Vies})}$$
+        </p>
+
+        <p>As duas formatações mais comuns do mercado são:</p>
+        <ol>
+            <li><strong>Precisão Simples (Float - 32 bits):</strong> Dividido em 1 bit de sinal, 8 bits de expoente (viés de 127) e 23 bits de mantissa.</li>
+            <li><strong>Precisão Dupla (Double - 64 bits):</strong> Dividido em 1 bit de sinal, 11 bits de expoente (viés de 1023) e 52 bits de mantissa.</li>
+        </ol>
+    </main>
+</body>
+</html>
