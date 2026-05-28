@@ -1,0 +1,195 @@
+:root {
+    --bg-color: #f4f6f9;
+    --card-bg: #ffffff;
+    --text-primary: #2c3e50;
+    --text-secondary: #7f8c8d;
+    --accent-color: #e74c3c; /* Vermelho YouTube */
+    --accent-hover: #c0392b;
+    --star-color: #f1c40f;
+    --border-radius: 8px;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+}
+
+header {
+    background-color: #1a252f;
+    color: #fff;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-channel {
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--border-radius);
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.btn-channel:hover {
+    background-color: var(--accent-hover);
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Toolbar de Filtros e Busca */
+.toolbar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    flex: 1;
+    min-width: 280px;
+    position: relative;
+}
+
+.search-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.8rem 0.8rem 0.8rem 2.8rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+.filters-box {
+    display: flex;
+    gap: 1rem;
+}
+
+.filters-box select {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    background: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* Grid de Cards */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Card Individual */
+.card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    border: 2px solid transparent;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+/* Controles superiores do card */
+.card-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.category-badge {
+    background-color: #e8f0fe;
+    color: #1a73e8;
+    padding: 0.25rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.action-icons i {
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+
+.fa-star { color: #ccc; }
+.fa-star.active { color: var(--star-color); }
+.fa-grip-lines { color: var(--text-secondary); cursor: grab; }
+.fa-grip-lines:active { cursor: grabbing; }
+
+.card-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.card-description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.btn-watch {
+    display: block;
+    text-align: center;
+    background-color: #f8f9fa;
+    color: var(--text-primary);
+    border: 1px solid #ddd;
+    padding: 0.6rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.btn-watch:hover {
+    background-color: #e9ecef;
+    color: var(--accent-color);
+}
+
+/* Drag and Drop Visual Class */
+.card.dragging {
+    opacity: 0.5;
+    border: 2px dashed var(--accent-color);
+}
