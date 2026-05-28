@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>5. Bases Numéricas Computacionais</title>
+    <style>
+        body { font-family: system-ui, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; color: #333; }
+        header { background: #8e44ad; color: white; padding: 20px; border-radius: 8px; text-align: center; }
+        h2 { color: #8e44ad; border-bottom: 2px solid #2c3e50; padding-bottom: 8px; }
+        .math-box { background: #f4ecf7; border: 1px solid #d2b4de; padding: 15px; border-radius: 6px; font-family: 'Times New Roman', Times, serif; font-size: 1.15rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Capítulo 5: Bases Numéricas</h1>
+        <p>A matemática posicional por trás dos circuitos de chaveamento binário</p>
+    </header>
+
+    <main>
+        <h2>Sistemas Numéricos Posicionais</h2>
+        <p>Em sistemas posicionais, o valor representado por um dígito depende estritamente da sua posição relativa na string numérica. O valor total é a soma ponderada de cada dígito multiplicado por potências sucessivas do valor da base.</p>
+        
+        <div class="math-box">
+            A forma estrutural de expansão é dada por:<br>
+            $$N = d_n \cdot b^n + d_{n-1} \cdot b^{n-1} + \dots + d_0 \cdot b^0 + d_{-1} \cdot b^{-1} + \dots$$
+        </div>
+
+        <h2>As Quatro Bases Cruciais do Hardware</h2>
+        <ul>
+            <li><strong>Binário (Base 2):</strong> Utiliza o alfabeto $\{0, 1\}$. É a representação natural de tensões elétricas (Alto/Baixo, Ligado/Desligado) nos transistores de efeito de campo.</li>
+            <li><strong>Octal (Base 8):</strong> Utiliza os algarismos de $\{0 \dots 7\}$. Agrupa blocos exatos de 3 bits ($2^3 = 8$).</li>
+            <li><strong>Decimal (Base 10):</strong> O sistema humano convencional baseado nos algarismos $\{0 \dots 9\}$.</li>
+            <li><strong>Hexadecimal (Base 16):</strong> Utiliza os caracteres de $\{0 \dots 9\}$ estendidos pelas letras $\{A, B, C, D, E, F\}$ (onde $A=10_{10}$ e $F=15_{10}$). É o padrão industrial para exibir dump de memórias e endereços mac/IPv6, pois compacta perfeitamente blocos de 4 bits (um <em>Nibble</em>) em um único caractere ($2^4 = 16$).</li>
+        </ul>
+
+        <h2>Mecanismos Algorítmicos de Conversão</h2>
+        
+        <h3>1. De Decimal para Qualquer Base (Divisões Sucessivas)</h3>
+        <p>Para extrair a representação em uma base genérica $b$, divide-se sucessivamente o número decimal por $b$. O quociente inteiro é reaproveitado na próxima iteração, e os restos gerados em cada divisão são acumulados na ordem reversa (do último resto obtido até o primeiro).</p>
+
+        <h3>2. De Binário para Hexadecimal (Mapeamento Direto)</h3>
+        <p>Como 16 é uma potência exata de 2 ($2^4$), a conversão não exige cálculos aritméticos pesados. Basta agrupar a string binária em quartetos de bits a partir da direita (LSD) e substituir cada bloco pelo seu caractere correspondente na tabela hexadecimal.</p>
+        <p>Exemplo: <code>1101 0011_2</code> &rarr; <code>1101_2 = D_{16}</code> e <code>0011_2 = 3_{16}</code> &rarr; Resultado: <code>D3_{16}</code>.</p>
+    </main>
+</body>
+</html>

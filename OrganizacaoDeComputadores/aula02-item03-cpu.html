@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>3. CPU e Arquitetura de Conjunto de Instruções</title>
+    <style>
+        body { font-family: system-ui, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; color: #333; }
+        header { background: #c0392b; color: white; padding: 20px; border-radius: 8px; text-align: center; }
+        h2 { color: #c0392b; border-bottom: 2px solid #2c3e50; padding-bottom: 8px; }
+        .code-block { background: #2d3748; color: #f7fafc; padding: 15px; border-radius: 6px; font-family: monospace; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Capítulo 3: Processador (CPU)</h1>
+        <p>Estrutura de execução interna e os paradigmas de arquitetura RISC e CISC</p>
+    </header>
+
+    <main>
+        <h2>Componentes Internos Nucleares</h2>
+        <p>O processador executa o ciclo de computação coordenando três blocos lógicos principais:</p>
+        <ul>
+            <li><strong>Unidade de Controle (UC):</strong> Funciona como o maestro do chip. Ela busca a instrução na memória, decodifica os bits do código de operação (OpCode) e gera pulsos elétricos que ativam as rotas de dados corretas na CPU.</li>
+            <li><strong>Unidade Lógica e Aritmética (ULA):</strong> O núcleo executor. Contém circuitos digitais combinatórios (somadores, multiplexadores) para processar cálculos matemáticos e testes booleanos.</li>
+            <li><strong>Banco de Registradores:</strong> Memória local ultra-rápida de armazenamento de rascunho de dados e estados de controle internos.</li>
+        </ul>
+
+        <h2>Registradores Críticos do Ciclo de Instrução</h2>
+        <p>Independentemente da arquitetura, existem registradores de controle dedicados indispensáveis:</p>
+        <ol>
+            <li><strong>Program Counter (PC):</strong> Armazena o endereço da próxima instrução a ser processada. Sofre incremento automático após a busca da instrução atual.</li>
+            <li><strong>Instruction Register (IR):</strong> Armazena uma cópia da instrução binária em execução até que a UC termine sua decodificação.</li>
+            <li><strong>Memory Address Register (MAR) e Memory Buffer Register (MBR):</strong> Interfaces diretas com o barramento de sistema para gerenciar leituras e escritas na RAM.</li>
+        </ol>
+
+        <h2>O Ciclo de Instrução Clássico</h2>
+        <p>A execução de qualquer tarefa computacional ocorre em um ciclo repetitivo contínuo:</p>
+        <p><code>[Busca (Fetch)] &rarr; [Decodificação (Decode)] &rarr; [Busca de Operandos] &rarr; [Execução (Execute)] &rarr; [Escrita dos Resultados (Writeback)]</code></p>
+
+        <h2>A Batalha Arquitetural: RISC vs. CISC</h2>
+        <p>A forma como as instruções são projetadas divide o mundo do hardware em duas abordagens filosóficas estruturais:</p>
+
+        <h3>CISC (Complex Instruction Set Computer)</h3>
+        <p>O objetivo do CISC é reduzir o número de instruções geradas por um compilador, criando instruções poderosas diretamente no hardware. Uma única instrução complexa pode ler dados da memória, fazer uma soma aritmética e salvar de volta no disco.</p>
+        <ul>
+            <li><strong>Características:</strong> Instruções de tamanho variável, múltiplos modos de endereçamento à memória, controle microprogramado complexo.</li>
+            <li><strong>Exemplo clássico:</strong> Família Intel/AMD x86_64 de desktops e servidores.</li>
+        </ul>
+
+        <h3>RISC (Reduced Instruction Set Computer)</h3>
+        <p>O foco do RISC é otimizar a velocidade simplificando o conjunto de instruções. Cada instrução executa apenas uma operação simples e padronizada em um único ciclo de clock por estágio.</p>
+        <ul>
+            <li><strong>Arquitetura Load/Store:</strong> Instruções matemáticas trabalham <em>exclusivamente</em> dentro dos registradores internos. O acesso à memória principal é restrito às instruções explícitas de <code>LOAD</code> e <code>STORE</code>.</li>
+            <li><strong>Características:</strong> Instruções de tamanho fixo (geralmente 32 bits), poucos modos de endereçamento, facilidade nativa para implementação de <strong>Pipelines de Hardware</strong> (paralelismo em nível de instrução).</li>
+            <li><strong>Exemplo clássico:</strong> Arquitetura ARM (presente no MacBook Apple Silicon M-series, iPhones e servidores de alta eficiência), MIPS e o padrão aberto RISC-V.</li>
+        </ul>
+
+        <h2>Exemplo Prático de Diferença de Código (Pseudocódigo Assembly)</h2>
+        <p>Para somar dois números armazenados na memória RAM:</p>
+        
+        <h4>Abordagem CISC:</h4>
+        <div class="code-block">ADD [Endereço_A], [Endereço_B]  ; Realiza a leitura dos dois endereços, soma e salva diretamente</div>
+        
+        <h4>Abordagem RISC:</h4>
+        <div class="code-block">
+LOAD  R1, [Endereço_A]       ; Copia o valor da RAM para o registrador R1<br>
+LOAD  R2, [Endereço_B]       ; Copia o valor da RAM para o registrador R2<br>
+ADD   R3, R1, R2             ; Executa a soma puramente dentro da CPU (R3 = R1 + R2)<br>
+STORE [Endereço_A], R3       ; Grava o resultado de volta na RAM
+        </div>
+    </main>
+</body>
+</html>

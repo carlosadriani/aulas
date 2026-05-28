@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>2. Memórias e Unidades de Armazenamento</title>
+    <style>
+        body { font-family: system-ui, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; color: #333; }
+        header { background: #34495e; color: white; padding: 20px; border-radius: 8px; text-align: center; }
+        h2 { color: #34495e; border-bottom: 2px solid #e67e22; padding-bottom: 8px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #34495e; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .box { background: #fdf6e3; border-left: 4px solid #b58900; padding: 15px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Capítulo 2: Memórias</h1>
+        <p>Hierarquia, tecnologias SRAM/DRAM e métricas de armazenamento</p>
+    </header>
+
+    <main>
+        <h2>O Princípio da Localidade</h2>
+        <p>A organização da memória baseia-se em um comportamento estatístico do software conhecido como <strong>Princípio da Localidade</strong>:</p>
+        <ul>
+            <li><strong>Localidade Temporal:</strong> Se um dado foi acessado agora, há uma alta probabilidade de ele ser acessado novamente em breve (ex: variáveis dentro de loops).</li>
+            <li><strong>Localidade Espacial:</strong> Se um dado foi acessado, os dados armazenados em endereços vizinhos tendem a ser acessados em seguida (ex: percorrer um array ou execução sequencial de código).</li>
+        </ul>
+
+        <h2>A Pirâmide da Hierarquia de Memória</h2>
+        <p>Para otimizar o custo e a velocidade, o sistema é estruturado em níveis. À medida que descemos a pirâmide, a velocidade diminui, o custo por bit cai drasticamente e a capacidade total aumenta.</p>
+
+        <h2>SRAM vs. DRAM</h2>
+        <p>A memória principal volátil divide-se em duas grandes tecnologias de semicondutores:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Característica</th>
+                    <th>SRAM (Estática)</th>
+                    <th>DRAM (Dinâmica)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Construção</strong></td>
+                    <td>Baseada em circuitos Flip-Flops (4 a 6 transistores por bit).</td>
+                    <td>Baseada em um transistor e um capacitor minúsculo por bit.</td>
+                </tr>
+                <tr>
+                    <td><strong>Velocidade</strong></td>
+                    <td>Ultra rápida (opera no clock da CPU).</td>
+                    <td>Mais lenta (necessita ciclos de carga/descarga).</td>
+                </tr>
+                <tr>
+                    <td><strong>Refresh Ciclo</strong></td>
+                    <td>Não necessita de refresh enquanto houver energia.</td>
+                    <td><strong>Necessita de Refresh Periódico</strong> porque o capacitor perde carga.</td>
+                </tr>
+                <tr>
+                    <td><strong>Densidade/Custo</strong></td>
+                    <td>Baixa densidade, custo de fabricação altíssimo.</td>
+                    <td>Altíssima densidade, custo por megabyte muito baixo.</td>
+                </tr>
+                <tr>
+                    <td><strong>Aplicação</strong></td>
+                    <td>Memória Cache (L1, L2, L3).</td>
+                    <td>Memória Principal do Sistema (Módulos DDR).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Memórias Não-Voláteis (ROM e Flash)</h2>
+        <p>Diferente das memórias RAM, mantêm os dados gravados mesmo sem alimentação elétrica. Evoluíram da antiga Mask-ROM para as memórias <strong>Flash EEPROM (NAND/NOR)</strong> que constituem os SSDs e chips de armazenamento interno de smartphones modernos, operando através do aprisionamento de elétrons em portas flutuantes isoladas.</p>
+
+        <h2>Unidades Computacionais e Unidades Comerciais</h2>
+        <p>A menor unidade de informação é o bit. O agrupamento padrão é o Byte (8 bits). Na ciência da computação, os prefixos são estritamente baseados em potências binárias, embora a indústria de armazenamento comercial adote a base decimal do SI:</p>
+        <ul>
+            <li><strong>1 Kilobyte (KB)</strong> = $2^{10}$ Bytes = 1.024 Bytes</li>
+            <li><strong>1 Megabyte (MB)</strong> = $2^{20}$ Bytes = 1.048.576 Bytes</li>
+            <li><strong>1 Gigabyte (GB)</strong> = $2^{30}$ Bytes = 1.073.741.824 Bytes</li>
+        </ul>
+        <div class="box">
+            <strong>Nota Técnica:</strong> Para evitar ambiguidade entre os padrões de mercado (onde 1 GB = 1.000.000.000 bytes) e o padrão binário, a IEC introduziu os termos <strong>Kibibyte (KiB = 1024 B)</strong>, <strong>Mebibyte (MiB)</strong> e <strong>Gibibyte (GiB)</strong>, embora a nomenclatura tradicional ainda seja amplamente utilizada em sistemas operacionais como o macOS e distribuições Linux.
+        </div>
+    </main>
+</body>
+</html>
