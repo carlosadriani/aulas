@@ -1,23 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>6. Representação de Dados</title>
-    <style>
-        body { font-family: system-ui, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; color: #333; }
-        header { background: #2980b9; color: white; padding: 20px; border-radius: 8px; text-align: center; }
-        h2 { color: #2980b9; border-bottom: 2px solid #34495e; padding-bottom: 8px; }
-        .step-box { background: #ebf5fb; border-left: 5px solid #2980b9; padding: 15px; margin: 15px 0; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
 </head>
-<body>
-    <header>
-        <h1>Capítulo 6: Representação de Dados</h1>
-        <p>Complemento de dois, sinal-magnitude e padronização IEEE 754 para ponto flutuante</p>
+
+<body class="site-body">
+
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+            <span class="eyebrow">Organização de Computadores</span>
+            <h1>Capítulo 6: Representação de Dados</h1>
+            <p>Complemento de dois, sinal-magnitude e padronização IEEE 754 para ponto flutuante</p>
+        </div>
     </header>
 
-    <main>
-        <h2>Representação de Inteiros com Sinal</h2>
+    <main class="site-main doc">
+<h2>Representação de Inteiros com Sinal</h2>
         <p>Em sistemas binários puros, todos os dígitos são 0 ou 1, o que impede o uso de um caractere físico de traço ("-") para denotar negatividade. Três principais técnicas foram desenvolvidas ao longo da história computacional:</p>
 
         <h3>1. Sinal e Magnitude</h3>
@@ -57,6 +62,15 @@
             <li><strong>Precisão Simples (Float - 32 bits):</strong> Dividido em 1 bit de sinal, 8 bits de expoente (viés de 127) e 23 bits de mantissa.</li>
             <li><strong>Precisão Dupla (Double - 64 bits):</strong> Dividido em 1 bit de sinal, 11 bits de expoente (viés de 1023) e 52 bits de mantissa.</li>
         </ol>
+        <div class="back-portal">
+            <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
     </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Organização de Computadores</p>
+    </footer>
+
 </body>
+
 </html>

@@ -1,23 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3. CPU e Arquitetura de Conjunto de Instruções</title>
-    <style>
-        body { font-family: system-ui, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; color: #333; }
-        header { background: #c0392b; color: white; padding: 20px; border-radius: 8px; text-align: center; }
-        h2 { color: #c0392b; border-bottom: 2px solid #2c3e50; padding-bottom: 8px; }
-        .code-block { background: #2d3748; color: #f7fafc; padding: 15px; border-radius: 6px; font-family: monospace; overflow-x: auto; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
 </head>
-<body>
-    <header>
-        <h1>Capítulo 3: Processador (CPU)</h1>
-        <p>Estrutura de execução interna e os paradigmas de arquitetura RISC e CISC</p>
+
+<body class="site-body">
+
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+            <span class="eyebrow">Organização de Computadores</span>
+            <h1>Capítulo 3: Processador (CPU)</h1>
+            <p>Estrutura de execução interna e os paradigmas de arquitetura RISC e CISC</p>
+        </div>
     </header>
 
-    <main>
-        <h2>Componentes Internos Nucleares</h2>
+    <main class="site-main doc">
+<h2>Componentes Internos Nucleares</h2>
         <p>O processador executa o ciclo de computação coordenando três blocos lógicos principais:</p>
         <ul>
             <li><strong>Unidade de Controle (UC):</strong> Funciona como o maestro do chip. Ela busca a instrução na memória, decodifica os bits do código de operação (OpCode) e gera pulsos elétricos que ativam as rotas de dados corretas na CPU.</li>
@@ -68,6 +73,15 @@ LOAD  R2, [Endereço_B]       ; Copia o valor da RAM para o registrador R2<br>
 ADD   R3, R1, R2             ; Executa a soma puramente dentro da CPU (R3 = R1 + R2)<br>
 STORE [Endereço_A], R3       ; Grava o resultado de volta na RAM
         </div>
+        <div class="back-portal">
+            <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
     </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Organização de Computadores</p>
+    </footer>
+
 </body>
+
 </html>

@@ -1,97 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Aulas - Prof. ADS</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Cloud Computing - Prof. Carlos Schaeffer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
-        html, body { margin: 0; padding: 0; }
-    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
 
-    <!-- Header -->
-    <header class="bg-[#003366] text-white py-8 sm:py-12 shadow-lg">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">Cloud Computing</h1>
-            <p class="text-blue-100 text-base sm:text-lg">Materiais de Aula - Análise e Desenvolvimento de Sistemas</p>
+<body class="site-body">
+
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__back" href="../index.html"><i class="fa-solid fa-arrow-left"></i> Portal de Aulas</a>
+            <span class="eyebrow">Materiais de Aula</span>
+            <h1>Cloud Computing</h1>
+            <p>Análise e Desenvolvimento de Sistemas</p>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex-grow w-full">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
-            
-            <!-- Aula 01: Fundamentos -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
-                <div class="p-5 sm:p-6">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fa-solid fa-cloud-sun text-4xl"></i>
-                    </div>
-                    <h2 class="text-xl font-bold mb-2">01. Fundamentos</h2>
-                    <p class="text-slate-600 mb-6 text-sm">Conceitos iniciais, definição NIST e o modelo de utilidade da nuvem.</p>
-                    <a href="aula01-fundamentos.html" class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
-                        Ver Slides
-                    </a>
-                </div>
-            </div>
+    <main class="site-main">
 
-            <!-- Aula 01: Glossário -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
-                <div class="p-5 sm:p-6">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fa-solid fa-book text-4xl"></i>
-                    </div>
-                    <h2 class="text-xl font-bold mb-2">01. Glossário Técnico</h2>
-                    <p class="text-slate-600 mb-6 text-sm">Dicionário completo de termos: CapEx, OpEx, Elasticidade e mais.</p>
-                    <a href="aula01-glossario.html" class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
-                        Ver Glossário
-                    </a>
-                </div>
+        <div class="toolbar">
+            <div class="toolbar__search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" data-role="search" placeholder="Pesquisar tópico por conteúdo..." aria-label="Pesquisar tópicos">
             </div>
+            <button class="toolbar__btn" data-role="fav-filter" type="button">
+                <i class="fa-solid fa-star"></i> Só favoritos
+            </button>
+            <p class="toolbar__hint">Clique na estrela para favoritar e arraste os cards para reordenar — suas escolhas ficam salvas neste navegador.</p>
+        </div>
 
-            <!-- Aula 01: Evolução -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
-                <div class="p-5 sm:p-6">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fa-solid fa-timeline text-4xl"></i>
-                    </div>
-                    <h2 class="text-xl font-bold mb-2">01. Evolução Histórica</h2>
-                    <p class="text-slate-600 mb-6 text-sm">A jornada desde os Mainframes até o Serverless moderno.</p>
-                    <a href="CloudComputing/aula01-evolucaohistorica.html" class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
-                        Ver História
-                    </a>
-                </div>
-            </div>
+        <div class="topic-grid" data-course="cloud" id="topicGrid">
+
+            <article class="topic-card" data-id="fundamentos" data-keywords="fundamentos nist definição utilidade elasticidade serviço modelo nuvem">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-cloud-sun"></i></div>
+                <h2 class="topic-card__title">01. Fundamentos</h2>
+                <p class="topic-card__desc">Conceitos iniciais, definição NIST e o modelo de utilidade da nuvem.</p>
+                <a class="topic-card__link" href="aula01-fundamentos.html">Ver Slides</a>
+            </article>
+
+            <article class="topic-card" data-id="glossario" data-keywords="glossário termos capex opex elasticidade dicionário técnico">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-book"></i></div>
+                <h2 class="topic-card__title">01. Glossário Técnico</h2>
+                <p class="topic-card__desc">Dicionário de termos: CapEx, OpEx, elasticidade, escalabilidade e mais.</p>
+                <a class="topic-card__link" href="aula01-glossario.html">Ver Glossário</a>
+            </article>
+
+            <article class="topic-card" data-id="evolucao" data-keywords="evolução histórica mainframe virtualização serverless história nuvem">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-timeline"></i></div>
+                <h2 class="topic-card__title">01. Evolução Histórica</h2>
+                <p class="topic-card__desc">A jornada desde os mainframes até o serverless moderno.</p>
+                <a class="topic-card__link" href="aula01-evolucaohistorica.html">Ver História</a>
+            </article>
 
         </div>
 
-        <!-- Seção de Recursos Extras -->
-        <div class="mt-10 sm:mt-16 bg-blue-50 rounded-2xl p-5 sm:p-8 border border-blue-100">
-            <h3 class="text-xl sm:text-2xl font-bold mb-4 text-[#003366]">Recursos Adicionais</h3>
-            <ul class="space-y-3 text-sm sm:text-base">
-                <li class="flex items-center text-slate-700">
-                    <i class="fa-solid fa-check-circle text-green-500 mr-3"></i>
-                    Quiz de fixação incluso nos slides.
-                </li>
-                <li class="flex items-center text-slate-700">
-                    <i class="fa-solid fa-check-circle text-green-500 mr-3"></i>
-                    Materiais otimizados para leitura mobile.
-                </li>
-            </ul>
+        <p class="topic-empty" data-role="empty" hidden>Nenhum tópico encontrado para sua busca.</p>
+
+        <div class="back-portal">
+            <a href="../index.html"><i class="fa-solid fa-arrow-left"></i> Voltar ao Portal de Aulas</a>
         </div>
+
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-6 sm:py-8 mt-auto">
-        <div class="container mx-auto px-4 sm:px-6 text-center text-sm sm:text-base">
-            <p>&copy; 2026 Prof. ADS | Disciplina de Cloud Computing</p>
-        </div>
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Disciplina de Cloud Computing</p>
     </footer>
 
+    <script src="../assets/js/cards.js"></script>
 </body>
+
 </html>

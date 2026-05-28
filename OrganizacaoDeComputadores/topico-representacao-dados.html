@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Org. Computadores - Representação de Dados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 28px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 18px; border-left: 8px solid #3b82f6; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #3b82f6; color: white; padding: 14px; text-align: left; }
+        .table td { padding: 11px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+        .info-box { border-left: 5px solid #3b82f6; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light">
+
+    <!-- Capa -->
+    <div class="slide hero">
+        <i class="fa-solid fa-shapes" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+        <h1>Representação de Dados</h1>
+        <p style="font-size: 24px; opacity: 0.8;">Como números, texto, imagens e som viram bits</p>
+        <div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Organização de Computadores - ADS</div>
+    </div>
+
+    <!-- Tudo é bit -->
+    <div class="slide">
+        <div class="header"><h2>Tudo vira bit</h2></div>
+        <div class="content">
+            <p class="lead">O computador só armazena <b>0</b> e <b>1</b>. A diferença entre um número, uma letra e um
+                pixel não está nos bits em si, mas na <span class="highlight">forma como são interpretados</span>.</p>
+            <div class="info-box">
+                <p>A mesma sequência <b>0100 0001</b> pode ser o número 65, a letra 'A' (ASCII) ou parte de uma cor. O
+                    <b>contexto</b> (o tipo de dado) define o significado.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inteiros sem sinal -->
+    <div class="slide">
+        <div class="header"><h2>Inteiros sem sinal</h2></div>
+        <div class="content">
+            <p>Números não-negativos representados diretamente em binário. Com <i>n</i> bits, o intervalo é de
+                <b>0</b> a <b>2<sup>n</sup>−1</b>.</p>
+            <table class="table">
+                <tr><th>Bits</th><th>Intervalo</th><th>Uso comum</th></tr>
+                <tr><td>8 bits</td><td>0 a 255</td><td>1 byte, cor RGB</td></tr>
+                <tr><td>16 bits</td><td>0 a 65.535</td><td>portas de rede</td></tr>
+                <tr><td>32 bits</td><td>0 a ~4,2 bilhões</td><td>endereços IPv4</td></tr>
+            </table>
+            <div class="info-box">
+                <p><b>Overflow:</b> se o resultado ultrapassa o máximo, ele "dá a volta". Em 8 bits, 255 + 1 = 0.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inteiros com sinal -->
+    <div class="slide">
+        <div class="header"><h2>Inteiros com sinal: o problema</h2></div>
+        <div class="content">
+            <p>Como representar números negativos só com 0s e 1s? Três abordagens históricas:</p>
+            <table class="table">
+                <tr><th>Método</th><th>Ideia</th><th>Problema</th></tr>
+                <tr><td><b>Sinal-magnitude</b></td><td>1º bit é o sinal (0=+, 1=−)</td><td>Existe +0 e −0; aritmética complicada</td></tr>
+                <tr><td><b>Complemento de 1</b></td><td>Inverte todos os bits para negar</td><td>Ainda tem +0 e −0</td></tr>
+                <tr><td><b>Complemento de 2</b></td><td>Inverte os bits e soma 1</td><td>Nenhum — é o padrão usado hoje</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Complemento de 2 -->
+    <div class="slide">
+        <div class="header"><h2>Complemento de 2 (o padrão)</h2></div>
+        <div class="content">
+            <div class="grid">
+                <div class="code-box">
+Negar +5 em 8 bits:<br><br>
++5&nbsp;&nbsp;= 0000 0101<br>
+inverte = 1111 1010<br>
+soma 1&nbsp;= 1111 1011<br><br>
+−5&nbsp;&nbsp;= <b>1111 1011</b>
+                </div>
+                <div>
+                    <p>Por que é tão usado? Porque a <span class="highlight">soma funciona naturalmente</span>, sem
+                        circuito especial para subtração: 5 + (−5) dá zero automaticamente (com o vai-um descartado).</p>
+                    <p style="margin-top: 14px;">Em <i>n</i> bits, o intervalo é de
+                        <b>−2<sup>n−1</sup></b> a <b>+2<sup>n−1</sup>−1</b>. Em 8 bits: −128 a +127.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ponto flutuante -->
+    <div class="slide">
+        <div class="header"><h2>Números reais: Ponto Flutuante</h2></div>
+        <div class="content">
+            <p>Para representar frações e números muito grandes/pequenos, usa-se notação científica em binário — o
+                padrão <span class="highlight">IEEE 754</span>.</p>
+            <div class="code-box" style="margin-top: 14px;">
+valor = (−1)<sup>sinal</sup> × mantissa × 2<sup>expoente</sup>
+            </div>
+            <table class="table">
+                <tr><th>Precisão</th><th>Sinal</th><th>Expoente</th><th>Mantissa</th><th>Total</th></tr>
+                <tr><td>Simples (float)</td><td>1 bit</td><td>8 bits</td><td>23 bits</td><td>32 bits</td></tr>
+                <tr><td>Dupla (double)</td><td>1 bit</td><td>11 bits</td><td>52 bits</td><td>64 bits</td></tr>
+            </table>
+            <div class="info-box">
+                <p>Ponto flutuante é uma <b>aproximação</b>. Por isso 0,1 + 0,2 não dá exatamente 0,3 em muitas
+                    linguagens: nem todo decimal tem representação binária finita.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Texto: ASCII -->
+    <div class="slide">
+        <div class="header"><h2>Texto: a tabela ASCII</h2></div>
+        <div class="content">
+            <p><span class="highlight">ASCII</span> associa cada caractere a um número de 7 bits (0–127). Letras,
+                dígitos, pontuação e comandos de controle.</p>
+            <table class="table">
+                <tr><th>Caractere</th><th>Decimal</th><th>Binário</th></tr>
+                <tr><td>'A'</td><td>65</td><td>0100 0001</td></tr>
+                <tr><td>'a'</td><td>97</td><td>0110 0001</td></tr>
+                <tr><td>'0'</td><td>48</td><td>0011 0000</td></tr>
+                <tr><td>espaço</td><td>32</td><td>0010 0000</td></tr>
+            </table>
+            <div class="info-box">
+                <p>Note que 'A' (65) e 'a' (97) diferem em exatamente um bit. E o caractere '0' não é o número zero — é
+                    o código 48.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unicode -->
+    <div class="slide">
+        <div class="header"><h2>Unicode e UTF-8</h2></div>
+        <div class="content">
+            <p>ASCII só cobre o inglês. O <span class="highlight">Unicode</span> dá um número único a cada caractere de
+                todas as línguas — e também a emojis.</p>
+            <div class="grid">
+                <div class="card">
+                    <h3>UTF-8</h3>
+                    <p>Codificação de tamanho variável (1 a 4 bytes). Compatível com ASCII e dominante na web. 'A' usa
+                        1 byte; 'ç' usa 2; '😀' usa 4.</p>
+                </div>
+                <div class="card">
+                    <h3>Por que importa</h3>
+                    <p>Escolher a codificação errada causa os famosos caracteres trocados (Ã§, Ã£) ao abrir um arquivo.
+                        Por isso o HTML declara <i>charset=UTF-8</i>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Imagens -->
+    <div class="slide">
+        <div class="header"><h2>Imagens: pixels e cores</h2></div>
+        <div class="content">
+            <p>Uma imagem <span class="highlight">bitmap</span> é uma grade de <b>pixels</b>. Cada pixel guarda uma cor,
+                geralmente no modelo <b>RGB</b>: três bytes (vermelho, verde, azul), cada um de 0 a 255.</p>
+            <div class="code-box" style="margin-top: 14px;">
+Vermelho puro:&nbsp;R=255 G=0&nbsp;&nbsp; B=0&nbsp;&nbsp; → #FF0000<br>
+Branco:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R=255 G=255 B=255 → #FFFFFF<br>
+Roxo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R=128 G=0&nbsp;&nbsp; B=128 → #800080
+            </div>
+            <div class="info-box">
+                <p>3 bytes por pixel = 24 bits = ~16,7 milhões de cores ("true color"). Uma imagem Full HD não comprimida
+                    ocupa ~6&nbsp;MB — por isso usam-se formatos compactados como JPEG e PNG.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Som e vídeo -->
+    <div class="slide">
+        <div class="header"><h2>Som e vídeo</h2></div>
+        <div class="content">
+            <ul class="spaced" style="font-size: 22px;">
+                <li><span class="highlight">Som:</span> a onda sonora (analógica) é medida muitos pontos por segundo
+                    (amostragem). Cada amostra vira um número. CD de áudio = 44.100 amostras/s, 16 bits cada.</li>
+                <li><span class="highlight">Vídeo:</span> uma sequência de imagens (frames) exibidas em rápida sucessão,
+                    geralmente 24 a 60 por segundo, mais a trilha de áudio.</li>
+                <li><span class="highlight">Compressão:</span> indispensável. MP3, AAC (áudio); H.264, H.265 (vídeo)
+                    reduzem o tamanho descartando dados pouco perceptíveis.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Endianness -->
+    <div class="slide">
+        <div class="header"><h2>Detalhe importante: Endianness</h2></div>
+        <div class="content">
+            <p>Quando um número ocupa vários bytes, em que ordem eles são guardados na memória?</p>
+            <table class="table">
+                <tr><th>Ordem</th><th>Como guarda 0x12345678</th><th>Usado por</th></tr>
+                <tr><td><b>Big-endian</b></td><td>12 34 56 78 (byte mais significativo primeiro)</td><td>Redes, protocolos</td></tr>
+                <tr><td><b>Little-endian</b></td><td>78 56 34 12 (byte menos significativo primeiro)</td><td>x86, ARM</td></tr>
+            </table>
+            <div class="info-box">
+                <p>Importa ao trocar dados entre sistemas diferentes — um arquivo binário pode ser lido errado se a
+                    ordem dos bytes não for considerada.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Glossário -->
+    <div class="slide">
+        <div class="header"><h2>Glossário do tópico</h2></div>
+        <div class="content">
+            <table class="table">
+                <tr><td><b>Complemento de 2</b></td><td>Forma padrão de representar inteiros negativos.</td></tr>
+                <tr><td><b>IEEE 754</b></td><td>Padrão de representação de números reais (ponto flutuante).</td></tr>
+                <tr><td><b>ASCII</b></td><td>Tabela de 7 bits que codifica caracteres.</td></tr>
+                <tr><td><b>Unicode / UTF-8</b></td><td>Codificação universal de caracteres de todas as línguas.</td></tr>
+                <tr><td><b>RGB</b></td><td>Modelo de cor com canais vermelho, verde e azul.</td></tr>
+                <tr><td><b>Endianness</b></td><td>Ordem de armazenamento dos bytes de um valor.</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Encerramento -->
+    <div class="slide hero">
+        <h1 style="color:#3b82f6;">Resumindo</h1>
+        <p style="font-size: 22px; max-width: 820px; opacity: 0.9;">Tudo é bit; o tipo de dado define a interpretação.
+            Inteiros usam complemento de 2, reais usam IEEE 754, texto usa ASCII/Unicode e mídia usa amostragem e pixels
+            (com compressão). Entender isso explica overflows, erros de acentuação e o tamanho dos arquivos.</p>
+        <div style="margin-top: 40px;">
+            <a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+                <i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 sm:py-8 mt-auto">
+        <div class="container mx-auto px-4 sm:px-6 text-center text-sm sm:text-base" style="color: white;">
+            <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Organização de Computadores</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

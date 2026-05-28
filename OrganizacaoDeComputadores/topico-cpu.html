@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Org. Computadores - CPU: Organização Interna e ISA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #3b82f6; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #3b82f6; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+        .info-box { border-left: 5px solid #3b82f6; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #3b82f6; font-size: 26px; }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light">
+
+    <!-- Capa -->
+    <div class="slide hero">
+        <i class="fa-solid fa-microchip" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+        <h1>A CPU</h1>
+        <p style="font-size: 24px; opacity: 0.8;">Organização interna e arquiteturas de conjunto de instruções</p>
+        <div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Organização de Computadores - ADS</div>
+    </div>
+
+    <!-- O que é a CPU -->
+    <div class="slide">
+        <div class="header"><h2>O que é a CPU?</h2></div>
+        <div class="content">
+            <p class="lead">A <span class="highlight">CPU</span> (Unidade Central de Processamento), ou
+                <b>processador</b>, é o componente que executa as instruções dos programas. É o "cérebro" do
+                computador.</p>
+            <div class="info-box">
+                <p>Ela faz três coisas continuamente: <b>busca</b> instruções na memória, <b>decodifica</b> o que cada
+                    uma significa e as <b>executa</b>, manipulando dados. Tudo no ritmo do <b>clock</b>.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Componentes internos -->
+    <div class="slide">
+        <div class="header"><h2>Componentes internos</h2></div>
+        <div class="content">
+            <table class="table">
+                <tr><th>Componente</th><th>Função</th></tr>
+                <tr><td><b>Unidade de Controle (UC)</b></td><td>Comanda e sincroniza tudo: gera os sinais que dizem a
+                    cada parte o que fazer e quando.</td></tr>
+                <tr><td><b>Unidade Lógica e Aritmética (ULA)</b></td><td>Executa operações aritméticas (+, −, ×) e
+                    lógicas (AND, OR, NOT, comparações).</td></tr>
+                <tr><td><b>Registradores</b></td><td>Memórias minúsculas e ultrarrápidas que guardam os dados em uso
+                    imediato.</td></tr>
+                <tr><td><b>Barramentos internos</b></td><td>Conectam UC, ULA e registradores entre si.</td></tr>
+                <tr><td><b>Clock</b></td><td>Sinal periódico que dá o ritmo de todas as operações.</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Registradores -->
+    <div class="slide">
+        <div class="header"><h2>Registradores importantes</h2></div>
+        <div class="content">
+            <table class="table">
+                <tr><th>Registrador</th><th>Papel</th></tr>
+                <tr><td><b>PC</b> (Program Counter / Contador de Programa)</td><td>Guarda o endereço da próxima instrução.</td></tr>
+                <tr><td><b>IR</b> (Instruction Register)</td><td>Armazena a instrução que está sendo decodificada.</td></tr>
+                <tr><td><b>MAR</b> (Memory Address Register)</td><td>Guarda o endereço de memória a ser acessado.</td></tr>
+                <tr><td><b>MBR/MDR</b> (Memory Buffer/Data Register)</td><td>Guarda o dado lido ou a ser escrito na memória.</td></tr>
+                <tr><td><b>ACC / registradores de uso geral</b></td><td>Guardam operandos e resultados da ULA.</td></tr>
+                <tr><td><b>PSW / FLAGS</b></td><td>Indica condições do último resultado (zero, sinal, carry, overflow).</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Ciclo de instrução -->
+    <div class="slide">
+        <div class="header"><h2>O Ciclo de Instrução</h2></div>
+        <div class="content">
+            <div class="flow">
+                <div class="node">Fetch<br><span style="font-weight:400;font-size:14px;">buscar</span></div>
+                <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                <div class="node">Decode<br><span style="font-weight:400;font-size:14px;">decodificar</span></div>
+                <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                <div class="node">Execute<br><span style="font-weight:400;font-size:14px;">executar</span></div>
+                <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                <div class="node">Write-back<br><span style="font-weight:400;font-size:14px;">gravar</span></div>
+            </div>
+            <div class="info-box">
+                <p><b>1. Busca:</b> a instrução em MEM[PC] é trazida para o IR; PC avança. <b>2. Decodificação:</b> a UC
+                    interpreta o opcode. <b>3. Execução:</b> a ULA opera sobre os registradores. <b>4. Gravação:</b> o
+                    resultado é armazenado. Depois, o ciclo recomeça.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Clock e desempenho -->
+    <div class="slide">
+        <div class="header"><h2>Clock e desempenho</h2></div>
+        <div class="content">
+            <div class="grid">
+                <div>
+                    <p>O <span class="highlight">clock</span> é um sinal que pulsa milhões/bilhões de vezes por segundo.
+                        Cada pulso é um ciclo. <b>3&nbsp;GHz</b> = 3 bilhões de ciclos por segundo.</p>
+                    <p style="margin-top: 14px;">O tempo de execução de um programa depende de:</p>
+                    <ul class="spaced">
+                        <li>nº de instruções;</li>
+                        <li>ciclos por instrução (CPI);</li>
+                        <li>duração do ciclo (1/clock).</li>
+                    </ul>
+                </div>
+                <div class="code-box">
+Tempo =<br>
+&nbsp;&nbsp;Nº instruções<br>
+&nbsp;&nbsp;× CPI<br>
+&nbsp;&nbsp;× Tempo do ciclo<br><br>
+// menos é melhor
+                </div>
+            </div>
+            <div class="info-box">
+                <p>Clock alto não é tudo: uma CPU com instruções mais eficientes ou mais núcleos pode superar outra de
+                    clock maior. Por isso comparar só "GHz" entre arquiteturas diferentes engana.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pipeline -->
+    <div class="slide">
+        <div class="header"><h2>Pipeline: a linha de montagem</h2></div>
+        <div class="content">
+            <p>Em vez de esperar uma instrução terminar todas as etapas para começar a próxima, o <span
+                class="highlight">pipeline</span> sobrepõe as etapas — como uma linha de montagem.</p>
+            <table class="table">
+                <tr><th>Ciclo</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+                <tr><td>Instr. A</td><td>Busca</td><td>Decod.</td><td>Exec.</td><td>Mem.</td><td>Grava</td></tr>
+                <tr><td>Instr. B</td><td></td><td>Busca</td><td>Decod.</td><td>Exec.</td><td>Mem.</td></tr>
+                <tr><td>Instr. C</td><td></td><td></td><td>Busca</td><td>Decod.</td><td>Exec.</td></tr>
+            </table>
+            <div class="info-box">
+                <p>Idealmente, uma instrução termina a cada ciclo. <b>Hazards</b> (dependência de dados, desvios) podem
+                    forçar paradas; CPUs modernas usam <i>previsão de desvio</i> e <i>execução fora de ordem</i> para
+                    minimizá-los.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ISA -->
+    <div class="slide">
+        <div class="header"><h2>ISA: Conjunto de Instruções</h2></div>
+        <div class="content">
+            <p class="lead">A <span class="highlight">ISA</span> (<i>Instruction Set Architecture</i>) é o conjunto de
+                todas as instruções que a CPU entende — a "linguagem nativa" do processador.</p>
+            <p style="margin-top: 16px;">É a fronteira entre <b>hardware e software</b>: o compilador traduz o programa
+                para instruções da ISA, e a CPU as executa. Cada instrução tem um <span class="highlight">opcode</span>
+                (operação) e <span class="highlight">operandos</span> (dados/endereços).</p>
+            <div class="code-box" style="margin-top: 16px;">
+ADD R1, R2, R3&nbsp;&nbsp;// R1 = R2 + R3<br>
+LOAD R1, [100]&nbsp;&nbsp;// R1 = memória[100]<br>
+STORE [200], R1&nbsp;// memória[200] = R1<br>
+JMP&nbsp;1000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// desvia para 1000
+            </div>
+        </div>
+    </div>
+
+    <!-- RISC x CISC -->
+    <div class="slide">
+        <div class="header"><h2>RISC x CISC</h2></div>
+        <div class="content">
+            <div class="grid">
+                <div class="card">
+                    <h3>CISC</h3>
+                    <p><i>Complex Instruction Set Computer</i></p>
+                    <ul class="spaced" style="margin-top:10px;">
+                        <li>Muitas instruções, algumas complexas.</li>
+                        <li>Instruções de tamanho variável.</li>
+                        <li>Uma instrução pode fazer várias tarefas.</li>
+                        <li>Ex.: <b>x86</b> (Intel, AMD).</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>RISC</h3>
+                    <p><i>Reduced Instruction Set Computer</i></p>
+                    <ul class="spaced" style="margin-top:10px;">
+                        <li>Poucas instruções, simples e rápidas.</li>
+                        <li>Tamanho fixo, fácil de pipeline.</li>
+                        <li>Acesso à memória só via load/store.</li>
+                        <li>Ex.: <b>ARM</b> (celulares), RISC-V.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="info-box">
+                <p>Hoje a fronteira é difusa: processadores x86 modernos traduzem internamente instruções CISC em
+                    micro-operações no estilo RISC. ARM domina dispositivos móveis pela eficiência energética.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Multicore -->
+    <div class="slide">
+        <div class="header"><h2>Núcleos, threads e paralelismo</h2></div>
+        <div class="content">
+            <ul class="spaced" style="font-size: 22px;">
+                <li><span class="highlight">Núcleo (core):</span> uma CPU completa dentro do chip. Vários núcleos
+                    executam tarefas <b>de verdade ao mesmo tempo</b>.</li>
+                <li><span class="highlight">Multithreading (SMT/Hyper-Threading):</span> um núcleo simula dois lógicos,
+                    aproveitando momentos ociosos.</li>
+                <li><span class="highlight">Lei de Amdahl:</span> o ganho com paralelismo é limitado pela parte do
+                    programa que precisa ser executada em sequência.</li>
+            </ul>
+            <div class="info-box">
+                <p>Como aumentar o clock esbarrou em limites de calor e energia, a indústria passou a colocar
+                    <b>mais núcleos</b> em vez de clocks mais altos.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Glossário -->
+    <div class="slide">
+        <div class="header"><h2>Glossário do tópico</h2></div>
+        <div class="content">
+            <table class="table">
+                <tr><td><b>ULA</b></td><td>Faz operações aritméticas e lógicas.</td></tr>
+                <tr><td><b>UC</b></td><td>Coordena e gera sinais de controle.</td></tr>
+                <tr><td><b>ISA</b></td><td>Conjunto de instruções que a CPU entende.</td></tr>
+                <tr><td><b>Pipeline</b></td><td>Sobreposição de etapas de instruções.</td></tr>
+                <tr><td><b>RISC/CISC</b></td><td>Instruções reduzidas/simples vs. complexas.</td></tr>
+                <tr><td><b>Core</b></td><td>Unidade de processamento independente.</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Encerramento -->
+    <div class="slide hero">
+        <h1 style="color:#3b82f6;">Resumindo</h1>
+        <p style="font-size: 22px; max-width: 820px; opacity: 0.9;">A CPU combina UC, ULA e registradores para executar
+            o ciclo busca-decodificação-execução no ritmo do clock. O pipeline e os múltiplos núcleos aumentam o
+            desempenho, enquanto a ISA (RISC ou CISC) define a linguagem que liga o software ao hardware.</p>
+        <div style="margin-top: 40px;">
+            <a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+                <i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 sm:py-8 mt-auto">
+        <div class="container mx-auto px-4 sm:px-6 text-center text-sm sm:text-base" style="color: white;">
+            <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Organização de Computadores</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

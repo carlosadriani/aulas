@@ -4,111 +4,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Aulas - Prof. ADS</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Portal de Aulas - Prof. Carlos Schaeffer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Fallback para o caso do Tailwind CDN não carregar */
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/site.css">
 </head>
 
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
+<body class="site-body">
 
-    <!-- Header -->
-    <header class="bg-[#003366] text-white py-8 sm:py-12 shadow-lg">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">Carlos Schaeffer</h1>
-            <p class="text-blue-100 text-base sm:text-lg">Análise e Desenvolvimento de Sistemas</p>
+    <header class="site-header">
+        <div class="site-header__inner">
+            <span class="eyebrow">Análise e Desenvolvimento de Sistemas</span>
+            <h1>Portal de Aulas</h1>
+            <p>Prof. MSc. Carlos Adriani Lara Schaeffer</p>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex-grow w-full">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
+    <main class="site-main">
 
-            <!-- Cloud Computing -->
-            <div
-                class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
-                <div class="p-5 sm:p-6">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fa-solid fa-cloud-sun text-4xl"></i>
-                        <label class="text-slate-600 mb-6 text-sm">Nível III</label>
-                    </div>
-                    <!-- <h2 class="text-xl font-bold mb-2">Cloud Computing</h2> -->
-                    <a href="CloudComputing"
-                        class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
-                        Cloud Computing
-                    </a>
-                </div>
+        <div class="toolbar">
+            <div class="toolbar__search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" data-role="search" placeholder="Pesquisar disciplina por conteúdo..." aria-label="Pesquisar disciplinas">
             </div>
-
-            <!-- Serviços de Redes -->
-            <div
-                class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
-                <div class="p-5 sm:p-6">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fa-solid fa-network-wired text-4xl"></i>
-                        <label class="text-slate-600 mb-6 text-sm">Nível III</label>
-                    </div>
-                    <!-- <h2 class="text-xl font-bold mb-2">Serviços de Redes</h2> -->
-                    <a href="ServicosDeRedes"
-                        class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
-                        Serviços de Redes
-                    </a>
-                </div>
-            </div>
-
-            <!-- Organização de Computadores -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-slate-200">
-                <div class="p-5 sm:p-6">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fa-solid fa-book text-4xl"></i>
-                        <label class="text-slate-600 mb-6 text-sm">Nível I</label>
-                    </div>
-                    <!-- <h2 class="text-xl font-bold mb-2">Organização de Computadores</h2> -->
-                    <a href="OrganizacaoDeComputadores"
-                        class="inline-block w-full text-center bg-[#003366] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
-                        Organização de computadores
-                    </a>
-                </div>
-            </div>
+            <button class="toolbar__btn" data-role="fav-filter" type="button">
+                <i class="fa-solid fa-star"></i> Só favoritas
+            </button>
+            <p class="toolbar__hint">Dica: clique na estrela para favoritar e arraste os cards para reordenar — suas escolhas ficam salvas neste navegador.</p>
         </div>
-        
-        <!-- Seção de Recursos Extras 
-        <div class="mt-16 bg-blue-50 rounded-2xl p-8 border border-blue-100">
-            <h3 class="text-2xl font-bold mb-4 text-[#003366]">Recursos Adicionais</h3>
-            <ul class="space-y-3">
-                <li class="flex items-center text-slate-700">
-                    <i class="fa-solid fa-check-circle text-green-500 mr-3"></i>
-                    Quiz de fixação incluso nos slides.
-                </li>
-                <li class="flex items-center text-slate-700">
-                    <i class="fa-solid fa-check-circle text-green-500 mr-3"></i>
-                    Materiais otimizados para leitura mobile.
-                </li>
-            </ul>
+
+        <div class="topic-grid" data-course="portal" id="topicGrid">
+
+            <article class="topic-card" data-id="org-computadores" data-keywords="organização computadores hardware cpu memória von neumann nível 1 fundamentos">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-microchip"></i></div>
+                <span class="topic-card__badge">Nível I</span>
+                <h2 class="topic-card__title">Organização de Computadores</h2>
+                <p class="topic-card__desc">Arquitetura e organização: von Neumann, CPU, memórias, E/S, bases numéricas e sistemas operacionais.</p>
+                <a class="topic-card__link" href="OrganizacaoDeComputadores/index.html">Acessar disciplina</a>
+            </article>
+
+            <article class="topic-card" data-id="servicos-redes" data-keywords="redes serviços lan wan tcp ip osi protocolos roteamento nível 3">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-network-wired"></i></div>
+                <span class="topic-card__badge">Nível III</span>
+                <h2 class="topic-card__title">Serviços de Redes</h2>
+                <p class="topic-card__desc">Fundamentos de redes, arquiteturas, modelos OSI e TCP/IP, protocolos e a camada de transporte.</p>
+                <a class="topic-card__link" href="ServicosDeRedes/index.html">Acessar disciplina</a>
+            </article>
+
+            <article class="topic-card" data-id="cloud-computing" data-keywords="cloud computação nuvem aws azure iaas paas saas serverless nível 3">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-cloud-sun"></i></div>
+                <span class="topic-card__badge">Nível III</span>
+                <h2 class="topic-card__title">Cloud Computing</h2>
+                <p class="topic-card__desc">Fundamentos da nuvem, definição NIST, evolução histórica e glossário técnico essencial.</p>
+                <a class="topic-card__link" href="CloudComputing/index.html">Acessar disciplina</a>
+            </article>
+
+            <article class="topic-card" data-id="seguranca" data-keywords="segurança informação ataques ransomware ddos phishing risco vulnerabilidade owasp">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <span class="topic-card__badge">Nível III</span>
+                <h2 class="topic-card__title">Gestão de Segurança da Informação</h2>
+                <p class="topic-card__desc">Conceitos de risco, anatomia dos ataques modernos e estratégias de mitigação para gestores.</p>
+                <a class="topic-card__link" href="GestaoDeSegurancaDaInformacao/index.html">Acessar disciplina</a>
+            </article>
+
+            <article class="topic-card" data-id="dicionario" data-keywords="dicionário informática glossário termos vídeos catálogo conceitos">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-book"></i></div>
+                <span class="topic-card__badge">Apoio</span>
+                <h2 class="topic-card__title">Dicionário de Informática</h2>
+                <p class="topic-card__desc">Catálogo de vídeos e termos técnicos de informática para consulta rápida.</p>
+                <a class="topic-card__link" href="DicionarioDeInformatica/index.html">Acessar catálogo</a>
+            </article>
+
         </div>
-    -->
+
+        <p class="topic-empty" data-role="empty" hidden>Nenhuma disciplina encontrada para sua busca.</p>
+
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-6 sm:py-8 mt-auto">
-        <div class="container mx-auto px-4 sm:px-6 text-center text-sm sm:text-base">
-            <p>&copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer</p>
-        </div>
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer</p>
     </footer>
 
+    <script src="assets/js/cards.js"></script>
 </body>
 
 </html>

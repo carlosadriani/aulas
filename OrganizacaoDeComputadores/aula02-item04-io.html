@@ -1,23 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4. Dispositivos de Entrada e Saída (I/O)</title>
-    <style>
-        body { font-family: system-ui, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; color: #333; }
-        header { background: #16a085; color: white; padding: 20px; border-radius: 8px; text-align: center; }
-        h2 { color: #16a085; border-bottom: 2px solid #2c3e50; padding-bottom: 8px; }
-        .method-card { background: #f8f9fa; border: 1px solid #e2e8f0; border-left: 5px solid #16a085; padding: 15px; margin: 15px 0; border-radius: 4px; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
 </head>
-<body>
-    <header>
-        <h1>Capítulo 4: Subsistema de Entrada e Saída</h1>
-        <p>Módulos de E/S, mapeamento em memória e técnicas de gerenciamento de dados externos</p>
+
+<body class="site-body">
+
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+            <span class="eyebrow">Organização de Computadores</span>
+            <h1>Capítulo 4: Subsistema de Entrada e Saída</h1>
+            <p>Módulos de E/S, mapeamento em memória e técnicas de gerenciamento de dados externos</p>
+        </div>
     </header>
 
-    <main>
-        <h2>O Papel do Módulo de E/S (I/O Module)</h2>
+    <main class="site-main doc">
+<h2>O Papel do Módulo de E/S (I/O Module)</h2>
         <p>A CPU e a memória principal não se comunicam diretamente com os periféricos externos (teclados, placas de rede, monitores) devido a disparidades drásticas de velocidade de transferência, formatos de sinal elétrico e protocolos de comunicação. O <strong>Módulo de E/S</strong> atua como um controlador intermediário inteligente que expõe registradores internos de dados, controle e estado para a CPU.</p>
 
         <h2>Abordagens de Mapeamento de Dispositivos</h2>
@@ -46,6 +51,15 @@
             <p>Para transmissões de dados em massa (como leitura de arquivos em SSDs NVMe ou pacotes em redes Gigabit), o uso de interrupções bit a bit saturaria a CPU. O controlador de <strong>DMA</strong> assume o controle dos barramentos do sistema.</p>
             <p>A CPU apenas configura o DMA informando o endereço de origem, o endereço de destino na memória RAM e o tamanho do bloco de dados. O DMA realiza toda a transferência de bytes de forma independente e paralela. Ao final da transferência do bloco inteiro, o DMA emite uma única interrupção para avisar a CPU que o bloco está pronto.</p>
         </div>
+        <div class="back-portal">
+            <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
     </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Organização de Computadores</p>
+    </footer>
+
 </body>
+
 </html>

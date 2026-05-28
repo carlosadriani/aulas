@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Org. Computadores - Sistemas Operacionais e Softwares de Sistema</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 28px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 18px; border-left: 8px solid #3b82f6; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #3b82f6; color: white; padding: 14px; text-align: left; }
+        .table td { padding: 11px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+        .info-box { border-left: 5px solid #3b82f6; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .layers { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .layers .lyr { padding: 14px; border-radius: 6px; text-align: center; font-weight: bold; color: #fff; }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light">
+
+    <!-- Capa -->
+    <div class="slide hero">
+        <i class="fa-solid fa-layer-group" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+        <h1>Sistemas Operacionais</h1>
+        <p style="font-size: 24px; opacity: 0.8;">e Softwares de Sistema</p>
+        <div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Organização de Computadores - ADS</div>
+    </div>
+
+    <!-- O que é um SO -->
+    <div class="slide">
+        <div class="header"><h2>O que é um Sistema Operacional?</h2></div>
+        <div class="content">
+            <p class="lead">O <span class="highlight">Sistema Operacional</span> (SO) é o software que gerencia o
+                hardware e oferece serviços aos programas. É a camada intermediária entre o usuário/aplicativos e a
+                máquina física.</p>
+            <div class="info-box">
+                <p>Sem SO, cada programa teria que controlar diretamente o hardware. O SO faz duas coisas centrais: ser
+                    uma <b>máquina estendida</b> (esconde a complexidade do hardware) e um <b>gerenciador de
+                    recursos</b> (distribui CPU, memória e dispositivos entre os programas).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Camadas -->
+    <div class="slide">
+        <div class="header"><h2>Onde o SO se encaixa</h2></div>
+        <div class="content">
+            <div class="grid">
+                <div class="layers">
+                    <div class="lyr" style="background:#1e3a8a;">Usuário</div>
+                    <div class="lyr" style="background:#1d4ed8;">Aplicativos</div>
+                    <div class="lyr" style="background:#3b82f6;">Software de Sistema (compiladores, utilitários)</div>
+                    <div class="lyr" style="background:#2563eb;">Sistema Operacional (kernel)</div>
+                    <div class="lyr" style="background:#60a5fa; color:#1e293b;">Hardware</div>
+                </div>
+                <div>
+                    <p>Cada camada se apoia na de baixo e serve a de cima. O <span class="highlight">kernel</span> é o
+                        núcleo do SO: roda em modo privilegiado e tem acesso direto ao hardware.</p>
+                    <p style="margin-top: 12px;">Os aplicativos pedem serviços ao SO por meio de <b>chamadas de
+                        sistema</b> (system calls), como abrir um arquivo ou enviar dados pela rede.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Funções do SO -->
+    <div class="slide">
+        <div class="header"><h2>Principais funções do SO</h2></div>
+        <div class="content">
+            <table class="table">
+                <tr><th>Gerência</th><th>O que faz</th></tr>
+                <tr><td><b>Processos</b></td><td>Cria, escalona e encerra programas em execução; divide o tempo da CPU.</td></tr>
+                <tr><td><b>Memória</b></td><td>Aloca e protege a memória entre os processos; gerencia memória virtual.</td></tr>
+                <tr><td><b>Arquivos</b></td><td>Organiza dados em arquivos e pastas; controla acesso.</td></tr>
+                <tr><td><b>Dispositivos (E/S)</b></td><td>Coordena periféricos por meio de drivers.</td></tr>
+                <tr><td><b>Segurança</b></td><td>Autentica usuários e controla permissões.</td></tr>
+                <tr><td><b>Rede</b></td><td>Gerencia comunicação entre computadores.</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Processos -->
+    <div class="slide">
+        <div class="header"><h2>Processos e escalonamento</h2></div>
+        <div class="content">
+            <div class="grid">
+                <div>
+                    <p>Um <span class="highlight">processo</span> é um programa em execução, com seu próprio espaço de
+                        memória. Como há mais processos que núcleos, o SO faz <b>multitarefa</b>: alterna rapidamente
+                        entre eles, dando a impressão de simultaneidade.</p>
+                    <p style="margin-top: 12px;">O <span class="highlight">escalonador</span> decide quem usa a CPU e
+                        por quanto tempo (a "fatia de tempo" ou <i>quantum</i>).</p>
+                </div>
+                <div class="card">
+                    <h3>Estados de um processo</h3>
+                    <ul class="spaced" style="margin-top:8px;">
+                        <li><b>Pronto:</b> esperando a CPU.</li>
+                        <li><b>Executando:</b> usando a CPU.</li>
+                        <li><b>Bloqueado:</b> esperando E/S.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="info-box">
+                <p><b>Threads</b> são linhas de execução dentro de um mesmo processo, compartilhando sua memória — úteis
+                    para fazer várias coisas ao mesmo tempo (ex.: baixar e exibir simultaneamente).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Memória virtual -->
+    <div class="slide">
+        <div class="header"><h2>Gerência de memória e memória virtual</h2></div>
+        <div class="content">
+            <p>O SO dá a cada processo a ilusão de ter toda a memória só para si — a <span class="highlight">memória
+                virtual</span>. Endereços virtuais são traduzidos para físicos pela MMU (hardware).</p>
+            <ul class="spaced" style="margin-top: 8px;">
+                <li><span class="highlight">Isolamento:</span> um processo não acessa a memória de outro (proteção).</li>
+                <li><span class="highlight">Paginação:</span> a memória é dividida em páginas; partes pouco usadas vão
+                    para o disco (swap).</li>
+                <li><span class="highlight">Swap:</span> permite rodar programas maiores que a RAM física — ao custo de
+                    velocidade.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Sistema de arquivos -->
+    <div class="slide">
+        <div class="header"><h2>Sistema de arquivos</h2></div>
+        <div class="content">
+            <p>É a forma como o SO organiza os dados no armazenamento, em <span class="highlight">arquivos</span> e
+                <span class="highlight">diretórios</span> (pastas), escondendo os detalhes físicos do disco.</p>
+            <table class="table">
+                <tr><th>Sistema de arquivos</th><th>Usado por</th></tr>
+                <tr><td>NTFS</td><td>Windows</td></tr>
+                <tr><td>ext4</td><td>Linux</td></tr>
+                <tr><td>APFS</td><td>macOS</td></tr>
+                <tr><td>FAT32 / exFAT</td><td>Pendrives, cartões SD</td></tr>
+            </table>
+            <div class="info-box">
+                <p>O sistema de arquivos também controla <b>permissões</b> (quem pode ler/escrever/executar) e mantém
+                    <b>metadados</b> (data, tamanho, dono).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tipos de SO -->
+    <div class="slide">
+        <div class="header"><h2>Tipos de Sistemas Operacionais</h2></div>
+        <div class="content">
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Desktop</h3>
+                    <p>Windows, macOS, distribuições Linux. Foco em uso pessoal e produtividade.</p>
+                </div>
+                <div class="card">
+                    <h3>Móvel</h3>
+                    <p>Android, iOS. Otimizados para bateria, toque e mobilidade.</p>
+                </div>
+                <div class="card">
+                    <h3>Servidor / Embarcado</h3>
+                    <p>Linux Server, Windows Server; e os de tempo real em carros, eletrodomésticos, IoT.</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <p>Quanto à interação: <b>monousuário/multiusuário</b>, <b>monotarefa/multitarefa</b> e, em casos
+                    críticos, <b>tempo real</b> (resposta dentro de um prazo garantido).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Software de sistema vs aplicativo -->
+    <div class="slide">
+        <div class="header"><h2>Software de Sistema x Aplicativo</h2></div>
+        <div class="content">
+            <div class="grid">
+                <div class="card">
+                    <h3>Software de Sistema</h3>
+                    <p>Faz o computador funcionar e dá suporte aos demais programas.</p>
+                    <p style="margin-top:10px;"><b>Ex.:</b> sistema operacional, drivers, compiladores, montadores,
+                        utilitários (antivírus, desfragmentador, backup), firmware/BIOS.</p>
+                </div>
+                <div class="card">
+                    <h3>Software Aplicativo</h3>
+                    <p>Resolve tarefas do usuário final.</p>
+                    <p style="margin-top:10px;"><b>Ex.:</b> navegador, editor de texto, planilha, jogos, players de
+                        mídia, aplicativos de banco.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Softwares de sistema em detalhe -->
+    <div class="slide">
+        <div class="header"><h2>Softwares de sistema essenciais</h2></div>
+        <div class="content">
+            <table class="table">
+                <tr><th>Software</th><th>Papel</th></tr>
+                <tr><td><b>Tradutores</b> (compilador, interpretador, montador)</td><td>Convertem código-fonte em
+                    linguagem de máquina executável.</td></tr>
+                <tr><td><b>Drivers</b></td><td>Permitem ao SO comunicar-se com cada dispositivo de hardware.</td></tr>
+                <tr><td><b>Utilitários</b></td><td>Manutenção do sistema: backup, compactação, antivírus, limpeza.</td></tr>
+                <tr><td><b>Firmware (BIOS/UEFI)</b></td><td>Inicia o computador e carrega o SO (boot).</td></tr>
+                <tr><td><b>Carregador (loader) e linker</b></td><td>Montam e carregam programas na memória para execução.</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Boot -->
+    <div class="slide">
+        <div class="header"><h2>O processo de inicialização (boot)</h2></div>
+        <div class="content">
+            <div class="code-box">
+1. Liga o computador<br>
+2. <b>BIOS/UEFI</b> (firmware na ROM) faz o POST<br>
+&nbsp;&nbsp;&nbsp;(testa hardware)<br>
+3. Localiza o dispositivo de boot<br>
+4. Carrega o <b>bootloader</b> (ex.: GRUB)<br>
+5. Bootloader carrega o <b>kernel</b> do SO<br>
+6. SO inicia serviços e a interface do usuário
+            </div>
+            <div class="info-box">
+                <p>Esse encadeamento mostra as camadas em ação: do firmware gravado em ROM até a interface gráfica,
+                    cada etapa entrega o controle à seguinte.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Glossário -->
+    <div class="slide">
+        <div class="header"><h2>Glossário do tópico</h2></div>
+        <div class="content">
+            <table class="table">
+                <tr><td><b>Kernel</b></td><td>Núcleo do SO; controla o hardware diretamente.</td></tr>
+                <tr><td><b>Processo / Thread</b></td><td>Programa em execução / linha de execução interna.</td></tr>
+                <tr><td><b>Escalonador</b></td><td>Decide qual processo usa a CPU.</td></tr>
+                <tr><td><b>Memória virtual</b></td><td>Abstração que isola e expande a memória dos processos.</td></tr>
+                <tr><td><b>System call</b></td><td>Pedido de um programa por um serviço do SO.</td></tr>
+                <tr><td><b>Driver</b></td><td>Software que controla um dispositivo.</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Encerramento -->
+    <div class="slide hero">
+        <h1 style="color:#3b82f6;">Resumindo</h1>
+        <p style="font-size: 22px; max-width: 820px; opacity: 0.9;">O sistema operacional é o gerente do computador:
+            controla processos, memória, arquivos e dispositivos, oferecendo serviços via chamadas de sistema. Ao lado
+            dele, os softwares de sistema (drivers, compiladores, utilitários, firmware) mantêm tudo funcionando, abaixo
+            dos aplicativos do usuário.</p>
+        <div style="margin-top: 40px;">
+            <a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+                <i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 sm:py-8 mt-auto">
+        <div class="container mx-auto px-4 sm:px-6 text-center text-sm sm:text-base" style="color: white;">
+            <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Organização de Computadores</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

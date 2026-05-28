@@ -1,23 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>7. Sistemas Operacionais e Softwares de Sistema</title>
-    <style>
-        body { font-family: system-ui, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; color: #333; }
-        header { background: #7f8c8d; color: white; padding: 20px; border-radius: 8px; text-align: center; }
-        h2 { color: #2c3e50; border-bottom: 2px solid #7f8c8d; padding-bottom: 8px; }
-        .kernel-box { background: #f2f4f4; border: 2px solid #bdc3c7; border-radius: 8px; padding: 15px; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
 </head>
-<body>
-    <header>
-        <h1>Capítulo 7: Sistemas Operacionais e Software de Sistema</h1>
-        <p>A interface lógica de abstração, modos de execução de hardware e a cadeia de tradução de código</p>
+
+<body class="site-body">
+
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+            <span class="eyebrow">Organização de Computadores</span>
+            <h1>Capítulo 7: Sistemas Operacionais e Software de Sistema</h1>
+            <p>A interface lógica de abstração, modos de execução de hardware e a cadeia de tradução de código</p>
+        </div>
     </header>
 
-    <main>
-        <h2>Software de Sistema vs. Software de Aplicação</h2>
+    <main class="site-main doc">
+<h2>Software de Sistema vs. Software de Aplicação</h2>
         <p>O <strong>Software de Sistema</strong> gerencia o hardware físico e fornece uma infraestrutura básica para que outros programas rodem com segurança. Ele inclui o próprio Sistema Operacional, os drivers de dispositivos, utilitários de disco e a cadeia de ferramentas de compilação.</p>
 
         <h2>Níveis de Privilégio: Modo Usuário vs. Modo Kernel</h2>
@@ -45,6 +50,15 @@
             <li><strong>Montador (Assembler):</strong> Pega as mnemônicas legíveis do Assembly (como <code>MOV</code>, <code>ADD</code>) e as converte diretamente nos padrões de bits binários equivalentes do OpCode, gerando arquivos de código de objeto (.obj ou .o).</li>
             <li><strong>Ligador (Linker):</strong> Pega os diversos arquivos de objetos espalhados criados no projeto, resolve as referências de chamadas de funções de bibliotecas externas externas prontas e junta tudo em um único arquivo estruturado contendo cabeçalhos compreensíveis pelo SO (como os formatos ELF no Linux, PE no Windows ou Mach-O no macOS).</li>
         </ol>
+        <div class="back-portal">
+            <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
     </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Organização de Computadores</p>
+    </footer>
+
 </body>
+
 </html>

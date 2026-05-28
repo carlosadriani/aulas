@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Org. Computadores - Organização Básica de Sistemas Computacionais</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        body {
+            background-color: #0f172a;
+            font-family: "DM Sans", sans-serif;
+            color: #f8fafc;
+        }
+
+        .slide {
+            background: #ffffff;
+            color: #1e293b;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .header {
+            padding: 40px 60px;
+            background: #f8fafc;
+            border-bottom: 5px solid #3b82f6;
+        }
+
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+
+        .content {
+            flex-grow: 1;
+            padding: 40px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .code-box {
+            background: #1e293b;
+            color: #38bdf8;
+            padding: 30px;
+            border-radius: 8px;
+            font-family: "Fira Code", monospace;
+            font-size: 20px;
+            border-left: 8px solid #3b82f6;
+            line-height: 1.7;
+        }
+
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #3b82f6; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+
+        .highlight { color: #3b82f6; font-weight: bold; }
+
+        .info-box {
+            border-left: 5px solid #3b82f6;
+            background: #f0f9ff;
+            padding: 20px 24px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 22px;
+        }
+        .card h3 { margin-top: 0; }
+
+        .flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .flow .node {
+            background: #1e293b;
+            color: #fff;
+            padding: 18px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            min-width: 120px;
+        }
+        .flow .arrow { color: #3b82f6; font-size: 28px; }
+
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light">
+
+    <!-- Capa -->
+    <div class="slide hero">
+        <i class="fa-solid fa-sitemap" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+        <h1>Organização Básica de Sistemas Computacionais</h1>
+        <p style="font-size: 24px; opacity: 0.8;">Como um computador é estruturado por dentro</p>
+        <div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Organização de Computadores - ADS</div>
+    </div>
+
+    <!-- O que é um sistema computacional -->
+    <div class="slide">
+        <div class="header"><h2>O que é um sistema computacional?</h2></div>
+        <div class="content">
+            <p class="lead">Um <span class="highlight">sistema computacional</span> é um conjunto integrado de
+                componentes de <b>hardware</b> e <b>software</b> que, trabalhando juntos, recebem dados, processam
+                informações e produzem resultados úteis.</p>
+            <div class="info-box">
+                <p>Toda tarefa de um computador, por mais complexa que pareça (um jogo, um navegador, uma planilha),
+                    reduz-se a três ações fundamentais: <b>entrada</b> de dados, <b>processamento</b> e
+                    <b>saída</b> de resultados — com <b>armazenamento</b> dando suporte a todo o processo.</p>
+            </div>
+            <div class="flow">
+                <div class="node"><i class="fa-solid fa-keyboard"></i><br>Entrada</div>
+                <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                <div class="node"><i class="fa-solid fa-microchip"></i><br>Processamento</div>
+                <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                <div class="node"><i class="fa-solid fa-display"></i><br>Saída</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Organização x Arquitetura -->
+    <div class="slide">
+        <div class="header"><h2>Organização x Arquitetura</h2></div>
+        <div class="content">
+            <p class="lead">São duas perspectivas diferentes sobre a mesma máquina. É a distinção clássica feita por
+                Stallings:</p>
+            <div class="grid" style="margin-top: 20px;">
+                <div class="card">
+                    <h3><i class="fa-solid fa-eye"></i> Arquitetura</h3>
+                    <p>Atributos <b>visíveis ao programador</b>, que afetam diretamente a execução de um programa.</p>
+                    <p style="margin-top:10px;">Exemplos: conjunto de instruções, número de bits para representar dados,
+                        modos de endereçamento, registradores disponíveis.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fa-solid fa-screwdriver-wrench"></i> Organização</h3>
+                    <p>Como os recursos são <b>implementados fisicamente</b> para concretizar a arquitetura.</p>
+                    <p style="margin-top:10px;">Exemplos: sinais de controle, tecnologia de memória usada, se há
+                        multiplicador em hardware, tamanho real da cache.</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <p>Analogia: a arquitetura é <b>"o que"</b> a máquina faz (o contrato); a organização é <b>"como"</b>
+                    ela faz. Várias organizações podem implementar a mesma arquitetura — é por isso que processadores
+                    de gerações diferentes rodam o mesmo software.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modelo de von Neumann -->
+    <div class="slide">
+        <div class="header"><h2>O Modelo de von Neumann</h2></div>
+        <div class="content">
+            <p>Proposto em 1945, é a base de praticamente todos os computadores atuais. Sua ideia central é o
+                <span class="highlight">programa armazenado</span>: instruções e dados ficam na <b>mesma memória</b>,
+                permitindo que o computador seja reprogramado sem alterar o hardware.</p>
+            <div class="flow" style="margin-top: 30px;">
+                <div class="node"><i class="fa-solid fa-keyboard"></i><br>Entrada</div>
+                <span class="arrow"><i class="fa-solid fa-arrows-left-right"></i></span>
+                <div class="node" style="background:#3b82f6;"><i class="fa-solid fa-microchip"></i><br>CPU<br><span style="font-size:14px;font-weight:400;">(UC + ULA)</span></div>
+                <span class="arrow"><i class="fa-solid fa-arrows-left-right"></i></span>
+                <div class="node"><i class="fa-solid fa-memory"></i><br>Memória</div>
+                <span class="arrow"><i class="fa-solid fa-arrows-left-right"></i></span>
+                <div class="node"><i class="fa-solid fa-display"></i><br>Saída</div>
+            </div>
+            <div class="info-box">
+                <p><b>Gargalo de von Neumann:</b> como instruções e dados compartilham o mesmo barramento até a memória,
+                    a CPU frequentemente espera pela memória. Esse limite motivou o surgimento das memórias cache e da
+                    arquitetura Harvard (memórias separadas para dados e instruções).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Os cinco componentes -->
+    <div class="slide">
+        <div class="header"><h2>Os componentes funcionais</h2></div>
+        <div class="content">
+            <table class="table">
+                <tr><th>Componente</th><th>Função</th></tr>
+                <tr><td><b>Unidade Central de Processamento (CPU)</b></td>
+                    <td>O "cérebro". Busca, decodifica e executa instruções. Contém a Unidade de Controle (UC) e a
+                        Unidade Lógica e Aritmética (ULA).</td></tr>
+                <tr><td><b>Memória Principal</b></td>
+                    <td>Armazena temporariamente instruções e dados em uso. Volátil (RAM).</td></tr>
+                <tr><td><b>Dispositivos de Entrada</b></td>
+                    <td>Convertem informação do mundo externo em dados digitais (teclado, mouse, sensores).</td></tr>
+                <tr><td><b>Dispositivos de Saída</b></td>
+                    <td>Convertem dados digitais em informação para o usuário (monitor, impressora, alto-falante).</td></tr>
+                <tr><td><b>Barramentos (Bus)</b></td>
+                    <td>Canais de comunicação que interligam todos os componentes.</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Dentro da CPU -->
+    <div class="slide">
+        <div class="header"><h2>Dentro da CPU: UC e ULA</h2></div>
+        <div class="content">
+            <div class="grid">
+                <div class="card">
+                    <h3><i class="fa-solid fa-traffic-light"></i> Unidade de Controle (UC)</h3>
+                    <p>Coordena e sincroniza todas as operações. Não processa dados — ela <b>comanda</b>: decide o que
+                        cada parte deve fazer e quando, gerando os sinais de controle.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fa-solid fa-calculator"></i> Unidade Lógica e Aritmética (ULA)</h3>
+                    <p>Executa as operações <b>aritméticas</b> (soma, subtração) e <b>lógicas</b> (AND, OR, NOT,
+                        comparações). É onde o "cálculo" realmente acontece.</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <p><b>Registradores:</b> pequenas memórias ultrarrápidas dentro da CPU que guardam os dados sendo
+                    manipulados no instante. São o nível mais alto (e mais veloz) da hierarquia de memória.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Barramentos -->
+    <div class="slide">
+        <div class="header"><h2>Barramentos: as "estradas" de dados</h2></div>
+        <div class="content">
+            <p>Um <span class="highlight">barramento</span> é um conjunto de fios que transporta informação entre
+                componentes. Existem três tipos lógicos:</p>
+            <table class="table">
+                <tr><th>Barramento</th><th>O que carrega</th><th>Sentido</th></tr>
+                <tr><td><b>Dados</b></td><td>As informações trocadas (instruções, valores)</td><td>Bidirecional</td></tr>
+                <tr><td><b>Endereços</b></td><td>A posição de memória/dispositivo a acessar</td><td>Unidirecional (CPU → memória)</td></tr>
+                <tr><td><b>Controle</b></td><td>Sinais de comando (leitura, escrita, clock, interrupção)</td><td>Bidirecional</td></tr>
+            </table>
+            <div class="info-box">
+                <p>A <b>largura</b> do barramento de dados (8, 16, 32, 64 bits) define quantos bits trafegam de uma vez.
+                    A largura do barramento de endereços define quanta memória pode ser endereçada: com <i>n</i> linhas,
+                    o máximo é 2<sup><i>n</i></sup> endereços. Por isso processadores de 32 bits endereçam até 4&nbsp;GB.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ciclo de instrução -->
+    <div class="slide">
+        <div class="header"><h2>O Ciclo de Instrução (Busca-Decodificação-Execução)</h2></div>
+        <div class="content">
+            <p>É o ritmo fundamental da máquina, repetido bilhões de vezes por segundo:</p>
+            <div class="grid" style="margin-top: 10px;">
+                <ul class="spaced" style="font-size: 22px;">
+                    <li><span class="highlight">1. Busca (Fetch):</span> a UC lê da memória a próxima instrução,
+                        apontada pelo registrador <b>PC</b> (Program Counter).</li>
+                    <li><span class="highlight">2. Decodificação (Decode):</span> a UC interpreta o código da instrução
+                        e descobre qual operação realizar.</li>
+                    <li><span class="highlight">3. Execução (Execute):</span> a ULA ou outro recurso realiza a operação;
+                        o resultado é guardado em registrador ou memória.</li>
+                </ul>
+                <div class="code-box">
+PC → endereço da<br>
+&nbsp;&nbsp;próxima instrução<br><br>
+loop:<br>
+&nbsp;&nbsp;instr = MEM[PC]&nbsp;&nbsp;// fetch<br>
+&nbsp;&nbsp;decode(instr)&nbsp;&nbsp;&nbsp;&nbsp;// decode<br>
+&nbsp;&nbsp;execute(instr)&nbsp;&nbsp;&nbsp;// execute<br>
+&nbsp;&nbsp;PC = PC + 1<br>
+&nbsp;&nbsp;goto loop
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hardware x Software -->
+    <div class="slide">
+        <div class="header"><h2>Hardware, Software e as camadas</h2></div>
+        <div class="content">
+            <p>Um sistema computacional é organizado em <span class="highlight">camadas</span>, da mais física à mais
+                próxima do usuário:</p>
+            <table class="table">
+                <tr><th>Camada</th><th>Exemplo</th></tr>
+                <tr><td>Aplicativos do usuário</td><td>Navegador, editor de texto, jogos</td></tr>
+                <tr><td>Software de sistema / Utilitários</td><td>Compiladores, drivers, antivírus</td></tr>
+                <tr><td>Sistema Operacional</td><td>Windows, Linux, Android</td></tr>
+                <tr><td>Firmware / BIOS-UEFI</td><td>Inicialização e controle de baixo nível</td></tr>
+                <tr><td>Hardware</td><td>CPU, memória, dispositivos</td></tr>
+            </table>
+            <div class="info-box">
+                <p>Cada camada usa os serviços da camada inferior e oferece serviços à superior. O usuário interage com
+                    o topo sem precisar conhecer os detalhes elétricos da base — isso é <b>abstração</b>.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Desempenho -->
+    <div class="slide">
+        <div class="header"><h2>O que torna um computador "rápido"?</h2></div>
+        <div class="content">
+            <ul class="spaced" style="font-size: 22px;">
+                <li><span class="highlight">Frequência de clock (GHz):</span> número de ciclos por segundo. 3&nbsp;GHz =
+                    3 bilhões de ciclos/s. Mais ciclos, mais operações — mas não é o único fator.</li>
+                <li><span class="highlight">Número de núcleos:</span> CPUs modernas têm vários núcleos que processam
+                    tarefas em paralelo.</li>
+                <li><span class="highlight">Largura de palavra:</span> processar 64 bits por vez é mais eficiente que 32.</li>
+                <li><span class="highlight">Hierarquia de memória/cache:</span> manter dados perto da CPU evita a espera
+                    pela memória principal (o gargalo de von Neumann).</li>
+                <li><span class="highlight">Arquitetura do conjunto de instruções:</span> instruções bem projetadas
+                    fazem mais com menos.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Glossário -->
+    <div class="slide">
+        <div class="header"><h2>Glossário do tópico</h2></div>
+        <div class="content">
+            <table class="table">
+                <tr><td><b>CPU</b></td><td>Unidade Central de Processamento; executa as instruções.</td></tr>
+                <tr><td><b>UC</b></td><td>Unidade de Controle; coordena as operações.</td></tr>
+                <tr><td><b>ULA</b></td><td>Unidade Lógica e Aritmética; faz cálculos e comparações.</td></tr>
+                <tr><td><b>PC</b></td><td>Program Counter; aponta a próxima instrução.</td></tr>
+                <tr><td><b>Barramento</b></td><td>Conjunto de fios que conecta os componentes.</td></tr>
+                <tr><td><b>von Neumann</b></td><td>Modelo de programa armazenado; instruções e dados na mesma memória.</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Encerramento -->
+    <div class="slide hero">
+        <h1 style="color:#3b82f6;">Resumindo</h1>
+        <p style="font-size: 22px; max-width: 800px; opacity: 0.9;">Um computador é um sistema de camadas: hardware
+            organizado segundo o modelo de von Neumann (CPU, memória, E/S e barramentos), executando o ciclo de
+            busca-decodificação-execução, controlado por software que abstrai a complexidade para o usuário.</p>
+        <div style="margin-top: 40px;">
+            <a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+                <i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 sm:py-8 mt-auto">
+        <div class="container mx-auto px-4 sm:px-6 text-center text-sm sm:text-base" style="color: white;">
+            <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Organização de Computadores</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

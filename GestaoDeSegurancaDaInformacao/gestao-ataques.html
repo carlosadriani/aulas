@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Segurança - Catálogo de Ataques</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 36px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        h1 { font-size: 56px; color: #fff; }
+        h2 { font-size: 34px; color: #1e293b; }
+        h3 { color: #1e3a8a; margin: 0 0 6px; }
+        .content { flex-grow: 1; padding: 32px 70px; display: flex; flex-direction: column; justify-content: center; }
+        .tag { font-size: 14px; font-weight: 700; color: #b91c1c; background: #fee2e2; border: 1px solid #fecaca; padding: 5px 12px; border-radius: 6px; }
+        .tag.net { color: #1e40af; background: #dbeafe; border-color: #bfdbfe; }
+        .tag.app { color: #7c3aed; background: #ede9fe; border-color: #ddd6fe; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+        .sub { font-size: 15px; font-weight: 700; color: #1e40af; text-transform: uppercase; letter-spacing: .04em; margin: 14px 0 6px; }
+        p { line-height: 1.55; }
+        .mitig { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 14px 18px; margin-top: 14px; }
+        .mitig h4 { margin: 0 0 8px; color: #15803d; font-size: 16px; }
+        .mitig ul { margin: 0; padding-left: 18px; }
+        .mitig li { margin-bottom: 6px; font-size: 15px; }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light">
+
+    <div class="slide hero">
+        <i class="fa-solid fa-skull-crossbones" style="font-size: 76px; margin-bottom: 26px; color: #3b82f6;"></i>
+        <h1>Catálogo de Ataques</h1>
+        <p style="font-size: 23px; opacity: 0.85;">Mecânica de funcionamento e estratégias de mitigação</p>
+        <div style="margin-top: 36px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">Gestão de Segurança da Informação</div>
+    </div>
+
+    <!-- Ransomware -->
+    <div class="slide">
+        <div class="header"><h2>Ransomware de dupla exposição</h2><span class="tag">Malware / Extorsão</span></div>
+        <div class="content">
+            <div class="sub">Mecanismo</div>
+            <p>Evoluiu do modelo apenas criptográfico para a <span class="highlight">dupla exposição</span>: o invasor
+                obtém acesso inicial (phishing, credenciais de VPN/RDP), move-se lateralmente, <b>exfiltra</b> os dados
+                confidenciais e só então criptografa os storages com algoritmos híbridos (AES-256 + RSA-4096),
+                inviabilizando a recuperação sem a chave do servidor de comando e controle (C2).</p>
+            <div class="sub">Impacto</div>
+            <p>Indisponibilidade de sistemas críticos, vazamento público de dados e graves danos de imagem.</p>
+            <div class="mitig">
+                <h4><i class="fa-solid fa-shield-halved"></i> Mitigação</h4>
+                <ul>
+                    <li>Backup <b>3-2-1-1-0</b> (uma cópia imutável/offline/air-gapped).</li>
+                    <li>EDR com análise comportamental para deter criptografia em massa.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- DDoS -->
+    <div class="slide">
+        <div class="header"><h2>DDoS (amplificação e camada 7)</h2><span class="tag net">Rede e Aplicação</span></div>
+        <div class="content">
+            <div class="sub">Mecanismo</div>
+            <p>Na <span class="highlight">amplificação</span> (DNS/NTP), requisições forjadas com o IP da vítima geram
+                respostas gigantes que saturam a banda. Na <span class="highlight">camada 7</span> (HTTP Flood), o
+                ataque imita usuários reais pedindo endpoints pesados, exaurindo CPU, memória e conexões do servidor.</p>
+            <div class="sub">Impacto</div>
+            <p>Indisponibilidade de serviços (e-commerce, bancos), quebra de SLA e prejuízo direto.</p>
+            <div class="mitig">
+                <h4><i class="fa-solid fa-shield-halved"></i> Mitigação</h4>
+                <ul>
+                    <li>Scrubbing centers em nuvem (Cloudflare, Akamai, AWS Shield) na borda.</li>
+                    <li>Rate limiting, CAPTCHA dinâmico e tuning de timeouts.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SQLi -->
+    <div class="slide">
+        <div class="header"><h2>SQL Injection (SQLi)</h2><span class="tag app">Aplicação · OWASP</span></div>
+        <div class="content">
+            <div class="sub">Mecanismo</div>
+            <p>Ocorre quando a aplicação não valida os dados do usuário antes de concatená-los a uma consulta SQL. O
+                atacante manipula a sintaxe com caracteres de controle (<code>'</code>, <code>--</code>,
+                <code>OR '1'='1</code>) e, via <span class="highlight">Blind SQLi</span>, extrai tabelas, altera
+                registros ou escala privilégios para o sistema operacional.</p>
+            <div class="sub">Impacto</div>
+            <p>Vazamento em massa de dados e quebra de confidencialidade e integridade.</p>
+            <div class="mitig">
+                <h4><i class="fa-solid fa-shield-halved"></i> Mitigação</h4>
+                <ul>
+                    <li><b>Prepared Statements</b> (queries parametrizadas) — input tratado como dado, nunca código.</li>
+                    <li>WAF e princípio do menor privilégio nas credenciais do banco.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phishing -->
+    <div class="slide">
+        <div class="header"><h2>Spear Phishing (BEC)</h2><span class="tag">Engenharia Social</span></div>
+        <div class="content">
+            <div class="sub">Mecanismo</div>
+            <p>Altamente direcionado: o atacante faz <span class="highlight">OSINT</span> (LinkedIn, organograma), cria
+                e-mail personificando uma autoridade (CEO/CFO) com <i>typosquatting</i> e gatilhos de urgência, induzindo
+                transferências fraudulentas ou entrega de credenciais.</p>
+            <div class="sub">Impacto</div>
+            <p>Fraudes financeiras imediatas e comprometimento inicial da rede interna.</p>
+            <div class="mitig">
+                <h4><i class="fa-solid fa-shield-halved"></i> Mitigação</h4>
+                <ul>
+                    <li>Programas de <i>security awareness</i> com simulações e métricas.</li>
+                    <li>Autenticação de e-mail: <b>SPF</b>, <b>DKIM</b> e <b>DMARC</b> (reject).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- MitM -->
+    <div class="slide">
+        <div class="header"><h2>Man-in-the-Middle (MitM)</h2><span class="tag net">Link / Rede</span></div>
+        <div class="content">
+            <div class="sub">Mecanismo</div>
+            <p>Via <span class="highlight">ARP Spoofing</span>, o atacante associa seu MAC ao IP do gateway, fazendo todo
+                o tráfego da vítima passar por ele. Sem criptografia ponta a ponta, lê dados em texto claro, captura
+                cookies de sessão e injeta scripts nas respostas.</p>
+            <div class="sub">Impacto</div>
+            <p>Espionagem, roubo de credenciais em trânsito e sequestro de sessão (session hijacking).</p>
+            <div class="mitig">
+                <h4><i class="fa-solid fa-shield-halved"></i> Mitigação</h4>
+                <ul>
+                    <li>TLS forçado com <b>HSTS</b> em todo o tráfego.</li>
+                    <li><b>DHCP Snooping</b> e <b>Dynamic ARP Inspection</b> nos switches.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide hero">
+        <h1 style="color:#3b82f6;">Padrão comum</h1>
+        <p style="font-size: 22px; max-width: 820px; opacity: 0.9;">Acesso inicial → exploração → impacto. A defesa
+            combina controles técnicos (EDR, WAF, TLS, segmentação) e humanos (conscientização), em camadas.</p>
+        <div style="margin-top: 34px;">
+            <a class="slide-back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Gestão de Segurança da Informação</p>
+    </footer>
+
+</body>
+
+</html>
