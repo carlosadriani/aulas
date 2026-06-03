@@ -32,19 +32,19 @@
             z-index: 0;
         }
         h1, h2, h3 { font-family: "Merriweather", serif; color: #003366; z-index: 1; }
-        p, li { color: #444; font-size: 21px; line-height: 1.55; z-index: 1; }
+        p, li { color: #444; font-size: 18px; line-height: 1.55; z-index: 1; }
         .slide-title {
-            font-size: 46px;
+            font-size: 40px;
             font-weight: 700;
-            padding: 56px 80px 18px;
+            padding: 10px 20px 2px;
             text-align: left;
             border-left: 10px solid #003366;
-            margin-top: 38px;
+            margin-top: 10px;
             margin-left: 40px;
         }
         .content-area {
             flex-grow: 1;
-            padding: 20px 80px 60px;
+            padding: 10px 80px 10px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -59,14 +59,14 @@
         .title-layout h1 { color: #FDFBF7; font-size: 72px; margin-bottom: 20px; }
         .title-layout p { color: #d1d5db; font-size: 28px; }
         .section-title-layout { text-align: center; justify-content: center; height: 100%; padding: 0 80px; }
-        .section-title-layout h2 { font-size: 62px; position: relative; display: inline-block; }
+        .section-title-layout h2 { font-size: 50px; position: relative; display: inline-block; }
         .section-title-layout h2::after {
             content: '';
             display: block;
             width: 60%;
             height: 6px;
             background: #003366;
-            margin: 20px auto;
+            margin: 10px auto;
         }
         .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; align-items: start; }
         .three-column { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
@@ -78,8 +78,8 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.04);
         }
         .tile { border-top: 5px solid #003366; background: #fff; }
-        .tile i, .provider-card i { font-size: 38px; color: #003366; margin-bottom: 16px; }
-        .tile h3, .tiled-box h3 { font-size: 26px; margin-bottom: 10px; }
+        .tile i, .provider-card i { font-size: 20px; color: #003366; margin-bottom: 16px; }
+        .tile h3, .tiled-box h3 { font-size: 20px; margin-bottom: 10px; }
         .provider-card {
             background: #fff;
             border-radius: 16px;
@@ -87,12 +87,12 @@
             border: 1px solid #e2e8f0;
             box-shadow: 0 8px 18px rgba(0,0,0,0.06);
         }
-        .provider-card h3 { font-size: 30px; margin-bottom: 14px; }
+        .provider-card h3 { font-size: 20px; margin-bottom: 14px; }
         .provider-card ul { margin-top: 10px; padding-left: 24px; }
-        .provider-card li { font-size: 19px; margin-bottom: 8px; }
+        .provider-card li { font-size: 10px; margin-bottom: 8px; }
         .product-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 5px 14px rgba(0,0,0,0.06); }
-        .product-table th { background: #003366; color: white; padding: 12px 14px; text-align: left; font-size: 18px; }
-        .product-table td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; vertical-align: top; color: #334155; font-size: 18px; }
+        .product-table th { background: #003366; color: white; padding: 12px 14px; text-align: left; font-size: 10px; }
+        .product-table td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; vertical-align: top; color: #334155; font-size: 10px; }
         .product-table td:first-child { font-weight: 700; color: #003366; width: 24%; }
         .product-table tr:last-child td { border-bottom: none; }
         .tag { display: inline-block; font-size: 14px; padding: 4px 10px; border-radius: 999px; background: #e0f2fe; color: #075985; font-weight: 700; margin-bottom: 10px; }
@@ -113,6 +113,8 @@
         }
         .mini-note { font-size: 17px; color: #64748b; margin-top: 20px; }
         .footer-note { font-size: 16px; color: #64748b; margin-top: 20px; }
+        .service-link { color:#003366; font-weight:800; text-decoration:none; border-bottom:2px solid #93c5fd; }
+        .service-link:hover { color:#1d4ed8; }
     </style>
     <link rel="stylesheet" href="../assets/css/site.css">
 </head>
@@ -167,8 +169,8 @@
             <div class="three-column">
                 <div class="provider-card">
                     <i class="fa-brands fa-aws"></i>
-                    <h3>AWS</h3>
-                    <p>Forte em variedade de serviços, maturidade de infraestrutura e ecossistema de parceiros.</p>
+                    <!-- <h3>AWS</h3> -->
+                    <p >Forte em variedade de serviços, maturidade de infraestrutura e ecossistema de parceiros.</p>
                     <ul>
                         <li>Referência histórica em IaaS.</li>
                         <li>Grande presença em startups e empresas globais.</li>
@@ -176,7 +178,7 @@
                 </div>
                 <div class="provider-card">
                     <i class="fa-brands fa-microsoft"></i>
-                    <h3>Azure</h3>
+                    <!-- <h3>Azure</h3> -->
                     <p>Integração forte com Windows Server, Microsoft 365, Active Directory, .NET e ambiente corporativo.</p>
                     <ul>
                         <li>Muito usado em empresas já Microsoft.</li>
@@ -185,7 +187,7 @@
                 </div>
                 <div class="provider-card">
                     <i class="fa-brands fa-google"></i>
-                    <h3>Google Cloud</h3>
+                    <!-- <h3>Google Cloud</h3> -->
                     <p>Destaque em dados, analytics, Kubernetes, IA, infraestrutura global e serviços gerenciados.</p>
                     <ul>
                         <li>Forte em BigQuery e GKE.</li>
@@ -204,20 +206,28 @@
     </div>
 
     <div class="slide-container">
-        <h2 class="slide-title">AWS: 10 produtos principais</h2>
+        <h3 class="slide-title">AWS: 10 produtos principais</h3>
         <div class="content-area">
             <table class="product-table">
                 <tr><th>Produto</th><th>Categoria</th><th>Para que serve</th></tr>
-                <tr><td>Amazon EC2</td><td>Compute / IaaS</td><td>Criação de máquinas virtuais para rodar aplicações, APIs, jobs e servidores.</td></tr>
-                <tr><td>Amazon S3</td><td>Storage</td><td>Armazenamento de objetos para arquivos, backups, imagens, logs, data lakes e sites estáticos.</td></tr>
-                <tr><td>AWS Lambda</td><td>Serverless</td><td>Execução de funções sob demanda, sem gerenciar servidores.</td></tr>
-                <tr><td>Amazon RDS</td><td>Banco relacional</td><td>Banco gerenciado para MySQL, PostgreSQL, MariaDB, Oracle, SQL Server e outros.</td></tr>
-                <tr><td>Amazon DynamoDB</td><td>NoSQL</td><td>Banco chave-valor/documento com baixa latência e alta escala.</td></tr>
-                <tr><td>Amazon VPC</td><td>Rede</td><td>Rede virtual privada para sub-redes, rotas, segurança e isolamento de recursos.</td></tr>
-                <tr><td>AWS IAM</td><td>Identidade</td><td>Controle de usuários, grupos, permissões, papéis e políticas de acesso.</td></tr>
-                <tr><td>Amazon CloudFront</td><td>CDN</td><td>Distribuição de conteúdo com baixa latência usando pontos de presença globais.</td></tr>
-                <tr><td>Amazon EKS</td><td>Contêineres</td><td>Kubernetes gerenciado para aplicações em contêineres.</td></tr>
-                <tr><td>Amazon CloudWatch</td><td>Observabilidade</td><td>Monitoramento de métricas, logs, alarmes e eventos operacionais.</td></tr>
+                <tr><td><a class="service-link" href="aula02-aws-amazon-ec2.html">Amazon EC2</a></td><td>Compute / IaaS</td><td>Criação de máquinas virtuais para rodar aplicações, APIs, jobs e servidores.</td></tr>
+                <tr><td><a class="service-link" href="aula02-aws-amazon-s3.html">Amazon S3</a></td><td>Storage</td><td>Armazenamento de objetos para arquivos, backups, imagens, logs, data lakes e sites estáticos.</td></tr>
+                <tr><td><a class="service-link" href="aula02-aws-lambda.html">AWS Lambda</a></td><td>Serverless</td><td>Execução de funções sob demanda, sem gerenciar servidores.</td></tr>
+                <tr><td><a class="service-link" href="aula02-aws-amazon-rds.html">Amazon RDS</a></td><td>Banco relacional</td><td>Banco gerenciado para MySQL, PostgreSQL, MariaDB, Oracle, SQL Server e outros.</td></tr>
+                <tr><td><a class="service-link" href="aula02-aws-amazon-dynamodb.html">Amazon DynamoDB</a></td><td>NoSQL</td><td>Banco chave-valor/documento com baixa latência e alta escala.</td></tr>
+            </table>
+        </div>
+    </div>
+    <div class="slide-container">
+        
+        <div class="content-area">
+            <table class="product-table">
+                <tr><th>Produto</th><th>Categoria</th><th>Para que serve</th></tr>
+                <tr><td><a class="service-link" href="aula02-aws-amazon-vpc.html">Amazon VPC</a></td><td>Rede</td><td>Rede virtual privada para sub-redes, rotas, segurança e isolamento de recursos.</td></tr>
+                <tr><td><a class="service-link" href="aula02-aws-iam.html">AWS IAM</a></td><td>Identidade</td><td>Controle de usuários, grupos, permissões, papéis e políticas de acesso.</td></tr>
+                <tr><td><a class="service-link" href="aula02-aws-amazon-cloudfront.html">Amazon CloudFront</a></td><td>CDN</td><td>Distribuição de conteúdo com baixa latência usando pontos de presença globais.</td></tr>
+                <tr><td><a class="service-link" href="aula02-aws-amazon-eks.html">Amazon EKS</a></td><td>Contêineres</td><td>Kubernetes gerenciado para aplicações em contêineres.</td></tr>
+                <tr><td><a class="service-link" href="aula02-aws-amazon-cloudwatch.html">Amazon CloudWatch</a></td><td>Observabilidade</td><td>Monitoramento de métricas, logs, alarmes e eventos operacionais.</td></tr>
             </table>
         </div>
     </div>
@@ -254,20 +264,27 @@
     </div>
 
     <div class="slide-container">
-        <h2 class="slide-title">Azure: 10 produtos principais</h2>
+        <h3 class="slide-title">Azure: 10 produtos principais</h3>
         <div class="content-area">
             <table class="product-table">
                 <tr><th>Produto</th><th>Categoria</th><th>Para que serve</th></tr>
-                <tr><td>Azure Virtual Machines</td><td>Compute / IaaS</td><td>Máquinas virtuais Windows ou Linux para aplicações, bancos, serviços e workloads legados.</td></tr>
-                <tr><td>Azure Blob Storage</td><td>Storage</td><td>Armazenamento de objetos para arquivos, imagens, backups, logs e data lakes.</td></tr>
-                <tr><td>Azure Functions</td><td>Serverless</td><td>Execução de código orientado a eventos sem gerenciar infraestrutura.</td></tr>
-                <tr><td>Azure App Service</td><td>PaaS</td><td>Hospedagem gerenciada de aplicações web, APIs e back-ends móveis.</td></tr>
-                <tr><td>Azure SQL Database</td><td>Banco relacional</td><td>Banco SQL gerenciado baseado no SQL Server para aplicações corporativas.</td></tr>
-                <tr><td>Azure Cosmos DB</td><td>NoSQL</td><td>Banco NoSQL distribuído globalmente com múltiplos modelos de dados.</td></tr>
-                <tr><td>Azure Virtual Network</td><td>Rede</td><td>Rede privada para isolar e conectar recursos no Azure.</td></tr>
-                <tr><td>Microsoft Entra ID</td><td>Identidade</td><td>Gerenciamento de identidades, login, MFA e acesso corporativo.</td></tr>
-                <tr><td>Azure Kubernetes Service</td><td>Contêineres</td><td>Kubernetes gerenciado para implantação de aplicações em contêineres.</td></tr>
-                <tr><td>Azure Monitor</td><td>Observabilidade</td><td>Monitoramento de aplicações, infraestrutura, logs, métricas e alertas.</td></tr>
+                <tr><td><a class="service-link" href="aula02-azure-virtual-machines.html">Azure Virtual Machines</a></td><td>Compute / IaaS</td><td>Máquinas virtuais Windows ou Linux para aplicações, bancos, serviços e workloads legados.</td></tr>
+                <tr><td><a class="service-link" href="aula02-azure-blob-storage.html">Azure Blob Storage</a></td><td>Storage</td><td>Armazenamento de objetos para arquivos, imagens, backups, logs e data lakes.</td></tr>
+                <tr><td><a class="service-link" href="aula02-azure-functions.html">Azure Functions</a></td><td>Serverless</td><td>Execução de código orientado a eventos sem gerenciar infraestrutura.</td></tr>
+                <tr><td><a class="service-link" href="aula02-azure-app-service.html">Azure App Service</a></td><td>PaaS</td><td>Hospedagem gerenciada de aplicações web, APIs e back-ends móveis.</td></tr>
+                <tr><td><a class="service-link" href="aula02-azure-sql-database.html">Azure SQL Database</a></td><td>Banco relacional</td><td>Banco SQL gerenciado baseado no SQL Server para aplicações corporativas.</td></tr>
+            </table>
+        </div>
+    </div>
+    <div class="slide-container">
+        <div class="content-area">
+            <table class="product-table">
+                <tr><th>Produto</th><th>Categoria</th><th>Para que serve</th></tr>
+                <tr><td><a class="service-link" href="aula02-azure-cosmos-db.html">Azure Cosmos DB</a></td><td>NoSQL</td><td>Banco NoSQL distribuído globalmente com múltiplos modelos de dados.</td></tr>
+                <tr><td><a class="service-link" href="aula02-azure-virtual-network.html">Azure Virtual Network</a></td><td>Rede</td><td>Rede privada para isolar e conectar recursos no Azure.</td></tr>
+                <tr><td><a class="service-link" href="aula02-azure-entra-id.html">Microsoft Entra ID</a></td><td>Identidade</td><td>Gerenciamento de identidades, login, MFA e acesso corporativo.</td></tr>
+                <tr><td><a class="service-link" href="aula02-azure-kubernetes-service.html">Azure Kubernetes Service</a></td><td>Contêineres</td><td>Kubernetes gerenciado para implantação de aplicações em contêineres.</td></tr>
+                <tr><td><a class="service-link" href="aula02-azure-monitor.html">Azure Monitor</a></td><td>Observabilidade</td><td>Monitoramento de aplicações, infraestrutura, logs, métricas e alertas.</td></tr>
             </table>
         </div>
     </div>
@@ -304,20 +321,28 @@
     </div>
 
     <div class="slide-container">
-        <h2 class="slide-title">Google Cloud: 10 produtos principais</h2>
+        <h3 class="slide-title">Google Cloud: 10 produtos principais</h3>
         <div class="content-area">
             <table class="product-table">
                 <tr><th>Produto</th><th>Categoria</th><th>Para que serve</th></tr>
-                <tr><td>Compute Engine</td><td>Compute / IaaS</td><td>Máquinas virtuais escaláveis para aplicações, serviços e processamento.</td></tr>
-                <tr><td>Cloud Storage</td><td>Storage</td><td>Armazenamento de objetos para arquivos, backups, data lakes e conteúdo estático.</td></tr>
-                <tr><td>Cloud Run</td><td>Serverless</td><td>Execução de contêineres sem gerenciar servidores, com escala automática.</td></tr>
-                <tr><td>Cloud Functions</td><td>Serverless</td><td>Funções orientadas a eventos para automações, integrações e APIs pequenas.</td></tr>
-                <tr><td>Cloud SQL</td><td>Banco relacional</td><td>Bancos gerenciados MySQL, PostgreSQL e SQL Server.</td></tr>
-                <tr><td>BigQuery</td><td>Data warehouse</td><td>Análise de grandes volumes de dados usando SQL, com alta escala.</td></tr>
-                <tr><td>Google Kubernetes Engine</td><td>Contêineres</td><td>Kubernetes gerenciado para aplicações em contêineres.</td></tr>
-                <tr><td>Vertex AI</td><td>IA / ML</td><td>Plataforma para treinar, implantar e gerenciar modelos de machine learning e IA generativa.</td></tr>
-                <tr><td>Cloud IAM</td><td>Identidade</td><td>Controle de acesso a recursos por papéis, permissões e políticas.</td></tr>
-                <tr><td>Cloud Monitoring</td><td>Observabilidade</td><td>Métricas, painéis, alertas e monitoramento de recursos e aplicações.</td></tr>
+                <tr><td><a class="service-link" href="aula02-gcp-compute-engine.html">Compute Engine</a></td><td>Compute / IaaS</td><td>Máquinas virtuais escaláveis para aplicações, serviços e processamento.</td></tr>
+                <tr><td><a class="service-link" href="aula02-gcp-cloud-storage.html">Cloud Storage</a></td><td>Storage</td><td>Armazenamento de objetos para arquivos, backups, data lakes e conteúdo estático.</td></tr>
+                <tr><td><a class="service-link" href="aula02-gcp-cloud-run.html">Cloud Run</a></td><td>Serverless</td><td>Execução de contêineres sem gerenciar servidores, com escala automática.</td></tr>
+                <tr><td><a class="service-link" href="aula02-gcp-cloud-functions.html">Cloud Functions</a></td><td>Serverless</td><td>Funções orientadas a eventos para automações, integrações e APIs pequenas.</td></tr>
+                <tr><td><a class="service-link" href="aula02-gcp-cloud-sql.html">Cloud SQL</a></td><td>Banco relacional</td><td>Bancos gerenciados MySQL, PostgreSQL e SQL Server.</td></tr>
+            </table>
+        </div>
+    </div>
+    <div class="slide-container">
+        <h3 class="slide-title">Google Cloud: 10 produtos principais</h3>
+        <div class="content-area">
+            <table class="product-table">
+                <tr><th>Produto</th><th>Categoria</th><th>Para que serve</th></tr>
+                <tr><td><a class="service-link" href="aula02-gcp-bigquery.html">BigQuery</a></td><td>Data warehouse</td><td>Análise de grandes volumes de dados usando SQL, com alta escala.</td></tr>
+                <tr><td><a class="service-link" href="aula02-gcp-gke.html">Google Kubernetes Engine</a></td><td>Contêineres</td><td>Kubernetes gerenciado para aplicações em contêineres.</td></tr>
+                <tr><td><a class="service-link" href="aula02-gcp-vertex-ai.html">Vertex AI</a></td><td>IA / ML</td><td>Plataforma para treinar, implantar e gerenciar modelos de machine learning e IA generativa.</td></tr>
+                <tr><td><a class="service-link" href="aula02-gcp-cloud-iam.html">Cloud IAM</a></td><td>Identidade</td><td>Controle de acesso a recursos por papéis, permissões e políticas.</td></tr>
+                <tr><td><a class="service-link" href="aula02-gcp-cloud-monitoring.html">Cloud Monitoring</a></td><td>Observabilidade</td><td>Métricas, painéis, alertas e monitoramento de recursos e aplicações.</td></tr>
             </table>
         </div>
     </div>
@@ -347,7 +372,7 @@
     </div>
 
     <div class="slide-container">
-        <h2 class="slide-title">Comparação rápida por categoria</h2>
+        <h3 class="slide-title">Comparação rápida por categoria</h3>
         <div class="content-area">
             <div class="compare-grid">
                 <div class="head">Categoria</div><div class="head">AWS</div><div class="head">Azure</div><div class="head">Google Cloud</div>
@@ -364,7 +389,7 @@
     </div>
 
     <div class="slide-container">
-        <h2 class="slide-title">Como escolher um produto?</h2>
+        <h3 class="slide-title">Como escolher um produto?</h3>
         <div class="content-area">
             <ul class="bullet-list">
                 <li><b>Comece pelo problema:</b> hospedar aplicação, armazenar arquivo, consultar dados, autenticar usuários ou monitorar sistema?</li>
@@ -423,6 +448,47 @@
                     <h3>Mercado</h3>
                     <p>Saber mapear serviços equivalentes ajuda em AWS, Azure, Google Cloud e ambientes multicloud.</p>
                 </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="slide-container">
+        <h3 class="slide-title">Páginas detalhadas dos serviços</h3>
+        <div class="content-area">
+            <p>Os nomes dos serviços nas tabelas agora são links. Use também a lista abaixo para abrir diretamente a explicação detalhada de cada serviço.</p>
+            <div style="columns:3; column-gap:42px; margin-top:20px;">
+                <ul class="bullet-list" style="break-inside: avoid;">
+                    <li><a class="service-link" href="aula02-aws-amazon-ec2.html">Amazon EC2</a> <span style="color:#64748b;">(AWS)</span></li>
+                    <li><a class="service-link" href="aula02-aws-amazon-s3.html">Amazon S3</a> <span style="color:#64748b;">(AWS)</span></li>
+                    <li><a class="service-link" href="aula02-aws-lambda.html">AWS Lambda</a> <span style="color:#64748b;">(AWS)</span></li>
+                    <li><a class="service-link" href="aula02-aws-amazon-rds.html">Amazon RDS</a> <span style="color:#64748b;">(AWS)</span></li>
+                    <li><a class="service-link" href="aula02-aws-amazon-dynamodb.html">Amazon DynamoDB</a> <span style="color:#64748b;">(AWS)</span></li>
+<li><a class="service-link" href="aula02-aws-amazon-vpc.html">Amazon VPC</a> <span style="color:#64748b;">(AWS)</span></li>
+<li><a class="service-link" href="aula02-aws-iam.html">AWS IAM</a> <span style="color:#64748b;">(AWS)</span></li>
+<li><a class="service-link" href="aula02-aws-amazon-cloudfront.html">Amazon CloudFront</a> <span style="color:#64748b;">(AWS)</span></li>
+<li><a class="service-link" href="aula02-aws-amazon-eks.html">Amazon EKS</a> <span style="color:#64748b;">(AWS)</span></li>
+<li><a class="service-link" href="aula02-aws-amazon-cloudwatch.html">Amazon CloudWatch</a> <span style="color:#64748b;">(AWS)</span></li>
+<li><a class="service-link" href="aula02-azure-virtual-machines.html">Azure Virtual Machines</a> <span style="color:#64748b;">(Microsoft Azure)</span></li>
+<li><a class="service-link" href="aula02-azure-blob-storage.html">Azure Blob Storage</a> <span style="color:#64748b;">(Microsoft Azure)</span></li>
+<li><a class="service-link" href="aula02-azure-functions.html">Azure Functions</a> <span style="color:#64748b;">(Microsoft Azure)</span></li>
+<li><a class="service-link" href="aula02-azure-app-service.html">Azure App Service</a> <span style="color:#64748b;">(Microsoft Azure)</span></li>
+<li><a class="service-link" href="aula02-azure-sql-database.html">Azure SQL Database</a> <span style="color:#64748b;">(Microsoft Azure)</span></li>
+<li><a class="service-link" href="aula02-azure-cosmos-db.html">Azure Cosmos DB</a> <span style="color:#64748b;">(Microsoft Azure)</span></li>
+<li><a class="service-link" href="aula02-azure-virtual-network.html">Azure Virtual Network</a> <span style="color:#64748b;">(Microsoft Azure)</span></li>
+<li><a class="service-link" href="aula02-azure-entra-id.html">Microsoft Entra ID</a> <span style="color:#64748b;">(Microsoft Azure)</span></li>
+<li><a class="service-link" href="aula02-azure-kubernetes-service.html">Azure Kubernetes Service</a> <span style="color:#64748b;">(Microsoft Azure)</span></li>
+<li><a class="service-link" href="aula02-azure-monitor.html">Azure Monitor</a> <span style="color:#64748b;">(Microsoft Azure)</span></li>
+<li><a class="service-link" href="aula02-gcp-compute-engine.html">Compute Engine</a> <span style="color:#64748b;">(Google Cloud)</span></li>
+<li><a class="service-link" href="aula02-gcp-cloud-storage.html">Cloud Storage</a> <span style="color:#64748b;">(Google Cloud)</span></li>
+<li><a class="service-link" href="aula02-gcp-cloud-run.html">Cloud Run</a> <span style="color:#64748b;">(Google Cloud)</span></li>
+<li><a class="service-link" href="aula02-gcp-cloud-functions.html">Cloud Functions</a> <span style="color:#64748b;">(Google Cloud)</span></li>
+<li><a class="service-link" href="aula02-gcp-cloud-sql.html">Cloud SQL</a> <span style="color:#64748b;">(Google Cloud)</span></li>
+<li><a class="service-link" href="aula02-gcp-bigquery.html">BigQuery</a> <span style="color:#64748b;">(Google Cloud)</span></li>
+<li><a class="service-link" href="aula02-gcp-gke.html">Google Kubernetes Engine</a> <span style="color:#64748b;">(Google Cloud)</span></li>
+<li><a class="service-link" href="aula02-gcp-vertex-ai.html">Vertex AI</a> <span style="color:#64748b;">(Google Cloud)</span></li>
+<li><a class="service-link" href="aula02-gcp-cloud-iam.html">Cloud IAM</a> <span style="color:#64748b;">(Google Cloud)</span></li>
+<li><a class="service-link" href="aula02-gcp-cloud-monitoring.html">Cloud Monitoring</a> <span style="color:#64748b;">(Google Cloud)</span></li></ul>
             </div>
         </div>
     </div>

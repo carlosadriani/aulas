@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Computing - Azure Blob Storage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        body { background-color: #e2e8f0; }
+        .slide-container { background-color: #FDFBF7; font-family: "DM Sans", sans-serif; position: relative; overflow: hidden; }
+        .slide-container::before { content: ''; position: absolute; top: -120px; right: -120px; width: 420px; height: 420px; background: rgba(0,51,102,0.055); border-radius: 50%; z-index: 0; }
+        h1,h2,h3 { font-family: "Merriweather", serif; color: #003366; z-index: 1; }
+        p,li,td { color: #444; font-size: 21px; line-height: 1.55; z-index: 1; }
+        .title-layout { text-align:center; justify-content:center; height:100%; background:#003366; color:#FDFBF7; padding:0 80px; }
+        .title-layout h1 { color:#FDFBF7; font-size:68px; margin-bottom:18px; }
+        .title-layout p { color:#d1d5db; font-size:26px; }
+        .slide-title { font-size:44px; font-weight:700; padding:54px 80px 18px; text-align:left; border-left:10px solid #003366; margin-top:38px; margin-left:40px; }
+        .content-area { flex-grow:1; padding:20px 80px 60px; display:flex; flex-direction:column; justify-content:center; }
+        .two-column { display:grid; grid-template-columns:1fr 1fr; gap:34px; align-items:start; }
+        .three-column { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+        .tile,.box { background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:26px; box-shadow:0 6px 14px rgba(0,0,0,0.05); }
+        .tile { border-top:5px solid #003366; }
+        .tile i { font-size:38px; color:#003366; margin-bottom:16px; }
+        .tag { display:inline-block; background:#e0f2fe; color:#075985; font-weight:700; border-radius:999px; padding:6px 12px; font-size:15px; margin-bottom:12px; }
+        .bullet-list { list-style:none; padding:0; margin:0; }
+        .bullet-list li { margin-bottom:16px; padding-left:42px; position:relative; }
+        .bullet-list li::before { content:'058'; font-family:'Font Awesome 6 Free'; font-weight:900; position:absolute; left:0; color:#003366; font-size:24px; }
+        .warn-list li::before { content:'071'; color:#b45309; }
+        .step { display:grid; grid-template-columns:70px 1fr; gap:18px; align-items:start; margin-bottom:20px; }
+        .num { width:54px; height:54px; border-radius:50%; background:#003366; color:white; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:24px; }
+        .service-table { width:100%; border-collapse:collapse; background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 5px 14px rgba(0,0,0,0.06); }
+        .service-table th { background:#003366; color:white; padding:13px; text-align:left; font-size:18px; }
+        .service-table td { padding:13px; border-bottom:1px solid #e2e8f0; vertical-align:top; font-size:18px; }
+        .service-table td:first-child { font-weight:700; color:#003366; width:28%; }
+        .navlinks { margin-top:34px; display:flex; justify-content:center; gap:18px; flex-wrap:wrap; }
+        .navlinks a { color:#003366; background:#fff; border:1px solid #cbd5e1; padding:12px 18px; border-radius:999px; text-decoration:none; font-weight:700; }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body class="slides-light">
+    <div class="slide-container"><div class="title-layout"><i class="fa-solid fa-database" style="font-size:82px;color:#93c5fd;margin-bottom:28px;"></i><h1>Azure Blob Storage</h1><p>Microsoft Azure | Storage</p><p style="font-size:20px;margin-top:34px;opacity:.8;">Cloud Computing - Análise e Desenvolvimento de Sistemas</p></div></div>
+    <div class="slide-container"><h2 class="slide-title">Visão geral</h2><div class="content-area"><div class="two-column"><div><span class="tag">Storage</span><p>Armazenamento de objetos do Azure para dados não estruturados, arquivos, imagens, backups, logs e data lakes.</p><p>Em uma arquitetura de nuvem, este serviço normalmente aparece como uma peça de infraestrutura gerenciada. O objetivo é reduzir esforço operacional, aumentar disponibilidade e permitir que equipes foquem mais na aplicação e menos no hardware.</p></div><table class="service-table"><tr><td>Categoria</td><td>Storage</td></tr><tr><td>Provedor</td><td>Microsoft Azure</td></tr><tr><td>Para que serve</td><td>Armazenamento de objetos do Azure para dados não estruturados, arquivos, imagens, backups, logs e data lakes.</td></tr><tr><td>Quando considerar</td><td>Quando você precisa resolver esse tipo de problema sem administrar toda a infraestrutura manualmente.</td></tr><tr><td>Responsabilidade do aluno/profissional</td><td>Configurar segurança, custos, observabilidade, arquitetura e boas práticas de uso.</td></tr></table></div></div></div>
+    <div class="slide-container"><h2 class="slide-title">Principais usos</h2><div class="content-area"><ul class="bullet-list"><li>Guardar documentos e mídias.</li>
+<li>Servir conteúdo estático.</li>
+<li>Criar data lakes com Data Lake Storage Gen2.</li>
+<li>Armazenar backups e arquivos de auditoria.</li></ul></div></div>
+    <div class="slide-container"><h2 class="slide-title">Como funciona na prática</h2><div class="content-area"><div class="three-column"><div class="tile"><i class="fa-solid fa-diagram-project"></i><h3>1. Recurso</h3><p>Você cria um recurso no console, CLI, SDK ou infraestrutura como código, definindo região, nome, capacidade e integrações.</p></div><div class="tile"><i class="fa-solid fa-shield-halved"></i><h3>2. Segurança</h3><p>O acesso é controlado por identidade, rede, políticas e permissões. Em produção, a regra é menor privilégio.</p></div><div class="tile"><i class="fa-solid fa-chart-line"></i><h3>3. Operação</h3><p>Métricas, logs, alertas, custos e automações indicam se o serviço está saudável, seguro e economicamente viável.</p></div></div></div></div>
+    <div class="slide-container"><h2 class="slide-title">Conceitos que o aluno deve dominar</h2><div class="content-area"><ul class="bullet-list"><li>Use containers, blobs e níveis de acesso.</li>
+<li>Defina camadas Hot, Cool, Cold ou Archive conforme uso.</li>
+<li>Controle acesso com Entra ID, SAS ou chaves gerenciadas.</li>
+<li>Configure versionamento, lifecycle e criptografia.</li></ul></div></div>
+    <div class="slide-container"><h2 class="slide-title">Boas práticas e cuidados</h2><div class="content-area"><div class="two-column"><div class="box"><h3>Boas práticas</h3><ul class="bullet-list"><li>Comece pequeno, monitore e escale com base em dados.</li><li>Automatize criação e atualização com IaC sempre que possível.</li><li>Defina tags, orçamento e alertas de custo desde o início.</li><li>Documente decisões de arquitetura e dependências.</li></ul></div><div class="box"><h3>Erros comuns</h3><ul class="bullet-list warn-list"><li>Usar SAS com validade longa demais.</li>
+<li>Expor container publicamente sem necessidade.</li>
+<li>Não controlar ciclo de vida dos blobs.</li>
+<li>Ignorar custos de leitura, escrita e transferência.</li></ul></div></div></div></div>
+    <div class="slide-container"><h2 class="slide-title">Exemplo didático</h2><div class="content-area"><div class="step"><div class="num">1</div><p>Imagine uma aplicação de e-commerce. O time precisa publicar uma nova funcionalidade sem comprar servidores físicos.</p></div><div class="step"><div class="num">2</div><p>O serviço <b>Azure Blob Storage</b> entra como componente de apoio para compute, dados, rede, identidade, observabilidade ou IA, conforme sua categoria.</p></div><div class="step"><div class="num">3</div><p>O aluno deve explicar: qual problema o serviço resolve, quais recursos precisam ser configurados, quais riscos existem e como monitorar custo e segurança.</p></div></div></div>
+    <div class="slide-container"><div class="title-layout"><h1>Resumo</h1><p style="max-width:850px;margin:0 auto;">Azure Blob Storage é um serviço de storage que deve ser entendido não apenas pelo nome comercial, mas pelo problema arquitetural que resolve.</p><div class="navlinks"><a href="aula02-produtos-cloud-aws-azure-gcp.html"><i class="fa-solid fa-arrow-left"></i> Voltar para a aula principal</a></div></div></div>
+</body>
+</html>
