@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMAC — Código de Autenticação de Mensagem</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <link rel="stylesheet" href="../assets/css/algoritmos.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light alg hash">
+
+    <div class="slide hero">
+        <i class="fa-solid fa-shield-halved cover" style="font-size: 70px; margin-bottom: 24px;"></i>
+        <h1>HMAC</h1>
+        <p style="font-size: 23px; opacity: 0.85;">Hash-based Message Authentication Code</p>
+        <p style="font-size: 16px; opacity: 0.6; margin-top: 8px;">Bellare, Canetti &amp; Krawczyk (1996) · RFC 2104 · FIPS 198</p>
+        <div style="margin-top: 30px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">Autenticação de Mensagem</div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>Integridade e autenticidade com chave secreta</h2></div>
+        <div class="content">
+            <span class="tag">MAC</span>
+            <div class="def">
+                O <b>HMAC</b> combina uma <b>função de hash</b> (como
+                <a href="gestao-alg-sha256.html" style="color:#065f46;font-weight:700;">SHA-256</a>) com uma <b>chave
+                secreta compartilhada</b>. Resultado: um código que prova <b>integridade</b> (a mensagem não mudou) <b>e</b>
+                <b>autenticidade de origem</b> (veio de quem possui a chave).
+            </div>
+            <div class="grid-2" style="margin-top:18px;">
+                <div class="card">
+                    <h3 style="font-size:19px;">Hash não basta sozinho</h3>
+                    <p>Um hash simples qualquer um recalcula. O <b>segredo</b> é o que liga o código à origem: sem a chave,
+                        o atacante não consegue gerar um HMAC válido para uma mensagem forjada.</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:19px;">MAC × Assinatura digital</h3>
+                    <p>O HMAC usa chave <b>simétrica</b> (ambas as partes a têm), então <b>não dá não repúdio</b> — qualquer
+                        um dos dois pode tê-lo gerado. Para não repúdio, use
+                        <a href="gestao-alg-ecdsa.html" style="color:#065f46;font-weight:700;">assinatura digital</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>A construção aninhada</h2></div>
+        <div class="content">
+            <div class="formula" style="font-size:16px;">HMAC(K, m) = H( (K ⊕ opad) ‖ H( (K ⊕ ipad) ‖ m ) )</div>
+            <div class="figure" style="margin-top:14px;">
+                <svg viewBox="0 0 880 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Construção aninhada do HMAC">
+                    <defs><marker id="hmArr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#10b981"/></marker></defs>
+                    <rect x="20" y="80" width="150" height="46" rx="9" fill="#d1fae5" stroke="#10b981" stroke-width="2"/>
+                    <text x="95" y="100" text-anchor="middle" font-size="13" fill="#065f46">K ⊕ ipad ‖ msg</text>
+                    <text x="95" y="117" text-anchor="middle" font-size="11" fill="#475569">chave interna + mensagem</text>
+                    <line x1="170" y1="103" x2="216" y2="103" stroke="#10b981" stroke-width="2.5" marker-end="url(#hmArr)"/>
+                    <rect x="220" y="78" width="120" height="50" rx="9" fill="#0f172a" stroke="#10b981" stroke-width="2"/>
+                    <text x="280" y="108" text-anchor="middle" font-size="15" font-weight="700" fill="#34d399">H interno</text>
+                    <line x1="340" y1="103" x2="386" y2="103" stroke="#10b981" stroke-width="2.5" marker-end="url(#hmArr)"/>
+                    <rect x="390" y="80" width="170" height="46" rx="9" fill="#d1fae5" stroke="#10b981" stroke-width="2"/>
+                    <text x="475" y="100" text-anchor="middle" font-size="13" fill="#065f46">K ⊕ opad ‖ (hash interno)</text>
+                    <text x="475" y="117" text-anchor="middle" font-size="11" fill="#475569">chave externa + resultado</text>
+                    <line x1="560" y1="103" x2="606" y2="103" stroke="#10b981" stroke-width="2.5" marker-end="url(#hmArr)"/>
+                    <rect x="610" y="78" width="120" height="50" rx="9" fill="#0f172a" stroke="#10b981" stroke-width="2"/>
+                    <text x="670" y="108" text-anchor="middle" font-size="15" font-weight="700" fill="#34d399">H externo</text>
+                    <line x1="730" y1="103" x2="776" y2="103" stroke="#10b981" stroke-width="2.5" marker-end="url(#hmArr)"/>
+                    <rect x="780" y="80" width="90" height="46" rx="9" fill="#10b981" stroke="#065f46" stroke-width="2"/>
+                    <text x="825" y="108" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">HMAC</text>
+                </svg>
+                <p class="figcap">O duplo hash com pads interno (ipad) e externo (opad) é o que dá imunidade ao ataque de extensão de comprimento.</p>
+            </div>
+            <div class="ok"><b>Propriedade notável:</b> o HMAC permanece seguro <b>mesmo que</b> o hash subjacente tenha
+                fraquezas de colisão — por isso o HMAC-SHA1 ainda é considerado seguro, embora desencorajado.</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>Onde o HMAC é usado</h2></div>
+        <div class="content">
+            <ul class="spaced" style="font-size:18px;">
+                <li><b>Autenticação de APIs</b>: assinatura de requisições (ex.: AWS Signature v4).</li>
+                <li><b>Tokens JWT</b> com algoritmo <span class="kbd">HS256</span> (HMAC-SHA256).</li>
+                <li><b>TLS</b> (em modos baseados em MAC) e cookies de sessão assinados.</li>
+                <li><b>Derivação de chaves</b>: o HKDF é construído sobre HMAC.</li>
+            </ul>
+            <div class="warn"><b>Boas práticas:</b> use chaves de tamanho adequado e <b>comparação em tempo constante</b>
+                ao validar o HMAC, para evitar ataques de <i>timing</i> que revelariam o código byte a byte.</div>
+            <div class="example"><b>Ex.:</b> um servidor recebe <span class="kbd">payload + HMAC</span>; recalcula o HMAC
+                com a chave secreta e compara. Se baterem, a requisição é íntegra e autêntica.</div>
+        </div>
+    </div>
+
+    <div class="slide hero">
+        <h1 style="color:#10b981;">Em resumo</h1>
+        <p style="font-size: 21px; max-width: 880px; opacity: 0.92; line-height:1.6;">O <b>HMAC</b> transforma um hash em
+            prova de <b>integridade + autenticidade</b> com uma chave secreta, via construção aninhada imune a
+            length-extension. Não oferece não repúdio (chave simétrica). É o motor de autenticação de APIs, JWT (HS256) e
+            derivação de chaves.</p>
+        <div class="crossref" style="justify-content:center; margin-top:24px;">
+            <a href="gestao-alg-sha256.html">SHA-256</a>
+            <a href="gestao-alg-ecdsa.html">ECDSA</a>
+            <a href="gestao-alg-aes.html">AES</a>
+            <a href="gestao-algoritmos.html">Todos os algoritmos</a>
+        </div>
+        <div style="margin-top: 22px;">
+            <a class="slide-back" href="gestao-pilares.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Pilares</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Gestão de Segurança da Informação</p>
+        <p>Referências: RFC 2104 · FIPS 198-1 · Bellare, Canetti, Krawczyk (1996).</p>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmo RSA — Criptografia Assimétrica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <link rel="stylesheet" href="../assets/css/algoritmos.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light alg asym">
+
+    <div class="slide hero">
+        <i class="fa-solid fa-key cover" style="font-size: 72px; margin-bottom: 24px;"></i>
+        <h1>RSA</h1>
+        <p style="font-size: 23px; opacity: 0.85;">Criptografia assimétrica de chave pública</p>
+        <p style="font-size: 16px; opacity: 0.6; margin-top: 8px;">Rivest, Shamir &amp; Adleman (1977) · base: fatoração de inteiros</p>
+        <div style="margin-top: 30px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">Criptografia Assimétrica</div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>A ideia da chave pública</h2></div>
+        <div class="content">
+            <span class="tag">Assimétrica</span>
+            <div class="def">
+                O <b>RSA</b> usa um <b>par de chaves</b> matematicamente ligadas: a <b>pública</b> (que qualquer um pode
+                ter) cifra; a <b>privada</b> (secreta) decifra. Resolve o problema que a criptografia simétrica não
+                resolve: <b>trocar segredos sem um canal seguro prévio</b>.
+            </div>
+            <div class="grid-2" style="margin-top:18px;">
+                <div class="card">
+                    <h3 style="font-size:19px;">Função alçapão</h3>
+                    <p>Baseia-se em uma operação <span class="highlight">fácil num sentido, difícil no inverso</span>:
+                        multiplicar dois primos enormes é trivial; <b>fatorar</b> o produto de volta é computacionalmente
+                        inviável. A chave privada é o "alçapão" que conhece os primos.</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:19px;">Dois usos</h3>
+                    <p><b>Cifrar</b> (com a pública, só o dono da privada lê) e <b>assinar</b> (com a privada, qualquer um
+                        verifica com a pública — base da
+                        <a href="gestao-alg-ecdsa.html" style="color:#3730a3;font-weight:700;">assinatura digital</a>).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>A matemática: geração, cifragem e decifragem</h2></div>
+        <div class="content">
+            <div class="grid-2">
+                <div class="card">
+                    <h3 style="font-size:19px;">1. Geração das chaves</h3>
+                    <div class="calc">
+                        escolha primos grandes p, q<br>
+                        n = p · q &nbsp;<span class="cmt"># módulo</span><br>
+                        φ(n) = (p−1)(q−1)<br>
+                        escolha e coprimo de φ(n)<br>
+                        d = e<sup>−1</sup> mod φ(n) &nbsp;<span class="cmt"># inverso</span><br>
+                        pública = <span class="res">(n, e)</span> · privada = <span class="res">(d)</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:19px;">2. Cifrar e decifrar</h3>
+                    <div class="calc">
+                        cifrar:&nbsp;&nbsp; c = m<sup>e</sup> mod n<br>
+                        decifrar: m = c<sup>d</sup> mod n<br><br>
+                        assinar:&nbsp; s = H(m)<sup>d</sup> mod n<br>
+                        verificar: s<sup>e</sup> mod n =? H(m)
+                    </div>
+                    <p class="note">Funciona pelo teorema de Euler: (m<sup>e</sup>)<sup>d</sup> ≡ m (mod n).</p>
+                </div>
+            </div>
+            <div class="warn"><b>RSA "de livro-texto" é inseguro:</b> sendo determinístico e maleável, exige
+                <b>preenchimento (padding)</b> — <span class="kbd">OAEP</span> para cifrar e <span class="kbd">PSS</span>
+                para assinar.</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>Tamanhos de chave, desempenho e cifragem híbrida</h2></div>
+        <div class="content">
+            <div class="grid-2">
+                <div class="card">
+                    <h3 style="font-size:19px;">Tamanhos recomendados</h3>
+                    <table class="table">
+                        <tr><th>Chave RSA</th><th>Status</th></tr>
+                        <tr><td>1024 bits</td><td style="color:#b91c1c;">Quebrado / proibido</td></tr>
+                        <tr><td>2048 bits</td><td>Mínimo atual</td></tr>
+                        <tr><td>3072 / 4096 bits</td><td>Recomendado / longo prazo</td></tr>
+                    </table>
+                    <p class="note">RSA-2048 ≈ 112 bits de segurança; 3072 ≈ 128 bits.</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:19px;">Por que "híbrido"?</h3>
+                    <p>RSA é <b>centenas de vezes mais lento</b> que o
+                        <a href="gestao-alg-aes.html" style="color:#3730a3;font-weight:700;">AES</a>. Por isso, na prática,
+                        o RSA cifra apenas uma <b>chave de sessão AES</b> aleatória, e o AES cifra os dados em si.</p>
+                    <div class="figure" style="margin-top:12px;">
+                        <svg viewBox="0 0 560 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cifragem híbrida RSA + AES">
+                            <defs><marker id="hyArr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#6366f1"/></marker></defs>
+                            <rect x="10" y="40" width="150" height="50" rx="9" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+                            <text x="85" y="60" text-anchor="middle" font-size="13" fill="#3730a3">Dados</text>
+                            <text x="85" y="78" text-anchor="middle" font-size="12" fill="#475569">cifrados com AES</text>
+                            <rect x="210" y="40" width="160" height="50" rx="9" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+                            <text x="290" y="60" text-anchor="middle" font-size="13" fill="#3730a3">Chave AES</text>
+                            <text x="290" y="78" text-anchor="middle" font-size="12" fill="#475569">cifrada com RSA (pública)</text>
+                            <rect x="410" y="40" width="140" height="50" rx="9" fill="#0f172a" stroke="#6366f1" stroke-width="2"/>
+                            <text x="480" y="60" text-anchor="middle" font-size="13" fill="#a5b4fc">Envia ambos</text>
+                            <text x="480" y="78" text-anchor="middle" font-size="12" fill="#94a3b8">ao destinatário</text>
+                            <line x1="160" y1="65" x2="206" y2="65" stroke="#6366f1" stroke-width="2.5" marker-end="url(#hyArr)"/>
+                            <line x1="370" y1="65" x2="406" y2="65" stroke="#6366f1" stroke-width="2.5" marker-end="url(#hyArr)"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="warn"><b>Ameaças:</b> chaves curtas (fatoração), primos com aleatoriedade fraca (chaves
+                compartilhadas), oráculos de padding (<b>Bleichenbacher</b>, PKCS#1 v1.5) e, no futuro, o
+                <b>algoritmo de Shor</b> em computadores quânticos.</div>
+        </div>
+    </div>
+
+    <div class="slide hero">
+        <h1 style="color:#6366f1;">Em resumo</h1>
+        <p style="font-size: 21px; max-width: 880px; opacity: 0.92; line-height:1.6;">O <b>RSA</b> inaugurou a
+            criptografia de chave pública: cifra e assina apoiado na dificuldade de <b>fatorar</b> n = p·q. Use ≥ 2048
+            bits, <b>sempre com padding (OAEP/PSS)</b>, e em esquema <b>híbrido</b> com AES. A tendência moderna é migrar
+            para curvas elípticas, mais eficientes.</p>
+        <div class="crossref" style="justify-content:center; margin-top:24px;">
+            <a href="gestao-alg-ecc.html">ECC</a>
+            <a href="gestao-alg-aes.html">AES</a>
+            <a href="gestao-alg-ecdsa.html">ECDSA</a>
+            <a href="gestao-algoritmos.html">Todos os algoritmos</a>
+        </div>
+        <div style="margin-top: 22px;">
+            <a class="slide-back" href="gestao-pilares.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Pilares</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Gestão de Segurança da Informação</p>
+        <p>Referências: Rivest, Shamir, Adleman (1978) · PKCS#1 (RFC 8017).</p>
+    </footer>
+
+</body>
+
+</html>

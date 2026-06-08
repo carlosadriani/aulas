@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHA-1 — Função de Hash Legada e Quebrada</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <link rel="stylesheet" href="../assets/css/algoritmos.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light alg hash">
+
+    <div class="slide hero">
+        <i class="fa-solid fa-triangle-exclamation cover" style="font-size: 70px; margin-bottom: 24px;"></i>
+        <h1>SHA-1</h1>
+        <p style="font-size: 23px; opacity: 0.85;">Hash de 160 bits — historicamente importante, hoje inseguro</p>
+        <p style="font-size: 16px; opacity: 0.6; margin-top: 8px;">NSA / NIST · FIPS 180-1 (1995) · resistência a colisão quebrada</p>
+        <div style="margin-top: 30px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">Função de Hash · Legado</div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>O que foi e por que caiu</h2></div>
+        <div class="content">
+            <span class="tag">Hash · Legado</span>
+            <div class="def">
+                O <b>SHA-1</b> produz um resumo de <b>160 bits</b> via construção Merkle–Damgård, semelhante ao
+                <a href="gestao-alg-sha256.html" style="color:#065f46;font-weight:700;">SHA-256</a>. Foi onipresente por
+                ~20 anos, mas sua <b>resistência a colisão foi quebrada</b> — não deve mais ser usado para fins de
+                segurança.
+            </div>
+            <div class="grid-2" style="margin-top:18px;">
+                <div class="card">
+                    <h3 style="font-size:19px;">Da teoria ao ataque real</h3>
+                    <p>A resistência a colisão <i>nominal</i> seria 2<sup>80</sup> (limite do aniversário sobre 160 bits),
+                        mas a <b>criptanálise</b> a reduziu progressivamente.</p>
+                    <div class="calc">
+                        2005 → ataque teórico &lt; 2<sup>69</sup><br>
+                        2017 → <span class="res">SHAttered</span>: colisão real ≈ 2<sup>63</sup><br>
+                        2020 → colisão de <b>prefixo escolhido</b> barata
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:19px;">O que "colisão" permite</h3>
+                    <p>Forjar dois documentos com o <b>mesmo hash</b> — por exemplo, dois PDFs ou certificados de aparência
+                        diferente que recebem a <b>mesma assinatura digital</b>. Isso destrói a garantia de integridade.</p>
+                    <div class="example"><b>SHAttered (2017):</b> Google e CWI publicaram dois PDFs distintos com hash
+                        SHA-1 idêntico, provando o ataque na prática.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>Situação atual e a lição didática</h2></div>
+        <div class="content">
+            <div class="grid-2">
+                <div class="card">
+                    <h3 style="font-size:19px;">Onde ainda aparece</h3>
+                    <ul class="spaced">
+                        <li><b>Proibido</b> em certificados TLS e assinaturas digitais.</li>
+                        <li><b>Git</b> ainda usa SHA-1 para IDs de objeto, mas com proteção anti-colisão e migrando para SHA-256.</li>
+                        <li><b>HMAC-SHA1</b> permanece tecnicamente seguro (o HMAC não depende de resistência a colisão), porém é desencorajado.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:19px;">A lição</h3>
+                    <p>Segurança criptográfica <b>envelhece</b>: o que era forte ontem pode cair com novos ataques e mais
+                        poder computacional. Daí a importância da <b>agilidade criptográfica</b> — poder trocar de
+                        algoritmo sem reescrever o sistema.</p>
+                    <div class="warn"><b>Regra prática:</b> para qualquer uso novo de hash, escolha
+                        <a href="gestao-alg-sha256.html" style="color:#065f46;font-weight:700;">SHA-256</a> ou SHA-3.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide hero">
+        <h1 style="color:#10b981;">Em resumo</h1>
+        <p style="font-size: 21px; max-width: 880px; opacity: 0.92; line-height:1.6;">O <b>SHA-1</b> é um marco histórico
+            <b>aposentado para segurança</b>: colisões práticas (SHAttered, 2017) tornaram-no inadequado para assinaturas
+            e certificados. Serve de exemplo de que algoritmos têm prazo de validade. Use SHA-256 ou SHA-3.</p>
+        <div class="crossref" style="justify-content:center; margin-top:24px;">
+            <a href="gestao-alg-sha256.html">SHA-256</a>
+            <a href="gestao-alg-md5.html">MD5</a>
+            <a href="gestao-alg-hmac.html">HMAC</a>
+            <a href="gestao-algoritmos.html">Todos os algoritmos</a>
+        </div>
+        <div style="margin-top: 22px;">
+            <a class="slide-back" href="gestao-pilares.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Pilares</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Gestão de Segurança da Informação</p>
+        <p>Referências: FIPS 180-1 · Stevens et al., "The first collision for full SHA-1" (2017).</p>
+    </footer>
+
+</body>
+
+</html>

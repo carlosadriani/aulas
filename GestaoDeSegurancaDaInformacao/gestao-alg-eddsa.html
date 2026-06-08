@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdDSA — Assinatura de Edwards (Ed25519)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <link rel="stylesheet" href="../assets/css/algoritmos.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light alg sign">
+
+    <div class="slide hero">
+        <i class="fa-solid fa-feather-pointed cover" style="font-size: 70px; margin-bottom: 24px;"></i>
+        <h1>EdDSA</h1>
+        <p style="font-size: 23px; opacity: 0.85;">Edwards-curve Digital Signature Algorithm (Ed25519)</p>
+        <p style="font-size: 16px; opacity: 0.6; margin-top: 8px;">Bernstein, Duif, Lange, Schwabe, Yang (2011) · RFC 8032</p>
+        <div style="margin-top: 30px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">Assinatura Digital</div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>A assinatura moderna, sem as armadilhas do ECDSA</h2></div>
+        <div class="content">
+            <span class="tag">Assinatura</span>
+            <div class="def">
+                O <b>EdDSA</b> é um esquema de assinatura sobre <b>curvas de Edwards torcidas</b> (a Curve25519, em
+                <b>Ed25519</b>). Foi projetado para ser <b>rápido, simples e seguro por construção</b>, eliminando os
+                erros de implementação que afligem o
+                <a href="gestao-alg-ecdsa.html" style="color:#b91c1c;font-weight:700;">ECDSA</a>.
+            </div>
+            <div class="grid-2" style="margin-top:18px;">
+                <div class="card">
+                    <h3 style="font-size:19px;">Nonce determinístico</h3>
+                    <p>O valor <b>r</b> não vem de um gerador aleatório: é <span class="highlight">derivado por hash</span>
+                        da chave privada + mensagem. Assim, <b>nunca se repete</b> nem depende de RNG — fechando a falha
+                        que vaza a chave no ECDSA.</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:19px;">Rápido e robusto</h3>
+                    <p>Usa fórmulas de adição <b>completas</b> (sem casos especiais), é naturalmente de <b>tempo
+                        constante</b> (resistente a canal lateral) e dispensa o cálculo de inversos modulares.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>Como assina e verifica (Ed25519)</h2></div>
+        <div class="content">
+            <div class="grid-2">
+                <div class="card">
+                    <h3 style="font-size:19px;">Assinar</h3>
+                    <div class="calc">
+                        a, prefixo ← H(chave privada)<br>
+                        A = a·B &nbsp;<span class="cmt"># chave pública</span><br>
+                        r = H(prefixo ‖ M) mod L<br>
+                        R = r·B<br>
+                        S = (r + H(R ‖ A ‖ M)·a) mod L<br>
+                        assinatura = <span class="res">(R, S)</span>
+                    </div>
+                    <p class="note">B é o ponto-base; L é a ordem do subgrupo; H = SHA-512.</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:19px;">Verificar</h3>
+                    <div class="calc">
+                        h = H(R ‖ A ‖ M) mod L<br>
+                        válida se <span class="res">8·S·B = 8·R + 8·h·A</span>
+                    </div>
+                    <div class="ok"><b>Sem RNG na assinatura</b> = sem o erro clássico de nonce repetido. Mais difícil de
+                        implementar errado.</div>
+                </div>
+            </div>
+            <div class="example"><b>Ex.:</b> chaves <span class="kbd">ssh-ed25519</span> no OpenSSH, assinaturas no
+                <b>Signal</b>, no TLS 1.3 e em pacotes de software. Assinaturas de apenas <b>64 bytes</b>.</div>
+        </div>
+    </div>
+
+    <div class="slide hero">
+        <h1 style="color:#ef4444;">Em resumo</h1>
+        <p style="font-size: 21px; max-width: 880px; opacity: 0.92; line-height:1.6;">O <b>EdDSA/Ed25519</b> é o estado da
+            arte em assinatura: determinístico, veloz, de tempo constante e resistente a erros de implementação. Entrega
+            autenticidade, integridade e não repúdio com chaves e assinaturas minúsculas — por isso vem substituindo o
+            ECDSA em SSH, TLS e mensageria.</p>
+        <div class="crossref" style="justify-content:center; margin-top:24px;">
+            <a href="gestao-alg-ecdsa.html">ECDSA</a>
+            <a href="gestao-alg-ecc.html">ECC</a>
+            <a href="gestao-alg-sha256.html">SHA-256</a>
+            <a href="gestao-algoritmos.html">Todos os algoritmos</a>
+        </div>
+        <div style="margin-top: 22px;">
+            <a class="slide-back" href="gestao-pilares.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Pilares</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Gestão de Segurança da Informação</p>
+        <p>Referências: RFC 8032 · Bernstein et al., "High-speed high-security signatures".</p>
+    </footer>
+
+</body>
+
+</html>

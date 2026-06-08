@@ -53,14 +53,22 @@ canvas {
 .slide {
     /* Largura fluida: até 1280px, mas nunca ultrapassa a viewport */
     width: min(1280px, 100%) !important;
-    /* Sobrepõe alturas fixas legadas (height: 720px) */
+    /* Altura definida pelo CONTEÚDO — nada de caixa 16:9 fixa.
+       Antes, aspect-ratio: 16/9 forçava ~720px e cortava o que
+       passasse disso. Agora a página cresce verticalmente conforme
+       o conteúdo, como uma página web normal. */
     height: auto !important;
-    /* Mantém proporção 16:9 sem altura fixa em px */
-    aspect-ratio: 16 / 9;
+    aspect-ratio: auto !important;
+    /* Altura mínima só para dar "corpo" a slides curtos (capas etc.),
+       sem nunca limitar os mais longos. */
+    min-height: clamp(260px, 34vw, 440px);
     /* Habilita unidades de container query (cqw) para escalar textos */
     container-type: inline-size;
 
     position: relative;
+    /* overflow hidden mantém as bordas arredondadas e contém as
+       decorações de fundo; como a altura agora é automática, ele
+       NÃO corta mais o conteúdo. */
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -68,6 +76,17 @@ canvas {
     border-radius: 10px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
     max-width: 100%;
+}
+
+/* Conteúdo interno: garante respiro vertical e alinhamento ao topo
+   quando o conteúdo é longo (evita que textos grandes fiquem
+   espremidos pelo justify-content: center herdado dos slides). */
+.slide-container > .content,
+.slide > .content,
+.slide-container > .content-area,
+.slide > .content-area {
+    flex: 1 1 auto;
+    min-height: 0;
 }
 
 /* ============================================================

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criptografia de Curvas Elípticas (ECC)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <link rel="stylesheet" href="../assets/css/algoritmos.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light alg asym">
+
+    <div class="slide hero">
+        <i class="fa-solid fa-bezier-curve cover" style="font-size: 72px; margin-bottom: 24px;"></i>
+        <h1>ECC</h1>
+        <p style="font-size: 23px; opacity: 0.85;">Criptografia de Curvas Elípticas</p>
+        <p style="font-size: 16px; opacity: 0.6; margin-top: 8px;">Koblitz &amp; Miller (1985) · base: logaritmo discreto elíptico (ECDLP)</p>
+        <div style="margin-top: 30px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">Criptografia Assimétrica</div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>A mesma ideia do RSA, com outra matemática</h2></div>
+        <div class="content">
+            <span class="tag">Assimétrica</span>
+            <div class="def">
+                A <b>ECC</b> é criptografia de chave pública construída sobre os pontos de uma <b>curva elíptica</b>
+                <span class="kbd">y² = x³ + ax + b</span> sobre um corpo finito. Sua força vem da dificuldade do
+                <b>logaritmo discreto elíptico (ECDLP)</b>.
+            </div>
+            <div class="grid-2" style="margin-top:18px;">
+                <div class="card">
+                    <h3 style="font-size:19px;">O problema difícil</h3>
+                    <p>Definida uma operação de <b>"soma de pontos"</b>, calcular <span class="kbd">Q = k·P</span>
+                        (somar P a si mesmo k vezes) é fácil; mas <b>recuperar k</b> conhecendo P e Q é inviável. O
+                        escalar secreto <b>k</b> é a chave privada; <b>Q</b> é a pública.</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:19px;">Vantagem decisiva: chaves curtas</h3>
+                    <p>O ECDLP é mais difícil que a fatoração para o mesmo tamanho, então a ECC oferece <b>a mesma
+                        segurança com chaves muito menores</b> — ideal para celulares, IoT e TLS.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>Eficiência, curvas e usos</h2></div>
+        <div class="content">
+            <div class="grid-2">
+                <div class="card">
+                    <h3 style="font-size:19px;">Segurança equivalente</h3>
+                    <table class="table">
+                        <tr><th>Segurança</th><th>RSA</th><th>ECC</th></tr>
+                        <tr><td>112 bits</td><td>2048</td><td>224</td></tr>
+                        <tr><td>128 bits</td><td>3072</td><td>256</td></tr>
+                        <tr><td>256 bits</td><td>15360</td><td>512</td></tr>
+                    </table>
+                    <p class="note">Uma chave ECC de 256 bits ≈ RSA de 3072 bits — bem mais leve.</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:19px;">Curvas e aplicações</h3>
+                    <ul class="spaced">
+                        <li><b>Curve25519 / X25519</b> — troca de chaves <b>ECDH</b> (TLS 1.3, Signal, WireGuard).</li>
+                        <li><b>Ed25519</b> — base do <a href="gestao-alg-eddsa.html" style="color:#3730a3;font-weight:700;">EdDSA</a>.</li>
+                        <li><b>NIST P-256</b> — <a href="gestao-alg-ecdsa.html" style="color:#3730a3;font-weight:700;">ECDSA</a> em certificados.</li>
+                        <li><b>secp256k1</b> — Bitcoin e Ethereum.</li>
+                    </ul>
+                    <div class="example"><b>ECDH:</b> Alice e Bob trocam <b>chaves públicas</b> e cada um calcula
+                        <span class="kbd">d<sub>A</sub>·Q<sub>B</sub> = d<sub>B</sub>·Q<sub>A</sub></span> — o mesmo segredo
+                        compartilhado, sem nunca transmiti-lo.</div>
+                </div>
+            </div>
+            <div class="warn"><b>Ameaças:</b> aleatoriedade fraca em assinaturas (vaza a chave), curvas mal escolhidas ou
+                sob suspeita, e o <b>algoritmo de Shor</b> (quântico), que também quebra o ECDLP.</div>
+        </div>
+    </div>
+
+    <div class="slide hero">
+        <h1 style="color:#6366f1;">Em resumo</h1>
+        <p style="font-size: 21px; max-width: 880px; opacity: 0.92; line-height:1.6;">A <b>ECC</b> entrega a mesma
+            criptografia de chave pública do RSA com <b>chaves muito menores e mais rápidas</b>, apoiada no ECDLP.
+            Domina o TLS moderno via <b>X25519</b> (troca de chaves) e fundamenta as assinaturas <b>ECDSA</b> e
+            <b>EdDSA</b>.</p>
+        <div class="crossref" style="justify-content:center; margin-top:24px;">
+            <a href="gestao-alg-rsa.html">RSA</a>
+            <a href="gestao-alg-ecdsa.html">ECDSA</a>
+            <a href="gestao-alg-eddsa.html">EdDSA</a>
+            <a href="gestao-algoritmos.html">Todos os algoritmos</a>
+        </div>
+        <div style="margin-top: 22px;">
+            <a class="slide-back" href="gestao-pilares.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Pilares</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Gestão de Segurança da Informação</p>
+        <p>Referências: Koblitz (1987) · Miller (1985) · RFC 7748 (Curve25519).</p>
+    </footer>
+
+</body>
+
+</html>
