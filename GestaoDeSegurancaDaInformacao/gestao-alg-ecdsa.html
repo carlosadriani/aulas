@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECDSA — Assinatura Digital com Curvas Elípticas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <link rel="stylesheet" href="../assets/css/algoritmos.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light alg sign">
+
+    <div class="slide hero">
+        <i class="fa-solid fa-signature cover" style="font-size: 70px; margin-bottom: 24px;"></i>
+        <h1>ECDSA</h1>
+        <p style="font-size: 23px; opacity: 0.85;">Elliptic Curve Digital Signature Algorithm</p>
+        <p style="font-size: 16px; opacity: 0.6; margin-top: 8px;">ANSI X9.62 / FIPS 186 · assinatura sobre curvas elípticas</p>
+        <div style="margin-top: 30px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">Assinatura Digital</div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>O que faz e por que importa</h2></div>
+        <div class="content">
+            <span class="tag">Assinatura</span>
+            <div class="def">
+                O <b>ECDSA</b> produz <b>assinaturas digitais</b> usando
+                <a href="gestao-alg-ecc.html" style="color:#b91c1c;font-weight:700;">curvas elípticas</a>. Fornece os três
+                serviços da assinatura: <b>autenticidade</b> (quem assinou), <b>integridade</b> (não foi alterado) e
+                <b>não repúdio</b> (o autor não pode negar). Com chaves curtas e assinaturas compactas.
+            </div>
+            <div class="grid-2" style="margin-top:18px;">
+                <div class="card">
+                    <h3 style="font-size:19px;">Parâmetros</h3>
+                    <p>Uma curva com ponto-base <b>G</b> de ordem <b>n</b>. A chave privada é um escalar <b>d</b>; a
+                        pública é o ponto <span class="kbd">Q = d·G</span>.</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:19px;">Onde aparece</h3>
+                    <p>Certificados <b>TLS</b>, assinatura de código, <b>Bitcoin/Ethereum</b> (curva secp256k1), JWT
+                        <span class="kbd">ES256</span> e DNSSEC.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>As equações de assinatura e verificação</h2></div>
+        <div class="content">
+            <div class="grid-2">
+                <div class="card">
+                    <h3 style="font-size:19px;">Assinar a mensagem m</h3>
+                    <div class="calc">
+                        e = H(m) &nbsp;<span class="cmt"># hash da mensagem</span><br>
+                        escolha k aleatório (1…n−1)<br>
+                        R = k·G ; &nbsp; r = R<sub>x</sub> mod n<br>
+                        s = k<sup>−1</sup>(e + r·d) mod n<br>
+                        assinatura = <span class="res">(r, s)</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:19px;">Verificar (com a pública Q)</h3>
+                    <div class="calc">
+                        e = H(m)<br>
+                        u₁ = e·s<sup>−1</sup> ; u₂ = r·s<sup>−1</sup><br>
+                        R′ = u₁·G + u₂·Q<br>
+                        válida se <span class="res">R′<sub>x</sub> mod n = r</span>
+                    </div>
+                    <p class="note">A verificação só fecha se quem assinou conhecia <b>d</b>.</p>
+                </div>
+            </div>
+            <div class="warn"><b>O ponto fraco mortal — o nonce k:</b> ele deve ser <b>secreto e único</b> a cada
+                assinatura. <b>Reutilizar k</b> (ou usar RNG fraco) permite <b>recuperar a chave privada d</b> com álgebra
+                simples — falhas reais derrubaram o PlayStation 3 e carteiras de Bitcoin. A solução é o <b>k determinístico</b>
+                (RFC 6979).</div>
+        </div>
+    </div>
+
+    <div class="slide hero">
+        <h1 style="color:#ef4444;">Em resumo</h1>
+        <p style="font-size: 21px; max-width: 880px; opacity: 0.92; line-height:1.6;">O <b>ECDSA</b> assina digitalmente com
+            curvas elípticas: chaves e assinaturas pequenas, autenticidade + integridade + não repúdio. Seu calcanhar de
+            Aquiles é o <b>nonce k</b> — único e imprevisível, idealmente determinístico. É justamente isso que o
+            <b>EdDSA</b> resolve por construção.</p>
+        <div class="crossref" style="justify-content:center; margin-top:24px;">
+            <a href="gestao-alg-eddsa.html">EdDSA</a>
+            <a href="gestao-alg-ecc.html">ECC</a>
+            <a href="gestao-alg-rsa.html">RSA</a>
+            <a href="gestao-algoritmos.html">Todos os algoritmos</a>
+        </div>
+        <div style="margin-top: 22px;">
+            <a class="slide-back" href="gestao-pilares.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Pilares</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Gestão de Segurança da Informação</p>
+        <p>Referências: FIPS 186-4 · ANSI X9.62 · RFC 6979 (k determinístico).</p>
+    </footer>
+
+</body>
+
+</html>

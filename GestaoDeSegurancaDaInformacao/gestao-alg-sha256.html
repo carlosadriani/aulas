@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHA-256 — Função de Hash Criptográfica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <link rel="stylesheet" href="../assets/css/algoritmos.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light alg hash">
+
+    <div class="slide hero">
+        <i class="fa-solid fa-fingerprint cover" style="font-size: 72px; margin-bottom: 24px;"></i>
+        <h1>SHA-256</h1>
+        <p style="font-size: 23px; opacity: 0.85;">Função de hash criptográfica da família SHA-2</p>
+        <p style="font-size: 16px; opacity: 0.6; margin-top: 8px;">NSA / NIST · FIPS 180-4 · resumo de 256 bits</p>
+        <div style="margin-top: 30px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">Função de Hash</div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>O que é uma função de hash criptográfica</h2></div>
+        <div class="content">
+            <span class="tag">Hash</span>
+            <div class="def">
+                O <b>SHA-256</b> transforma uma entrada de <b>tamanho arbitrário</b> em um <b>resumo fixo de 256 bits</b>
+                (a "impressão digital" do dado). É a base da <b>integridade</b>: qualquer alteração, por menor que seja,
+                muda o resumo de forma imprevisível.
+            </div>
+            <div class="grid-3" style="margin-top:18px;">
+                <div class="card">
+                    <h3 style="font-size:17px;">Pré-imagem</h3>
+                    <p>Dado o hash, é inviável achar uma entrada que o gere (≈ 2<sup>256</sup>).</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:17px;">Resistência a colisão</h3>
+                    <p>Inviável achar duas entradas com o mesmo hash (≈ 2<sup>128</sup>, limite do aniversário).</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:17px;">Efeito avalanche</h3>
+                    <p>Mudar 1 bit da entrada altera ~50% dos bits do resumo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>Construção: Merkle–Damgård</h2></div>
+        <div class="content">
+            <p class="lead">A mensagem é <b>preenchida</b> (incluindo seu tamanho) e dividida em blocos de <b>512 bits</b>,
+                processados em cadeia por uma <b>função de compressão</b> de 64 rodadas.</p>
+            <div class="figure" style="margin-top:14px;">
+                <svg viewBox="0 0 900 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Construção Merkle-Damgard do SHA-256">
+                    <defs><marker id="mdArr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#10b981"/></marker></defs>
+                    <text x="60" y="35" text-anchor="middle" font-size="13" fill="#475569">IV inicial</text>
+                    <rect x="20" y="95" width="80" height="50" rx="9" fill="#d1fae5" stroke="#10b981" stroke-width="2"/>
+                    <text x="60" y="125" text-anchor="middle" font-size="14" font-weight="700" fill="#065f46">H₀</text>
+                    <line x1="100" y1="120" x2="146" y2="120" stroke="#10b981" stroke-width="2.5" marker-end="url(#mdArr)"/>
+                    <rect x="150" y="90" width="120" height="60" rx="9" fill="#0f172a" stroke="#10b981" stroke-width="2"/>
+                    <text x="210" y="116" text-anchor="middle" font-size="14" font-weight="700" fill="#34d399">compressão</text>
+                    <text x="210" y="135" text-anchor="middle" font-size="12" fill="#94a3b8">bloco 1</text>
+                    <line x1="270" y1="120" x2="316" y2="120" stroke="#10b981" stroke-width="2.5" marker-end="url(#mdArr)"/>
+                    <rect x="320" y="95" width="70" height="50" rx="9" fill="#d1fae5" stroke="#10b981" stroke-width="2"/>
+                    <text x="355" y="125" text-anchor="middle" font-size="14" font-weight="700" fill="#065f46">H₁</text>
+                    <line x1="390" y1="120" x2="436" y2="120" stroke="#10b981" stroke-width="2.5" marker-end="url(#mdArr)"/>
+                    <rect x="440" y="90" width="120" height="60" rx="9" fill="#0f172a" stroke="#10b981" stroke-width="2"/>
+                    <text x="500" y="116" text-anchor="middle" font-size="14" font-weight="700" fill="#34d399">compressão</text>
+                    <text x="500" y="135" text-anchor="middle" font-size="12" fill="#94a3b8">bloco 2</text>
+                    <line x1="560" y1="120" x2="606" y2="120" stroke="#10b981" stroke-width="2.5" marker-end="url(#mdArr)"/>
+                    <text x="650" y="125" text-anchor="middle" font-size="20" fill="#475569">· · ·</text>
+                    <line x1="690" y1="120" x2="736" y2="120" stroke="#10b981" stroke-width="2.5" marker-end="url(#mdArr)"/>
+                    <rect x="740" y="92" width="140" height="56" rx="9" fill="#10b981" stroke="#065f46" stroke-width="2"/>
+                    <text x="810" y="118" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Resumo</text>
+                    <text x="810" y="136" text-anchor="middle" font-size="12" fill="#d1fae5">256 bits</text>
+                    <text x="210" y="200" text-anchor="middle" font-size="12" fill="#475569">↑ bloco da mensagem (512 bits)</text>
+                    <text x="500" y="200" text-anchor="middle" font-size="12" fill="#475569">↑ bloco da mensagem (512 bits)</text>
+                    <line x1="210" y1="175" x2="210" y2="152" stroke="#94a3b8" stroke-width="2" marker-end="url(#mdArr)"/>
+                    <line x1="500" y1="175" x2="500" y2="152" stroke="#94a3b8" stroke-width="2" marker-end="url(#mdArr)"/>
+                </svg>
+                <p class="figcap">Cada bloco mistura-se ao estado encadeado (H); as constantes vêm das raízes cúbicas de números primos.</p>
+            </div>
+            <div class="warn"><b>Atenção (extensão de comprimento):</b> a construção Merkle–Damgård permite o ataque de
+                <i>length-extension</i>. Por isso, para autenticar mensagens, use <a href="gestao-alg-hmac.html" style="color:#065f46;font-weight:700;">HMAC</a>
+                em vez de <span class="kbd">H(chave ‖ mensagem)</span> — ou prefira o SHA-3 (esponja), imune a esse ataque.</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>Usos, segurança e o caso das senhas</h2></div>
+        <div class="content">
+            <div class="grid-2">
+                <div class="card">
+                    <h3 style="font-size:19px;">Onde é usado</h3>
+                    <ul class="spaced">
+                        <li>Verificação de integridade de arquivos e atualizações.</li>
+                        <li>Dentro de <a href="gestao-alg-ecdsa.html" style="color:#065f46;font-weight:700;">assinaturas digitais</a> e de
+                            <a href="gestao-alg-hmac.html" style="color:#065f46;font-weight:700;">HMAC</a>.</li>
+                        <li>Identificadores no <b>Git</b> e na prova de trabalho do <b>Bitcoin</b>.</li>
+                        <li>Certificados digitais (X.509).</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:19px;">Status de segurança</h3>
+                    <p>Sem ataques práticos conhecidos. É a escolha-padrão atual, ao lado do <b>SHA-3</b> (Keccak,
+                        construção em esponja).</p>
+                    <div class="warn"><b>Não use SHA-256 puro para senhas:</b> ele é <i>rápido demais</i>, o que ajuda o
+                        atacante. Use funções <b>lentas e com sal</b>: <span class="kbd">Argon2</span>, <span class="kbd">bcrypt</span>
+                        ou <span class="kbd">scrypt</span>.</div>
+                </div>
+            </div>
+            <div class="example"><b>Ex.:</b> <span class="kbd">sha256sum arquivo.iso</span> gera o resumo que você compara
+                com o valor publicado pelo distribuidor para garantir que o download não foi corrompido nem adulterado.</div>
+        </div>
+    </div>
+
+    <div class="slide hero">
+        <h1 style="color:#10b981;">Em resumo</h1>
+        <p style="font-size: 21px; max-width: 880px; opacity: 0.92; line-height:1.6;">O <b>SHA-256</b> é a função de hash
+            padrão: resumo de 256 bits, forte resistência a colisão e pré-imagem, base da <b>integridade</b>, das
+            <b>assinaturas</b> e do <b>HMAC</b>. Para mensagens autenticadas use HMAC (não H(chave‖msg)); para senhas, use
+            Argon2/bcrypt.</p>
+        <div class="crossref" style="justify-content:center; margin-top:24px;">
+            <a href="gestao-alg-hmac.html">HMAC</a>
+            <a href="gestao-alg-sha1.html">SHA-1</a>
+            <a href="gestao-alg-md5.html">MD5</a>
+            <a href="gestao-algoritmos.html">Todos os algoritmos</a>
+        </div>
+        <div style="margin-top: 22px;">
+            <a class="slide-back" href="gestao-pilares.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Pilares</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Gestão de Segurança da Informação</p>
+        <p>Referências: NIST FIPS 180-4 (SHA-2) · FIPS 202 (SHA-3).</p>
+    </footer>
+
+</body>
+
+</html>

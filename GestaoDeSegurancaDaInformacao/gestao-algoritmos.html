@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmos Criptográficos — Gestão de Segurança da Informação</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="site-body">
+
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da Disciplina</a>
+            <span class="eyebrow">Referência Técnica</span>
+            <h1>Algoritmos Criptográficos</h1>
+            <p>Cifras, assinaturas digitais e funções de hash — uma página por algoritmo</p>
+        </div>
+    </header>
+
+    <main class="site-main">
+
+        <div class="toolbar">
+            <div class="toolbar__search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" data-role="search" placeholder="Pesquisar algoritmo..." aria-label="Pesquisar algoritmos">
+            </div>
+            <button class="toolbar__btn" data-role="fav-filter" type="button">
+                <i class="fa-solid fa-star"></i> Só favoritos
+            </button>
+            <p class="toolbar__hint">Agrupados por categoria: criptografia simétrica, assimétrica, assinatura digital e hash.</p>
+        </div>
+
+        <div class="topic-grid" data-course="algoritmos" id="topicGrid">
+
+            <article class="topic-card" data-id="aes" data-keywords="aes simétrica bloco rijndael spn gcm fips 197 cifra">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-lock"></i></div>
+                <span class="topic-card__badge">Simétrica</span>
+                <h2 class="topic-card__title">AES</h2>
+                <p class="topic-card__desc">Cifra de bloco padrão (rede SPN, GF(2⁸)), modos GCM/CTR e cifragem híbrida.</p>
+                <a class="topic-card__link" href="gestao-alg-aes.html">Ver Algoritmo</a>
+            </article>
+
+            <article class="topic-card" data-id="chacha20" data-keywords="chacha20 fluxo arx poly1305 bernstein salsa20 cifra simétrica">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-wave-square"></i></div>
+                <span class="topic-card__badge">Simétrica</span>
+                <h2 class="topic-card__title">ChaCha20</h2>
+                <p class="topic-card__desc">Cifra de fluxo ARX, rápida em software; AEAD com Poly1305.</p>
+                <a class="topic-card__link" href="gestao-alg-chacha20.html">Ver Algoritmo</a>
+            </article>
+
+            <article class="topic-card" data-id="rsa" data-keywords="rsa assimétrica chave pública fatoração oaep pss híbrida rivest shamir adleman">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-key"></i></div>
+                <span class="topic-card__badge">Assimétrica</span>
+                <h2 class="topic-card__title">RSA</h2>
+                <p class="topic-card__desc">Chave pública baseada na fatoração de inteiros; OAEP/PSS e esquema híbrido.</p>
+                <a class="topic-card__link" href="gestao-alg-rsa.html">Ver Algoritmo</a>
+            </article>
+
+            <article class="topic-card" data-id="ecc" data-keywords="ecc curvas elípticas ecdlp curve25519 ecdh x25519 secp256k1 assimétrica">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-bezier-curve"></i></div>
+                <span class="topic-card__badge">Assimétrica</span>
+                <h2 class="topic-card__title">ECC</h2>
+                <p class="topic-card__desc">Curvas elípticas (ECDLP): mesma segurança do RSA com chaves muito menores.</p>
+                <a class="topic-card__link" href="gestao-alg-ecc.html">Ver Algoritmo</a>
+            </article>
+
+            <article class="topic-card" data-id="ecdsa" data-keywords="ecdsa assinatura digital curvas elípticas nonce rfc 6979 secp256k1">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-signature"></i></div>
+                <span class="topic-card__badge">Assinatura</span>
+                <h2 class="topic-card__title">ECDSA</h2>
+                <p class="topic-card__desc">Assinatura sobre curvas elípticas; equações de assinar/verificar e o risco do nonce.</p>
+                <a class="topic-card__link" href="gestao-alg-ecdsa.html">Ver Algoritmo</a>
+            </article>
+
+            <article class="topic-card" data-id="eddsa" data-keywords="eddsa ed25519 assinatura determinística curve25519 rfc 8032 ssh signal">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-feather-pointed"></i></div>
+                <span class="topic-card__badge">Assinatura</span>
+                <h2 class="topic-card__title">EdDSA</h2>
+                <p class="topic-card__desc">Ed25519: assinatura determinística, rápida e resistente a erros de implementação.</p>
+                <a class="topic-card__link" href="gestao-alg-eddsa.html">Ver Algoritmo</a>
+            </article>
+
+            <article class="topic-card" data-id="sha256" data-keywords="sha-256 sha2 hash merkle damgard integridade fips 180 colisão avalanche">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-fingerprint"></i></div>
+                <span class="topic-card__badge">Hash</span>
+                <h2 class="topic-card__title">SHA-256</h2>
+                <p class="topic-card__desc">Hash padrão (SHA-2): construção Merkle–Damgård, propriedades e usos.</p>
+                <a class="topic-card__link" href="gestao-alg-sha256.html">Ver Algoritmo</a>
+            </article>
+
+            <article class="topic-card" data-id="sha1" data-keywords="sha-1 hash legado quebrado colisão shattered 160 bits git">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <span class="topic-card__badge">Hash · Legado</span>
+                <h2 class="topic-card__title">SHA-1</h2>
+                <p class="topic-card__desc">Hash de 160 bits com colisão quebrada (SHAttered); por que foi aposentado.</p>
+                <a class="topic-card__link" href="gestao-alg-sha1.html">Ver Algoritmo</a>
+            </article>
+
+            <article class="topic-card" data-id="md5" data-keywords="md5 hash obsoleto quebrado colisão flame ca falsa rivest 128 bits">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-skull"></i></div>
+                <span class="topic-card__badge">Hash · Obsoleto</span>
+                <h2 class="topic-card__title">MD5</h2>
+                <p class="topic-card__desc">Hash de 128 bits criptograficamente quebrado; colisões e o caso Flame.</p>
+                <a class="topic-card__link" href="gestao-alg-md5.html">Ver Algoritmo</a>
+            </article>
+
+            <article class="topic-card" data-id="hmac" data-keywords="hmac mac autenticação mensagem chave secreta sha256 jwt hs256 rfc 2104">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <span class="topic-card__badge">Autenticação</span>
+                <h2 class="topic-card__title">HMAC</h2>
+                <p class="topic-card__desc">Hash + chave secreta para integridade e autenticidade; construção aninhada.</p>
+                <a class="topic-card__link" href="gestao-alg-hmac.html">Ver Algoritmo</a>
+            </article>
+
+        </div>
+
+        <p class="topic-empty" data-role="empty" hidden>Nenhum algoritmo encontrado para sua busca.</p>
+
+        <div class="back-portal">
+            <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Gestão de Segurança da Informação</p>
+        <p>Referência técnica de algoritmos de criptografia, assinatura digital e hash.</p>
+    </footer>
+
+    <script src="../assets/js/cards.js"></script>
+</body>
+
+</html>

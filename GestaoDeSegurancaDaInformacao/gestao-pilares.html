@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Segurança - Pilares Fundamentais (CIA + Autenticidade)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <link rel="stylesheet" href="../assets/css/algoritmos.css">
+    <style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 36px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; }
+        .header.c { border-bottom-color: #6366f1; }
+        .header.i { border-bottom-color: #10b981; }
+        .header.a { border-bottom-color: #f59e0b; }
+        .header.at { border-bottom-color: #ef4444; }
+        h1 { font-size: 58px; color: #fff; }
+        h2 { font-size: 38px; color: #1e293b; }
+        h3 { color: #1e3a8a; margin-top: 0; }
+        .content { flex-grow: 1; padding: 38px 70px; display: flex; flex-direction: column; justify-content: center; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: start; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; align-items: start; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 22px; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+        .lead { font-size: 23px; line-height: 1.6; }
+        .def { background: #eef2ff; border-left: 5px solid #6366f1; padding: 16px 20px; border-radius: 0 10px 10px 0; font-size: 18px; line-height: 1.6; }
+        .def b { color: #3730a3; }
+        .example { background: #f0f9ff; border-left: 4px solid #3b82f6; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-top: 14px; font-size: 16px; line-height: 1.55; }
+        .example b { color: #1e40af; }
+        .warn { background: #fef2f2; border-left: 4px solid #ef4444; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-top: 14px; font-size: 16px; line-height: 1.55; }
+        .warn b { color: #b91c1c; }
+        .formula { background: #0f172a; color: #38bdf8; padding: 16px; border-radius: 8px; text-align: center; font-family: "Fira Code", monospace; margin-top: 14px; font-size: 18px; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 18px; }
+        .table th { background: #3b82f6; color: #fff; padding: 13px; text-align: left; font-size: 16px; }
+        .table td { padding: 12px 13px; border-bottom: 1px solid #e2e8f0; vertical-align: top; font-size: 16px; }
+        .pill { display: inline-block; padding: 3px 12px; border-radius: 999px; font-size: 14px; font-weight: 700; color: #fff; }
+        .pill.c { background: #6366f1; }
+        .pill.i { background: #10b981; }
+        .pill.a { background: #f59e0b; }
+        .pill.at { background: #ef4444; }
+        ul.spaced { padding-left: 22px; }
+        ul.spaced li { margin-bottom: 10px; line-height: 1.6; }
+        .note { font-size: 14px; color: #64748b; margin-top: 10px; }
+        .kbd { font-family: "Fira Code", monospace; background: #e2e8f0; padding: 1px 7px; border-radius: 5px; font-size: 0.92em; color: #0f172a; }
+        /* Figuras / diagramas SVG */
+        .figure { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px 16px 10px; }
+        .figure svg { width: 100%; height: auto; display: block; }
+        .figcap { font-size: 14px; color: #64748b; text-align: center; margin-top: 8px; }
+        /* Blocos de cálculo numérico */
+        .calc { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 16px 20px; font-family: "Fira Code", monospace; font-size: 15px; line-height: 1.75; margin-top: 12px; }
+        .calc .res { color: #38bdf8; font-weight: 700; }
+        .calc .cmt { color: #64748b; }
+        /* Exercícios */
+        .quiz { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px 22px; margin-bottom: 16px; }
+        .quiz h4 { margin: 0 0 8px; font-size: 18px; color: #1e293b; }
+        .quiz .alt { margin: 5px 0; font-size: 16px; }
+        .quiz .vf { margin: 6px 0; font-size: 16px; }
+        details.gab { margin-top: 12px; background: #ecfdf5; border-left: 4px solid #10b981; border-radius: 0 8px 8px 0; padding: 8px 16px; }
+        details.gab summary { cursor: pointer; font-weight: 700; color: #065f46; font-size: 15px; }
+        details.gab p { margin: 8px 0 2px; font-size: 15px; line-height: 1.55; }
+        .svg-node { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; }
+        .svg-lbl { font-family: "DM Sans", sans-serif; fill: #1e293b; }
+        .svg-sub { font-family: "DM Sans", sans-serif; fill: #475569; }
+        .svg-arrow { stroke: #3b82f6; stroke-width: 2.5; fill: none; }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light">
+
+    <!-- ===================== CAPA ===================== -->
+    <div class="slide hero">
+        <i class="fa-solid fa-shield-halved" style="font-size: 76px; margin-bottom: 26px; color: #3b82f6;"></i>
+        <h1>Pilares Fundamentais</h1>
+        <p style="font-size: 23px; opacity: 0.85; max-width: 880px;">Disponibilidade · Integridade · Confidencialidade · Autenticidade</p>
+        <p style="font-size: 17px; opacity: 0.6; margin-top: 10px;">Bases científicas, mecanismos de garantia e exemplos — ISO/IEC 27000 · NIST · Hexágono Parkeriano</p>
+        <div style="margin-top: 32px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">Gestão de Segurança da Informação</div>
+    </div>
+
+    <!-- ===================== INTRODUÇÃO ===================== -->
+    <div class="slide">
+        <div class="header"><h2>O que são os "pilares" da Segurança da Informação?</h2></div>
+        <div class="content">
+            <p class="lead">Segurança da Informação não é um produto, e sim um conjunto de <span class="highlight">propriedades</span>
+                que desejamos preservar sobre um ativo de informação. Cada pilar é uma propriedade mensurável; um
+                <b>incidente</b> é, por definição, a violação de pelo menos um desses pilares.</p>
+            <div class="def" style="margin-top:18px;">
+                <b>Tríade CIA.</b> O núcleo histórico é formado por <b>Confidentiality, Integrity e Availability</b>
+                (Confidencialidade, Integridade e Disponibilidade), formalizado a partir dos anos 1970–80 e consolidado
+                na <b>ISO/IEC 27000</b> e em normas do NIST (FIPS 199). A <b>Autenticidade</b> é adicionada por modelos
+                estendidos como o <b>Hexágono Parkeriano</b> (Donn B. Parker, 2002), que acrescenta autenticidade,
+                posse/controle e utilidade à tríade clássica.
+            </div>
+            <div class="grid-2" style="margin-top:18px;">
+                <div class="card">
+                    <h3 style="font-size:19px;">Por que tratar como propriedades?</h3>
+                    <p>Porque permite <span class="highlight">medir</span> e <span class="highlight">contratar</span>
+                        segurança: cada propriedade tem métricas (ex.: tempo de inatividade tolerável, força criptográfica)
+                        e mecanismos de controle associados. Sem decompor em propriedades, "estar seguro" seria vago e não
+                        auditável.</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:19px;">A regra de ouro</h3>
+                    <p>Os pilares frequentemente <span class="highlight">competem entre si</span>. Reforçar um pode
+                        enfraquecer outro (ex.: cifrar tudo aumenta confidencialidade mas pode reduzir disponibilidade se a
+                        chave for perdida). A gestão de segurança é, no fundo, o <b>equilíbrio</b> entre eles conforme o
+                        risco do negócio.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== CONFIDENCIALIDADE ===================== -->
+    <div class="slide">
+        <div class="header c"><h2><span class="pill c">C</span>&nbsp; Confidencialidade</h2></div>
+        <div class="content">
+            <div class="def">
+                <b>Definição (ISO/IEC 27000).</b> Propriedade de que a informação <b>não seja disponibilizada nem
+                divulgada</b> a indivíduos, entidades ou processos <b>não autorizados</b>. É o controle sobre <i>quem
+                pode ler</i> o dado.
+            </div>
+            <div class="grid-2" style="margin-top:18px;">
+                <div class="card">
+                    <h3 style="font-size:20px;">Fundamento científico</h3>
+                    <p>A garantia repousa sobre a <span class="highlight">criptografia</span>. Distinguem-se dois níveis:</p>
+                    <ul class="spaced">
+                        <li><b>Segurança incondicional (perfeita)</b>: Shannon (1949) provou que o <i>one-time pad</i>
+                            atinge sigilo perfeito — o texto cifrado não revela <b>nenhuma</b> informação sobre o texto
+                            claro, desde que a chave seja aleatória, do mesmo tamanho da mensagem e usada uma única vez.</li>
+                        <li><b>Segurança computacional</b>: cifras reais (<a class="alg-ref" href="gestao-alg-aes.html">AES</a>, <a class="alg-ref" href="gestao-alg-chacha20.html">ChaCha20</a>) não são perfeitas, mas quebrá-las
+                            exigiria esforço computacional inviável. Apoia-se no <b>Princípio de Kerckhoffs</b>: a
+                            segurança deve residir <b>na chave</b>, não no segredo do algoritmo.</li>
+                    </ul>
+                    <div class="formula" style="font-size:15px;">Sigilo perfeito ⇔ P(M | C) = P(M)</div>
+                    <p class="note">A probabilidade da mensagem dado o texto cifrado é igual à probabilidade a priori: o atacante nada aprende.</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:20px;">Mecanismos de garantia</h3>
+                    <ul class="spaced">
+                        <li><b>Criptografia simétrica</b> (AES-256): mesma chave cifra e decifra — rápida, ideal para dados em volume.</li>
+                        <li><b>Criptografia assimétrica</b> (<a class="alg-ref" href="gestao-alg-rsa.html">RSA</a>, <a class="alg-ref" href="gestao-alg-ecc.html">ECC</a>): par de chaves pública/privada — resolve a distribuição de chaves.</li>
+                        <li><b>Controle de acesso</b>: modelos DAC, MAC, <b>RBAC</b> (por papéis) e <b>ABAC</b> (por atributos); princípio do <b>menor privilégio</b>.</li>
+                        <li><b>Classificação da informação</b> (público, interno, confidencial, secreto) e rotulagem.</li>
+                        <li><b>Mascaramento / anonimização</b> e prevenção de vazamento (DLP).</li>
+                    </ul>
+                    <div class="example"><b>Ex.:</b> o <span class="kbd">HTTPS/TLS</span> cifra o tráfego entre navegador e
+                        servidor; a <b>cifragem de disco</b> (BitLocker, LUKS) protege dados em repouso caso o notebook seja roubado.</div>
+                    <div class="warn"><b>Ameaças típicas:</b> interceptação (sniffing), <i>man-in-the-middle</i>, ataques
+                        de canal lateral, <i>shoulder surfing</i> e exfiltração de dados.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== INTEGRIDADE ===================== -->
+    <div class="slide">
+        <div class="header i"><h2><span class="pill i">I</span>&nbsp; Integridade</h2></div>
+        <div class="content">
+            <div class="def" style="border-left-color:#10b981; background:#ecfdf5;">
+                <b>Definição (ISO/IEC 27000).</b> Propriedade de <b>exatidão e completude</b> da informação. Garante que o
+                dado <b>não foi alterado</b> de forma não autorizada — seja por ação maliciosa, erro ou falha — entre a
+                origem e o destino, ou ao longo do tempo.
+            </div>
+            <div class="grid-2" style="margin-top:18px;">
+                <div class="card">
+                    <h3 style="font-size:20px; color:#065f46;">Fundamento científico</h3>
+                    <p>O instrumento central é a <span class="highlight" style="color:#10b981;">função de hash
+                        criptográfica</span> (ex.: SHA-256), que mapeia uma entrada de tamanho arbitrário em um resumo de
+                        tamanho fixo. Para servir à integridade ela deve ter três propriedades:</p>
+                    <ul class="spaced">
+                        <li><b>Resistência à pré-imagem</b>: dado <span class="kbd">h</span>, é inviável achar <span class="kbd">m</span> tal que <span class="kbd">hash(m) = h</span>.</li>
+                        <li><b>Resistência à segunda pré-imagem</b>: dado <span class="kbd">m</span>, é inviável achar <span class="kbd">m' ≠ m</span> com o mesmo hash.</li>
+                        <li><b>Resistência a colisões</b>: é inviável achar <b>qualquer</b> par <span class="kbd">m ≠ m'</span> com hashes iguais.</li>
+                    </ul>
+                    <p>Soma-se o <b>efeito avalanche</b>: alterar 1 bit da entrada muda, em média, metade dos bits do
+                        resumo — tornando qualquer adulteração detectável.</p>
+                    <div class="warn" style="border-left-color:#10b981; background:#ecfdf5;"><b style="color:#065f46;">Atenção:</b>
+                        um <i>checksum</i> simples (CRC) detecta erros <b>acidentais</b>, mas não resiste a adulteração
+                        deliberada. Para integridade contra um adversário, use hash criptográfico + chave (MAC) ou assinatura.</div>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:20px; color:#065f46;">Mecanismos de garantia</h3>
+                    <ul class="spaced">
+                        <li><b>Hashes criptográficos</b> (<a class="alg-ref" href="gestao-alg-sha256.html">SHA-256</a>/3) para verificar arquivos e mensagens.</li>
+                        <li><b>MAC / <a class="alg-ref" href="gestao-alg-hmac.html">HMAC</a></b>: hash combinado com chave secreta — prova integridade <b>e</b> origem entre quem compartilha a chave.</li>
+                        <li><b>Assinatura digital</b>: integridade + autenticidade + não repúdio (chave privada).</li>
+                        <li><b>Árvores de Merkle</b> e <b>blockchain</b>: encadeiam hashes, tornando qualquer alteração retroativa evidente.</li>
+                        <li><b>Controle de versão e logs imutáveis</b> (ex.: <i>append-only</i>, WORM).</li>
+                    </ul>
+                    <div class="example"><b>Ex.:</b> ao baixar uma ISO do Linux, compara-se o <span class="kbd">SHA256SUMS</span>
+                        publicado com o hash do arquivo baixado. O <b>Git</b> identifica cada commit pelo hash SHA de seu
+                        conteúdo: mudar o histórico muda o hash e quebra a cadeia.</div>
+                    <div class="warn"><b>Ameaças típicas:</b> adulteração (<i>tampering</i>), modificação em trânsito por
+                        MITM, injeção de dados e corrupção silenciosa (<i>bit rot</i>).</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== DISPONIBILIDADE ===================== -->
+    <div class="slide">
+        <div class="header a"><h2><span class="pill a">A</span>&nbsp; Disponibilidade</h2></div>
+        <div class="content">
+            <div class="def" style="border-left-color:#f59e0b; background:#fffbeb;">
+                <b>Definição (ISO/IEC 27000).</b> Propriedade de a informação e os serviços estarem <b>acessíveis e
+                utilizáveis sob demanda</b> por uma entidade autorizada. De nada adianta um dado íntegro e secreto se ele
+                não pode ser usado quando necessário.
+            </div>
+            <div class="grid-2" style="margin-top:18px;">
+                <div class="card">
+                    <h3 style="font-size:20px; color:#92400e;">Fundamento científico (quantitativo)</h3>
+                    <p>Disponibilidade é a propriedade mais <span class="highlight" style="color:#f59e0b;">mensurável</span>.
+                        Modela-se com a teoria de confiabilidade:</p>
+                    <div class="formula" style="background:#78350f;">A = MTBF / (MTBF + MTTR)</div>
+                    <p class="note"><b>MTBF</b> = tempo médio entre falhas; <b>MTTR</b> = tempo médio de reparo. Aumenta-se
+                        a disponibilidade subindo o MTBF (mais confiável) ou reduzindo o MTTR (recuperação mais rápida).</p>
+                    <p style="margin-top:12px;">Expressa-se em <b>"noves"</b> de disponibilidade anual:</p>
+                    <table class="table">
+                        <tr><th>Nível</th><th>Inatividade/ano</th></tr>
+                        <tr><td>99% ("dois noves")</td><td>~3,65 dias</td></tr>
+                        <tr><td>99,9% ("três noves")</td><td>~8,76 horas</td></tr>
+                        <tr><td>99,99% ("quatro noves")</td><td>~52,6 minutos</td></tr>
+                        <tr><td>99,999% ("cinco noves")</td><td>~5,26 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:20px; color:#92400e;">Mecanismos de garantia</h3>
+                    <ul class="spaced">
+                        <li><b>Redundância</b>: RAID (discos), clusters, <i>failover</i> e ausência de ponto único de falha (SPOF).</li>
+                        <li><b>Balanceamento de carga</b> e escalabilidade horizontal (auto-scaling).</li>
+                        <li><b>Backup</b> seguindo a regra <b>3-2-1</b> (3 cópias, 2 mídias, 1 fora do site) e plano de <b>recuperação de desastres</b>.</li>
+                        <li><b>RTO</b> (tempo-alvo de recuperação) e <b>RPO</b> (perda máxima de dados tolerável) definidos no plano de continuidade.</li>
+                        <li><b>Mitigação de DDoS</b>: CDN, <i>rate limiting</i>, depuração de tráfego.</li>
+                    </ul>
+                    <div class="example"><b>Ex.:</b> um serviço crítico replicado em múltiplas zonas de disponibilidade na
+                        nuvem continua no ar mesmo se um data center inteiro cair. Um <b>RPO de 15 min</b> significa
+                        backups a cada 15 minutos no máximo.</div>
+                    <div class="warn"><b>Ameaças típicas:</b> ataques <b>DDoS</b>, falha de hardware, <b>ransomware</b>
+                        (que ataca disponibilidade tornando dados inacessíveis), erros humanos e desastres naturais.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== AUTENTICIDADE ===================== -->
+    <div class="slide">
+        <div class="header at"><h2><span class="pill at">Au</span>&nbsp; Autenticidade</h2></div>
+        <div class="content">
+            <div class="def" style="border-left-color:#ef4444; background:#fef2f2;">
+                <b>Definição.</b> Propriedade que assegura que uma <b>identidade</b> (de uma entidade) ou a <b>origem</b>
+                (de um dado) é <b>verdadeira</b> e não forjada. Responde à pergunta: <i>"Você é mesmo quem diz ser?"</i> e
+                <i>"Esta informação veio realmente de quem afirma tê-la enviado?"</i>
+            </div>
+            <div class="grid-2" style="margin-top:18px;">
+                <div class="card">
+                    <h3 style="font-size:20px; color:#b91c1c;">Fundamento científico</h3>
+                    <p>Distinguem-se dois alvos da autenticação:</p>
+                    <ul class="spaced">
+                        <li><b>Autenticação de entidade (peer)</b>: confirma a identidade de um usuário ou sistema, em geral por <b>desafio-resposta</b> com <i>nonce</i> para impedir <b>repetição (replay)</b>.</li>
+                        <li><b>Autenticação de origem de dados</b>: confirma quem produziu uma mensagem — papel das <b>assinaturas digitais</b> e dos <b>MACs</b>.</li>
+                    </ul>
+                    <p>A <b>assinatura digital</b> usa a <span class="highlight" style="color:#ef4444;">chave privada</span>
+                        do emissor sobre o hash da mensagem; qualquer um verifica com a <b>chave pública</b>. Como só o
+                        dono possui a chave privada, isso fornece também <b>não repúdio</b> — algo que um MAC simétrico
+                        (chave compartilhada) <b>não</b> oferece.</p>
+                    <div class="formula" style="background:#7f1d1d; font-size:15px;">assinatura = Cifrar<sub>priv</sub>( hash(M) )</div>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:20px; color:#b91c1c;">Mecanismos de garantia</h3>
+                    <ul class="spaced">
+                        <li><b>PKI e certificados X.509</b>: uma Autoridade Certificadora (CA) atesta a ligação entre uma chave pública e uma identidade.</li>
+                        <li><b>Assinaturas digitais</b> (<a class="alg-ref" href="gestao-alg-rsa.html">RSA</a>, <a class="alg-ref" href="gestao-alg-ecdsa.html">ECDSA</a>, <a class="alg-ref" href="gestao-alg-eddsa.html">EdDSA</a>).</li>
+                        <li><b>Autenticação multifator (MFA)</b>, combinando fatores: <i>algo que você sabe</i> (senha), <i>algo que você tem</i> (token) e <i>algo que você é</i> (biometria).</li>
+                        <li><b>Protocolos de desafio-resposta</b> e <i>nonces</i> contra replay.</li>
+                    </ul>
+                    <div class="example"><b>Ex.:</b> o cadeado do navegador indica que o <b>certificado TLS</b> do site foi
+                        emitido por uma CA confiável — você fala mesmo com o banco, e não com um clone. Um <b>JWT
+                        assinado</b> garante ao servidor que o token não foi forjado.</div>
+                    <div class="warn"><b>Ameaças típicas:</b> <i>spoofing</i> (de IP, e-mail, DNS), <b>phishing</b>,
+                        ataques de repetição (<i>replay</i>) e falsificação de identidade.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== QUADRO COMPARATIVO ===================== -->
+    <div class="slide">
+        <div class="header"><h2>Quadro comparativo dos pilares</h2></div>
+        <div class="content">
+            <table class="table">
+                <tr>
+                    <th>Pilar</th>
+                    <th>Pergunta-chave</th>
+                    <th>Mecanismo principal</th>
+                    <th>Métrica / indício</th>
+                    <th>Ataque que o viola</th>
+                </tr>
+                <tr>
+                    <td><span class="pill c">C</span> Confidencialidade</td>
+                    <td>Quem pode <b>ler</b>?</td>
+                    <td>Criptografia + controle de acesso</td>
+                    <td>Força da chave (bits); sigilo</td>
+                    <td>Sniffing, vazamento, MITM</td>
+                </tr>
+                <tr>
+                    <td><span class="pill i">I</span> Integridade</td>
+                    <td>Foi <b>alterado</b>?</td>
+                    <td>Hash, MAC, assinatura</td>
+                    <td>Hash confere / não confere</td>
+                    <td>Tampering, injeção, corrupção</td>
+                </tr>
+                <tr>
+                    <td><span class="pill a">A</span> Disponibilidade</td>
+                    <td>Está <b>acessível</b>?</td>
+                    <td>Redundância, backup, anti-DDoS</td>
+                    <td>Uptime (%), RTO, RPO</td>
+                    <td>DDoS, ransomware, falha de HW</td>
+                </tr>
+                <tr>
+                    <td><span class="pill at">Au</span> Autenticidade</td>
+                    <td>É <b>genuíno</b>?</td>
+                    <td>Assinatura digital, PKI, MFA</td>
+                    <td>Certificado válido / assinatura ok</td>
+                    <td>Spoofing, phishing, replay</td>
+                </tr>
+            </table>
+            <p class="note">Conceitos correlatos frequentemente citados junto aos pilares: <b>não repúdio</b>
+                (impossibilidade de negar a autoria — derivado da autenticidade por assinatura digital) e
+                <b>responsabilização / accountability</b> (rastreabilidade de ações via logs auditáveis).</p>
+        </div>
+    </div>
+
+    <!-- ===================== TENSÕES ENTRE OS PILARES ===================== -->
+    <div class="slide">
+        <div class="header"><h2>Os pilares competem: o trabalho do gestor é equilibrá-los</h2></div>
+        <div class="content">
+            <p class="lead">Maximizar um pilar isoladamente costuma <span class="highlight">degradar</span> outro. A
+                segurança ótima é a que melhor atende ao <b>apetite a risco</b> do negócio.</p>
+            <div class="grid-3" style="margin-top:18px;">
+                <div class="card">
+                    <h3 style="font-size:18px;">Confidencialidade × Disponibilidade</h3>
+                    <p>Cifrar tudo e exigir múltiplas autenticações protege o dado, mas se a <b>chave for perdida</b> ou o
+                        login falhar, o dado fica indisponível mesmo para quem é legítimo.</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:18px;">Integridade × Disponibilidade</h3>
+                    <p>Bloquear um sistema ao menor sinal de adulteração preserva a integridade, mas pode derrubar o
+                        serviço — um <i>fail-secure</i> que custa disponibilidade.</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:18px;">Confidencialidade × Autenticidade/Uso</h3>
+                    <p>Anonimização forte protege o sigilo, porém pode impedir a <b>autenticação</b> e a
+                        responsabilização de quem realizou cada ação.</p>
+                </div>
+            </div>
+            <div class="def" style="margin-top:18px;">
+                <b>Conclusão.</b> Não existe "100% seguro". Gestão de Segurança da Informação é a disciplina de
+                <b>balancear os pilares</b> por meio de controles proporcionais ao risco, ao valor do ativo e ao custo —
+                exatamente o que normas como a <b>ISO/IEC 27001</b> operacionalizam.
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== DIAGRAMA: TRÍADE ===================== -->
+    <div class="slide">
+        <div class="header"><h2>Diagrama: a tríade CIA envolvida pela Autenticidade</h2></div>
+        <div class="content">
+            <div class="figure">
+                <svg viewBox="0 0 920 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama da tríade Confidencialidade, Integridade e Disponibilidade envolvida pela Autenticidade">
+                    <rect x="30" y="90" width="860" height="395" rx="30" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="10 8"/>
+                    <text x="460" y="68" text-anchor="middle" font-size="22" font-weight="700" fill="#ef4444">AUTENTICIDADE — a identidade e a origem são genuínas</text>
+                    <polygon points="460,180 250,400 670,400" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
+                    <circle cx="460" cy="300" r="46" fill="#0f172a"/>
+                    <text x="460" y="295" text-anchor="middle" font-size="14" fill="#ffffff">Ativo de</text>
+                    <text x="460" y="314" text-anchor="middle" font-size="14" fill="#ffffff">Informação</text>
+                    <circle cx="460" cy="180" r="58" fill="#6366f1"/>
+                    <text x="460" y="196" text-anchor="middle" font-size="46" font-weight="700" fill="#ffffff">C</text>
+                    <text x="460" y="110" text-anchor="middle" font-size="19" font-weight="700" fill="#3730a3">Confidencialidade</text>
+                    <circle cx="250" cy="400" r="58" fill="#10b981"/>
+                    <text x="250" y="416" text-anchor="middle" font-size="46" font-weight="700" fill="#ffffff">I</text>
+                    <text x="250" y="478" text-anchor="middle" font-size="19" font-weight="700" fill="#065f46">Integridade</text>
+                    <circle cx="670" cy="400" r="58" fill="#f59e0b"/>
+                    <text x="670" y="416" text-anchor="middle" font-size="46" font-weight="700" fill="#ffffff">A</text>
+                    <text x="670" y="478" text-anchor="middle" font-size="19" font-weight="700" fill="#92400e">Disponibilidade</text>
+                </svg>
+                <p class="figcap">A tríade clássica (CIA) protege o ativo; a Autenticidade (modelo estendido / Hexágono Parkeriano) garante que entidades e dados são genuínos.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== APROFUNDAMENTO QUANTITATIVO ===================== -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento quantitativo: por que os mecanismos funcionam</h2></div>
+        <div class="content">
+            <div class="grid-3">
+                <div class="card">
+                    <h3 style="font-size:18px; color:#3730a3;"><span class="pill c">C</span> Espaço de chaves</h3>
+                    <p>A força de uma cifra cresce <b>exponencialmente</b> com o tamanho da chave.</p>
+                    <div class="calc">
+                        AES-128 → 2<sup>128</sup> ≈ 3,4 × 10<sup>38</sup><br>
+                        AES-256 → 2<sup>256</sup> ≈ <span class="res">1,16 × 10<sup>77</sup></span><br>
+                        <span class="cmt"># átomos no universo ≈ 10<sup>80</sup></span><br>
+                        ⇒ força bruta é inviável
+                    </div>
+                    <p class="note">Cada bit a mais <b>dobra</b> o custo do ataque. Kerckhoffs: a segurança está na chave.</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:18px; color:#065f46;"><span class="pill i">I</span> Limite do aniversário</h3>
+                    <p>Achar uma <b>colisão</b> em um hash de <i>n</i> bits custa ≈ 2<sup>n/2</sup> (paradoxo do aniversário).</p>
+                    <div class="calc">
+                        SHA-256 → n = 256 bits<br>
+                        colisão ≈ 2<sup>128</sup> = <span class="res">3,4 × 10<sup>38</sup></span> operações<br>
+                        pré-imagem ≈ 2<sup>256</sup><br>
+                        <span class="cmt"># logo: "128 bits de segurança"</span>
+                    </div>
+                    <p class="note">É por isso que <a class="alg-ref" href="gestao-alg-md5.html">MD5</a>/<a class="alg-ref" href="gestao-alg-sha1.html">SHA-1</a> foram aposentados: colisões tornaram-se viáveis.</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:18px; color:#92400e;"><span class="pill a">A</span> Cálculo de disponibilidade</h3>
+                    <p>Aplicando <b>A = MTBF / (MTBF + MTTR)</b> e somando redundância:</p>
+                    <div class="calc">
+                        MTBF=990h, MTTR=10h<br>
+                        A = 990 / 1000 = <span class="res">99%</span><br>
+                        downtime = 0,01 × 8760 = 87,6 h/ano<br>
+                        <span class="cmt"># dois servidores em paralelo:</span><br>
+                        1 − (1−0,99)<sup>2</sup> = <span class="res">99,99%</span>
+                    </div>
+                    <p class="note">Em série a disponibilidade <b>multiplica</b> (A₁×A₂); em paralelo, a redundância eleva os "noves".</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== DIAGRAMA: ASSINATURA DIGITAL ===================== -->
+    <div class="slide">
+        <div class="header at"><h2>Diagrama: como a assinatura digital garante Autenticidade + Integridade</h2></div>
+        <div class="content">
+            <div class="figure">
+                <svg viewBox="0 0 940 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fluxo de assinatura e verificação digital">
+                    <defs>
+                        <marker id="arr2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+                            <path d="M0,0 L8,3 L0,6 Z" fill="#3b82f6"/>
+                        </marker>
+                    </defs>
+                    <line x1="470" y1="60" x2="470" y2="455" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 7"/>
+                    <text x="235" y="42" text-anchor="middle" font-size="19" font-weight="700" fill="#3730a3">EMISSOR — assina</text>
+                    <text x="700" y="42" text-anchor="middle" font-size="19" font-weight="700" fill="#b91c1c">RECEPTOR — verifica</text>
+
+                    <rect x="120" y="58" width="230" height="48" rx="8" class="svg-node"/>
+                    <text x="235" y="88" text-anchor="middle" font-size="16" fill="#1e293b">Mensagem (M)</text>
+                    <line x1="235" y1="106" x2="235" y2="148" class="svg-arrow" marker-end="url(#arr2)"/>
+                    <text x="248" y="132" font-size="13" fill="#475569">hash()</text>
+                    <rect x="120" y="150" width="230" height="48" rx="8" class="svg-node"/>
+                    <text x="235" y="180" text-anchor="middle" font-size="16" fill="#1e293b">Resumo H</text>
+                    <line x1="235" y1="198" x2="235" y2="248" class="svg-arrow" marker-end="url(#arr2)"/>
+                    <text x="248" y="226" font-size="13" fill="#475569">cifrar com chave privada</text>
+                    <rect x="120" y="250" width="230" height="52" rx="8" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+                    <text x="235" y="281" text-anchor="middle" font-size="16" font-weight="700" fill="#3730a3">Assinatura digital</text>
+
+                    <path d="M350,276 C 460,276 470,84 585,84" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#arr2)"/>
+                    <text x="478" y="172" text-anchor="middle" font-size="13" fill="#475569">envia M + assinatura</text>
+
+                    <rect x="585" y="60" width="230" height="48" rx="8" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+                    <text x="700" y="90" text-anchor="middle" font-size="16" font-weight="700" fill="#b91c1c">Assinatura recebida</text>
+                    <line x1="700" y1="108" x2="700" y2="150" class="svg-arrow" marker-end="url(#arr2)"/>
+                    <text x="713" y="134" font-size="13" fill="#475569">decifrar com chave pública</text>
+                    <rect x="585" y="152" width="230" height="46" rx="8" class="svg-node"/>
+                    <text x="700" y="181" text-anchor="middle" font-size="16" fill="#1e293b">H′ (da assinatura)</text>
+                    <rect x="585" y="232" width="230" height="46" rx="8" class="svg-node"/>
+                    <text x="700" y="261" text-anchor="middle" font-size="16" fill="#1e293b">H″ = hash(M)</text>
+                    <line x1="700" y1="198" x2="700" y2="318" class="svg-arrow" marker-end="url(#arr2)"/>
+                    <line x1="700" y1="278" x2="700" y2="318" class="svg-arrow" marker-end="url(#arr2)"/>
+                    <rect x="600" y="320" width="200" height="48" rx="8" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+                    <text x="700" y="350" text-anchor="middle" font-size="16" font-weight="700" fill="#854d0e">H′ = H″ ?</text>
+                    <line x1="700" y1="368" x2="700" y2="408" class="svg-arrow" marker-end="url(#arr2)"/>
+                    <rect x="585" y="410" width="230" height="48" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+                    <text x="700" y="440" text-anchor="middle" font-size="16" font-weight="700" fill="#166534">✔ Autêntica e íntegra</text>
+                </svg>
+                <p class="figcap">Só o emissor possui a chave privada (autenticidade + não repúdio); se os resumos coincidem, a mensagem não foi alterada (integridade).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== DIAGRAMA: REDUNDÂNCIA ===================== -->
+    <div class="slide">
+        <div class="header a"><h2>Diagrama: redundância e failover sustentam a Disponibilidade</h2></div>
+        <div class="content">
+            <div class="figure">
+                <svg viewBox="0 0 940 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama de balanceamento de carga com redundância e failover">
+                    <defs>
+                        <marker id="arr3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+                            <path d="M0,0 L8,3 L0,6 Z" fill="#3b82f6"/>
+                        </marker>
+                    </defs>
+                    <rect x="40" y="150" width="130" height="68" rx="10" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+                    <text x="105" y="190" text-anchor="middle" font-size="16" fill="#1e293b">Usuários</text>
+                    <line x1="170" y1="184" x2="222" y2="184" class="svg-arrow" marker-end="url(#arr3)"/>
+                    <rect x="226" y="142" width="170" height="84" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+                    <text x="311" y="178" text-anchor="middle" font-size="16" font-weight="700" fill="#1e40af">Balanceador</text>
+                    <text x="311" y="200" text-anchor="middle" font-size="16" font-weight="700" fill="#1e40af">de Carga</text>
+
+                    <line x1="396" y1="170" x2="476" y2="80" class="svg-arrow" marker-end="url(#arr3)"/>
+                    <line x1="396" y1="184" x2="476" y2="190" class="svg-arrow" marker-end="url(#arr3)"/>
+                    <line x1="396" y1="198" x2="476" y2="300" stroke="#cbd5e1" stroke-width="2.5" stroke-dasharray="7 6"/>
+
+                    <rect x="480" y="48" width="240" height="62" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+                    <text x="600" y="85" text-anchor="middle" font-size="16" font-weight="700" fill="#166534">Servidor A — ativo</text>
+                    <rect x="480" y="158" width="240" height="62" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+                    <text x="600" y="195" text-anchor="middle" font-size="16" font-weight="700" fill="#166534">Servidor B — ativo</text>
+                    <rect x="480" y="270" width="240" height="62" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="2" stroke-dasharray="7 5"/>
+                    <text x="600" y="307" text-anchor="middle" font-size="16" font-weight="700" fill="#b91c1c">Servidor C — ✕ falhou</text>
+
+                    <text x="470" y="360" text-anchor="middle" font-size="15" fill="#475569">Sem ponto único de falha (SPOF): o tráfego é desviado automaticamente (failover).</text>
+                </svg>
+                <p class="figcap">Se um nó cai, o balanceador redireciona as requisições para os nós saudáveis — o serviço permanece disponível.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== ESTUDO DE CASO ===================== -->
+    <div class="slide">
+        <div class="header"><h2>Estudo de caso: ransomware com dupla extorsão em uma clínica</h2></div>
+        <div class="content">
+            <div class="grid-2">
+                <div class="card">
+                    <h3 style="font-size:19px;">Contexto</h3>
+                    <p>Uma clínica mantém <b>prontuários eletrônicos</b> de pacientes. Um colaborador recebe um e-mail de
+                        <b>phishing</b>, abre o anexo e, com sua credencial, o malware se espalha pela rede.</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:19px;">O que aconteceu</h3>
+                    <p>O ransomware <b>cifra</b> os arquivos (tornando-os inacessíveis) e ainda <b>exfiltra cópias</b>,
+                        ameaçando vazá-las (dupla extorsão). Um único incidente atingiu os <b>quatro pilares</b>.</p>
+                </div>
+            </div>
+            <table class="table">
+                <tr><th>Pilar atingido</th><th>O que foi violado</th><th>Controle que teria mitigado</th></tr>
+                <tr>
+                    <td><span class="pill a">A</span> Disponibilidade</td>
+                    <td>Prontuários cifrados ficaram inacessíveis; o atendimento parou.</td>
+                    <td>Backup <b>3-2-1</b> offline + plano de DR com <b>RTO/RPO</b> definidos.</td>
+                </tr>
+                <tr>
+                    <td><span class="pill c">C</span> Confidencialidade</td>
+                    <td>Dados sensíveis de pacientes foram exfiltrados.</td>
+                    <td>Cifragem em repouso + <b>DLP</b> + segmentação de rede (menor privilégio).</td>
+                </tr>
+                <tr>
+                    <td><span class="pill i">I</span> Integridade</td>
+                    <td>Arquivos alterados/cifrados sem autorização.</td>
+                    <td>Backups verificados por <b>hash</b> e logs imutáveis (<b>WORM</b>).</td>
+                </tr>
+                <tr>
+                    <td><span class="pill at">Au</span> Autenticidade</td>
+                    <td>Acesso obtido com credencial roubada via phishing.</td>
+                    <td><b>MFA</b> + antiphishing + autenticação de e-mail (SPF/DKIM/DMARC).</td>
+                </tr>
+            </table>
+            <p class="note"><b>Lição:</b> nenhum controle isolado bastaria — a <b>defesa em profundidade</b> combina mecanismos dos quatro pilares.</p>
+        </div>
+    </div>
+
+    <!-- ===================== EXERCÍCIOS OBJETIVOS ===================== -->
+    <div class="slide">
+        <div class="header"><h2>Exercícios — questões objetivas</h2></div>
+        <div class="content">
+            <div class="grid-2">
+                <div>
+                    <div class="quiz">
+                        <h4>1. Um ataque DDoS viola <i>diretamente</i> qual pilar?</h4>
+                        <div class="alt">a) Confidencialidade</div>
+                        <div class="alt">b) Integridade</div>
+                        <div class="alt">c) Disponibilidade</div>
+                        <div class="alt">d) Autenticidade</div>
+                    </div>
+                    <div class="quiz">
+                        <h4>2. A função de hash criptográfica é o instrumento central de qual pilar?</h4>
+                        <div class="alt">a) Disponibilidade &nbsp; b) Integridade &nbsp; c) Confidencialidade &nbsp; d) Autenticidade</div>
+                    </div>
+                    <div class="quiz">
+                        <h4>3. Qual mecanismo fornece integridade, autenticidade <b>e</b> não repúdio?</h4>
+                        <div class="alt">a) CRC &nbsp; b) HMAC &nbsp; c) AES &nbsp; d) Assinatura digital</div>
+                    </div>
+                    <div class="quiz">
+                        <h4>4. Pelo princípio de Kerckhoffs, a segurança deve depender de:</h4>
+                        <div class="alt">a) manter o algoritmo secreto</div>
+                        <div class="alt">b) apenas do sigilo da chave</div>
+                        <div class="alt">c) ocultar o código-fonte</div>
+                        <div class="alt">d) usar hardware proprietário</div>
+                    </div>
+                    <div class="quiz">
+                        <h4>5. Com MTBF = 990 h e MTTR = 10 h, a disponibilidade é:</h4>
+                        <div class="alt">a) 90% &nbsp; b) 95% &nbsp; c) 99% &nbsp; d) 99,9%</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="quiz">
+                        <h4>Verdadeiro ou Falso</h4>
+                        <div class="vf">( &nbsp; ) <b>I.</b> Um checksum CRC garante integridade contra a adulteração deliberada de um adversário.</div>
+                        <div class="vf">( &nbsp; ) <b>II.</b> O one-time pad oferece sigilo perfeito (Shannon) se a chave for aleatória, do tamanho da mensagem e usada uma única vez.</div>
+                        <div class="vf">( &nbsp; ) <b>III.</b> A autenticação multifator combina algo que você sabe, algo que você tem e algo que você é.</div>
+                        <div class="vf">( &nbsp; ) <b>IV.</b> Cifrar dados sempre aumenta a disponibilidade.</div>
+                    </div>
+                    <details class="gab">
+                        <summary>Mostrar gabarito</summary>
+                        <p><b>Múltipla escolha:</b> 1-c · 2-b · 3-d · 4-b · 5-c.</p>
+                        <p><b>V/F:</b> I-<b>F</b> (CRC só detecta erro acidental) · II-<b>V</b> · III-<b>V</b> · IV-<b>F</b> (cifrar pode <i>reduzir</i> a disponibilidade se a chave for perdida).</p>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== EXERCÍCIOS DISCURSIVOS ===================== -->
+    <div class="slide">
+        <div class="header"><h2>Exercícios — questões discursivas</h2></div>
+        <div class="content">
+            <div class="quiz">
+                <h4>D1. MAC × Assinatura digital</h4>
+                <p>Explique por que um <b>MAC</b> (com chave simétrica compartilhada) <b>não</b> fornece não repúdio, enquanto a <b>assinatura digital</b> fornece.</p>
+            </div>
+            <div class="quiz">
+                <h4>D2. Cálculo de disponibilidade</h4>
+                <p>Um SLA exige <b>99,99%</b> de disponibilidade. (a) Calcule o tempo máximo de inatividade por ano. (b) Cite dois mecanismos para alcançar esse nível.</p>
+            </div>
+            <div class="quiz">
+                <h4>D3. Relação pilar–mecanismo–ataque</h4>
+                <p>Para cada um dos quatro pilares, indique um mecanismo de garantia e um ataque que o viola.</p>
+            </div>
+            <details class="gab">
+                <summary>Mostrar gabarito comentado</summary>
+                <p><b>D1.</b> No MAC, emissor e receptor compartilham a <i>mesma</i> chave; logo qualquer um dos dois poderia tê-lo gerado, e o receptor não consegue provar a um terceiro quem foi o autor (o emissor pode negar). Na assinatura digital, apenas o emissor detém a <b>chave privada</b>; a verificação com a chave pública prova a autoria perante terceiros → <b>não repúdio</b>.</p>
+                <p><b>D2.</b> (a) (1 − 0,9999) × 8760 h = 0,876 h ≈ <b>52,6 minutos/ano</b>. (b) Ex.: redundância multi-zona com failover, balanceamento de carga, backups com RPO baixo, mitigação de DDoS.</p>
+                <p><b>D3.</b> Ex.: <b>Confidencialidade</b> — criptografia / <i>sniffing</i>; <b>Integridade</b> — hash e assinatura / <i>tampering</i>; <b>Disponibilidade</b> — redundância e backup / DDoS; <b>Autenticidade</b> — assinatura, PKI e MFA / <i>spoofing</i>.</p>
+            </details>
+        </div>
+    </div>
+
+    <!-- ===================== RESUMO ===================== -->
+    <div class="slide hero">
+        <h1 style="color:#3b82f6;">Em uma frase</h1>
+        <p style="font-size: 22px; max-width: 900px; opacity: 0.92; line-height:1.6;">
+            <b>Confidencialidade</b> protege <i>quem lê</i> (criptografia); <b>Integridade</b> protege <i>contra
+            alteração</i> (hash/assinatura); <b>Disponibilidade</b> protege <i>o acesso</i> (redundância/backup);
+            <b>Autenticidade</b> protege <i>a identidade e a origem</i> (assinatura digital/PKI). Um incidente é a
+            violação de qualquer um deles.</p>
+        <div style="margin-top: 34px;">
+            <a class="slide-back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Gestão de Segurança da Informação</p>
+        <p>Referências: ISO/IEC 27000:2018 · NIST FIPS 199 / SP 800-57 · Hexágono Parkeriano (Parker, 2002) · Shannon (1949).</p>
+    </footer>
+
+</body>
+
+</html>

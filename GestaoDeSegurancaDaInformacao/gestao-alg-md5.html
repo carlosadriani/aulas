@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD5 — Função de Hash Obsoleta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <link rel="stylesheet" href="../assets/css/algoritmos.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light alg hash">
+
+    <div class="slide hero">
+        <i class="fa-solid fa-skull cover" style="font-size: 70px; margin-bottom: 24px;"></i>
+        <h1>MD5</h1>
+        <p style="font-size: 23px; opacity: 0.85;">Message Digest 5 — hash de 128 bits, criptograficamente quebrado</p>
+        <p style="font-size: 16px; opacity: 0.6; margin-top: 8px;">Ronald Rivest (1991) · RFC 1321 · colisões triviais hoje</p>
+        <div style="margin-top: 30px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">Função de Hash · Obsoleto</div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>De onipresente a inseguro</h2></div>
+        <div class="content">
+            <span class="tag">Hash · Obsoleto</span>
+            <div class="def">
+                O <b>MD5</b> gera um resumo de <b>128 bits</b> e dominou os anos 1990–2000. Hoje é
+                <b>criptograficamente quebrado</b>: encontrar <b>colisões</b> é trivial — questão de segundos em um
+                computador comum.
+            </div>
+            <div class="grid-2" style="margin-top:18px;">
+                <div class="card">
+                    <h3 style="font-size:19px;">A queda</h3>
+                    <div class="calc">
+                        2004 → Wang et al. encontram colisões<br>
+                        2008 → <span class="res">CA falsa</span> via colisão MD5<br>
+                        2012 → malware <b>Flame</b> forja<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;assinatura Microsoft com MD5
+                    </div>
+                    <p class="note">A resistência a colisão (nominal 2<sup>64</sup>) colapsou para esforço praticamente nulo.</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:19px;">Consequência real</h3>
+                    <p>Em 2008, pesquisadores criaram uma <b>Autoridade Certificadora falsa</b> explorando colisões MD5; o
+                        malware <b>Flame</b> (2012) forjou uma assinatura de código que se passava pela Microsoft. Colisão
+                        em hash de assinatura = <b>identidade forjável</b>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header"><h2>O que (não) fazer com MD5</h2></div>
+        <div class="content">
+            <div class="grid-2">
+                <div class="card">
+                    <h3 style="font-size:19px;color:#b91c1c;">Nunca use para</h3>
+                    <ul class="spaced">
+                        <li>Assinaturas digitais ou certificados.</li>
+                        <li>Verificar integridade contra um <b>adversário</b>.</li>
+                        <li>Armazenar senhas (além de quebrado, é rápido demais).</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:19px;">Único uso tolerável</h3>
+                    <p>Como <b>checksum não criptográfico</b> contra corrupção <b>acidental</b> (ex.: detectar erro de
+                        transmissão ou deduplicar arquivos), onde não há um atacante tentando enganar você.</p>
+                    <div class="ok"><b>Substituto correto:</b> use
+                        <a href="gestao-alg-sha256.html" style="color:#065f46;font-weight:700;">SHA-256</a> (ou SHA-3) para
+                        qualquer finalidade de segurança.</div>
+                </div>
+            </div>
+            <div class="warn"><b>Resumo da ameaça:</b> resistência a colisão = <b>zero, na prática</b>. Resistência a
+                pré-imagem ainda é melhor, mas isso não salva o algoritmo para usos de segurança.</div>
+        </div>
+    </div>
+
+    <div class="slide hero">
+        <h1 style="color:#10b981;">Em resumo</h1>
+        <p style="font-size: 21px; max-width: 880px; opacity: 0.92; line-height:1.6;">O <b>MD5</b> está
+            <b>criptograficamente morto</b>: colisões são triviais e já foram usadas para forjar certificados e
+            assinaturas. Aceitável apenas como checksum contra erro acidental; <b>jamais</b> para segurança. Migre para
+            SHA-256/SHA-3.</p>
+        <div class="crossref" style="justify-content:center; margin-top:24px;">
+            <a href="gestao-alg-sha256.html">SHA-256</a>
+            <a href="gestao-alg-sha1.html">SHA-1</a>
+            <a href="gestao-alg-hmac.html">HMAC</a>
+            <a href="gestao-algoritmos.html">Todos os algoritmos</a>
+        </div>
+        <div style="margin-top: 22px;">
+            <a class="slide-back" href="gestao-pilares.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Pilares</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Gestão de Segurança da Informação</p>
+        <p>Referências: RFC 1321 · Wang &amp; Yu (2005) · Sotirov et al., "Rogue CA" (2008).</p>
+    </footer>
+
+</body>
+
+</html>
