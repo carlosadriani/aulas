@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo DHCP — Serviços de Redes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        body { background-color: #f1f5f9; }
+        .slide-container { background-color: #ffffff; font-family: "DM Sans", sans-serif; }
+        h1, h2, h3 { font-family: "Merriweather", serif; color: #003366; z-index: 1; }
+        p, li { color: #475569; font-size: 21px; line-height: 1.6; z-index: 1; }
+        .slide-title { font-size: 40px; font-weight: 700; padding: 44px 80px 10px; text-align: left; border-bottom: 4px solid #003366; margin: 0 60px; display: inline-block; }
+        .content-area { flex-grow: 1; padding: 28px 80px 46px; display: flex; flex-direction: column; justify-content: center; z-index: 1; }
+        .title-layout { text-align: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #003366 0%, #001a33 100%); color: #fff; }
+        .title-layout h1 { color: #fff; font-size: 64px; margin-bottom: 18px; }
+        .title-layout p { color: #cbd5e1; font-size: 25px; }
+        .topic-tag { background: #d97706; color: #fff; padding: 7px 20px; border-radius: 50px; font-weight: bold; font-size: 17px; display: inline-block; margin-bottom: 18px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; align-items: stretch; }
+        .info-box { background: #f8fafc; border-radius: 12px; padding: 24px; border-top: 6px solid #003366; }
+        .info-box.c { border-top-color: #d97706; }
+        .info-box.g { border-top-color: #10b981; }
+        .info-box.r { border-top-color: #ef4444; }
+        .info-box i { font-size: 40px; color: #003366; margin-bottom: 12px; }
+        .info-box h3 { font-size: 21px; margin-bottom: 8px; }
+        .info-box p { font-size: 16px; line-height: 1.5; }
+        .highlight-text { font-size: 26px; color: #b45309; font-weight: 500; border-left: 6px solid #d97706; padding-left: 20px; line-height: 1.4; }
+        .icon-large { font-size: 84px; color: #003366; opacity: 0.85; }
+        .check-list { list-style: none; padding-left: 0; }
+        .check-list li { margin-bottom: 12px; position: relative; padding-left: 38px; }
+        .check-list li::before { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; color: #10b981; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 17px; }
+        .comparison-table th { background: #003366; color: #fff; padding: 12px 14px; text-align: left; }
+        .comparison-table td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; }
+        .comparison-table tr:nth-child(even) { background: #f8fafc; }
+        .mono { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 16px 20px; font-family: "Fira Code", monospace; font-size: 15px; line-height: 1.7; margin-top: 12px; }
+        .mono .res { color: #fbbf24; font-weight: 700; }
+        .mono .cmt { color: #64748b; }
+        .callout { border-left: 5px solid #d97706; background: #fffbeb; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .callout b { color: #b45309; }
+        .warn { border-left: 5px solid #ef4444; background: #fef2f2; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .warn b { color: #b91c1c; }
+        .ok { border-left: 5px solid #10b981; background: #ecfdf5; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .ok b { color: #065f46; }
+        .lead { font-size: 24px; line-height: 1.55; }
+        .note { font-size: 14px; color: #94a3b8; margin-top: 10px; }
+        .figure { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; }
+        .figure svg { width: 100%; height: auto; display: block; }
+        .figcap { font-size: 14px; color: #64748b; text-align: center; margin-top: 8px; }
+        .kbd { font-family: "Fira Code", monospace; background: #e2e8f0; padding: 1px 7px; border-radius: 5px; font-size: 0.92em; color: #0f172a; }
+        .nav-footer { position: absolute; bottom: 16px; right: 28px; font-size: 13px; color: #94a3b8; z-index: 2; }
+        .backbar { display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; padding: 12px 24px; border: 1px solid rgba(255,255,255,0.25); border-radius: 50px; color: #fff; text-decoration: none; font-weight: 600; }
+        .backbar:hover { background: rgba(255,255,255,0.12); }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light">
+
+    <!-- CAPA -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag">Tópico 06 · Serviço de Rede</div>
+            <h1>Protocolo DHCP</h1>
+            <p>Configuração automática de hosts: endereço, máscara, <a class="glossario-ref" href="glossario.html#gateway">gateway</a> e DNS — RFC 2131</p>
+            <div style="margin-top: 44px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 16px; width: 340px;">ADS · Serviços de Redes</div>
+        </div>
+    </div>
+
+    <!-- O QUE É -->
+    <div class="slide-container">
+        <h2 class="slide-title">O que é o DHCP</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p class="highlight-text">O Dynamic Host Configuration Protocol automatiza a configuração de rede de um dispositivo, eliminando o ajuste manual.</p>
+                    <ul class="check-list" style="margin-top:20px;">
+                        <li>Entrega <b>endereço <a class="glossario-ref" href="glossario.html#ip">IP</a></b>, <b>máscara</b>, <b>gateway padrão</b> e <b>servidores DNS</b>.</li>
+                        <li>Reaproveita endereços por meio de <b>concessões temporárias (leases)</b>.</li>
+                        <li>Centraliza a gestão de toda a rede em um servidor.</li>
+                    </ul>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-gears"></i>
+                    <h3>Camada de aplicação, sobre <a class="glossario-ref" href="glossario.html#udp">UDP</a></h3>
+                    <p>É um protocolo da camada de aplicação que roda sobre <b>UDP</b>: porta <b>67</b> no servidor e <b>68</b> no cliente. Evoluiu do antigo <b><a class="glossario-ref" href="glossario.html#bootp">BOOTP</a></b>, herdando seu formato de mensagem.</p>
+                </div>
+            </div>
+            <div class="note">Antes do <a class="glossario-ref" href="glossario.html#dhcp">DHCP</a>, cada máquina precisava de IP configurado à mão — inviável em redes grandes e com dispositivos móveis.</div>
+        </div>
+        <div class="nav-footer">01</div>
+    </div>
+
+    <!-- ARQUITETURA -->
+    <div class="slide-container">
+        <h2 class="slide-title">Arquitetura: cliente, servidor e relay</h2>
+        <div class="content-area">
+            <div class="grid-3">
+                <div class="info-box c">
+                    <i class="fa-solid fa-laptop"></i>
+                    <h3>Cliente</h3>
+                    <p>O dispositivo que, ao entrar na rede <b>sem IP</b>, solicita uma configuração. Usa a porta UDP 68.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-server"></i>
+                    <h3>Servidor</h3>
+                    <p>Mantém um <b>pool</b> de endereços e as regras (escopos, opções). Atribui e controla as concessões. Porta UDP 67.</p>
+                </div>
+                <div class="info-box g">
+                    <i class="fa-solid fa-tower-cell"></i>
+                    <h3><a class="glossario-ref" href="glossario.html#relay">Relay agent</a></h3>
+                    <p>Encaminha pedidos DHCP entre sub-redes, permitindo um <b>servidor central</b> atender várias redes.</p>
+                </div>
+            </div>
+            <div class="callout"><b>O desafio inicial:</b> o cliente ainda <b>não tem IP</b>. Por isso fala em <b><a class="glossario-ref" href="glossario.html#broadcast">broadcast</a></b> (origem <span class="kbd">0.0.0.0</span>, destino <span class="kbd">255.255.255.255</span>) até receber sua configuração.</div>
+        </div>
+        <div class="nav-footer">02</div>
+    </div>
+
+    <!-- DORA -->
+    <div class="slide-container">
+        <h2 class="slide-title">O processo DORA</h2>
+        <div class="content-area">
+            <div class="figure">
+                <svg viewBox="0 0 820 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Troca de mensagens DHCP: Discover, Offer, Request, Acknowledge">
+                    <defs><marker id="dA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#d97706"/></marker></defs>
+                    <rect x="40" y="20" width="150" height="50" rx="10" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
+                    <text x="115" y="42" text-anchor="middle" font-size="14" font-weight="700" fill="#b45309">Cliente</text>
+                    <text x="115" y="60" text-anchor="middle" font-size="11" fill="#92400e">(sem IP)</text>
+                    <rect x="630" y="20" width="150" height="50" rx="10" fill="#fff7ed" stroke="#b45309" stroke-width="2"/>
+                    <text x="705" y="42" text-anchor="middle" font-size="14" font-weight="700" fill="#b45309">Servidor DHCP</text>
+                    <line x1="115" y1="70" x2="115" y2="262" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5 6"/>
+                    <line x1="705" y1="70" x2="705" y2="262" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5 6"/>
+                    <text x="410" y="96" text-anchor="middle" font-size="13" fill="#b45309" font-weight="700">① DHCPDISCOVER — "há algum servidor?" (broadcast)</text>
+                    <line x1="118" y1="104" x2="702" y2="104" stroke="#d97706" stroke-width="2.5" marker-end="url(#dA)"/>
+                    <text x="410" y="140" text-anchor="middle" font-size="13" fill="#b45309" font-weight="700">② DHCPOFFER — "ofereço o IP yiaddr"</text>
+                    <line x1="702" y1="148" x2="118" y2="148" stroke="#d97706" stroke-width="2.5" marker-end="url(#dA)"/>
+                    <text x="410" y="184" text-anchor="middle" font-size="13" fill="#b45309" font-weight="700">③ DHCPREQUEST — "aceito esta oferta" (broadcast)</text>
+                    <line x1="118" y1="192" x2="702" y2="192" stroke="#d97706" stroke-width="2.5" marker-end="url(#dA)"/>
+                    <text x="410" y="228" text-anchor="middle" font-size="13" fill="#b45309" font-weight="700">④ DHCPACK — "confirmado, lease ativo"</text>
+                    <line x1="702" y1="236" x2="118" y2="236" stroke="#d97706" stroke-width="2.5" marker-end="url(#dA)"/>
+                    <text x="410" y="266" text-anchor="middle" font-size="12" fill="#64748b">DORA: Discover · Offer · Request · Acknowledge</text>
+                </svg>
+                <p class="figcap">O Request é em broadcast para que os <b>demais servidores</b> saibam que não foram escolhidos e liberem suas ofertas.</p>
+            </div>
+        </div>
+        <div class="nav-footer">03</div>
+    </div>
+
+    <!-- DETALHE DORA -->
+    <div class="slide-container">
+        <h2 class="slide-title">As quatro mensagens, em detalhe</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Etapa</th><th>Quem envia</th><th>O que faz</th></tr>
+                <tr><td><b>D</b>iscover</td><td>Cliente (broadcast)</td><td>Procura servidores DHCP disponíveis na rede.</td></tr>
+                <tr><td><b>O</b>ffer</td><td>Servidor</td><td>Reserva e oferece um endereço (campo <span class="kbd">yiaddr</span>) com as opções de configuração.</td></tr>
+                <tr><td><b>R</b>equest</td><td>Cliente (broadcast)</td><td>Aceita formalmente <b>uma</b> oferta, identificando o servidor escolhido (opção 54).</td></tr>
+                <tr><td><b>A</b>cknowledge</td><td>Servidor</td><td>Confirma a concessão (DHCPACK) e fixa o tempo de <a class="glossario-ref" href="glossario.html#lease">lease</a>. Em caso de problema, envia <b>DHCPNAK</b>.</td></tr>
+            </table>
+            <div class="callout"><b>Verificação final:</b> antes de usar o IP, o cliente pode checar com <b><a class="glossario-ref" href="glossario.html#arp">ARP</a></b> (ou DAD) se o endereço já não está em uso; se estiver, responde <b>DHCPDECLINE</b>.</div>
+        </div>
+        <div class="nav-footer">04</div>
+    </div>
+
+    <!-- FORMATO DA MENSAGEM -->
+    <div class="slide-container">
+        <h2 class="slide-title">Formato da mensagem (herdado do BOOTP)</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>A mensagem é uma estrutura de campos fixos seguida de <b>opções</b> variáveis. Campos-chave:</p>
+                    <table class="comparison-table" style="font-size:16px;">
+                        <tr><th>Campo</th><th>Função</th></tr>
+                        <tr><td>op</td><td>1=requisição, 2=resposta.</td></tr>
+                        <tr><td>xid</td><td>ID da transação (casa pedido e resposta).</td></tr>
+                        <tr><td>ciaddr</td><td>IP atual do cliente (em renovação).</td></tr>
+                        <tr><td>yiaddr</td><td>"Your address": o IP oferecido/atribuído.</td></tr>
+                        <tr><td>giaddr</td><td>IP do relay agent (se houver).</td></tr>
+                        <tr><td>chaddr</td><td>Endereço de hardware (<a class="glossario-ref" href="glossario.html#mac">MAC</a>) do cliente.</td></tr>
+                    </table>
+                </div>
+                <div>
+                    <div class="info-box c">
+                        <i class="fa-solid fa-puzzle-piece"></i>
+                        <h3>O campo de opções</h3>
+                        <p>Começa com o <b>magic <a class="glossario-ref" href="glossario.html#cookie">cookie</a></b> <span class="kbd">99.130.83.99</span> e segue no formato <b>TLV</b> (Tipo-Tamanho-Valor). A opção <b>53</b> define o <i>tipo</i> da mensagem DHCP (Discover, Offer, …).</p>
+                    </div>
+                    <div class="mono" style="font-size:14px;">
+                        opção 53 = 1 → DHCPDISCOVER<br>
+                        opção 53 = 2 → DHCPOFFER<br>
+                        opção 53 = 3 → DHCPREQUEST<br>
+                        opção 53 = 5 → DHCPACK
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">05</div>
+    </div>
+
+    <!-- OPÇÕES -->
+    <div class="slide-container">
+        <h2 class="slide-title">Principais opções de configuração</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Opção</th><th>Nome</th><th>Para que serve</th></tr>
+                <tr><td>1</td><td>Máscara de sub-rede</td><td>Define a fronteira rede/host.</td></tr>
+                <tr><td>3</td><td><a class="glossario-ref" href="glossario.html#roteador">Roteador</a> (gateway)</td><td>Saída padrão para outras redes.</td></tr>
+                <tr><td>6</td><td>Servidores DNS</td><td>Resolução de nomes.</td></tr>
+                <tr><td>15</td><td>Nome de domínio</td><td>Sufixo DNS da rede.</td></tr>
+                <tr><td>51</td><td>Tempo de concessão</td><td>Duração do lease.</td></tr>
+                <tr><td>53</td><td>Tipo de mensagem</td><td>Discover, Offer, Request, <a class="glossario-ref" href="glossario.html#ack">ACK</a>, NAK…</td></tr>
+                <tr><td>54</td><td>Identificador do servidor</td><td>Qual servidor concedeu/deve responder.</td></tr>
+            </table>
+            <div class="note">Há dezenas de opções (RFC 2132): NTP, TFTP, rota estática, identificador de cliente (61), lista de parâmetros solicitados (55), etc.</div>
+        </div>
+        <div class="nav-footer">06</div>
+    </div>
+
+    <!-- LEASE / CONCESSÃO -->
+    <div class="slide-container">
+        <h2 class="slide-title">A concessão (lease) e sua renovação</h2>
+        <div class="content-area">
+            <p>O endereço é <b>emprestado por um tempo</b>. O cliente tenta renovar <b>antes</b> de expirar, em dois marcos:</p>
+            <div class="figure" style="margin-top:10px;">
+                <svg viewBox="0 0 860 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Linha do tempo de uma concessão DHCP com T1 e T2">
+                    <rect x="40" y="54" width="780" height="28" rx="6" fill="#fde68a" stroke="#d97706" stroke-width="1.6"/>
+                    <!-- ticks -->
+                    <line x1="40" y1="44" x2="40" y2="92" stroke="#003366" stroke-width="2"/>
+                    <text x="40" y="36" text-anchor="middle" font-size="12" fill="#003366">0 — BOUND</text>
+                    <line x1="430" y1="44" x2="430" y2="92" stroke="#0e7490" stroke-width="2"/>
+                    <text x="430" y="36" text-anchor="middle" font-size="12" fill="#0e7490">T1 = 50%</text>
+                    <text x="430" y="112" text-anchor="middle" font-size="12" fill="#475569">RENEW (unicast ao servidor)</text>
+                    <line x1="722" y1="44" x2="722" y2="92" stroke="#b45309" stroke-width="2"/>
+                    <text x="722" y="36" text-anchor="middle" font-size="12" fill="#b45309">T2 = 87,5%</text>
+                    <text x="722" y="112" text-anchor="middle" font-size="12" fill="#475569">REBIND (broadcast a qualquer servidor)</text>
+                    <line x1="820" y1="44" x2="820" y2="92" stroke="#ef4444" stroke-width="2"/>
+                    <text x="812" y="36" text-anchor="middle" font-size="12" fill="#ef4444">Expira</text>
+                    <text x="700" y="134" text-anchor="middle" font-size="12" fill="#64748b">ao expirar sem renovar, o cliente para de usar o IP e recomeça do Discover</text>
+                </svg>
+                <p class="figcap">T1 (50%) e T2 (87,5%) do tempo de lease disparam a renovação e a re-vinculação.</p>
+            </div>
+            <div class="ok"><b>Por que lease?</b> Endereços são um recurso finito. A concessão temporária permite <b>reciclar</b> IPs de dispositivos que saíram da rede.</div>
+        </div>
+        <div class="nav-footer">07</div>
+    </div>
+
+    <!-- RELAY -->
+    <div class="slide-container">
+        <h2 class="slide-title">Relay agent: DHCP entre sub-redes</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>O DHCPDISCOVER é <b>broadcast</b> e, por padrão, <b>não atravessa roteadores</b>. Como, então, ter <b>um servidor central</b> para toda a empresa?</p>
+                    <div class="callout"><b>Solução:</b> o roteador atua como <b>relay agent</b> (o "IP helper"): recebe o broadcast local, preenche o campo <span class="kbd">giaddr</span> e <b>encaminha em unicast</b> ao servidor remoto.</div>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-route"></i>
+                    <h3>O papel do giaddr</h3>
+                    <p>O servidor usa o <span class="kbd">giaddr</span> para saber <b>de qual sub-rede</b> veio o pedido e escolher o <b>escopo</b> correto de endereços, respondendo de volta ao relay.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">08</div>
+    </div>
+
+    <!-- OUTRAS MENSAGENS -->
+    <div class="slide-container">
+        <h2 class="slide-title">Outras mensagens do protocolo</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Mensagem</th><th>Quem envia</th><th>Significado</th></tr>
+                <tr><td>DHCPNAK</td><td>Servidor</td><td>Recusa/invalida o pedido (ex.: o IP solicitado não é mais válido naquela rede).</td></tr>
+                <tr><td>DHCPDECLINE</td><td>Cliente</td><td>O endereço oferecido <b>já está em uso</b> (detectado por ARP).</td></tr>
+                <tr><td>DHCPRELEASE</td><td>Cliente</td><td>Devolve voluntariamente o endereço antes do fim do lease.</td></tr>
+                <tr><td>DHCPINFORM</td><td>Cliente</td><td>Já tem IP (fixo), mas quer apenas <b>parâmetros</b> (DNS, etc.).</td></tr>
+            </table>
+            <div class="callout"><b>Estados do cliente:</b> INIT → SELECTING → REQUESTING → <b>BOUND</b> → RENEWING → REBINDING — um ciclo de vida bem definido pela RFC 2131.</div>
+        </div>
+        <div class="nav-footer">09</div>
+    </div>
+
+    <!-- DHCPv6 -->
+    <div class="slide-container">
+        <h2 class="slide-title">DHCPv6: a versão para IPv6</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>No <a class="glossario-ref" href="glossario.html#ipv6">IPv6</a>, o <b>DHCPv6</b> (RFC 8415) convive com a autoconfiguração <b><a class="glossario-ref" href="glossario.html#slaac">SLAAC</a></b>. Muda a mecânica:</p>
+                    <ul class="check-list" style="margin-top:12px;">
+                        <li>Usa <b>UDP 546</b> (cliente) e <b>547</b> (servidor).</li>
+                        <li>Em vez de broadcast, fala em <b>multicast</b> (<span class="kbd">ff02::1:2</span>).</li>
+                        <li>Troca: <b>Solicit → Advertise → Request → Reply</b>.</li>
+                    </ul>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-code-branch"></i>
+                    <h3>Stateful × Stateless</h3>
+                    <p>Pode operar com <b>estado</b> (atribui o endereço, como no <a class="glossario-ref" href="glossario.html#ipv4">IPv4</a>) ou <b>sem estado</b> (o SLAAC dá o endereço e o DHCPv6 fornece só DNS e outros parâmetros).</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">10</div>
+    </div>
+
+    <!-- SEGURANÇA -->
+    <div class="slide-container">
+        <h2 class="slide-title">Segurança: ameaças e defesas</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div class="info-box r">
+                    <i class="fa-solid fa-user-secret"></i>
+                    <h3>Servidor DHCP falso (rogue)</h3>
+                    <p>Um servidor não autorizado distribui um <b>gateway/DNS malicioso</b>, interceptando o tráfego das vítimas (<b>man-in-the-middle</b>).</p>
+                </div>
+                <div class="info-box r">
+                    <i class="fa-solid fa-bucket"></i>
+                    <h3>DHCP starvation</h3>
+                    <p>O atacante inunda o servidor com pedidos de <b>MACs forjados</b>, <b>esgotando o pool</b> e negando serviço aos hosts legítimos.</p>
+                </div>
+            </div>
+            <div class="ok"><b>Defesas:</b> <b>DHCP snooping</b> (o <a class="glossario-ref" href="glossario.html#switch">switch</a> só aceita respostas DHCP de portas confiáveis) combinado com <b>port security</b> (limita os MACs por porta) neutralizam ambos os ataques.</div>
+        </div>
+        <div class="nav-footer">11</div>
+    </div>
+
+    <!-- RESUMO -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag" style="background:#10b981;">Síntese</div>
+            <h1 style="font-size:46px;">Em resumo</h1>
+            <p style="max-width: 880px; margin: 0 auto;">O <b>DHCP</b> automatiza a configuração de rede dos hosts via UDP (portas 67/68), entregando IP,
+                máscara, gateway e DNS. O cliente passa pelo ciclo <b><a class="glossario-ref" href="glossario.html#dora">DORA</a></b> (Discover, Offer, Request, Acknowledge) e recebe uma <b>concessão temporária</b>
+                renovada em T1/T2. <b>Relay agents</b> levam o serviço a várias sub-redes, e o <b>DHCPv6</b> atende ao IPv6. Por ser baseado em broadcast e sem
+                autenticação, exige defesas como <b>DHCP snooping</b>.</p>
+            <a class="backbar" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Disciplina de Serviços de Redes</p>
+        <p>Referências: RFC 2131 (DHCP) · RFC 2132 (opções) · RFC 8415 (DHCPv6) · RFC 951 (BOOTP).</p>
+    </footer>
+
+</body>
+
+</html>

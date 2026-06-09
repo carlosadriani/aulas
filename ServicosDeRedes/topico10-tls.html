@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolos SSL e TLS — Serviços de Redes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        body { background-color: #f1f5f9; }
+        .slide-container { background-color: #ffffff; font-family: "DM Sans", sans-serif; }
+        h1, h2, h3 { font-family: "Merriweather", serif; color: #003366; z-index: 1; }
+        p, li { color: #475569; font-size: 21px; line-height: 1.6; z-index: 1; }
+        .slide-title { font-size: 40px; font-weight: 700; padding: 44px 80px 10px; text-align: left; border-bottom: 4px solid #003366; margin: 0 60px; display: inline-block; }
+        .content-area { flex-grow: 1; padding: 28px 80px 46px; display: flex; flex-direction: column; justify-content: center; z-index: 1; }
+        .title-layout { text-align: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #003366 0%, #001a33 100%); color: #fff; }
+        .title-layout h1 { color: #fff; font-size: 60px; margin-bottom: 18px; }
+        .title-layout p { color: #cbd5e1; font-size: 25px; }
+        .topic-tag { background: #0284c7; color: #fff; padding: 7px 20px; border-radius: 50px; font-weight: bold; font-size: 17px; display: inline-block; margin-bottom: 18px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; align-items: stretch; }
+        .info-box { background: #f8fafc; border-radius: 12px; padding: 24px; border-top: 6px solid #003366; }
+        .info-box.c { border-top-color: #0284c7; }
+        .info-box.g { border-top-color: #10b981; }
+        .info-box.r { border-top-color: #ef4444; }
+        .info-box i { font-size: 40px; color: #003366; margin-bottom: 12px; }
+        .info-box h3 { font-size: 21px; margin-bottom: 8px; }
+        .info-box p { font-size: 16px; line-height: 1.5; }
+        .highlight-text { font-size: 26px; color: #075985; font-weight: 500; border-left: 6px solid #0284c7; padding-left: 20px; line-height: 1.4; }
+        .icon-large { font-size: 84px; color: #003366; opacity: 0.85; }
+        .check-list { list-style: none; padding-left: 0; }
+        .check-list li { margin-bottom: 12px; position: relative; padding-left: 38px; }
+        .check-list li::before { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; color: #10b981; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 17px; }
+        .comparison-table th { background: #003366; color: #fff; padding: 12px 14px; text-align: left; }
+        .comparison-table td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; }
+        .comparison-table tr:nth-child(even) { background: #f8fafc; }
+        .mono { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 16px 20px; font-family: "Fira Code", monospace; font-size: 15px; line-height: 1.7; margin-top: 12px; }
+        .mono .res { color: #38bdf8; font-weight: 700; }
+        .mono .cmt { color: #64748b; }
+        .callout { border-left: 5px solid #0284c7; background: #f0f9ff; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .callout b { color: #075985; }
+        .warn { border-left: 5px solid #ef4444; background: #fef2f2; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .warn b { color: #b91c1c; }
+        .ok { border-left: 5px solid #10b981; background: #ecfdf5; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .ok b { color: #065f46; }
+        .lead { font-size: 24px; line-height: 1.55; }
+        .note { font-size: 14px; color: #94a3b8; margin-top: 10px; }
+        .figure { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; }
+        .figure svg { width: 100%; height: auto; display: block; }
+        .figcap { font-size: 14px; color: #64748b; text-align: center; margin-top: 8px; }
+        .kbd { font-family: "Fira Code", monospace; background: #e2e8f0; padding: 1px 7px; border-radius: 5px; font-size: 0.92em; color: #0f172a; }
+        .nav-footer { position: absolute; bottom: 16px; right: 28px; font-size: 13px; color: #94a3b8; z-index: 2; }
+        .backbar { display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; padding: 12px 24px; border: 1px solid rgba(255,255,255,0.25); border-radius: 50px; color: #fff; text-decoration: none; font-weight: 600; }
+        .backbar:hover { background: rgba(255,255,255,0.12); }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light">
+
+    <!-- CAPA -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag">Tópico 10 · Segurança de Transporte</div>
+            <h1>Protocolos SSL e TLS</h1>
+            <p>A camada de segurança da Internet: confidencialidade, integridade e autenticação — RFC 8446 (<a class="glossario-ref" href="glossario.html#tls">TLS</a> 1.3)</p>
+            <div style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 16px; width: 340px;">ADS · Serviços de Redes</div>
+        </div>
+    </div>
+
+    <!-- O QUE É -->
+    <div class="slide-container">
+        <h2 class="slide-title">O que são SSL e TLS</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p class="highlight-text">O TLS (Transport Layer Security) é o protocolo que cifra e autentica a comunicação na Internet. É o "S" do <a class="glossario-ref" href="glossario.html#https">HTTPS</a>.</p>
+                    <ul class="check-list" style="margin-top:20px;">
+                        <li><b>Confidencialidade:</b> ninguém no caminho lê os dados.</li>
+                        <li><b>Integridade:</b> a adulteração é detectada.</li>
+                        <li><b>Autenticação:</b> você fala mesmo com o servidor pretendido.</li>
+                    </ul>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-lock"></i>
+                    <h3><a class="glossario-ref" href="glossario.html#ssl">SSL</a> × TLS</h3>
+                    <p>O <b>SSL</b> (Secure Sockets Layer) foi o predecessor, criado pela Netscape nos anos 1990. O <b>TLS</b> é sua evolução padronizada pela IETF. Hoje, "SSL" é usado por hábito, mas o protocolo em uso é sempre o <b>TLS</b> — o SSL está <b>obsoleto e inseguro</b>.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">01</div>
+    </div>
+
+    <!-- HISTÓRIA -->
+    <div class="slide-container">
+        <h2 class="slide-title">Evolução: de SSL 2.0 a TLS 1.3</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Versão</th><th>Ano</th><th>Situação</th></tr>
+                <tr><td>SSL 2.0</td><td>1995</td><td style="color:#b91c1c;">Quebrado — banido.</td></tr>
+                <tr><td>SSL 3.0</td><td>1996</td><td style="color:#b91c1c;">Inseguro (POODLE) — banido.</td></tr>
+                <tr><td>TLS 1.0</td><td>1999</td><td style="color:#b45309;">Obsoleto (depreciado em 2021).</td></tr>
+                <tr><td>TLS 1.1</td><td>2006</td><td style="color:#b45309;">Obsoleto (depreciado em 2021).</td></tr>
+                <tr><td>TLS 1.2</td><td>2008</td><td style="color:#065f46;">Seguro e ainda amplamente usado.</td></tr>
+                <tr><td>TLS 1.3</td><td>2018</td><td style="color:#065f46;"><b>Atual</b> — mais rápido e seguro.</td></tr>
+            </table>
+            <div class="note">Cada quebra histórica motivou uma nova versão; a tendência é remover algoritmos e recursos legados.</div>
+        </div>
+        <div class="nav-footer">02</div>
+    </div>
+
+    <!-- PILHA -->
+    <div class="slide-container">
+        <h2 class="slide-title">Onde o TLS se encaixa</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>O TLS fica <b>entre a aplicação e o transporte</b>: a aplicação enxerga um canal seguro; por baixo, é o <b><a class="glossario-ref" href="glossario.html#tcp">TCP</a></b> comum.</p>
+                    <div class="callout"><b>Dois subprotocolos principais:</b> o <b><a class="glossario-ref" href="glossario.html#handshake">Handshake</a></b> negocia parâmetros e autentica; o <b>Record</b> cifra e transporta os dados da aplicação em registros.</div>
+                </div>
+                <div class="figure">
+                    <svg viewBox="0 0 420 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pilha de protocolos com TLS entre aplicação e TCP">
+                        <rect x="60" y="20" width="300" height="46" rx="8" fill="#e0f2fe" stroke="#075985" stroke-width="1.8"/>
+                        <text x="210" y="48" text-anchor="middle" font-size="15" font-weight="700" fill="#075985">Aplicação (HTTP)</text>
+                        <rect x="60" y="76" width="300" height="76" rx="8" fill="#bae6fd" stroke="#0284c7" stroke-width="2"/>
+                        <text x="210" y="102" text-anchor="middle" font-size="15" font-weight="700" fill="#075985">TLS</text>
+                        <text x="210" y="124" text-anchor="middle" font-size="12" fill="#0c4a6e">Handshake · Record · Alert</text>
+                        <text x="210" y="142" text-anchor="middle" font-size="12" fill="#0c4a6e">(cifra + autentica)</text>
+                        <rect x="60" y="162" width="300" height="42" rx="8" fill="#ddd6fe" stroke="#5b21b6" stroke-width="1.8"/>
+                        <text x="210" y="188" text-anchor="middle" font-size="15" font-weight="700" fill="#5b21b6">TCP</text>
+                        <rect x="60" y="214" width="300" height="42" rx="8" fill="#e2e8f0" stroke="#475569" stroke-width="1.8"/>
+                        <text x="210" y="240" text-anchor="middle" font-size="15" font-weight="700" fill="#334155">IP</text>
+                    </svg>
+                    <p class="figcap"><a class="glossario-ref" href="glossario.html#http">HTTP</a> + TLS = <b>HTTPS</b>. O <a class="glossario-ref" href="glossario.html#quic">QUIC</a> (HTTP/3) integra o TLS 1.3 diretamente sobre <a class="glossario-ref" href="glossario.html#udp">UDP</a>.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">03</div>
+    </div>
+
+    <!-- CRIPTOGRAFIA HÍBRIDA -->
+    <div class="slide-container">
+        <h2 class="slide-title">A engenharia: criptografia híbrida</h2>
+        <div class="content-area">
+            <p class="lead">O TLS combina o melhor dos dois mundos da criptografia, em duas fases:</p>
+            <div class="grid-2" style="margin-top:14px;">
+                <div class="info-box c">
+                    <i class="fa-solid fa-key"></i>
+                    <h3>1. Assimétrica (no handshake)</h3>
+                    <p>Uma troca <b>(EC)DHE</b> estabelece um <b>segredo compartilhado</b>, e a <b>assinatura</b> do certificado (<a class="glossario-ref" href="glossario.html#rsa">RSA</a> ou <a class="glossario-ref" href="glossario.html#ecdsa">ECDSA</a>) <b>autentica</b> o servidor. Caro, mas usado só no início.</p>
+                </div>
+                <div class="info-box g">
+                    <i class="fa-solid fa-bolt"></i>
+                    <h3>2. Simétrica (nos dados)</h3>
+                    <p>A partir do segredo, derivam-se chaves para uma cifra <b><a class="glossario-ref" href="glossario.html#aead">AEAD</a></b> rápida — <b><a class="glossario-ref" href="glossario.html#aes">AES</a>-GCM</b> ou <b>ChaCha20-Poly1305</b> — que protege todo o tráfego.</p>
+                </div>
+            </div>
+            <div class="callout"><b>Por quê?</b> A criptografia assimétrica resolve a <b>distribuição da chave</b> sem canal seguro prévio; a simétrica entrega <b>desempenho</b>. O TLS usa cada uma onde ela é melhor.</div>
+        </div>
+        <div class="nav-footer">04</div>
+    </div>
+
+    <!-- CIPHER SUITES -->
+    <div class="slide-container">
+        <h2 class="slide-title">Cipher suites: a "receita" da conexão</h2>
+        <div class="content-area">
+            <p>Uma <b><a class="glossario-ref" href="glossario.html#cipher-suite">cipher suite</a></b> nomeia os algoritmos negociados. Compare as duas eras:</p>
+            <div class="mono">
+                <span class="cmt"># TLS 1.2 — descreve cada componente</span><br>
+                TLS_<span class="res"><a class="glossario-ref" href="glossario.html#ecdhe">ECDHE</a></span>_<span class="res">RSA</span>_WITH_<span class="res">AES_128_GCM</span>_<span class="res">SHA256</span><br>
+                &nbsp;&nbsp;&nbsp; ↑ troca de chave  ↑ autenticação  ↑ cifra  ↑ <a class="glossario-ref" href="glossario.html#hash">hash</a><br><br>
+                <span class="cmt"># TLS 1.3 — enxuta (só a cifra AEAD + hash)</span><br>
+                TLS_<span class="res">AES_128_GCM</span>_<span class="res">SHA256</span>
+            </div>
+            <div class="callout"><b>No TLS 1.3</b> a troca de chave é sempre <b>(EC)DHE</b> efêmera e a autenticação vem do certificado — por isso não precisam constar no nome. Só a cifra de dados e o hash são listados.</div>
+        </div>
+        <div class="nav-footer">05</div>
+    </div>
+
+    <!-- HANDSHAKE TLS 1.2 -->
+    <div class="slide-container">
+        <h2 class="slide-title">O handshake do TLS 1.2 (2-RTT)</h2>
+        <div class="content-area">
+            <div class="figure">
+                <svg viewBox="0 0 820 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Handshake TLS 1.2">
+                    <defs><marker id="t12" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#0284c7"/></marker></defs>
+                    <rect x="40" y="16" width="150" height="46" rx="10" fill="#e0f2fe" stroke="#075985" stroke-width="2"/>
+                    <text x="115" y="44" text-anchor="middle" font-size="14" font-weight="700" fill="#075985">Cliente</text>
+                    <rect x="630" y="16" width="150" height="46" rx="10" fill="#f0f9ff" stroke="#075985" stroke-width="2"/>
+                    <text x="705" y="44" text-anchor="middle" font-size="14" font-weight="700" fill="#075985">Servidor</text>
+                    <line x1="115" y1="62" x2="115" y2="268" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5 6"/>
+                    <line x1="705" y1="62" x2="705" y2="268" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5 6"/>
+                    <text x="410" y="84" text-anchor="middle" font-size="12.5" font-weight="700" fill="#075985">① ClientHello (versões, cipher suites, random)</text>
+                    <line x1="118" y1="92" x2="702" y2="92" stroke="#0284c7" stroke-width="2.5" marker-end="url(#t12)"/>
+                    <text x="410" y="124" text-anchor="middle" font-size="12.5" font-weight="700" fill="#075985">② ServerHello, Certificate, ServerKeyExchange, Done</text>
+                    <line x1="702" y1="132" x2="118" y2="132" stroke="#0284c7" stroke-width="2.5" marker-end="url(#t12)"/>
+                    <text x="410" y="164" text-anchor="middle" font-size="12.5" font-weight="700" fill="#075985">③ ClientKeyExchange, ChangeCipherSpec, Finished</text>
+                    <line x1="118" y1="172" x2="702" y2="172" stroke="#0284c7" stroke-width="2.5" marker-end="url(#t12)"/>
+                    <text x="410" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#075985">④ ChangeCipherSpec, Finished</text>
+                    <line x1="702" y1="212" x2="118" y2="212" stroke="#0284c7" stroke-width="2.5" marker-end="url(#t12)"/>
+                    <text x="410" y="244" text-anchor="middle" font-size="12.5" font-weight="700" fill="#10b981">⑤ Dados de aplicação (cifrados) ⇄</text>
+                    <line x1="118" y1="254" x2="702" y2="254" stroke="#10b981" stroke-width="2" marker-end="url(#t12)"/>
+                    <text x="410" y="274" text-anchor="middle" font-size="11" fill="#64748b">duas idas e voltas (2-RTT) antes do primeiro dado</text>
+                </svg>
+                <p class="figcap">O cliente valida o certificado e ambos derivam as mesmas chaves de sessão.</p>
+            </div>
+        </div>
+        <div class="nav-footer">06</div>
+    </div>
+
+    <!-- HANDSHAKE TLS 1.3 -->
+    <div class="slide-container">
+        <h2 class="slide-title">O handshake do TLS 1.3 (1-RTT)</h2>
+        <div class="content-area">
+            <div class="figure">
+                <svg viewBox="0 0 820 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Handshake TLS 1.3">
+                    <defs><marker id="t13" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#0284c7"/></marker></defs>
+                    <rect x="40" y="16" width="150" height="46" rx="10" fill="#e0f2fe" stroke="#075985" stroke-width="2"/>
+                    <text x="115" y="44" text-anchor="middle" font-size="14" font-weight="700" fill="#075985">Cliente</text>
+                    <rect x="630" y="16" width="150" height="46" rx="10" fill="#f0f9ff" stroke="#075985" stroke-width="2"/>
+                    <text x="705" y="44" text-anchor="middle" font-size="14" font-weight="700" fill="#075985">Servidor</text>
+                    <line x1="115" y1="62" x2="115" y2="238" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5 6"/>
+                    <line x1="705" y1="62" x2="705" y2="238" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5 6"/>
+                    <text x="410" y="90" text-anchor="middle" font-size="12.5" font-weight="700" fill="#075985">① ClientHello + key_share (já propõe a chave)</text>
+                    <line x1="118" y1="98" x2="702" y2="98" stroke="#0284c7" stroke-width="2.5" marker-end="url(#t13)"/>
+                    <text x="410" y="130" text-anchor="middle" font-size="12px" font-weight="700" fill="#075985">② ServerHello + key_share,</text>
+                    <text x="410" y="148" text-anchor="middle" font-size="12px" font-weight="700" fill="#075985">{Certificate, CertificateVerify, Finished} (cifrado)</text>
+                    <line x1="702" y1="158" x2="118" y2="158" stroke="#0284c7" stroke-width="2.5" marker-end="url(#t13)"/>
+                    <text x="410" y="190" text-anchor="middle" font-size="12.5" font-weight="700" fill="#075985">③ {Finished} + dados de aplicação já no 1º RTT</text>
+                    <line x1="118" y1="198" x2="702" y2="198" stroke="#10b981" stroke-width="2.5" marker-end="url(#t13)"/>
+                    <text x="410" y="226" text-anchor="middle" font-size="11" fill="#64748b">apenas 1-RTT; a retomada de sessão permite 0-RTT</text>
+                </svg>
+                <p class="figcap">Mais rápido e com o handshake <b>cifrado</b> a partir do ServerHello — inclusive o certificado.</p>
+            </div>
+        </div>
+        <div class="nav-footer">07</div>
+    </div>
+
+    <!-- CERTIFICADOS / PKI -->
+    <div class="slide-container">
+        <h2 class="slide-title">Certificados e a cadeia de confiança (PKI)</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>A autenticação do servidor repousa na <b><a class="glossario-ref" href="glossario.html#pki">PKI</a></b>: um <b><a class="glossario-ref" href="glossario.html#x509">certificado X.509</a></b> liga uma <b>chave pública</b> a um <b>nome de domínio</b>, assinado por uma <b>Autoridade Certificadora (CA)</b>.</p>
+                    <ul class="check-list" style="margin-top:12px;">
+                        <li>O navegador confia em um conjunto de <b>CAs-raiz</b>.</li>
+                        <li>Valida a <b>cadeia</b>: servidor → CA intermediária → raiz.</li>
+                        <li>Verifica domínio, validade e revogação.</li>
+                    </ul>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-certificate"></i>
+                    <h3>O que impede a falsificação</h3>
+                    <p>O servidor prova possuir a <b>chave privada</b> correspondente ao certificado (no TLS 1.3, via <b>CertificateVerify</b>). Sem ela, um impostor não conclui o handshake — mesmo tendo o certificado público.</p>
+                </div>
+            </div>
+            <div class="callout"><b><a class="glossario-ref" href="glossario.html#sni">SNI</a></b> (Server Name Indication) informa, no ClientHello, <i>qual</i> site se quer — permitindo vários domínios HTTPS no mesmo <a class="glossario-ref" href="glossario.html#ip">IP</a>.</div>
+        </div>
+        <div class="nav-footer">08</div>
+    </div>
+
+    <!-- FORWARD SECRECY -->
+    <div class="slide-container">
+        <h2 class="slide-title">Sigilo encaminhado (Forward Secrecy)</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p class="highlight-text">Com chaves efêmeras (EC)DHE, cada sessão usa um segredo descartável.</p>
+                    <p style="margin-top:14px;">Se a <b>chave privada de longo prazo</b> do servidor vazar no futuro, as <b>sessões passadas continuam seguras</b> — pois as chaves de sessão não podem ser recalculadas.</p>
+                </div>
+                <div class="info-box g">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <h3>Obrigatório no TLS 1.3</h3>
+                    <p>O TLS 1.3 <b>exige</b> troca de chave efêmera. O antigo modo "RSA key transport" (sem <a class="glossario-ref" href="glossario.html#forward-secrecy">forward secrecy</a>) foi <b>removido</b>: lá, capturar o tráfego e depois roubar a chave revelava tudo.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">09</div>
+    </div>
+
+    <!-- MELHORIAS 1.3 -->
+    <div class="slide-container">
+        <h2 class="slide-title">Por que o TLS 1.3 é melhor</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div class="info-box g">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <h3>Mais rápido</h3>
+                    <p>Handshake em <b>1-<a class="glossario-ref" href="glossario.html#rtt">RTT</a></b> (e <b>0-RTT</b> na retomada), contra 2-RTT do 1.2.</p>
+                </div>
+                <div class="info-box g">
+                    <i class="fa-solid fa-broom"></i>
+                    <h3>Mais limpo e seguro</h3>
+                    <p>Removeu o que era fraco: <b>RSA key transport</b>, <b>RC4</b>, <b>MD5/<a class="glossario-ref" href="glossario.html#sha">SHA</a>-1</b>, cifras <b>CBC</b>, compressão e renegociação. Só sobraram primitivas <b>AEAD</b>.</p>
+                </div>
+            </div>
+            <div class="ok"><b>Handshake cifrado:</b> a partir do ServerHello tudo é protegido — inclusive o certificado — reduzindo o que um espião consegue observar sobre a conexão.</div>
+        </div>
+        <div class="nav-footer">10</div>
+    </div>
+
+    <!-- ATAQUES -->
+    <div class="slide-container">
+        <h2 class="slide-title">Ataques históricos e lições</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Ataque</th><th>Alvo</th><th>Lição</th></tr>
+                <tr><td>POODLE</td><td>SSL 3.0 (padding CBC)</td><td>Aposentar protocolos antigos.</td></tr>
+                <tr><td>BEAST</td><td>TLS 1.0 (CBC/IV)</td><td>Migrar para AEAD.</td></tr>
+                <tr><td>CRIME / BREACH</td><td>Compressão</td><td>Compressão + cifra vaza segredos.</td></tr>
+                <tr><td>Heartbleed</td><td>OpenSSL (implementação)</td><td>Bug de código, não do protocolo — atualizar bibliotecas.</td></tr>
+                <tr><td>DROWN</td><td>SSLv2 residual</td><td>Desativar versões legadas <i>em todo lugar</i>.</td></tr>
+                <tr><td>Downgrade</td><td>Negociação de versão</td><td>Forçar a versão mais alta; o 1.3 inclui proteção anti-downgrade.</td></tr>
+            </table>
+            <div class="warn"><b>Padrão recorrente:</b> a maioria das quebras explorou <b>algoritmos legados</b> ou <b>erros de implementação</b> — não a ideia do TLS. Daí remover o legado e manter as bibliotecas atualizadas.</div>
+        </div>
+        <div class="nav-footer">11</div>
+    </div>
+
+    <!-- BOAS PRÁTICAS -->
+    <div class="slide-container">
+        <h2 class="slide-title">Boas práticas de implantação</h2>
+        <div class="content-area">
+            <ul class="check-list" style="font-size:19px;">
+                <li>Habilitar <b>apenas TLS 1.2 e 1.3</b>; desativar SSL e TLS 1.0/1.1.</li>
+                <li>Preferir cipher suites com <b>forward secrecy</b> e <b>AEAD</b> (AES-GCM, ChaCha20-Poly1305).</li>
+                <li>Usar <b><a class="glossario-ref" href="glossario.html#hsts">HSTS</a></b> para forçar HTTPS e evitar downgrade para HTTP.</li>
+                <li>Gerir o ciclo de vida dos <b>certificados</b> (validade curta, automação, ex.: ACME/Let's Encrypt).</li>
+                <li>Manter <b>bibliotecas TLS atualizadas</b> (lição do Heartbleed).</li>
+            </ul>
+        </div>
+        <div class="nav-footer">12</div>
+    </div>
+
+    <!-- RESUMO -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag" style="background:#10b981;">Síntese</div>
+            <h1 style="font-size:44px;">Em resumo</h1>
+            <p style="max-width: 880px; margin: 0 auto;">O <b>TLS</b> (sucessor do <b>SSL</b>) cifra e autentica a comunicação via <b>criptografia híbrida</b>: um
+                handshake <b>assimétrico</b> ((EC)DHE + certificado) estabelece chaves para uma cifra <b>simétrica AEAD</b>. Garante confidencialidade,
+                integridade, autenticação e <b>forward secrecy</b>. O <b>TLS 1.3</b> é mais rápido (1-RTT), com handshake cifrado e sem algoritmos legados.
+                Suas falhas históricas vieram do legado e de bugs de implementação — não do desenho.</p>
+            <a class="backbar" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Disciplina de Serviços de Redes</p>
+        <p>Referências: RFC 8446 (TLS 1.3) · RFC 5246 (TLS 1.2) · RFC 8996 (depreciação de TLS 1.0/1.1) · RFC 6125 (validação de identidade).</p>
+    </footer>
+
+</body>
+
+</html>

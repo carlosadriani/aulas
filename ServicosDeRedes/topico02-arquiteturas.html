@@ -4,245 +4,401 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introdução às Redes de Computadores</title>
+    <title>Arquiteturas de Redes de Computadores</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/slides.css">
     <style>
-        /* CONFIGURAÇÕES BASE */
-        body {
-            background-color: #f1f5f9;
-        }
-
-        .slide-container {
-            background-color: #ffffff;
-            font-family: "DM Sans", sans-serif;
-        }
-
-        /* DECORAÇÃO DE FUNDO */
-        .slide-container::after {
-            content: '';
-            position: absolute;
-            bottom: -120px;
-            right: -120px;
-            width: 380px;
-            height: 380px;
-            background: rgba(0, 51, 102, 0.04);
-            border-radius: 50%;
-            z-index: 0;
-        }
-
-        /* TIPOGRAFIA */
-        h1, h2, h3 {
-            font-family: "Merriweather", serif;
-            color: #003366;
-            z-index: 1;
-        }
-
-        p, li {
-            color: #475569;
-            font-size: 22px;
-            line-height: 1.6;
-            z-index: 1;
-        }
-
-        .slide-title {
-            font-size: 44px;
-            font-weight: 700;
-            padding: 50px 80px 10px;
-            text-align: left;
-            border-bottom: 4px solid #003366;
-            margin: 0 60px;
-            display: inline-block;
-        }
-
-        .content-area {
-            flex-grow: 1;
-            padding: 30px 80px 50px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            z-index: 1;
-        }
-
-        /* LAYOUTS */
-        .title-layout {
-            text-align: center;
-            justify-content: center;
-            height: 100%;
-            background: linear-gradient(135deg, #003366 0%, #001a33 100%);
-            color: #ffffff;
-        }
-
-        .title-layout h1 {
-            color: #ffffff;
-            font-size: 70px;
-            margin-bottom: 20px;
-        }
-
-        .title-layout p {
-            color: #cbd5e1;
-            font-size: 26px;
-        }
-
-        .topic-tag {
-            background: #3b82f6;
-            color: white;
-            padding: 8px 22px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 18px;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .info-box {
-            background: #f8fafc;
-            border-radius: 12px;
-            padding: 28px;
-            border-top: 6px solid #003366;
-            text-align: center;
-        }
-
-        .info-box i {
-            font-size: 48px;
-            color: #003366;
-            margin-bottom: 14px;
-        }
-
-        .info-box h3 {
-            font-size: 22px;
-            margin-bottom: 8px;
-        }
-
-        .info-box p {
-            font-size: 15px;
-            line-height: 1.5;
-        }
-
-        .highlight-text {
-            font-size: 28px;
-            color: #1e40af;
-            font-weight: 500;
-            border-left: 6px solid #3b82f6;
-            padding-left: 20px;
-            line-height: 1.4;
-        }
-
-        .icon-large {
-            font-size: 90px;
-            color: #003366;
-            opacity: 0.85;
-        }
-
-        .check-list {
-            list-style: none;
-        }
-
-        .check-list li {
-            margin-bottom: 14px;
-            position: relative;
-            padding-left: 40px;
-        }
-
-        .check-list li::before {
-            content: '\f058';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            color: #10b981;
-        }
-
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            font-size: 18px;
-        }
-
-        .comparison-table th {
-            background: #003366;
-            color: white;
-            padding: 14px;
-            text-align: left;
-        }
-
-        .comparison-table td {
-            padding: 12px 14px;
-            border-bottom: 1px solid #e2e8f0;
-            color: #475569;
-        }
-
-        .comparison-table tr:nth-child(even) {
-            background: #f8fafc;
-        }
-
-        .quote {
-            font-style: italic;
-            font-size: 28px;
-            color: #1e293b;
-            text-align: center;
-            line-height: 1.4;
-        }
-
-        .nav-footer {
-            position: absolute;
-            bottom: 18px;
-            right: 30px;
-            font-size: 13px;
-            color: #94a3b8;
-            z-index: 2;
-        }
+        body { background-color: #f1f5f9; }
+        .slide-container { background-color: #ffffff; font-family: "DM Sans", sans-serif; }
+        h1, h2, h3 { font-family: "Merriweather", serif; color: #003366; z-index: 1; }
+        p, li { color: #475569; font-size: 21px; line-height: 1.6; z-index: 1; }
+        .slide-title { font-size: 40px; font-weight: 700; padding: 44px 80px 10px; text-align: left; border-bottom: 4px solid #003366; margin: 0 60px; display: inline-block; }
+        .content-area { flex-grow: 1; padding: 28px 80px 46px; display: flex; flex-direction: column; justify-content: center; z-index: 1; }
+        .title-layout { text-align: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #003366 0%, #001a33 100%); color: #fff; }
+        .title-layout h1 { color: #fff; font-size: 60px; margin-bottom: 18px; }
+        .title-layout p { color: #cbd5e1; font-size: 25px; }
+        .topic-tag { background: #3b82f6; color: #fff; padding: 7px 20px; border-radius: 50px; font-weight: bold; font-size: 17px; display: inline-block; margin-bottom: 18px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; align-items: stretch; }
+        .info-box { background: #f8fafc; border-radius: 12px; padding: 24px; border-top: 6px solid #003366; }
+        .info-box.c { border-top-color: #3b82f6; }
+        .info-box.g { border-top-color: #10b981; }
+        .info-box.r { border-top-color: #ef4444; }
+        .info-box i { font-size: 40px; color: #003366; margin-bottom: 12px; }
+        .info-box h3 { font-size: 21px; margin-bottom: 8px; }
+        .info-box p { font-size: 16px; line-height: 1.5; }
+        .highlight-text { font-size: 26px; color: #1e40af; font-weight: 500; border-left: 6px solid #3b82f6; padding-left: 20px; line-height: 1.4; }
+        .icon-large { font-size: 84px; color: #003366; opacity: 0.85; }
+        .check-list { list-style: none; padding-left: 0; }
+        .check-list li { margin-bottom: 12px; position: relative; padding-left: 38px; }
+        .check-list li::before { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; color: #10b981; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 17px; }
+        .comparison-table th { background: #003366; color: #fff; padding: 12px 14px; text-align: left; }
+        .comparison-table td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; }
+        .comparison-table tr:nth-child(even) { background: #f8fafc; }
+        .mono { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 16px 20px; font-family: "Fira Code", monospace; font-size: 15px; line-height: 1.7; margin-top: 12px; }
+        .mono .res { color: #60a5fa; font-weight: 700; }
+        .mono .cmt { color: #64748b; }
+        .callout { border-left: 5px solid #3b82f6; background: #eff6ff; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .callout b { color: #1e40af; }
+        .warn { border-left: 5px solid #ef4444; background: #fef2f2; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .warn b { color: #b91c1c; }
+        .ok { border-left: 5px solid #10b981; background: #ecfdf5; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .ok b { color: #065f46; }
+        .lead { font-size: 24px; line-height: 1.55; }
+        .note { font-size: 14px; color: #94a3b8; margin-top: 10px; }
+        .figure { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; }
+        .figure svg { width: 100%; height: auto; display: block; }
+        .figcap { font-size: 14px; color: #64748b; text-align: center; margin-top: 8px; }
+        .kbd { font-family: "Fira Code", monospace; background: #e2e8f0; padding: 1px 7px; border-radius: 5px; font-size: 0.92em; color: #0f172a; }
+        .nav-footer { position: absolute; bottom: 16px; right: 28px; font-size: 13px; color: #94a3b8; z-index: 2; }
+        .backbar { display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; padding: 12px 24px; border: 1px solid rgba(255,255,255,0.25); border-radius: 50px; color: #fff; text-decoration: none; font-weight: 600; }
+        .backbar:hover { background: rgba(255,255,255,0.12); }
     </style>
     <link rel="stylesheet" href="../assets/css/site.css">
 </head>
 
 <body class="slides-light">
 
-    <!-- Slide 1: Capa -->
+    <!-- CAPA -->
     <div class="slide-container">
         <div class="title-layout">
-            <div class="topic-tag">Tópico 01</div>
+            <div class="topic-tag">Tópico 02 · Fundamentos</div>
             <h1>Arquiteturas de Redes</h1>
-            <p>Conteúdo ainda em construção</p>
-            <div style="margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 18px; width: 320px;">
-                ADS - Serviços de Redes
-            </div>
+            <p>Topologias, abrangência e os modelos cliente-servidor e <a class="glossario-ref" href="glossario.html#p2p">P2P</a></p>
+            <div style="margin-top: 44px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 16px; width: 340px;">ADS · Serviços de Redes</div>
         </div>
     </div>
 
+    <!-- O QUE É ARQUITETURA -->
+    <div class="slide-container">
+        <h2 class="slide-title">O que é a arquitetura de uma rede</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p class="highlight-text">Arquitetura de rede é o projeto geral que define como nós, enlaces, protocolos e serviços se organizam para comunicar dados.</p>
+                    <p style="margin-top:16px;">Ela responde a três perguntas fundamentais: <b>como</b> os dispositivos se conectam fisicamente, <b>como</b> a informação flui logicamente e <b>quem</b> oferece e consome os serviços.</p>
+                </div>
+                <div>
+                    <div class="info-box c">
+                        <i class="fa-solid fa-vector-square"></i>
+                        <h3>Física × Lógica</h3>
+                        <p>A arquitetura <b>física</b> é a disposição real de cabos e equipamentos; a <b>lógica</b> descreve o caminho que os dados percorrem — que nem sempre coincide com a fiação.</p>
+                    </div>
+                    <div class="callout"><b>Arquitetura em camadas:</b> protocolos também se organizam em camadas (modelos <a class="glossario-ref" href="glossario.html#osi">OSI</a> e <a class="glossario-ref" href="glossario.html#tcp-ip">TCP/IP</a>), separando responsabilidades — tema dos próximos tópicos.</div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">01</div>
+    </div>
 
-<div class="slide-container">
+    <!-- TRÊS EIXOS -->
+    <div class="slide-container">
+        <h2 class="slide-title">Três eixos para classificar uma rede</h2>
+        <div class="content-area">
+            <div class="grid-3">
+                <div class="info-box c">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <h3>Topologia</h3>
+                    <p>O <b>formato</b> das conexões: barramento, estrela, anel, malha, árvore ou híbrida.</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-earth-americas"></i>
+                    <h3>Abrangência</h3>
+                    <p>A <b>escala geográfica</b>: <a class="glossario-ref" href="glossario.html#pan">PAN</a>, <a class="glossario-ref" href="glossario.html#lan">LAN</a>, <a class="glossario-ref" href="glossario.html#man">MAN</a> ou <a class="glossario-ref" href="glossario.html#wan">WAN</a>.</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-people-arrows"></i>
+                    <h3>Modelo de comunicação</h3>
+                    <p>O <b>papel</b> dos nós: cliente-servidor (centralizado) ou P2P (distribuído).</p>
+                </div>
+            </div>
+            <div class="callout">Esses três eixos são <b>independentes</b>: uma mesma rede pode ser, por exemplo, uma <b>LAN</b> em topologia <b>estrela</b> operando no modelo <b>cliente-servidor</b>.</div>
+        </div>
+        <div class="nav-footer">02</div>
+    </div>
+
+    <!-- TOPOLOGIAS: DIAGRAMA -->
+    <div class="slide-container">
+        <h2 class="slide-title">Topologias físicas</h2>
+        <div class="content-area">
+            <div class="figure">
+                <svg viewBox="0 0 860 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Topologias de rede: barramento, estrela, anel e malha">
+                    <!-- Barramento -->
+                    <line x1="30" y1="120" x2="190" y2="120" stroke="#003366" stroke-width="3"/>
+                    <line x1="55" y1="120" x2="55" y2="92" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="95" y1="120" x2="95" y2="92" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="135" y1="120" x2="135" y2="92" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="175" y1="120" x2="175" y2="92" stroke="#94a3b8" stroke-width="2"/>
+                    <circle cx="55" cy="84" r="10" fill="#3b82f6"/>
+                    <circle cx="95" cy="84" r="10" fill="#3b82f6"/>
+                    <circle cx="135" cy="84" r="10" fill="#3b82f6"/>
+                    <circle cx="175" cy="84" r="10" fill="#3b82f6"/>
+                    <text x="110" y="210" text-anchor="middle" font-size="15" font-weight="700" fill="#003366">Barramento</text>
+                    <!-- Estrela -->
+                    <line x1="315" y1="110" x2="315" y2="62" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="315" y1="110" x2="268" y2="95" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="315" y1="110" x2="362" y2="95" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="315" y1="110" x2="285" y2="150" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="315" y1="110" x2="345" y2="150" stroke="#94a3b8" stroke-width="2"/>
+                    <circle cx="315" cy="110" r="14" fill="#003366"/>
+                    <circle cx="315" cy="62" r="9" fill="#3b82f6"/>
+                    <circle cx="268" cy="95" r="9" fill="#3b82f6"/>
+                    <circle cx="362" cy="95" r="9" fill="#3b82f6"/>
+                    <circle cx="285" cy="150" r="9" fill="#3b82f6"/>
+                    <circle cx="345" cy="150" r="9" fill="#3b82f6"/>
+                    <text x="315" y="210" text-anchor="middle" font-size="15" font-weight="700" fill="#003366">Estrela</text>
+                    <!-- Anel -->
+                    <polygon points="525,64 569,96 552,147 498,147 481,96" fill="none" stroke="#94a3b8" stroke-width="2"/>
+                    <circle cx="525" cy="64" r="9" fill="#3b82f6"/>
+                    <circle cx="569" cy="96" r="9" fill="#3b82f6"/>
+                    <circle cx="552" cy="147" r="9" fill="#3b82f6"/>
+                    <circle cx="498" cy="147" r="9" fill="#3b82f6"/>
+                    <circle cx="481" cy="96" r="9" fill="#3b82f6"/>
+                    <text x="525" y="210" text-anchor="middle" font-size="15" font-weight="700" fill="#003366">Anel</text>
+                    <!-- Malha -->
+                    <line x1="690" y1="78" x2="800" y2="78" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="690" y1="152" x2="800" y2="152" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="690" y1="78" x2="690" y2="152" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="800" y1="78" x2="800" y2="152" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="690" y1="78" x2="800" y2="152" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="800" y1="78" x2="690" y2="152" stroke="#94a3b8" stroke-width="2"/>
+                    <circle cx="690" cy="78" r="10" fill="#3b82f6"/>
+                    <circle cx="800" cy="78" r="10" fill="#3b82f6"/>
+                    <circle cx="690" cy="152" r="10" fill="#3b82f6"/>
+                    <circle cx="800" cy="152" r="10" fill="#3b82f6"/>
+                    <text x="745" y="210" text-anchor="middle" font-size="15" font-weight="700" fill="#003366">Malha</text>
+                </svg>
+                <p class="figcap">As quatro topologias fundamentais; árvore e híbrida combinam-nas hierarquicamente.</p>
+            </div>
+        </div>
+        <div class="nav-footer">03</div>
+    </div>
+
+    <!-- TOPOLOGIAS: COMPARAÇÃO -->
+    <div class="slide-container">
+        <h2 class="slide-title">Topologias: vantagens e limitações</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Topologia</th><th>Como funciona</th><th>Vantagem</th><th>Limitação</th></tr>
+                <tr><td><b>Barramento</b></td><td>Todos compartilham um único meio.</td><td>Simples e barata.</td><td>Colisões; a falha do cabo derruba tudo.</td></tr>
+                <tr><td><b>Estrela</b></td><td>Nós ligados a um nó central (<a class="glossario-ref" href="glossario.html#switch">switch</a>).</td><td>Fácil de gerir; a falha de um nó não afeta os demais.</td><td>O nó central é ponto único de falha.</td></tr>
+                <tr><td><b>Anel</b></td><td>Cada nó conecta-se a dois vizinhos, formando um ciclo.</td><td>Acesso ordenado (token), sem colisões.</td><td>Romper o anel pode parar a rede.</td></tr>
+                <tr><td><b>Malha</b></td><td>Nós interligados por múltiplos caminhos.</td><td>Alta <b>redundância</b> e tolerância a falhas.</td><td>Custo de cabeamento elevado.</td></tr>
+                <tr><td><b>Árvore / Híbrida</b></td><td>Hierarquia que combina topologias.</td><td>Escalável e organizada.</td><td>Complexidade de projeto.</td></tr>
+            </table>
+            <div class="callout"><b>Número de enlaces na malha completa:</b> com <i>n</i> nós, são <span class="kbd">n(n−1)/2</span> conexões — daí o custo crescer rapidamente.</div>
+        </div>
+        <div class="nav-footer">04</div>
+    </div>
+
+    <!-- TOPOLOGIA FÍSICA x LÓGICA -->
+    <div class="slide-container">
+        <h2 class="slide-title">Topologia física × lógica</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div class="info-box c">
+                    <i class="fa-solid fa-plug"></i>
+                    <h3>Topologia física</h3>
+                    <p>É o <b>cabeamento real</b>: como os equipamentos estão fisicamente ligados. Ex.: todos os computadores ligados por cabo a um <b>switch</b> central (estrela física).</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-route"></i>
+                    <h3>Topologia lógica</h3>
+                    <p>É o <b>caminho dos dados</b>. Ex.: a antiga <a class="glossario-ref" href="glossario.html#ethernet">Ethernet</a> em estrela física comportava-se como um <b>barramento lógico</b> (meio compartilhado, com colisões).</p>
+                </div>
+            </div>
+            <div class="callout"><b>Por que separar?</b> Porque a forma como os dados <i>circulam</i> determina desempenho e colisões — independentemente de como os cabos estão dispostos.</div>
+        </div>
+        <div class="nav-footer">05</div>
+    </div>
+
+    <!-- ABRANGÊNCIA: DIAGRAMA -->
+    <div class="slide-container">
+        <h2 class="slide-title">Classificação por abrangência</h2>
+        <div class="content-area">
+            <div class="figure">
+                <svg viewBox="0 0 860 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escala de abrangência das redes: PAN, LAN, MAN, WAN">
+                    <line x1="60" y1="150" x2="820" y2="150" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 6"/>
+                    <text x="60" y="186" font-size="12" fill="#64748b">menor</text>
+                    <text x="770" y="186" font-size="12" fill="#64748b">maior alcance →</text>
+                    <circle cx="120" cy="120" r="18" fill="#bfdbfe" stroke="#1e40af" stroke-width="2"/>
+                    <text x="120" y="125" text-anchor="middle" font-size="13" font-weight="700" fill="#1e40af">PAN</text>
+                    <text x="120" y="68" text-anchor="middle" font-size="12" fill="#475569">~10 m</text>
+                    <text x="120" y="84" text-anchor="middle" font-size="11" fill="#64748b">Bluetooth/USB</text>
+                    <circle cx="320" cy="120" r="32" fill="#bfdbfe" stroke="#1e40af" stroke-width="2"/>
+                    <text x="320" y="125" text-anchor="middle" font-size="14" font-weight="700" fill="#1e40af">LAN</text>
+                    <text x="320" y="56" text-anchor="middle" font-size="12" fill="#475569">prédio/campus</text>
+                    <text x="320" y="72" text-anchor="middle" font-size="11" fill="#64748b">Ethernet/Wi-Fi</text>
+                    <circle cx="540" cy="120" r="48" fill="#bfdbfe" stroke="#1e40af" stroke-width="2"/>
+                    <text x="540" y="125" text-anchor="middle" font-size="15" font-weight="700" fill="#1e40af">MAN</text>
+                    <text x="540" y="46" text-anchor="middle" font-size="12" fill="#475569">cidade</text>
+                    <text x="540" y="62" text-anchor="middle" font-size="11" fill="#64748b">fibra metropolitana</text>
+                    <circle cx="760" cy="120" r="62" fill="#bfdbfe" stroke="#1e40af" stroke-width="2"/>
+                    <text x="760" y="125" text-anchor="middle" font-size="16" font-weight="700" fill="#1e40af">WAN</text>
+                    <text x="760" y="38" text-anchor="middle" font-size="12" fill="#475569">país/mundo</text>
+                    <text x="760" y="54" text-anchor="middle" font-size="11" fill="#64748b">a Internet</text>
+                </svg>
+                <p class="figcap">Da rede pessoal à mundial: o alcance cresce e, com ele, mudam as tecnologias e a gestão.</p>
+            </div>
+        </div>
+        <div class="nav-footer">06</div>
+    </div>
+
+    <!-- ABRANGÊNCIA: TABELA -->
+    <div class="slide-container">
+        <h2 class="slide-title">PAN, LAN, MAN e WAN em detalhe</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Tipo</th><th>Alcance típico</th><th>Tecnologias</th><th>Exemplo</th></tr>
+                <tr><td><b>PAN</b> (Personal)</td><td>Até ~10 m</td><td>Bluetooth, USB, NFC, Zigbee</td><td>Fone sem fio, smartwatch.</td></tr>
+                <tr><td><b>LAN</b> (Local)</td><td>Prédio / campus</td><td>Ethernet, <a class="glossario-ref" href="glossario.html#wifi">Wi-Fi</a></td><td>Rede de uma empresa ou laboratório.</td></tr>
+                <tr><td><b>MAN</b> (Metropolitan)</td><td>Cidade</td><td>Fibra metropolitana, WiMAX</td><td>Interligação de campi de uma universidade.</td></tr>
+                <tr><td><b>WAN</b> (Wide)</td><td>País / mundo</td><td>MPLS, links de operadoras, satélite</td><td>A <b>Internet</b>; redes corporativas globais.</td></tr>
+            </table>
+            <div class="note">Variações citadas na literatura: <b>CAN</b> (campus) entre LAN e MAN, e <b>GAN</b> (global) para redes de escala planetária.</div>
+        </div>
+        <div class="nav-footer">07</div>
+    </div>
+
+    <!-- MODELOS: DIAGRAMA -->
+    <div class="slide-container">
+        <h2 class="slide-title">Modelos de comunicação</h2>
+        <div class="content-area">
+            <div class="figure">
+                <svg viewBox="0 0 860 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparação entre cliente-servidor e P2P">
+                    <text x="215" y="30" text-anchor="middle" font-size="16" font-weight="700" fill="#003366">Cliente-Servidor</text>
+                    <line x1="215" y1="92" x2="100" y2="180" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="215" y1="92" x2="180" y2="190" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="215" y1="92" x2="255" y2="190" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="215" y1="92" x2="335" y2="180" stroke="#94a3b8" stroke-width="2"/>
+                    <rect x="180" y="60" width="70" height="40" rx="8" fill="#003366"/>
+                    <text x="215" y="85" text-anchor="middle" font-size="12" fill="#fff">Servidor</text>
+                    <circle cx="100" cy="190" r="13" fill="#3b82f6"/>
+                    <circle cx="180" cy="198" r="13" fill="#3b82f6"/>
+                    <circle cx="255" cy="198" r="13" fill="#3b82f6"/>
+                    <circle cx="335" cy="190" r="13" fill="#3b82f6"/>
+                    <text x="215" y="232" text-anchor="middle" font-size="12" fill="#64748b">clientes pedem; o servidor central provê</text>
+
+                    <line x1="430" y1="20" x2="430" y2="240" stroke="#e2e8f0" stroke-width="2"/>
+
+                    <text x="645" y="30" text-anchor="middle" font-size="16" font-weight="700" fill="#003366">P2P (ponto a ponto)</text>
+                    <line x1="645" y1="70" x2="560" y2="130" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="645" y1="70" x2="730" y2="130" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="560" y1="130" x2="730" y2="130" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="560" y1="130" x2="600" y2="200" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="730" y1="130" x2="700" y2="200" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="600" y1="200" x2="700" y2="200" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="645" y1="70" x2="600" y2="200" stroke="#94a3b8" stroke-width="2"/>
+                    <circle cx="645" cy="70" r="13" fill="#10b981"/>
+                    <circle cx="560" cy="130" r="13" fill="#10b981"/>
+                    <circle cx="730" cy="130" r="13" fill="#10b981"/>
+                    <circle cx="600" cy="200" r="13" fill="#10b981"/>
+                    <circle cx="700" cy="200" r="13" fill="#10b981"/>
+                    <text x="645" y="232" text-anchor="middle" font-size="12" fill="#64748b">cada nó é cliente e servidor ao mesmo tempo</text>
+                </svg>
+                <p class="figcap">Centralização (à esquerda) versus distribuição (à direita): duas filosofias opostas.</p>
+            </div>
+        </div>
+        <div class="nav-footer">08</div>
+    </div>
+
+    <!-- CLIENTE-SERVIDOR -->
+    <div class="slide-container">
+        <h2 class="slide-title">Modelo cliente-servidor</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>Um nó especializado — o <b>servidor</b> — concentra recursos e serviços; os <b>clientes</b> os solicitam sob demanda. É o modelo da maior parte da Web, e-mail e bancos de dados.</p>
+                    <div class="callout"><b>Exemplos:</b> um navegador (cliente) consulta um servidor web; um app de e-mail busca mensagens em um servidor IMAP.</div>
+                </div>
+                <div>
+                    <div class="info-box g">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <h3>Vantagens</h3>
+                        <p>Gestão e segurança <b>centralizadas</b>, backup e controle de acesso facilitados, fácil de administrar.</p>
+                    </div>
+                    <div class="info-box r" style="margin-top:14px;">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <h3>Desvantagens</h3>
+                        <p>O servidor é <b>ponto único de falha</b> e <b>gargalo</b>; escalar exige investimento (hardware, redundância).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">09</div>
+    </div>
+
+    <!-- P2P -->
+    <div class="slide-container">
+        <h2 class="slide-title">Modelo P2P (peer-to-peer)</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>Não há hierarquia fixa: cada nó (<b>peer</b>) atua simultaneamente como <b>cliente e servidor</b>, compartilhando recursos diretamente com os demais.</p>
+                    <ul class="check-list" style="margin-top:12px;">
+                        <li><b>P2P puro:</b> totalmente descentralizado (ex.: Gnutella).</li>
+                        <li><b>P2P híbrido:</b> um índice central localiza os pares (ex.: Napster original).</li>
+                        <li><b>Estruturado:</b> usa tabelas <a class="glossario-ref" href="glossario.html#hash">hash</a> distribuídas (<a class="glossario-ref" href="glossario.html#dht">DHT</a> — Chord, Kademlia).</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="info-box g">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <h3>Vantagens</h3>
+                        <p><b>Escala</b> com os participantes (cada novo nó traz recursos), <b>resiliência</b> (sem ponto único) e baixo custo central.</p>
+                    </div>
+                    <div class="info-box r" style="margin-top:14px;">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <h3>Desvantagens</h3>
+                        <p>Mais difícil de <b>proteger</b> e <b>controlar</b>; consistência e disponibilidade do conteúdo são incertas.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="callout"><b>Exemplos:</b> <b>BitTorrent</b> (arquivos), <b>blockchain</b> (Bitcoin), <b>IPFS</b> e várias aplicações de comunicação.</div>
+        </div>
+        <div class="nav-footer">10</div>
+    </div>
+
+    <!-- COMPARAÇÃO MODELOS -->
+    <div class="slide-container">
+        <h2 class="slide-title">Cliente-servidor × P2P</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Critério</th><th>Cliente-Servidor</th><th>P2P</th></tr>
+                <tr><td>Controle</td><td>Centralizado</td><td>Distribuído</td></tr>
+                <tr><td>Papel dos nós</td><td>Distintos (cliente ≠ servidor)</td><td>Iguais (todos são peers)</td></tr>
+                <tr><td>Escalabilidade</td><td>Limitada pelo servidor</td><td>Cresce com os participantes</td></tr>
+                <tr><td>Tolerância a falhas</td><td>Ponto único de falha</td><td>Alta (sem centro)</td></tr>
+                <tr><td>Segurança/gestão</td><td>Mais fácil de controlar</td><td>Mais difícil de controlar</td></tr>
+                <tr><td>Custo central</td><td>Alto</td><td>Baixo</td></tr>
+            </table>
+            <div class="ok"><b>Na prática, há híbridos:</b> uma <b><a class="glossario-ref" href="glossario.html#cdn">CDN</a></b> distribui conteúdo por muitos servidores; serviços de streaming e jogos misturam centros de controle com troca direta entre pares.</div>
+        </div>
+        <div class="nav-footer">11</div>
+    </div>
+
+    <!-- RESUMO -->
+    <div class="slide-container">
         <div class="title-layout">
-            <i class="fa-solid fa-circle-question" style="font-size: 60px; margin-bottom: 20px; color: #3b82f6;"></i>
-            <div style="margin-top: 40px; font-size: 18px; color: #94a3b8;">
-                Próximo tópico: <b style="color: #ffffff;">Protocolos de Comunicação</b>
-            </div>
-            <div style="margin-top: 40px;">
-                <a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
-                    <i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
-                </a>
-            </div>
+            <div class="topic-tag" style="background:#10b981;">Síntese</div>
+            <h1 style="font-size:46px;">Em resumo</h1>
+            <p style="max-width: 880px; margin: 0 auto;">A <b>arquitetura</b> de uma rede combina três eixos: a <b>topologia</b> (barramento, estrela, anel, malha,
+                híbrida), a <b>abrangência</b> (PAN, LAN, MAN, WAN) e o <b>modelo de comunicação</b>. O <b>cliente-servidor</b> centraliza serviços — fácil de
+                gerir, mas com ponto único de falha; o <b>P2P</b> distribui papéis — escalável e resiliente, porém mais difícil de controlar. Soluções reais
+                frequentemente <b>combinam</b> os dois.</p>
+            <a class="backbar" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
         </div>
     </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Disciplina de Serviços de Redes</p>
+        <p>Tópico de fundamentos: topologias, abrangência e modelos de comunicação.</p>
+    </footer>
+
 </body>
 
 </html>

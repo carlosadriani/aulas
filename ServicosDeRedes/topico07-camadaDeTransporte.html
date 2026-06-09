@@ -341,7 +341,7 @@
     <div class="slide-container" id="slide1">
         <div class="title-layout">
             <h1>Protocolos de <span class="accent-text">Transporte</span></h1>
-            <p class="subtitle">Uma Análise Profunda sobre TCP e UDP<br>Aula de Engenharia e Redes de Computadores</p>
+            <p class="subtitle">Uma Análise Profunda sobre <a class="glossario-ref" href="glossario.html#tcp">TCP</a> e <a class="glossario-ref" href="glossario.html#udp">UDP</a><br>Aula de Engenharia e Redes de Computadores</p>
         </div>
     </div>
 
@@ -362,7 +362,7 @@
                 <div>
                     <ul>
                         <li><strong>Orientado à Conexão:</strong> Estabelece uma sessão dedicada (circuito virtual) antes de iniciar qualquer transmissão de dados útil.</li>
-                        <li><strong>Handshake de 3 Vias:</strong> Utiliza a sequência SYN, SYN-ACK e ACK para inicializar números de sequência de ambas as partes.</li>
+                        <li><strong><a class="glossario-ref" href="glossario.html#handshake">Handshake</a> de 3 Vias:</strong> Utiliza a sequência <a class="glossario-ref" href="glossario.html#syn">SYN</a>, SYN-<a class="glossario-ref" href="glossario.html#ack">ACK</a> e ACK para inicializar números de sequência de ambas as partes.</li>
                         <li><strong>Entrega Garantida:</strong> Implementa confirmações positivas (ACK) e retransmissões automáticas (ARQ) em caso de perda de segmentos.</li>
                         <li><strong>Ordenação de Bytes:</strong> Garante que os segmentos recebidos fora de ordem sejam reorganizados na ordem correta antes de serem entregues à aplicação.</li>
                         <li><strong>Controlo de Fluxo:</strong> Ajusta o ritmo com base na capacidade de buffer do destinatário, mitigando o transbordo.</li>
@@ -396,7 +396,7 @@
                 <div class="tile">
                     <div class="icon"><i class="fa-solid fa-traffic-light"></i></div>
                     <h3>Controlo de Congestionamento</h3>
-                    <p>Gere algoritmos como Slow Start, Congestion Avoidance e Fast Recovery para prevenir que a infraestrutura física de rede atinja o colapso.</p>
+                    <p>Gere algoritmos como <a class="glossario-ref" href="glossario.html#slow-start">Slow Start</a>, Congestion Avoidance e Fast Recovery para prevenir que a infraestrutura física de rede atinja o colapso.</p>
                 </div>
             </div>
         </div>
@@ -429,7 +429,7 @@
                         </tr>
                         <tr>
                             <td><strong>Bits de Controlo / Flags</strong> (9 bits)</td>
-                            <td>Flags lógicas fundamentais para gerir o estado da sessão (SYN, ACK, FIN, RST, PSH, URG).</td>
+                            <td>Flags lógicas fundamentais para gerir o estado da sessão (SYN, ACK, <a class="glossario-ref" href="glossario.html#fin">FIN</a>, <a class="glossario-ref" href="glossario.html#rst">RST</a>, PSH, URG).</td>
                         </tr>
                         <tr>
                             <td><strong>Janela de Receção (Window Size)</strong> (16 bits)</td>
@@ -481,7 +481,7 @@
                     <tbody>
                         <tr>
                             <td><strong>Porta de Origem</strong> (16 bits)</td>
-                            <td>Identifica a aplicação de origem no emissor (opcional no IPv4).</td>
+                            <td>Identifica a aplicação de origem no emissor (opcional no <a class="glossario-ref" href="glossario.html#ipv4">IPv4</a>).</td>
                         </tr>
                         <tr>
                             <td><strong>Porta de Destino</strong> (16 bits)</td>
@@ -527,17 +527,17 @@
                 <div class="tile">
                     <div class="icon"><i class="fa-solid fa-globe"></i></div>
                     <h3>Integridade de Ficheiros (TCP)</h3>
-                    <p>Aplicações como HTTP/HTTPS (Web), SMTP (Email), SSH (Acesso Remoto) e FTP (Transferência de Ficheiros) dependem de dados sem qualquer margem de erro ou corrupção de bits.</p>
+                    <p>Aplicações como <a class="glossario-ref" href="glossario.html#http">HTTP</a>/<a class="glossario-ref" href="glossario.html#https">HTTPS</a> (Web), SMTP (Email), SSH (Acesso Remoto) e FTP (Transferência de Ficheiros) dependem de dados sem qualquer margem de erro ou corrupção de bits.</p>
                 </div>
                 <div class="tile">
                     <div class="icon"><i class="fa-solid fa-video"></i></div>
                     <h3>Comunicação em Tempo Real (UDP)</h3>
-                    <p>Chamadas de Voz sobre IP (VoIP), transmissões de vídeo em tempo real (RTP) e videoconferências toleram perdas mínimas mas não toleram atrasos acumulados ou paragens bruscas.</p>
+                    <p>Chamadas de Voz sobre <a class="glossario-ref" href="glossario.html#ip">IP</a> (<a class="glossario-ref" href="glossario.html#voip">VoIP</a>), transmissões de vídeo em tempo real (RTP) e videoconferências toleram perdas mínimas mas não toleram atrasos acumulados ou paragens bruscas.</p>
                 </div>
                 <div class="tile">
                     <div class="icon"><i class="fa-solid fa-gamepad"></i></div>
                     <h3>Serviços Instantâneos (UDP)</h3>
-                    <p>Resolução de nomes DNS, atribuição de IPs via DHCP e troca de estados rápidos em jogos online competitivos exigem reações imediatas sem overhead de conexão prévia.</p>
+                    <p>Resolução de nomes DNS, atribuição de IPs via <a class="glossario-ref" href="glossario.html#dhcp">DHCP</a> e troca de estados rápidos em jogos online competitivos exigem reações imediatas sem overhead de conexão prévia.</p>
                 </div>
             </div>
         </div>
@@ -550,7 +550,7 @@
             <div class="bullet-list">
                 <ul>
                     <li><i class="fa-solid fa-circle-question"></i> <strong>Perda de Dados com UDP:</strong> Como é que aplicações modernas VoIP lidam com a eventual perda de pacotes de voz sem que o utilizador note quebras acústicas severas?</li>
-                    <li><i class="fa-solid fa-bolt"></i> <strong>A Ascensão do HTTP/3:</strong> O protocolo HTTP/3 trocou o TCP pelo UDP (com a camada QUIC). Quais as vantagens e desafios desta decisão estrutural na infraestrutura da Web?</li>
+                    <li><i class="fa-solid fa-bolt"></i> <strong>A Ascensão do HTTP/3:</strong> O protocolo HTTP/3 trocou o TCP pelo UDP (com a camada <a class="glossario-ref" href="glossario.html#quic">QUIC</a>). Quais as vantagens e desafios desta decisão estrutural na infraestrutura da Web?</li>
                     <li><i class="fa-solid fa-server"></i> <strong>Ataques de Redes:</strong> Por que razão os ataques de negação de serviço por ampliação (amplification attacks) utilizam maioritariamente o UDP em detrimento do TCP?</li>
                     <li><i class="fa-solid fa-shield-halved"></i> <strong>Controlo no UDP:</strong> É viável ou recomendável programar mecanismos de retransmissão e controlo diretamente na camada aplicacional quando se opta pelo UDP?</li>
                 </ul>
