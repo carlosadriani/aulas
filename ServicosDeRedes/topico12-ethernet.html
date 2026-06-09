@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethernet — Serviços de Redes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        body { background-color: #f1f5f9; }
+        .slide-container { background-color: #ffffff; font-family: "DM Sans", sans-serif; }
+        h1, h2, h3 { font-family: "Merriweather", serif; color: #003366; z-index: 1; }
+        p, li { color: #475569; font-size: 21px; line-height: 1.6; z-index: 1; }
+        .slide-title { font-size: 40px; font-weight: 700; padding: 44px 80px 10px; text-align: left; border-bottom: 4px solid #003366; margin: 0 60px; display: inline-block; }
+        .content-area { flex-grow: 1; padding: 28px 80px 46px; display: flex; flex-direction: column; justify-content: center; z-index: 1; }
+        .title-layout { text-align: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #003366 0%, #001a33 100%); color: #fff; }
+        .title-layout h1 { color: #fff; font-size: 64px; margin-bottom: 18px; }
+        .title-layout p { color: #cbd5e1; font-size: 25px; }
+        .topic-tag { background: #ca8a04; color: #fff; padding: 7px 20px; border-radius: 50px; font-weight: bold; font-size: 17px; display: inline-block; margin-bottom: 18px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; align-items: stretch; }
+        .info-box { background: #f8fafc; border-radius: 12px; padding: 24px; border-top: 6px solid #003366; }
+        .info-box.c { border-top-color: #ca8a04; }
+        .info-box.g { border-top-color: #10b981; }
+        .info-box.r { border-top-color: #ef4444; }
+        .info-box i { font-size: 40px; color: #003366; margin-bottom: 12px; }
+        .info-box h3 { font-size: 21px; margin-bottom: 8px; }
+        .info-box p { font-size: 16px; line-height: 1.5; }
+        .highlight-text { font-size: 26px; color: #854d0e; font-weight: 500; border-left: 6px solid #ca8a04; padding-left: 20px; line-height: 1.4; }
+        .icon-large { font-size: 84px; color: #003366; opacity: 0.85; }
+        .check-list { list-style: none; padding-left: 0; }
+        .check-list li { margin-bottom: 12px; position: relative; padding-left: 38px; }
+        .check-list li::before { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; color: #10b981; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 17px; }
+        .comparison-table th { background: #003366; color: #fff; padding: 12px 14px; text-align: left; }
+        .comparison-table td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; }
+        .comparison-table tr:nth-child(even) { background: #f8fafc; }
+        .mono { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 16px 20px; font-family: "Fira Code", monospace; font-size: 15px; line-height: 1.7; margin-top: 12px; }
+        .mono .res { color: #fde047; font-weight: 700; }
+        .mono .cmt { color: #64748b; }
+        .callout { border-left: 5px solid #ca8a04; background: #fefce8; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .callout b { color: #854d0e; }
+        .warn { border-left: 5px solid #ef4444; background: #fef2f2; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .warn b { color: #b91c1c; }
+        .ok { border-left: 5px solid #10b981; background: #ecfdf5; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .ok b { color: #065f46; }
+        .lead { font-size: 24px; line-height: 1.55; }
+        .note { font-size: 14px; color: #94a3b8; margin-top: 10px; }
+        .figure { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; }
+        .figure svg { width: 100%; height: auto; display: block; }
+        .figcap { font-size: 14px; color: #64748b; text-align: center; margin-top: 8px; }
+        .kbd { font-family: "Fira Code", monospace; background: #e2e8f0; padding: 1px 7px; border-radius: 5px; font-size: 0.92em; color: #0f172a; }
+        .nav-footer { position: absolute; bottom: 16px; right: 28px; font-size: 13px; color: #94a3b8; z-index: 2; }
+        .backbar { display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; padding: 12px 24px; border: 1px solid rgba(255,255,255,0.25); border-radius: 50px; color: #fff; text-decoration: none; font-weight: 600; }
+        .backbar:hover { background: rgba(255,255,255,0.12); }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light">
+
+    <!-- CAPA -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag">Tópico 12 · Camada de Enlace</div>
+            <h1>Ethernet</h1>
+            <p>A tecnologia dominante das redes locais (<a class="glossario-ref" href="glossario.html#lan">LAN</a>) — padrão <a class="glossario-ref" href="glossario.html#ieee8023">IEEE 802.3</a></p>
+            <div style="margin-top: 44px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 16px; width: 340px;">ADS · Serviços de Redes</div>
+        </div>
+    </div>
+
+    <!-- O QUE É -->
+    <div class="slide-container">
+        <h2 class="slide-title">O que é a Ethernet</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p class="highlight-text">A <a class="glossario-ref" href="glossario.html#ethernet">Ethernet</a> é o conjunto de tecnologias que domina as redes locais cabeadas, operando na camada de enlace e na física.</p>
+                    <ul class="check-list" style="margin-top:20px;">
+                        <li>Define o <b><a class="glossario-ref" href="glossario.html#quadro">quadro</a></b> (frame), o <b>endereçamento <a class="glossario-ref" href="glossario.html#mac">MAC</a></b> e o acesso ao meio.</li>
+                        <li>Criada por <b>Metcalfe e Boggs</b> na Xerox PARC (1973); padronizada como <b>IEEE 802.3</b> (1983).</li>
+                        <li>Evoluiu de 10 Mbps a <b>centenas de Gbps</b>, mantendo o mesmo formato de quadro.</li>
+                    </ul>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <h3>Camada de enlace: LLC + MAC</h3>
+                    <p>O IEEE divide o enlace em duas subcamadas: <b>LLC</b> (802.2, interface com a rede) e <b>MAC</b> (802.3, controle de acesso ao meio e endereçamento físico). A Ethernet vive na <b>MAC</b> e na física.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">01</div>
+    </div>
+
+    <!-- EVOLUÇÃO -->
+    <div class="slide-container">
+        <h2 class="slide-title">Evolução das velocidades</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Geração</th><th>Velocidade</th><th>Padrão</th><th>Mídia típica</th></tr>
+                <tr><td>Ethernet</td><td>10 Mbps</td><td>802.3 (1983)</td><td>Coaxial → par trançado</td></tr>
+                <tr><td>Fast Ethernet</td><td>100 Mbps</td><td>802.3u (1995)</td><td>Par trançado (Cat5)</td></tr>
+                <tr><td>Gigabit Ethernet</td><td>1 Gbps</td><td>802.3ab/z (1999)</td><td>Cat5e/6, fibra</td></tr>
+                <tr><td>10 Gigabit</td><td>10 Gbps</td><td>802.3ae (2002)</td><td>Cat6a, fibra</td></tr>
+                <tr><td>40 / 100 / 400 G</td><td>40–400 Gbps</td><td>802.3ba… (2010+)</td><td>Fibra óptica</td></tr>
+            </table>
+            <div class="callout"><b>Nomenclatura:</b> <span class="kbd">10BASE-T</span> = <b>10</b> Mbps, transmissão em <b>banda base</b>, em par trançado (<b>T</b>). Assim, <span class="kbd">1000BASE-T</span> é o Gigabit em par trançado.</div>
+        </div>
+        <div class="nav-footer">02</div>
+    </div>
+
+    <!-- ENDEREÇO MAC -->
+    <div class="slide-container">
+        <h2 class="slide-title">Endereço MAC (físico)</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>Cada interface tem um endereço <b>MAC de 48 bits</b> (6 bytes), em hexadecimal. Os <b>3 primeiros bytes</b> identificam o fabricante (<a class="glossario-ref" href="glossario.html#oui">OUI</a>); os <b>3 últimos</b>, a placa.</p>
+                    <div class="mono">
+                        <span class="res">00:1A:2B</span>:3C:4D:5E<br>
+                        <span class="cmt">↑ OUI (fabricante)  ↑ identificador da placa</span><br><br>
+                        FF:FF:FF:FF:FF:FF → <span class="res"><a class="glossario-ref" href="glossario.html#broadcast">broadcast</a></span>
+                    </div>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-fingerprint"></i>
+                    <h3>Unicast, multicast e broadcast</h3>
+                    <p>O <b>bit menos significativo</b> do primeiro byte distingue <b>unicast</b> (0) de <b>multicast</b> (1). Tudo-1 (<span class="kbd">FF:FF:…</span>) é o <b>broadcast</b> da rede local. Em tese, o MAC é <b>globalmente único</b>.</p>
+                </div>
+            </div>
+            <div class="callout"><b>MAC × <a class="glossario-ref" href="glossario.html#ip">IP</a>:</b> o MAC identifica a placa <b>no enlace local</b>; o IP identifica o host <b>fim a fim</b>. O <b><a class="glossario-ref" href="glossario.html#arp">ARP</a></b> traduz IP → MAC dentro da LAN.</div>
+        </div>
+        <div class="nav-footer">03</div>
+    </div>
+
+    <!-- QUADRO: DIAGRAMA -->
+    <div class="slide-container">
+        <h2 class="slide-title">O quadro (frame) Ethernet</h2>
+        <div class="content-area">
+            <div class="figure">
+                <svg viewBox="0 0 880 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Estrutura do quadro Ethernet">
+                    <rect x="20" y="40" width="92" height="58" fill="#fef9c3" stroke="#854d0e" stroke-width="1.5"/>
+                    <text x="66" y="66" text-anchor="middle" font-size="12" fill="#854d0e">Preâmbulo</text>
+                    <text x="66" y="86" text-anchor="middle" font-size="11" fill="#64748b">7 bytes</text>
+                    <rect x="112" y="40" width="46" height="58" fill="#fef9c3" stroke="#854d0e" stroke-width="1.5"/>
+                    <text x="135" y="66" text-anchor="middle" font-size="12" fill="#854d0e">SFD</text>
+                    <text x="135" y="86" text-anchor="middle" font-size="11" fill="#64748b">1</text>
+                    <rect x="158" y="40" width="120" height="58" fill="#fde68a" stroke="#854d0e" stroke-width="1.5"/>
+                    <text x="218" y="66" text-anchor="middle" font-size="12" fill="#854d0e">MAC Destino</text>
+                    <text x="218" y="86" text-anchor="middle" font-size="11" fill="#64748b">6 bytes</text>
+                    <rect x="278" y="40" width="120" height="58" fill="#fde68a" stroke="#854d0e" stroke-width="1.5"/>
+                    <text x="338" y="66" text-anchor="middle" font-size="12" fill="#854d0e">MAC Origem</text>
+                    <text x="338" y="86" text-anchor="middle" font-size="11" fill="#64748b">6 bytes</text>
+                    <rect x="398" y="40" width="86" height="58" fill="#fde68a" stroke="#854d0e" stroke-width="1.5"/>
+                    <text x="441" y="62" text-anchor="middle" font-size="12" fill="#854d0e">Tipo/</text>
+                    <text x="441" y="77" text-anchor="middle" font-size="12" fill="#854d0e">Comp.</text>
+                    <text x="441" y="92" text-anchor="middle" font-size="11" fill="#64748b">2</text>
+                    <rect x="484" y="40" width="276" height="58" fill="#fef3c7" stroke="#854d0e" stroke-width="1.5"/>
+                    <text x="622" y="66" text-anchor="middle" font-size="12" fill="#854d0e">Dados (payload)</text>
+                    <text x="622" y="86" text-anchor="middle" font-size="11" fill="#64748b">46 – 1500 bytes</text>
+                    <rect x="760" y="40" width="100" height="58" fill="#fde68a" stroke="#854d0e" stroke-width="1.5"/>
+                    <text x="810" y="66" text-anchor="middle" font-size="12" fill="#854d0e">FCS (CRC)</text>
+                    <text x="810" y="86" text-anchor="middle" font-size="11" fill="#64748b">4 bytes</text>
+                    <line x1="158" y1="116" x2="860" y2="116" stroke="#854d0e" stroke-width="1.5"/>
+                    <text x="509" y="138" text-anchor="middle" font-size="13" fill="#854d0e" font-weight="700">Quadro: 64 a 1518 bytes</text>
+                    <text x="66" y="138" text-anchor="middle" font-size="11" fill="#64748b">sincronização</text>
+                </svg>
+                <p class="figcap">Preâmbulo e SFD sincronizam o receptor; o quadro vai do MAC destino ao <a class="glossario-ref" href="glossario.html#fcs">FCS</a>.</p>
+            </div>
+            <div class="callout" style="margin-top:12px;"><b>Tamanho mínimo de 64 bytes:</b> se os dados têm menos de 46 bytes, são <b>preenchidos (padding)</b>. Esse mínimo está ligado à detecção de colisões (adiante).</div>
+        </div>
+        <div class="nav-footer">04</div>
+    </div>
+
+    <!-- ETHERTYPE -->
+    <div class="slide-container">
+        <h2 class="slide-title">O campo Tipo/Comprimento (EtherType)</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>Esse campo de 2 bytes diz <b>o que vem na carga</b>. Se o valor for ≥ <span class="kbd">0x0600</span> (1536), é um <b><a class="glossario-ref" href="glossario.html#ethertype">EtherType</a></b> (protocolo); se ≤ 1500, é um <b>comprimento</b> (formato 802.3).</p>
+                    <table class="comparison-table" style="font-size:16px;">
+                        <tr><th>EtherType</th><th>Protocolo</th></tr>
+                        <tr><td>0x0800</td><td><a class="glossario-ref" href="glossario.html#ipv4">IPv4</a></td></tr>
+                        <tr><td>0x86DD</td><td><a class="glossario-ref" href="glossario.html#ipv6">IPv6</a></td></tr>
+                        <tr><td>0x0806</td><td>ARP</td></tr>
+                        <tr><td>0x8100</td><td><a class="glossario-ref" href="glossario.html#vlan">VLAN</a> (<a class="glossario-ref" href="glossario.html#8021q">802.1Q</a>)</td></tr>
+                    </table>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-check-double"></i>
+                    <h3>FCS: verificação de erros</h3>
+                    <p>O <b>FCS</b> guarda um <b><a class="glossario-ref" href="glossario.html#crc">CRC</a>-32</b> calculado sobre o quadro. O receptor recalcula e <b>descarta</b> quadros corrompidos — a Ethernet detecta erros, mas <b>não</b> os corrige nem retransmite (isso fica para camadas superiores).</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">05</div>
+    </div>
+
+    <!-- CSMA/CD: DIAGRAMA -->
+    <div class="slide-container">
+        <h2 class="slide-title">Acesso ao meio: CSMA/CD</h2>
+        <div class="content-area">
+            <p>Na Ethernet clássica (meio compartilhado, <a class="glossario-ref" href="glossario.html#half-duplex">half-duplex</a>), o acesso era regido pelo <b><a class="glossario-ref" href="glossario.html#csma-cd">CSMA/CD</a></b> — Carrier Sense Multiple Access with Collision Detection.</p>
+            <div class="figure" style="margin-top:8px;">
+                <svg viewBox="0 0 860 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fluxograma do CSMA/CD">
+                    <defs><marker id="cdA" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#854d0e"/></marker></defs>
+                    <rect x="30" y="56" width="150" height="46" rx="8" fill="#fef9c3" stroke="#854d0e" stroke-width="1.8"/>
+                    <text x="105" y="84" text-anchor="middle" font-size="13" fill="#854d0e">Escuta o meio</text>
+                    <polygon points="290,79 350,55 410,79 350,103" fill="#fde68a" stroke="#854d0e" stroke-width="1.8"/>
+                    <text x="350" y="84" text-anchor="middle" font-size="12" fill="#854d0e">Livre?</text>
+                    <rect x="470" y="56" width="150" height="46" rx="8" fill="#fef9c3" stroke="#854d0e" stroke-width="1.8"/>
+                    <text x="545" y="84" text-anchor="middle" font-size="13" fill="#854d0e">Transmite</text>
+                    <polygon points="470,170 535,146 600,170 535,194" fill="#fde68a" stroke="#854d0e" stroke-width="1.8"/>
+                    <text x="535" y="174" text-anchor="middle" font-size="12" fill="#854d0e">Colisão?</text>
+                    <rect x="660" y="148" width="170" height="44" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.8"/>
+                    <text x="745" y="175" text-anchor="middle" font-size="13" fill="#166534">Transmissão OK</text>
+                    <rect x="200" y="148" width="200" height="44" rx="8" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.8"/>
+                    <text x="300" y="170" text-anchor="middle" font-size="12.5" fill="#b91c1c">Jam + backoff</text>
+                    <text x="300" y="185" text-anchor="middle" font-size="11" fill="#7f1d1d">exponencial binário</text>
+                    <line x1="180" y1="79" x2="288" y2="79" stroke="#854d0e" stroke-width="2" marker-end="url(#cdA)"/>
+                    <line x1="410" y1="79" x2="468" y2="79" stroke="#854d0e" stroke-width="2" marker-end="url(#cdA)"/>
+                    <text x="440" y="70" font-size="11" fill="#16a34a">Sim</text>
+                    <path d="M350,103 L350,128 L105,128 L105,104" fill="none" stroke="#854d0e" stroke-width="2" marker-end="url(#cdA)"/>
+                    <text x="356" y="120" font-size="11" fill="#b91c1c">Não (espera)</text>
+                    <line x1="545" y1="102" x2="540" y2="144" stroke="#854d0e" stroke-width="2" marker-end="url(#cdA)"/>
+                    <line x1="600" y1="170" x2="658" y2="170" stroke="#854d0e" stroke-width="2" marker-end="url(#cdA)"/>
+                    <text x="628" y="162" font-size="11" fill="#16a34a">Não</text>
+                    <line x1="470" y1="170" x2="402" y2="170" stroke="#854d0e" stroke-width="2" marker-end="url(#cdA)"/>
+                    <text x="430" y="162" font-size="11" fill="#b91c1c">Sim</text>
+                    <path d="M200,162 L105,162 L105,104" fill="none" stroke="#854d0e" stroke-width="2" marker-end="url(#cdA)"/>
+                </svg>
+                <p class="figcap">Detectada a colisão, o nó envia um sinal de "jam" e espera um tempo aleatório crescente antes de tentar de novo.</p>
+            </div>
+        </div>
+        <div class="nav-footer">06</div>
+    </div>
+
+    <!-- CSMA/CD DETALHE -->
+    <div class="slide-container">
+        <h2 class="slide-title">Por que o quadro mínimo de 64 bytes?</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>Para <b>detectar</b> uma colisão, o emissor precisa estar <b>ainda transmitindo</b> quando o sinal colidido volta do nó mais distante.</p>
+                    <div class="callout"><b>Slot time = 512 bits:</b> o tempo de ida e volta máximo no <a class="glossario-ref" href="glossario.html#collision-domain">domínio de colisão</a>. O quadro mínimo de <b>64 bytes (512 bits)</b> garante que a transmissão dure o bastante para a colisão ser percebida.</div>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-dice"></i>
+                    <h3>Backoff exponencial binário</h3>
+                    <p>Após a <i>n</i>-ésima colisão, o nó espera um número aleatório de slots entre <b>0 e 2<sup>n</sup>−1</b> (até um limite). Isso <b>espalha</b> as retransmissões e reduz novas colisões.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">07</div>
+    </div>
+
+    <!-- SWITCHED / FULL-DUPLEX -->
+    <div class="slide-container">
+        <h2 class="slide-title">Ethernet comutada e full-duplex</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p class="lead">Na Ethernet moderna, <b><a class="glossario-ref" href="glossario.html#switch">switches</a></b> e o modo <b><a class="glossario-ref" href="glossario.html#full-duplex">full-duplex</a></b> eliminam as colisões — e o CSMA/CD deixa de ser necessário.</p>
+                    <div class="ok"><b>Full-duplex:</b> cada estação tem um enlace dedicado ao switch, podendo enviar e receber <b>ao mesmo tempo</b>, sem disputar o meio.</div>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <h3>Domínio de colisão × broadcast</h3>
+                    <p>Cada porta de switch é um <b>domínio de colisão</b> separado. Já o <b>broadcast</b> alcança todo o segmento — a menos que se usem <b>VLANs</b> para dividi-lo.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">08</div>
+    </div>
+
+    <!-- SWITCH: APRENDIZADO -->
+    <div class="slide-container">
+        <h2 class="slide-title">Como o switch aprende e encaminha</h2>
+        <div class="content-area">
+            <div class="figure">
+                <svg viewBox="0 0 860 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Switch aprendendo endereços MAC e encaminhando quadros">
+                    <rect x="320" y="24" width="200" height="56" rx="10" fill="#003366"/>
+                    <text x="420" y="58" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">SWITCH</text>
+                    <rect x="60" y="160" width="120" height="44" rx="8" fill="#fef9c3" stroke="#854d0e" stroke-width="1.8"/>
+                    <text x="120" y="180" text-anchor="middle" font-size="13" fill="#854d0e">Host A</text>
+                    <text x="120" y="196" text-anchor="middle" font-size="10" fill="#64748b">MAC ...A1 · Porta 1</text>
+                    <rect x="360" y="170" width="120" height="44" rx="8" fill="#fef9c3" stroke="#854d0e" stroke-width="1.8"/>
+                    <text x="420" y="190" text-anchor="middle" font-size="13" fill="#854d0e">Host B</text>
+                    <text x="420" y="206" text-anchor="middle" font-size="10" fill="#64748b">MAC ...B2 · Porta 2</text>
+                    <rect x="660" y="160" width="120" height="44" rx="8" fill="#fef9c3" stroke="#854d0e" stroke-width="1.8"/>
+                    <text x="720" y="180" text-anchor="middle" font-size="13" fill="#854d0e">Host C</text>
+                    <text x="720" y="196" text-anchor="middle" font-size="10" fill="#64748b">MAC ...C3 · Porta 3</text>
+                    <line x1="120" y1="160" x2="360" y2="80" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="420" y1="170" x2="420" y2="80" stroke="#94a3b8" stroke-width="2"/>
+                    <line x1="720" y1="160" x2="480" y2="80" stroke="#94a3b8" stroke-width="2"/>
+                    <rect x="560" y="20" width="270" height="92" rx="8" fill="#fffbeb" stroke="#ca8a04" stroke-width="1.6"/>
+                    <text x="575" y="42" font-size="13" font-weight="700" fill="#854d0e">Tabela MAC (CAM)</text>
+                    <text x="575" y="64" font-size="12" fill="#475569">...A1 → Porta 1</text>
+                    <text x="575" y="84" font-size="12" fill="#475569">...B2 → Porta 2</text>
+                    <text x="575" y="104" font-size="12" fill="#475569">...C3 → Porta 3</text>
+                </svg>
+                <p class="figcap">O switch aprende a porta de cada MAC pela <b>origem</b> dos quadros; depois encaminha apenas para a porta do destino.</p>
+            </div>
+            <div class="callout" style="margin-top:12px;"><b>Aprender, encaminhar, inundar:</b> destino conhecido → envia só à porta certa; destino desconhecido ou broadcast → <b>inunda</b> em todas as portas (menos a de origem).</div>
+        </div>
+        <div class="nav-footer">09</div>
+    </div>
+
+    <!-- VLAN / STP -->
+    <div class="slide-container">
+        <h2 class="slide-title">VLANs e prevenção de laços (STP)</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div class="info-box c">
+                    <i class="fa-solid fa-object-group"></i>
+                    <h3>VLAN (802.1Q)</h3>
+                    <p>Divide um switch físico em várias <b>redes lógicas</b>, cada uma seu próprio <a class="glossario-ref" href="glossario.html#broadcast-domain">domínio de broadcast</a>. Um <b>marcador (tag)</b> de 4 bytes no quadro identifica a VLAN — segmentando tráfego e melhorando segurança.</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <h3>Spanning Tree (<a class="glossario-ref" href="glossario.html#8021d">802.1D</a>)</h3>
+                    <p>Enlaces redundantes entre switches criariam <b>laços</b> que multiplicam quadros infinitamente. O <b><a class="glossario-ref" href="glossario.html#stp">STP</a></b> bloqueia caminhos redundantes, formando uma <b>árvore sem ciclos</b> — e os reativa se um enlace cair.</p>
+                </div>
+            </div>
+            <div class="warn"><b>Por que laços são perigosos:</b> sem <a class="glossario-ref" href="glossario.html#ttl">TTL</a> na camada de enlace, um quadro em broadcast circularia para sempre, causando uma <b>tempestade de broadcast</b> que derruba a rede. Daí o STP.</div>
+        </div>
+        <div class="nav-footer">10</div>
+    </div>
+
+    <!-- RESUMO -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag" style="background:#10b981;">Síntese</div>
+            <h1 style="font-size:46px;">Em resumo</h1>
+            <p style="max-width: 880px; margin: 0 auto;">A <b>Ethernet</b> (IEEE 802.3) é a base das LANs cabeadas: define o <b>quadro</b>, o <b>endereço MAC</b> de 48 bits e o
+                acesso ao meio. A versão clássica usava <b>CSMA/CD</b> (que explica o quadro mínimo de 64 bytes); a moderna é <b>comutada e full-duplex</b>, sem
+                colisões, com <b>switches</b> que aprendem MACs, <b>VLANs</b> que segmentam e <b>STP</b> que evita laços. Detecta erros pelo <b>FCS</b>, mas deixa a
+                confiabilidade para as camadas superiores.</p>
+            <a class="backbar" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Disciplina de Serviços de Redes</p>
+        <p>Referências: IEEE 802.3 (Ethernet) · IEEE 802.2 (LLC) · IEEE 802.1Q (VLAN) · IEEE 802.1D (STP).</p>
+    </footer>
+
+</body>
+
+</html>

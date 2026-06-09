@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo UDP — Serviços de Redes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        body { background-color: #f1f5f9; }
+        .slide-container { background-color: #ffffff; font-family: "DM Sans", sans-serif; }
+        h1, h2, h3 { font-family: "Merriweather", serif; color: #003366; z-index: 1; }
+        p, li { color: #475569; font-size: 21px; line-height: 1.6; z-index: 1; }
+        .slide-title { font-size: 40px; font-weight: 700; padding: 44px 80px 10px; text-align: left; border-bottom: 4px solid #003366; margin: 0 60px; display: inline-block; }
+        .content-area { flex-grow: 1; padding: 28px 80px 46px; display: flex; flex-direction: column; justify-content: center; z-index: 1; }
+        .title-layout { text-align: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #003366 0%, #001a33 100%); color: #fff; }
+        .title-layout h1 { color: #fff; font-size: 64px; margin-bottom: 18px; }
+        .title-layout p { color: #cbd5e1; font-size: 25px; }
+        .topic-tag { background: #0d9488; color: #fff; padding: 7px 20px; border-radius: 50px; font-weight: bold; font-size: 17px; display: inline-block; margin-bottom: 18px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; align-items: stretch; }
+        .info-box { background: #f8fafc; border-radius: 12px; padding: 24px; border-top: 6px solid #003366; }
+        .info-box.c { border-top-color: #0d9488; }
+        .info-box.g { border-top-color: #10b981; }
+        .info-box.r { border-top-color: #ef4444; }
+        .info-box i { font-size: 40px; color: #003366; margin-bottom: 12px; }
+        .info-box h3 { font-size: 21px; margin-bottom: 8px; }
+        .info-box p { font-size: 16px; line-height: 1.5; }
+        .highlight-text { font-size: 26px; color: #0f766e; font-weight: 500; border-left: 6px solid #0d9488; padding-left: 20px; line-height: 1.4; }
+        .icon-large { font-size: 84px; color: #003366; opacity: 0.85; }
+        .check-list { list-style: none; padding-left: 0; }
+        .check-list li { margin-bottom: 12px; position: relative; padding-left: 38px; }
+        .check-list li::before { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; color: #10b981; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 17px; }
+        .comparison-table th { background: #003366; color: #fff; padding: 12px 14px; text-align: left; }
+        .comparison-table td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; }
+        .comparison-table tr:nth-child(even) { background: #f8fafc; }
+        .mono { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 16px 20px; font-family: "Fira Code", monospace; font-size: 15px; line-height: 1.7; margin-top: 12px; }
+        .mono .res { color: #2dd4bf; font-weight: 700; }
+        .mono .cmt { color: #64748b; }
+        .callout { border-left: 5px solid #0d9488; background: #f0fdfa; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .callout b { color: #0f766e; }
+        .warn { border-left: 5px solid #ef4444; background: #fef2f2; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .warn b { color: #b91c1c; }
+        .ok { border-left: 5px solid #10b981; background: #ecfdf5; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .ok b { color: #065f46; }
+        .lead { font-size: 24px; line-height: 1.55; }
+        .note { font-size: 14px; color: #94a3b8; margin-top: 10px; }
+        .figure { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; }
+        .figure svg { width: 100%; height: auto; display: block; }
+        .figcap { font-size: 14px; color: #64748b; text-align: center; margin-top: 8px; }
+        .kbd { font-family: "Fira Code", monospace; background: #e2e8f0; padding: 1px 7px; border-radius: 5px; font-size: 0.92em; color: #0f172a; }
+        .nav-footer { position: absolute; bottom: 16px; right: 28px; font-size: 13px; color: #94a3b8; z-index: 2; }
+        .backbar { display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; padding: 12px 24px; border: 1px solid rgba(255,255,255,0.25); border-radius: 50px; color: #fff; text-decoration: none; font-weight: 600; }
+        .backbar:hover { background: rgba(255,255,255,0.12); }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light">
+
+    <!-- CAPA -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag">Tópico 09 · Camada de Transporte</div>
+            <h1>Protocolo UDP</h1>
+            <p>Transporte simples, rápido e sem conexão — RFC 768</p>
+            <div style="margin-top: 44px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 16px; width: 340px;">ADS · Serviços de Redes</div>
+        </div>
+    </div>
+
+    <!-- O QUE É -->
+    <div class="slide-container">
+        <h2 class="slide-title">O que é o UDP</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p class="highlight-text">O User Datagram Protocol oferece o transporte mais <b>enxuto</b> possível: entrega datagramas sem conexão, sem garantias e sem rodeios.</p>
+                    <ul class="check-list" style="margin-top:20px;">
+                        <li><b>Sem conexão:</b> não há <a class="glossario-ref" href="glossario.html#handshake">handshake</a>; cada datagrama é independente.</li>
+                        <li><b>Não confiável:</b> não confirma, não retransmite, não reordena.</li>
+                        <li><b>Orientado a mensagem:</b> preserva as fronteiras de cada datagrama.</li>
+                        <li><b>Mínimo:</b> apenas <b>8 bytes</b> de cabeçalho.</li>
+                    </ul>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-bolt"></i>
+                    <h3>Quase só multiplexação</h3>
+                    <p>O <a class="glossario-ref" href="glossario.html#udp">UDP</a> acrescenta ao <a class="glossario-ref" href="glossario.html#ip">IP</a> basicamente <b>portas</b> (para entregar ao processo certo) e um <b>checksum</b> opcional. Tudo o que falta — confiabilidade, ordem, controle — fica a cargo da <b>aplicação</b>, se ela precisar.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">01</div>
+    </div>
+
+    <!-- FILOSOFIA -->
+    <div class="slide-container">
+        <h2 class="slide-title">Por que abrir mão das garantias?</h2>
+        <div class="content-area">
+            <div class="grid-3">
+                <div class="info-box c">
+                    <i class="fa-solid fa-stopwatch-20"></i>
+                    <h3>Baixa latência</h3>
+                    <p>Sem handshake nem retransmissão, o dado parte <b>imediatamente</b> — vital para tempo real.</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-feather"></i>
+                    <h3>Pouca sobrecarga</h3>
+                    <p>Cabeçalho de 8 bytes (contra 20–60 do <a class="glossario-ref" href="glossario.html#tcp">TCP</a>) e nenhum estado de conexão a manter.</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-sliders"></i>
+                    <h3>Controle da aplicação</h3>
+                    <p>A aplicação decide <b>o que</b> recuperar e <b>como</b> — útil quando dados antigos não valem a pena reenviar.</p>
+                </div>
+            </div>
+            <div class="callout"><b>Filosofia:</b> em mídia ao vivo, um pacote perdido <b>não deve</b> atrasar os seguintes. Reenviar um <a class="glossario-ref" href="glossario.html#quadro">quadro</a> de áudio já passado é inútil — melhor seguir em frente. É aí que o UDP brilha.</div>
+        </div>
+        <div class="nav-footer">02</div>
+    </div>
+
+    <!-- DATAGRAMA -->
+    <div class="slide-container">
+        <h2 class="slide-title">O datagrama UDP (8 bytes)</h2>
+        <div class="content-area">
+            <p>Toda a simplicidade do UDP cabe em <b>quatro campos de 16 bits</b>. Cada linha = 32 bits:</p>
+            <div class="figure" style="margin-top:10px;">
+                <svg viewBox="0 0 880 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Estrutura do datagrama UDP">
+                    <text x="40" y="24" font-size="12" fill="#64748b">0</text>
+                    <text x="432" y="24" font-size="12" fill="#64748b">16</text>
+                    <text x="828" y="24" font-size="12" fill="#64748b">31</text>
+                    <!-- Linha 1 -->
+                    <rect x="40" y="34" width="400" height="46" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.6"/>
+                    <text x="240" y="62" text-anchor="middle" font-size="13" font-weight="700" fill="#0f766e">Porta de Origem (16)</text>
+                    <rect x="440" y="34" width="400" height="46" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.6"/>
+                    <text x="640" y="62" text-anchor="middle" font-size="13" font-weight="700" fill="#0f766e">Porta de Destino (16)</text>
+                    <!-- Linha 2 -->
+                    <rect x="40" y="80" width="400" height="46" fill="#e0f2fe" stroke="#0f766e" stroke-width="1.6"/>
+                    <text x="240" y="108" text-anchor="middle" font-size="13" fill="#0f766e">Comprimento (16)</text>
+                    <rect x="440" y="80" width="400" height="46" fill="#e0f2fe" stroke="#0f766e" stroke-width="1.6"/>
+                    <text x="640" y="108" text-anchor="middle" font-size="13" fill="#0f766e">Checksum (16)</text>
+                    <!-- Dados -->
+                    <rect x="40" y="126" width="800" height="50" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 5"/>
+                    <text x="440" y="156" text-anchor="middle" font-size="13" fill="#475569">Dados (carga útil da aplicação — variável)</text>
+                </svg>
+                <p class="figcap">Porta de origem, porta de destino, comprimento (cabeçalho + dados) e checksum. Só isso.</p>
+            </div>
+        </div>
+        <div class="nav-footer">03</div>
+    </div>
+
+    <!-- CAMPOS / CHECKSUM -->
+    <div class="slide-container">
+        <h2 class="slide-title">Os campos e o checksum</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <table class="comparison-table" style="font-size:16px;">
+                        <tr><th>Campo</th><th>Função</th></tr>
+                        <tr><td>Porta de origem</td><td>Processo remetente (pode ser 0 se não há resposta esperada).</td></tr>
+                        <tr><td>Porta de destino</td><td>Identifica o processo destinatário.</td></tr>
+                        <tr><td>Comprimento</td><td>Tamanho total (cabeçalho + dados); mínimo 8 bytes.</td></tr>
+                        <tr><td>Checksum</td><td>Detecção de erro sobre pseudo-cabeçalho + cabeçalho + dados.</td></tr>
+                    </table>
+                </div>
+                <div>
+                    <div class="info-box c">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <h3>Checksum: opcional no <a class="glossario-ref" href="glossario.html#ipv4">IPv4</a>, obrigatório no <a class="glossario-ref" href="glossario.html#ipv6">IPv6</a></h3>
+                        <p>No IPv4, o checksum pode ser <span class="kbd">0</span> (desligado). No <b>IPv6 é obrigatório</b>, pois o cabeçalho IPv6 não tem checksum próprio.</p>
+                    </div>
+                    <div class="callout"><b>Pseudo-cabeçalho:</b> o cálculo inclui os <b>endereços IP</b> de origem/destino, garantindo que o datagrama chegou ao host e protocolo certos.</div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">04</div>
+    </div>
+
+    <!-- TAMANHO -->
+    <div class="slide-container">
+        <h2 class="slide-title">Tamanho e fragmentação</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>O campo Comprimento tem 16 bits, mas o limite prático vem do IP:</p>
+                    <div class="mono">
+                        máx. teórico = 65535 bytes<br>
+                        − 8 (cabeçalho UDP)<br>
+                        − 20 (cabeçalho IPv4)<br>
+                        = <span class="res">65507 bytes</span> de carga útil
+                    </div>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-scissors"></i>
+                    <h3>Quem fragmenta é o IP</h3>
+                    <p>O UDP não fragmenta. Se o datagrama exceder a <b><a class="glossario-ref" href="glossario.html#mtu">MTU</a></b>, o <b>IP</b> o fragmenta — e a perda de <b>um único fragmento</b> descarta a mensagem inteira. Por isso, na prática, evita-se datagramas grandes.</p>
+                </div>
+            </div>
+            <div class="callout"><b>Sem controle de congestionamento:</b> o UDP não recua diante da rede cheia. Aplicações que enviam muito UDP precisam <b>limitar a taxa</b> por conta própria para não causar congestão.</div>
+        </div>
+        <div class="nav-footer">05</div>
+    </div>
+
+    <!-- UDP x TCP -->
+    <div class="slide-container">
+        <h2 class="slide-title">UDP × TCP</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Aspecto</th><th>UDP</th><th>TCP</th></tr>
+                <tr><td>Conexão</td><td>Sem conexão</td><td>Orientado a conexão</td></tr>
+                <tr><td>Confiabilidade</td><td>Não garantida</td><td>Garantida (<a class="glossario-ref" href="glossario.html#ack">ACK</a> + retransmissão)</td></tr>
+                <tr><td>Ordem</td><td>Não preservada</td><td>Preservada</td></tr>
+                <tr><td>Cabeçalho</td><td>8 bytes</td><td>20–60 bytes</td></tr>
+                <tr><td>Controle de fluxo/congestão</td><td>Não</td><td>Sim</td></tr>
+                <tr><td>Modelo de dados</td><td>Mensagens (datagramas)</td><td>Fluxo de bytes</td></tr>
+                <tr><td>Latência</td><td>Menor</td><td>Maior (handshake, controle)</td></tr>
+            </table>
+            <div class="ok"><b>Sem head-of-line blocking:</b> no UDP, um datagrama perdido <b>não bloqueia</b> os seguintes — vantagem do TCP justamente invertida para mídia em tempo real.</div>
+        </div>
+        <div class="nav-footer">06</div>
+    </div>
+
+    <!-- CASOS DE USO -->
+    <div class="slide-container">
+        <h2 class="slide-title">Onde o UDP é usado</h2>
+        <div class="content-area">
+            <div class="grid-3">
+                <div class="info-box c">
+                    <i class="fa-solid fa-magnifying-glass-location"></i>
+                    <h3>Consultas rápidas</h3>
+                    <p><b>DNS</b>, <b><a class="glossario-ref" href="glossario.html#dhcp">DHCP</a></b>, <b>SNMP</b>, <b>NTP</b>: uma pergunta, uma resposta — abrir conexão seria desperdício.</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-video"></i>
+                    <h3>Tempo real</h3>
+                    <p><b><a class="glossario-ref" href="glossario.html#voip">VoIP</a></b>, videoconferência, <b>streaming</b> e <b>jogos online</b>: latência baixa importa mais que perfeição.</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-rocket"></i>
+                    <h3><a class="glossario-ref" href="glossario.html#quic">QUIC</a> / <a class="glossario-ref" href="glossario.html#http">HTTP</a>/3</h3>
+                    <p>O <b>QUIC</b> roda sobre UDP e reimplementa confiabilidade, multiplexação e cifragem — base do <b>HTTP/3</b>.</p>
+                </div>
+            </div>
+            <div class="callout"><b>Confiabilidade sob medida:</b> protocolos como <b>RTP/RTCP</b> (mídia) e o próprio QUIC adicionam <i>na aplicação</i> apenas as garantias que precisam, sem o peso completo do TCP.</div>
+        </div>
+        <div class="nav-footer">07</div>
+    </div>
+
+    <!-- SEGURANÇA: AMPLIFICAÇÃO -->
+    <div class="slide-container">
+        <h2 class="slide-title">Segurança: reflexão e amplificação</h2>
+        <div class="content-area">
+            <div class="figure">
+                <svg viewBox="0 0 860 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ataque de amplificação por reflexão usando UDP">
+                    <defs>
+                        <marker id="thin" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#64748b"/></marker>
+                        <marker id="thick" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#ef4444"/></marker>
+                    </defs>
+                    <rect x="20" y="92" width="150" height="56" rx="10" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+                    <text x="95" y="116" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">Atacante</text>
+                    <text x="95" y="134" text-anchor="middle" font-size="11" fill="#7f1d1d">forja origem</text>
+                    <rect x="360" y="40" width="170" height="44" rx="9" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.8"/>
+                    <text x="445" y="67" text-anchor="middle" font-size="13" fill="#0f766e">Servidor (DNS/NTP)</text>
+                    <rect x="360" y="98" width="170" height="44" rx="9" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.8"/>
+                    <text x="445" y="125" text-anchor="middle" font-size="13" fill="#0f766e">Servidor (open)</text>
+                    <rect x="360" y="156" width="170" height="44" rx="9" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.8"/>
+                    <text x="445" y="183" text-anchor="middle" font-size="13" fill="#0f766e">Servidor (memcached)</text>
+                    <rect x="690" y="92" width="150" height="56" rx="10" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+                    <text x="765" y="116" text-anchor="middle" font-size="14" font-weight="700" fill="#854d0e">Vítima</text>
+                    <text x="765" y="134" text-anchor="middle" font-size="11" fill="#713f12">inundada</text>
+                    <!-- consultas pequenas -->
+                    <line x1="172" y1="112" x2="356" y2="64" stroke="#64748b" stroke-width="1.5" marker-end="url(#thin)"/>
+                    <line x1="172" y1="120" x2="356" y2="120" stroke="#64748b" stroke-width="1.5" marker-end="url(#thin)"/>
+                    <line x1="172" y1="128" x2="356" y2="176" stroke="#64748b" stroke-width="1.5" marker-end="url(#thin)"/>
+                    <text x="250" y="210" text-anchor="middle" font-size="11" fill="#64748b">consultas pequenas (origem = vítima)</text>
+                    <!-- respostas grandes -->
+                    <line x1="530" y1="62" x2="688" y2="108" stroke="#ef4444" stroke-width="4" marker-end="url(#thick)"/>
+                    <line x1="530" y1="120" x2="688" y2="120" stroke="#ef4444" stroke-width="4" marker-end="url(#thick)"/>
+                    <line x1="530" y1="178" x2="688" y2="132" stroke="#ef4444" stroke-width="4" marker-end="url(#thick)"/>
+                    <text x="610" y="210" text-anchor="middle" font-size="11" fill="#b91c1c">respostas enormes → DDoS</text>
+                </svg>
+                <p class="figcap">Sem handshake, é trivial <b>forjar a origem</b>: a vítima recebe respostas que nunca pediu.</p>
+            </div>
+            <div class="warn"><b>Fator de amplificação:</b> DNS ~28–50×, NTP ~500×, <b>memcached ~50000×</b>. Defesas: anti-spoofing <b>BCP38</b>, <b>rate limiting</b> de respostas e fechar serviços abertos.</div>
+        </div>
+        <div class="nav-footer">08</div>
+    </div>
+
+    <!-- OUTRAS AMEAÇAS -->
+    <div class="slide-container">
+        <h2 class="slide-title">Outras ameaças e o panorama</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div class="info-box r">
+                    <i class="fa-solid fa-water"></i>
+                    <h3>UDP flood</h3>
+                    <p>Enxurrada de datagramas a portas aleatórias força o alvo a gerar muitos <a class="glossario-ref" href="glossario.html#icmp">ICMP</a> "porta inalcançável", esgotando recursos.</p>
+                </div>
+                <div class="info-box r">
+                    <i class="fa-solid fa-user-secret"></i>
+                    <h3>Spoofing e injeção</h3>
+                    <p>Sem estado de conexão, falsificar a origem e injetar datagramas é mais fácil que no TCP. A defesa real é <b>cifrar/autenticar</b> na aplicação (DTLS, QUIC).</p>
+                </div>
+            </div>
+            <div class="ok"><b>Boa prática:</b> serviços UDP públicos devem validar tamanho de requisição, limitar taxa e, sempre que possível, exigir autenticação — não confiar na origem informada.</div>
+        </div>
+        <div class="nav-footer">09</div>
+    </div>
+
+    <!-- RESUMO -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag" style="background:#10b981;">Síntese</div>
+            <h1 style="font-size:46px;">Em resumo</h1>
+            <p style="max-width: 880px; margin: 0 auto;">O <b>UDP</b> é o transporte minimalista: <b>sem conexão</b>, <b>sem garantias</b> e com apenas
+                <b>8 bytes</b> de cabeçalho (portas, comprimento, checksum). Troca confiabilidade por <b>baixa latência</b>, sendo ideal para DNS, VoIP,
+                streaming, jogos e o moderno <b>QUIC/HTTP/3</b>. Sua simplicidade, porém, abre porta a <b>spoofing</b> e ataques de <b>amplificação</b> —
+                exigindo defesas de rede e segurança na própria aplicação.</p>
+            <a class="backbar" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Disciplina de Serviços de Redes</p>
+        <p>Referências: RFC 768 (UDP) · RFC 8085 (boas práticas de uso) · RFC 9000 (QUIC) · BCP38 (anti-spoofing).</p>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wi-Fi (IEEE 802.11) — Serviços de Redes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        body { background-color: #f1f5f9; }
+        .slide-container { background-color: #ffffff; font-family: "DM Sans", sans-serif; }
+        h1, h2, h3 { font-family: "Merriweather", serif; color: #003366; z-index: 1; }
+        p, li { color: #475569; font-size: 21px; line-height: 1.6; z-index: 1; }
+        .slide-title { font-size: 40px; font-weight: 700; padding: 44px 80px 10px; text-align: left; border-bottom: 4px solid #003366; margin: 0 60px; display: inline-block; }
+        .content-area { flex-grow: 1; padding: 28px 80px 46px; display: flex; flex-direction: column; justify-content: center; z-index: 1; }
+        .title-layout { text-align: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #003366 0%, #001a33 100%); color: #fff; }
+        .title-layout h1 { color: #fff; font-size: 64px; margin-bottom: 18px; }
+        .title-layout p { color: #cbd5e1; font-size: 25px; }
+        .topic-tag { background: #9333ea; color: #fff; padding: 7px 20px; border-radius: 50px; font-weight: bold; font-size: 17px; display: inline-block; margin-bottom: 18px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; align-items: stretch; }
+        .info-box { background: #f8fafc; border-radius: 12px; padding: 24px; border-top: 6px solid #003366; }
+        .info-box.c { border-top-color: #9333ea; }
+        .info-box.g { border-top-color: #10b981; }
+        .info-box.r { border-top-color: #ef4444; }
+        .info-box i { font-size: 40px; color: #003366; margin-bottom: 12px; }
+        .info-box h3 { font-size: 21px; margin-bottom: 8px; }
+        .info-box p { font-size: 16px; line-height: 1.5; }
+        .highlight-text { font-size: 26px; color: #6b21a8; font-weight: 500; border-left: 6px solid #9333ea; padding-left: 20px; line-height: 1.4; }
+        .icon-large { font-size: 84px; color: #003366; opacity: 0.85; }
+        .check-list { list-style: none; padding-left: 0; }
+        .check-list li { margin-bottom: 12px; position: relative; padding-left: 38px; }
+        .check-list li::before { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; color: #10b981; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 17px; }
+        .comparison-table th { background: #003366; color: #fff; padding: 12px 14px; text-align: left; }
+        .comparison-table td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; }
+        .comparison-table tr:nth-child(even) { background: #f8fafc; }
+        .mono { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 16px 20px; font-family: "Fira Code", monospace; font-size: 15px; line-height: 1.7; margin-top: 12px; }
+        .mono .res { color: #c084fc; font-weight: 700; }
+        .mono .cmt { color: #64748b; }
+        .callout { border-left: 5px solid #9333ea; background: #faf5ff; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .callout b { color: #6b21a8; }
+        .warn { border-left: 5px solid #ef4444; background: #fef2f2; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .warn b { color: #b91c1c; }
+        .ok { border-left: 5px solid #10b981; background: #ecfdf5; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .ok b { color: #065f46; }
+        .lead { font-size: 24px; line-height: 1.55; }
+        .note { font-size: 14px; color: #94a3b8; margin-top: 10px; }
+        .figure { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; }
+        .figure svg { width: 100%; height: auto; display: block; }
+        .figcap { font-size: 14px; color: #64748b; text-align: center; margin-top: 8px; }
+        .kbd { font-family: "Fira Code", monospace; background: #e2e8f0; padding: 1px 7px; border-radius: 5px; font-size: 0.92em; color: #0f172a; }
+        .nav-footer { position: absolute; bottom: 16px; right: 28px; font-size: 13px; color: #94a3b8; z-index: 2; }
+        .backbar { display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; padding: 12px 24px; border: 1px solid rgba(255,255,255,0.25); border-radius: 50px; color: #fff; text-decoration: none; font-weight: 600; }
+        .backbar:hover { background: rgba(255,255,255,0.12); }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light">
+
+    <!-- CAPA -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag">Tópico 13 · Camada de Enlace (sem fio)</div>
+            <h1>Wi-Fi</h1>
+            <p>Redes locais sem fio — a família de padrões <a class="glossario-ref" href="glossario.html#ieee80211">IEEE 802.11</a></p>
+            <div style="margin-top: 44px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 16px; width: 340px;">ADS · Serviços de Redes</div>
+        </div>
+    </div>
+
+    <!-- O QUE É -->
+    <div class="slide-container">
+        <h2 class="slide-title">O que é o Wi-Fi</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p class="highlight-text"><a class="glossario-ref" href="glossario.html#wifi">Wi-Fi</a> é a tecnologia de rede local sem fio (<a class="glossario-ref" href="glossario.html#wlan">WLAN</a>) baseada nos padrões IEEE 802.11 — o "primo wireless" da <a class="glossario-ref" href="glossario.html#ethernet">Ethernet</a>.</p>
+                    <ul class="check-list" style="margin-top:20px;">
+                        <li>Atua na <b>camada de enlace</b> e na <b>física</b>, usando <b>ondas de rádio</b>.</li>
+                        <li>Reaproveita o <b>endereçamento <a class="glossario-ref" href="glossario.html#mac">MAC</a></b> e entrega <a class="glossario-ref" href="glossario.html#quadro">quadros</a> à camada de rede (<a class="glossario-ref" href="glossario.html#ip">IP</a>).</li>
+                        <li>"Wi-Fi" é uma <b>marca</b> da Wi-Fi Alliance; o protocolo é o <b>802.11</b>.</li>
+                    </ul>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-wifi"></i>
+                    <h3>O desafio do meio sem fio</h3>
+                    <p>O ar é um meio <b>compartilhado, <a class="glossario-ref" href="glossario.html#half-duplex">half-duplex</a> e ruidoso</b>: sujeito a interferência, atenuação e obstáculos. Isso exige mecanismos próprios de acesso e segurança, diferentes dos da Ethernet cabeada.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">01</div>
+    </div>
+
+    <!-- GERAÇÕES -->
+    <div class="slide-container">
+        <h2 class="slide-title">Gerações do 802.11</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Padrão</th><th>Nome</th><th>Ano</th><th>Banda</th><th>Taxa máx.</th></tr>
+                <tr><td>802.11b</td><td>—</td><td>1999</td><td>2,4 GHz</td><td>11 Mbps</td></tr>
+                <tr><td>802.11a/g</td><td>—</td><td>1999/2003</td><td>5 / 2,4 GHz</td><td>54 Mbps</td></tr>
+                <tr><td>802.11n</td><td>Wi-Fi 4</td><td>2009</td><td>2,4 + 5 GHz</td><td>600 Mbps</td></tr>
+                <tr><td>802.11ac</td><td>Wi-Fi 5</td><td>2013</td><td>5 GHz</td><td>~3,5 Gbps</td></tr>
+                <tr><td>802.11ax</td><td>Wi-Fi 6 / 6E</td><td>2019/2021</td><td>2,4 + 5 + 6 GHz</td><td>~9,6 Gbps</td></tr>
+                <tr><td>802.11be</td><td>Wi-Fi 7</td><td>2024</td><td>2,4 + 5 + 6 GHz</td><td>~46 Gbps</td></tr>
+            </table>
+            <div class="note">As taxas são teóricas (PHY); na prática, dependem de distância, interferência, antenas e largura de canal.</div>
+        </div>
+        <div class="nav-footer">02</div>
+    </div>
+
+    <!-- BANDAS -->
+    <div class="slide-container">
+        <h2 class="slide-title">Bandas de frequência</h2>
+        <div class="content-area">
+            <div class="grid-3">
+                <div class="info-box c">
+                    <i class="fa-solid fa-tower-broadcast"></i>
+                    <h3>2,4 GHz</h3>
+                    <p><b>Maior alcance</b> e melhor penetração em paredes, mas <b>mais congestionada</b> (Bluetooth, micro-ondas) e com poucos canais sem sobreposição.</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <h3>5 GHz</h3>
+                    <p><b>Mais canais</b> e <b>maior velocidade</b>, com menos interferência — porém <b>menor alcance</b> e mais sensível a obstáculos.</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-bolt"></i>
+                    <h3>6 GHz (Wi-Fi 6E/7)</h3>
+                    <p>Espectro <b>novo e amplo</b>, com canais largos (até 160/320 MHz) e pouca disputa — ideal para alto desempenho.</p>
+                </div>
+            </div>
+            <div class="callout"><b>Compromisso físico:</b> frequências <b>mais altas</b> carregam mais dados, mas <b>alcançam menos</b> e penetram pior. Daí o <a class="glossario-ref" href="glossario.html#roteador">roteador</a> "dual/tri-band" oferecer várias faixas.</div>
+        </div>
+        <div class="nav-footer">03</div>
+    </div>
+
+    <!-- CANAIS 2.4 -->
+    <div class="slide-container">
+        <h2 class="slide-title">Canais e sobreposição (2,4 GHz)</h2>
+        <div class="content-area">
+            <div class="figure">
+                <svg viewBox="0 0 860 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Canais não sobrepostos 1, 6 e 11 na banda de 2,4 GHz">
+                    <line x1="40" y1="150" x2="820" y2="150" stroke="#475569" stroke-width="2"/>
+                    <!-- canal sobreposto exemplo (cinza) -->
+                    <rect x="141" y="92" width="202" height="58" rx="8" fill="#cbd5e1" opacity="0.5"/>
+                    <text x="242" y="84" text-anchor="middle" font-size="11" fill="#64748b">canal 3 (sobrepõe)</text>
+                    <!-- canal 1 -->
+                    <rect x="49" y="70" width="202" height="80" rx="10" fill="#e9d5ff" stroke="#9333ea" stroke-width="2"/>
+                    <text x="150" y="116" text-anchor="middle" font-size="15" font-weight="700" fill="#6b21a8">Canal 1</text>
+                    <!-- canal 6 -->
+                    <rect x="279" y="70" width="202" height="80" rx="10" fill="#e9d5ff" stroke="#9333ea" stroke-width="2"/>
+                    <text x="380" y="116" text-anchor="middle" font-size="15" font-weight="700" fill="#6b21a8">Canal 6</text>
+                    <!-- canal 11 -->
+                    <rect x="508" y="70" width="202" height="80" rx="10" fill="#e9d5ff" stroke="#9333ea" stroke-width="2"/>
+                    <text x="609" y="116" text-anchor="middle" font-size="15" font-weight="700" fill="#6b21a8">Canal 11</text>
+                    <text x="430" y="176" text-anchor="middle" font-size="12" fill="#64748b">2,4 GHz — apenas 1, 6 e 11 não se sobrepõem (canais de 20 MHz)</text>
+                </svg>
+                <p class="figcap">Por isso redes vizinhas devem usar 1, 6 ou 11: qualquer outro canal interfere nos adjacentes.</p>
+            </div>
+        </div>
+        <div class="nav-footer">04</div>
+    </div>
+
+    <!-- ARQUITETURA -->
+    <div class="slide-container">
+        <h2 class="slide-title">Arquitetura: STA, AP, BSS e ESS</h2>
+        <div class="content-area">
+            <div class="figure">
+                <svg viewBox="0 0 860 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Arquitetura Wi-Fi com dois pontos de acesso formando um ESS">
+                    <rect x="120" y="22" width="620" height="34" rx="8" fill="#003366"/>
+                    <text x="430" y="44" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Sistema de Distribuição (rede cabeada)</text>
+                    <!-- AP1 -->
+                    <rect x="190" y="92" width="90" height="40" rx="8" fill="#9333ea"/>
+                    <text x="235" y="117" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">AP 1</text>
+                    <line x1="235" y1="56" x2="235" y2="92" stroke="#94a3b8" stroke-width="2"/>
+                    <ellipse cx="235" cy="170" rx="135" ry="62" fill="#f3e8ff" stroke="#9333ea" stroke-width="1.5" opacity="0.6"/>
+                    <text x="235" y="150" text-anchor="middle" font-size="13" font-weight="700" fill="#6b21a8">BSS 1</text>
+                    <circle cx="160" cy="190" r="12" fill="#a855f7"/><circle cx="235" cy="205" r="12" fill="#a855f7"/><circle cx="305" cy="188" r="12" fill="#a855f7"/>
+                    <line x1="235" y1="132" x2="160" y2="190" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="3 4"/>
+                    <line x1="235" y1="132" x2="235" y2="205" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="3 4"/>
+                    <line x1="235" y1="132" x2="305" y2="188" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="3 4"/>
+                    <!-- AP2 -->
+                    <rect x="580" y="92" width="90" height="40" rx="8" fill="#9333ea"/>
+                    <text x="625" y="117" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">AP 2</text>
+                    <line x1="625" y1="56" x2="625" y2="92" stroke="#94a3b8" stroke-width="2"/>
+                    <ellipse cx="625" cy="170" rx="135" ry="62" fill="#f3e8ff" stroke="#9333ea" stroke-width="1.5" opacity="0.6"/>
+                    <text x="625" y="150" text-anchor="middle" font-size="13" font-weight="700" fill="#6b21a8">BSS 2</text>
+                    <circle cx="550" cy="190" r="12" fill="#a855f7"/><circle cx="625" cy="205" r="12" fill="#a855f7"/><circle cx="695" cy="188" r="12" fill="#a855f7"/>
+                    <line x1="625" y1="132" x2="550" y2="190" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="3 4"/>
+                    <line x1="625" y1="132" x2="625" y2="205" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="3 4"/>
+                    <line x1="625" y1="132" x2="695" y2="188" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="3 4"/>
+                    <text x="430" y="245" text-anchor="middle" font-size="13" fill="#64748b">ESS = vários BSS com o mesmo SSID → roaming entre APs</text>
+                </svg>
+                <p class="figcap"><a class="glossario-ref" href="glossario.html#sta">STA</a> = estação · <a class="glossario-ref" href="glossario.html#ap">AP</a> = ponto de acesso · <a class="glossario-ref" href="glossario.html#bss">BSS</a> = um AP e suas estações · <a class="glossario-ref" href="glossario.html#ess">ESS</a> = vários BSS interligados.</p>
+            </div>
+        </div>
+        <div class="nav-footer">05</div>
+    </div>
+
+    <!-- IDENTIFICADORES -->
+    <div class="slide-container">
+        <h2 class="slide-title">SSID, BSSID e modos</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <table class="comparison-table" style="font-size:16px;">
+                        <tr><th>Termo</th><th>O que é</th></tr>
+                        <tr><td><b><a class="glossario-ref" href="glossario.html#ssid">SSID</a></b></td><td>O <b>nome</b> da rede (ex.: "ADS-Wi-Fi").</td></tr>
+                        <tr><td><b><a class="glossario-ref" href="glossario.html#bssid">BSSID</a></b></td><td>O <b>MAC do AP</b> que identifica aquele BSS.</td></tr>
+                        <tr><td><b>STA</b></td><td>Qualquer dispositivo cliente (estação).</td></tr>
+                        <tr><td><b>AP</b></td><td>O ponto de acesso que coordena o BSS.</td></tr>
+                    </table>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <h3>Infraestrutura × Ad-hoc</h3>
+                    <p>No modo <b>infraestrutura</b>, as estações se comunicam <b>através de um AP</b>. No modo <b>ad-hoc (IBSS)</b>, os dispositivos falam <b>diretamente entre si</b>, sem AP.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">06</div>
+    </div>
+
+    <!-- QUADRO 802.11 -->
+    <div class="slide-container">
+        <h2 class="slide-title">O quadro 802.11</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>Mais complexo que o da Ethernet — pode ter <b>até quatro endereços MAC</b> (origem, destino, AP transmissor e receptor), pois o quadro pode passar pelo AP.</p>
+                    <div class="mono" style="font-size:13.5px;">
+                        Frame Control | Duration<br>
+                        <span class="res">Address 1 / 2 / 3 (/ 4)</span><br>
+                        Sequence Control<br>
+                        Frame Body (dados)<br>
+                        <a class="glossario-ref" href="glossario.html#fcs">FCS</a> (<a class="glossario-ref" href="glossario.html#crc">CRC</a>-32)
+                    </div>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-list"></i>
+                    <h3>Três tipos de quadro</h3>
+                    <ul class="spaced" style="font-size:16px; padding-left:18px;">
+                        <li><b>Gerência:</b> <a class="glossario-ref" href="glossario.html#beacon">beacon</a>, probe, autenticação, associação.</li>
+                        <li><b>Controle:</b> RTS, CTS, <b><a class="glossario-ref" href="glossario.html#ack">ACK</a></b>.</li>
+                        <li><b>Dados:</b> transportam a carga útil (IP).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">07</div>
+    </div>
+
+    <!-- CSMA/CA + NÓ OCULTO -->
+    <div class="slide-container">
+        <h2 class="slide-title">Acesso ao meio: CSMA/CA e o nó oculto</h2>
+        <div class="content-area">
+            <div class="grid-2" style="align-items:start;">
+                <div>
+                    <p>No rádio, a estação <b>não consegue detectar colisões</b> enquanto transmite. Por isso usa-se <b><a class="glossario-ref" href="glossario.html#csma-ca">CSMA/CA</a></b> (Collision <b>Avoidance</b>): escuta, espera um tempo + backoff aleatório, transmite e aguarda um <b>ACK</b>. Sem ACK = perda → retransmite.</p>
+                    <div class="callout"><b>Problema do nó oculto:</b> A e C não se ouvem, mas ambos alcançam o AP — e colidem nele. A solução é o <a class="glossario-ref" href="glossario.html#handshake">handshake</a> <b><a class="glossario-ref" href="glossario.html#rts-cts">RTS/CTS</a></b>.</div>
+                </div>
+                <div class="figure">
+                    <svg viewBox="0 0 420 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Problema do nó oculto e troca RTS CTS">
+                        <circle cx="120" cy="120" r="80" fill="#f3e8ff" stroke="#9333ea" stroke-width="1.2" opacity="0.5"/>
+                        <circle cx="300" cy="120" r="80" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2" opacity="0.5"/>
+                        <circle cx="60" cy="120" r="13" fill="#9333ea"/><text x="60" y="155" text-anchor="middle" font-size="12" fill="#6b21a8">A</text>
+                        <rect x="196" y="106" width="32" height="28" rx="5" fill="#003366"/><text x="212" y="155" text-anchor="middle" font-size="12" fill="#003366">AP</text>
+                        <circle cx="360" cy="120" r="13" fill="#2563eb"/><text x="360" y="155" text-anchor="middle" font-size="12" fill="#1e40af">C</text>
+                        <text x="210" y="30" text-anchor="middle" font-size="12" fill="#64748b">A e C não se "enxergam"</text>
+                        <text x="210" y="210" text-anchor="middle" font-size="11.5" fill="#475569">A → RTS → AP → CTS → todos reservam o meio</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">08</div>
+    </div>
+
+    <!-- CONEXÃO -->
+    <div class="slide-container">
+        <h2 class="slide-title">Como um dispositivo se conecta</h2>
+        <div class="content-area">
+            <div class="grid-3">
+                <div class="info-box c">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <h3>1. Varredura</h3>
+                    <p><b>Passiva:</b> ouve os <b>beacons</b> que o AP emite periodicamente. <b>Ativa:</b> envia <b>probe requests</b> e aguarda respostas.</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-key"></i>
+                    <h3>2. Autenticação</h3>
+                    <p>Verificação de identidade/credenciais (sistema aberto ou, no <a class="glossario-ref" href="glossario.html#wpa3">WPA3</a>, via <b><a class="glossario-ref" href="glossario.html#sae">SAE</a></b>).</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-link"></i>
+                    <h3>3. Associação</h3>
+                    <p>A estação se <b>associa</b> ao AP, que passa a encaminhar seus quadros. Só então flui o tráfego de dados.</p>
+                </div>
+            </div>
+            <div class="callout"><b>Roaming:</b> num ESS, ao se mover, a estação <b>reassocia-se</b> a um AP de sinal melhor, mantendo o mesmo SSID — idealmente sem interromper a conexão.</div>
+        </div>
+        <div class="nav-footer">09</div>
+    </div>
+
+    <!-- PHY -->
+    <div class="slide-container">
+        <h2 class="slide-title">Camada física: o que acelerou o Wi-Fi</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div class="info-box c">
+                    <i class="fa-solid fa-wave-square"></i>
+                    <h3><a class="glossario-ref" href="glossario.html#ofdm">OFDM</a> e modulação</h3>
+                    <p>Os dados são espalhados por muitas <b>subportadoras</b> (OFDM). Modulações densas (<b><a class="glossario-ref" href="glossario.html#qam">QAM</a></b>, até 1024/4096-QAM) empacotam mais bits por símbolo — exigindo bom sinal.</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-tower-cell"></i>
+                    <h3><a class="glossario-ref" href="glossario.html#mimo">MIMO</a>, <a class="glossario-ref" href="glossario.html#mu-mimo">MU-MIMO</a> e <a class="glossario-ref" href="glossario.html#ofdma">OFDMA</a></h3>
+                    <p><b>MIMO</b> usa várias antenas e <b>fluxos espaciais</b> simultâneos. <b>MU-MIMO</b> atende vários clientes ao mesmo tempo; o <b>OFDMA</b> (Wi-Fi 6) divide o canal para <b>vários usuários em paralelo</b>, ganhando eficiência em ambientes lotados.</p>
+                </div>
+            </div>
+            <div class="note">Canais mais largos (40/80/160/320 MHz) também elevam a taxa — à custa de mais espectro ocupado.</div>
+        </div>
+        <div class="nav-footer">10</div>
+    </div>
+
+    <!-- SEGURANÇA -->
+    <div class="slide-container">
+        <h2 class="slide-title">Segurança: de WEP a WPA3</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Padrão</th><th>Ano</th><th>Criptografia</th><th>Situação</th></tr>
+                <tr><td><b><a class="glossario-ref" href="glossario.html#wep">WEP</a></b></td><td>1997</td><td>RC4 (chave estática)</td><td style="color:#b91c1c;">Quebrado — não usar.</td></tr>
+                <tr><td><b><a class="glossario-ref" href="glossario.html#wpa">WPA</a></b></td><td>2003</td><td>TKIP</td><td style="color:#b45309;">Paliativo, obsoleto.</td></tr>
+                <tr><td><b><a class="glossario-ref" href="glossario.html#wpa2">WPA2</a></b></td><td>2004</td><td><a class="glossario-ref" href="glossario.html#aes">AES</a>-CCMP</td><td style="color:#065f46;">Seguro (atenção ao KRACK, já corrigido).</td></tr>
+                <tr><td><b>WPA3</b></td><td>2018</td><td>AES + <b>SAE</b></td><td style="color:#065f46;"><b>Atual</b> — resiste a ataque de dicionário e dá <a class="glossario-ref" href="glossario.html#forward-secrecy">forward secrecy</a>.</td></tr>
+            </table>
+            <div class="grid-2" style="margin-top:14px;">
+                <div class="callout"><b>Personal × Enterprise:</b> o modo <b>pessoal</b> usa uma senha compartilhada (PSK/SAE); o <b>corporativo</b> usa <b><a class="glossario-ref" href="glossario.html#8021x">802.1X</a> + <a class="glossario-ref" href="glossario.html#radius">RADIUS</a></b>, com credenciais por usuário.</div>
+                <div class="warn"><b>Por que importa:</b> como o sinal se propaga pelo ar, <b>qualquer um por perto pode capturá-lo</b>. Sem cifragem forte, a rede é um canal aberto.</div>
+            </div>
+        </div>
+        <div class="nav-footer">11</div>
+    </div>
+
+    <!-- WIFI x ETHERNET -->
+    <div class="slide-container">
+        <h2 class="slide-title">Wi-Fi × Ethernet</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Aspecto</th><th>Wi-Fi (802.11)</th><th>Ethernet (<a class="glossario-ref" href="glossario.html#ieee8023">802.3</a>)</th></tr>
+                <tr><td>Meio</td><td>Ar (rádio), compartilhado</td><td>Cabo, dedicado por porta</td></tr>
+                <tr><td>Acesso ao meio</td><td>CSMA/CA + ACK</td><td><a class="glossario-ref" href="glossario.html#csma-cd">CSMA/CD</a> (clássica) / comutado</td></tr>
+                <tr><td>Duplex</td><td>Half-duplex</td><td><a class="glossario-ref" href="glossario.html#full-duplex">Full-duplex</a> (comutada)</td></tr>
+                <tr><td>Mobilidade</td><td>Alta</td><td>Nenhuma (preso ao cabo)</td></tr>
+                <tr><td>Interferência</td><td>Sensível</td><td>Baixa</td></tr>
+                <tr><td>Segurança</td><td>Exige cifragem (WPA2/3)</td><td>Acesso físico ao cabo</td></tr>
+            </table>
+            <div class="ok"><b>Complementares:</b> na prática, o AP Wi-Fi conecta-se à infraestrutura <b>Ethernet</b> — o sem fio leva a mobilidade até onde o cabo não chega.</div>
+        </div>
+        <div class="nav-footer">12</div>
+    </div>
+
+    <!-- RESUMO -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag" style="background:#10b981;">Síntese</div>
+            <h1 style="font-size:46px;">Em resumo</h1>
+            <p style="max-width: 880px; margin: 0 auto;">O <b>Wi-Fi</b> (IEEE 802.11) leva a rede local ao <b>meio sem fio</b>, organizando estações em torno de <b>APs</b>
+                (BSS/ESS). Como o rádio não detecta colisões, usa <b>CSMA/CA</b> com ACK e RTS/CTS contra o <b>nó oculto</b>. Evoluiu em velocidade com <b>MIMO</b>,
+                <b>OFDMA</b> e novas bandas (até 6 GHz), e em segurança do quebrado <b>WEP</b> ao moderno <b>WPA3</b>. Complementa a Ethernet, trazendo mobilidade.</p>
+            <a class="backbar" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Disciplina de Serviços de Redes</p>
+        <p>Referências: IEEE 802.11 (Wi-Fi) · Wi-Fi Alliance (WPA2/WPA3) · IEEE 802.1X (Enterprise).</p>
+    </footer>
+
+</body>
+
+</html>

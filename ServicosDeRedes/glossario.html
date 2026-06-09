@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossário de Redes — Serviços de Redes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
+    <style>
+        .gl-main { max-width: 1100px; margin: 0 auto; padding: 0 20px 60px; }
+        .gl-search { position: sticky; top: 0; background: var(--bg, #f1f5f9); padding: 16px 0; z-index: 5; }
+        .gl-search input { width: 100%; box-sizing: border-box; padding: 14px 18px; font-size: 17px; border: 1px solid #cbd5e1; border-radius: 12px; }
+        .gl-count { font-size: 14px; color: #64748b; margin: 4px 4px 14px; }
+        .gl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        @media (max-width: 720px) { .gl-grid { grid-template-columns: 1fr; } }
+        .gl-item { background: #ffffff; border: 1px solid #e2e8f0; border-left: 5px solid #1d4ed8; border-radius: 12px; padding: 16px 20px; scroll-margin-top: 90px; }
+        .gl-item:target { border-left-color: #f59e0b; box-shadow: 0 0 0 3px rgba(245,158,11,0.25); }
+        .gl-term { font-size: 20px; color: #003366; margin: 0 0 6px; }
+        .gl-full { display: block; font-size: 14px; font-weight: 600; color: #1d4ed8; }
+        .gl-desc { font-size: 16px; line-height: 1.55; color: #475569; margin: 0; }
+        .gl-empty { text-align: center; color: #94a3b8; padding: 30px; }
+    </style>
+</head>
+
+<body class="site-body">
+
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da Disciplina</a>
+            <span class="eyebrow">Referência</span>
+            <h1>Glossário de Redes</h1>
+            <p>Siglas e termos usados em toda a disciplina, com definições detalhadas</p>
+        </div>
+    </header>
+
+    <main class="gl-main">
+        <div class="gl-search">
+            <input type="search" id="glSearch" placeholder="Filtrar por sigla ou termo..." aria-label="Filtrar termos">
+        </div>
+        <p class="gl-count" id="glCount"></p>
+        <div class="gl-grid" id="glGrid">
+<div class="gl-item" id="8021d" data-term="802.1d —">
+  <h3 class="gl-term">802.1D </h3>
+  <p class="gl-desc">Padrão IEEE do Spanning Tree Protocol (STP), que previne laços na camada de enlace.</p>
+</div>
+<div class="gl-item" id="8021q" data-term="802.1q —">
+  <h3 class="gl-term">802.1Q </h3>
+  <p class="gl-desc">Padrão IEEE que define a marcação (tag) de VLAN no quadro Ethernet, permitindo múltiplas redes lógicas sobre a mesma infraestrutura.</p>
+</div>
+<div class="gl-item" id="8021x" data-term="802.1x —">
+  <h3 class="gl-term">802.1X </h3>
+  <p class="gl-desc">Padrão de controle de acesso à rede baseado em porta, usado no Wi-Fi corporativo com um servidor RADIUS para autenticar cada usuário.</p>
+</div>
+<div class="gl-item" id="ack" data-term="ack acknowledgment (confirmação)">
+  <h3 class="gl-term">ACK <span class='gl-full'>Acknowledgment (confirmação)</span></h3>
+  <p class="gl-desc">Sinalização de que dados foram recebidos. No TCP, o número de confirmação indica o próximo byte esperado (confirmação cumulativa).</p>
+</div>
+<div class="gl-item" id="aead" data-term="aead authenticated encryption with associated data">
+  <h3 class="gl-term">AEAD <span class='gl-full'>Authenticated Encryption with Associated Data</span></h3>
+  <p class="gl-desc">Categoria de cifras que entregam confidencialidade e integridade em uma só operação (ex.: AES-GCM, ChaCha20-Poly1305).</p>
+</div>
+<div class="gl-item" id="aes" data-term="aes advanced encryption standard">
+  <h3 class="gl-term">AES <span class='gl-full'>Advanced Encryption Standard</span></h3>
+  <p class="gl-desc">Cifra simétrica de bloco padrão (IEEE/NIST FIPS 197), rápida e segura, usada para proteger a confidencialidade de dados em trânsito e em repouso.</p>
+</div>
+<div class="gl-item" id="aimd" data-term="aimd additive increase / multiplicative decrease">
+  <h3 class="gl-term">AIMD <span class='gl-full'>Additive Increase / Multiplicative Decrease</span></h3>
+  <p class="gl-desc">Princípio do controle de congestionamento do TCP: aumenta a janela linearmente e a reduz pela metade ao detectar perda, buscando estabilidade e justiça.</p>
+</div>
+<div class="gl-item" id="ap" data-term="ap access point (ponto de acesso)">
+  <h3 class="gl-term">AP <span class='gl-full'>Access Point (ponto de acesso)</span></h3>
+  <p class="gl-desc">Equipamento que faz a ponte entre as estações Wi-Fi e a rede cabeada, coordenando o BSS.</p>
+</div>
+<div class="gl-item" id="arp" data-term="arp address resolution protocol">
+  <h3 class="gl-term">ARP <span class='gl-full'>Address Resolution Protocol</span></h3>
+  <p class="gl-desc">Protocolo que traduz um endereço IP em endereço MAC dentro de uma rede local, permitindo a entrega do quadro ao próximo salto.</p>
+</div>
+<div class="gl-item" id="beacon" data-term="beacon —">
+  <h3 class="gl-term">beacon </h3>
+  <p class="gl-desc">Quadro de gerência que o ponto de acesso emite periodicamente para anunciar a existência e os parâmetros da rede Wi-Fi.</p>
+</div>
+<div class="gl-item" id="bootp" data-term="bootp bootstrap protocol">
+  <h3 class="gl-term">BOOTP <span class='gl-full'>Bootstrap Protocol</span></h3>
+  <p class="gl-desc">Protocolo precursor do DHCP, do qual este herdou o formato de mensagem; servia para inicializar estações sem disco com seus parâmetros de rede.</p>
+</div>
+<div class="gl-item" id="bridge" data-term="bridge ponte">
+  <h3 class="gl-term">bridge <span class='gl-full'>ponte</span></h3>
+  <p class="gl-desc">Equipamento de camada 2 que conecta dois segmentos e filtra o tráfego por endereço MAC, isolando domínios de colisão. O switch é sua generalização multiportas.</p>
+</div>
+<div class="gl-item" id="broadcast" data-term="broadcast difusão">
+  <h3 class="gl-term">broadcast <span class='gl-full'>difusão</span></h3>
+  <p class="gl-desc">Envio de um quadro/pacote a todos os dispositivos de um segmento de rede. Na Ethernet, o endereço de broadcast é FF:FF:FF:FF:FF:FF.</p>
+</div>
+<div class="gl-item" id="bss" data-term="bss basic service set">
+  <h3 class="gl-term">BSS <span class='gl-full'>Basic Service Set</span></h3>
+  <p class="gl-desc">Conjunto formado por um ponto de acesso e as estações a ele associadas — a unidade básica de uma rede Wi-Fi em modo infraestrutura.</p>
+</div>
+<div class="gl-item" id="bssid" data-term="bssid basic service set identifier">
+  <h3 class="gl-term">BSSID <span class='gl-full'>Basic Service Set Identifier</span></h3>
+  <p class="gl-desc">Identificador de um BSS, que corresponde ao endereço MAC do ponto de acesso (AP).</p>
+</div>
+<div class="gl-item" id="cache" data-term="cache —">
+  <h3 class="gl-term">cache </h3>
+  <p class="gl-desc">Armazenamento temporário de respostas para reduzir latência e tráfego. No HTTP é controlado por cabeçalhos como Cache-Control e ETag.</p>
+</div>
+<div class="gl-item" id="cdn" data-term="cdn content delivery network">
+  <h3 class="gl-term">CDN <span class='gl-full'>Content Delivery Network</span></h3>
+  <p class="gl-desc">Rede de distribuição de conteúdo: muitos servidores geograficamente espalhados que entregam dados a partir do ponto mais próximo do usuário, reduzindo latência.</p>
+</div>
+<div class="gl-item" id="cipher-suite" data-term="cipher suite conjunto de cifras">
+  <h3 class="gl-term">cipher suite <span class='gl-full'>conjunto de cifras</span></h3>
+  <p class="gl-desc">Combinação de algoritmos negociada em uma conexão TLS — troca de chave, autenticação, cifra de dados e função de hash.</p>
+</div>
+<div class="gl-item" id="cookie" data-term="cookie —">
+  <h3 class="gl-term">cookie </h3>
+  <p class="gl-desc">Pequeno dado que o servidor define no cliente (Set-Cookie) e que o navegador devolve nas próximas requisições, recriando a noção de sessão sobre o HTTP sem estado.</p>
+</div>
+<div class="gl-item" id="cors" data-term="cors cross-origin resource sharing">
+  <h3 class="gl-term">CORS <span class='gl-full'>Cross-Origin Resource Sharing</span></h3>
+  <p class="gl-desc">Mecanismo que controla quais origens podem acessar recursos de outro domínio, mediado por cabeçalhos HTTP.</p>
+</div>
+<div class="gl-item" id="crc" data-term="crc cyclic redundancy check">
+  <h3 class="gl-term">CRC <span class='gl-full'>Cyclic Redundancy Check</span></h3>
+  <p class="gl-desc">Algoritmo de detecção de erros baseado em divisão polinomial, usado no FCS de quadros e em checksums; detecta corrupção acidental.</p>
+</div>
+<div class="gl-item" id="csma-ca" data-term="csma/ca carrier sense multiple access with collision avoidance">
+  <h3 class="gl-term">CSMA/CA <span class='gl-full'>Carrier Sense Multiple Access with Collision Avoidance</span></h3>
+  <p class="gl-desc">Método de acesso ao meio do Wi-Fi: como o rádio não detecta colisões enquanto transmite, evita-as com espera aleatória e confirma cada quadro com um ACK.</p>
+</div>
+<div class="gl-item" id="csma-cd" data-term="csma/cd carrier sense multiple access with collision detection">
+  <h3 class="gl-term">CSMA/CD <span class='gl-full'>Carrier Sense Multiple Access with Collision Detection</span></h3>
+  <p class="gl-desc">Método de acesso ao meio da Ethernet clássica (half-duplex): escuta o meio, transmite e, se detecta colisão, envia um sinal de jam e recua aleatoriamente.</p>
+</div>
+<div class="gl-item" id="csp" data-term="csp content security policy">
+  <h3 class="gl-term">CSP <span class='gl-full'>Content Security Policy</span></h3>
+  <p class="gl-desc">Cabeçalho de segurança que restringe as fontes de scripts e recursos de uma página, mitigando ataques de XSS.</p>
+</div>
+<div class="gl-item" id="csrf" data-term="csrf cross-site request forgery">
+  <h3 class="gl-term">CSRF <span class='gl-full'>Cross-Site Request Forgery</span></h3>
+  <p class="gl-desc">Ataque que induz o navegador da vítima a enviar requisições autenticadas indesejadas a um site. Mitigado por tokens anti-CSRF e cookies adequados.</p>
+</div>
+<div class="gl-item" id="cwnd" data-term="cwnd janela de congestionamento">
+  <h3 class="gl-term">cwnd <span class='gl-full'>janela de congestionamento</span></h3>
+  <p class="gl-desc">Limite, mantido pelo emissor TCP, de quantos dados podem estar em trânsito conforme a capacidade da rede. Cresce na partida lenta e na prevenção de congestionamento.</p>
+</div>
+<div class="gl-item" id="dhcp" data-term="dhcp dynamic host configuration protocol">
+  <h3 class="gl-term">DHCP <span class='gl-full'>Dynamic Host Configuration Protocol</span></h3>
+  <p class="gl-desc">Protocolo que configura automaticamente os hosts, entregando IP, máscara, gateway e DNS via UDP (portas 67/68). O cliente passa pelo ciclo DORA.</p>
+</div>
+<div class="gl-item" id="dht" data-term="dht distributed hash table">
+  <h3 class="gl-term">DHT <span class='gl-full'>Distributed Hash Table</span></h3>
+  <p class="gl-desc">Tabela hash distribuída usada por redes P2P estruturadas (como Chord e Kademlia) para localizar conteúdo de forma eficiente e descentralizada.</p>
+</div>
+<div class="gl-item" id="broadcast-domain" data-term="domínio de broadcast broadcast domain">
+  <h3 class="gl-term">domínio de broadcast <span class='gl-full'>broadcast domain</span></h3>
+  <p class="gl-desc">Conjunto de dispositivos que recebem os broadcasts uns dos outros. Roteadores e VLANs separam domínios de broadcast.</p>
+</div>
+<div class="gl-item" id="collision-domain" data-term="domínio de colisão collision domain">
+  <h3 class="gl-term">domínio de colisão <span class='gl-full'>collision domain</span></h3>
+  <p class="gl-desc">Conjunto de dispositivos cujas transmissões podem colidir por compartilharem o meio. O switch cria um domínio por porta.</p>
+</div>
+<div class="gl-item" id="dora" data-term="dora discover, offer, request, acknowledge">
+  <h3 class="gl-term">DORA <span class='gl-full'>Discover, Offer, Request, Acknowledge</span></h3>
+  <p class="gl-desc">As quatro mensagens da concessão DHCP: o cliente Descobre servidores, recebe uma Oferta, Requisita o endereço e o servidor Confirma (ACK).</p>
+</div>
+<div class="gl-item" id="ecc" data-term="ecc elliptic curve cryptography">
+  <h3 class="gl-term">ECC <span class='gl-full'>Elliptic Curve Cryptography</span></h3>
+  <p class="gl-desc">Criptografia de chave pública baseada em curvas elípticas, que oferece a mesma segurança do RSA com chaves muito menores.</p>
+</div>
+<div class="gl-item" id="ecdhe" data-term="ecdhe elliptic curve diffie-hellman ephemeral">
+  <h3 class="gl-term">ECDHE <span class='gl-full'>Elliptic Curve Diffie-Hellman Ephemeral</span></h3>
+  <p class="gl-desc">Troca de chaves com curvas elípticas e chaves efêmeras, usada no TLS para estabelecer um segredo compartilhado com forward secrecy.</p>
+</div>
+<div class="gl-item" id="ecdsa" data-term="ecdsa elliptic curve digital signature algorithm">
+  <h3 class="gl-term">ECDSA <span class='gl-full'>Elliptic Curve Digital Signature Algorithm</span></h3>
+  <p class="gl-desc">Esquema de assinatura digital sobre curvas elípticas, que fornece autenticidade, integridade e não repúdio com assinaturas compactas.</p>
+</div>
+<div class="gl-item" id="ess" data-term="ess extended service set">
+  <h3 class="gl-term">ESS <span class='gl-full'>Extended Service Set</span></h3>
+  <p class="gl-desc">Vários BSS interligados pelo mesmo SSID, permitindo roaming entre pontos de acesso.</p>
+</div>
+<div class="gl-item" id="etag" data-term="etag entity tag">
+  <h3 class="gl-term">ETag <span class='gl-full'>Entity Tag</span></h3>
+  <p class="gl-desc">Identificador de versão de um recurso; permite ao cliente perguntar 'mudou?' e o servidor responder 304 (Not Modified) sem reenviar o corpo.</p>
+</div>
+<div class="gl-item" id="ethernet" data-term="ethernet ieee 802.3">
+  <h3 class="gl-term">Ethernet <span class='gl-full'>IEEE 802.3</span></h3>
+  <p class="gl-desc">Conjunto de tecnologias que domina as LANs cabeadas, definindo o quadro, o endereço MAC e o acesso ao meio. Evoluiu de 10 Mbps a centenas de Gbps.</p>
+</div>
+<div class="gl-item" id="ethertype" data-term="ethertype —">
+  <h3 class="gl-term">EtherType </h3>
+  <p class="gl-desc">Campo de 2 bytes do quadro Ethernet que indica o protocolo da carga (ex.: 0x0800 = IPv4, 0x86DD = IPv6, 0x0806 = ARP).</p>
+</div>
+<div class="gl-item" id="fcs" data-term="fcs frame check sequence">
+  <h3 class="gl-term">FCS <span class='gl-full'>Frame Check Sequence</span></h3>
+  <p class="gl-desc">Campo do quadro que guarda um CRC para detectar erros; quadros corrompidos são descartados, sem retransmissão pela própria Ethernet.</p>
+</div>
+<div class="gl-item" id="fin" data-term="fin finish">
+  <h3 class="gl-term">FIN <span class='gl-full'>Finish</span></h3>
+  <p class="gl-desc">Flag do TCP que sinaliza o fim do envio de dados por um lado, iniciando o encerramento ordenado da conexão.</p>
+</div>
+<div class="gl-item" id="firewall" data-term="firewall —">
+  <h3 class="gl-term">firewall </h3>
+  <p class="gl-desc">Equipamento ou software que filtra o tráfego por regras (porta, IP, estado, aplicação), protegendo a rede de acessos indesejados.</p>
+</div>
+<div class="gl-item" id="forward-secrecy" data-term="forward secrecy sigilo encaminhado">
+  <h3 class="gl-term">forward secrecy <span class='gl-full'>sigilo encaminhado</span></h3>
+  <p class="gl-desc">Propriedade em que chaves de sessão efêmeras protegem o tráfego passado mesmo que a chave privada de longo prazo vaze depois. É obrigatória no TLS 1.3.</p>
+</div>
+<div class="gl-item" id="full-duplex" data-term="full-duplex —">
+  <h3 class="gl-term">full-duplex </h3>
+  <p class="gl-desc">Modo de comunicação em que um enlace envia e recebe ao mesmo tempo. Em Ethernet comutada, elimina colisões.</p>
+</div>
+<div class="gl-item" id="gateway" data-term="gateway —">
+  <h3 class="gl-term">gateway </h3>
+  <p class="gl-desc">Ponto de saída de uma rede para outra; o gateway padrão é, na prática, a interface do roteador que leva ao mundo externo.</p>
+</div>
+<div class="gl-item" id="half-duplex" data-term="half-duplex —">
+  <h3 class="gl-term">half-duplex </h3>
+  <p class="gl-desc">Modo de comunicação em que só se transmite ou recebe por vez, compartilhando o meio. É o caso da Ethernet clássica e do rádio Wi-Fi.</p>
+</div>
+<div class="gl-item" id="handshake" data-term="handshake aperto de mãos">
+  <h3 class="gl-term">handshake <span class='gl-full'>aperto de mãos</span></h3>
+  <p class="gl-desc">Troca inicial de mensagens que estabelece parâmetros de uma conexão. No TCP é o three-way handshake (SYN, SYN-ACK, ACK); no TLS, negocia chaves e autenticação.</p>
+</div>
+<div class="gl-item" id="hash" data-term="hash função/resumo criptográfico">
+  <h3 class="gl-term">hash <span class='gl-full'>função/resumo criptográfico</span></h3>
+  <p class="gl-desc">Função que mapeia uma entrada de tamanho qualquer em um resumo fixo, com forte resistência a colisões. É a base da verificação de integridade.</p>
+</div>
+<div class="gl-item" id="hmac" data-term="hmac hash-based message authentication code">
+  <h3 class="gl-term">HMAC <span class='gl-full'>Hash-based Message Authentication Code</span></h3>
+  <p class="gl-desc">Combinação de uma função de hash com uma chave secreta, que prova integridade e autenticidade de uma mensagem entre quem compartilha a chave.</p>
+</div>
+<div class="gl-item" id="hsts" data-term="hsts http strict transport security">
+  <h3 class="gl-term">HSTS <span class='gl-full'>HTTP Strict Transport Security</span></h3>
+  <p class="gl-desc">Cabeçalho que força o navegador a sempre usar HTTPS para um site, bloqueando downgrades para HTTP.</p>
+</div>
+<div class="gl-item" id="http" data-term="http hypertext transfer protocol">
+  <h3 class="gl-term">HTTP <span class='gl-full'>HyperText Transfer Protocol</span></h3>
+  <p class="gl-desc">Protocolo de aplicação da Web, cliente-servidor e sem estado, no modelo requisição-resposta. Roda sobre TCP (portas 80/443) e, no HTTP/3, sobre QUIC.</p>
+</div>
+<div class="gl-item" id="https" data-term="https http secure">
+  <h3 class="gl-term">HTTPS <span class='gl-full'>HTTP Secure</span></h3>
+  <p class="gl-desc">HTTP transportado sobre TLS, agregando confidencialidade, integridade e autenticação ao tráfego web. Usa por padrão a porta 443.</p>
+</div>
+<div class="gl-item" id="hub" data-term="hub concentrador">
+  <h3 class="gl-term">hub <span class='gl-full'>concentrador</span></h3>
+  <p class="gl-desc">Equipamento de camada 1 que repete cegamente todo quadro recebido em todas as portas, formando um único domínio de colisão. Hoje obsoleto.</p>
+</div>
+<div class="gl-item" id="icmp" data-term="icmp internet control message protocol">
+  <h3 class="gl-term">ICMP <span class='gl-full'>Internet Control Message Protocol</span></h3>
+  <p class="gl-desc">Protocolo de controle e diagnóstico que acompanha o IP, reportando erros (destino inalcançável, tempo excedido) e sustentando o ping e o traceroute.</p>
+</div>
+<div class="gl-item" id="ids" data-term="ids intrusion detection system">
+  <h3 class="gl-term">IDS <span class='gl-full'>Intrusion Detection System</span></h3>
+  <p class="gl-desc">Sistema que detecta e alerta sobre intrusões e padrões de ataque na rede.</p>
+</div>
+<div class="gl-item" id="ieee80211" data-term="ieee 802.11 —">
+  <h3 class="gl-term">IEEE 802.11 </h3>
+  <p class="gl-desc">Família de padrões do IEEE para redes locais sem fio (WLAN), que define bandas, canais, quadro e o acesso ao meio CSMA/CA.</p>
+</div>
+<div class="gl-item" id="ieee8023" data-term="ieee 802.3 —">
+  <h3 class="gl-term">IEEE 802.3 </h3>
+  <p class="gl-desc">Padrão do IEEE que especifica a Ethernet — quadro, endereçamento MAC, acesso ao meio e camadas física e MAC.</p>
+</div>
+<div class="gl-item" id="ip" data-term="ip internet protocol">
+  <h3 class="gl-term">IP <span class='gl-full'>Internet Protocol</span></h3>
+  <p class="gl-desc">Protocolo da camada de rede responsável por endereçar e encaminhar pacotes entre redes distintas. É não orientado a conexão e de melhor esforço.</p>
+</div>
+<div class="gl-item" id="ips" data-term="ips intrusion prevention system">
+  <h3 class="gl-term">IPS <span class='gl-full'>Intrusion Prevention System</span></h3>
+  <p class="gl-desc">Sistema que, além de detectar, bloqueia ativamente intrusões e ataques.</p>
+</div>
+<div class="gl-item" id="ipv4" data-term="ipv4 internet protocol version 4">
+  <h3 class="gl-term">IPv4 <span class='gl-full'>Internet Protocol version 4</span></h3>
+  <p class="gl-desc">Versão do IP com endereços de 32 bits (~4,3 bilhões), em notação decimal pontuada. Usa sub-redes/CIDR, fragmentação e o campo TTL.</p>
+</div>
+<div class="gl-item" id="ipv6" data-term="ipv6 internet protocol version 6">
+  <h3 class="gl-term">IPv6 <span class='gl-full'>Internet Protocol version 6</span></h3>
+  <p class="gl-desc">Versão do IP com endereços de 128 bits (~3,4×10³⁸), notação hexadecimal e cabeçalho fixo de 40 bytes. Traz autoconfiguração (SLAAC) e dispensa NAT.</p>
+</div>
+<div class="gl-item" id="jwt" data-term="jwt json web token">
+  <h3 class="gl-term">JWT <span class='gl-full'>JSON Web Token</span></h3>
+  <p class="gl-desc">Token assinado que carrega, de forma verificável, a identidade do usuário, usado para autenticação sobre HTTP sem manter estado no servidor.</p>
+</div>
+<div class="gl-item" id="lan" data-term="lan local area network">
+  <h3 class="gl-term">LAN <span class='gl-full'>Local Area Network</span></h3>
+  <p class="gl-desc">Rede local que cobre um prédio ou campus, tipicamente sobre Ethernet e Wi-Fi. É a escala mais comum em casas, escolas e empresas.</p>
+</div>
+<div class="gl-item" id="lease" data-term="lease concessão">
+  <h3 class="gl-term">lease <span class='gl-full'>concessão</span></h3>
+  <p class="gl-desc">Empréstimo temporário de um endereço IP pelo DHCP. O cliente tenta renová-lo em marcos T1 (50%) e T2 (87,5%) antes de expirar.</p>
+</div>
+<div class="gl-item" id="load-balancer" data-term="load balancer balanceador de carga">
+  <h3 class="gl-term">load balancer <span class='gl-full'>balanceador de carga</span></h3>
+  <p class="gl-desc">Equipamento ou serviço que distribui as requisições entre vários servidores, dando escala e disponibilidade.</p>
+</div>
+<div class="gl-item" id="mac" data-term="mac media access control (endereço físico)">
+  <h3 class="gl-term">MAC <span class='gl-full'>Media Access Control (endereço físico)</span></h3>
+  <p class="gl-desc">Endereço de 48 bits gravado na interface de rede, usado para identificar dispositivos no enlace local. Os 3 primeiros bytes identificam o fabricante (OUI) e os demais a placa.</p>
+</div>
+<div class="gl-item" id="man" data-term="man metropolitan area network">
+  <h3 class="gl-term">MAN <span class='gl-full'>Metropolitan Area Network</span></h3>
+  <p class="gl-desc">Rede de escala metropolitana, abrangendo uma cidade, geralmente sobre fibra óptica. Interliga, por exemplo, vários campi de uma instituição.</p>
+</div>
+<div class="gl-item" id="mimo" data-term="mimo multiple input, multiple output">
+  <h3 class="gl-term">MIMO <span class='gl-full'>Multiple Input, Multiple Output</span></h3>
+  <p class="gl-desc">Técnica que usa várias antenas e fluxos espaciais simultâneos para aumentar a taxa de transmissão sem fio.</p>
+</div>
+<div class="gl-item" id="modem" data-term="modem modulador/demodulador">
+  <h3 class="gl-term">modem <span class='gl-full'>modulador/demodulador</span></h3>
+  <p class="gl-desc">Equipamento que modula e demodula o sinal entre o digital e o meio do provedor (DSL, cabo, fibra/ONT), conectando a rede à Internet.</p>
+</div>
+<div class="gl-item" id="mss" data-term="mss maximum segment size">
+  <h3 class="gl-term">MSS <span class='gl-full'>Maximum Segment Size</span></h3>
+  <p class="gl-desc">Maior quantidade de dados que um segmento TCP pode transportar, negociada no handshake para evitar fragmentação.</p>
+</div>
+<div class="gl-item" id="mtu" data-term="mtu maximum transmission unit">
+  <h3 class="gl-term">MTU <span class='gl-full'>Maximum Transmission Unit</span></h3>
+  <p class="gl-desc">Tamanho máximo de quadro que um enlace pode transmitir (1500 bytes na Ethernet). Pacotes maiores precisam ser fragmentados.</p>
+</div>
+<div class="gl-item" id="mu-mimo" data-term="mu-mimo multi-user mimo">
+  <h3 class="gl-term">MU-MIMO <span class='gl-full'>Multi-User MIMO</span></h3>
+  <p class="gl-desc">Extensão do MIMO que atende vários clientes ao mesmo tempo, em vez de um por vez.</p>
+</div>
+<div class="gl-item" id="nat" data-term="nat network address translation">
+  <h3 class="gl-term">NAT <span class='gl-full'>Network Address Translation</span></h3>
+  <p class="gl-desc">Técnica que faz vários hosts internos compartilharem um IP público, traduzindo endereços. Foi uma das respostas à escassez de endereços IPv4.</p>
+</div>
+<div class="gl-item" id="ndp" data-term="ndp neighbor discovery protocol">
+  <h3 class="gl-term">NDP <span class='gl-full'>Neighbor Discovery Protocol</span></h3>
+  <p class="gl-desc">Conjunto de mensagens ICMPv6 que, no IPv6, substitui o ARP e habilita a autoconfiguração (resolução de endereço, descoberta de roteadores, DAD).</p>
+</div>
+<div class="gl-item" id="nic" data-term="nic network interface card (placa de rede)">
+  <h3 class="gl-term">NIC <span class='gl-full'>Network Interface Card (placa de rede)</span></h3>
+  <p class="gl-desc">Interface que conecta o host ao meio físico, convertendo dados em sinais e vice-versa. Carrega o endereço MAC do dispositivo.</p>
+</div>
+<div class="gl-item" id="ofdm" data-term="ofdm orthogonal frequency-division multiplexing">
+  <h3 class="gl-term">OFDM <span class='gl-full'>Orthogonal Frequency-Division Multiplexing</span></h3>
+  <p class="gl-desc">Técnica que espalha os dados por muitas subportadoras ortogonais, tornando a transmissão robusta a interferência.</p>
+</div>
+<div class="gl-item" id="ofdma" data-term="ofdma orthogonal frequency-division multiple access">
+  <h3 class="gl-term">OFDMA <span class='gl-full'>Orthogonal Frequency-Division Multiple Access</span></h3>
+  <p class="gl-desc">Evolução do OFDM (Wi-Fi 6) que divide o canal em unidades de recurso, atendendo vários usuários em paralelo e ganhando eficiência em ambientes densos.</p>
+</div>
+<div class="gl-item" id="osi" data-term="osi open systems interconnection">
+  <h3 class="gl-term">OSI <span class='gl-full'>Open Systems Interconnection</span></h3>
+  <p class="gl-desc">Modelo de referência da ISO que divide a comunicação em sete camadas (física, enlace, rede, transporte, sessão, apresentação e aplicação). Serve para organizar e ensinar as funções de rede de forma modular.</p>
+</div>
+<div class="gl-item" id="oui" data-term="oui organizationally unique identifier">
+  <h3 class="gl-term">OUI <span class='gl-full'>Organizationally Unique Identifier</span></h3>
+  <p class="gl-desc">Os 24 bits iniciais de um endereço MAC, atribuídos pelo IEEE a cada fabricante para garantir unicidade global das placas de rede.</p>
+</div>
+<div class="gl-item" id="p2p" data-term="p2p peer-to-peer (ponto a ponto)">
+  <h3 class="gl-term">P2P <span class='gl-full'>Peer-to-Peer (ponto a ponto)</span></h3>
+  <p class="gl-desc">Modelo de comunicação descentralizado em que cada nó atua simultaneamente como cliente e servidor, compartilhando recursos diretamente. Exemplos: BitTorrent, blockchain e IPFS.</p>
+</div>
+<div class="gl-item" id="pan" data-term="pan personal area network">
+  <h3 class="gl-term">PAN <span class='gl-full'>Personal Area Network</span></h3>
+  <p class="gl-desc">Rede de área pessoal, de alcance muito curto (~10 m), usada para conectar dispositivos próximos por tecnologias como Bluetooth, USB e NFC.</p>
+</div>
+<div class="gl-item" id="slow-start" data-term="partida lenta slow start">
+  <h3 class="gl-term">partida lenta <span class='gl-full'>slow start</span></h3>
+  <p class="gl-desc">Fase inicial do controle de congestionamento em que a janela cresce exponencialmente até atingir um limiar (ssthresh).</p>
+</div>
+<div class="gl-item" id="ping" data-term="ping —">
+  <h3 class="gl-term">ping </h3>
+  <p class="gl-desc">Ferramenta de diagnóstico que envia mensagens ICMP Echo Request e aguarda Echo Reply para medir se um host responde, a latência (RTT) e a perda de pacotes.</p>
+</div>
+<div class="gl-item" id="pki" data-term="pki public key infrastructure">
+  <h3 class="gl-term">PKI <span class='gl-full'>Public Key Infrastructure</span></h3>
+  <p class="gl-desc">Infraestrutura de chaves públicas que liga uma chave a uma identidade por meio de certificados X.509 assinados por Autoridades Certificadoras (CAs).</p>
+</div>
+<div class="gl-item" id="pmtud" data-term="pmtud path mtu discovery">
+  <h3 class="gl-term">PMTUD <span class='gl-full'>Path MTU Discovery</span></h3>
+  <p class="gl-desc">Mecanismo que descobre a menor MTU ao longo do caminho enviando pacotes com o bit DF e usando mensagens ICMP de erro para ajustar o tamanho.</p>
+</div>
+<div class="gl-item" id="proxy" data-term="proxy —">
+  <h3 class="gl-term">proxy </h3>
+  <p class="gl-desc">Intermediário na camada de aplicação que repassa requisições, podendo fazer cache, filtragem de conteúdo e anonimato.</p>
+</div>
+<div class="gl-item" id="qam" data-term="qam quadrature amplitude modulation">
+  <h3 class="gl-term">QAM <span class='gl-full'>Quadrature Amplitude Modulation</span></h3>
+  <p class="gl-desc">Modulação que combina amplitude e fase para transmitir vários bits por símbolo (até 1024/4096-QAM), elevando a taxa quando o sinal é bom.</p>
+</div>
+<div class="gl-item" id="quadro" data-term="quadro frame">
+  <h3 class="gl-term">quadro <span class='gl-full'>frame</span></h3>
+  <p class="gl-desc">Unidade de dados da camada de enlace, com endereços MAC de origem/destino, carga útil e verificação de erros (FCS). Em inglês, 'frame'.</p>
+</div>
+<div class="gl-item" id="quic" data-term="quic —">
+  <h3 class="gl-term">QUIC </h3>
+  <p class="gl-desc">Protocolo de transporte sobre UDP que reimplementa confiabilidade, multiplexação e cifragem (TLS 1.3); é a base do HTTP/3, sem o head-of-line blocking do TCP.</p>
+</div>
+<div class="gl-item" id="radius" data-term="radius remote authentication dial-in user service">
+  <h3 class="gl-term">RADIUS <span class='gl-full'>Remote Authentication Dial-In User Service</span></h3>
+  <p class="gl-desc">Servidor de autenticação centralizada usado no modo corporativo (802.1X) para validar credenciais por usuário.</p>
+</div>
+<div class="gl-item" id="relay" data-term="relay agent agente de retransmissão">
+  <h3 class="gl-term">relay agent <span class='gl-full'>agente de retransmissão</span></h3>
+  <p class="gl-desc">Função (geralmente no roteador) que encaminha pedidos DHCP em broadcast de uma sub-rede para um servidor central em outra, preenchendo o campo giaddr.</p>
+</div>
+<div class="gl-item" id="repetidor" data-term="repetidor repeater">
+  <h3 class="gl-term">repetidor <span class='gl-full'>repeater</span></h3>
+  <p class="gl-desc">Equipamento de camada 1 que regenera o sinal para estender o alcance do enlace, sem interpretar os dados.</p>
+</div>
+<div class="gl-item" id="roteador" data-term="roteador router">
+  <h3 class="gl-term">roteador <span class='gl-full'>router</span></h3>
+  <p class="gl-desc">Equipamento de camada 3 que interliga redes diferentes, encaminhando pacotes por endereço IP e separando domínios de broadcast.</p>
+</div>
+<div class="gl-item" id="rsa" data-term="rsa rivest–shamir–adleman">
+  <h3 class="gl-term">RSA <span class='gl-full'>Rivest–Shamir–Adleman</span></h3>
+  <p class="gl-desc">Algoritmo de criptografia assimétrica baseado na dificuldade de fatorar inteiros, usado para troca de chaves e assinaturas digitais.</p>
+</div>
+<div class="gl-item" id="rst" data-term="rst reset">
+  <h3 class="gl-term">RST <span class='gl-full'>Reset</span></h3>
+  <p class="gl-desc">Flag do TCP que aborta imediatamente uma conexão, por erro ou recusa.</p>
+</div>
+<div class="gl-item" id="rto" data-term="rto retransmission timeout">
+  <h3 class="gl-term">RTO <span class='gl-full'>Retransmission Timeout</span></h3>
+  <p class="gl-desc">Tempo que o TCP espera por um ACK antes de retransmitir. É calculado de forma adaptativa a partir do RTT (algoritmo de Jacobson/Karels).</p>
+</div>
+<div class="gl-item" id="rts-cts" data-term="rts/cts request to send / clear to send">
+  <h3 class="gl-term">RTS/CTS <span class='gl-full'>Request to Send / Clear to Send</span></h3>
+  <p class="gl-desc">Handshake opcional do Wi-Fi que reserva o meio antes de transmitir, resolvendo o problema do nó oculto.</p>
+</div>
+<div class="gl-item" id="rtt" data-term="rtt round-trip time">
+  <h3 class="gl-term">RTT <span class='gl-full'>Round-Trip Time</span></h3>
+  <p class="gl-desc">Tempo de ida e volta de um pacote entre origem e destino; base para estimar o tempo de retransmissão (RTO) e medir latência.</p>
+</div>
+<div class="gl-item" id="rwnd" data-term="rwnd janela de recepção">
+  <h3 class="gl-term">rwnd <span class='gl-full'>janela de recepção</span></h3>
+  <p class="gl-desc">Espaço livre no buffer do receptor, anunciado no campo Janela do TCP. Garante o controle de fluxo, impedindo que o emissor afogue o receptor.</p>
+</div>
+<div class="gl-item" id="sack" data-term="sack selective acknowledgment">
+  <h3 class="gl-term">SACK <span class='gl-full'>Selective Acknowledgment</span></h3>
+  <p class="gl-desc">Opção do TCP que permite confirmar blocos específicos recebidos, evitando reenviar dados que já chegaram após uma perda.</p>
+</div>
+<div class="gl-item" id="sae" data-term="sae simultaneous authentication of equals">
+  <h3 class="gl-term">SAE <span class='gl-full'>Simultaneous Authentication of Equals</span></h3>
+  <p class="gl-desc">Método de troca de chave do WPA3 que substitui o handshake baseado em senha, impedindo ataques de dicionário off-line.</p>
+</div>
+<div class="gl-item" id="sha" data-term="sha secure hash algorithm">
+  <h3 class="gl-term">SHA <span class='gl-full'>Secure Hash Algorithm</span></h3>
+  <p class="gl-desc">Família de funções de hash criptográficas (ex.: SHA-256) usada para verificar integridade e dentro de assinaturas e do HMAC.</p>
+</div>
+<div class="gl-item" id="slaac" data-term="slaac stateless address autoconfiguration">
+  <h3 class="gl-term">SLAAC <span class='gl-full'>Stateless Address Autoconfiguration</span></h3>
+  <p class="gl-desc">Autoconfiguração sem estado do IPv6: o host forma seu endereço combinando o prefixo anunciado pelo roteador (RA) com seu identificador de interface.</p>
+</div>
+<div class="gl-item" id="sni" data-term="sni server name indication">
+  <h3 class="gl-term">SNI <span class='gl-full'>Server Name Indication</span></h3>
+  <p class="gl-desc">Extensão do TLS que informa, já no ClientHello, qual site se deseja — permitindo vários domínios HTTPS no mesmo endereço IP.</p>
+</div>
+<div class="gl-item" id="ssid" data-term="ssid service set identifier">
+  <h3 class="gl-term">SSID <span class='gl-full'>Service Set Identifier</span></h3>
+  <p class="gl-desc">O nome de uma rede Wi-Fi, que os dispositivos exibem e usam para se conectar.</p>
+</div>
+<div class="gl-item" id="ssl" data-term="ssl secure sockets layer">
+  <h3 class="gl-term">SSL <span class='gl-full'>Secure Sockets Layer</span></h3>
+  <p class="gl-desc">Predecessor do TLS, criado pela Netscape; hoje obsoleto e inseguro. O termo 'SSL' ainda é usado por hábito para se referir ao TLS.</p>
+</div>
+<div class="gl-item" id="sta" data-term="sta station (estação)">
+  <h3 class="gl-term">STA <span class='gl-full'>Station (estação)</span></h3>
+  <p class="gl-desc">Qualquer dispositivo cliente de uma rede Wi-Fi (celular, notebook etc.).</p>
+</div>
+<div class="gl-item" id="stp" data-term="stp spanning tree protocol">
+  <h3 class="gl-term">STP <span class='gl-full'>Spanning Tree Protocol</span></h3>
+  <p class="gl-desc">Protocolo (802.1D) que bloqueia enlaces redundantes entre switches para evitar laços e tempestades de broadcast, formando uma topologia sem ciclos.</p>
+</div>
+<div class="gl-item" id="switch" data-term="switch comutador">
+  <h3 class="gl-term">switch <span class='gl-full'>comutador</span></h3>
+  <p class="gl-desc">Equipamento de camada 2 que aprende os endereços MAC e encaminha cada quadro apenas à porta do destino, isolando domínios de colisão.</p>
+</div>
+<div class="gl-item" id="syn" data-term="syn synchronize">
+  <h3 class="gl-term">SYN <span class='gl-full'>Synchronize</span></h3>
+  <p class="gl-desc">Flag do TCP que inicia uma conexão e sincroniza os números de sequência iniciais entre as partes.</p>
+</div>
+<div class="gl-item" id="tcp" data-term="tcp transmission control protocol">
+  <h3 class="gl-term">TCP <span class='gl-full'>Transmission Control Protocol</span></h3>
+  <p class="gl-desc">Protocolo de transporte orientado a conexão e confiável, que entrega um fluxo de bytes ordenado sobre o IP, com controle de fluxo e de congestionamento.</p>
+</div>
+<div class="gl-item" id="tcp-ip" data-term="tcp/ip transmission control protocol / internet protocol">
+  <h3 class="gl-term">TCP/IP <span class='gl-full'>Transmission Control Protocol / Internet Protocol</span></h3>
+  <p class="gl-desc">Pilha de protocolos que sustenta a Internet, organizada em quatro camadas (acesso à rede, internet, transporte e aplicação). É o modelo realmente implementado, ao lado do modelo conceitual OSI.</p>
+</div>
+<div class="gl-item" id="time-wait" data-term="time_wait —">
+  <h3 class="gl-term">TIME_WAIT </h3>
+  <p class="gl-desc">Estado em que o lado que fecha a conexão TCP aguarda 2·MSL para absorver segmentos atrasados e impedir confusão com conexões futuras.</p>
+</div>
+<div class="gl-item" id="tls" data-term="tls transport layer security">
+  <h3 class="gl-term">TLS <span class='gl-full'>Transport Layer Security</span></h3>
+  <p class="gl-desc">Protocolo que cifra e autentica a comunicação entre aplicação e transporte, garantindo confidencialidade, integridade e autenticação. É o 'S' do HTTPS.</p>
+</div>
+<div class="gl-item" id="traceroute" data-term="traceroute —">
+  <h3 class="gl-term">traceroute </h3>
+  <p class="gl-desc">Ferramenta que mapeia a rota até um destino enviando pacotes com TTL crescente e coletando as respostas ICMP Time Exceeded de cada roteador.</p>
+</div>
+<div class="gl-item" id="ttl" data-term="ttl time to live">
+  <h3 class="gl-term">TTL <span class='gl-full'>Time To Live</span></h3>
+  <p class="gl-desc">Campo do cabeçalho IP que limita o número de saltos de um pacote; cada roteador o decrementa e, ao chegar a zero, o pacote é descartado (evitando loops).</p>
+</div>
+<div class="gl-item" id="udp" data-term="udp user datagram protocol">
+  <h3 class="gl-term">UDP <span class='gl-full'>User Datagram Protocol</span></h3>
+  <p class="gl-desc">Protocolo de transporte sem conexão e não confiável, com apenas 8 bytes de cabeçalho. Troca garantias por baixa latência (DNS, VoIP, streaming, QUIC).</p>
+</div>
+<div class="gl-item" id="url" data-term="url uniform resource locator">
+  <h3 class="gl-term">URL <span class='gl-full'>Uniform Resource Locator</span></h3>
+  <p class="gl-desc">Endereço que identifica um recurso na Web, indicando esquema, host, caminho e parâmetros (ex.: https://host/caminho?query).</p>
+</div>
+<div class="gl-item" id="vlan" data-term="vlan virtual lan">
+  <h3 class="gl-term">VLAN <span class='gl-full'>Virtual LAN</span></h3>
+  <p class="gl-desc">Rede local lógica que segmenta um switch físico em vários domínios de broadcast, identificada por um marcador (tag) do padrão 802.1Q.</p>
+</div>
+<div class="gl-item" id="voip" data-term="voip voice over ip">
+  <h3 class="gl-term">VoIP <span class='gl-full'>Voice over IP</span></h3>
+  <p class="gl-desc">Transmissão de voz sobre redes IP; costuma usar UDP por priorizar baixa latência em vez de entrega perfeita.</p>
+</div>
+<div class="gl-item" id="wan" data-term="wan wide area network">
+  <h3 class="gl-term">WAN <span class='gl-full'>Wide Area Network</span></h3>
+  <p class="gl-desc">Rede de longa distância, abrangendo países ou o mundo. A Internet é a maior WAN; usa tecnologias de operadoras como MPLS, enlaces dedicados e satélite.</p>
+</div>
+<div class="gl-item" id="wep" data-term="wep wired equivalent privacy">
+  <h3 class="gl-term">WEP <span class='gl-full'>Wired Equivalent Privacy</span></h3>
+  <p class="gl-desc">Primeiro esquema de segurança do Wi-Fi (RC4); está criptograficamente quebrado e não deve mais ser usado.</p>
+</div>
+<div class="gl-item" id="wifi" data-term="wi-fi ieee 802.11">
+  <h3 class="gl-term">Wi-Fi <span class='gl-full'>IEEE 802.11</span></h3>
+  <p class="gl-desc">Tecnologia de rede local sem fio baseada nos padrões IEEE 802.11. É uma marca da Wi-Fi Alliance; o protocolo é o 802.11.</p>
+</div>
+<div class="gl-item" id="wlan" data-term="wlan wireless lan">
+  <h3 class="gl-term">WLAN <span class='gl-full'>Wireless LAN</span></h3>
+  <p class="gl-desc">Rede local sem fio — a categoria à qual o Wi-Fi pertence.</p>
+</div>
+<div class="gl-item" id="wpa" data-term="wpa wi-fi protected access">
+  <h3 class="gl-term">WPA <span class='gl-full'>Wi-Fi Protected Access</span></h3>
+  <p class="gl-desc">Esquema de segurança Wi-Fi sucessor do WEP, baseado em TKIP; foi um paliativo, hoje obsoleto.</p>
+</div>
+<div class="gl-item" id="wpa2" data-term="wpa2 wi-fi protected access 2">
+  <h3 class="gl-term">WPA2 <span class='gl-full'>Wi-Fi Protected Access 2</span></h3>
+  <p class="gl-desc">Esquema de segurança Wi-Fi com AES-CCMP e handshake de quatro vias; seguro e amplamente usado (a falha KRACK já foi corrigida).</p>
+</div>
+<div class="gl-item" id="wpa3" data-term="wpa3 wi-fi protected access 3">
+  <h3 class="gl-term">WPA3 <span class='gl-full'>Wi-Fi Protected Access 3</span></h3>
+  <p class="gl-desc">Esquema de segurança Wi-Fi atual, que usa SAE no lugar do handshake clássico, resistindo a ataques de dicionário e oferecendo forward secrecy.</p>
+</div>
+<div class="gl-item" id="x509" data-term="x.509 —">
+  <h3 class="gl-term">X.509 </h3>
+  <p class="gl-desc">Padrão de certificado digital que associa uma chave pública a um nome (ex.: domínio), assinado por uma CA e validado por uma cadeia de confiança.</p>
+</div>
+<div class="gl-item" id="xss" data-term="xss cross-site scripting">
+  <h3 class="gl-term">XSS <span class='gl-full'>Cross-Site Scripting</span></h3>
+  <p class="gl-desc">Ataque que injeta scripts maliciosos em páginas web para executar no navegador da vítima. Mitigado por validação de entrada e CSP.</p>
+</div>
+        </div>
+        <p class="gl-empty" id="glEmpty" hidden>Nenhum termo encontrado.</p>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Disciplina de Serviços de Redes</p>
+        <p>Glossário de referência — 128 verbetes.</p>
+    </footer>
+
+    <script>
+        (function () {
+            var input = document.getElementById('glSearch');
+            var items = Array.prototype.slice.call(document.querySelectorAll('.gl-item'));
+            var empty = document.getElementById('glEmpty');
+            var count = document.getElementById('glCount');
+            function update() {
+                var q = (input.value || '').trim().toLowerCase();
+                var n = 0;
+                items.forEach(function (it) {
+                    var show = !q || it.getAttribute('data-term').indexOf(q) !== -1;
+                    it.hidden = !show; if (show) n++;
+                });
+                empty.hidden = n !== 0;
+                count.textContent = n + ' de ' + items.length + ' verbetes';
+            }
+            input.addEventListener('input', update);
+            update();
+        })();
+    </script>
+</body>
+
+</html>

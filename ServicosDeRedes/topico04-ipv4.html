@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo IPv4 — Serviços de Redes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        body { background-color: #f1f5f9; }
+        .slide-container { background-color: #ffffff; font-family: "DM Sans", sans-serif; }
+        h1, h2, h3 { font-family: "Merriweather", serif; color: #003366; z-index: 1; }
+        p, li { color: #475569; font-size: 21px; line-height: 1.6; z-index: 1; }
+        .slide-title { font-size: 40px; font-weight: 700; padding: 44px 80px 10px; text-align: left; border-bottom: 4px solid #003366; margin: 0 60px; display: inline-block; }
+        .content-area { flex-grow: 1; padding: 28px 80px 46px; display: flex; flex-direction: column; justify-content: center; z-index: 1; }
+        .title-layout { text-align: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #003366 0%, #001a33 100%); color: #fff; }
+        .title-layout h1 { color: #fff; font-size: 64px; margin-bottom: 18px; }
+        .title-layout p { color: #cbd5e1; font-size: 25px; }
+        .topic-tag { background: #3b82f6; color: #fff; padding: 7px 20px; border-radius: 50px; font-weight: bold; font-size: 17px; display: inline-block; margin-bottom: 18px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; align-items: stretch; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+        .info-box { background: #f8fafc; border-radius: 12px; padding: 24px; border-top: 6px solid #003366; }
+        .info-box.c { border-top-color: #3b82f6; }
+        .info-box.g { border-top-color: #10b981; }
+        .info-box.r { border-top-color: #ef4444; }
+        .info-box i { font-size: 40px; color: #003366; margin-bottom: 12px; }
+        .info-box h3 { font-size: 21px; margin-bottom: 8px; }
+        .info-box p { font-size: 16px; line-height: 1.5; }
+        .highlight-text { font-size: 26px; color: #1e40af; font-weight: 500; border-left: 6px solid #3b82f6; padding-left: 20px; line-height: 1.4; }
+        .icon-large { font-size: 84px; color: #003366; opacity: 0.85; }
+        .check-list { list-style: none; padding-left: 0; }
+        .check-list li { margin-bottom: 12px; position: relative; padding-left: 38px; }
+        .check-list li::before { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; color: #10b981; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 17px; }
+        .comparison-table th { background: #003366; color: #fff; padding: 12px 14px; text-align: left; }
+        .comparison-table td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; }
+        .comparison-table tr:nth-child(even) { background: #f8fafc; }
+        .mono { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 16px 20px; font-family: "Fira Code", monospace; font-size: 15px; line-height: 1.7; margin-top: 12px; }
+        .mono .res { color: #38bdf8; font-weight: 700; }
+        .mono .cmt { color: #64748b; }
+        .callout { border-left: 5px solid #3b82f6; background: #eff6ff; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .callout b { color: #1e40af; }
+        .warn { border-left: 5px solid #ef4444; background: #fef2f2; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .warn b { color: #b91c1c; }
+        .ok { border-left: 5px solid #10b981; background: #ecfdf5; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .ok b { color: #065f46; }
+        .lead { font-size: 24px; line-height: 1.55; }
+        .note { font-size: 14px; color: #94a3b8; margin-top: 10px; }
+        .figure { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; }
+        .figure svg { width: 100%; height: auto; display: block; }
+        .figcap { font-size: 14px; color: #64748b; text-align: center; margin-top: 8px; }
+        .kbd { font-family: "Fira Code", monospace; background: #e2e8f0; padding: 1px 7px; border-radius: 5px; font-size: 0.92em; color: #0f172a; }
+        .nav-footer { position: absolute; bottom: 16px; right: 28px; font-size: 13px; color: #94a3b8; z-index: 2; }
+        .backbar { display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; padding: 12px 24px; border: 1px solid rgba(255,255,255,0.25); border-radius: 50px; color: #fff; text-decoration: none; font-weight: 600; }
+        .backbar:hover { background: rgba(255,255,255,0.12); }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light">
+
+    <!-- CAPA -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag">Tópico 04 · Camada de Rede</div>
+            <h1>Protocolo IPv4</h1>
+            <p>Endereçamento, datagrama e roteamento na Internet — RFC 791 (1981)</p>
+            <div style="margin-top: 44px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 16px; width: 340px;">ADS · Serviços de Redes</div>
+        </div>
+    </div>
+
+    <!-- O QUE É -->
+    <div class="slide-container">
+        <h2 class="slide-title">O que é o IPv4 e onde ele atua</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p class="highlight-text">O Internet Protocol versão 4 é o protocolo da <b>camada de rede</b> responsável por <b>endereçar</b> e <b>encaminhar</b> pacotes entre redes distintas.</p>
+                    <ul class="check-list" style="margin-top:20px;">
+                        <li><b>Não orientado a conexão:</b> cada pacote (datagrama) viaja de forma independente.</li>
+                        <li><b>Melhor esforço (best-effort):</b> não garante entrega, ordem ou ausência de duplicação.</li>
+                        <li><b>Roteável:</b> permite a comunicação fim a fim atravessando múltiplas redes.</li>
+                    </ul>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <h3>Posição na pilha <a class="glossario-ref" href="glossario.html#tcp-ip">TCP/IP</a></h3>
+                    <p>Fica <b>acima</b> da camada de enlace (<a class="glossario-ref" href="glossario.html#ethernet">Ethernet</a>/<a class="glossario-ref" href="glossario.html#wifi">Wi-Fi</a>) e <b>abaixo</b> da camada de transporte. A confiabilidade (entrega garantida, ordem) é delegada ao <b><a class="glossario-ref" href="glossario.html#tcp">TCP</a></b>; o <a class="glossario-ref" href="glossario.html#ip">IP</a> só cuida de levar o pacote ao destino.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">01</div>
+    </div>
+
+    <!-- ENDEREÇAMENTO 32 BITS -->
+    <div class="slide-container">
+        <h2 class="slide-title">Endereçamento: 32 bits</h2>
+        <div class="content-area">
+            <p class="lead">Um endereço <a class="glossario-ref" href="glossario.html#ipv4">IPv4</a> tem <b>32 bits</b>, escritos em <b>notação decimal pontuada</b>: quatro octetos (0–255) separados por pontos.</p>
+            <div class="mono">
+                192 . 168 . 0 . 10<br>
+                <span class="cmt">decimal pontuado</span><br><br>
+                11000000 . 10101000 . 00000000 . 00001010<br>
+                <span class="cmt">os mesmos 32 bits, em binário (4 octetos de 8 bits)</span>
+            </div>
+            <div class="grid-2" style="margin-top:18px;">
+                <div class="info-box">
+                    <i class="fa-solid fa-calculator"></i>
+                    <h3>Espaço de endereçamento</h3>
+                    <p>2<sup>32</sup> = <b>4.294.967.296</b> endereços possíveis (~4,3 bilhões). Parece muito, mas foi insuficiente para a Internet atual.</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-sitemap"></i>
+                    <h3>Duas partes lógicas</h3>
+                    <p>Todo endereço divide-se em <b>parte de rede</b> (identifica a rede) e <b>parte de host</b> (identifica o dispositivo dentro dela). A fronteira é dada pela <b>máscara</b>.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">02</div>
+    </div>
+
+    <!-- CLASSES E CIDR -->
+    <div class="slide-container">
+        <h2 class="slide-title">Das classes ao CIDR</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <h3 style="font-size:23px; margin-bottom:10px;">Modelo classful (histórico)</h3>
+                    <table class="comparison-table">
+                        <tr><th>Classe</th><th>1º octeto</th><th>Prefixo</th><th>Uso</th></tr>
+                        <tr><td>A</td><td>0–127</td><td>/8</td><td>Redes enormes</td></tr>
+                        <tr><td>B</td><td>128–191</td><td>/16</td><td>Redes médias</td></tr>
+                        <tr><td>C</td><td>192–223</td><td>/24</td><td>Redes pequenas</td></tr>
+                        <tr><td>D</td><td>224–239</td><td>—</td><td>Multicast</td></tr>
+                        <tr><td>E</td><td>240–255</td><td>—</td><td>Reservada/experimental</td></tr>
+                    </table>
+                </div>
+                <div>
+                    <div class="info-box g">
+                        <i class="fa-solid fa-scissors"></i>
+                        <h3>CIDR (sem classes)</h3>
+                        <p>Desde 1993 (RFC 1518/1519), a fronteira rede/host é flexível e indicada pelo <b>prefixo</b> <span class="kbd">/n</span> — o número de bits de rede. Acaba o desperdício do modelo classful e melhora a agregação de rotas.</p>
+                    </div>
+                    <div class="callout"><b>Máscara de sub-rede:</b> os <i>n</i> bits 1 marcam a rede; os restantes, o host. <span class="kbd">/24</span> = <span class="kbd">255.255.255.0</span>.</div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">03</div>
+    </div>
+
+    <!-- SUB-REDES: MATEMÁTICA -->
+    <div class="slide-container">
+        <h2 class="slide-title">Sub-redes: a matemática</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>Com um prefixo <span class="kbd">/n</span>, restam <b>32 − n</b> bits para hosts. O número de endereços e de hosts <i>utilizáveis</i> por sub-rede é:</p>
+                    <div class="mono">
+                        endereços = 2<sup>(32−n)</sup><br>
+                        hosts úteis = 2<sup>(32−n)</sup> − 2<br>
+                        <span class="cmt"># −2: endereço de rede e de <a class="glossario-ref" href="glossario.html#broadcast">broadcast</a></span>
+                    </div>
+                    <div class="callout"><b>Por que −2?</b> O primeiro endereço identifica a <b>rede</b> e o último é o <b>broadcast</b> — nenhum dos dois pode ser atribuído a um host.</div>
+                </div>
+                <div>
+                    <h3 style="font-size:22px; margin-bottom:8px;">Exemplo: 192.168.1.0/26</h3>
+                    <div class="mono">
+                        máscara = 255.255.255.192<br>
+                        bits de host = 32 − 26 = 6<br>
+                        tamanho do bloco = 2<sup>6</sup> = 64<br>
+                        sub-redes: .0 / .64 / .128 / .192<br><br>
+                        <span class="cmt"># para o bloco .0:</span><br>
+                        rede ......... = <span class="res">192.168.1.0</span><br>
+                        1º host ...... = 192.168.1.1<br>
+                        último host .. = 192.168.1.62<br>
+                        broadcast .... = <span class="res">192.168.1.63</span><br>
+                        hosts úteis .. = 2<sup>6</sup> − 2 = <span class="res">62</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">04</div>
+    </div>
+
+    <!-- ENDEREÇOS ESPECIAIS -->
+    <div class="slide-container">
+        <h2 class="slide-title">Endereços especiais e reservados</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Faixa / endereço</th><th>Nome</th><th>Função</th></tr>
+                <tr><td>10.0.0.0/8 · 172.16.0.0/12 · 192.168.0.0/16</td><td>Privados (RFC 1918)</td><td>Uso interno; não roteáveis na Internet pública (dependem de <a class="glossario-ref" href="glossario.html#nat">NAT</a>).</td></tr>
+                <tr><td>127.0.0.0/8</td><td>Loopback</td><td>O próprio host (<span class="kbd">127.0.0.1</span> = localhost).</td></tr>
+                <tr><td>169.254.0.0/16</td><td>Link-local / APIPA</td><td>Autoconfiguração quando não há <a class="glossario-ref" href="glossario.html#dhcp">DHCP</a> (RFC 3927).</td></tr>
+                <tr><td>0.0.0.0</td><td>Indefinido / rota padrão</td><td>"Este host" ou qualquer destino, conforme o contexto.</td></tr>
+                <tr><td>255.255.255.255</td><td>Broadcast limitado</td><td>Envia a todos os hosts da rede local.</td></tr>
+                <tr><td>224.0.0.0/4</td><td>Multicast (Classe D)</td><td>Entrega a um grupo de hosts assinantes.</td></tr>
+            </table>
+            <div class="note">Endereços privados + NAT foram uma das principais respostas à escassez de IPv4.</div>
+        </div>
+        <div class="nav-footer">05</div>
+    </div>
+
+    <!-- DATAGRAMA: DIAGRAMA -->
+    <div class="slide-container">
+        <h2 class="slide-title">O datagrama IPv4 (cabeçalho)</h2>
+        <div class="content-area">
+            <p>O cabeçalho tem <b>20 bytes</b> (sem opções) e até <b>60 bytes</b>. Cada linha abaixo representa <b>32 bits</b>:</p>
+            <div class="figure" style="margin-top:10px;">
+                <svg viewBox="0 0 880 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Estrutura do cabeçalho IPv4">
+                    <!-- régua de bits -->
+                    <text x="40" y="24" font-size="12" fill="#64748b">0</text>
+                    <text x="232" y="24" font-size="12" fill="#64748b">8</text>
+                    <text x="432" y="24" font-size="12" fill="#64748b">16</text>
+                    <text x="632" y="24" font-size="12" fill="#64748b">24</text>
+                    <text x="828" y="24" font-size="12" fill="#64748b">31</text>
+                    <!-- Linha 1 -->
+                    <rect x="40" y="34" width="100" height="44" fill="#e8eef5" stroke="#003366" stroke-width="1.5"/>
+                    <text x="90" y="60" text-anchor="middle" font-size="12" fill="#003366">Versão (4)</text>
+                    <rect x="140" y="34" width="100" height="44" fill="#e8eef5" stroke="#003366" stroke-width="1.5"/>
+                    <text x="190" y="60" text-anchor="middle" font-size="12" fill="#003366">IHL (4)</text>
+                    <rect x="240" y="34" width="200" height="44" fill="#e8eef5" stroke="#003366" stroke-width="1.5"/>
+                    <text x="340" y="60" text-anchor="middle" font-size="12" fill="#003366">DSCP + ECN (8)</text>
+                    <rect x="440" y="34" width="400" height="44" fill="#dbeafe" stroke="#003366" stroke-width="1.5"/>
+                    <text x="640" y="60" text-anchor="middle" font-size="12" fill="#003366">Comprimento Total (16)</text>
+                    <!-- Linha 2 -->
+                    <rect x="40" y="78" width="400" height="44" fill="#dbeafe" stroke="#003366" stroke-width="1.5"/>
+                    <text x="240" y="104" text-anchor="middle" font-size="12" fill="#003366">Identificação (16)</text>
+                    <rect x="440" y="78" width="75" height="44" fill="#fde68a" stroke="#003366" stroke-width="1.5"/>
+                    <text x="477" y="104" text-anchor="middle" font-size="11" fill="#92400e">Flags (3)</text>
+                    <rect x="515" y="78" width="325" height="44" fill="#dbeafe" stroke="#003366" stroke-width="1.5"/>
+                    <text x="677" y="104" text-anchor="middle" font-size="12" fill="#003366">Deslocamento do Fragmento (13)</text>
+                    <!-- Linha 3 -->
+                    <rect x="40" y="122" width="200" height="44" fill="#e8eef5" stroke="#003366" stroke-width="1.5"/>
+                    <text x="140" y="148" text-anchor="middle" font-size="12" fill="#003366">TTL (8)</text>
+                    <rect x="240" y="122" width="200" height="44" fill="#e8eef5" stroke="#003366" stroke-width="1.5"/>
+                    <text x="340" y="148" text-anchor="middle" font-size="12" fill="#003366">Protocolo (8)</text>
+                    <rect x="440" y="122" width="400" height="44" fill="#dbeafe" stroke="#003366" stroke-width="1.5"/>
+                    <text x="640" y="148" text-anchor="middle" font-size="12" fill="#003366">Checksum do Cabeçalho (16)</text>
+                    <!-- Linha 4 -->
+                    <rect x="40" y="166" width="800" height="44" fill="#c7d7ea" stroke="#003366" stroke-width="1.5"/>
+                    <text x="440" y="192" text-anchor="middle" font-size="13" font-weight="700" fill="#003366">Endereço de Origem (32)</text>
+                    <!-- Linha 5 -->
+                    <rect x="40" y="210" width="800" height="44" fill="#c7d7ea" stroke="#003366" stroke-width="1.5"/>
+                    <text x="440" y="236" text-anchor="middle" font-size="13" font-weight="700" fill="#003366">Endereço de Destino (32)</text>
+                    <!-- Linha 6 -->
+                    <rect x="40" y="254" width="800" height="44" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 5"/>
+                    <text x="440" y="280" text-anchor="middle" font-size="12" fill="#64748b">Opções (0–40 bytes, variável) + Enchimento</text>
+                    <text x="440" y="324" text-anchor="middle" font-size="12" fill="#64748b">↓ Dados (carga útil: segmento TCP/UDP, mensagem ICMP, …)</text>
+                    <line x1="40" y1="298" x2="40" y2="316" stroke="#94a3b8" stroke-width="1.5"/>
+                    <line x1="840" y1="298" x2="840" y2="316" stroke="#94a3b8" stroke-width="1.5"/>
+                </svg>
+                <p class="figcap">Os 20 bytes obrigatórios vão da Versão ao Endereço de Destino; as Opções são raras.</p>
+            </div>
+        </div>
+        <div class="nav-footer">06</div>
+    </div>
+
+    <!-- CAMPOS EXPLICADOS -->
+    <div class="slide-container">
+        <h2 class="slide-title">Campos do cabeçalho, em detalhe</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Campo</th><th>Bits</th><th>Para que serve</th></tr>
+                <tr><td>Versão</td><td>4</td><td>Vale 4 no IPv4.</td></tr>
+                <tr><td>IHL</td><td>4</td><td>Tamanho do cabeçalho em palavras de 32 bits (mín. 5 = 20 bytes; máx. 15 = 60 bytes).</td></tr>
+                <tr><td>DSCP + ECN</td><td>8</td><td>Qualidade de serviço (priorização) e notificação de congestionamento.</td></tr>
+                <tr><td>Comprimento Total</td><td>16</td><td>Cabeçalho + dados, em bytes (até 65.535).</td></tr>
+                <tr><td>Identificação</td><td>16</td><td>Identifica os fragmentos de um mesmo datagrama original.</td></tr>
+                <tr><td>Flags</td><td>3</td><td><b>DF</b> (não fragmentar) e <b>MF</b> (há mais fragmentos).</td></tr>
+                <tr><td>Deslocamento do Fragmento</td><td>13</td><td>Posição deste fragmento (em unidades de 8 bytes) no datagrama original.</td></tr>
+                <tr><td><a class="glossario-ref" href="glossario.html#ttl">TTL</a></td><td>8</td><td>Limite de saltos; evita pacotes em loop eterno.</td></tr>
+                <tr><td>Protocolo</td><td>8</td><td>O que vem na carga: <span class="kbd">1</span>=<a class="glossario-ref" href="glossario.html#icmp">ICMP</a>, <span class="kbd">6</span>=TCP, <span class="kbd">17</span>=<a class="glossario-ref" href="glossario.html#udp">UDP</a>.</td></tr>
+                <tr><td>Checksum do Cabeçalho</td><td>16</td><td>Detecção de erro <i>apenas no cabeçalho</i> (recalculado a cada salto).</td></tr>
+                <tr><td>Origem / Destino</td><td>32 + 32</td><td>Endereços IP do remetente e do destinatário.</td></tr>
+            </table>
+        </div>
+        <div class="nav-footer">07</div>
+    </div>
+
+    <!-- FRAGMENTAÇÃO -->
+    <div class="slide-container">
+        <h2 class="slide-title">Fragmentação e remontagem</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>Cada enlace tem uma <b><a class="glossario-ref" href="glossario.html#mtu">MTU</a></b> (unidade máxima de transmissão; na Ethernet, <b>1500 bytes</b>). Se um datagrama é maior que a MTU do próximo enlace, o IPv4 o <b>fragmenta</b>.</p>
+                    <ul class="check-list" style="margin-top:12px;">
+                        <li>Todos os fragmentos compartilham a mesma <b>Identificação</b>.</li>
+                        <li>O bit <b>MF</b> = 1 em todos, exceto no último.</li>
+                        <li>O <b>Deslocamento</b> indica onde cada pedaço se encaixa (em blocos de 8 bytes).</li>
+                        <li>A <b>remontagem</b> ocorre só no <b>destino final</b>.</li>
+                    </ul>
+                    <div class="warn"><b>DF = 1:</b> se o pacote não cabe e não pode ser fragmentado, é descartado e um <b>ICMP</b> avisa a origem — base do <i><a class="glossario-ref" href="glossario.html#pmtud">Path MTU Discovery</a></i>.</div>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-puzzle-piece"></i>
+                    <h3>Exemplo</h3>
+                    <div class="mono" style="font-size:14px;">
+                        datagrama = 4000 bytes<br>
+                        MTU = 1500 bytes<br>
+                        <span class="cmt"># 20 de cabeçalho → 1480 de dados/fragmento</span><br>
+                        frag 1: dados 0–1479 &nbsp; MF=1 off=0<br>
+                        frag 2: dados 1480–2959 MF=1 off=185<br>
+                        frag 3: dados 2960–3979 MF=0 off=370<br>
+                        <span class="cmt"># offset em unidades de 8 bytes (1480/8 = 185)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">08</div>
+    </div>
+
+    <!-- TTL E ROTEAMENTO -->
+    <div class="slide-container">
+        <h2 class="slide-title">TTL, roteamento e traceroute</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p class="lead">O <b>TTL</b> (Time To Live) é um contador de <b>saltos</b>. Cada <a class="glossario-ref" href="glossario.html#roteador">roteador</a> o <b>decrementa em 1</b>; ao chegar a <b>zero</b>, o pacote é descartado.</p>
+                    <div class="callout"><b>Por quê?</b> Sem esse limite, um erro de roteamento poderia fazer um pacote circular para sempre, congestionando a rede.</div>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-route"></i>
+                    <h3>Como o <a class="glossario-ref" href="glossario.html#traceroute">traceroute</a> usa o TTL</h3>
+                    <p>Envia pacotes com TTL = 1, 2, 3, … Cada roteador que zera o TTL responde com <b>ICMP Time Exceeded</b>, revelando, salto a salto, o <b>caminho</b> até o destino.</p>
+                </div>
+            </div>
+            <div class="ok"><b>Roteamento:</b> cada roteador olha o <b>endereço de destino</b> e consulta sua tabela de rotas para decidir a próxima interface — decisão tomada <b>salto a salto</b>, independentemente para cada pacote.</div>
+        </div>
+        <div class="nav-footer">09</div>
+    </div>
+
+    <!-- CHECKSUM -->
+    <div class="slide-container">
+        <h2 class="slide-title">Checksum do cabeçalho</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>O IPv4 protege <b>apenas o cabeçalho</b> contra erros, com um checksum de <b>complemento de um</b> sobre as palavras de 16 bits do cabeçalho.</p>
+                    <div class="mono" style="font-size:14px;">
+                        1. zera o campo checksum<br>
+                        2. soma todas as palavras de 16 bits<br>
+                        &nbsp;&nbsp; (com "vai-um" circular)<br>
+                        3. checksum = complemento de um da soma<br><br>
+                        no receptor: soma + checksum = <span class="res">0xFFFF</span> → ok
+                    </div>
+                </div>
+                <div>
+                    <div class="warn"><b>Recalculado a cada salto:</b> como o <b>TTL</b> muda em todo roteador, o checksum precisa ser refeito — custo que o <a class="glossario-ref" href="glossario.html#ipv6">IPv6</a> eliminou ao remover o checksum do cabeçalho.</div>
+                    <div class="callout"><b>E os dados?</b> O cabeçalho IP <b>não</b> verifica a carga útil. Essa proteção fica a cargo das camadas superiores (checksum do <b>TCP/UDP</b>).</div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">10</div>
+    </div>
+
+    <!-- ENCAPSULAMENTO -->
+    <div class="slide-container">
+        <h2 class="slide-title">Encapsulamento e o papel do ARP</h2>
+        <div class="content-area">
+            <div class="figure">
+                <svg viewBox="0 0 860 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Encapsulamento de um segmento dentro do datagrama IP e do quadro Ethernet">
+                    <rect x="20" y="40" width="820" height="120" rx="10" fill="#eef2f7" stroke="#003366" stroke-width="2"/>
+                    <text x="40" y="32" font-size="13" font-weight="700" fill="#003366">Quadro Ethernet (camada de enlace)</text>
+                    <rect x="60" y="64" width="60" height="72" rx="6" fill="#cbd5e1" stroke="#64748b"/>
+                    <text x="90" y="104" text-anchor="middle" font-size="11" fill="#334155">Cab. Eth</text>
+                    <rect x="130" y="64" width="640" height="72" rx="8" fill="#dbeafe" stroke="#003366" stroke-width="1.8"/>
+                    <text x="150" y="58" font-size="12" font-weight="700" fill="#1e40af">Datagrama IPv4</text>
+                    <rect x="150" y="84" width="80" height="40" rx="5" fill="#bfdbfe" stroke="#1e40af"/>
+                    <text x="190" y="108" text-anchor="middle" font-size="11" fill="#1e3a8a">Cab. IP</text>
+                    <rect x="240" y="84" width="510" height="40" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.6"/>
+                    <text x="260" y="78" font-size="11" font-weight="700" fill="#166534">Carga útil (segmento TCP/UDP)</text>
+                    <text x="495" y="108" text-anchor="middle" font-size="11" fill="#166534">Cab. TCP/UDP + dados da aplicação</text>
+                    <rect x="772" y="64" width="48" height="72" rx="6" fill="#cbd5e1" stroke="#64748b"/>
+                    <text x="796" y="104" text-anchor="middle" font-size="10" fill="#334155">FCS</text>
+                </svg>
+                <p class="figcap">Cada camada "embrulha" os dados da camada superior, adicionando seu próprio cabeçalho.</p>
+            </div>
+            <div class="callout" style="margin-top:14px;"><b><a class="glossario-ref" href="glossario.html#arp">ARP</a> (Address Resolution Protocol):</b> para entregar o <a class="glossario-ref" href="glossario.html#quadro">quadro</a> ao próximo salto na rede local, o IP de destino precisa ser traduzido para um <b><a class="glossario-ref" href="glossario.html#mac">endereço MAC</a></b>. O ARP faz essa resolução <span class="kbd">IP → MAC</span>.</div>
+        </div>
+        <div class="nav-footer">11</div>
+    </div>
+
+    <!-- ICMP -->
+    <div class="slide-container">
+        <h2 class="slide-title">ICMP: o protocolo de diagnóstico</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>O <b>ICMP</b> (Internet Control Message Protocol) acompanha o IP para reportar <b>erros</b> e <b>diagnosticar</b> a rede. Ele viaja <i>dentro</i> de datagramas IP (protocolo nº 1).</p>
+                    <ul class="check-list" style="margin-top:12px;">
+                        <li><b>Echo Request/Reply</b> — base do comando <span class="kbd"><a class="glossario-ref" href="glossario.html#ping">ping</a></span>.</li>
+                        <li><b>Time Exceeded</b> — TTL zerou (usado no traceroute).</li>
+                        <li><b>Destination Unreachable</b> — destino/porta inacessível.</li>
+                    </ul>
+                </div>
+                <div class="info-box g">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <h3>ping na prática</h3>
+                    <p>O <span class="kbd">ping</span> mede se um host responde e o <b>tempo de ida e volta (<a class="glossario-ref" href="glossario.html#rtt">RTT</a>)</b>, enviando Echo Requests e aguardando os Replies.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">12</div>
+    </div>
+
+    <!-- ESGOTAMENTO E NAT -->
+    <div class="slide-container">
+        <h2 class="slide-title">Esgotamento de endereços e soluções</h2>
+        <div class="content-area">
+            <div class="grid-3">
+                <div class="info-box r">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <h3>O problema</h3>
+                    <p>~4,3 bilhões de endereços não bastam. O pool central da <b>IANA esgotou em 2011</b>, e as regiões esgotaram nos anos seguintes.</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-compress"></i>
+                    <h3>Paliativos</h3>
+                    <p><b>CIDR</b> (uso eficiente de blocos), <b>endereços privados</b> (RFC 1918) e <b>NAT</b>, que faz muitos hosts internos compartilharem um IP público.</p>
+                </div>
+                <div class="info-box g">
+                    <i class="fa-solid fa-forward"></i>
+                    <h3>A solução definitiva</h3>
+                    <p>O <b>IPv6</b>, com <b>128 bits</b> (3,4 × 10<sup>38</sup> endereços), elimina a escassez e simplifica o cabeçalho.</p>
+                </div>
+            </div>
+            <div class="warn"><b>Efeito colateral do NAT:</b> quebra o princípio fim a fim (hosts internos não são diretamente alcançáveis), complicando aplicações <a class="glossario-ref" href="glossario.html#p2p">P2P</a> e exigindo técnicas de <i>NAT traversal</i>.</div>
+        </div>
+        <div class="nav-footer">13</div>
+    </div>
+
+    <!-- IPV4 x IPV6 -->
+    <div class="slide-container">
+        <h2 class="slide-title">IPv4 × IPv6 (panorama)</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Aspecto</th><th>IPv4</th><th>IPv6</th></tr>
+                <tr><td>Tamanho do endereço</td><td>32 bits (~4,3 bilhões)</td><td>128 bits (~3,4 × 10³⁸)</td></tr>
+                <tr><td>Notação</td><td>Decimal pontuada</td><td>Hexadecimal com dois-pontos</td></tr>
+                <tr><td>Cabeçalho</td><td>20–60 bytes, com checksum</td><td>40 bytes fixos, sem checksum</td></tr>
+                <tr><td>Fragmentação</td><td>Roteadores e origem</td><td>Apenas a origem</td></tr>
+                <tr><td>Configuração</td><td>Manual / DHCP</td><td>Autoconfiguração (<a class="glossario-ref" href="glossario.html#slaac">SLAAC</a>) / DHCPv6</td></tr>
+                <tr><td>NAT</td><td>Onipresente</td><td>Em geral desnecessário</td></tr>
+            </table>
+            <div class="note">IPv4 e IPv6 coexistem hoje (pilha dupla); a transição é gradual.</div>
+        </div>
+        <div class="nav-footer">14</div>
+    </div>
+
+    <!-- RESUMO / FECHO -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag" style="background:#10b981;">Síntese</div>
+            <h1 style="font-size:46px;">Em resumo</h1>
+            <p style="max-width: 860px; margin: 0 auto;">O <b>IPv4</b> endereça e encaminha pacotes na Internet com 32 bits, em modelo
+                <b>não orientado a conexão</b> e de <b>melhor esforço</b>. Seu datagrama carrega campos essenciais — endereços, TTL,
+                protocolo, flags de fragmentação e checksum do cabeçalho. <b>CIDR</b>, <b>endereços privados</b> e <b>NAT</b>
+                prolongaram sua vida diante da escassez, mas o futuro do crescimento é o <b>IPv6</b>.</p>
+            <a class="backbar" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Disciplina de Serviços de Redes</p>
+        <p>Referências: RFC 791 (IPv4) · RFC 1918 (endereços privados) · RFC 1519 (CIDR) · RFC 792 (ICMP).</p>
+    </footer>
+
+</body>
+
+</html>

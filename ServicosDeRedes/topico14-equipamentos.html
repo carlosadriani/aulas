@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipamentos de Rede — Serviços de Redes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        body { background-color: #f1f5f9; }
+        .slide-container { background-color: #ffffff; font-family: "DM Sans", sans-serif; }
+        h1, h2, h3 { font-family: "Merriweather", serif; color: #003366; z-index: 1; }
+        p, li { color: #475569; font-size: 21px; line-height: 1.6; z-index: 1; }
+        .slide-title { font-size: 40px; font-weight: 700; padding: 44px 80px 10px; text-align: left; border-bottom: 4px solid #003366; margin: 0 60px; display: inline-block; }
+        .content-area { flex-grow: 1; padding: 28px 80px 46px; display: flex; flex-direction: column; justify-content: center; z-index: 1; }
+        .title-layout { text-align: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #003366 0%, #001a33 100%); color: #fff; }
+        .title-layout h1 { color: #fff; font-size: 62px; margin-bottom: 18px; }
+        .title-layout p { color: #cbd5e1; font-size: 25px; }
+        .topic-tag { background: #1d4ed8; color: #fff; padding: 7px 20px; border-radius: 50px; font-weight: bold; font-size: 17px; display: inline-block; margin-bottom: 18px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; align-items: stretch; }
+        .info-box { background: #f8fafc; border-radius: 12px; padding: 24px; border-top: 6px solid #003366; }
+        .info-box.c { border-top-color: #1d4ed8; }
+        .info-box.g { border-top-color: #10b981; }
+        .info-box.r { border-top-color: #ef4444; }
+        .info-box i { font-size: 40px; color: #003366; margin-bottom: 12px; }
+        .info-box h3 { font-size: 21px; margin-bottom: 8px; }
+        .info-box p { font-size: 16px; line-height: 1.5; }
+        .highlight-text { font-size: 26px; color: #1e3a8a; font-weight: 500; border-left: 6px solid #1d4ed8; padding-left: 20px; line-height: 1.4; }
+        .icon-large { font-size: 84px; color: #003366; opacity: 0.85; }
+        .check-list { list-style: none; padding-left: 0; }
+        .check-list li { margin-bottom: 12px; position: relative; padding-left: 38px; }
+        .check-list li::before { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; color: #10b981; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 16px; }
+        .comparison-table th { background: #003366; color: #fff; padding: 12px 14px; text-align: left; }
+        .comparison-table td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; }
+        .comparison-table tr:nth-child(even) { background: #f8fafc; }
+        .mono { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 16px 20px; font-family: "Fira Code", monospace; font-size: 15px; line-height: 1.7; margin-top: 12px; }
+        .mono .res { color: #60a5fa; font-weight: 700; }
+        .mono .cmt { color: #64748b; }
+        .callout { border-left: 5px solid #1d4ed8; background: #eff6ff; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .callout b { color: #1e3a8a; }
+        .warn { border-left: 5px solid #ef4444; background: #fef2f2; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .warn b { color: #b91c1c; }
+        .ok { border-left: 5px solid #10b981; background: #ecfdf5; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .ok b { color: #065f46; }
+        .lead { font-size: 24px; line-height: 1.55; }
+        .note { font-size: 14px; color: #94a3b8; margin-top: 10px; }
+        .figure { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; }
+        .figure svg { width: 100%; height: auto; display: block; }
+        .figcap { font-size: 14px; color: #64748b; text-align: center; margin-top: 8px; }
+        .kbd { font-family: "Fira Code", monospace; background: #e2e8f0; padding: 1px 7px; border-radius: 5px; font-size: 0.92em; color: #0f172a; }
+        .nav-footer { position: absolute; bottom: 16px; right: 28px; font-size: 13px; color: #94a3b8; z-index: 2; }
+        .backbar { display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; padding: 12px 24px; border: 1px solid rgba(255,255,255,0.25); border-radius: 50px; color: #fff; text-decoration: none; font-weight: 600; }
+        .backbar:hover { background: rgba(255,255,255,0.12); }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light">
+
+    <!-- CAPA -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag">Tópico 14 · Infraestrutura</div>
+            <h1>Equipamentos de Rede</h1>
+            <p>Os dispositivos que conectam, segmentam e protegem as redes — organizados por camada</p>
+            <div style="margin-top: 44px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 16px; width: 340px;">ADS · Serviços de Redes</div>
+        </div>
+    </div>
+
+    <!-- VISÃO GERAL -->
+    <div class="slide-container">
+        <h2 class="slide-title">Cada equipamento atua em uma camada</h2>
+        <div class="content-area">
+            <p class="highlight-text">A melhor forma de entender os equipamentos de rede é pela camada do modelo <a class="glossario-ref" href="glossario.html#osi">OSI</a> em que operam — isso define o que cada um "enxerga" e decide.</p>
+            <div class="figure" style="margin-top:14px;">
+                <svg viewBox="0 0 860 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapeamento de equipamentos por camada OSI">
+                    <!-- L1 -->
+                    <rect x="20" y="20" width="820" height="52" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+                    <text x="36" y="51" font-size="14" font-weight="700" fill="#1e3a8a">Camada 1 · Física</text>
+                    <rect x="280" y="32" width="120" height="28" rx="6" fill="#dbeafe" stroke="#1d4ed8"/><text x="340" y="51" text-anchor="middle" font-size="13" fill="#1e3a8a">NIC / Cabos</text>
+                    <rect x="412" y="32" width="120" height="28" rx="6" fill="#dbeafe" stroke="#1d4ed8"/><text x="472" y="51" text-anchor="middle" font-size="13" fill="#1e3a8a">Repetidor</text>
+                    <rect x="544" y="32" width="120" height="28" rx="6" fill="#dbeafe" stroke="#1d4ed8"/><text x="604" y="51" text-anchor="middle" font-size="13" fill="#1e3a8a">Hub</text>
+                    <!-- L2 -->
+                    <rect x="20" y="80" width="820" height="52" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+                    <text x="36" y="111" font-size="14" font-weight="700" fill="#1e3a8a">Camada 2 · Enlace</text>
+                    <rect x="280" y="92" width="120" height="28" rx="6" fill="#bfdbfe" stroke="#1d4ed8"/><text x="340" y="111" text-anchor="middle" font-size="13" fill="#1e3a8a">Switch</text>
+                    <rect x="412" y="92" width="120" height="28" rx="6" fill="#bfdbfe" stroke="#1d4ed8"/><text x="472" y="111" text-anchor="middle" font-size="13" fill="#1e3a8a">Bridge</text>
+                    <rect x="544" y="92" width="150" height="28" rx="6" fill="#bfdbfe" stroke="#1d4ed8"/><text x="619" y="111" text-anchor="middle" font-size="13" fill="#1e3a8a">Access Point</text>
+                    <!-- L3 -->
+                    <rect x="20" y="140" width="820" height="52" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+                    <text x="36" y="171" font-size="14" font-weight="700" fill="#1e3a8a">Camada 3 · Rede</text>
+                    <rect x="280" y="152" width="120" height="28" rx="6" fill="#93c5fd" stroke="#1d4ed8"/><text x="340" y="171" text-anchor="middle" font-size="13" fill="#1e3a8a">Roteador</text>
+                    <rect x="412" y="152" width="140" height="28" rx="6" fill="#93c5fd" stroke="#1d4ed8"/><text x="482" y="171" text-anchor="middle" font-size="13" fill="#1e3a8a">Switch L3</text>
+                    <!-- L4-7 -->
+                    <rect x="20" y="200" width="820" height="52" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+                    <text x="36" y="231" font-size="14" font-weight="700" fill="#1e3a8a">Camadas 4–7</text>
+                    <rect x="280" y="212" width="110" height="28" rx="6" fill="#60a5fa" stroke="#1d4ed8"/><text x="335" y="231" text-anchor="middle" font-size="13" fill="#0c2a66">Firewall</text>
+                    <rect x="402" y="212" width="100" height="28" rx="6" fill="#60a5fa" stroke="#1d4ed8"/><text x="452" y="231" text-anchor="middle" font-size="13" fill="#0c2a66">Proxy</text>
+                    <rect x="514" y="212" width="150" height="28" rx="6" fill="#60a5fa" stroke="#1d4ed8"/><text x="589" y="231" text-anchor="middle" font-size="13" fill="#0c2a66">Load Balancer</text>
+                    <rect x="676" y="212" width="110" height="28" rx="6" fill="#60a5fa" stroke="#1d4ed8"/><text x="731" y="231" text-anchor="middle" font-size="13" fill="#0c2a66">IDS / IPS</text>
+                </svg>
+                <p class="figcap">Quanto mais alta a camada, mais "inteligente" a decisão: do sinal elétrico (L1) ao conteúdo da aplicação (L7).</p>
+            </div>
+        </div>
+        <div class="nav-footer">01</div>
+    </div>
+
+    <!-- CAMADA 1 -->
+    <div class="slide-container">
+        <h2 class="slide-title">Camada física: NIC, repetidor e hub</h2>
+        <div class="content-area">
+            <div class="grid-3">
+                <div class="info-box c">
+                    <i class="fa-solid fa-microchip"></i>
+                    <h3>Placa de rede (<a class="glossario-ref" href="glossario.html#nic">NIC</a>)</h3>
+                    <p>Interface entre o host e o meio. Possui o <b><a class="glossario-ref" href="glossario.html#mac">endereço MAC</a></b> e converte dados em sinais (e vice-versa).</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-arrows-left-right-to-line"></i>
+                    <h3><a class="glossario-ref" href="glossario.html#repetidor">Repetidor</a></h3>
+                    <p><b>Regenera</b> o sinal para estender a distância do enlace. Não interpreta dados — só amplifica e limpa o sinal.</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-circle-nodes"></i>
+                    <h3><a class="glossario-ref" href="glossario.html#hub">Hub</a></h3>
+                    <p>Um <b>repetidor multiportas</b>: replica todo <a class="glossario-ref" href="glossario.html#quadro">quadro</a> recebido em <b>todas</b> as portas. Cria um único <a class="glossario-ref" href="glossario.html#collision-domain">domínio de colisão</a> — hoje <b>obsoleto</b>.</p>
+                </div>
+            </div>
+            <div class="warn"><b>Limitação do hub:</b> como tudo é repetido para todos, há muitas <b>colisões</b> e desperdício de banda. Foi substituído pelo <a class="glossario-ref" href="glossario.html#switch">switch</a>.</div>
+        </div>
+        <div class="nav-footer">02</div>
+    </div>
+
+    <!-- CAMADA 2 -->
+    <div class="slide-container">
+        <h2 class="slide-title">Camada de enlace: bridge e switch</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>Operam com <b>endereços MAC</b>. O <b>switch</b> é o protagonista das LANs modernas — um <b><a class="glossario-ref" href="glossario.html#bridge">bridge</a> multiportas</b> inteligente.</p>
+                    <ul class="check-list" style="margin-top:12px;">
+                        <li><b>Aprende</b> qual MAC está em cada porta (tabela MAC).</li>
+                        <li><b>Encaminha</b> o quadro só para a porta do destino.</li>
+                        <li>Cada porta é um <b>domínio de colisão</b> separado; opera em <b><a class="glossario-ref" href="glossario.html#full-duplex">full-duplex</a></b>.</li>
+                    </ul>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <h3>Bridge: o ancestral</h3>
+                    <p>A <b>ponte</b> conecta dois segmentos e filtra o tráfego por MAC, isolando colisões entre eles. O switch generaliza essa ideia para muitas portas, em hardware dedicado.</p>
+                </div>
+            </div>
+            <div class="callout"><b>Hub × Switch:</b> o hub <b>repete</b> cegamente; o switch <b>decide</b> para onde enviar — eliminando colisões e multiplicando a banda útil.</div>
+        </div>
+        <div class="nav-footer">03</div>
+    </div>
+
+    <!-- CAMADA 3 -->
+    <div class="slide-container">
+        <h2 class="slide-title">Camada de rede: o roteador</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p class="lead">O <b><a class="glossario-ref" href="glossario.html#roteador">roteador</a></b> interliga <b>redes diferentes</b>, encaminhando pacotes pelo <b>endereço <a class="glossario-ref" href="glossario.html#ip">IP</a></b> e escolhendo o melhor caminho.</p>
+                    <div class="callout"><b>Funções típicas:</b> consultar a <b>tabela de rotas</b>, decrementar o <a class="glossario-ref" href="glossario.html#ttl">TTL</a>, conectar a <a class="glossario-ref" href="glossario.html#lan">LAN</a> à <b><a class="glossario-ref" href="glossario.html#wan">WAN</a>/Internet</b> e, frequentemente, fazer <b><a class="glossario-ref" href="glossario.html#nat">NAT</a></b> e <a class="glossario-ref" href="glossario.html#firewall">firewall</a>.</div>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-route"></i>
+                    <h3>Separa <a class="glossario-ref" href="glossario.html#broadcast-domain">domínios de broadcast</a></h3>
+                    <p>Diferente do switch, o roteador <b>não propaga broadcasts</b> entre suas interfaces: cada rede conectada é um <b>domínio de <a class="glossario-ref" href="glossario.html#broadcast">broadcast</a></b> distinto. O <b>switch L3</b> combina comutação rápida com roteamento.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">04</div>
+    </div>
+
+    <!-- DOMÍNIOS: DIAGRAMA -->
+    <div class="slide-container">
+        <h2 class="slide-title">Domínios de colisão × broadcast</h2>
+        <div class="content-area">
+            <div class="figure">
+                <svg viewBox="0 0 860 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Domínios de colisão e broadcast em hub, switch e roteador">
+                    <!-- HUB -->
+                    <text x="140" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#003366">Hub</text>
+                    <ellipse cx="140" cy="130" rx="115" ry="90" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="6 5"/>
+                    <rect x="110" y="70" width="60" height="26" rx="5" fill="#94a3b8"/><text x="140" y="88" text-anchor="middle" font-size="11" fill="#fff">HUB</text>
+                    <circle cx="80" cy="160" r="11" fill="#1d4ed8"/><circle cx="140" cy="175" r="11" fill="#1d4ed8"/><circle cx="200" cy="160" r="11" fill="#1d4ed8"/>
+                    <line x1="140" y1="96" x2="80" y2="160" stroke="#94a3b8"/><line x1="140" y1="96" x2="140" y2="175" stroke="#94a3b8"/><line x1="140" y1="96" x2="200" y2="160" stroke="#94a3b8"/>
+                    <text x="140" y="238" text-anchor="middle" font-size="11" fill="#b91c1c">1 colisão · 1 broadcast</text>
+
+                    <!-- SWITCH -->
+                    <text x="430" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#003366">Switch</text>
+                    <ellipse cx="430" cy="135" rx="120" ry="92" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5" stroke-dasharray="6 5"/>
+                    <rect x="398" y="70" width="64" height="26" rx="5" fill="#1d4ed8"/><text x="430" y="88" text-anchor="middle" font-size="11" fill="#fff">SW</text>
+                    <circle cx="360" cy="165" r="11" fill="#1d4ed8"/><circle cx="430" cy="180" r="11" fill="#1d4ed8"/><circle cx="500" cy="165" r="11" fill="#1d4ed8"/>
+                    <circle cx="360" cy="165" r="20" fill="none" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="3 3"/>
+                    <circle cx="430" cy="180" r="20" fill="none" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="3 3"/>
+                    <circle cx="500" cy="165" r="20" fill="none" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="3 3"/>
+                    <line x1="430" y1="96" x2="360" y2="165" stroke="#94a3b8"/><line x1="430" y1="96" x2="430" y2="180" stroke="#94a3b8"/><line x1="430" y1="96" x2="500" y2="165" stroke="#94a3b8"/>
+                    <text x="430" y="240" text-anchor="middle" font-size="11" fill="#1e3a8a">N colisões (1/porta) · 1 broadcast</text>
+
+                    <!-- ROTEADOR -->
+                    <text x="720" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#003366">Roteador</text>
+                    <ellipse cx="660" cy="150" rx="55" ry="60" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6 5"/>
+                    <ellipse cx="800" cy="150" rx="50" ry="60" fill="#fefce8" stroke="#ca8a04" stroke-width="1.5" stroke-dasharray="6 5"/>
+                    <rect x="700" y="78" width="60" height="26" rx="5" fill="#0f766e"/><text x="730" y="96" text-anchor="middle" font-size="11" fill="#fff">RT</text>
+                    <line x1="730" y1="104" x2="660" y2="120" stroke="#94a3b8"/><line x1="730" y1="104" x2="800" y2="120" stroke="#94a3b8"/>
+                    <circle cx="660" cy="160" r="10" fill="#10b981"/><circle cx="800" cy="160" r="10" fill="#ca8a04"/>
+                    <text x="730" y="232" text-anchor="middle" font-size="11" fill="#065f46">separa domínios de broadcast</text>
+                </svg>
+                <p class="figcap">O hub não isola nada; o switch isola colisões; o roteador isola também os broadcasts.</p>
+            </div>
+        </div>
+        <div class="nav-footer">05</div>
+    </div>
+
+    <!-- ACESSO / MODEM / GATEWAY -->
+    <div class="slide-container">
+        <h2 class="slide-title">Acesso, modem e gateway</h2>
+        <div class="content-area">
+            <div class="grid-3">
+                <div class="info-box c">
+                    <i class="fa-solid fa-wifi"></i>
+                    <h3>Access Point</h3>
+                    <p>Faz a ponte entre as estações <b><a class="glossario-ref" href="glossario.html#wifi">Wi-Fi</a></b> e a rede cabeada (<a class="glossario-ref" href="glossario.html#ethernet">Ethernet</a>), estendendo a LAN ao meio sem fio.</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <h3><a class="glossario-ref" href="glossario.html#modem">Modem</a></h3>
+                    <p><b>Modula/demodula</b> o sinal entre o digital e o meio do provedor (DSL, cabo, fibra/ONT), conectando a rede à <b>Internet</b>.</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-door-open"></i>
+                    <h3><a class="glossario-ref" href="glossario.html#gateway">Gateway</a></h3>
+                    <p>Ponto de saída para outra rede/arquitetura. O <b>gateway padrão</b> é, na prática, a interface do <b>roteador</b> que leva ao mundo externo.</p>
+                </div>
+            </div>
+            <div class="callout"><b>Convergência doméstica:</b> o "roteador Wi-Fi" de casa é, na verdade, <b>modem + roteador + switch + <a class="glossario-ref" href="glossario.html#ap">AP</a> + firewall</b> em uma única caixa.</div>
+        </div>
+        <div class="nav-footer">06</div>
+    </div>
+
+    <!-- SEGURANÇA / CAMADAS ALTAS -->
+    <div class="slide-container">
+        <h2 class="slide-title">Equipamentos de segurança e serviço</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Equipamento</th><th>Camada</th><th>Função</th></tr>
+                <tr><td><b>Firewall</b></td><td>3–7</td><td>Filtra o tráfego por regras (porta, IP, estado da conexão, aplicação). NGFW inspeciona conteúdo.</td></tr>
+                <tr><td><b><a class="glossario-ref" href="glossario.html#ids">IDS</a> / <a class="glossario-ref" href="glossario.html#ips">IPS</a></b></td><td>3–7</td><td>Detecta (IDS) ou bloqueia (IPS) intrusões e padrões de ataque.</td></tr>
+                <tr><td><b><a class="glossario-ref" href="glossario.html#proxy">Proxy</a></b></td><td>7</td><td>Intermediário de aplicação: <a class="glossario-ref" href="glossario.html#cache">cache</a>, filtragem de conteúdo, anonimato.</td></tr>
+                <tr><td><b><a class="glossario-ref" href="glossario.html#load-balancer">Load Balancer</a></b></td><td>4–7</td><td>Distribui requisições entre vários servidores, dando escala e disponibilidade.</td></tr>
+            </table>
+            <div class="note">Hoje muitos desses papéis são <b>virtualizados</b> (software) ou entregues como serviço na <b>nuvem</b>, não mais como caixas físicas dedicadas.</div>
+        </div>
+        <div class="nav-footer">07</div>
+    </div>
+
+    <!-- QUADRO COMPARATIVO -->
+    <div class="slide-container">
+        <h2 class="slide-title">Quadro comparativo</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Equipamento</th><th>Camada</th><th>Endereço que usa</th><th>Domínio de colisão</th><th>Domínio de broadcast</th></tr>
+                <tr><td>Hub</td><td>1</td><td>—</td><td>1 (todos)</td><td>1 (todos)</td></tr>
+                <tr><td>Switch</td><td>2</td><td>MAC</td><td>1 por porta</td><td>1 (ou 1/<a class="glossario-ref" href="glossario.html#vlan">VLAN</a>)</td></tr>
+                <tr><td>Roteador</td><td>3</td><td>IP</td><td>1 por porta</td><td>1 por interface</td></tr>
+                <tr><td>Access Point</td><td>2</td><td>MAC</td><td>compartilhado (rádio)</td><td>1</td></tr>
+            </table>
+            <div class="ok"><b>Regra de bolso:</b> <b>switch</b> divide <b>colisão</b>; <b>roteador</b> (ou VLAN) divide <b>broadcast</b>.</div>
+        </div>
+        <div class="nav-footer">08</div>
+    </div>
+
+    <!-- TOPOLOGIA -->
+    <div class="slide-container">
+        <h2 class="slide-title">Os equipamentos trabalhando juntos</h2>
+        <div class="content-area">
+            <div class="figure">
+                <svg viewBox="0 0 860 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Topologia típica com modem, roteador, switch, AP e hosts">
+                    <defs><marker id="eqA" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1d4ed8"/></marker></defs>
+                    <text x="70" y="70" text-anchor="middle" font-size="13" fill="#475569">Internet</text>
+                    <path d="M40,80 q10,-16 30,-8 q18,-12 30,6 q16,2 6,18 l-66,0 q-14,-2 0,-16 z" fill="#e2e8f0" stroke="#94a3b8"/>
+                    <rect x="150" y="78" width="80" height="40" rx="7" fill="#dbeafe" stroke="#1d4ed8"/><text x="190" y="103" text-anchor="middle" font-size="12" fill="#1e3a8a">Modem</text>
+                    <rect x="280" y="74" width="110" height="48" rx="7" fill="#bfdbfe" stroke="#1d4ed8"/><text x="335" y="95" text-anchor="middle" font-size="12" fill="#1e3a8a">Roteador</text><text x="335" y="111" text-anchor="middle" font-size="10" fill="#64748b">+ Firewall</text>
+                    <rect x="440" y="78" width="90" height="40" rx="7" fill="#93c5fd" stroke="#1d4ed8"/><text x="485" y="103" text-anchor="middle" font-size="12" fill="#0c2a66">Switch</text>
+                    <line x1="110" y1="98" x2="148" y2="98" stroke="#1d4ed8" stroke-width="2" marker-end="url(#eqA)"/>
+                    <line x1="230" y1="98" x2="278" y2="98" stroke="#1d4ed8" stroke-width="2" marker-end="url(#eqA)"/>
+                    <line x1="390" y1="98" x2="438" y2="98" stroke="#1d4ed8" stroke-width="2" marker-end="url(#eqA)"/>
+                    <!-- branches from switch -->
+                    <rect x="610" y="24" width="100" height="34" rx="6" fill="#f8fafc" stroke="#94a3b8"/><text x="660" y="46" text-anchor="middle" font-size="12" fill="#475569">PC</text>
+                    <rect x="610" y="80" width="100" height="34" rx="6" fill="#f8fafc" stroke="#94a3b8"/><text x="660" y="102" text-anchor="middle" font-size="12" fill="#475569">Servidor</text>
+                    <rect x="610" y="136" width="100" height="34" rx="6" fill="#ede9fe" stroke="#9333ea"/><text x="660" y="158" text-anchor="middle" font-size="12" fill="#6b21a8">Access Point</text>
+                    <line x1="530" y1="98" x2="608" y2="41" stroke="#1d4ed8" stroke-width="2" marker-end="url(#eqA)"/>
+                    <line x1="530" y1="98" x2="608" y2="97" stroke="#1d4ed8" stroke-width="2" marker-end="url(#eqA)"/>
+                    <line x1="530" y1="98" x2="608" y2="153" stroke="#1d4ed8" stroke-width="2" marker-end="url(#eqA)"/>
+                    <circle cx="780" cy="140" r="11" fill="#9333ea"/><text x="780" y="170" text-anchor="middle" font-size="11" fill="#6b21a8">celular</text>
+                    <circle cx="820" cy="158" r="11" fill="#9333ea"/><text x="820" y="190" text-anchor="middle" font-size="11" fill="#6b21a8">notebook</text>
+                    <line x1="710" y1="150" x2="770" y2="142" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="3 4"/>
+                    <line x1="710" y1="156" x2="810" y2="158" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="3 4"/>
+                </svg>
+                <p class="figcap">Do provedor ao dispositivo: modem → roteador/firewall → switch → hosts e AP → clientes sem fio.</p>
+            </div>
+        </div>
+        <div class="nav-footer">09</div>
+    </div>
+
+    <!-- RESUMO -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag" style="background:#10b981;">Síntese</div>
+            <h1 style="font-size:46px;">Em resumo</h1>
+            <p style="max-width: 880px; margin: 0 auto;">Os <b>equipamentos de rede</b> distinguem-se pela <b>camada</b> em que operam: na <b>física</b>, repetidor e hub
+                (que só repetem); no <b>enlace</b>, bridge e <b>switch</b> (que decidem por MAC e isolam colisões); na <b>rede</b>, o <b>roteador</b> (que conecta
+                redes por IP e isola broadcasts). Somam-se AP, modem e gateway, e os de segurança/serviço (firewall, IDS/IPS, proxy, load balancer). Em casa,
+                tudo isso costuma vir em <b>uma única caixa</b>.</p>
+            <a class="backbar" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Disciplina de Serviços de Redes</p>
+        <p>Tópico de infraestrutura: dispositivos de rede e suas camadas de atuação.</p>
+    </footer>
+
+</body>
+
+</html>

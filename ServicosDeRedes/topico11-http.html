@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo HTTP — Serviços de Redes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        body { background-color: #f1f5f9; }
+        .slide-container { background-color: #ffffff; font-family: "DM Sans", sans-serif; }
+        h1, h2, h3 { font-family: "Merriweather", serif; color: #003366; z-index: 1; }
+        p, li { color: #475569; font-size: 21px; line-height: 1.6; z-index: 1; }
+        .slide-title { font-size: 40px; font-weight: 700; padding: 44px 80px 10px; text-align: left; border-bottom: 4px solid #003366; margin: 0 60px; display: inline-block; }
+        .content-area { flex-grow: 1; padding: 28px 80px 46px; display: flex; flex-direction: column; justify-content: center; z-index: 1; }
+        .title-layout { text-align: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #003366 0%, #001a33 100%); color: #fff; }
+        .title-layout h1 { color: #fff; font-size: 64px; margin-bottom: 18px; }
+        .title-layout p { color: #cbd5e1; font-size: 25px; }
+        .topic-tag { background: #db2777; color: #fff; padding: 7px 20px; border-radius: 50px; font-weight: bold; font-size: 17px; display: inline-block; margin-bottom: 18px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; align-items: stretch; }
+        .info-box { background: #f8fafc; border-radius: 12px; padding: 24px; border-top: 6px solid #003366; }
+        .info-box.c { border-top-color: #db2777; }
+        .info-box.g { border-top-color: #10b981; }
+        .info-box.r { border-top-color: #ef4444; }
+        .info-box i { font-size: 40px; color: #003366; margin-bottom: 12px; }
+        .info-box h3 { font-size: 21px; margin-bottom: 8px; }
+        .info-box p { font-size: 16px; line-height: 1.5; }
+        .highlight-text { font-size: 26px; color: #9d174d; font-weight: 500; border-left: 6px solid #db2777; padding-left: 20px; line-height: 1.4; }
+        .icon-large { font-size: 84px; color: #003366; opacity: 0.85; }
+        .check-list { list-style: none; padding-left: 0; }
+        .check-list li { margin-bottom: 12px; position: relative; padding-left: 38px; }
+        .check-list li::before { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; color: #10b981; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 17px; }
+        .comparison-table th { background: #003366; color: #fff; padding: 12px 14px; text-align: left; }
+        .comparison-table td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; }
+        .comparison-table tr:nth-child(even) { background: #f8fafc; }
+        .mono { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 16px 20px; font-family: "Fira Code", monospace; font-size: 15px; line-height: 1.7; margin-top: 12px; }
+        .mono .res { color: #f472b6; font-weight: 700; }
+        .mono .cmt { color: #64748b; }
+        .callout { border-left: 5px solid #db2777; background: #fdf2f8; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .callout b { color: #9d174d; }
+        .warn { border-left: 5px solid #ef4444; background: #fef2f2; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .warn b { color: #b91c1c; }
+        .ok { border-left: 5px solid #10b981; background: #ecfdf5; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .ok b { color: #065f46; }
+        .lead { font-size: 24px; line-height: 1.55; }
+        .note { font-size: 14px; color: #94a3b8; margin-top: 10px; }
+        .figure { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; }
+        .figure svg { width: 100%; height: auto; display: block; }
+        .figcap { font-size: 14px; color: #64748b; text-align: center; margin-top: 8px; }
+        .kbd { font-family: "Fira Code", monospace; background: #e2e8f0; padding: 1px 7px; border-radius: 5px; font-size: 0.92em; color: #0f172a; }
+        .nav-footer { position: absolute; bottom: 16px; right: 28px; font-size: 13px; color: #94a3b8; z-index: 2; }
+        .backbar { display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; padding: 12px 24px; border: 1px solid rgba(255,255,255,0.25); border-radius: 50px; color: #fff; text-decoration: none; font-weight: 600; }
+        .backbar:hover { background: rgba(255,255,255,0.12); }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light">
+
+    <!-- CAPA -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag">Tópico 11 · Camada de Aplicação</div>
+            <h1>Protocolo HTTP</h1>
+            <p>A linguagem da Web: requisição, resposta e a evolução até o <a class="glossario-ref" href="glossario.html#http">HTTP</a>/3 — RFC 9110</p>
+            <div style="margin-top: 44px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 16px; width: 340px;">ADS · Serviços de Redes</div>
+        </div>
+    </div>
+
+    <!-- O QUE É -->
+    <div class="slide-container">
+        <h2 class="slide-title">O que é o HTTP</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p class="highlight-text">O HyperText Transfer Protocol é o protocolo de aplicação que sustenta a World Wide Web, no modelo requisição-resposta.</p>
+                    <ul class="check-list" style="margin-top:20px;">
+                        <li><b>Cliente-servidor:</b> o cliente (navegador) pede; o servidor responde.</li>
+                        <li><b>Sem estado (stateless):</b> cada requisição é independente.</li>
+                        <li><b>Baseado em texto:</b> mensagens legíveis (até o HTTP/1.1).</li>
+                        <li>Roda sobre <b><a class="glossario-ref" href="glossario.html#tcp">TCP</a></b> (portas 80/443) e, no HTTP/3, sobre <b><a class="glossario-ref" href="glossario.html#quic">QUIC</a>/<a class="glossario-ref" href="glossario.html#udp">UDP</a></b>.</li>
+                    </ul>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-globe"></i>
+                    <h3>URLs identificam recursos</h3>
+                    <p>Cada recurso tem um endereço — a <b><a class="glossario-ref" href="glossario.html#url">URL</a></b> (<span class="kbd">https://host/caminho?query</span>). O HTTP define <b>como</b> pedir e transferir esses recursos entre cliente e servidor.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">01</div>
+    </div>
+
+    <!-- FLUXO -->
+    <div class="slide-container">
+        <h2 class="slide-title">O modelo requisição-resposta</h2>
+        <div class="content-area">
+            <div class="figure">
+                <svg viewBox="0 0 820 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fluxo de requisição e resposta HTTP">
+                    <defs><marker id="hA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#db2777"/></marker></defs>
+                    <rect x="30" y="66" width="180" height="68" rx="12" fill="#fce7f3" stroke="#9d174d" stroke-width="2"/>
+                    <text x="120" y="94" text-anchor="middle" font-size="15" font-weight="700" fill="#9d174d">Cliente</text>
+                    <text x="120" y="114" text-anchor="middle" font-size="12" fill="#831843">navegador / app</text>
+                    <rect x="610" y="66" width="180" height="68" rx="12" fill="#fdf2f8" stroke="#9d174d" stroke-width="2"/>
+                    <text x="700" y="94" text-anchor="middle" font-size="15" font-weight="700" fill="#9d174d">Servidor</text>
+                    <text x="700" y="114" text-anchor="middle" font-size="12" fill="#831843">web server</text>
+                    <line x1="212" y1="86" x2="608" y2="86" stroke="#db2777" stroke-width="2.5" marker-end="url(#hA)"/>
+                    <text x="410" y="76" text-anchor="middle" font-size="13" fill="#9d174d" font-weight="700">Requisição: método + URL + cabeçalhos (+ corpo)</text>
+                    <line x1="608" y1="118" x2="212" y2="118" stroke="#db2777" stroke-width="2.5" marker-end="url(#hA)"/>
+                    <text x="410" y="138" text-anchor="middle" font-size="13" fill="#9d174d" font-weight="700">Resposta: status + cabeçalhos + corpo</text>
+                    <text x="410" y="170" text-anchor="middle" font-size="12" fill="#64748b">intermediários possíveis no caminho: proxies, caches, gateways e balanceadores</text>
+                </svg>
+                <p class="figcap">Toda interação na Web é um par requisição/resposta — possivelmente atravessando caches e <a class="glossario-ref" href="glossario.html#proxy">proxies</a>.</p>
+            </div>
+        </div>
+        <div class="nav-footer">02</div>
+    </div>
+
+    <!-- ANATOMIA -->
+    <div class="slide-container">
+        <h2 class="slide-title">Anatomia das mensagens</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <h3 style="font-size:21px; margin-bottom:6px;">Requisição</h3>
+                    <div class="mono" style="font-size:14px;">
+                        <span class="res">GET</span> /index.html <span class="res">HTTP/1.1</span><br>
+                        Host: www.exemplo.com<br>
+                        User-Agent: Mozilla/5.0<br>
+                        Accept: text/html<br>
+                        <span class="cmt">(linha em branco)</span><br>
+                        <span class="cmt">[corpo — em POST/PUT]</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="font-size:21px; margin-bottom:6px;">Resposta</h3>
+                    <div class="mono" style="font-size:14px;">
+                        HTTP/1.1 <span class="res">200 OK</span><br>
+                        Content-Type: text/html<br>
+                        Content-Length: 1234<br>
+                        <a class="glossario-ref" href="glossario.html#cache">Cache</a>-Control: max-age=3600<br>
+                        <span class="cmt">(linha em branco)</span><br>
+                        &lt;html&gt;...&lt;/html&gt;
+                    </div>
+                </div>
+            </div>
+            <div class="callout"><b>Estrutura comum:</b> uma <b>linha inicial</b> (requisição ou status), um bloco de <b>cabeçalhos</b> <span class="kbd">Nome: valor</span>, uma <b>linha em branco</b> e um <b>corpo</b> opcional.</div>
+        </div>
+        <div class="nav-footer">03</div>
+    </div>
+
+    <!-- MÉTODOS -->
+    <div class="slide-container">
+        <h2 class="slide-title">Métodos (verbos)</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Método</th><th>Uso</th><th>Seguro?</th><th>Idempotente?</th></tr>
+                <tr><td><b>GET</b></td><td>Recupera um recurso.</td><td>Sim</td><td>Sim</td></tr>
+                <tr><td><b>HEAD</b></td><td>Como GET, mas só os cabeçalhos.</td><td>Sim</td><td>Sim</td></tr>
+                <tr><td><b>POST</b></td><td>Cria/submete dados (processa no servidor).</td><td>Não</td><td>Não</td></tr>
+                <tr><td><b>PUT</b></td><td>Cria/substitui um recurso por completo.</td><td>Não</td><td>Sim</td></tr>
+                <tr><td><b>PATCH</b></td><td>Atualiza parcialmente um recurso.</td><td>Não</td><td>Não</td></tr>
+                <tr><td><b>DELETE</b></td><td>Remove um recurso.</td><td>Não</td><td>Sim</td></tr>
+                <tr><td><b>OPTIONS</b></td><td>Descobre capacidades/<a class="glossario-ref" href="glossario.html#cors">CORS</a>.</td><td>Sim</td><td>Sim</td></tr>
+            </table>
+            <div class="note"><b>Seguro</b> = não altera o estado do servidor. <b>Idempotente</b> = repetir tem o mesmo efeito de fazer uma vez.</div>
+        </div>
+        <div class="nav-footer">04</div>
+    </div>
+
+    <!-- STATUS -->
+    <div class="slide-container">
+        <h2 class="slide-title">Códigos de status</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Classe</th><th>Significado</th><th>Exemplos</th></tr>
+                <tr><td><b>1xx</b></td><td>Informativo</td><td>100 Continue · 101 Switching Protocols</td></tr>
+                <tr><td><b>2xx</b></td><td>Sucesso</td><td>200 OK · 201 Created · 204 No Content</td></tr>
+                <tr><td><b>3xx</b></td><td>Redirecionamento</td><td>301 Moved Permanently · 302 Found · 304 Not Modified</td></tr>
+                <tr><td><b>4xx</b></td><td>Erro do cliente</td><td>400 Bad Request · 401 Unauthorized · 403 Forbidden · 404 Not Found · 429 Too Many Requests</td></tr>
+                <tr><td><b>5xx</b></td><td>Erro do servidor</td><td>500 Internal Server Error · 502 Bad <a class="glossario-ref" href="glossario.html#gateway">Gateway</a> · 503 Service Unavailable</td></tr>
+            </table>
+            <div class="callout">O <b>primeiro dígito</b> define a categoria — basta ele para saber se a coisa correu bem, foi redirecionada, ou falhou de que lado.</div>
+        </div>
+        <div class="nav-footer">05</div>
+    </div>
+
+    <!-- CABEÇALHOS -->
+    <div class="slide-container">
+        <h2 class="slide-title">Cabeçalhos (headers)</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div class="info-box c">
+                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                    <h3>Na requisição</h3>
+                    <ul class="spaced" style="font-size:16px; padding-left:18px;">
+                        <li><b>Host</b> — domínio alvo (obrigatório no 1.1).</li>
+                        <li><b>User-Agent</b> — identifica o cliente.</li>
+                        <li><b>Accept / Accept-Language</b> — negociação de conteúdo.</li>
+                        <li><b>Authorization</b> — credenciais.</li>
+                        <li><b><a class="glossario-ref" href="glossario.html#cookie">Cookie</a></b> — estado enviado de volta.</li>
+                    </ul>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-arrow-down-to-bracket"></i>
+                    <h3>Na resposta</h3>
+                    <ul class="spaced" style="font-size:16px; padding-left:18px;">
+                        <li><b>Content-Type</b> — tipo MIME do corpo.</li>
+                        <li><b>Content-Length</b> — tamanho do corpo.</li>
+                        <li><b>Set-Cookie</b> — define estado no cliente.</li>
+                        <li><b>Cache-Control / <a class="glossario-ref" href="glossario.html#etag">ETag</a></b> — política de cache.</li>
+                        <li><b>Location</b> — destino de um redirecionamento.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">06</div>
+    </div>
+
+    <!-- ESTADO / COOKIES -->
+    <div class="slide-container">
+        <h2 class="slide-title">Sem estado — e como contornar isso</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p class="lead">O HTTP é <b>stateless</b>: o servidor não "lembra" da requisição anterior. Mas a Web precisa de sessões (login, carrinho…).</p>
+                    <div class="callout"><b>Cookies (RFC 6265):</b> o servidor envia <span class="kbd">Set-Cookie</span> na resposta; o navegador devolve <span class="kbd">Cookie</span> nas próximas requisições, recriando a noção de sessão.</div>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-id-card"></i>
+                    <h3>Sessões e tokens</h3>
+                    <p>O cookie costuma guardar um <b>identificador de sessão</b> (estado no servidor) ou um <b>token</b> assinado (ex.: <b><a class="glossario-ref" href="glossario.html#jwt">JWT</a></b>), que carrega a identidade do usuário de forma verificável.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">07</div>
+    </div>
+
+    <!-- CACHE -->
+    <div class="slide-container">
+        <h2 class="slide-title">Cache e negociação de conteúdo</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div class="info-box c">
+                    <i class="fa-solid fa-database"></i>
+                    <h3>Cache</h3>
+                    <p><span class="kbd">Cache-Control</span> define por quanto tempo um recurso é válido. Com <b>ETag</b> + <span class="kbd">If-None-Match</span>, o cliente pergunta "mudou?"; se não, o servidor responde <b>304 Not Modified</b> — sem reenviar o corpo.</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-language"></i>
+                    <h3>Negociação de conteúdo</h3>
+                    <p>O cliente declara preferências (<span class="kbd">Accept</span>, <span class="kbd">Accept-Language</span>, <span class="kbd">Accept-Encoding</span>) e o servidor escolhe a melhor representação (formato, idioma, compressão gzip/br).</p>
+                </div>
+            </div>
+            <div class="ok"><b>Por que importa:</b> cache e negociação reduzem latência e tráfego — um recurso não modificado nem precisa ser baixado de novo.</div>
+        </div>
+        <div class="nav-footer">08</div>
+    </div>
+
+    <!-- EVOLUÇÃO -->
+    <div class="slide-container">
+        <h2 class="slide-title">Evolução: do HTTP/0.9 ao HTTP/3</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Versão</th><th>Ano</th><th>Novidade principal</th></tr>
+                <tr><td>HTTP/0.9</td><td>1991</td><td>Só <span class="kbd">GET</span>, uma linha, sem cabeçalhos.</td></tr>
+                <tr><td>HTTP/1.0</td><td>1996</td><td>Cabeçalhos, status, tipos de conteúdo.</td></tr>
+                <tr><td>HTTP/1.1</td><td>1997</td><td>Conexões persistentes, Host obrigatório, chunked, cache.</td></tr>
+                <tr><td>HTTP/2</td><td>2015</td><td>Binário, <b>multiplexação</b>, compressão de cabeçalhos (HPACK).</td></tr>
+                <tr><td>HTTP/3</td><td>2022</td><td>Sobre <b>QUIC/UDP</b>: sem head-of-line blocking do TCP, <a class="glossario-ref" href="glossario.html#tls">TLS</a> 1.3 integrado.</td></tr>
+            </table>
+        </div>
+        <div class="nav-footer">09</div>
+    </div>
+
+    <!-- MULTIPLEXAÇÃO -->
+    <div class="slide-container">
+        <h2 class="slide-title">O problema do head-of-line e a multiplexação</h2>
+        <div class="content-area">
+            <div class="figure">
+                <svg viewBox="0 0 820 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparação entre HTTP/1.1 sequencial e HTTP/2 multiplexado">
+                    <text x="40" y="34" font-size="14" font-weight="700" fill="#9d174d">HTTP/1.1 — requisições em série (uma trava a próxima)</text>
+                    <rect x="40" y="46" width="180" height="30" rx="5" fill="#fbcfe8" stroke="#9d174d"/>
+                    <text x="130" y="66" text-anchor="middle" font-size="13" fill="#831843">Requisição A</text>
+                    <rect x="230" y="46" width="180" height="30" rx="5" fill="#f9a8d4" stroke="#9d174d"/>
+                    <text x="320" y="66" text-anchor="middle" font-size="13" fill="#831843">Requisição B (espera A)</text>
+                    <rect x="420" y="46" width="180" height="30" rx="5" fill="#fbcfe8" stroke="#9d174d"/>
+                    <text x="510" y="66" text-anchor="middle" font-size="13" fill="#831843">Requisição C (espera B)</text>
+                    <text x="620" y="66" font-size="13" fill="#64748b">→ tempo</text>
+
+                    <text x="40" y="128" font-size="14" font-weight="700" fill="#0f766e">HTTP/2 — streams multiplexados numa só conexão</text>
+                    <rect x="40" y="140" width="560" height="30" rx="5" fill="#e0f2fe" stroke="#075985"/>
+                    <rect x="48" y="146" width="80" height="18" rx="3" fill="#a5b4fc"/><text x="88" y="159" text-anchor="middle" font-size="11" fill="#312e81">A1</text>
+                    <rect x="134" y="146" width="80" height="18" rx="3" fill="#6ee7b7"/><text x="174" y="159" text-anchor="middle" font-size="11" fill="#065f46">B1</text>
+                    <rect x="220" y="146" width="80" height="18" rx="3" fill="#fcd34d"/><text x="260" y="159" text-anchor="middle" font-size="11" fill="#92400e">C1</text>
+                    <rect x="306" y="146" width="80" height="18" rx="3" fill="#a5b4fc"/><text x="346" y="159" text-anchor="middle" font-size="11" fill="#312e81">A2</text>
+                    <rect x="392" y="146" width="80" height="18" rx="3" fill="#6ee7b7"/><text x="432" y="159" text-anchor="middle" font-size="11" fill="#065f46">B2</text>
+                    <rect x="478" y="146" width="80" height="18" rx="3" fill="#fcd34d"/><text x="518" y="159" text-anchor="middle" font-size="11" fill="#92400e">C2</text>
+                    <text x="620" y="160" font-size="13" fill="#64748b">→ tempo</text>
+                    <text x="40" y="200" font-size="12" fill="#64748b">No HTTP/2, A, B e C avançam intercalados; o HTTP/3 elimina também o bloqueio no nível do TCP, usando QUIC.</text>
+                </svg>
+                <p class="figcap">A multiplexação acaba com a fila do HTTP/1.1, em que uma resposta lenta atrasava todas as outras.</p>
+            </div>
+        </div>
+        <div class="nav-footer">10</div>
+    </div>
+
+    <!-- HTTPS / SEGURANÇA -->
+    <div class="slide-container">
+        <h2 class="slide-title">HTTPS e segurança</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>Em texto puro, o HTTP pode ser <b>lido e alterado</b> por qualquer um no caminho. O <b><a class="glossario-ref" href="glossario.html#https">HTTPS</a></b> é HTTP transportado sobre <b>TLS</b> (tópico 10), agregando confidencialidade, integridade e autenticação.</p>
+                    <div class="callout"><b><a class="glossario-ref" href="glossario.html#hsts">HSTS</a></b> (<span class="kbd">Strict-Transport-Security</span>) força o navegador a sempre usar HTTPS, bloqueando downgrades para HTTP.</div>
+                </div>
+                <div class="info-box r">
+                    <i class="fa-solid fa-shield-virus"></i>
+                    <h3>Ameaças comuns na Web</h3>
+                    <p>Injeção (SQLi), <b><a class="glossario-ref" href="glossario.html#xss">XSS</a></b> e <b><a class="glossario-ref" href="glossario.html#csrf">CSRF</a></b> exploram a aplicação sobre HTTP. Cabeçalhos de defesa ajudam: <b><a class="glossario-ref" href="glossario.html#csp">CSP</a></b> (contra XSS), <b>CORS</b> (controle de origem cruzada) e cookies <span class="kbd">HttpOnly</span>/<span class="kbd">Secure</span>.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">11</div>
+    </div>
+
+    <!-- RESUMO -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag" style="background:#10b981;">Síntese</div>
+            <h1 style="font-size:46px;">Em resumo</h1>
+            <p style="max-width: 880px; margin: 0 auto;">O <b>HTTP</b> é o protocolo cliente-servidor e <b>stateless</b> da Web: cada interação é uma
+                <b>requisição</b> (método + URL + cabeçalhos) e uma <b>resposta</b> (status + cabeçalhos + corpo). <b>Cookies</b> recriam sessões; <b>cache</b> e
+                <b>negociação</b> otimizam. Evoluiu do texto simples (1.1) para o binário <b>multiplexado</b> (HTTP/2) e o transporte sobre <b>QUIC</b> (HTTP/3),
+                sempre protegido pelo <b>HTTPS/TLS</b>.</p>
+            <a class="backbar" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Disciplina de Serviços de Redes</p>
+        <p>Referências: RFC 9110 (semântica HTTP) · RFC 9112 (HTTP/1.1) · RFC 9113 (HTTP/2) · RFC 9114 (HTTP/3) · RFC 6265 (cookies).</p>
+    </footer>
+
+</body>
+
+</html>

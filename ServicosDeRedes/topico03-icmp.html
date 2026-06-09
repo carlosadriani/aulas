@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo ICMP — Serviços de Redes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        body { background-color: #f1f5f9; }
+        .slide-container { background-color: #ffffff; font-family: "DM Sans", sans-serif; }
+        h1, h2, h3 { font-family: "Merriweather", serif; color: #003366; z-index: 1; }
+        p, li { color: #475569; font-size: 21px; line-height: 1.6; z-index: 1; }
+        .slide-title { font-size: 40px; font-weight: 700; padding: 44px 80px 10px; text-align: left; border-bottom: 4px solid #003366; margin: 0 60px; display: inline-block; }
+        .content-area { flex-grow: 1; padding: 28px 80px 46px; display: flex; flex-direction: column; justify-content: center; z-index: 1; }
+        .title-layout { text-align: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #003366 0%, #001a33 100%); color: #fff; }
+        .title-layout h1 { color: #fff; font-size: 64px; margin-bottom: 18px; }
+        .title-layout p { color: #cbd5e1; font-size: 25px; }
+        .topic-tag { background: #0891b2; color: #fff; padding: 7px 20px; border-radius: 50px; font-weight: bold; font-size: 17px; display: inline-block; margin-bottom: 18px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; align-items: stretch; }
+        .info-box { background: #f8fafc; border-radius: 12px; padding: 24px; border-top: 6px solid #003366; }
+        .info-box.c { border-top-color: #0891b2; }
+        .info-box.g { border-top-color: #10b981; }
+        .info-box.r { border-top-color: #ef4444; }
+        .info-box i { font-size: 40px; color: #003366; margin-bottom: 12px; }
+        .info-box h3 { font-size: 21px; margin-bottom: 8px; }
+        .info-box p { font-size: 16px; line-height: 1.5; }
+        .highlight-text { font-size: 26px; color: #0e7490; font-weight: 500; border-left: 6px solid #0891b2; padding-left: 20px; line-height: 1.4; }
+        .icon-large { font-size: 84px; color: #003366; opacity: 0.85; }
+        .check-list { list-style: none; padding-left: 0; }
+        .check-list li { margin-bottom: 12px; position: relative; padding-left: 38px; }
+        .check-list li::before { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; color: #10b981; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 17px; }
+        .comparison-table th { background: #003366; color: #fff; padding: 12px 14px; text-align: left; }
+        .comparison-table td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; }
+        .comparison-table tr:nth-child(even) { background: #f8fafc; }
+        .mono { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 16px 20px; font-family: "Fira Code", monospace; font-size: 15px; line-height: 1.7; margin-top: 12px; }
+        .mono .res { color: #22d3ee; font-weight: 700; }
+        .mono .cmt { color: #64748b; }
+        .callout { border-left: 5px solid #0891b2; background: #ecfeff; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .callout b { color: #0e7490; }
+        .warn { border-left: 5px solid #ef4444; background: #fef2f2; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .warn b { color: #b91c1c; }
+        .ok { border-left: 5px solid #10b981; background: #ecfdf5; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .ok b { color: #065f46; }
+        .lead { font-size: 24px; line-height: 1.55; }
+        .note { font-size: 14px; color: #94a3b8; margin-top: 10px; }
+        .figure { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; }
+        .figure svg { width: 100%; height: auto; display: block; }
+        .figcap { font-size: 14px; color: #64748b; text-align: center; margin-top: 8px; }
+        .kbd { font-family: "Fira Code", monospace; background: #e2e8f0; padding: 1px 7px; border-radius: 5px; font-size: 0.92em; color: #0f172a; }
+        .nav-footer { position: absolute; bottom: 16px; right: 28px; font-size: 13px; color: #94a3b8; z-index: 2; }
+        .backbar { display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; padding: 12px 24px; border: 1px solid rgba(255,255,255,0.25); border-radius: 50px; color: #fff; text-decoration: none; font-weight: 600; }
+        .backbar:hover { background: rgba(255,255,255,0.12); }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light">
+
+    <!-- CAPA -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag">Tópico 03 · Camada de Rede</div>
+            <h1>Protocolo ICMP</h1>
+            <p>O mensageiro da Internet: erros e diagnóstico da camada de rede — RFC 792</p>
+            <div style="margin-top: 44px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 16px; width: 340px;">ADS · Serviços de Redes</div>
+        </div>
+    </div>
+
+    <!-- O QUE É -->
+    <div class="slide-container">
+        <h2 class="slide-title">O que é o ICMP</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p class="highlight-text">O Internet Control Message Protocol é o protocolo de <b>controle e diagnóstico</b> que acompanha o <a class="glossario-ref" href="glossario.html#ip">IP</a>, reportando erros e testando a rede.</p>
+                    <ul class="check-list" style="margin-top:20px;">
+                        <li><b>Não transporta dados de aplicação:</b> serve à própria infraestrutura.</li>
+                        <li><b>Reporta problemas:</b> destino inalcançável, <a class="glossario-ref" href="glossario.html#ttl">TTL</a> esgotado, pacote grande demais.</li>
+                        <li><b>Diagnostica:</b> é a base do <span class="kbd"><a class="glossario-ref" href="glossario.html#ping">ping</a></span> e do <span class="kbd"><a class="glossario-ref" href="glossario.html#traceroute">traceroute</a></span>.</li>
+                    </ul>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <h3>Um "complemento" do IP</h3>
+                    <p>O IP é de melhor esforço e <b>não avisa</b> quando algo dá errado. O <a class="glossario-ref" href="glossario.html#icmp">ICMP</a> preenche essa lacuna, devolvendo mensagens de controle à origem — sem, contudo, tornar o IP confiável.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">01</div>
+    </div>
+
+    <!-- ENCAPSULAMENTO -->
+    <div class="slide-container">
+        <h2 class="slide-title">Onde o ICMP vive na pilha</h2>
+        <div class="content-area">
+            <p class="lead">Apesar de ser uma "ajuda" ao IP, as mensagens ICMP viajam <b>dentro</b> de datagramas IP — é o <b>protocolo nº 1</b> no campo Protocolo do <a class="glossario-ref" href="glossario.html#ipv4">IPv4</a>.</p>
+            <div class="figure" style="margin-top:12px;">
+                <svg viewBox="0 0 820 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mensagem ICMP encapsulada em datagrama IP dentro de quadro de enlace">
+                    <rect x="20" y="38" width="780" height="76" rx="10" fill="#eef2f7" stroke="#003366" stroke-width="2"/>
+                    <text x="40" y="30" font-size="13" font-weight="700" fill="#003366">Quadro de enlace (Ethernet / Wi-Fi)</text>
+                    <rect x="56" y="60" width="60" height="34" rx="5" fill="#cbd5e1" stroke="#64748b"/>
+                    <text x="86" y="82" text-anchor="middle" font-size="11" fill="#334155">Cab. Enl.</text>
+                    <rect x="126" y="56" width="640" height="42" rx="7" fill="#dbeafe" stroke="#1e40af" stroke-width="1.6"/>
+                    <text x="146" y="50" font-size="12" font-weight="700" fill="#1e40af">Datagrama IP (Protocolo = 1)</text>
+                    <rect x="146" y="62" width="90" height="30" rx="4" fill="#bfdbfe" stroke="#1e40af"/>
+                    <text x="191" y="82" text-anchor="middle" font-size="11" fill="#1e3a8a">Cab. IP</text>
+                    <rect x="246" y="62" width="510" height="30" rx="5" fill="#cffafe" stroke="#0891b2" stroke-width="1.6"/>
+                    <text x="501" y="82" text-anchor="middle" font-size="12" font-weight="700" fill="#0e7490">Mensagem ICMP (Tipo, Código, Checksum, Dados)</text>
+                </svg>
+                <p class="figcap">O ICMP é processado pela camada de rede, mas precisa do IP para chegar ao destino.</p>
+            </div>
+        </div>
+        <div class="nav-footer">02</div>
+    </div>
+
+    <!-- ESTRUTURA DA MENSAGEM -->
+    <div class="slide-container">
+        <h2 class="slide-title">Estrutura da mensagem ICMP</h2>
+        <div class="content-area">
+            <p>Toda mensagem começa com <b>3 campos fixos</b> (Tipo, Código e Checksum). Cada linha = 32 bits:</p>
+            <div class="figure" style="margin-top:10px;">
+                <svg viewBox="0 0 880 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Formato da mensagem ICMP">
+                    <text x="40" y="24" font-size="12" fill="#64748b">0</text>
+                    <text x="232" y="24" font-size="12" fill="#64748b">8</text>
+                    <text x="432" y="24" font-size="12" fill="#64748b">16</text>
+                    <text x="828" y="24" font-size="12" fill="#64748b">31</text>
+                    <!-- Linha 1 -->
+                    <rect x="40" y="34" width="200" height="46" fill="#cffafe" stroke="#0e7490" stroke-width="1.6"/>
+                    <text x="140" y="62" text-anchor="middle" font-size="13" font-weight="700" fill="#0e7490">Tipo (8)</text>
+                    <rect x="240" y="34" width="200" height="46" fill="#cffafe" stroke="#0e7490" stroke-width="1.6"/>
+                    <text x="340" y="62" text-anchor="middle" font-size="13" font-weight="700" fill="#0e7490">Código (8)</text>
+                    <rect x="440" y="34" width="400" height="46" fill="#e0f2fe" stroke="#0e7490" stroke-width="1.6"/>
+                    <text x="640" y="62" text-anchor="middle" font-size="13" fill="#0e7490">Checksum (16)</text>
+                    <!-- Linha 2 -->
+                    <rect x="40" y="80" width="800" height="46" fill="#e0f2fe" stroke="#0e7490" stroke-width="1.6"/>
+                    <text x="440" y="108" text-anchor="middle" font-size="13" fill="#0e7490">Resto do cabeçalho (32) — varia por tipo (ex.: Identificador + Sequência; MTU)</text>
+                    <!-- Linha 3 -->
+                    <rect x="40" y="126" width="800" height="64" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 5"/>
+                    <text x="440" y="153" text-anchor="middle" font-size="13" fill="#475569">Dados (variável)</text>
+                    <text x="440" y="174" text-anchor="middle" font-size="12" fill="#64748b">nas mensagens de erro: cabeçalho IP + 8 bytes do datagrama original</text>
+                </svg>
+                <p class="figcap">Incluir o início do pacote original permite à origem saber <b>qual</b> conexão gerou o erro.</p>
+            </div>
+        </div>
+        <div class="nav-footer">03</div>
+    </div>
+
+    <!-- CATEGORIAS -->
+    <div class="slide-container">
+        <h2 class="slide-title">Duas famílias: erro e consulta</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div class="info-box r">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <h3>Mensagens de erro</h3>
+                    <p>Reportam que algo impediu a entrega de um datagrama: destino inalcançável, tempo excedido, problema de parâmetro. Sempre carregam um <b>trecho do pacote que falhou</b>.</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <h3>Mensagens de consulta</h3>
+                    <p>Servem a testes e diagnósticos em pares <b>pergunta/resposta</b>: o clássico Echo Request/Reply (ping).</p>
+                </div>
+            </div>
+            <div class="warn"><b>Regra importante:</b> o ICMP <b>não</b> gera mensagem de erro <i>sobre outra</i> mensagem de erro ICMP, nem sobre fragmentos não iniciais ou tráfego multicast/<a class="glossario-ref" href="glossario.html#broadcast">broadcast</a> — para evitar tempestades de mensagens.</div>
+        </div>
+        <div class="nav-footer">04</div>
+    </div>
+
+    <!-- TABELA DE TIPOS -->
+    <div class="slide-container">
+        <h2 class="slide-title">Principais tipos e códigos</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Tipo</th><th>Mensagem</th><th>Códigos / uso típico</th></tr>
+                <tr><td>0</td><td>Echo Reply</td><td>Resposta do <span class="kbd">ping</span>.</td></tr>
+                <tr><td>3</td><td>Destination Unreachable</td><td>0=rede, 1=host, 2=protocolo, 3=porta, <b>4=fragmentação necessária e DF</b> (<a class="glossario-ref" href="glossario.html#pmtud">PMTUD</a>).</td></tr>
+                <tr><td>5</td><td>Redirect</td><td>Indica uma rota melhor ao host.</td></tr>
+                <tr><td>8</td><td>Echo Request</td><td>Pergunta do <span class="kbd">ping</span>.</td></tr>
+                <tr><td>11</td><td>Time Exceeded</td><td>0=TTL chegou a 0 (traceroute); 1=tempo de remontagem esgotado.</td></tr>
+                <tr><td>12</td><td>Parameter Problem</td><td>Erro em um campo do cabeçalho IP.</td></tr>
+            </table>
+            <div class="note">Tipos hoje obsoletos/desencorajados: 4 (Source Quench), 13/14 (Timestamp), 15/16 (Information), 17/18 (Address Mask).</div>
+        </div>
+        <div class="nav-footer">05</div>
+    </div>
+
+    <!-- PING -->
+    <div class="slide-container">
+        <h2 class="slide-title">Echo Request/Reply: o ping</h2>
+        <div class="content-area">
+            <div class="figure">
+                <svg viewBox="0 0 820 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Funcionamento do ping com Echo Request e Echo Reply">
+                    <defs><marker id="pingA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#0891b2"/></marker></defs>
+                    <rect x="30" y="55" width="160" height="64" rx="10" fill="#cffafe" stroke="#0e7490" stroke-width="2"/>
+                    <text x="110" y="83" text-anchor="middle" font-size="15" font-weight="700" fill="#0e7490">Host A</text>
+                    <text x="110" y="103" text-anchor="middle" font-size="12" fill="#475569">origem (ping)</text>
+                    <rect x="630" y="55" width="160" height="64" rx="10" fill="#e0f2fe" stroke="#0e7490" stroke-width="2"/>
+                    <text x="710" y="83" text-anchor="middle" font-size="15" font-weight="700" fill="#0e7490">Host B</text>
+                    <text x="710" y="103" text-anchor="middle" font-size="12" fill="#475569">destino</text>
+                    <line x1="195" y1="72" x2="625" y2="72" stroke="#0891b2" stroke-width="2.5" marker-end="url(#pingA)"/>
+                    <text x="410" y="62" text-anchor="middle" font-size="13" fill="#0e7490">Echo Request (Tipo 8) →</text>
+                    <line x1="625" y1="104" x2="195" y2="104" stroke="#0891b2" stroke-width="2.5" marker-end="url(#pingA)"/>
+                    <text x="410" y="124" text-anchor="middle" font-size="13" fill="#0e7490">← Echo Reply (Tipo 0)</text>
+                    <text x="410" y="150" text-anchor="middle" font-size="12" fill="#64748b">o tempo entre o envio e a resposta é o RTT (round-trip time)</text>
+                </svg>
+                <p class="figcap">Os campos <b>Identificador</b> e <b>Número de sequência</b> casam cada resposta com seu pedido.</p>
+            </div>
+            <div class="callout" style="margin-top:14px;"><b>O que o ping informa:</b> se o host está acessível, a <b>latência (<a class="glossario-ref" href="glossario.html#rtt">RTT</a>)</b> e a <b>perda de pacotes</b> — métricas básicas de saúde da rede.</div>
+        </div>
+        <div class="nav-footer">06</div>
+    </div>
+
+    <!-- TRACEROUTE -->
+    <div class="slide-container">
+        <h2 class="slide-title">Time Exceeded: o traceroute</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>O <span class="kbd">traceroute</span> explora a regra do <b>TTL</b>: envia pacotes com TTL crescente e usa as respostas <b>Time Exceeded</b> para mapear o caminho.</p>
+                    <div class="callout"><b>Cada <a class="glossario-ref" href="glossario.html#roteador">roteador</a> que zera o TTL</b> devolve um ICMP Tipo 11, revelando seu endereço — um salto de cada vez.</div>
+                </div>
+                <div class="mono">
+                    <span class="cmt"># TTL aumenta a cada rodada</span><br>
+                    TTL=1 → R1 responde <span class="res">Time Exceeded</span><br>
+                    TTL=2 → R2 responde Time Exceeded<br>
+                    TTL=3 → R3 responde Time Exceeded<br>
+                    ...<br>
+                    TTL=n → destino responde <span class="res">Echo Reply</span><br>
+                    <span class="cmt"># a lista de roteadores = a rota</span>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">07</div>
+    </div>
+
+    <!-- PMTUD -->
+    <div class="slide-container">
+        <h2 class="slide-title">Destination Unreachable e o Path MTU Discovery</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div class="info-box c">
+                    <i class="fa-solid fa-ruler-combined"></i>
+                    <h3>Path <a class="glossario-ref" href="glossario.html#mtu">MTU</a> Discovery</h3>
+                    <p>O host envia pacotes com o bit <b>DF</b> (não fragmentar). Se algum enlace tem MTU menor, o roteador descarta e responde <b>Tipo 3, Código 4</b> — informando a MTU permitida. O host então reduz o tamanho dos pacotes.</p>
+                </div>
+                <div class="info-box r">
+                    <i class="fa-solid fa-plug-circle-xmark"></i>
+                    <h3>Porta inalcançável</h3>
+                    <p>Quando um datagrama <b><a class="glossario-ref" href="glossario.html#udp">UDP</a></b> chega a uma porta sem serviço, o destino responde <b>Tipo 3, Código 3</b> (port unreachable) — mecanismo usado, inclusive, pelo traceroute baseado em UDP.</p>
+                </div>
+            </div>
+            <div class="warn"><b>Cuidado ao filtrar ICMP:</b> bloquear cegamente o Tipo 3 Código 4 quebra o PMTUD e cria "buracos negros" — conexões que travam ao enviar pacotes grandes.</div>
+        </div>
+        <div class="nav-footer">08</div>
+    </div>
+
+    <!-- CHECKSUM -->
+    <div class="slide-container">
+        <h2 class="slide-title">Verificação de integridade (checksum)</h2>
+        <div class="content-area">
+            <p class="lead">O ICMP tem seu <b>próprio checksum</b>, calculado por <b>complemento de um</b> sobre toda a mensagem ICMP (não apenas o cabeçalho, como no IPv4).</p>
+            <div class="mono">
+                1. zera o campo checksum<br>
+                2. soma em complemento de um todas as palavras de 16 bits da mensagem<br>
+                3. checksum = complemento de um da soma<br>
+                no receptor: soma total = <span class="res">0xFFFF</span> → mensagem íntegra
+            </div>
+            <div class="callout">Garante que a mensagem de controle não chegou corrompida — afinal, agir sobre um erro falso seria pior que ignorá-lo.</div>
+        </div>
+        <div class="nav-footer">09</div>
+    </div>
+
+    <!-- ICMPv6 -->
+    <div class="slide-container">
+        <h2 class="slide-title">ICMPv6: muito mais que diagnóstico</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>No <a class="glossario-ref" href="glossario.html#ipv6">IPv6</a>, o <b>ICMPv6</b> (RFC 4443) é <b>essencial</b> e assume papéis que no IPv4 eram de outros protocolos:</p>
+                    <ul class="check-list" style="margin-top:12px;">
+                        <li><b><a class="glossario-ref" href="glossario.html#ndp">NDP</a></b> (descoberta de vizinhos) — substitui o <b><a class="glossario-ref" href="glossario.html#arp">ARP</a></b>.</li>
+                        <li><b><a class="glossario-ref" href="glossario.html#slaac">SLAAC</a></b> — autoconfiguração via Router Advertisement.</li>
+                        <li><b>MLD</b> — gestão de grupos multicast.</li>
+                        <li><b>Packet Too Big</b> (Tipo 2) — base do PMTUD no IPv6.</li>
+                    </ul>
+                </div>
+                <div>
+                    <table class="comparison-table">
+                        <tr><th>Mensagem</th><th>ICMP (v4)</th><th>ICMPv6</th></tr>
+                        <tr><td>Echo Request</td><td>8</td><td>128</td></tr>
+                        <tr><td>Echo Reply</td><td>0</td><td>129</td></tr>
+                        <tr><td>Dest. Unreachable</td><td>3</td><td>1</td></tr>
+                        <tr><td>Pacote grande demais</td><td>3/4</td><td>2</td></tr>
+                        <tr><td>Time Exceeded</td><td>11</td><td>3</td></tr>
+                    </table>
+                </div>
+            </div>
+            <div class="ok"><b>Diferença-chave:</b> filtrar todo ICMPv6 <b>quebra o IPv6</b> — sem ele não há NDP nem autoconfiguração.</div>
+        </div>
+        <div class="nav-footer">10</div>
+    </div>
+
+    <!-- SEGURANÇA -->
+    <div class="slide-container">
+        <h2 class="slide-title">Segurança: usos indevidos do ICMP</h2>
+        <div class="content-area">
+            <div class="grid-3">
+                <div class="info-box r">
+                    <i class="fa-solid fa-burst"></i>
+                    <h3>Inundação (flood)</h3>
+                    <p>Excesso de Echo Requests (ping flood) ou o antigo <b>Smurf</b> (eco para broadcast com origem forjada) sobrecarregam o alvo — ataques de <b>DoS</b>.</p>
+                </div>
+                <div class="info-box r">
+                    <i class="fa-solid fa-bug"></i>
+                    <h3>Pacotes malformados</h3>
+                    <p>O histórico <b>Ping of Death</b> usava pacotes ICMP fragmentados gigantes para travar sistemas vulneráveis.</p>
+                </div>
+                <div class="info-box r">
+                    <i class="fa-solid fa-user-secret"></i>
+                    <h3>Reconhecimento e túnel</h3>
+                    <p><b>Ping sweeps</b> mapeiam hosts ativos; o <b>ICMP tunneling</b> esconde dados na carga para exfiltração furtiva.</p>
+                </div>
+            </div>
+            <div class="warn"><b>O equilíbrio:</b> filtrar ICMP demais quebra diagnóstico e PMTUD; de menos, expõe a rede. A prática é <b>limitar a taxa</b> (rate-limit) e permitir os tipos essenciais.</div>
+        </div>
+        <div class="nav-footer">11</div>
+    </div>
+
+    <!-- RESUMO -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag" style="background:#10b981;">Síntese</div>
+            <h1 style="font-size:46px;">Em resumo</h1>
+            <p style="max-width: 880px; margin: 0 auto;">O <b>ICMP</b> é o protocolo de controle que acompanha o IP, reportando <b>erros</b>
+                (destino inalcançável, tempo excedido) e habilitando <b>diagnóstico</b> (<span class="kbd">ping</span> e <span class="kbd">traceroute</span>).
+                Sua mensagem traz Tipo, Código e Checksum, e nos erros inclui parte do pacote original. No IPv6, o <b>ICMPv6</b> vai além: sustenta
+                NDP e SLAAC. Ele deve ser <b>filtrado com critério</b> — nem demais, nem de menos.</p>
+            <a class="backbar" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Disciplina de Serviços de Redes</p>
+        <p>Referências: RFC 792 (ICMP) · RFC 4443 (ICMPv6) · RFC 1191 (Path MTU Discovery) · RFC 6633.</p>
+    </footer>
+
+</body>
+
+</html>

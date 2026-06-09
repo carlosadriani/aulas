@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo TCP — Serviços de Redes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        body { background-color: #f1f5f9; }
+        .slide-container { background-color: #ffffff; font-family: "DM Sans", sans-serif; }
+        h1, h2, h3 { font-family: "Merriweather", serif; color: #003366; z-index: 1; }
+        p, li { color: #475569; font-size: 21px; line-height: 1.6; z-index: 1; }
+        .slide-title { font-size: 40px; font-weight: 700; padding: 44px 80px 10px; text-align: left; border-bottom: 4px solid #003366; margin: 0 60px; display: inline-block; }
+        .content-area { flex-grow: 1; padding: 28px 80px 46px; display: flex; flex-direction: column; justify-content: center; z-index: 1; }
+        .title-layout { text-align: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #003366 0%, #001a33 100%); color: #fff; }
+        .title-layout h1 { color: #fff; font-size: 64px; margin-bottom: 18px; }
+        .title-layout p { color: #cbd5e1; font-size: 25px; }
+        .topic-tag { background: #7c3aed; color: #fff; padding: 7px 20px; border-radius: 50px; font-weight: bold; font-size: 17px; display: inline-block; margin-bottom: 18px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; align-items: stretch; }
+        .info-box { background: #f8fafc; border-radius: 12px; padding: 24px; border-top: 6px solid #003366; }
+        .info-box.c { border-top-color: #7c3aed; }
+        .info-box.g { border-top-color: #10b981; }
+        .info-box.r { border-top-color: #ef4444; }
+        .info-box i { font-size: 40px; color: #003366; margin-bottom: 12px; }
+        .info-box h3 { font-size: 21px; margin-bottom: 8px; }
+        .info-box p { font-size: 16px; line-height: 1.5; }
+        .highlight-text { font-size: 26px; color: #5b21b6; font-weight: 500; border-left: 6px solid #7c3aed; padding-left: 20px; line-height: 1.4; }
+        .icon-large { font-size: 84px; color: #003366; opacity: 0.85; }
+        .check-list { list-style: none; padding-left: 0; }
+        .check-list li { margin-bottom: 12px; position: relative; padding-left: 38px; }
+        .check-list li::before { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; color: #10b981; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 17px; }
+        .comparison-table th { background: #003366; color: #fff; padding: 12px 14px; text-align: left; }
+        .comparison-table td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; }
+        .comparison-table tr:nth-child(even) { background: #f8fafc; }
+        .mono { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 16px 20px; font-family: "Fira Code", monospace; font-size: 15px; line-height: 1.7; margin-top: 12px; }
+        .mono .res { color: #a78bfa; font-weight: 700; }
+        .mono .cmt { color: #64748b; }
+        .callout { border-left: 5px solid #7c3aed; background: #f5f3ff; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .callout b { color: #5b21b6; }
+        .warn { border-left: 5px solid #ef4444; background: #fef2f2; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .warn b { color: #b91c1c; }
+        .ok { border-left: 5px solid #10b981; background: #ecfdf5; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .ok b { color: #065f46; }
+        .lead { font-size: 24px; line-height: 1.55; }
+        .note { font-size: 14px; color: #94a3b8; margin-top: 10px; }
+        .figure { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; }
+        .figure svg { width: 100%; height: auto; display: block; }
+        .figcap { font-size: 14px; color: #64748b; text-align: center; margin-top: 8px; }
+        .kbd { font-family: "Fira Code", monospace; background: #e2e8f0; padding: 1px 7px; border-radius: 5px; font-size: 0.92em; color: #0f172a; }
+        .nav-footer { position: absolute; bottom: 16px; right: 28px; font-size: 13px; color: #94a3b8; z-index: 2; }
+        .backbar { display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; padding: 12px 24px; border: 1px solid rgba(255,255,255,0.25); border-radius: 50px; color: #fff; text-decoration: none; font-weight: 600; }
+        .backbar:hover { background: rgba(255,255,255,0.12); }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light">
+
+    <!-- CAPA -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag">Tópico 08 · Camada de Transporte</div>
+            <h1>Protocolo TCP</h1>
+            <p>Transmissão confiável e orientada a conexão na Internet — RFC 793 / RFC 9293</p>
+            <div style="margin-top: 44px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 16px; width: 340px;">ADS · Serviços de Redes</div>
+        </div>
+    </div>
+
+    <!-- O QUE É -->
+    <div class="slide-container">
+        <h2 class="slide-title">O que é o TCP</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p class="highlight-text">O Transmission Control Protocol entrega um <b>fluxo confiável e ordenado de bytes</b> sobre o serviço de melhor esforço do <a class="glossario-ref" href="glossario.html#ip">IP</a>.</p>
+                    <ul class="check-list" style="margin-top:20px;">
+                        <li><b>Orientado a conexão:</b> estabelece um circuito lógico antes de enviar dados.</li>
+                        <li><b>Confiável:</b> recupera perdas por confirmação (<a class="glossario-ref" href="glossario.html#ack">ACK</a>) e retransmissão.</li>
+                        <li><b>Ordenado:</b> reordena segmentos pela numeração de sequência.</li>
+                        <li><b><a class="glossario-ref" href="glossario.html#full-duplex">Full-duplex</a> e ponto a ponto:</b> entre exatamente dois extremos.</li>
+                    </ul>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-link"></i>
+                    <h3>O que o IP não faz, o <a class="glossario-ref" href="glossario.html#tcp">TCP</a> faz</h3>
+                    <p>O IP pode perder, duplicar ou entregar pacotes fora de ordem. O TCP constrói, <b>acima</b> dele, a ilusão de um <b>canal contínuo e seguro</b> de bytes — sem que a aplicação precise lidar com pacotes.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">01</div>
+    </div>
+
+    <!-- SERVIÇOS -->
+    <div class="slide-container">
+        <h2 class="slide-title">Serviços oferecidos</h2>
+        <div class="content-area">
+            <div class="grid-3">
+                <div class="info-box c">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h3>Confiabilidade</h3>
+                    <p>Números de sequência, ACKs cumulativos e retransmissão garantem que todo byte chegue.</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <h3>Controle de fluxo</h3>
+                    <p>A <b>janela de recepção</b> impede que um emissor rápido afogue um receptor lento.</p>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-traffic-light"></i>
+                    <h3>Controle de congestionamento</h3>
+                    <p>Ajusta a taxa de envio à capacidade da <b>rede</b>, evitando o colapso por sobrecarga.</p>
+                </div>
+            </div>
+            <div class="callout"><b>Multiplexação:</b> as <b>portas</b> permitem várias conexões simultâneas no mesmo host. Cada conexão é identificada por uma <b>quádrupla</b>: <span class="kbd">(IP origem, porta origem, IP destino, porta destino)</span>.</div>
+        </div>
+        <div class="nav-footer">02</div>
+    </div>
+
+    <!-- CABEÇALHO -->
+    <div class="slide-container">
+        <h2 class="slide-title">O segmento TCP (cabeçalho)</h2>
+        <div class="content-area">
+            <p>O cabeçalho tem <b>20 bytes</b> (até 60 com opções). Cada linha = 32 bits:</p>
+            <div class="figure" style="margin-top:8px;">
+                <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Estrutura do cabeçalho TCP">
+                    <text x="40" y="24" font-size="12" fill="#64748b">0</text>
+                    <text x="432" y="24" font-size="12" fill="#64748b">16</text>
+                    <text x="828" y="24" font-size="12" fill="#64748b">31</text>
+                    <!-- Linha 1 -->
+                    <rect x="40" y="34" width="400" height="42" fill="#ede9fe" stroke="#5b21b6" stroke-width="1.5"/>
+                    <text x="240" y="60" text-anchor="middle" font-size="13" fill="#5b21b6">Porta de Origem (16)</text>
+                    <rect x="440" y="34" width="400" height="42" fill="#ede9fe" stroke="#5b21b6" stroke-width="1.5"/>
+                    <text x="640" y="60" text-anchor="middle" font-size="13" fill="#5b21b6">Porta de Destino (16)</text>
+                    <!-- Linha 2 -->
+                    <rect x="40" y="76" width="800" height="42" fill="#ddd6fe" stroke="#5b21b6" stroke-width="1.5"/>
+                    <text x="440" y="102" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">Número de Sequência (32)</text>
+                    <!-- Linha 3 -->
+                    <rect x="40" y="118" width="800" height="42" fill="#ddd6fe" stroke="#5b21b6" stroke-width="1.5"/>
+                    <text x="440" y="144" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">Número de Confirmação / ACK (32)</text>
+                    <!-- Linha 4 -->
+                    <rect x="40" y="160" width="100" height="42" fill="#ede9fe" stroke="#5b21b6" stroke-width="1.5"/>
+                    <text x="90" y="182" text-anchor="middle" font-size="11" fill="#5b21b6">Offset (4)</text>
+                    <rect x="140" y="160" width="150" height="42" fill="#f5f3ff" stroke="#5b21b6" stroke-width="1.5"/>
+                    <text x="215" y="182" text-anchor="middle" font-size="11" fill="#6d28d9">Reserv. (6)</text>
+                    <rect x="290" y="160" width="150" height="42" fill="#fde68a" stroke="#5b21b6" stroke-width="1.5"/>
+                    <text x="365" y="178" text-anchor="middle" font-size="11" fill="#92400e">Flags (6)</text>
+                    <text x="365" y="193" text-anchor="middle" font-size="9" fill="#92400e">URG ACK PSH RST SYN FIN</text>
+                    <rect x="440" y="160" width="400" height="42" fill="#ede9fe" stroke="#5b21b6" stroke-width="1.5"/>
+                    <text x="640" y="186" text-anchor="middle" font-size="13" fill="#5b21b6">Janela / Window (16)</text>
+                    <!-- Linha 5 -->
+                    <rect x="40" y="202" width="400" height="42" fill="#ede9fe" stroke="#5b21b6" stroke-width="1.5"/>
+                    <text x="240" y="228" text-anchor="middle" font-size="13" fill="#5b21b6">Checksum (16)</text>
+                    <rect x="440" y="202" width="400" height="42" fill="#ede9fe" stroke="#5b21b6" stroke-width="1.5"/>
+                    <text x="640" y="228" text-anchor="middle" font-size="13" fill="#5b21b6">Ponteiro de Urgência (16)</text>
+                    <!-- Linha 6 -->
+                    <rect x="40" y="244" width="800" height="42" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 5"/>
+                    <text x="440" y="270" text-anchor="middle" font-size="12" fill="#64748b">Opções (MSS, escala de janela, SACK, timestamps…) + Enchimento</text>
+                </svg>
+                <p class="figcap">Os flags controlam a conexão; o número de sequência/ACK sustenta a confiabilidade.</p>
+            </div>
+        </div>
+        <div class="nav-footer">03</div>
+    </div>
+
+    <!-- FLAGS E CAMPOS -->
+    <div class="slide-container">
+        <h2 class="slide-title">Flags e campos essenciais</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <table class="comparison-table" style="font-size:16px;">
+                        <tr><th>Flag</th><th>Significado</th></tr>
+                        <tr><td><b><a class="glossario-ref" href="glossario.html#syn">SYN</a></b></td><td>Inicia a conexão (sincroniza sequência).</td></tr>
+                        <tr><td><b>ACK</b></td><td>O campo de confirmação é válido.</td></tr>
+                        <tr><td><b><a class="glossario-ref" href="glossario.html#fin">FIN</a></b></td><td>Encerra o envio (sem mais dados).</td></tr>
+                        <tr><td><b><a class="glossario-ref" href="glossario.html#rst">RST</a></b></td><td>Aborta a conexão imediatamente.</td></tr>
+                        <tr><td><b>PSH</b></td><td>Entregar os dados à aplicação já.</td></tr>
+                        <tr><td><b>URG</b></td><td>Há dados urgentes (raro hoje).</td></tr>
+                    </table>
+                </div>
+                <div>
+                    <div class="info-box c">
+                        <i class="fa-solid fa-hashtag"></i>
+                        <h3>Sequência e confirmação</h3>
+                        <p>O <b>número de sequência</b> identifica a posição do primeiro byte do segmento no fluxo. O <b>ACK</b> informa o <b>próximo byte esperado</b> (confirmação cumulativa).</p>
+                    </div>
+                    <div class="callout"><b>Opções modernas:</b> <a class="glossario-ref" href="glossario.html#mss">MSS</a> (tamanho máximo de segmento), <b>escala de janela</b> (RFC 7323), <b><a class="glossario-ref" href="glossario.html#sack">SACK</a></b> (confirmação seletiva, RFC 2018) e timestamps.</div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">04</div>
+    </div>
+
+    <!-- THREE-WAY HANDSHAKE -->
+    <div class="slide-container">
+        <h2 class="slide-title">Estabelecimento: o three-way handshake</h2>
+        <div class="content-area">
+            <div class="figure">
+                <svg viewBox="0 0 820 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three-way handshake do TCP">
+                    <defs><marker id="hsA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#7c3aed"/></marker></defs>
+                    <rect x="40" y="18" width="150" height="48" rx="10" fill="#ede9fe" stroke="#5b21b6" stroke-width="2"/>
+                    <text x="115" y="48" text-anchor="middle" font-size="15" font-weight="700" fill="#5b21b6">Cliente</text>
+                    <rect x="630" y="18" width="150" height="48" rx="10" fill="#f5f3ff" stroke="#5b21b6" stroke-width="2"/>
+                    <text x="705" y="48" text-anchor="middle" font-size="15" font-weight="700" fill="#5b21b6">Servidor</text>
+                    <line x1="115" y1="66" x2="115" y2="216" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5 6"/>
+                    <line x1="705" y1="66" x2="705" y2="216" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5 6"/>
+                    <text x="410" y="96" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">① SYN (seq = x)</text>
+                    <line x1="118" y1="104" x2="702" y2="104" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#hsA)"/>
+                    <text x="410" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">② SYN, ACK (seq = y, ack = x+1)</text>
+                    <line x1="702" y1="148" x2="118" y2="148" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#hsA)"/>
+                    <text x="410" y="184" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">③ ACK (ack = y+1)</text>
+                    <line x1="118" y1="192" x2="702" y2="192" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#hsA)"/>
+                    <text x="410" y="216" text-anchor="middle" font-size="12" fill="#10b981" font-weight="700">→ conexão ESTABELECIDA</text>
+                </svg>
+                <p class="figcap">As três mensagens sincronizam os <b>números de sequência iniciais (ISN)</b> de cada lado.</p>
+            </div>
+            <div class="callout" style="margin-top:12px;"><b>Por que três?</b> Ambos os lados precisam <b>escolher</b> e <b>confirmar</b> seu ISN. O SYN consome um número de sequência, daí o <span class="kbd">ack = x+1</span>.</div>
+        </div>
+        <div class="nav-footer">05</div>
+    </div>
+
+    <!-- CONFIABILIDADE -->
+    <div class="slide-container">
+        <h2 class="slide-title">Confiabilidade: ACK e retransmissão</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>O receptor confirma os bytes recebidos com <b>ACKs cumulativos</b>. Se um segmento se perde, o emissor o reenvia por dois gatilhos:</p>
+                    <ul class="check-list" style="margin-top:12px;">
+                        <li><b>Timeout (<a class="glossario-ref" href="glossario.html#rto">RTO</a>):</b> esgotou o tempo sem ACK → retransmite.</li>
+                        <li><b>Fast retransmit:</b> <b>3 ACKs duplicados</b> indicam perda → retransmite <i>antes</i> do timeout.</li>
+                    </ul>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-stopwatch"></i>
+                    <h3>Estimando o RTO</h3>
+                    <p>O tempo de espera adapta-se ao <a class="glossario-ref" href="glossario.html#rtt">RTT</a> medido (Jacobson/Karels):</p>
+                    <div class="mono" style="font-size:13px;">
+                        SRTT = (1−α)·SRTT + α·RTT<br>
+                        RTTVAR = (1−β)·RTTVAR + β·|SRTT−RTT|<br>
+                        <span class="res">RTO = SRTT + 4·RTTVAR</span>
+                    </div>
+                </div>
+            </div>
+            <div class="callout"><b>SACK:</b> a confirmação seletiva permite avisar <i>exatamente</i> quais blocos chegaram, evitando reenviar dados já recebidos após uma perda.</div>
+        </div>
+        <div class="nav-footer">06</div>
+    </div>
+
+    <!-- CONTROLE DE FLUXO -->
+    <div class="slide-container">
+        <h2 class="slide-title">Controle de fluxo: a janela deslizante</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p class="lead">O receptor anuncia, no campo <b>Janela</b>, quanto espaço livre tem em seu buffer (<b><a class="glossario-ref" href="glossario.html#rwnd">rwnd</a></b>). O emissor nunca envia mais do que isso sem confirmação.</p>
+                    <div class="callout"><b>Janela deslizante:</b> conforme os ACKs chegam, a "janela" de bytes que podem estar em trânsito <b>avança</b>, mantendo o cano cheio sem estourar o receptor.</div>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-box-open"></i>
+                    <h3>Janela zero e SWS</h3>
+                    <p>Se o buffer enche, o receptor anuncia <b>janela = 0</b> e o emissor pausa, sondando periodicamente. Técnicas evitam a <b>síndrome da janela boba</b> (silly window syndrome), que desperdiçaria a rede com segmentos minúsculos.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">07</div>
+    </div>
+
+    <!-- CONTROLE DE CONGESTIONAMENTO -->
+    <div class="slide-container">
+        <h2 class="slide-title">Controle de congestionamento</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>Diferente do controle de fluxo (que protege o <b>receptor</b>), este protege a <b>rede</b>. O emissor mantém uma <b>janela de congestionamento (<a class="glossario-ref" href="glossario.html#cwnd">cwnd</a>)</b> e envia <span class="kbd">min(cwnd, rwnd)</span>.</p>
+                    <ul class="check-list" style="margin-top:10px; ">
+                        <li><b><a class="glossario-ref" href="glossario.html#slow-start">Partida lenta</a>:</b> cwnd cresce <b>exponencialmente</b> até o limiar <i>ssthresh</i>.</li>
+                        <li><b>Prevenção:</b> depois, cresce <b>linearmente</b> (+1 MSS por RTT).</li>
+                        <li><b>Perda (3 ACKs dup.):</b> cwnd cai à <b>metade</b> (<a class="glossario-ref" href="glossario.html#aimd">AIMD</a>) — fast recovery.</li>
+                        <li><b>Timeout:</b> colapso para 1 MSS e recomeça a partida lenta.</li>
+                    </ul>
+                </div>
+                <div class="figure">
+                    <svg viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Evolução da janela de congestionamento (dente de serra)">
+                        <line x1="46" y1="220" x2="408" y2="220" stroke="#475569" stroke-width="1.5"/>
+                        <line x1="46" y1="220" x2="46" y2="24" stroke="#475569" stroke-width="1.5"/>
+                        <text x="20" y="30" font-size="12" fill="#475569">cwnd</text>
+                        <text x="360" y="238" font-size="12" fill="#475569">tempo (RTT)</text>
+                        <line x1="46" y1="96" x2="408" y2="96" stroke="#7c3aed" stroke-width="1.2" stroke-dasharray="5 5"/>
+                        <text x="356" y="90" font-size="11" fill="#7c3aed">ssthresh</text>
+                        <polyline points="46,220 66,196 86,160 106,110 120,96 230,52 232,150 330,104 332,170 408,128" fill="none" stroke="#7c3aed" stroke-width="2.5"/>
+                        <text x="92" y="244" font-size="10" fill="#64748b">partida lenta</text>
+                        <text x="250" y="44" font-size="10" fill="#64748b">prevenção</text>
+                    </svg>
+                    <p class="figcap">O padrão "dente de serra": cresce até detectar perda, recua e volta a crescer.</p>
+                </div>
+            </div>
+            <div class="note">Variantes históricas: Tahoe e Reno; o padrão atual do Linux é o <b>CUBIC</b>.</div>
+        </div>
+        <div class="nav-footer">08</div>
+    </div>
+
+    <!-- ENCERRAMENTO -->
+    <div class="slide-container">
+        <h2 class="slide-title">Encerramento: o four-way handshake</h2>
+        <div class="content-area">
+            <div class="figure">
+                <svg viewBox="0 0 820 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Encerramento de conexão TCP em quatro passos">
+                    <defs><marker id="clA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#7c3aed"/></marker></defs>
+                    <rect x="40" y="16" width="150" height="46" rx="10" fill="#ede9fe" stroke="#5b21b6" stroke-width="2"/>
+                    <text x="115" y="44" text-anchor="middle" font-size="14" font-weight="700" fill="#5b21b6">Lado A</text>
+                    <rect x="630" y="16" width="150" height="46" rx="10" fill="#f5f3ff" stroke="#5b21b6" stroke-width="2"/>
+                    <text x="705" y="44" text-anchor="middle" font-size="14" font-weight="700" fill="#5b21b6">Lado B</text>
+                    <line x1="115" y1="62" x2="115" y2="238" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5 6"/>
+                    <line x1="705" y1="62" x2="705" y2="238" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5 6"/>
+                    <text x="410" y="86" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">① FIN (seq = u)</text>
+                    <line x1="118" y1="94" x2="702" y2="94" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#clA)"/>
+                    <text x="410" y="124" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">② ACK (ack = u+1)</text>
+                    <line x1="702" y1="132" x2="118" y2="132" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#clA)"/>
+                    <text x="410" y="162" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">③ FIN (seq = v)</text>
+                    <line x1="702" y1="170" x2="118" y2="170" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#clA)"/>
+                    <text x="410" y="200" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">④ ACK (ack = v+1)</text>
+                    <line x1="118" y1="208" x2="702" y2="208" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#clA)"/>
+                    <text x="410" y="234" text-anchor="middle" font-size="12" fill="#64748b">Lado A entra em TIME_WAIT (2·MSL) antes de fechar</text>
+                </svg>
+                <p class="figcap">Cada sentido é fechado de forma independente (o TCP é full-duplex), permitindo o "meio-fechamento".</p>
+            </div>
+        </div>
+        <div class="nav-footer">09</div>
+    </div>
+
+    <!-- MÁQUINA DE ESTADOS -->
+    <div class="slide-container">
+        <h2 class="slide-title">Os principais estados de uma conexão</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Estado</th><th>Significado</th></tr>
+                <tr><td>LISTEN</td><td>Servidor aguardando conexões.</td></tr>
+                <tr><td>SYN-SENT / SYN-RECEIVED</td><td><a class="glossario-ref" href="glossario.html#handshake">Handshake</a> em andamento.</td></tr>
+                <tr><td>ESTABLISHED</td><td>Conexão aberta; dados fluindo nos dois sentidos.</td></tr>
+                <tr><td>FIN-WAIT / CLOSE-WAIT</td><td>Um lado iniciou o encerramento.</td></tr>
+                <tr><td><a class="glossario-ref" href="glossario.html#time-wait">TIME-WAIT</a></td><td>Espera de <b>2·MSL</b> para garantir que ACKs/segmentos atrasados não confundam uma futura conexão.</td></tr>
+                <tr><td>CLOSED</td><td>Conexão encerrada.</td></tr>
+            </table>
+            <div class="callout"><b>Por que TIME_WAIT existe?</b> Para absorver retransmissões tardias do FIN e impedir que pacotes "fantasmas" de uma conexão antiga sejam aceitos por uma nova com a mesma quádrupla.</div>
+        </div>
+        <div class="nav-footer">10</div>
+    </div>
+
+    <!-- TCP x UDP -->
+    <div class="slide-container">
+        <h2 class="slide-title">TCP × UDP: quando usar cada um</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Aspecto</th><th>TCP</th><th><a class="glossario-ref" href="glossario.html#udp">UDP</a></th></tr>
+                <tr><td>Conexão</td><td>Orientado a conexão (handshake)</td><td>Sem conexão</td></tr>
+                <tr><td>Confiabilidade</td><td>Garantida (ACK + retransmissão)</td><td>Não garantida</td></tr>
+                <tr><td>Ordem</td><td>Preservada</td><td>Não preservada</td></tr>
+                <tr><td>Cabeçalho</td><td>20–60 bytes</td><td>8 bytes</td></tr>
+                <tr><td>Controle de fluxo/congestão</td><td>Sim</td><td>Não</td></tr>
+                <tr><td>Uso típico</td><td>Web (<a class="glossario-ref" href="glossario.html#http">HTTP</a>), e-mail, SSH, transferência de arquivos</td><td>DNS, streaming, <a class="glossario-ref" href="glossario.html#voip">VoIP</a>, jogos</td></tr>
+            </table>
+            <div class="ok"><b>Regra prática:</b> use TCP quando <b>cada byte importa</b>; use UDP quando <b>a velocidade importa mais</b> que a entrega perfeita.</div>
+        </div>
+        <div class="nav-footer">11</div>
+    </div>
+
+    <!-- SEGURANÇA -->
+    <div class="slide-container">
+        <h2 class="slide-title">Segurança: ataques e defesas</h2>
+        <div class="content-area">
+            <div class="grid-3">
+                <div class="info-box r">
+                    <i class="fa-solid fa-people-robbery"></i>
+                    <h3>SYN flood</h3>
+                    <p>O atacante envia muitos SYN e não completa o handshake, lotando a fila de conexões <b>meio-abertas</b> (DoS). Defesa: <b>SYN <a class="glossario-ref" href="glossario.html#cookie">cookies</a></b>.</p>
+                </div>
+                <div class="info-box r">
+                    <i class="fa-solid fa-dice"></i>
+                    <h3>Previsão de sequência</h3>
+                    <p>Adivinhar o ISN permite injetar dados ou sequestrar a conexão. Defesa: <b>ISN aleatório</b> (RFC 6528).</p>
+                </div>
+                <div class="info-box r">
+                    <i class="fa-solid fa-scissors"></i>
+                    <h3>Injeção de RST</h3>
+                    <p>Um RST forjado derruba a conexão. Mitigações verificam a janela e a sequência do pacote.</p>
+                </div>
+            </div>
+            <div class="callout"><b>Confidencialidade:</b> o TCP <b>não cifra</b> nada. Sigilo e autenticação vêm de uma camada acima — o <b><a class="glossario-ref" href="glossario.html#tls">TLS</a></b> (<a class="glossario-ref" href="glossario.html#https">HTTPS</a>).</div>
+        </div>
+        <div class="nav-footer">12</div>
+    </div>
+
+    <!-- RESUMO -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag" style="background:#10b981;">Síntese</div>
+            <h1 style="font-size:46px;">Em resumo</h1>
+            <p style="max-width: 880px; margin: 0 auto;">O <b>TCP</b> transforma o serviço não confiável do IP em um <b>fluxo de bytes confiável e ordenado</b>.
+                Abre a conexão com o <b>three-way handshake</b>, recupera perdas com <b>ACK e retransmissão</b>, ajusta a taxa com <b>controle de fluxo</b>
+                (rwnd) e de <b>congestionamento</b> (cwnd, partida lenta + AIMD), e encerra com o <b>four-way handshake</b>. É a base de HTTP, e-mail e SSH —
+                deixando a cifragem para o <b>TLS</b>.</p>
+            <a class="backbar" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Disciplina de Serviços de Redes</p>
+        <p>Referências: RFC 9293 (TCP, revisão) · RFC 793 (original) · RFC 5681 (controle de congestionamento) · RFC 7323 / 2018 (opções).</p>
+    </footer>
+
+</body>
+
+</html>

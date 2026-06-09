@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo IPv6 — Serviços de Redes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/slides.css">
+    <style>
+        body { background-color: #f1f5f9; }
+        .slide-container { background-color: #ffffff; font-family: "DM Sans", sans-serif; }
+        h1, h2, h3 { font-family: "Merriweather", serif; color: #003366; z-index: 1; }
+        p, li { color: #475569; font-size: 21px; line-height: 1.6; z-index: 1; }
+        .slide-title { font-size: 40px; font-weight: 700; padding: 44px 80px 10px; text-align: left; border-bottom: 4px solid #003366; margin: 0 60px; display: inline-block; }
+        .content-area { flex-grow: 1; padding: 28px 80px 46px; display: flex; flex-direction: column; justify-content: center; z-index: 1; }
+        .title-layout { text-align: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #003366 0%, #001a33 100%); color: #fff; }
+        .title-layout h1 { color: #fff; font-size: 64px; margin-bottom: 18px; }
+        .title-layout p { color: #cbd5e1; font-size: 25px; }
+        .topic-tag { background: #6366f1; color: #fff; padding: 7px 20px; border-radius: 50px; font-weight: bold; font-size: 17px; display: inline-block; margin-bottom: 18px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; align-items: stretch; }
+        .info-box { background: #f8fafc; border-radius: 12px; padding: 24px; border-top: 6px solid #003366; }
+        .info-box.c { border-top-color: #6366f1; }
+        .info-box.g { border-top-color: #10b981; }
+        .info-box.r { border-top-color: #ef4444; }
+        .info-box i { font-size: 40px; color: #003366; margin-bottom: 12px; }
+        .info-box h3 { font-size: 21px; margin-bottom: 8px; }
+        .info-box p { font-size: 16px; line-height: 1.5; }
+        .highlight-text { font-size: 26px; color: #3730a3; font-weight: 500; border-left: 6px solid #6366f1; padding-left: 20px; line-height: 1.4; }
+        .icon-large { font-size: 84px; color: #003366; opacity: 0.85; }
+        .check-list { list-style: none; padding-left: 0; }
+        .check-list li { margin-bottom: 12px; position: relative; padding-left: 38px; }
+        .check-list li::before { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; color: #10b981; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 17px; }
+        .comparison-table th { background: #003366; color: #fff; padding: 12px 14px; text-align: left; }
+        .comparison-table td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; }
+        .comparison-table tr:nth-child(even) { background: #f8fafc; }
+        .mono { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 16px 20px; font-family: "Fira Code", monospace; font-size: 15px; line-height: 1.7; margin-top: 12px; }
+        .mono .res { color: #818cf8; font-weight: 700; }
+        .mono .cmt { color: #64748b; }
+        .callout { border-left: 5px solid #6366f1; background: #eef2ff; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .callout b { color: #3730a3; }
+        .warn { border-left: 5px solid #ef4444; background: #fef2f2; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .warn b { color: #b91c1c; }
+        .ok { border-left: 5px solid #10b981; background: #ecfdf5; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 17px; line-height: 1.55; margin-top: 14px; }
+        .ok b { color: #065f46; }
+        .lead { font-size: 24px; line-height: 1.55; }
+        .note { font-size: 14px; color: #94a3b8; margin-top: 10px; }
+        .figure { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; }
+        .figure svg { width: 100%; height: auto; display: block; }
+        .figcap { font-size: 14px; color: #64748b; text-align: center; margin-top: 8px; }
+        .kbd { font-family: "Fira Code", monospace; background: #e2e8f0; padding: 1px 7px; border-radius: 5px; font-size: 0.92em; color: #0f172a; }
+        .nav-footer { position: absolute; bottom: 16px; right: 28px; font-size: 13px; color: #94a3b8; z-index: 2; }
+        .backbar { display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; padding: 12px 24px; border: 1px solid rgba(255,255,255,0.25); border-radius: 50px; color: #fff; text-decoration: none; font-weight: 600; }
+        .backbar:hover { background: rgba(255,255,255,0.12); }
+    </style>
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="slides-light">
+
+    <!-- CAPA -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag">Tópico 06 · Camada de Rede</div>
+            <h1>Protocolo IPv6</h1>
+            <p>O sucessor do <a class="glossario-ref" href="glossario.html#ipv4">IPv4</a>: 128 bits, cabeçalho simplificado e autoconfiguração — RFC 8200</p>
+            <div style="margin-top: 44px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 16px; width: 340px;">ADS · Serviços de Redes</div>
+        </div>
+    </div>
+
+    <!-- POR QUE IPV6 -->
+    <div class="slide-container">
+        <h2 class="slide-title">Por que o IPv6 existe</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p class="highlight-text">O <a class="glossario-ref" href="glossario.html#ipv6">IPv6</a> nasceu para resolver o esgotamento do IPv4 — e, de quebra, simplificar e modernizar a camada de rede.</p>
+                    <ul class="check-list" style="margin-top:20px;">
+                        <li><b>Espaço gigantesco:</b> de 32 para <b>128 bits</b> de endereço.</li>
+                        <li><b>Cabeçalho mais simples:</b> tamanho fixo e processamento mais rápido nos <a class="glossario-ref" href="glossario.html#roteador">roteadores</a>.</li>
+                        <li><b>Autoconfiguração nativa:</b> o host pode se configurar sozinho (<a class="glossario-ref" href="glossario.html#slaac">SLAAC</a>).</li>
+                        <li><b>Fim da necessidade de <a class="glossario-ref" href="glossario.html#nat">NAT</a>:</b> restaura a conectividade fim a fim.</li>
+                    </ul>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-infinity"></i>
+                    <h3>A escala do número</h3>
+                    <p>2<sup>128</sup> ≈ <b>3,4 × 10<sup>38</sup></b> endereços. São cerca de <b>10<sup>28</sup></b> endereços por habitante do planeta — praticamente inesgotável.</p>
+                </div>
+            </div>
+            <div class="note">Padronizado em 1998 (RFC 2460) e consolidado na RFC 8200 (2017).</div>
+        </div>
+        <div class="nav-footer">01</div>
+    </div>
+
+    <!-- NOTAÇÃO -->
+    <div class="slide-container">
+        <h2 class="slide-title">Notação: hexadecimal e compressão</h2>
+        <div class="content-area">
+            <p class="lead">Os 128 bits são escritos como <b>8 grupos de 16 bits</b> (hextetos) em <b>hexadecimal</b>, separados por dois-pontos.</p>
+            <div class="mono">
+                2001:0db8:0000:0000:0000:ff00:0042:8329<br>
+                <span class="cmt"># forma completa (8 hextetos)</span><br><br>
+                2001:db8:0:0:0:ff00:42:8329<br>
+                <span class="cmt"># regra 1: remover zeros à esquerda de cada grupo</span><br><br>
+                2001:db8::ff00:42:8329<br>
+                <span class="cmt"># regra 2: "::" substitui UMA sequência de grupos zero</span>
+            </div>
+            <div class="warn"><b>O <span class="kbd">::</span> só pode aparecer uma vez</b> por endereço — caso contrário seria impossível saber quantos grupos de zeros ele representa.</div>
+        </div>
+        <div class="nav-footer">02</div>
+    </div>
+
+    <!-- ESTRUTURA DO ENDEREÇO -->
+    <div class="slide-container">
+        <h2 class="slide-title">Estrutura do endereço</h2>
+        <div class="content-area">
+            <div class="figure">
+                <svg viewBox="0 0 860 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Estrutura de um endereço IPv6 unicast global">
+                    <rect x="40" y="46" width="300" height="50" fill="#e0e7ff" stroke="#3730a3" stroke-width="1.8"/>
+                    <text x="190" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="#3730a3">Prefixo de Roteamento Global</text>
+                    <text x="190" y="88" text-anchor="middle" font-size="12" fill="#475569">48 bits</text>
+                    <rect x="340" y="46" width="100" height="50" fill="#ede9fe" stroke="#6d28d9" stroke-width="1.8"/>
+                    <text x="390" y="70" text-anchor="middle" font-size="12" font-weight="700" fill="#5b21b6">Sub-rede</text>
+                    <text x="390" y="88" text-anchor="middle" font-size="12" fill="#475569">16 bits</text>
+                    <rect x="440" y="46" width="400" height="50" fill="#dcfce7" stroke="#16a34a" stroke-width="1.8"/>
+                    <text x="640" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">Identificador de Interface</text>
+                    <text x="640" y="88" text-anchor="middle" font-size="12" fill="#475569">64 bits</text>
+                    <!-- chaves -->
+                    <line x1="40" y1="112" x2="440" y2="112" stroke="#3730a3" stroke-width="2"/>
+                    <text x="240" y="130" text-anchor="middle" font-size="13" fill="#3730a3">Prefixo de rede (normalmente /64)</text>
+                    <line x1="440" y1="112" x2="840" y2="112" stroke="#166534" stroke-width="2"/>
+                    <text x="640" y="130" text-anchor="middle" font-size="13" fill="#166534">Identifica o host na sub-rede</text>
+                    <text x="40" y="34" font-size="12" fill="#64748b">0</text>
+                    <text x="825" y="34" font-size="12" fill="#64748b">127</text>
+                </svg>
+                <p class="figcap">O padrão de fato usa <b>/64</b>: metade para a rede, metade para a interface.</p>
+            </div>
+            <div class="callout" style="margin-top:14px;"><b>Identificador de interface:</b> pode ser derivado do <a class="glossario-ref" href="glossario.html#mac">endereço MAC</a> pelo formato <b>EUI-64</b>, ou gerado aleatoriamente pelas <b>extensões de privacidade</b> (RFC 4941), que evitam rastreamento pelo MAC.</div>
+        </div>
+        <div class="nav-footer">03</div>
+    </div>
+
+    <!-- TIPOS DE ENDEREÇO -->
+    <div class="slide-container">
+        <h2 class="slide-title">Tipos de endereço (não há broadcast!)</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Tipo / faixa</th><th>Nome</th><th>Função</th></tr>
+                <tr><td>2000::/3</td><td>Unicast global</td><td>Roteável na Internet pública (equivale ao <a class="glossario-ref" href="glossario.html#ip">IP</a> público).</td></tr>
+                <tr><td>fe80::/10</td><td>Link-local</td><td>Válido só no enlace local; obrigatório em toda interface. Base do <a class="glossario-ref" href="glossario.html#ndp">NDP</a>.</td></tr>
+                <tr><td>fc00::/7 (fd00::/8)</td><td>Unique Local (ULA)</td><td>Uso interno/privado — análogo ao RFC 1918 do IPv4.</td></tr>
+                <tr><td>ff00::/8</td><td>Multicast</td><td>Entrega a um grupo (ex.: <span class="kbd">ff02::1</span> = todos os nós).</td></tr>
+                <tr><td>(grupo unicast)</td><td>Anycast</td><td>Entregue ao membro <b>mais próximo</b> do grupo.</td></tr>
+                <tr><td>::1 &nbsp;/&nbsp; ::</td><td>Loopback / Não especificado</td><td>O próprio host / ausência de endereço.</td></tr>
+            </table>
+            <div class="callout"><b>Adeus, <a class="glossario-ref" href="glossario.html#broadcast">broadcast</a>:</b> o IPv6 abandona o broadcast e usa <b>multicast</b> e <b>anycast</b>, reduzindo tráfego desnecessário na rede.</div>
+        </div>
+        <div class="nav-footer">04</div>
+    </div>
+
+    <!-- CABEÇALHO: DIAGRAMA -->
+    <div class="slide-container">
+        <h2 class="slide-title">O cabeçalho IPv6 (40 bytes fixos)</h2>
+        <div class="content-area">
+            <p>Mais enxuto que o do IPv4: <b>tamanho fixo</b>, <b>sem checksum</b> e <b>sem campos de fragmentação</b>. Cada linha = 32 bits.</p>
+            <div class="figure" style="margin-top:10px;">
+                <svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Estrutura do cabeçalho IPv6">
+                    <text x="40" y="24" font-size="12" fill="#64748b">0</text>
+                    <text x="232" y="24" font-size="12" fill="#64748b">8</text>
+                    <text x="432" y="24" font-size="12" fill="#64748b">16</text>
+                    <text x="632" y="24" font-size="12" fill="#64748b">24</text>
+                    <text x="828" y="24" font-size="12" fill="#64748b">31</text>
+                    <!-- Linha 1 -->
+                    <rect x="40" y="34" width="100" height="44" fill="#e0e7ff" stroke="#3730a3" stroke-width="1.5"/>
+                    <text x="90" y="60" text-anchor="middle" font-size="12" fill="#3730a3">Versão (4)</text>
+                    <rect x="140" y="34" width="200" height="44" fill="#e0e7ff" stroke="#3730a3" stroke-width="1.5"/>
+                    <text x="240" y="60" text-anchor="middle" font-size="12" fill="#3730a3">Classe de Tráfego (8)</text>
+                    <rect x="340" y="34" width="500" height="44" fill="#ede9fe" stroke="#3730a3" stroke-width="1.5"/>
+                    <text x="590" y="60" text-anchor="middle" font-size="12" fill="#5b21b6">Rótulo de Fluxo / Flow Label (20)</text>
+                    <!-- Linha 2 -->
+                    <rect x="40" y="78" width="400" height="44" fill="#dbeafe" stroke="#3730a3" stroke-width="1.5"/>
+                    <text x="240" y="104" text-anchor="middle" font-size="12" fill="#1e40af">Comprimento da Carga (16)</text>
+                    <rect x="440" y="78" width="200" height="44" fill="#e0e7ff" stroke="#3730a3" stroke-width="1.5"/>
+                    <text x="540" y="104" text-anchor="middle" font-size="12" fill="#3730a3">Próximo Cab. (8)</text>
+                    <rect x="640" y="78" width="200" height="44" fill="#e0e7ff" stroke="#3730a3" stroke-width="1.5"/>
+                    <text x="740" y="104" text-anchor="middle" font-size="12" fill="#3730a3">Limite de Saltos (8)</text>
+                    <!-- Origem 128 -->
+                    <rect x="40" y="122" width="800" height="80" fill="#c7d2fe" stroke="#3730a3" stroke-width="1.5"/>
+                    <text x="440" y="166" text-anchor="middle" font-size="14" font-weight="700" fill="#3730a3">Endereço de Origem (128 bits)</text>
+                    <!-- Destino 128 -->
+                    <rect x="40" y="202" width="800" height="80" fill="#c7d2fe" stroke="#3730a3" stroke-width="1.5"/>
+                    <text x="440" y="246" text-anchor="middle" font-size="14" font-weight="700" fill="#3730a3">Endereço de Destino (128 bits)</text>
+                </svg>
+                <p class="figcap">Apenas 8 campos, contra 13+ do IPv4. Os endereços ocupam 32 dos 40 bytes.</p>
+            </div>
+        </div>
+        <div class="nav-footer">05</div>
+    </div>
+
+    <!-- CAMPOS -->
+    <div class="slide-container">
+        <h2 class="slide-title">Campos do cabeçalho</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Campo</th><th>Bits</th><th>Função</th></tr>
+                <tr><td>Versão</td><td>4</td><td>Vale 6.</td></tr>
+                <tr><td>Classe de Tráfego</td><td>8</td><td>Prioridade/QoS (DSCP + ECN), como no IPv4.</td></tr>
+                <tr><td>Rótulo de Fluxo</td><td>20</td><td>Marca pacotes de um mesmo fluxo para tratamento especial (ex.: tempo real). <b>Novidade do IPv6.</b></td></tr>
+                <tr><td>Comprimento da Carga</td><td>16</td><td>Tamanho do que vem após o cabeçalho fixo (extensões + dados), em bytes.</td></tr>
+                <tr><td>Próximo Cabeçalho</td><td>8</td><td>Tipo do próximo cabeçalho: de extensão ou de transporte (6=<a class="glossario-ref" href="glossario.html#tcp">TCP</a>, 17=<a class="glossario-ref" href="glossario.html#udp">UDP</a>, 58=ICMPv6).</td></tr>
+                <tr><td>Limite de Saltos</td><td>8</td><td>Equivale ao <b><a class="glossario-ref" href="glossario.html#ttl">TTL</a></b>: decrementado a cada roteador.</td></tr>
+                <tr><td>Origem / Destino</td><td>128 + 128</td><td>Endereços IPv6 do remetente e do destinatário.</td></tr>
+            </table>
+            <div class="ok"><b>Sem checksum:</b> o IPv6 confia na verificação do enlace e do transporte (no IPv6, o checksum do <b>UDP é obrigatório</b>). Isso acelera o roteamento, pois não há recálculo a cada salto.</div>
+        </div>
+        <div class="nav-footer">06</div>
+    </div>
+
+    <!-- CABEÇALHOS DE EXTENSÃO -->
+    <div class="slide-container">
+        <h2 class="slide-title">Cabeçalhos de extensão encadeados</h2>
+        <div class="content-area">
+            <p>Em vez do campo "Opções" do IPv4, o IPv6 usa uma <b>cadeia de cabeçalhos de extensão</b>: cada um aponta o tipo do seguinte pelo campo <b>Próximo Cabeçalho</b>.</p>
+            <div class="figure" style="margin-top:10px;">
+                <svg viewBox="0 0 860 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Encadeamento de cabeçalhos de extensão IPv6">
+                    <defs><marker id="extArr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#6366f1"/></marker></defs>
+                    <rect x="20" y="46" width="200" height="56" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="1.8"/>
+                    <text x="120" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="#3730a3">Cabeçalho IPv6</text>
+                    <text x="120" y="90" text-anchor="middle" font-size="11" fill="#475569">Próx = Routing</text>
+                    <line x1="220" y1="74" x2="256" y2="74" stroke="#6366f1" stroke-width="2.5" marker-end="url(#extArr)"/>
+                    <rect x="260" y="46" width="200" height="56" rx="8" fill="#ede9fe" stroke="#6d28d9" stroke-width="1.8"/>
+                    <text x="360" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">Ext.: Routing</text>
+                    <text x="360" y="90" text-anchor="middle" font-size="11" fill="#475569">Próx = Fragment</text>
+                    <line x1="460" y1="74" x2="496" y2="74" stroke="#6366f1" stroke-width="2.5" marker-end="url(#extArr)"/>
+                    <rect x="500" y="46" width="180" height="56" rx="8" fill="#ede9fe" stroke="#6d28d9" stroke-width="1.8"/>
+                    <text x="590" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">Ext.: Fragment</text>
+                    <text x="590" y="90" text-anchor="middle" font-size="11" fill="#475569">Próx = TCP</text>
+                    <line x1="680" y1="74" x2="716" y2="74" stroke="#6366f1" stroke-width="2.5" marker-end="url(#extArr)"/>
+                    <rect x="720" y="46" width="130" height="56" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.8"/>
+                    <text x="785" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">Dados (TCP)</text>
+                    <text x="785" y="90" text-anchor="middle" font-size="11" fill="#475569">carga útil</text>
+                </svg>
+                <p class="figcap">Exemplos: Hop-by-Hop, Routing, Fragment, Destination Options, Authentication (AH) e ESP (IPsec).</p>
+            </div>
+            <div class="warn"><b>Fragmentação só na origem:</b> roteadores IPv6 <b>nunca</b> fragmentam. Se preciso, o emissor usa o cabeçalho <b>Fragment</b>, guiado pelo <i><a class="glossario-ref" href="glossario.html#pmtud">Path MTU Discovery</a></i>. A <a class="glossario-ref" href="glossario.html#mtu">MTU</a> mínima do IPv6 é <b>1280 bytes</b>.</div>
+        </div>
+        <div class="nav-footer">07</div>
+    </div>
+
+    <!-- ICMPv6 / NDP -->
+    <div class="slide-container">
+        <h2 class="slide-title">ICMPv6 e o Neighbor Discovery (NDP)</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <p>O <b>ICMPv6</b> é <b>essencial</b> (não opcional). Sobre ele roda o <b>NDP</b> (Neighbor Discovery Protocol), que <b>substitui o <a class="glossario-ref" href="glossario.html#arp">ARP</a></b> e mais:</p>
+                    <ul class="check-list" style="margin-top:12px;">
+                        <li><b>NS / NA</b> (Neighbor Solicitation/Advertisement): resolução <span class="kbd">IPv6 → MAC</span>.</li>
+                        <li><b>RS / RA</b> (Router Solicitation/Advertisement): descoberta de roteadores e do <b>prefixo</b> da rede.</li>
+                        <li><b>DAD</b>: detecção de endereço duplicado antes de usá-lo.</li>
+                    </ul>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-tower-broadcast"></i>
+                    <h3>Por que multicast?</h3>
+                    <p>Em vez do broadcast do ARP, o NDP usa <b>multicast</b> dirigido (ex.: nó solicitado), incomodando apenas os hosts relevantes — mais eficiente e silencioso na rede.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">08</div>
+    </div>
+
+    <!-- SLAAC -->
+    <div class="slide-container">
+        <h2 class="slide-title">Autoconfiguração: SLAAC × DHCPv6</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div class="info-box g">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <h3>SLAAC (sem estado)</h3>
+                    <p>O host se autoconfigura em passos:</p>
+                    <div class="mono" style="font-size:13px;">
+                        1. forma o link-local (fe80::…)<br>
+                        2. DAD: confirma que é único<br>
+                        3. envia RS / recebe RA<br>
+                        4. combina prefixo (RA) + ID de interface<br>
+                        → <span class="res">endereço global pronto</span>
+                    </div>
+                </div>
+                <div class="info-box c">
+                    <i class="fa-solid fa-server"></i>
+                    <h3>DHCPv6 (com estado)</h3>
+                    <p>Um servidor central atribui endereços e parâmetros (DNS, etc.), como no IPv4 — útil quando se quer <b>controle e registro</b> centralizados. SLAAC e DHCPv6 podem ser combinados.</p>
+                </div>
+            </div>
+            <div class="ok"><b>Diferencial do IPv6:</b> conectar um dispositivo à rede e ele <b>obter um endereço global automaticamente</b>, sem servidor — algo que o IPv4 não faz de forma nativa.</div>
+        </div>
+        <div class="nav-footer">09</div>
+    </div>
+
+    <!-- TRANSIÇÃO -->
+    <div class="slide-container">
+        <h2 class="slide-title">Transição IPv4 → IPv6</h2>
+        <div class="content-area">
+            <p class="lead">A migração é <b>gradual</b>: por anos, IPv4 e IPv6 coexistem. Três estratégias principais:</p>
+            <div class="grid-3" style="margin-top:14px;">
+                <div class="info-box c">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <h3>Pilha dupla</h3>
+                    <p>O dispositivo roda <b>IPv4 e IPv6 simultaneamente</b> e escolhe conforme o destino. É a abordagem preferida.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-box-archive"></i>
+                    <h3>Tunelamento</h3>
+                    <p>Encapsula pacotes <b>IPv6 dentro de IPv4</b> (6in4, 6to4, Teredo) para atravessar trechos que só falam IPv4.</p>
+                </div>
+                <div class="info-box g">
+                    <i class="fa-solid fa-right-left"></i>
+                    <h3>Tradução</h3>
+                    <p><b>NAT64 + DNS64</b> permitem que um host só-IPv6 converse com serviços só-IPv4.</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-footer">10</div>
+    </div>
+
+    <!-- IPV6 x IPV4 -->
+    <div class="slide-container">
+        <h2 class="slide-title">O que muda em relação ao IPv4</h2>
+        <div class="content-area">
+            <table class="comparison-table">
+                <tr><th>Aspecto</th><th>IPv4</th><th>IPv6</th></tr>
+                <tr><td>Endereço</td><td>32 bits (~4,3 bilhões)</td><td>128 bits (~3,4 × 10³⁸)</td></tr>
+                <tr><td>Notação</td><td>Decimal pontuada</td><td>Hexadecimal com <span class="kbd">::</span></td></tr>
+                <tr><td>Cabeçalho</td><td>20–60 bytes, variável</td><td>40 bytes fixos</td></tr>
+                <tr><td>Checksum no cabeçalho</td><td>Sim (recalculado por salto)</td><td>Não</td></tr>
+                <tr><td>Fragmentação</td><td>Origem e roteadores</td><td>Somente a origem</td></tr>
+                <tr><td>Broadcast</td><td>Sim</td><td>Não (usa multicast/anycast)</td></tr>
+                <tr><td>Resolução de MAC</td><td>ARP</td><td>NDP (ICMPv6)</td></tr>
+                <tr><td>Autoconfiguração</td><td><a class="glossario-ref" href="glossario.html#dhcp">DHCP</a></td><td>SLAAC e/ou DHCPv6</td></tr>
+                <tr><td>NAT</td><td>Onipresente</td><td>Em geral dispensável</td></tr>
+            </table>
+        </div>
+        <div class="nav-footer">11</div>
+    </div>
+
+    <!-- RESUMO -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="topic-tag" style="background:#10b981;">Síntese</div>
+            <h1 style="font-size:46px;">Em resumo</h1>
+            <p style="max-width: 880px; margin: 0 auto;">O <b>IPv6</b> amplia o endereçamento para <b>128 bits</b>, com notação hexadecimal
+                e compressão por <span class="kbd">::</span>. Seu <b>cabeçalho fixo de 40 bytes</b> é mais simples e rápido — sem checksum e sem
+                fragmentação por roteadores. Abandona o broadcast, traz <b>NDP/ICMPv6</b> no lugar do ARP e <b>autoconfiguração (SLAAC)</b>
+                nativa. A transição a partir do IPv4 é gradual, via <b>pilha dupla</b>, tunelamento e tradução.</p>
+            <a class="backbar" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Disciplina de Serviços de Redes</p>
+        <p>Referências: RFC 8200 (IPv6) · RFC 4861 (NDP) · RFC 4862 (SLAAC) · RFC 4291 (arquitetura de endereçamento).</p>
+    </footer>
+
+</body>
+
+</html>
