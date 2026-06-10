@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>01. Evolução Histórica e Paradigmas Distribuídos</title>
+    <style>
+        body { font-family: 'Segoe UI', serif; background-color: #fafafa; color: #222; margin: 40px auto; max-width: 800px; line-height: 1.6; }
+        h1 { color: #1e293b; border-bottom: 2px solid #2563eb; padding-bottom: 10px; }
+        h2 { color: #1e293b; margin-top: 30px; }
+        .math { font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold; color: #1e40af; }
+        .paper-callout { background-color: #f0f4ff; border-left: 4px solid #2563eb; padding: 15px; margin: 20px 0; font-size: 10.5pt; }
+    </style>
+</head>
+<body>
+    <a href="index.html">← Voltar ao Portal</a>
+    <h1>01. Evolução Histórica e Paradigmas Distribuídos</h1>
+    <p>A evolução da Computação em Nuvem não se limita a marcos comerciais, mas sim à superação de barreiras de engenharia de software e infraestrutura em sistemas distribuídos de larga escala.</p>
+    
+    <h2>1. A Quebra de Paradigmas: Dos Mainframes à Nuvem</h2>
+    <ul>
+        <li><strong>Computação Centralizada (Mainframes):</strong> Alto poder concentrado, ausência de elasticidade temporal e dependência de hardware proprietário.</li>
+        <li><strong>Clusters de Computadores:</strong> Acoplamento local forte com redes de alta velocidade, visando redundância e processamento paralelo de alto desempenho (HPC).</li>
+        <li><strong>Computação em Grade (Grid Computing):</strong> Sistemas amplamente distribuídos e heterogêneos sob domínios administrativos distintos. O modelo falhou na adoção comercial em massa devido à complexidade de padronização de middleware e garantia de QoS (Quality of Service).</li>
+        <li><strong>Computação em Nuvem (Cloud Computing):</strong> Convergência entre virtualização robusta, redes de alta velocidade e utilidade econômica sob demanda.</li>
+    </ul>
+
+    <h2>2. Limites Teóricos da Escalaridade</h2>
+    <p>O design de arquiteturas de nuvem deve respeitar leis de concorrência. A aceleração de um sistema com <span class="math">N</span> processadores paralelos é limitada pela fração sequencial do código (<span class="math">s</span>), conforme a <strong>Lei de Amdahl</strong>:</p>
+    
+    <div style="text-align:center; margin:1em 0; font-size:1.2em;">
+        <span class="math">S(N) = rac{1}{s + rac{1-s}{N}}</span>
+    </div>
+
+    <p>Por outro lado, para cargas de trabalho escaláveis dinamicamente na nuvem, aplica-se a <strong>Lei de Gustafson</strong>, que assume que o tamanho do problema cresce proporcionalmente à quantidade de recursos disponíveis.</p>
+
+    <div class="paper-callout">
+        <strong>Leitura Científica Recomendada:</strong><br>
+        • Armbrust, M., et al. (2009). <em>"Above the Clouds: A Berkeley View of Cloud Computing"</em>. UC Berkeley Technical Report.<br>
+        • Foster, I., & Kesselman, C. (1999). <em>"The Grid: Blueprint for a New Computing Infrastructure"</em>. Morgan Kaufmann.
+    </div>
+</body>
+</html>
