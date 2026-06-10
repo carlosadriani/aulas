@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>03. Glossário Técnico e Modelagem Quantitativa</title>
+    <style>
+        body { font-family: 'Segoe UI', serif; background-color: #fafafa; color: #222; margin: 40px auto; max-width: 800px; line-height: 1.6; }
+        h1 { color: #1e293b; border-bottom: 2px solid #2563eb; padding-bottom: 10px; }
+        h2 { color: #1e293b; margin-top: 30px; }
+        .math { font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold; color: #1e40af; }
+        .definition-box { background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; margin: 15px 0; border-radius: 6px; }
+    </style>
+</head>
+<body>
+    <a href="index.html">← Voltar ao Portal</a>
+    <h1>03. Glossário Técnico e Modelagem Quantitativa</h1>
+
+    <div class="definition-box">
+        <h3>Escalabilidade vs. Elasticidade</h3>
+        <p><strong>Escalabilidade:</strong> É a habilidade intrínseca de uma infraestrutura suportar volumes crescentes de carga de trabalho apenas mediante a adição linear de recursos de hardware (escala vertical ou horizontal).</p>
+        <p><strong>Elasticidade:</strong> É o grau com que o sistema se adapta autonomamente à variação dinâmica de carga, alocando ou desalocando recursos em tempo real de forma ideal.</p>
+    </div>
+
+    <h2>Cálculo Científico de Disponibilidade (SLA / SLO)</h2>
+    <p>Em ambientes acadêmicos e de engenharia de alta confiabilidade, a métrica de disponibilidade não é estimada, mas calculada com precisão com base nas taxas de falhas observadas, utilizando o Tempo Médio Entre Falhas (<span class="math">MTBF</span>) e o Tempo Médio de Reparo (<span class="math">MTTR</span>):</p>
+
+    <div style="text-align:center; margin:1em 0; font-size:1.2em;">
+        <span class="math">Disponibilidade (\%) = \left( rac{MTBF}{MTBF + MTTR} ight) 	imes 100</span>
+    </div>
+
+    <h2>Dinâmica de Custos Corporativos</h2>
+    <ul>
+        <li><strong>CapEx (Capital Expenditure):</strong> Gastos de capital em ativos fixos tangíveis (ex: compra de servidores físicos para Data Center local).</li>
+        <li><strong>OpEx (Operational Expenditure):</strong> Gastos operacionais contínuos pagos pelo uso sob demanda (ex: pagamento mensal de instâncias de processamento em nuvem pública).</li>
+    </ul>
+</body>
+</html>
