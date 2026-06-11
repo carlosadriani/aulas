@@ -330,6 +330,149 @@ loop:<br>
         </div>
     </div>
 
+    <!-- APROFUNDAMENTO: Máquina multinível -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: a máquina multinível</h2></div>
+        <div class="content">
+            <p>Tanenbaum descreve o computador como uma <span class="highlight">máquina de níveis</span>: cada nível é
+                uma máquina virtual que esconde os detalhes do nível inferior. Programar em um nível dispensa conhecer
+                como ele é realizado abaixo — é a ideia de <b>abstração em camadas</b>.</p>
+            <table class="table">
+                <tr><th>Nível</th><th>Camada</th><th>Como é executado</th></tr>
+                <tr><td>5</td><td>Linguagem de alto nível (C, Java, Python)</td><td>Tradução (compilador) ou interpretação</td></tr>
+                <tr><td>4</td><td>Linguagem de montagem (Assembly)</td><td>Tradução pelo montador</td></tr>
+                <tr><td>3</td><td>Máquina do sistema operacional</td><td>Parcialmente interpretado pelo SO</td></tr>
+                <tr><td>2</td><td>Arquitetura do conjunto de instruções (ISA)</td><td>Interpretado pelo microprograma ou hardware</td></tr>
+                <tr><td>1</td><td>Microarquitetura (datapath + microprograma)</td><td>Executado diretamente pelo hardware</td></tr>
+                <tr><td>0</td><td>Lógica digital (portas, flip-flops)</td><td>Eletrônica física</td></tr>
+            </table>
+            <div class="info-box">
+                <p>A <b>ISA</b> (nível 2) é a fronteira crítica: é o "contrato" estável que permite que software escrito
+                    hoje rode em processadores futuros, mesmo que a microarquitetura (nível 1) mude completamente.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Microarquitetura -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: dentro da microarquitetura</h2></div>
+        <div class="content">
+            <p>Abaixo da ISA, a microarquitetura organiza o processador em duas partes que cooperam a cada ciclo de
+                clock:</p>
+            <div class="grid" style="margin-top: 14px;">
+                <div class="card">
+                    <h3><i class="fa-solid fa-route"></i> Caminho de dados (datapath)</h3>
+                    <p>Os recursos por onde os dados fluem e são transformados: ULA, banco de registradores,
+                        multiplexadores, barramentos internos e registradores de estágio (MAR, MBR, IR).</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fa-solid fa-traffic-light"></i> Unidade de controle</h3>
+                    <p>Gera, a cada ciclo, os <b>sinais de controle</b> que abrem/fecham os caminhos do datapath
+                        (qual operação a ULA faz, qual registrador é lido/escrito, se a memória lê ou grava).</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <p>Duas formas de implementar o controle: <b>cabeado (hardwired)</b> — lógica combinacional fixa, rápida,
+                    típica de RISC; e <b>microprogramado</b> — cada instrução da ISA vira uma sequência de
+                    microinstruções armazenadas numa memória de controle, mais flexível e usado historicamente em CISC.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: von Neumann e IAS -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: a máquina IAS e a arquitetura Harvard</h2></div>
+        <div class="content">
+            <p>O artigo de von Neumann (1945) deu origem à <span class="highlight">máquina IAS</span> (Princeton,
+                concluída em 1952), modelo de quase toda CPU posterior. Ela já definia uma estrutura de registradores
+                que persiste hoje:</p>
+            <div class="grid" style="margin-top: 10px;">
+                <table class="table">
+                    <tr><th>Registrador</th><th>Função (já na IAS)</th></tr>
+                    <tr><td>PC</td><td>Endereço da próxima instrução</td></tr>
+                    <tr><td>MAR</td><td>Endereço a acessar na memória</td></tr>
+                    <tr><td>MBR</td><td>Dado lido/escrito na memória</td></tr>
+                    <tr><td>IR</td><td>Instrução em execução</td></tr>
+                    <tr><td>AC / MQ</td><td>Operandos e resultados da ULA</td></tr>
+                </table>
+                <div>
+                    <p>A IAS usava palavras de <b>40 bits</b> e podia guardar duas instruções de 20 bits por palavra.
+                        O conceito-chave permanece: <b>instruções e dados na mesma memória</b>, indistinguíveis a não ser
+                        pelo contexto.</p>
+                    <p style="margin-top: 12px;">A alternativa é a <b>arquitetura Harvard</b>: memórias e barramentos
+                        separados para instruções e dados, permitindo buscá-los simultaneamente. CPUs modernas são
+                        <b>Harvard modificada</b> — von Neumann na memória principal, mas caches L1 separadas de
+                        instrução e de dados.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Equação de desempenho -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: medindo desempenho cientificamente</h2></div>
+        <div class="content">
+            <p>O desempenho de uma CPU não se resume ao clock. A <span class="highlight">equação fundamental do tempo de
+                CPU</span> reúne os três fatores que realmente importam:</p>
+            <div class="code-box" style="margin-top: 14px;">
+T<sub>CPU</sub> = IC × CPI × T<sub>clock</sub><br><br>
+IC&nbsp;&nbsp;&nbsp;&nbsp;= nº de instruções executadas<br>
+CPI&nbsp;&nbsp;&nbsp;= ciclos médios por instrução<br>
+T<sub>clock</sub> = duração do ciclo (= 1 / frequência)
+            </div>
+            <div class="info-box">
+                <p>Cada fator é influenciado por um fator de projeto: a <b>ISA e o compilador</b> mexem no IC; a
+                    <b>microarquitetura</b> (pipeline, cache) mexe no CPI; a <b>tecnologia do circuito</b> mexe no
+                    T<sub>clock</sub>. Métricas como <b>MIPS</b> e <b>FLOPS</b> são derivadas, mas enganam entre
+                    arquiteturas diferentes — por isso usam-se <b>benchmarks</b> padronizados (SPEC CPU) com média
+                    geométrica para comparar máquinas de forma justa.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Lei de Amdahl -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: a Lei de Amdahl</h2></div>
+        <div class="content">
+            <div class="grid">
+                <div>
+                    <p>Quando se acelera apenas <b>parte</b> de um sistema, o ganho global é limitado pela fração que
+                        <b>não</b> foi acelerada. Esse é o princípio que rege qualquer otimização — inclusive o
+                        paralelismo.</p>
+                    <div class="code-box" style="margin-top: 12px;">
+Speedup = 1 / ( (1 − f) + f / s )<br><br>
+f = fração afetada pela melhoria<br>
+s = aceleração dessa fração
+                    </div>
+                </div>
+                <div class="info-box" style="margin-top:0;">
+                    <p><b>Exemplo:</b> se 90% de um programa é paralelizável (f = 0,9) e usamos infinitos núcleos
+                        (s → ∞), o speedup máximo é 1 / (1 − 0,9) = <b>10×</b>. Os 10% sequenciais impõem o teto.</p>
+                    <p style="margin-top: 10px;">Conclusão científica: <b>a parte serial domina</b>. Vale mais reduzir o
+                        trecho sequencial do que adicionar processadores indefinidamente.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Moore, Dennard e multicore -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: Moore, Dennard e a virada multinúcleo</h2></div>
+        <div class="content">
+            <ul class="spaced" style="font-size: 22px;">
+                <li><span class="highlight">Lei de Moore (1965):</span> o número de transistores em um chip dobra a cada
+                    ~2 anos. É uma tendência econômica/empírica, não uma lei física — e vem desacelerando.</li>
+                <li><span class="highlight">Escalonamento de Dennard:</span> historicamente, transistores menores
+                    consumiam proporcionalmente menos energia, permitindo elevar o clock sem aumentar a densidade de
+                    potência. Esse escalonamento <b>cessou por volta de 2005/2006</b>.</li>
+                <li><span class="highlight">A consequência ("power wall"):</span> sem o ganho de Dennard, elevar o clock
+                    passou a gerar calor inviável. A indústria respondeu colocando <b>mais núcleos</b> em vez de clocks
+                    maiores — daí o domínio dos processadores <b>multinúcleo</b> e a importância do paralelismo (e da Lei
+                    de Amdahl).</li>
+            </ul>
+        </div>
+    </div>
+
     <!-- Glossário -->
     <div class="slide">
         <div class="header"><h2>Glossário do tópico</h2></div>
@@ -341,7 +484,57 @@ loop:<br>
                 <tr><td><b>PC</b></td><td>Program Counter; aponta a próxima instrução.</td></tr>
                 <tr><td><b>Barramento</b></td><td>Conjunto de fios que conecta os componentes.</td></tr>
                 <tr><td><b>von Neumann</b></td><td>Modelo de programa armazenado; instruções e dados na mesma memória.</td></tr>
+                <tr><td><b>Microarquitetura</b></td><td>Implementação da ISA: datapath + unidade de controle.</td></tr>
+                <tr><td><b>CPI</b></td><td>Ciclos por instrução; fator central do desempenho.</td></tr>
+                <tr><td><b>Lei de Amdahl</b></td><td>O ganho global é limitado pela fração não acelerada (parte serial).</td></tr>
             </table>
+        </div>
+    </div>
+
+    <!-- Exercícios resolvidos -->
+    <div class="slide">
+        <div class="header"><h2>Exercícios resolvidos</h2></div>
+        <div class="content">
+            <div style="display:flex; flex-direction:column; gap:16px;">
+                <div>
+                    <p style="font-size:21px;"><b>1.</b> Explique, com um exemplo, a diferença entre <b>arquitetura</b> e
+                        <b>organização</b> de um computador.</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">Arquitetura são os atributos visíveis ao
+                            programador (ex.: o conjunto de instruções, ter ou não a instrução de multiplicação).
+                            Organização é como isso é implementado fisicamente (ex.: a multiplicação ser feita por um
+                            circuito dedicado ou por somas repetidas). Duas CPUs com a mesma arquitetura rodam o mesmo
+                            software, mesmo tendo organizações internas diferentes.</div>
+                    </details>
+                </div>
+                <div>
+                    <p style="font-size:21px;"><b>2.</b> Um barramento de endereços possui <b>24 linhas</b>. Qual a
+                        quantidade máxima de memória endereçável?</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">Com <i>n</i> linhas, endereçam-se 2<sup>n</sup>
+                            posições. 2<sup>24</sup> = 16.777.216 endereços = <b>16 MiB</b> (considerando 1 byte por
+                            endereço).</div>
+                    </details>
+                </div>
+                <div>
+                    <p style="font-size:21px;"><b>3.</b> Um programa executa 10<sup>9</sup> instruções, com CPI médio
+                        de <b>2</b>, em uma CPU de <b>2 GHz</b>. Qual o tempo de execução?</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">T<sub>CPU</sub> = IC × CPI × T<sub>clock</sub>.
+                            T<sub>clock</sub> = 1 / (2×10<sup>9</sup>) = 0,5 ns. Logo T = 10<sup>9</sup> × 2 × 0,5 ns =
+                            10<sup>9</sup> ns = <b>1 segundo</b>.</div>
+                    </details>
+                </div>
+                <div>
+                    <p style="font-size:21px;"><b>4.</b> Um programa é 80% paralelizável. Qual o ganho máximo (speedup)
+                        ao usar <b>4 núcleos</b>, pela Lei de Amdahl?</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">Speedup = 1 / ((1 − f) + f/s) =
+                            1 / ((1 − 0,8) + 0,8/4) = 1 / (0,2 + 0,2) = <b>2,5×</b>. Note que, mesmo com infinitos
+                            núcleos, o teto seria 1/0,2 = 5×.</div>
+                    </details>
+                </div>
+            </div>
         </div>
     </div>
 

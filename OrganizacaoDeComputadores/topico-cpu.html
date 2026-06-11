@@ -238,6 +238,139 @@ JMP&nbsp;1000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// desvia para 1000
         </div>
     </div>
 
+    <!-- APROFUNDAMENTO: Formato de instrução e endereçamento -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: formato de instrução e modos de endereçamento</h2></div>
+        <div class="content">
+            <p>Cada instrução de máquina é uma palavra binária dividida em campos: o <b>opcode</b> (operação) e um ou
+                mais <b>operandos</b>. Os <span class="highlight">modos de endereçamento</span> definem <i>como</i>
+                localizar cada operando:</p>
+            <table class="table">
+                <tr><th>Modo</th><th>O operando é...</th><th>Exemplo</th></tr>
+                <tr><td><b>Imediato</b></td><td>o próprio valor, embutido na instrução</td><td>ADD R1, #5</td></tr>
+                <tr><td><b>Registrador</b></td><td>o conteúdo de um registrador</td><td>ADD R1, R2</td></tr>
+                <tr><td><b>Direto</b></td><td>o conteúdo do endereço dado</td><td>LOAD R1, [100]</td></tr>
+                <tr><td><b>Indireto</b></td><td>o endereço está em um registrador/memória</td><td>LOAD R1, [R2]</td></tr>
+                <tr><td><b>Base + deslocamento</b></td><td>registrador-base + constante</td><td>LOAD R1, 8[R2]</td></tr>
+                <tr><td><b>Relativo ao PC</b></td><td>PC + deslocamento (usado em desvios)</td><td>BEQ +12</td></tr>
+            </table>
+            <div class="info-box">
+                <p>Mais modos dão flexibilidade ao programador (filosofia CISC), mas complicam a decodificação. RISC
+                    limita os modos para manter instruções de <b>tamanho fixo</b> e fáceis de paralelizar no pipeline.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Classes de ISA -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: classes de arquitetura de operandos</h2></div>
+        <div class="content">
+            <p>Historicamente, as ISAs diferem em <b>onde</b> os operandos ficam ao serem processados:</p>
+            <table class="table">
+                <tr><th>Classe</th><th>Como opera</th><th>Exemplo</th></tr>
+                <tr><td><b>Pilha</b></td><td>Operandos no topo de uma pilha implícita</td><td>JVM, x87</td></tr>
+                <tr><td><b>Acumulador</b></td><td>Um registrador fixo guarda um operando e o resultado</td><td>Primeiros micros</td></tr>
+                <tr><td><b>Registrador-memória</b></td><td>Instruções podem operar direto sobre a memória</td><td>x86</td></tr>
+                <tr><td><b>Registrador-registrador (load/store)</b></td><td>ULA só opera entre registradores; memória só via load/store</td><td>ARM, RISC-V, MIPS</td></tr>
+            </table>
+            <div class="info-box">
+                <p>A tendência moderna é <b>load/store</b>: separar acesso à memória do cálculo simplifica o pipeline e
+                    aproveita melhor o banco de registradores — chave do desempenho RISC.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Hazards do pipeline -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: os hazards do pipeline</h2></div>
+        <div class="content">
+            <p>O pipeline ideal entrega uma instrução por ciclo, mas <span class="highlight">hazards</span> (conflitos)
+                podem forçar bolhas (paradas). São de três tipos:</p>
+            <table class="table">
+                <tr><th>Hazard</th><th>Causa</th><th>Solução</th></tr>
+                <tr><td><b>Estrutural</b></td><td>Dois estágios disputam o mesmo recurso</td><td>Duplicar recursos (caches I/D separadas)</td></tr>
+                <tr><td><b>De dados</b></td><td>Instrução precisa de um resultado ainda não gravado</td><td><i>Forwarding</i> (adiantamento) e, se necessário, stall</td></tr>
+                <tr><td><b>De controle</b></td><td>Desvio muda o fluxo; o pipeline já buscou instruções erradas</td><td>Previsão de desvio e <i>delayed branch</i></td></tr>
+            </table>
+            <div class="info-box">
+                <p>A <b>previsão de desvio</b> (branch prediction) é crucial: o preditor adivinha se o salto será tomado
+                    e busca antecipadamente. Um acerto mantém o pipeline cheio; um erro exige descartar (<i>flush</i>) os
+                    estágios especulados — penalidade de vários ciclos.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: ILP -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: paralelismo em nível de instrução (ILP)</h2></div>
+        <div class="content">
+            <p>CPUs de alto desempenho não executam só uma instrução por vez. Elas exploram o <span
+                class="highlight">ILP</span> — instruções independentes executadas em paralelo:</p>
+            <ul class="spaced" style="font-size: 21px;">
+                <li><span class="highlight">Superescalar:</span> várias unidades de execução despacham múltiplas
+                    instruções por ciclo (CPI &lt; 1).</li>
+                <li><span class="highlight">Execução fora de ordem (OoO):</span> a CPU reordena instruções para não
+                    ficar parada esperando dados, preservando o resultado lógico.</li>
+                <li><span class="highlight">Renomeação de registradores:</span> elimina dependências "falsas" mapeando
+                    registradores arquiteturais em um conjunto maior de registradores físicos.</li>
+                <li><span class="highlight">Execução especulativa:</span> executa instruções após um desvio previsto,
+                    antes de confirmá-lo.</li>
+            </ul>
+            <div class="info-box">
+                <p>A especulação, levada ao extremo, abriu brechas de segurança famosas (<b>Spectre</b> e
+                    <b>Meltdown</b>, 2018): dados especulados deixavam rastros na cache. Mostra como microarquitetura e
+                    segurança hoje se entrelaçam.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Taxonomia de Flynn -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: a taxonomia de Flynn</h2></div>
+        <div class="content">
+            <p>Flynn (1966) classifica arquiteturas pelo número de fluxos de <b>instruções</b> e de <b>dados</b>
+                processados simultaneamente:</p>
+            <table class="table">
+                <tr><th>Classe</th><th>Significado</th><th>Exemplo</th></tr>
+                <tr><td><b>SISD</b></td><td>1 instrução, 1 dado</td><td>CPU sequencial clássica</td></tr>
+                <tr><td><b>SIMD</b></td><td>1 instrução, vários dados</td><td>Extensões vetoriais (SSE, AVX), GPUs</td></tr>
+                <tr><td><b>MISD</b></td><td>várias instruções, 1 dado</td><td>Raro (sistemas tolerantes a falha)</td></tr>
+                <tr><td><b>MIMD</b></td><td>várias instruções, vários dados</td><td>Multinúcleo, clusters</td></tr>
+            </table>
+            <div class="info-box">
+                <p><b>SIMD</b> é a base do desempenho em multimídia e IA: a mesma operação aplicada a milhares de dados
+                    de uma vez. A <b>GPU</b> é um processador massivamente SIMD/paralelo, com milhares de núcleos
+                    simples — ideal para gráficos e treino de redes neurais.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Desempenho e potência -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: desempenho e o "muro" da potência</h2></div>
+        <div class="content">
+            <div class="grid">
+                <div>
+                    <p>O tempo de execução é governado pela equação fundamental:</p>
+                    <div class="code-box" style="font-size:17px;">
+T<sub>CPU</sub> = IC × CPI × T<sub>clock</sub>
+                    </div>
+                    <p style="margin-top: 12px;">Pipeline e superescalaridade reduzem o <b>CPI</b>; tecnologia reduz
+                        o <b>T<sub>clock</sub></b>; compilador e ISA reduzem o <b>IC</b>.</p>
+                </div>
+                <div>
+                    <p>Mas elevar o clock custa energia. A potência dinâmica de um chip CMOS segue:</p>
+                    <div class="code-box" style="font-size:17px;">
+P ∝ C × V² × f
+                    </div>
+                    <p style="margin-top: 12px;">Com o fim do escalonamento de Dennard, não dá mais para baixar V ao
+                        subir f. Resultado: a indústria trocou <b>clock maior</b> por <b>mais núcleos</b> — e o
+                        paralelismo virou obrigatório (Lei de Amdahl).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Glossário -->
     <div class="slide">
         <div class="header"><h2>Glossário do tópico</h2></div>
@@ -249,7 +382,58 @@ JMP&nbsp;1000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// desvia para 1000
                 <tr><td><b>Pipeline</b></td><td>Sobreposição de etapas de instruções.</td></tr>
                 <tr><td><b>RISC/CISC</b></td><td>Instruções reduzidas/simples vs. complexas.</td></tr>
                 <tr><td><b>Core</b></td><td>Unidade de processamento independente.</td></tr>
+                <tr><td><b>Hazard</b></td><td>Conflito que para o pipeline (estrutural, de dados, de controle).</td></tr>
+                <tr><td><b>Superescalar / OoO</b></td><td>Despacha várias instruções por ciclo e as reordena.</td></tr>
+                <tr><td><b>SIMD</b></td><td>Uma instrução opera sobre vários dados (vetorial, GPU).</td></tr>
+                <tr><td><b>Modo de endereçamento</b></td><td>Forma de localizar um operando (imediato, direto, indexado...).</td></tr>
             </table>
+        </div>
+    </div>
+
+    <!-- Exercícios resolvidos -->
+    <div class="slide">
+        <div class="header"><h2>Exercícios resolvidos</h2></div>
+        <div class="content">
+            <div style="display:flex; flex-direction:column; gap:16px;">
+                <div>
+                    <p style="font-size:21px;"><b>1.</b> Em um pipeline de <b>5 estágios</b>, quantos ciclos são
+                        necessários (idealmente) para executar <b>1000 instruções</b>? Compare com a execução sem
+                        pipeline.</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">Com pipeline: k + (n − 1) = 5 + 999 =
+                            <b>1004 ciclos</b>. Sem pipeline: 5 × 1000 = <b>5000 ciclos</b>. O ganho aproxima-se de 5×
+                            (o nº de estágios) para muitas instruções.</div>
+                    </details>
+                </div>
+                <div>
+                    <p style="font-size:21px;"><b>2.</b> Uma CPU tem a mistura: 50% instruções ULA (1 ciclo), 30% loads
+                        (2 ciclos) e 20% desvios (3 ciclos). Qual o <b>CPI médio</b>?</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">CPI = (0,5×1) + (0,3×2) + (0,2×3) =
+                            0,5 + 0,6 + 0,6 = <b>1,7 ciclos/instrução</b>.</div>
+                    </details>
+                </div>
+                <div>
+                    <p style="font-size:21px;"><b>3.</b> Classifique <b>x86</b> e <b>ARM</b> em RISC ou CISC e
+                        justifique.</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">x86 é <b>CISC</b>: muitas instruções, de
+                            tamanho variável, algumas complexas e que acessam a memória diretamente. ARM é <b>RISC</b>:
+                            instruções simples, de tamanho fixo, arquitetura load/store, fácil de paralelizar no
+                            pipeline e eficiente em energia (por isso domina dispositivos móveis).</div>
+                    </details>
+                </div>
+                <div>
+                    <p style="font-size:21px;"><b>4.</b> Por que a indústria parou de simplesmente aumentar o clock e
+                        passou a adicionar núcleos?</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">A potência dinâmica cresce com P ∝ C·V²·f. Com o
+                            fim do escalonamento de Dennard (~2005), não dava mais para reduzir a tensão ao elevar a
+                            frequência, e o calor tornou-se inviável (<i>power wall</i>). Adicionar núcleos aumenta o
+                            desempenho sem disparar o clock — mas exige paralelismo (limitado pela Lei de Amdahl).</div>
+                    </details>
+                </div>
+            </div>
         </div>
     </div>
 

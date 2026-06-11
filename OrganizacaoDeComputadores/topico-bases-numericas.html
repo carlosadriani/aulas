@@ -249,6 +249,160 @@ chmod <b>755</b> arquivo<br><br>
         </div>
     </div>
 
+    <!-- APROFUNDAMENTO: Notação posicional geral e Horner -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: a fórmula geral das bases</h2></div>
+        <div class="content">
+            <p>Qualquer número em qualquer base <i>b</i> é uma soma de dígitos vezes potências da base. Essa é a
+                definição formal da <span class="highlight">notação posicional</span>:</p>
+            <div class="code-box" style="margin-top: 14px;">
+N = d<sub>n</sub>·b<sup>n</sup> + ... + d<sub>1</sub>·b<sup>1</sup> + d<sub>0</sub>·b<sup>0</sup>
+            </div>
+            <p style="margin-top: 16px;">Para converter <b>qualquer base → decimal</b>, o <span class="highlight">método
+                de Horner</span> evita calcular potências: processa-se da esquerda para a direita, multiplicando o
+                acumulado pela base e somando o próximo dígito.</p>
+            <div class="code-box" style="margin-top: 12px; font-size:18px;">
+2A3<sub>(16)</sub> por Horner:<br>
+&nbsp;&nbsp;((2 × 16) + 10) × 16 + 3<br>
+&nbsp;&nbsp;= (42 × 16) + 3<br>
+&nbsp;&nbsp;= 672 + 3 = <b>675</b>
+            </div>
+            <div class="info-box">
+                <p>Para <b>decimal → base b</b>, generaliza-se as divisões sucessivas: divide-se por <i>b</i>, anotando
+                    os restos, e lê-se de baixo para cima. Vale para octal (÷8), hexadecimal (÷16) e qualquer base.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Conversão de frações -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: convertendo a parte fracionária</h2></div>
+        <div class="content">
+            <div class="grid">
+                <div class="code-box">
+0,625<sub>(10)</sub> → binário<br>
+(multiplicações sucessivas por 2):<br><br>
+0,625 × 2 = <b>1</b>,25<br>
+0,25&nbsp; × 2 = <b>0</b>,5<br>
+0,5&nbsp;&nbsp; × 2 = <b>1</b>,0  → para<br><br>
+Lê de cima p/ baixo: 0,<b>101</b>
+                </div>
+                <div>
+                    <p>A parte inteira usa <b>divisões</b> sucessivas; a fracionária usa <span class="highlight">
+                        multiplicações sucessivas</span> pela base. A cada passo, a parte inteira do produto (0 ou 1) é
+                        o próximo dígito; repete-se com a parte fracionária restante.</p>
+                    <p style="margin-top: 14px;">Confira: 0,101 = 1·2<sup>−1</sup> + 0·2<sup>−2</sup> + 1·2<sup>−3</sup>
+                        = 0,5 + 0,125 = 0,625. ✓</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <p>Cuidado: nem toda fração decimal termina em binário. <b>0,1<sub>(10)</sub></b> vira uma <b>dízima
+                    binária infinita</b> (0,0001100110011...). É a raiz matemática do erro de "0,1 + 0,2 ≠ 0,3" em ponto
+                    flutuante.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Aritmética em hex e octal -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: somar direto em hexadecimal</h2></div>
+        <div class="content">
+            <p>Não é preciso converter para decimal para somar em outra base — basta lembrar que o "vai-um" ocorre ao
+                atingir o valor da base.</p>
+            <div class="code-box" style="margin-top: 14px;">
+&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;(vai-um)<br>
+&nbsp;&nbsp;2 F<sub>(16)</sub>&nbsp;&nbsp;(= 47)<br>
++ 1 8<sub>(16)</sub>&nbsp;&nbsp;(= 24)<br>
+-------<br>
+&nbsp;&nbsp;4 7<sub>(16)</sub>&nbsp;&nbsp;(= 71)<br><br>
+F + 8 = 15 + 8 = 23 = 16 + 7 → escreve 7, vai 1<br>
+1 + 2 + 1 = 4 → escreve 4
+            </div>
+            <div class="info-box">
+                <p>Em <b>octal</b>, o vai-um acontece ao chegar a 8; em <b>binário</b>, ao chegar a 2. O raciocínio é
+                    sempre o mesmo da soma decimal, mudando apenas o valor em que "estoura" a casa.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Subtração por complemento -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: subtrair somando (complemento)</h2></div>
+        <div class="content">
+            <p>O hardware evita um circuito de subtração: ele <b>soma o complemento</b>. Para A − B em <i>n</i> bits,
+                soma-se A ao <span class="highlight">complemento de 2</span> de B (inverter os bits e somar 1).</p>
+            <div class="code-box" style="margin-top: 12px; font-size:18px;">
+13 − 5 em 8 bits:<br><br>
+&nbsp;13&nbsp;&nbsp;&nbsp;&nbsp;= 0000 1101<br>
+−5 (compl.2 de 5) = 1111 1011<br>
+soma&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= <s>1</s> 0000 1000<br><br>
+descarta o vai-um → 0000 1000 = <b>8</b>
+            </div>
+            <div class="info-box">
+                <p>É por isso que o complemento de 2 é o padrão universal: a <b>mesma ULA</b> soma e subtrai, sem
+                    circuitos separados nem tratamento especial do sinal.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: BCD -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: BCD (decimal codificado em binário)</h2></div>
+        <div class="content">
+            <p>Às vezes interessa guardar cada dígito decimal separadamente, em 4 bits. É o <span class="highlight">
+                BCD</span>, usado em calculadoras, mostradores, sistemas financeiros e relógios digitais.</p>
+            <table class="table">
+                <tr><th>Número</th><th>Binário puro</th><th>BCD (dígito a dígito)</th></tr>
+                <tr><td>25</td><td>0001 1001</td><td class="l">0010 0101 (2 = 0010, 5 = 0101)</td></tr>
+                <tr><td>49</td><td>0011 0001</td><td class="l">0100 1001</td></tr>
+            </table>
+            <div class="info-box">
+                <p>Vantagem: evita o erro de arredondamento da conversão binária de frações decimais (importante em
+                    dinheiro). Desvantagem: <b>desperdiça espaço</b> — as combinações de 1010 a 1111 não são usadas.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exercícios resolvidos -->
+    <div class="slide">
+        <div class="header"><h2>Exercícios resolvidos</h2></div>
+        <div class="content">
+            <div style="display:flex; flex-direction:column; gap:16px;">
+                <div>
+                    <p style="font-size:21px;"><b>1.</b> Converta <b>0xC3</b> para decimal e binário.</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">Decimal: C = 12, então 12×16 + 3 = 192 + 3 =
+                            <b>195</b>. Binário: cada dígito hex = 4 bits → C = 1100, 3 = 0011 →
+                            <b>1100 0011</b>.</div>
+                    </details>
+                </div>
+                <div>
+                    <p style="font-size:21px;"><b>2.</b> Converta o decimal <b>0,375</b> para binário.</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">Multiplicações sucessivas por 2:
+                            0,375×2 = 0,75 → <b>0</b>; 0,75×2 = 1,5 → <b>1</b>; 0,5×2 = 1,0 → <b>1</b> (para).
+                            Lendo de cima para baixo: <b>0,011</b>. Conferindo: 0,25 + 0,125 = 0,375. ✓</div>
+                    </details>
+                </div>
+                <div>
+                    <p style="font-size:21px;"><b>3.</b> Some, em binário, <b>1011 + 0110</b>.</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">1011 (11) + 0110 (6) = <b>10001</b> (17).
+                            Conferindo em decimal: 11 + 6 = 17. ✓</div>
+                    </details>
+                </div>
+                <div>
+                    <p style="font-size:21px;"><b>4.</b> Converta o binário <b>101110</b> para octal e hexadecimal.</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">Octal (grupos de 3): 101 110 → 5 6 =
+                            <b>56<sub>8</sub></b>. Hexadecimal (grupos de 4): 0010 1110 → 2 E =
+                            <b>2E<sub>16</sub></b>. (Em decimal: 46.)</div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Encerramento -->
     <div class="slide hero">
         <h1 style="color:#3b82f6;">Resumindo</h1>

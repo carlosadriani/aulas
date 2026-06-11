@@ -248,6 +248,144 @@
         </div>
     </div>
 
+    <!-- APROFUNDAMENTO: Modo usuário x núcleo -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: modo usuário, modo núcleo e a trap</h2></div>
+        <div class="content">
+            <p>A proteção do sistema depende de um suporte do <b>hardware</b>: a CPU opera em pelo menos dois níveis de
+                privilégio (os "anéis"). Aplicativos rodam em <span class="highlight">modo usuário</span> (restrito); o
+                kernel roda em <span class="highlight">modo núcleo</span> (acesso total).</p>
+            <ul class="spaced" style="margin-top: 8px;">
+                <li>Instruções privilegiadas (acessar hardware, mexer na tabela de páginas) <b>só</b> funcionam em modo
+                    núcleo. Em modo usuário, elas geram uma exceção.</li>
+                <li>Para pedir um serviço, o programa executa uma <span class="highlight">chamada de sistema</span>, que
+                    dispara uma <b>trap</b>: a CPU muda para modo núcleo e desvia para o ponto de entrada do SO.</li>
+                <li>Trocar entre processos exige uma <b>troca de contexto</b>: salvar registradores, PC e mapa de
+                    memória de um processo e restaurar os do próximo — operação com custo, minimizada pelo SO.</li>
+            </ul>
+            <div class="info-box">
+                <p>Essa fronteira é o que impede um aplicativo de derrubar o sistema ou ler a memória de outro: todo
+                    acesso sensível passa, obrigatoriamente, pelo kernel.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Escalonamento -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: algoritmos de escalonamento</h2></div>
+        <div class="content">
+            <p>O escalonador decide qual processo pronto recebe a CPU. Há vários algoritmos, com compromissos
+                diferentes:</p>
+            <table class="table">
+                <tr><th>Algoritmo</th><th>Como decide</th><th>Limitação</th></tr>
+                <tr><td><b>FCFS</b></td><td>Ordem de chegada</td><td>Um processo longo atrasa todos (efeito comboio)</td></tr>
+                <tr><td><b>SJF</b></td><td>Menor tarefa primeiro</td><td>Ótimo na espera média, mas exige prever a duração</td></tr>
+                <tr><td><b>Round Robin</b></td><td>Fatia de tempo (quantum) rotativa</td><td>Justo e interativo; sensível ao tamanho do quantum</td></tr>
+                <tr><td><b>Prioridade</b></td><td>Maior prioridade primeiro</td><td>Pode causar <i>starvation</i> dos de baixa prioridade</td></tr>
+                <tr><td><b>Multinível com realimentação</b></td><td>Várias filas que ajustam prioridade dinamicamente</td><td>Flexível, mas complexo de ajustar</td></tr>
+            </table>
+            <div class="info-box">
+                <p>Critérios de avaliação: <b>vazão</b>, tempo de <b>retorno</b> (turnaround), tempo de <b>espera</b> e
+                    tempo de <b>resposta</b>. Sistemas interativos priorizam resposta; servidores, vazão. O
+                    escalonamento <b>preemptivo</b> (RR) pode tirar a CPU à força; o não-preemptivo, não.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Concorrência -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: concorrência e sincronização</h2></div>
+        <div class="content">
+            <p>Quando processos/threads compartilham dados, surge a <span class="highlight">condição de corrida</span>:
+                o resultado depende da ordem (imprevisível) de execução.</p>
+            <div class="code-box" style="margin-top: 10px; font-size:17px;">
+saldo = 100;  // dois saques de 50 em paralelo<br>
+T1: lê saldo (100) ............ grava 50<br>
+T2: ...... lê saldo (100) ............ grava 50<br>
+// resultado: 50 (deveria ser 0!) → corrida
+            </div>
+            <div class="info-box">
+                <p>A solução é a <b>exclusão mútua</b>: garantir que só um entre por vez na <b>seção crítica</b>. Os
+                    mecanismos clássicos são o <b>mutex</b> (trava binária) e o <b>semáforo</b> (contador com operações
+                    atômicas <i>wait/signal</i>), propostos por Dijkstra. Usados de forma errada, geram bugs sutis e
+                    travamentos.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Deadlock -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: impasse (deadlock)</h2></div>
+        <div class="content">
+            <p>Um <span class="highlight">deadlock</span> trava processos que esperam, em ciclo, recursos uns dos outros.
+                Coffman mostrou que ele só ocorre se as <b>quatro condições</b> valerem ao mesmo tempo:</p>
+            <table class="table">
+                <tr><th>Condição</th><th>Significado</th></tr>
+                <tr><td><b>Exclusão mútua</b></td><td>O recurso só pode ser usado por um processo por vez</td></tr>
+                <tr><td><b>Posse e espera</b></td><td>Processo segura um recurso e espera por outro</td></tr>
+                <tr><td><b>Não preempção</b></td><td>Recurso não pode ser tomado à força</td></tr>
+                <tr><td><b>Espera circular</b></td><td>Existe um ciclo de processos esperando uns aos outros</td></tr>
+            </table>
+            <div class="info-box">
+                <p>Estratégias do SO: <b>prevenir</b> (negar uma das condições), <b>evitar</b> (algoritmo do banqueiro,
+                    de Dijkstra), <b>detectar e recuperar</b>, ou simplesmente <b>ignorar</b> (a "abordagem do avestruz",
+                    comum em SOs de uso geral, pois deadlocks reais são raros).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Memória virtual em profundidade -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: paginação e substituição de páginas</h2></div>
+        <div class="content">
+            <p>A memória virtual divide o espaço em <b>páginas</b> (e a RAM em <b>quadros</b>). A <span
+                class="highlight">tabela de páginas</span> mapeia páginas virtuais em quadros físicos; a <b>TLB</b> faz
+                cache desse mapeamento. Quando uma página não está na RAM, ocorre um <span class="highlight">page
+                fault</span> e o SO a traz do disco.</p>
+            <p style="margin-top: 12px;">Se a RAM está cheia, qual página remover? Os algoritmos de <b>substituição</b>
+                tentam acertar:</p>
+            <table class="table">
+                <tr><th>Algoritmo</th><th>Ideia</th></tr>
+                <tr><td><b>Ótimo</b></td><td>Remove a que será usada mais tarde (teórico, irrealizável — serve de referência)</td></tr>
+                <tr><td><b>FIFO</b></td><td>Remove a mais antiga (sofre da anomalia de Belady)</td></tr>
+                <tr><td><b>LRU</b></td><td>Remove a menos usada recentemente (boa, mas cara de implementar exatamente)</td></tr>
+                <tr><td><b>Clock / segunda chance</b></td><td>Aproximação eficiente de LRU usando um bit de referência</td></tr>
+            </table>
+            <div class="info-box">
+                <p><b>Thrashing:</b> se há páginas de menos para muitos processos, o sistema passa mais tempo trocando
+                    páginas com o disco do que executando — o desempenho despenca.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Arquiteturas de kernel -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: arquiteturas de kernel</h2></div>
+        <div class="content">
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Monolítico</h3>
+                    <p>Todo o SO (drivers, sistema de arquivos, rede) roda no núcleo. Rápido, mas um bug pode derrubar
+                        tudo. Ex.: <b>Linux</b>.</p>
+                </div>
+                <div class="card">
+                    <h3>Microkernel</h3>
+                    <p>O núcleo é mínimo; serviços rodam como processos em modo usuário. Robusto e modular, com custo de
+                        comunicação. Ex.: <b>Minix</b>, QNX.</p>
+                </div>
+                <div class="card">
+                    <h3>Híbrido</h3>
+                    <p>Combina os dois: núcleo com serviços essenciais, mas modular. Ex.: <b>Windows NT</b>, núcleo do
+                        <b>macOS</b> (XNU).</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <p>O debate monolítico × microkernel (célebre entre Linus Torvalds e Andrew Tanenbaum, 1992) ilustra o
+                    eterno trade-off entre <b>desempenho</b> e <b>isolamento/segurança</b> em sistemas.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Glossário -->
     <div class="slide">
         <div class="header"><h2>Glossário do tópico</h2></div>
@@ -259,7 +397,58 @@
                 <tr><td><b>Memória virtual</b></td><td>Abstração que isola e expande a memória dos processos.</td></tr>
                 <tr><td><b>System call</b></td><td>Pedido de um programa por um serviço do SO.</td></tr>
                 <tr><td><b>Driver</b></td><td>Software que controla um dispositivo.</td></tr>
+                <tr><td><b>Modo usuário/núcleo</b></td><td>Níveis de privilégio da CPU; protegem o sistema.</td></tr>
+                <tr><td><b>Semáforo / Mutex</b></td><td>Mecanismos de exclusão mútua na seção crítica.</td></tr>
+                <tr><td><b>Deadlock</b></td><td>Impasse circular (4 condições de Coffman).</td></tr>
+                <tr><td><b>Page fault / Thrashing</b></td><td>Falta de página no acesso / troca excessiva de páginas.</td></tr>
             </table>
+        </div>
+    </div>
+
+    <!-- Exercícios resolvidos -->
+    <div class="slide">
+        <div class="header"><h2>Exercícios resolvidos</h2></div>
+        <div class="content">
+            <div style="display:flex; flex-direction:column; gap:16px;">
+                <div>
+                    <p style="font-size:21px;"><b>1.</b> Três processos chegam em t=0 com surtos de CPU P1=24, P2=3 e
+                        P3=3 (ms). Compare o <b>tempo médio de espera</b> em FCFS (ordem P1, P2, P3) e em SJF.</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">FCFS: esperas = 0, 24, 27 → média =
+                            (0+24+27)/3 = <b>17 ms</b>. SJF (ordem P2, P3, P1): esperas = 0, 3, 6 → média =
+                            (0+3+6)/3 = <b>3 ms</b>. O SJF reduz drasticamente a espera ao priorizar tarefas curtas.</div>
+                    </details>
+                </div>
+                <div>
+                    <p style="font-size:21px;"><b>2.</b> Em um sistema de <b>32 bits</b> com páginas de <b>4 KB</b>,
+                        quantas páginas tem o espaço de endereçamento virtual?</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">Espaço = 2<sup>32</sup> bytes; página =
+                            2<sup>12</sup> bytes. Nº de páginas = 2<sup>32</sup> / 2<sup>12</sup> = 2<sup>20</sup> =
+                            <b>1.048.576 páginas</b>.</div>
+                    </details>
+                </div>
+                <div>
+                    <p style="font-size:21px;"><b>3.</b> Cite uma forma de <b>prevenir deadlock</b> quebrando uma das
+                        condições de Coffman.</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">Exemplo: quebrar a <b>espera circular</b>
+                            impondo uma <b>ordem global</b> de aquisição de recursos (todo processo só pode pedir
+                            recursos em ordem crescente de id). Sem ciclo possível, não há deadlock. Outras opções:
+                            exigir que o processo peça todos os recursos de uma vez (quebra "posse e espera") ou permitir
+                            preempção de recursos.</div>
+                    </details>
+                </div>
+                <div>
+                    <p style="font-size:21px;"><b>4.</b> Qual a diferença entre <b>processo</b> e <b>thread</b>?</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">Um processo é um programa em execução com seu
+                            <b>próprio espaço de memória</b> isolado. Threads são linhas de execução <b>dentro</b> de um
+                            processo, que <b>compartilham</b> a mesma memória e recursos. Criar e alternar threads é mais
+                            leve, mas o compartilhamento exige sincronização para evitar condições de corrida.</div>
+                    </details>
+                </div>
+            </div>
         </div>
     </div>
 
