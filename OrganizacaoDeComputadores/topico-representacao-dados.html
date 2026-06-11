@@ -225,6 +225,120 @@ Roxo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R=128 G=0&nbsp;
         </div>
     </div>
 
+    <!-- APROFUNDAMENTO: Complemento de 2 rigoroso -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: por que o complemento de 2 funciona</h2></div>
+        <div class="content">
+            <p>O complemento de 2 não é um truque: é <b>notação posicional com peso negativo</b> no bit mais
+                significativo. Em <i>n</i> bits, o bit da esquerda vale <b>−2<sup>n−1</sup></b>; os demais, positivos:</p>
+            <div class="code-box" style="margin-top: 12px; font-size:18px;">
+1111 1011 (8 bits) =<br>
+−128 + 64 + 32 + 16 + 8 + 0 + 2 + 1<br>
+= −128 + 123 = <b>−5</b>
+            </div>
+            <div class="grid" style="margin-top: 14px;">
+                <div class="card">
+                    <h3>Extensão de sinal</h3>
+                    <p>Ao copiar um número para mais bits, <b>repete-se o bit de sinal</b> à esquerda. Assim −5 em 8 bits
+                        (1111 1011) vira 1111 1111 1111 1011 em 16 bits, preservando o valor.</p>
+                </div>
+                <div class="card">
+                    <h3>Detecção de overflow</h3>
+                    <p>Há overflow quando se somam dois números de <b>mesmo sinal</b> e o resultado tem <b>sinal
+                        oposto</b>. Ex.: em 8 bits, 100 + 50 = 150 &gt; 127 → resultado dá negativo (erro).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: IEEE 754 detalhado -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: anatomia do IEEE 754</h2></div>
+        <div class="content">
+            <p>Um <b>float</b> de 32 bits tem três campos. O expoente é guardado com <span class="highlight">viés
+                (bias)</span> de 127, e a mantissa tem um <b>bit 1 implícito</b> antes da vírgula (forma normalizada
+                1,xxxx):</p>
+            <div class="code-box" style="margin-top: 12px; font-size:17px;">
+Codificar −6,5:<br>
+6,5 = 110,1<sub>(2)</sub> = 1,101 × 2<sup>2</sup><br><br>
+sinal&nbsp;&nbsp;&nbsp;= 1&nbsp;&nbsp;&nbsp;&nbsp;(negativo)<br>
+expoente = 2 + 127 = 129 = 1000 0001<br>
+mantissa = 101 0000... (23 bits, sem o 1 implícito)<br><br>
+<b>1 10000001 10100000000000000000000</b>
+            </div>
+            <div class="info-box">
+                <p>O viés permite comparar floats como se fossem inteiros e representar expoentes negativos sem um bit de
+                    sinal separado. O double (64 bits) usa o mesmo esquema com expoente de 11 bits e bias 1023.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Valores especiais e epsilon -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: infinitos, NaN e precisão</h2></div>
+        <div class="content">
+            <p>O IEEE 754 reserva padrões de expoente para representar casos especiais — por isso o computador "sabe"
+                lidar com 1/0 sem travar:</p>
+            <table class="table">
+                <tr><th>Valor</th><th>Como é codificado</th></tr>
+                <tr><td><b>±0</b></td><td>Expoente e mantissa todos zero (há +0 e −0)</td></tr>
+                <tr><td><b>±∞</b></td><td>Expoente todo 1, mantissa zero (ex.: 1,0 / 0,0)</td></tr>
+                <tr><td><b>NaN</b> (Not a Number)</td><td>Expoente todo 1, mantissa ≠ 0 (ex.: 0/0, √−1)</td></tr>
+                <tr><td><b>Subnormais</b></td><td>Expoente zero; preenchem a lacuna perto do zero (sem bit implícito)</td></tr>
+            </table>
+            <div class="info-box">
+                <p>O <b>épsilon de máquina</b> é o menor incremento relativo representável: ~1,2×10<sup>−7</sup> no float
+                    e ~2,2×10<sup>−16</sup> no double. Ele explica por que comparar reais com "==" é arriscado: use uma
+                    <b>tolerância</b> (|a − b| &lt; ε).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Detecção e correção de erros -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: detecção e correção de erros</h2></div>
+        <div class="content">
+            <p>Bits podem ser corrompidos no armazenamento ou na transmissão. Adicionam-se bits redundantes para
+                <b>perceber</b> (e às vezes <b>consertar</b>) o erro:</p>
+            <table class="table">
+                <tr><th>Técnica</th><th>O que faz</th></tr>
+                <tr><td><b>Bit de paridade</b></td><td>1 bit extra que torna par (ou ímpar) o nº de 1s. Detecta 1 erro; não corrige.</td></tr>
+                <tr><td><b>Código de Hamming</b></td><td>Vários bits de paridade posicionados; corrige 1 erro e detecta 2 (distância 3).</td></tr>
+                <tr><td><b>Checksum</b></td><td>Soma dos dados anexada; detecta erros comuns (TCP/IP).</td></tr>
+                <tr><td><b>CRC</b></td><td>Resto de uma divisão polinomial; robusto contra rajadas de erro (Ethernet, ZIP).</td></tr>
+            </table>
+            <div class="info-box">
+                <p>Conceito central: a <b>distância de Hamming</b> (nº de bits diferentes entre dois códigos válidos). Um
+                    código com distância mínima <i>d</i> detecta até <i>d−1</i> erros e corrige até ⌊(d−1)/2⌋.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Compressão -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: a ciência da compressão</h2></div>
+        <div class="content">
+            <p>Comprimir é remover <b>redundância</b>. O limite teórico do quanto se pode comprimir sem perdas é dado
+                pela <span class="highlight">entropia</span> de Shannon — a quantidade média real de informação.</p>
+            <div class="grid" style="margin-top: 12px;">
+                <div class="card">
+                    <h3>Sem perdas (lossless)</h3>
+                    <p>Reconstrói o original bit a bit. Usa códigos de tamanho variável para símbolos frequentes
+                        (<b>Huffman</b>), repetições (<b>RLE</b>) e dicionários (<b>LZ77/LZW</b>). Ex.: ZIP, PNG, FLAC.</p>
+                </div>
+                <div class="card">
+                    <h3>Com perdas (lossy)</h3>
+                    <p>Descarta detalhes pouco perceptíveis aos sentidos para comprimir muito mais. Ex.: <b>JPEG</b>
+                        (visão), <b>MP3/AAC</b> (audição), <b>H.264/H.265</b> (vídeo).</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <p>Por isso texto e código comprimem bem sem perdas (alta redundância), enquanto foto e som usam perdas:
+                    sacrificam fidelidade imperceptível por arquivos muito menores.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Glossário -->
     <div class="slide">
         <div class="header"><h2>Glossário do tópico</h2></div>
@@ -236,7 +350,50 @@ Roxo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R=128 G=0&nbsp;
                 <tr><td><b>Unicode / UTF-8</b></td><td>Codificação universal de caracteres de todas as línguas.</td></tr>
                 <tr><td><b>RGB</b></td><td>Modelo de cor com canais vermelho, verde e azul.</td></tr>
                 <tr><td><b>Endianness</b></td><td>Ordem de armazenamento dos bytes de um valor.</td></tr>
+                <tr><td><b>Bias do expoente</b></td><td>Deslocamento (127/1023) que codifica expoentes no IEEE 754.</td></tr>
+                <tr><td><b>NaN / ∞</b></td><td>Padrões especiais do IEEE 754 (0/0, 1/0).</td></tr>
+                <tr><td><b>Épsilon de máquina</b></td><td>Menor incremento relativo representável; limita a precisão.</td></tr>
+                <tr><td><b>Paridade / Hamming / CRC</b></td><td>Técnicas de detecção e correção de erros.</td></tr>
             </table>
+        </div>
+    </div>
+
+    <!-- Exercícios resolvidos -->
+    <div class="slide">
+        <div class="header"><h2>Exercícios resolvidos</h2></div>
+        <div class="content">
+            <div style="display:flex; flex-direction:column; gap:16px;">
+                <div>
+                    <p style="font-size:21px;"><b>1.</b> Represente <b>−18</b> em complemento de 2 com <b>8 bits</b>.</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">+18 = 0001 0010. Inverte os bits → 1110 1101.
+                            Soma 1 → <b>1110 1110</b>. Conferindo: −128 + 64 + 32 + 8 + 4 + 2 = −18. ✓</div>
+                    </details>
+                </div>
+                <div>
+                    <p style="font-size:21px;"><b>2.</b> Qual o valor decimal de <b>1111 0000</b> em complemento de 2?</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">O bit mais à esquerda tem peso negativo:
+                            −128 + 64 + 32 + 16 = <b>−16</b>.</div>
+                    </details>
+                </div>
+                <div>
+                    <p style="font-size:21px;"><b>3.</b> Codifique <b>+5,0</b> em IEEE 754 de precisão simples (32 bits).</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">5 = 101<sub>(2)</sub> = 1,01 × 2<sup>2</sup>.
+                            Sinal = 0; expoente = 2 + 127 = 129 = 1000 0001; mantissa = 010000... (23 bits).
+                            Resultado: <b>0 10000001 01000000000000000000000</b>.</div>
+                    </details>
+                </div>
+                <div>
+                    <p style="font-size:21px;"><b>4.</b> Em 8 bits <b>sem sinal</b>, quanto dá <b>200 + 100</b>?</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">O máximo em 8 bits é 255. 200 + 100 = 300, que
+                            ultrapassa o limite: ocorre <b>overflow</b>. O valor "dá a volta": 300 − 256 =
+                            <b>44</b>.</div>
+                    </details>
+                </div>
+            </div>
         </div>
     </div>
 

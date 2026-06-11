@@ -230,6 +230,148 @@
         </div>
     </div>
 
+    <!-- APROFUNDAMENTO: Localidade -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: o princípio da localidade</h2></div>
+        <div class="content">
+            <p>A hierarquia de memória só funciona por causa de uma propriedade empírica dos programas reais: a
+                <span class="highlight">localidade de referência</span>. Ela tem duas formas:</p>
+            <div class="grid" style="margin-top: 12px;">
+                <div class="card">
+                    <h3><i class="fa-solid fa-clock"></i> Localidade temporal</h3>
+                    <p>Um dado acessado agora tende a ser acessado de novo em breve. Ex.: a variável contadora de um
+                        laço, lida e escrita a cada iteração.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fa-solid fa-arrows-left-right-to-line"></i> Localidade espacial</h3>
+                    <p>Se um endereço é acessado, os <b>vizinhos</b> provavelmente serão também. Ex.: percorrer um vetor
+                        ou executar instruções em sequência.</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <p>Por isso a cache não traz apenas o byte pedido, e sim um <b>bloco</b> inteiro (tipicamente 64 bytes):
+                    aposta-se na localidade espacial. Um código que respeita a localidade (ex.: percorrer matrizes na
+                    ordem em que estão na memória) pode ser <b>várias vezes mais rápido</b> que um que a ignora.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Mapeamento de cache -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: como a cache encontra um dado</h2></div>
+        <div class="content">
+            <p>O endereço de memória é quebrado em três campos para localizar o dado na cache:</p>
+            <div class="code-box" style="margin-top: 12px; font-size:18px;">
+[ ........ TAG ........ | ... ÍNDICE ... | OFFSET ]<br><br>
+OFFSET → posição do byte dentro do bloco<br>
+ÍNDICE → qual linha/conjunto da cache<br>
+TAG&nbsp;&nbsp;&nbsp; → confirma se é o bloco certo
+            </div>
+            <table class="table">
+                <tr><th>Organização</th><th>Como mapeia</th><th>Característica</th></tr>
+                <tr><td><b>Mapeamento direto</b></td><td>Cada bloco só pode ir a uma linha fixa</td><td>Rápida e simples; mais conflitos</td></tr>
+                <tr><td><b>Associativa por conjuntos</b></td><td>Bloco pode ir a qualquer via de um conjunto (2, 4, 8 vias)</td><td>Equilíbrio usado na prática</td></tr>
+                <tr><td><b>Totalmente associativa</b></td><td>Bloco pode ir a qualquer linha</td><td>Menos conflitos; cara (comparadores)</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: AMAT e políticas -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: AMAT e políticas de cache</h2></div>
+        <div class="content">
+            <div class="grid">
+                <div>
+                    <p>O desempenho real da memória é medido pelo <span class="highlight">tempo médio de acesso</span>
+                        (AMAT), que pondera acertos e faltas:</p>
+                    <div class="code-box" style="margin-top: 10px; font-size:17px;">
+AMAT = t<sub>acerto</sub> + (taxa<sub>falta</sub> × penalidade<sub>falta</sub>)
+                    </div>
+                    <p style="margin-top: 12px;">Reduzir a taxa de faltas (caches maiores/associativas) ou a penalidade
+                        (níveis L1/L2/L3) melhora o AMAT.</p>
+                </div>
+                <div>
+                    <p><b>Política de escrita:</b></p>
+                    <ul class="spaced">
+                        <li><b>Write-through:</b> escreve na cache e na RAM ao mesmo tempo (simples, mais tráfego).</li>
+                        <li><b>Write-back:</b> escreve só na cache; grava na RAM ao remover o bloco (eficiente, usa bit
+                            <i>dirty</i>).</li>
+                    </ul>
+                    <p style="margin-top: 10px;"><b>Substituição:</b> ao encher, qual bloco sai? <b>LRU</b> (menos usado
+                        recentemente), FIFO ou aleatório.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: DRAM por dentro -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: a DRAM por dentro</h2></div>
+        <div class="content">
+            <p>Cada bit de DRAM é guardado em uma célula <span class="highlight">1T1C</span>: um transistor e um
+                capacitor. A carga do capacitor (carregado = 1, descarregado = 0) <b>vaza</b> com o tempo — por isso a
+                DRAM precisa ser <b>recarregada (refresh)</b> milhares de vezes por segundo. É a origem do nome
+                "dinâmica".</p>
+            <ul class="spaced" style="margin-top: 8px;">
+                <li>As células formam uma <b>matriz</b>; o acesso seleciona primeiro uma linha (sinal <b>RAS</b>) e
+                    depois uma coluna (<b>CAS</b>).</li>
+                <li>Vários bancos, <i>ranks</i> e canais operam em paralelo para aumentar a <b>largura de banda</b>.</li>
+                <li><b>DDR</b> (Double Data Rate) transfere dados nas duas bordas do clock; cada geração (DDR3, DDR4,
+                    DDR5) eleva a frequência e a banda e reduz a tensão.</li>
+            </ul>
+            <div class="info-box">
+                <p>A <b>latência</b> (tempo até o primeiro dado, ligada aos tempos CAS/RAS) evoluiu pouco; o grande ganho
+                    das gerações de DDR está na <b>banda</b> (bytes por segundo), não na latência.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Flash NAND -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: memória Flash NAND (SSDs)</h2></div>
+        <div class="content">
+            <p>SSDs e pendrives usam <span class="highlight">Flash NAND</span>, que guarda carga em uma porta flutuante.
+                A quantidade de bits por célula define um trade-off entre densidade, custo e durabilidade:</p>
+            <table class="table">
+                <tr><th>Tipo</th><th>Bits/célula</th><th>Característica</th></tr>
+                <tr><td><b>SLC</b></td><td>1</td><td>Mais rápida e durável; cara (uso corporativo)</td></tr>
+                <tr><td><b>MLC</b></td><td>2</td><td>Equilíbrio</td></tr>
+                <tr><td><b>TLC</b></td><td>3</td><td>Comum em SSDs de consumo</td></tr>
+                <tr><td><b>QLC</b></td><td>4</td><td>Mais barata e densa; menos ciclos de escrita</td></tr>
+            </table>
+            <div class="info-box">
+                <p>A Flash lê/escreve em <b>páginas</b>, mas só apaga em <b>blocos</b> inteiros, e cada célula suporta um
+                    número limitado de apagamentos. Por isso o controlador faz <b>wear leveling</b> (distribui o desgaste)
+                    e <i>garbage collection</i>. O <b>3D NAND</b> empilha células verticalmente para ganhar capacidade.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Confiabilidade e memória virtual -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: confiabilidade e memória virtual</h2></div>
+        <div class="content">
+            <div class="grid">
+                <div class="card">
+                    <h3><i class="fa-solid fa-shield-halved"></i> Memória ECC</h3>
+                    <p>Raios cósmicos e ruído podem inverter bits ("soft errors"). A memória <b>ECC</b> adiciona bits de
+                        verificação (códigos de Hamming) capazes de <b>corrigir 1 bit</b> e <b>detectar 2 bits</b> por
+                        palavra — essencial em servidores.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fa-solid fa-table-cells"></i> TLB e memória virtual</h3>
+                    <p>A memória vista pelos programas é <b>virtual</b>: a MMU traduz endereços virtuais em físicos
+                        consultando a tabela de páginas. A <b>TLB</b> é uma cache dessas traduções, evitando acessos
+                        extras à memória a cada referência.</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <p>Note a recursão da ideia de cache: TLB faz cache de traduções, L1/L2/L3 fazem cache de dados, a RAM
+                    faz cache do disco (via paginação). Em todos os níveis vale a mesma lógica de localidade.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Glossário -->
     <div class="slide">
         <div class="header"><h2>Glossário do tópico</h2></div>
@@ -241,7 +383,55 @@
                 <tr><td><b>Volátil</b></td><td>Perde os dados sem energia.</td></tr>
                 <tr><td><b>Bit / Byte</b></td><td>Menor unidade (0/1) / conjunto de 8 bits.</td></tr>
                 <tr><td><b>Latência</b></td><td>Tempo até iniciar o acesso a um dado.</td></tr>
+                <tr><td><b>Localidade</b></td><td>Tendência de reusar dados (temporal) e vizinhos (espacial).</td></tr>
+                <tr><td><b>AMAT</b></td><td>Tempo médio de acesso = t<sub>acerto</sub> + taxa<sub>falta</sub> × penalidade.</td></tr>
+                <tr><td><b>DRAM / DDR</b></td><td>Célula 1T1C com refresh; DDR transfere nas duas bordas do clock.</td></tr>
+                <tr><td><b>ECC</b></td><td>Memória que corrige 1 bit e detecta 2 bits de erro.</td></tr>
             </table>
+        </div>
+    </div>
+
+    <!-- Exercícios resolvidos -->
+    <div class="slide">
+        <div class="header"><h2>Exercícios resolvidos</h2></div>
+        <div class="content">
+            <div style="display:flex; flex-direction:column; gap:16px;">
+                <div>
+                    <p style="font-size:21px;"><b>1.</b> Um HD é vendido como <b>2 TB</b>. Por que o sistema
+                        operacional mostra cerca de <b>1862 GB</b>?</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">O fabricante usa base 10: 2 TB = 2×10<sup>12</sup>
+                            bytes. O SO usa base 2 (GiB = 2<sup>30</sup>). 2×10<sup>12</sup> / 2<sup>30</sup> ≈
+                            <b>1862 GiB</b>. Não há perda de espaço — apenas duas definições diferentes de "giga".</div>
+                    </details>
+                </div>
+                <div>
+                    <p style="font-size:21px;"><b>2.</b> Uma cache tem tempo de acerto de <b>1 ns</b>, taxa de falta de
+                        <b>5%</b> e penalidade de falta de <b>100 ns</b>. Calcule o AMAT.</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">AMAT = t<sub>acerto</sub> + (taxa<sub>falta</sub> ×
+                            penalidade) = 1 + (0,05 × 100) = <b>6 ns</b>. Mesmo com 95% de acertos, as faltas dominam o
+                            tempo médio — daí a importância de reduzir a taxa de falta.</div>
+                    </details>
+                </div>
+                <div>
+                    <p style="font-size:21px;"><b>3.</b> Endereço de <b>32 bits</b>, blocos de <b>64 bytes</b>, cache de
+                        mapeamento direto com <b>512 linhas</b>. Quantos bits têm os campos offset, índice e tag?</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">Offset = log<sub>2</sub>64 = <b>6 bits</b>.
+                            Índice = log<sub>2</sub>512 = <b>9 bits</b>. Tag = 32 − 6 − 9 = <b>17 bits</b>.</div>
+                    </details>
+                </div>
+                <div>
+                    <p style="font-size:21px;"><b>4.</b> Por que a cache usa SRAM e a memória principal usa DRAM?</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">A SRAM é muito mais rápida e não precisa de
+                            refresh, ideal para a cache (pequena e veloz), mas é cara e ocupa mais área por bit. A DRAM é
+                            mais lenta e exige refresh, porém é barata e densa — adequada para a grande capacidade da
+                            memória principal. É o trade-off velocidade × custo × capacidade da hierarquia.</div>
+                    </details>
+                </div>
+            </div>
         </div>
     </div>
 

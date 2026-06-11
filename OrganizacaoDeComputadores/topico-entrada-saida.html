@@ -223,6 +223,140 @@
         </div>
     </div>
 
+    <!-- APROFUNDAMENTO: Interrupções em profundidade -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: o mecanismo de interrupções</h2></div>
+        <div class="content">
+            <p>Interrupções não são todas iguais. Elas se classificam pela origem:</p>
+            <table class="table">
+                <tr><th>Tipo</th><th>Origem</th><th>Exemplo</th></tr>
+                <tr><td><b>Interrupção de hardware</b></td><td>Dispositivo externo (assíncrona)</td><td>Tecla pressionada, pacote de rede</td></tr>
+                <tr><td><b>Exceção / trap</b></td><td>A própria instrução (síncrona)</td><td>Divisão por zero, page fault</td></tr>
+                <tr><td><b>Interrupção de software</b></td><td>Instrução proposital</td><td>Chamada de sistema (syscall)</td></tr>
+            </table>
+            <ul class="spaced" style="margin-top: 12px;">
+                <li>Cada fonte tem um número (IRQ) que indexa a <span class="highlight">tabela/vetor de
+                    interrupções</span>, apontando para a rotina de tratamento (ISR) correta.</li>
+                <li>Interrupções têm <b>prioridade</b>: uma de maior prioridade pode interromper o tratamento de outra
+                    (interrupções <b>aninhadas</b>). As de baixa prioridade podem ser <b>mascaradas</b> temporariamente.</li>
+                <li>Um controlador dedicado (<b>PIC</b> e, hoje, <b>APIC</b>) coordena as várias linhas e as distribui
+                    aos núcleos.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: DMA em profundidade -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: modos de DMA e coerência</h2></div>
+        <div class="content">
+            <p>O controlador de DMA assume o barramento (torna-se <span class="highlight">bus master</span>) para mover
+                dados. Ele pode fazê-lo de duas formas:</p>
+            <div class="grid" style="margin-top: 10px;">
+                <div class="card">
+                    <h3>Roubo de ciclo (cycle stealing)</h3>
+                    <p>O DMA transfere uma palavra por vez, "roubando" ciclos de barramento entre os acessos da CPU.
+                        A CPU mal percebe, mas a transferência é mais lenta.</p>
+                </div>
+                <div class="card">
+                    <h3>Modo rajada (burst)</h3>
+                    <p>O DMA toma o barramento e transfere um bloco inteiro de uma vez. Muito mais rápido, mas a CPU
+                        fica sem acesso ao barramento durante a rajada.</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <p><b>Problema de coerência:</b> como o DMA escreve direto na RAM, a cache da CPU pode ficar com cópias
+                    desatualizadas. O hardware (snooping de cache) ou o SO precisa garantir a <b>coerência</b> entre o
+                    que está na memória e o que está na cache.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Barramentos -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: anatomia de um barramento</h2></div>
+        <div class="content">
+            <ul class="spaced" style="font-size: 21px;">
+                <li><span class="highlight">Síncrono x assíncrono:</span> o síncrono coordena tudo por um clock comum
+                    (simples, mas limitado pelo dispositivo mais lento); o assíncrono usa <i>handshaking</i> (sinais de
+                    pronto/confirma), acomodando velocidades diferentes.</li>
+                <li><span class="highlight">Arbitragem:</span> quando vários dispositivos querem o barramento ao mesmo
+                    tempo, um árbitro decide a ordem (centralizado ou distribuído), evitando colisões.</li>
+                <li><span class="highlight">Paralelo x serial:</span> barramentos largos e paralelos (PCI, IDE) sofriam
+                    com <i>skew</i> entre os fios em altas frequências. A tendência atual é <b>serial ponto-a-ponto</b>
+                    de alta velocidade com várias linhas (lanes), como PCIe e USB.</li>
+                <li><span class="highlight">Largura de banda:</span> banda = largura × frequência × transferências por
+                    ciclo. É a métrica que define quanto dado o barramento move por segundo.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: PCIe e interconexões -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: PCI Express por dentro</h2></div>
+        <div class="content">
+            <p>O <span class="highlight">PCIe</span> é a principal interconexão interna moderna. Ele agrupa
+                <b>lanes</b> (pares seriais full-duplex); um slot pode ter x1, x4, x8 ou x16 lanes, e a banda dobra a
+                cada geração:</p>
+            <table class="table">
+                <tr><th>Geração</th><th>Banda por lane (cada sentido)</th><th>x16 (aprox.)</th></tr>
+                <tr><td>PCIe 3.0</td><td>~1 GB/s</td><td>~16 GB/s</td></tr>
+                <tr><td>PCIe 4.0</td><td>~2 GB/s</td><td>~32 GB/s</td></tr>
+                <tr><td>PCIe 5.0</td><td>~4 GB/s</td><td>~64 GB/s</td></tr>
+            </table>
+            <div class="info-box">
+                <p>É por isso que uma GPU usa um slot x16 e um SSD <b>NVMe</b> (que fala PCIe direto, sem o
+                    intermediário SATA) é muito mais rápido que um SSD SATA limitado a ~0,6 GB/s.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: Desempenho de E/S -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: medindo o desempenho de E/S</h2></div>
+        <div class="content">
+            <p>Três métricas descrevem qualquer subsistema de E/S, e elas nem sempre andam juntas:</p>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Latência</h3>
+                    <p>Tempo de resposta de uma operação individual (ms, µs). Crítica para bancos de dados e jogos.</p>
+                </div>
+                <div class="card">
+                    <h3>Vazão (throughput)</h3>
+                    <p>Volume de dados por segundo (MB/s, GB/s). Crítica para vídeo e cópia de arquivos grandes.</p>
+                </div>
+                <div class="card">
+                    <h3>IOPS</h3>
+                    <p>Operações de E/S por segundo. Crítica para muitas leituras/escritas pequenas e aleatórias.</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <p>Há um enorme <b>abismo de velocidade</b> entre CPU (ns), RAM (dezenas de ns), SSD (µs) e HD/rede (ms).
+                    Buffers, DMA, filas de comandos e paralelismo existem justamente para esconder essas diferenças.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APROFUNDAMENTO: RAID -->
+    <div class="slide">
+        <div class="header"><h2>Aprofundamento: RAID — desempenho e redundância</h2></div>
+        <div class="content">
+            <p>O <span class="highlight">RAID</span> combina vários discos em um único volume lógico para ganhar
+                velocidade, confiabilidade ou ambos:</p>
+            <table class="table">
+                <tr><th>Nível</th><th>Técnica</th><th>Resultado</th></tr>
+                <tr><td><b>RAID 0</b></td><td>Striping (divide dados entre discos)</td><td>Rápido, mas sem redundância</td></tr>
+                <tr><td><b>RAID 1</b></td><td>Mirroring (espelha os dados)</td><td>Tolera falha de 1 disco; metade da capacidade</td></tr>
+                <tr><td><b>RAID 5</b></td><td>Striping + paridade distribuída</td><td>Tolera 1 falha com bom uso de espaço</td></tr>
+                <tr><td><b>RAID 6</b></td><td>Dupla paridade</td><td>Tolera 2 falhas simultâneas</td></tr>
+                <tr><td><b>RAID 10</b></td><td>Espelhamento + striping</td><td>Desempenho e redundância (mais caro)</td></tr>
+            </table>
+            <div class="info-box">
+                <p>RAID protege contra <b>falha de hardware</b>, não substitui <b>backup</b>: se um arquivo é apagado ou
+                    corrompido, ele é apagado/corrompido em todos os discos do conjunto.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Glossário -->
     <div class="slide">
         <div class="header"><h2>Glossário do tópico</h2></div>
@@ -234,7 +368,56 @@
                 <tr><td><b>Interrupção</b></td><td>Sinal que avisa a CPU de um evento.</td></tr>
                 <tr><td><b>DMA</b></td><td>Transferência direta dispositivo↔memória sem a CPU.</td></tr>
                 <tr><td><b>Driver</b></td><td>Software que controla um dispositivo.</td></tr>
+                <tr><td><b>IRQ / Vetor</b></td><td>Número da interrupção que indexa a rotina de tratamento (ISR).</td></tr>
+                <tr><td><b>Bus master</b></td><td>Dispositivo que assume o barramento (ex.: DMA) para transferir dados.</td></tr>
+                <tr><td><b>PCIe / lane</b></td><td>Interconexão serial; banda dobra a cada geração e por nº de lanes.</td></tr>
+                <tr><td><b>IOPS</b></td><td>Operações de E/S por segundo; mede E/S aleatória.</td></tr>
+                <tr><td><b>RAID</b></td><td>Conjunto de discos para desempenho e/ou redundância.</td></tr>
             </table>
+        </div>
+    </div>
+
+    <!-- Exercícios resolvidos -->
+    <div class="slide">
+        <div class="header"><h2>Exercícios resolvidos</h2></div>
+        <div class="content">
+            <div style="display:flex; flex-direction:column; gap:16px;">
+                <div>
+                    <p style="font-size:21px;"><b>1.</b> Compare <b>polling</b>, <b>interrupção</b> e <b>DMA</b> quanto
+                        ao uso da CPU ao transferir dados.</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">Polling: a CPU fica em espera ativa checando o
+                            dispositivo — desperdício máximo. Interrupção: a CPU faz outra coisa e só é avisada quando o
+                            dispositivo está pronto — custo médio. DMA: um controlador move o bloco direto para a
+                            memória; a CPU só inicia e é avisada no fim — custo mínimo, ideal para transferências
+                            grandes.</div>
+                    </details>
+                </div>
+                <div>
+                    <p style="font-size:21px;"><b>2.</b> Qual a banda aproximada de um enlace <b>PCIe 4.0 x4</b>?</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">PCIe 4.0 fornece ~2 GB/s por lane (cada sentido).
+                            Com 4 lanes: 4 × 2 = <b>~8 GB/s</b>. É a faixa típica de um SSD NVMe Gen4.</div>
+                    </details>
+                </div>
+                <div>
+                    <p style="font-size:21px;"><b>3.</b> Quanto tempo leva para transferir <b>2 GB</b> a uma taxa de
+                        <b>500 MB/s</b>?</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">Tempo = volume / taxa = 2000 MB / 500 MB/s =
+                            <b>4 segundos</b> (usando 1 GB = 1000 MB).</div>
+                    </details>
+                </div>
+                <div>
+                    <p style="font-size:21px;"><b>4.</b> Um <b>RAID 5</b> usa <b>4 discos de 2 TB</b>. Qual a capacidade
+                        útil e quantas falhas ele tolera?</p>
+                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+                        <div class="info-box" style="margin-top:10px;">O RAID 5 reserva o equivalente a 1 disco para
+                            paridade: capacidade útil = (4 − 1) × 2 TB = <b>6 TB</b>. Tolera a falha de <b>1 disco</b>
+                            sem perda de dados.</div>
+                    </details>
+                </div>
+            </div>
         </div>
     </div>
 
