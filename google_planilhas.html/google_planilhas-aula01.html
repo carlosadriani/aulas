@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 1: Introdução à Planilha e Organização de Registos - Prof. Carlos Schaeffer</title>
+    <style>
+        :root {
+            --primary-color: #0f9d58;
+            --secondary-color: #1b73e8;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #3c4043;
+            --text-light: #5f6368;
+        }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid #dadce0;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        header h1 { margin: 0; color: var(--primary-color); }
+        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        .btn-voltar { display: inline-block; margin-bottom: 1.5rem; color: var(--secondary-color); text-decoration: none; font-weight: bold; }
+        .aula-body { background: var(--card-bg); border: 1px solid #dadce0; border-radius: 8px; padding: 2rem; box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3); }
+        h2 { color: var(--primary-color); border-bottom: 2px solid #f1f3f4; padding-bottom: 0.5rem; }
+        .destaque { background-color: #e8f0fe; border-left: 4px solid var(--secondary-color); padding: 1rem; margin: 1.5rem 0; color: #1967d2; }
+        .exemplo-box { background-color: #f1f3f4; border-radius: 4px; padding: 1rem; margin: 1.5rem 0; border-left: 4px solid var(--primary-color); }
+        .exemplo-title { font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem; }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        th, td { border: 1px solid #dadce0; padding: 8px 12px; }
+        th { background-color: #f8f9fa; }
+        code { background-color: #f1f3f4; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+        footer { text-align: center; padding: 2rem; color: var(--text-light); border-top: 1px solid #dadce0; margin-top: 4rem; background: var(--card-bg); }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Planilhas Google</h1>
+        <p>Prof. MSc. Carlos Schaeffer</p>
+    </header>
+    <div class="container">
+        <a href="index.html" class="btn-voltar">&larr; Voltar ao Menu</a>
+        <article class="aula-body">
+            <h1>Aula 1: Organização do Espaço de Trabalho e Cadastro Base</h1>
+            <p>Seja bem-vindo! Nesta primeira aula, vamos aprender a dominar o ambiente do Planilhas Google para organizar listas do dia a dia, como cadastros de alunos, controlo de património de salas de aula e registos de chamados ou pedidos de materiais.</p>
+            
+            <div class="destaque">
+                Objetivo da Aula: Entender como as informações se organizam em linhas e colunas, classificar corretamente textos e números e aprender a abrir listas externas enviadas por outros setores.
+            </div>
+
+            <h2>1. Colunas e Linhas: Como Pensar a sua Tabela</h2>
+            <p>Para manter uma planilha limpa e fácil de trabalhar, precisamos de seguir uma regra simples de organização de dados:</p>
+            <ul>
+                <li><strong>Colunas (Letras):</strong> Guardam os tipos de informações fixas (Ex: Nome do Servidor, Setor, Ramal, Data de Admissão).</li>
+                <li><strong>Linhas (Números):</strong> Representam as pessoas ou os itens individuais (Cada funcionário novo ocupa uma nova linha).</li>
+                <li><strong>Célula:</strong> O quadradinho onde as informações se cruzam (Ex: A célula <code>B3</code> guarda o Ramal do funcionário que está na linha 3).</li>
+            </ul>
+
+            <h2>2. O Alinhamento Automático dos Dados</h2>
+            <p>O Planilhas Google tenta ajudar o utilizador mostrando visualmente se a informação foi introduzida corretamente:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo de Informação</th>
+                        <th>Alinhamento na Célula</th>
+                        <th>Exemplo Administrativo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Nomes ou Textos</strong></td>
+                        <td>Alinhado à Esquerda</td>
+                        <td><code>"Secretaria de Pós-Graduação"</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Valores ou Quantidades</strong></td>
+                        <td>Alinhado à Direita</td>
+                        <td><code>150</code> (livros para inventariar)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Datas</strong></td>
+                        <td>Alinhado à Direita</td>
+                        <td><code>23/02/2026</code> (data de entrega de documento)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="exemplo-box">
+                <div class="exemplo-title">Atenção com Números e Textos:</div>
+                Se introduzir um valor financeiro com uma letra no meio (Ex: <code>150 reais</code>), a planilha vai tratá-lo como texto (alinhado à esquerda) e não permitirá somar esse valor depois. O correto é digitar apenas o número <code>150</code> e utilizar a formatação de moeda da barra de ferramentas.
+            </div>
+
+            <h2>3. Importar Listas Externas (Ficheiros do Sistema)</h2>
+            <p>Geralmente, os relatórios de alunos matriculados ou de compras vêm de sistemas centrais em formatos chamados <strong>CSV</strong> (texto separado por vírgulas). Para trabalhar esses dados no Planilhas Google, faça o seguinte:</p>
+            <ol>
+                <li>Aceda ao menu superior em <code>Arquivo</code> e clique em <code>Importar</code>.</li>
+                <li>Escolha a aba <code>Fazer Upload</code> e selecione o ficheiro guardado no seu computador.</li>
+                <li>Clique em <code>Importar dados</code>. A planilha vai transformar o texto confuso em colunas organizadas perfeitamente de forma automática.</li>
+            </ol>
+        </article>
+    </div>
+    <footer>
+        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull; Universidade de Passo Fundo 
+    </footer>
+</body>
+</html>

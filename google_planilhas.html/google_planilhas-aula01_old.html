@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 1: Interface e Ciclo de Vida do Dado - Prof. Carlos Schaeffer</title>
+    <style>
+        :root {
+            --primary-color: #0f9d58; /* Verde do Google Sheets */
+            --secondary-color: #1b73e8; /* Azul do Google */
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #3c4043;
+            --text-light: #5f6368;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid #dadce0;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+
+        header p {
+            margin: 0.5rem 0 0 0;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .btn-voltar {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .btn-voltar:hover {
+            text-decoration: underline;
+        }
+
+        .aula-body {
+            background: var(--card-bg);
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #f1f3f4;
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        h3 {
+            color: var(--text-color);
+            margin-top: 1.5rem;
+        }
+
+        ul, ol {
+            padding-left: 1.2rem;
+            color: var(--text-light);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .destaque {
+            background-color: #e8f0fe;
+            border-left: 4px solid var(--secondary-color);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+            color: #1967d2;
+            font-weight: 500;
+        }
+
+        .exemplo-box {
+            background-color: #f1f3f4;
+            border-radius: 4px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-family: 'Segoe UI', sans-serif;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .exemplo-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th, td {
+            border: 1px solid #dadce0;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: var(--text-color);
+        }
+
+        code {
+            background-color: #f1f3f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border-top: 1px solid #dadce0;
+            background: var(--card-bg);
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Planilhas Google</h1>
+        <p>Prof. MSc. Carlos Schaeffer &bull; Análise e Desenvolvimento de Sistemas</p>
+    </header>
+
+    <div class="container">
+        <a href="index.html" class="btn-voltar">&larr; Voltar para a página de cursos</a>
+
+        <article class="aula-body">
+            <h1>Aula 1: Interface e Ciclo de Vida do Dado</h1>
+            <p>Nesta primeira aula do curso de <strong>Planilhas Google</strong>, compreenderemos como a aplicação estrutura as informações na memória visual e de que forma o ciclo de vida do dado (da captura ao tipo de armazenamento) impacta na construção de relatórios eficientes para a área de TI.</p>
+
+            <div class="destaque">
+                Objetivo da Aula: Dominar a navegação estrutural do ambiente, diferenciar os tipos primitivos de dados e executar importações limpas a partir de origens externas.
+            </div>
+
+            <h2>1. A Anatomia da Interface (Matriz de Dados)</h2>
+            <p>Diferente de um editor de texto, a planilha trabalha sob o conceito clássico de matriz bidimensional. Cada elemento possui um endereço único e imutável:</p>
+            <ul>
+                <li><strong>Colunas:</strong> Indicadas por letras (Eixo X). Representam os atributos/campos no nosso banco de dados.</li>
+                <li><strong>Linhas:</strong> Indicadas por números (Eixo Y). Representam as tuplas/registros.</li>
+                <li><strong>Célula:</strong> A interseção exata de uma coluna com uma linha (Ex: <code>B5</code>).</li>
+                <li><strong>Intervalo (Range):</strong> Um bloco de dados selecionado de forma contínua, referenciado pelo uso de dois pontos <code>:</code>.</li>
+            </ul>
+
+            <div class="exemplo-box">
+                <div class="exemplo-title">Exemplo Prático de Endereçamento:</div>
+                Anotar o intervalo <code>A1:C10</code> significa dizer que estamos manipulando os dados da coluna <strong>A</strong> até a coluna <strong>C</strong>, partindo da linha <strong>1</strong> até a linha <strong>10</strong>. É a estrutura ideal para criarmos uma tabela de inventário ou logs rápidos.
+            </div>
+
+            <h2>2. Ciclo de Vida e Tipagem de Dados</h2>
+            <p>Um erro comum no desenvolvimento de planilhas é ignorar a tipagem do dado. O Planilhas Google reconhece automaticamente quatro tipos primitivos fundamentais de dados. Alinhá-los corretamente evita falhas lógicas em cálculos e scripts:</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo de Dado</th>
+                        <th>Alinhamento Padrão</th>
+                        <th>Exemplo em TI</th>
+                        <th>Comportamento Esperado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Texto / String</strong></td>
+                        <td>Esquerda</td>
+                        <td><code>"Servidor_01"</code></td>
+                        <td>Não realiza operações matemáticas nativas.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Numérico</strong></td>
+                        <td>Direita</td>
+                        <td><code>192</code> ou <code>45.50</code></td>
+                        <td>Aceita operadores aritméticos e funções de agregação.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data / Time</strong></td>
+                        <td>Direita</td>
+                        <td><code>15/06/2026</code></td>
+                        <td>Armazenado internamente como número de série (permite somar dias).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Booleano</strong></td>
+                        <td>Centralizado</td>
+                        <td><code>VERDADEIRO</code></td>
+                        <td>Usado para flags, validações de segurança e lógica condicional.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="destaque">
+                Dica do Prof: Se você digitou um número e ele ficou alinhado à esquerda por padrão, a planilha o interpretou como texto! Isso quebrará suas futuras fórmulas.
+            </div>
+
+            <h2>3. Importação de Arquivos (CSV vs XLSX)</h2>
+            <p>Em muitos casos, não digitaremos dados manualmente célula por célula. O ecossistema nos permite herdar dados de sistemas externos:</p>
+            <ol>
+                <li><strong>Mecanismo de Importação:</strong> Acesse <code>Arquivo &gt; Importar &gt; Fazer Upload</code>.</li>
+                <li><strong>Arquivos .CSV (Comma-Separated Values):</strong> O formato universal de exportação de bancos de dados textuais. O separador padrão pode ser a vírgula ou o ponto e vírgula.</li>
+                <li><strong>Arquivos .XLSX:</strong> O formato proprietário do Microsoft Excel. O Planilhas Google faz a conversão direta mantendo a maioria das funções.</li>
+            </ol>
+
+            <div class="exemplo-box">
+                <div class="exemplo-title">Atividade Prática Sugerida:</div>
+                Abra um bloco de notas e crie um arquivo simples chamado <code>usuarios.csv</code> com o conteúdo abaixo e tente importá-lo para sua planilha:
+                <br><br>
+                <code>ID,Nome,Status<br>1,Carlos,VERDADEIRO<br>2,Schaeffer,FALSO</code>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull; Universidade de Passo Fundo 
+    </footer>
+
+</body>
+</html>

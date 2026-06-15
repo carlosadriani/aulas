@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 2: Fórmulas Básicas e Operadores - Prof. Carlos Schaeffer</title>
+    <style>
+        :root {
+            --primary-color: #0f9d58; /* Verde característico do Google Sheets */
+            --secondary-color: #1b73e8; /* Azul do Google */
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #3c4043;
+            --text-light: #5f6368;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid #dadce0;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+
+        header p {
+            margin: 0.5rem 0 0 0;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .btn-voltar {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .btn-voltar:hover {
+            text-decoration: underline;
+        }
+
+        .aula-body {
+            background: var(--card-bg);
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #f1f3f4;
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        h3 {
+            color: var(--text-color);
+            margin-top: 1.5rem;
+        }
+
+        ul, ol {
+            padding-left: 1.2rem;
+            color: var(--text-light);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .destaque {
+            background-color: #e8f0fe;
+            border-left: 4px solid var(--secondary-color);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+            color: #1967d2;
+            font-weight: 500;
+        }
+
+        .exemplo-box {
+            background-color: #f1f3f4;
+            border-radius: 4px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-family: 'Segoe UI', sans-serif;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .exemplo-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th, td {
+            border: 1px solid #dadce0;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: var(--text-color);
+        }
+
+        code {
+            background-color: #f1f3f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            color: #c7254e;
+        }
+
+        .code-block {
+            display: block;
+            background-color: #f1f3f4;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            color: #333;
+            margin: 10px 0;
+            border-left: 3px solid #5f6368;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border-top: 1px solid #dadce0;
+            background: var(--card-bg);
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Planilhas Google - Nível I</h1>
+        <p>Prof. MSc. Carlos Schaeffer &bull; Análise e Desenvolvimento de Sistemas</p>
+    </header>
+
+    <div class="container">
+        <a href="index.html" class="btn-voltar">&larr; Voltar para a página de cursos</a>
+
+        <article class="aula-body">
+            <h1>Aula 2: Fórmulas Básicas e Operadores</h1>
+            <p>Após compreendermos a tipagem e como as células guardam as variáveis da nossa matriz, avançaremos para o motor de processamento do Planilhas Google[cite: 15]. Nesta aula, aprenderemos a realizar cálculos aritméticos básicos e a abstrair loops manuais utilizando funções matemáticas de agregação essencial.</p>
+
+            <div class="destaque">
+                Objetivo da Aula: Escrever sintaxes de cálculo matematicamente corretas, respeitar a precedência de operadores e utilizar funções de contagem e soma sobre intervalos de dados dinâmicos.
+            </div>
+
+            <h2>1. O Gatilho de Execução e Operadores Aritméticos</h2>
+            <p>Para o interpretador do Google Sheets saber que o conteúdo de uma célula não é uma simples String ou Texto[cite: 19], precisamos utilizar o operador de atribuição de execução: o símbolo de igualdade <code>=</code> no início da célula.</p>
+            <p>Os operadores aritméticos seguem o padrão clássico das linguagens de programação de alto nível:</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Operação</th>
+                        <th>Operador</th>
+                        <th>Sintaxe na Planilha</th>
+                        <th>Exemplo de Aplicação (TI)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Adição</strong></td>
+                        <td><code>+</code></td>
+                        <td><code>=A2 + B2</code></td>
+                        <td>Somar consumo de banda de dois links de rede.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Subtração</strong></td>
+                        <td><code>-</code></td>
+                        <td><code>=A2 - B2</code></td>
+                        <td>Calcular espaço restante em um Volume/Storage.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Multiplicação</strong></td>
+                        <td><code>*</code></td>
+                        <td><code>=A2 * B2</code></td>
+                        <td>Calcular custo de instâncias Cloud por hora ativa[cite: 12].</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Divisão</strong></td>
+                        <td><code>/</code></td>
+                        <td><code>=A2 / B2</code></td>
+                        <td>Calcular a taxa de transferência média por thread.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Exponenciação</strong></td>
+                        <td><code>^</code></td>
+                        <td><code>=2 ^ 10</code></td>
+                        <td>Cálculo de potências binárias (Ex: 2^10 = 1024 Bytes).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="destaque">
+                Atenção à Precedência Matemática (PEMDAS): Assim como na matemática e no desenvolvimento de software, a multiplicação e a divisão são processadas antes da adição e subtração. Use parênteses <code>()</code> para isolar e priorizar operações.
+            </div>
+
+            <div class="exemplo-box">
+                <div class="exemplo-title">Exemplo Prático: Cálculo de SLA de Disponibilidade</div>
+                Se um servidor cloud ficou offline por 12 horas em um mês de 720 horas[cite: 12], para calcular a porcentagem de disponibilidade (SLA) de forma correta, usamos os parênteses:
+                <span class="code-block">=((720 - 12) / 720)</span>
+                O resultado será <code>0,9833</code>, que ao ser formatado como porcentagem exibirá <strong>98,33%</strong>.
+            </div>
+
+            <h2>2. Funções de Agregação Essenciais</h2>
+            <p>Escrever <code>=A1+A2+A3+A4...</code> é inviável em grandes matrizes. Para isso, utilizamos funções prontas nativas que recebem intervalos (ranges) como parâmetros de entrada:</p>
+
+            <h3>A) Função SOMA (SUM)</h3>
+            <p>Executa a redução aritmética de adição sobre um vetor de dados contínuos ou espaçados.</p>
+            <span class="code-block">=SOMA(C2:C50)</span>
+
+            <h3>B) Função MÉDIA (AVERAGE)</h3>
+            <p>Retorna a média aritmética simples do intervalo selecionado (soma de todos os elementos dividida pela quantidade de elementos numéricos).</p>
+            <span class="code-block">=MÉDIA(D2:D100)</span>
+
+            <h2>3. Diferença Crítica: CONT.NUM vs CONT.VALORES</h2>
+            <p>Um dos erros mais comuns na extração de métricas de infraestrutura é confundir o comportamento de contagem automática da ferramenta. O Planilhas Google separa a análise quantitativa em duas vertentes:</p>
+            
+            <ul>
+                <li><code>CONT.NUM (COUNT)</code>: Conta <strong>apenas</strong> as células que contêm valores estritamente numéricos (incluindo datas)[cite: 19]. Células com textos, erros ou vazias são ignoradas.</li>
+                <li><code>CONT.VALORES (COUNTA)</code>: Conta <strong>qualquer</strong> célula que não esteja vazia, independentemente do tipo de dado (Texto, Número, Erros, Espaços)[cite: 19].</li>
+            </ul>
+
+            <div class="exemplo-box">
+                <div class="exemplo-title">Exemplo Prático: Auditoria de Logs de Servidores</div>
+                Imagine uma lista de monitoramento de instâncias na coluna A. Algumas células registram o IP (Número) e outras registram "Instância Offline" (Texto):
+                <br><br>
+                Se aplicarmos <code class="code-block">=CONT.NUM(A2:A10)</code> o retorno será apenas a quantidade de servidores respondendo com IP ativo.<br>
+                Se aplicarmos <code class="code-block">=CONT.VALORES(A2:A10)</code> o retorno será o total de servidores mapeados no inventário, ativos ou não.
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull; Universidade de Passo Fundo 
+    </footer>
+
+</body>
+</html>

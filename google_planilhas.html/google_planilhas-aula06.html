@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 6: Tabelas Dinâmicas e Gráficos de Gestão - Prof. Carlos Schaeffer</title>
+    <style>
+        :root {
+            --primary-color: #0f9d58; /* Verde do Google Sheets */
+            --secondary-color: #1b73e8; /* Azul do Google */
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #3c4043;
+            --text-light: #5f6368;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid #dadce0;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+        header p {
+            margin: 0.5rem 0 0 0;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .btn-voltar {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+        .btn-voltar:hover {
+            text-decoration: underline;
+        }
+        .aula-body {
+            background: var(--card-bg);
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
+        }
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #f1f3f4;
+            padding-bottom: 0.5rem;
+            margin-top: 2.5rem;
+        }
+        h3 {
+            color: var(--text-color);
+            margin-top: 1.5rem;
+        }
+        ul, ol {
+            padding-left: 1.2rem;
+            color: var(--text-light);
+        }
+        li {
+            margin-bottom: 0.6rem;
+        }
+        .destaque {
+            background-color: #e8f0fe;
+            border-left: 4px solid var(--secondary-color);
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+            color: #1967d2;
+            font-weight: 500;
+        }
+        .exemplo-box {
+            background-color: #f1f3f4;
+            border-radius: 4px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        .exemplo-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        th, td {
+            border: 1px solid #dadce0;
+            padding: 10px 14px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f9fa;
+            color: var(--text-color);
+        }
+        code {
+            background-color: #f1f3f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            color: #c7254e;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border-top: 1px solid #dadce0;
+            background: var(--card-bg);
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Planilhas Google</h1>
+        <p>Prof. MSc. Carlos Schaeffer</p>
+    </header>
+    <div class="container">
+        <a href="index.html" class="btn-voltar">&larr; Voltar ao Menu</a>
+
+        <article class="aula-body">
+            <h1>Aula 6: Resumos Gerenciais com Tabelas Dinâmicas e Gráficos</h1>
+            <p>Imagine que o sistema acadêmico ou do almoxarifado exportou uma lista imensa contendo mais de 5.000 linhas de atendimentos realizados nos últimos meses. Tentar ler ou fazer fórmulas individuais para descobrir quantos atendimentos cada setor fez, ou qual o pico de pedidos por mês, seria uma tarefa exaustiva. A <strong>Tabela Dinâmica (Pivot Table)</strong> permite cruzar, agrupar e resumir milhares de registros em segundos, sem que você precise digitar uma única fórmula.</p>
+
+            <div class="destaque">
+                Objetivo da Aula: Dominar os quatro pilares de uma Tabela Dinâmica (Linhas, Colunas, Valores e Filtros), realizar agrupamentos de dados e gerar gráficos gerenciais limpos e autoexplicativos para tomada de decisão.
+            </div>
+
+            <h2>1. O Conceito de Tabela Dinâmica</h2>
+            <p>A ferramenta recebe esse nome porque permite mudar a estrutura do relatório apenas arrastando os campos de lugar. Para criar uma, basta selecionar a sua tabela de dados brutos e ir ao menu superior: <code>Inserir &gt; Tabela dinâmica</code>.</p>
+            <p>O painel lateral direito dividirá a construção do seu resumo em 4 quadrantes essenciais:</p>
+            <ul>
+                <li><strong>Linhas:</strong> Determina qual informação vai aparecer na vertical, servindo como rótulo de agrupamento (Ex: Listar os nomes de todos os cursos da faculdade sem repetições).</li>
+                <li><strong>Colunas:</strong> Determina qual informação vai aparecer na horizontal (Ex: Quebrar os dados por "Turno": Matutino e Noturno).</li>
+                <li><strong>Valores:</strong> O dado matemático que será calculado no cruzamento (Ex: Contar o total de alunos ou somar despesas). Aqui definimos a operação (SOMA, CONTAR, MÉDIA).</li>
+                <li><strong>Filtros:</strong> Permite isolar o relatório para exibir apenas um subgrupo específico (Ex: Mostrar dados apenas do ano de 2026).</li>
+            </ul>
+
+            <div class="exemplo-box">
+                <div class="exemplo-title">Cenário Prático: Relatório de Atendimentos da Secretaria</div>
+                Sua tabela original possui três colunas: <strong>Data</strong>, <strong>Tipo de Pedido</strong> (Ex: Histórico, Trancamento, Isenção) e <strong>Nome do Aluno</strong>.
+                <br><br>
+                <strong>Montagem da Tabela Dinâmica:</strong><br>
+                1. Em <strong>Linhas</strong>, adicione: <code>Tipo de Pedido</code>.<br>
+                2. Em <strong>Valores</strong>, adicione: <code>Nome do Aluno</code> e mude a opção "Resumir por" para <code>COUNTA</code> (CONT.VALORES).<br>
+                <br>
+                <strong>O Resultado Imediato:</strong> A planilha criará automaticamente uma tabela compacta listando cada tipo de pedido e, ao lado, a quantidade exata de vezes que ele foi solicitado.
+            </div>
+
+            <h2>2. Aprofundamento: Agrupamento Cronológico Avançado</h2>
+            <p>Um problema comum enfrentado por gestores é ter uma coluna cheia de datas completas (Ex: 01/02/2026, 05/02/2026, 12/03/2026) e precisar de um relatório unificado por <strong>Mês</strong> ou por <strong>Ano</strong>.</p>
+            <p>Você não precisa alterar os dados originais. Na tabela dinâmica, o Planilhas Google resolve isso nativamente:</p>
+            <ol>
+                <li>Coloque o campo de <code>Data</code> no quadrante de <strong>Linhas</strong>.</li>
+                <li>Clique com o <strong>botão direito</strong> em cima de qualquer uma das datas exibidas na tabela gerada.</li>
+                <li>Acesse a opção <code>Criar grupo de datas da tabela dinâmica</code> e escolha <code>Mês</code> (ou Ano/Trimestre).</li>
+            </ol>
+            <p>Pronto! O sistema compactará todas as milhares de linhas instantaneamente em blocos organizados por meses (Janeiro, Fevereiro, Março...).</p>
+
+            <h2>3. Comunicação Visual Eficiente: Gráficos Dinâmicos</h2>
+            <p>Para apresentar relatórios à Reitoria ou em reuniões de departamento, o impacto visual dos gráficos é fundamental. Ao clicar na sua Tabela Dinâmica e acessar <code>Inserir &gt; Gráfico</code>, o sistema gerará um elemento visual diretamente conectado ao seu resumo.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo de Gráfico</th>
+                        <th>Quando Utilizar na Gestão</th>
+                        <th>Exemplo Prático</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Colunas / Barras</strong></td>
+                        <td>Comparar quantidades entre categorias fixas.</td>
+                        <td>Volume de materiais em estoque por categoria no almoxarifado.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Linhas</strong></td>
+                        <td>Analisar tendências e evolução ao longo do tempo.</td>
+                        <td>Evolução do número de matrículas mês a mês.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pizza / Rosca</strong></td>
+                        <td>Mostrar a participação de partes em um total (Evitar usar com mais de 5 fatias).</td>
+                        <td>Distribuição percentual dos alunos por status (Ativo, Trancado, Formado).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="destaque">
+                Dica do Prof: Mantenha os gráficos limpos! Remova legendas desnecessárias se os rótulos de dados já estiverem explícitos nas barras. Isso melhora muito a leitura do relatório pela diretoria.
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull; Universidade de Passo Fundo 
+    </footer>
+
+</body>
+</html>

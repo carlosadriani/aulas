@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 2: Cálculos e Contagens de Rotina - Prof. Carlos Schaeffer</title>
+    <style>
+        :root {
+            --primary-color: #0f9d58;
+            --secondary-color: #1b73e8;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #3c4043;
+            --text-light: #5f6368;
+        }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; line-height: 1.6; }
+        header { background-color: var(--card-bg); border-bottom: 1px solid #dadce0; padding: 2rem 1rem; text-align: center; }
+        header h1 { margin: 0; color: var(--primary-color); }
+        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        .btn-voltar { display: inline-block; margin-bottom: 1.5rem; color: var(--secondary-color); text-decoration: none; font-weight: bold; }
+        .aula-body { background: var(--card-bg); border: 1px solid #dadce0; border-radius: 8px; padding: 2rem; box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3); }
+        h2 { color: var(--primary-color); border-bottom: 2px solid #f1f3f4; padding-bottom: 0.5rem; margin-top: 2rem; }
+        h3 { color: var(--text-color); }
+        .destaque { background-color: #e8f0fe; border-left: 4px solid var(--secondary-color); padding: 1rem; margin: 1.5rem 0; color: #1967d2; }
+        .exemplo-box { background-color: #f1f3f4; border-radius: 4px; padding: 1rem; margin: 1.5rem 0; border-left: 4px solid var(--primary-color); }
+        .exemplo-title { font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem; }
+        .code-block { display: block; background-color: #f1f3f4; padding: 10px; border-radius: 4px; font-family: monospace; font-size: 1rem; color: #c7254e; margin: 10px 0; border-left: 3px solid #5f6368; }
+        footer { text-align: center; padding: 2rem; color: var(--text-light); border-top: 1px solid #dadce0; margin-top: 4rem; background: var(--card-bg); }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Planilhas Google</h1>
+        <p>Prof. MSc. Carlos Schaeffer</p>
+    </header>
+    <div class="container">
+        <a href="index.html" class="btn-voltar">&larr; Voltar ao Menu</a>
+        <article class="aula-body">
+            <h1>Aula 2: Fórmulas Práticas de Soma e Contagem Administrativa</h1>
+            <p>Nesta aula, daremos os primeiros passos para fazer a planilha calcular por nós. Veremos como automatizar a soma de despesas de um setor, tirar médias de notas de avaliações institucionais e realizar contagens automatizadas de processos em andamento.</p>
+
+            <div class="destaque">
+                Objetivo da Aula: Aprender a ativar cálculos usando o sinal de igual (=) e dominar as quatro funções básicas de matemática e contagem do dia a dia de uma universidade.
+            </div>
+
+            <h2>1. Ativando as Contas: O Sinal de Igual <code>=</code></h2>
+            <p>Para a planilha entender que você deseja realizar um cálculo matemático e não apenas escrever um texto comum, você deve **obrigatoriamente** começar a digitar a célula com o sinal de igual <code>=</code>.</p>
+            
+            <div class="exemplo-box">
+                <div class="exemplo-title">Exemplo de Operações Diretas:</div>
+                Se digitar <code>=10 + 5</code> na célula e pressionar Enter, a planilha mostrará imediatamente o resultado <strong>15</strong>.<br>
+                Para subtrair use o traço (<code>-</code>), para multiplicar use o asterisco (<code>*</code>) e para dividir use a barra (<code>/</code>).
+            </div>
+
+            <h2>2. Funções Essenciais de Agrupamento</h2>
+            <p>Não precisamos de somar as células uma a uma fazendo <code>=A1+A2+A3</code>. Para facilitar o trabalho com listas compridas, o sistema oferece funções inteligentes:</p>
+
+            <h3>A) Função SOMA</h3>
+            <p>Soma todos os números que estão dentro de um intervalo selecionado.</p>
+            <span class="code-block">=SOMA(B2:B30)</span>
+            <p><em>Aplicação prática:</em> Calcular o total de gastos com materiais de escritório pedidos no mês pelo setor.</p>
+
+            <h3>B) Função MÉDIA</h3>
+            <p>Soma os valores e divide pela quantidade automaticamente.</p>
+            <span class="code-block">=MÉDIA(C2:C100)</span>
+            <p><em>Aplicação prática:</em> Encontrar a nota média de satisfação dos alunos em relação ao atendimento da biblioteca.</p>
+
+            <h2>3. Contar Números vs. Contar Nomes (Contagens de Rotina)</h2>
+            <p>Um dos maiores truques para evitar erros de relatórios mensais é entender a diferença entre estas duas funções de contagem automática:</p>
+            
+            <ul>
+                <li><strong><code>CONT.NUM</code>:</strong> Conta apenas quadradinhos que têm números dentro. Ignora células com palavras ou justificativas de faltas em texto.</li>
+                <li><strong><code>CONT.VALORES</code>:</strong> Conta qualquer quadradinho que esteja preenchido (seja com nome, número ou data). Só ignora o que estiver totalmente em branco.</li>
+            </ul>
+
+            <div class="exemplo-box">
+                <div class="exemplo-title">Exemplo Prático: Gestão de Atendimento de Alunos</div>
+                Imagine uma lista de controle onde a coluna A possui o número do protocolo do pedido do aluno e a coluna B possui observações textuais (Ex: "Documento pendente").
+                <br><br>
+                Para saber o total de pedidos que deram entrada hoje, usamos <code>=CONT.VALORES(A2:A50)</code> (visto que ela vai contar todos os registros de nomes ou códigos presentes).
+            </div>
+        </article>
+    </div>
+    <footer>
+        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull; Universidade de Passo Fundo 
+    </footer>
+</body>
+</html>

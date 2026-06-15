@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Planilhas Google - Prof. Carlos Schaeffer</title>
+    <style>
+        :root {
+            --primary-color: #0f9d58; /* Verde característico do Google Sheets */
+            --secondary-color: #1b73e8;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #3c4043;
+            --text-light: #5f6368;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid #dadce0;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 2.2rem;
+        }
+
+        header p {
+            margin: 0.5rem 0 0 0;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .nivel-section {
+            margin-bottom: 3rem;
+        }
+
+        .nivel-title {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            border-left: 5px solid var(--primary-color);
+            padding-left: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 8px 0 rgba(60,64,67,0.2);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            border-bottom: 1px solid #f1f3f4;
+            padding-bottom: 0.5rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .exemplo-box {
+            background-color: #f1f3f4;
+            border-radius: 4px;
+            padding: 0.8rem;
+            margin-top: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            border-left: 3px solid var(--secondary-color);
+        }
+
+        .exemplo-title {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 0.3rem;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border-top: 1px solid #dadce0;
+            background: var(--card-bg);
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Planilhas Google para Computação</h1>
+        <p>Conteúdos para Aulas - Prof. MSc. Carlos Schaeffer</p>
+    </header>
+
+    <div class="container">
+
+        <section class="nivel-section">
+            <div class="nivel-title">Nível I - Fundamentos e Operações Essenciais</div>
+            <div class="grid">
+                
+                <div class="card">
+                    <h3>1. Interface e Ciclo de Vida do Dado</h3>
+                    <p>Entendimento de linhas, colunas, células, intervalos e tipos de dados (Texto, Número, Data e Booleano). Importação de arquivos .csv e .xlsx.</p>
+                    <div class="exemplo-box">
+                        <div class="exemplo-title">Exemplo Prático:</div>
+                        Intervalo A1:C10 contendo dados de carga acadêmica. Tipo texto para "Nome da Disciplina" e tipo numérico para "CH Semestral".
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>2. Fórmulas Básicas e Operadores</h3>
+                    <p>Utilização dos operadores aritméticos (+, -, *, /) e funções essenciais de agregação matemática: SOMA, MÉDIA, CONT.NUM e CONT.VALORES.</p>
+                    <div class="exemplo-box">
+                        <div class="exemplo-title">Fórmula Exemplo:</div>
+                        <code>=MÉDIA(B2:B20)</code><br>
+                        Calcula o coeficiente de rendimento médio dos alunos no intervalo selecionado.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>3. Formatação Condicional</h3>
+                    <p>Aplicação de regras visuais automáticas baseadas no conteúdo da célula para construção de dashboards operacionais rápidos.</p>
+                    <div class="exemplo-box">
+                        <div class="exemplo-title">Exemplo de Regra:</div>
+                        Se o valor da célula for MENOR que 60 (Nota de corte), aplicar preenchimento vermelho claro e texto vermelho escuro.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="nivel-section">
+            <div class="nivel-title">Nível II - Lógica e Análise de Dados</div>
+            <div class="grid">
+
+                <div class="card">
+                    <h3>4. Funções Lógicas (Estruturas de Decisão)</h3>
+                    <p>Uso das funções SE, E, OU e SEERRO para criar fluxos condicionais de tratamento de dados e tratamento de exceções em fórmulas.</p>
+                    <div class="exemplo-box">
+                        <div class="exemplo-title">Fórmula Exemplo:</div>
+                        <code>=SE(B2&gt;=70; "Aprovado"; "Reprovado")</code><br>
+                        Avalia o status do aluno com base na nota contida na célula B2.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>5. Procuras e Correlações (VLOOKUP / XLOOKUP)</h3>
+                    <p>Cruzamento de matrizes de dados diferentes utilizando PROCV (VLOOKUP) e o moderno PROCX (XLOOKUP) para busca bidirecional.</p>
+                    <div class="exemplo-box">
+                        <div class="exemplo-title">Fórmula Exemplo:</div>
+                        <code>=PROCX(A2; 'Alunos'!A:A; 'Alunos'!B:B; "Não Encontrado")</code><br>
+                        Busca o ID da célula A2 na tabela Alunos e retorna o nome correspondente.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>6. Tabelas Dinâmicas e Gráficos</h3>
+                    <p>Pivot Tables para sumarização de grandes volumes de dados, segmentação (Filtros) e geração de gráficos de linha, barra e dispersão.</p>
+                    <div class="exemplo-box">
+                        <div class="exemplo-title">Exemplo Prático:</div>
+                        Agrupar uma planilha de 5.000 logs de segurança por "Tipo de Ataque" nas linhas e "Contagem" nos valores.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="nivel-section">
+            <div class="nivel-title">Nível III - Recursos Avançados e Engenharia de Dados</div>
+            <div class="grid">
+
+                <div class="card">
+                    <h3>7. Manipulação de Matrizes Dinâmicas</h3>
+                    <p>Funções poderosas nativas do ecossistema Google: FILTER (filtragem dinâmica), UNIQUE (deduplicação) e SORT (ordenação em tempo de execução).</p>
+                    <div class="exemplo-box">
+                        <div class="exemplo-title">Fórmula Exemplo:</div>
+                        <code>=FILTER(A2:C100; B2:B100 = "Cloud Computing")</code><br>
+                        Retorna instantaneamente uma nova sub-tabela apenas com registros da disciplina selecionada.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>8. Integração e Consultas Avançadas (QUERY)</h3>
+                    <p>Uso da função QUERY que permite executar instruções similares à linguagem SQL (Select, Where, Order By) diretamente em intervalos de dados.</p>
+                    <div class="exemplo-box">
+                        <div class="exemplo-title">Fórmula Exemplo:</div>
+                        <code>=QUERY(A1:E100; "SELECT A, C WHERE D > 1000 ORDER BY C DESC")</code><br>
+                        Uma query de banco de dados rodando em tempo real dentro da sua planilha.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>9. Automação com Apps Script (Introdução)</h3>
+                    <p>Criação de macros e funções personalizadas utilizando JavaScript através do Google Apps Script (GAS) integrado à planilha.</p>
+                    <div class="exemplo-box">
+                        <div class="exemplo-title">Exemplo de Script:</div>
+                        <code>function onEdit(e) { <br>
+                        &nbsp;&nbsp;// Registra timestamp automático ao alterar dados<br>
+                        }</code>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull; Universidade de Passo Fundo 
+    </footer>
+
+
+</body>
+</html>

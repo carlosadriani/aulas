@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 7: Matrizes Dinâmicas (FILTER e UNIQUE) - Prof. Carlos Schaeffer</title>
+    <style>
+        :root {
+            --primary-color: #0f9d58; /* Verde do Google Sheets */
+            --secondary-color: #1b73e8; /* Azul do Google */
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #3c4043;
+            --text-light: #5f6368;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid #dadce0;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+        header p {
+            margin: 0.5rem 0 0 0;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .btn-voltar {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+        .btn-voltar:hover {
+            text-decoration: underline;
+        }
+        .aula-body {
+            background: var(--card-bg);
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
+        }
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #f1f3f4;
+            padding-bottom: 0.5rem;
+            margin-top: 2.5rem;
+        }
+        h3 {
+            color: var(--text-color);
+            margin-top: 1.5rem;
+        }
+        ul, ol {
+            padding-left: 1.2rem;
+            color: var(--text-light);
+        }
+        li {
+            margin-bottom: 0.6rem;
+        }
+        .destaque {
+            background-color: #e8f0fe;
+            border-left: 4px solid var(--secondary-color);
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+            color: #1967d2;
+            font-weight: 500;
+        }
+        .exemplo-box {
+            background-color: #f1f3f4;
+            border-radius: 4px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        .exemplo-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        code {
+            background-color: #f1f3f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            color: #c7254e;
+        }
+        .code-block {
+            display: block;
+            background-color: #fafafa;
+            padding: 12px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            color: #333;
+            margin: 10px 0;
+            border-left: 3px solid #5f6368;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border-top: 1px solid #dadce0;
+            background: var(--card-bg);
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Planilhas Google</h1>
+        <p>Prof. MSc. Carlos Schaeffer</p>
+    </header>
+    <div class="container">
+        <a href="index.html" class="btn-voltar">&larr; Voltar ao Menu</a>
+        <article class="aula-body">
+            <h1>Aula 7: Extração Automática de Dados com FILTER e UNIQUE</h1>
+            <p>Seja bem-vindo ao nível avançado. Até agora, quando você precisava separar os dados de uma planilha (como isolar apenas os alunos de biologia ou descobrir quais cursos diferentes estão na lista), você provavelmente usava o menu de Filtros manual ou copiava e colava os dados para outra aba. O problema é que se a lista original mudar, o seu trabalho colado fica desatualizado. Nesta aula, aprenderemos o conceito de <strong>Matrizes Dinâmicas</strong>: fórmulas que criam tabelas automáticas e vivas, que se atualizam sozinhas.</p>
+
+            <div class="destaque">
+                Objetivo da Aula: Compreender o comportamento de transbordo (spill) de fórmulas matriciais, utilizar a função UNIQUE para limpeza e deduplicação de listas administrativas e aplicar a função FILTER para criar sub-relatórios automáticos.
+            </div>
+
+            <h2>1. O Efeito de "Transbordo" (Spill)</h2>
+            <p>Até aqui, toda fórmula que você digitava devolvia o resultado em uma única célula. As funções do Nível III são diferentes: você digita a fórmula em <strong>uma célula</strong>, mas ela cria e preenche várias linhas e colunas abaixo e para o lado automaticamente. A esse comportamento damos o nome de transbordo.</p>
+            
+            <div class="destaque">
+                Atenção ao Erro #REF!: Como essas fórmulas precisam de espaço físico para desenhar a nova tabela na tela, se houver qualquer texto digitado manualmente no caminho delas, a fórmula travará e exibirá o erro <code>#REF!</code> (com a mensagem: "O resultado não foi expandido porque colidiria com os dados..."). Basta apagar o texto obstrutor para a tabela aparecer.
+            </div>
+
+            <h2>2. Deduplicação de Listas com a Função UNIQUE</h2>
+            <p>Imagine que você recebeu uma planilha com 2.000 registros de atendimentos realizados no balcão e quer saber quais setores participaram da ação. Se você olhar a coluna "Setor", a palavra "Biblioteca" ou "Secretaria" vai se repetir centenas de vezes. A função <code>UNIQUE</code> limpa as repetições e devolve uma lista limpa, com apenas uma ocorrência de cada item.</p>
+            
+            <span class="code-block">=UNIQUE(intervalo)</span>
+
+            <div class="exemplo-box">
+                <div class="exemplo-title">Exemplo Prático: Mapeando Cursos Ativos</div>
+                Se a coluna C contiver os cursos de todos os estudantes matriculados da faculdade (gerando milhares de linhas repetidas), basta ir para uma célula livre em outra aba e digitar:
+                <span class="code-block">=UNIQUE(CadastroGeral!C2:C5000)</span>
+                A planilha criará instantaneamente uma lista vertical perfeita listando apenas uma vez cada curso existente no sistema. Se um curso novo for adicionado lá na lista original, ele aparecerá nesta lista automaticamente.
+            </div>
+
+            <h2>3. Extração Condicional com a Função FILTER</h2>
+            <p>A função <code>FILTER</code> é uma das ferramentas mais fantásticas do ecossistema Google. Ela copia automaticamente para outro local apenas as linhas de uma tabela que atendam a um critério específico, mantendo os dados conectados à matriz original.</p>
+            
+            <span class="code-block">=FILTER(intervalo_dados; condição1; [condição2; ...])</span>
+
+            <ul>
+                <li><code>intervalo_dados</code>: Toda a tabela original que você deseja copiar (Ex: Todas as colunas de A a D).</li>
+                <li><code>condição1</code>: O teste lógico que define quem entra no relatório (Ex: Filtrar apenas onde a Coluna C for igual a "Trancado").</li>
+            </ul>
+
+            <div class="exemplo-box">
+                <div class="exemplo-title">Exemplo Prático: Sub-relatório Automático por Departamento</div>
+                Sua planilha principal (na aba <code>Geral</code>) tem as colunas: <strong>A (Funcionário)</strong>, <strong>B (Cargo)</strong> e <strong>C (Departamento)</strong>. O chefe do departamento de "Recursos Humanos" quer uma lista apenas com os funcionários dele. 
+                <br><br>
+                Em vez de filtrar, copiar e colar, você cria uma nova aba chamada <code>RH</code> e digita na célula A1:
+                <span class="code-block">=FILTER(Geral!A2:C1000; Geral!C2:C1000 = "Recursos Humanos")</span>
+                <br>
+                <strong>O Milagre da Automação:</strong> O Planilhas Google vai ler a tabela inteira, extrair apenas as linhas do RH e desenhar a tabela completa na nova aba. Se o RH contratar um novo funcionário na lista geral, a tabela da aba do chefe se atualizará sozinha no mesmo segundo.
+            </div>
+
+            <h2>4. Combinando as Funções: FILTER + UNIQUE</h2>
+            <p>Como as funções de matriz dinâmica conversam entre si, podemos aninhá-las para criar relatórios ainda mais refinados e profundos.</p>
+
+            <div class="exemplo-box">
+                <div class="exemplo-title">Exemplo Avançado: Quais tipos de chamados o setor "A" abriu?</div>
+                Imagine uma planilha de chamados de manutenção, onde a coluna B é o Setor e a coluna C é o Tipo de Problema (Ar condicionado, Lâmpada, Computador). Você quer uma lista sem repetições apenas dos problemas do setor "Biblioteca".
+                <br><br>
+                Combinamos as duas ferramentas em uma única linha:
+                <span class="code-block">=UNIQUE( FILTER(C2:C1000; B2:B1000 = "Biblioteca") )</span>
+                <p><em>Como a planilha lê:</em> Primeiro o <code>FILTER</code> isola apenas os problemas da Biblioteca. Depois, o <code>UNIQUE</code> pega esse resultado e remove as palavras repetidas, deixando uma lista limpa e cirúrgica para a tomada de decisão do almoxarifado.</p>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull; Universidade de Passo Fundo 
+    </footer>
+
+</body>
+</html>

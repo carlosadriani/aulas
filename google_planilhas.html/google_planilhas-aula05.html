@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 5: Cruzamento de Tabelas com XLOOKUP (PROCX) - Prof. Carlos Schaeffer</title>
+    <style>
+        :root {
+            --primary-color: #0f9d58; /* Verde do Google Sheets */
+            --secondary-color: #1b73e8; /* Azul do Google */
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #3c4043;
+            --text-light: #5f6368;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid #dadce0;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+        header p {
+            margin: 0.5rem 0 0 0;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .btn-voltar {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+        .btn-voltar:hover {
+            text-decoration: underline;
+        }
+        .aula-body {
+            background: var(--card-bg);
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
+        }
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #f1f3f4;
+            padding-bottom: 0.5rem;
+            margin-top: 2.5rem;
+        }
+        h3 {
+            color: var(--text-color);
+            margin-top: 1.5rem;
+        }
+        ul, ol {
+            padding-left: 1.2rem;
+            color: var(--text-light);
+        }
+        li {
+            margin-bottom: 0.6rem;
+        }
+        .destaque {
+            background-color: #e8f0fe;
+            border-left: 4px solid var(--secondary-color);
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+            color: #1967d2;
+            font-weight: 500;
+        }
+        .exemplo-box {
+            background-color: #f1f3f4;
+            border-radius: 4px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        .exemplo-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        th, td {
+            border: 1px solid #dadce0;
+            padding: 10px 14px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f9fa;
+            color: var(--text-color);
+        }
+        code {
+            background-color: #f1f3f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            color: #c7254e;
+        }
+        .code-block {
+            display: block;
+            background-color: #fafafa;
+            padding: 12px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            color: #333;
+            margin: 10px 0;
+            border-left: 3px solid #5f6368;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border-top: 1px solid #dadce0;
+            background: var(--card-bg);
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Planilhas Google</h1>
+        <p>Prof. MSc. Carlos Schaeffer</p>
+    </header>
+    <div class="container">
+        <a href="index.html" class="btn-voltar">&larr; Voltar ao Menu</a>
+
+        <article class="aula-body">
+            <h1>Aula 5: Busca Inteligente e Vinculação de Dados com XLOOKUP (PROCX)</h1>
+            <p>Em sistemas administrativos, é comum trabalharmos com listas separadas. Por exemplo, você pode receber uma lista do setor financeiro contendo apenas o número de matrícula do aluno e o status do pagamento, e precisar descobrir o nome e o e-mail desse aluno que estão salvos em outra planilha de cadastro geral. Em vez de procurar manualmente um por um, utilizamos a função de busca mais moderna do mercado: o <strong>XLOOKUP</strong> (ou <strong>PROCX</strong>, dependendo do idioma configurado na sua conta).</p>
+
+            <div class="destaque">
+                Objetivo da Aula: Compreender a mecânica de mapeamento da função XLOOKUP, substituir o uso legado do PROCV eliminando suas limitações estruturais e aprender a tratar dados não localizados de forma limpa.
+            </div>
+
+            <h2>1. Por que o XLOOKUP substituiu o antigo PROCV?</h2>
+            <p>O antigo <code>PROCV</code> (VLOOKUP) foi útil por décadas, mas possuía falhas graves que geravam retrabalho nos escritórios. O <code>XLOOKUP</code> resolve todas elas:</p>
+            <ul>
+                <li><strong>Direção da busca:</strong> O PROCV só conseguia buscar da esquerda para a direita. O XLOOKUP busca em qualquer direção (esquerda, direita, acima ou abaixo).</li>
+                <li><strong>Segurança Estrutural:</strong> Se você inserisse uma nova coluna no meio da sua tabela, o PROCV quebrava e exibia dados errados. O XLOOKUP armazena a referência direta das colunas, resistindo a qualquer alteração de layout.</li>
+                <li><strong>Tratamento de Erros Integrado:</strong> Não é mais necessário usar funções adicionais como <code>SEERRO</code> para ocultar avisos feios do sistema quando um dado não é encontrado.</li>
+            </ul>
+
+            <h2>2. Anatomia e Sintaxe do XLOOKUP</h2>
+            <p>Diferente de outras funções complexas, o XLOOKUP trabalha de forma muito visual. Ele pede que você aponte: <strong>O que</strong> você está procurando, <strong>onde</strong> essa informação está na tabela de origem, e <strong>qual coluna</strong> contém a resposta que você quer trazer de volta.</p>
+            
+            <span class="code-block">=XLOOKUP(chave_pesquisa; intervalo_pesquisa; intervalo_resultado; [valor_não_encontrado])</span>
+
+            <ol>
+                <li><code>chave_pesquisa</code>: O código ou informação única que você tem em mãos (Ex: O número da matrícula do aluno na sua planilha atual).</li>
+                <li><code>intervalo_pesquisa</code>: A coluna na tabela de origem onde esse código está cadastrado (Ex: A coluna de matrículas da lista geral).</li>
+                <li><code>intervalo_resultado</code>: A coluna de onde você quer extrair a resposta final (Ex: A coluna contendo os nomes dos alunos na lista geral).</li>
+                <li><code>valor_não_encontrado</code> <em>(Opcional, mas altamente recomendado)</em>: O texto que aparecerá caso o código não exista no cadastro (Ex: "Matrícula não localizada").</li>
+            </ol>
+
+            <h2>3. Cenário Prático: Unificando Informações de Matrícula</h2>
+            <p>Imagine que você está na Secretaria Acadêmica com duas planilhas em abas ou arquivos diferentes:</p>
+
+            <h3>Tabela A (Sua Planilha Atual de Trabalho)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Célula A (Matrícula)</th>
+                        <th>Célula B (Nome do Aluno)</th>
+                        <th>Célula C (Situação Financeira)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>20260045</code></td>
+                        <td><em>(Inserir Fórmula aqui)</em></td>
+                        <td>Pago</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Tabela B (Cadastro Geral da Universidade - Aba Oculta ou de Consulta)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Coluna X (Nome Completo)</th>
+                        <th>Coluna Y (Nº Matrícula)</th>
+                        <th>Coluna Z (Curso)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ana Silva Santos</td>
+                        <td><code>20260045</code></td>
+                        <td>Administração</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="exemplo-box">
+                <div class="exemplo-title">A Fórmula em Ação:</div>
+                Note que na <strong>Tabela B</strong> (origem), o Nome está à esquerda da Matrícula. O PROCV seria incapaz de realizar essa busca. Com o XLOOKUP, escrevemos na célula B2 da Tabela A:
+                <br>
+                <span class="code-block">=XLOOKUP(A2; TabelaB!Y:Y; TabelaB!X:X; "Cadastro Não Encontrado")</span>
+                <br>
+                <strong>Como o sistema processa:</strong> Ele pega o número <code>20260045</code> (de A2), vai até a coluna Y da Tabela B e procura essa linha. Ao achar, ele navega até a coluna X daquela mesma linha, extrai o texto "Ana Silva Santos" e o exibe perfeitamente na Tabela A.
+            </div>
+
+            <h2>4. Boas Práticas e Travamento de Intervalos ($)</h2>
+            <p>Se em vez de selecionar a coluna inteira (como <code>Y:Y</code>) você selecionar um intervalo limitado (como <code>Y2:Y500</code>), lembre-se da <strong>Regra de Ouro</strong> aprendida na aula anterior: você deve travar o intervalo usando o caractere cifrão (<code>$</code>) antes de arrastar a fórmula para as linhas de baixo.</p>
+            
+            <div class="exemplo-box">
+                <div class="exemplo-title">Exemplo Correto com Travamento:</div>
+                <span class="code-block">=XLOOKUP(A2; TabelaB!$Y$2:$Y$500; TabelaB!$X$2:$X$500; "Não encontrado")</span>
+                Se não travar com <code>$</code>, ao arrastar a fórmula para a linha 3, o intervalo de busca mudará erroneamente para <code>Y3:Y501</code>, fazendo com que a planilha ignore os dados cadastrados na segunda linha.
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull; Universidade de Passo Fundo 
+    </footer>
+
+</body>
+</html>
