@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 8: Relatórios Inteligentes com a Função QUERY - Prof. Carlos Schaeffer</title>
+    <style>
+        :root {
+            --primary-color: #0f9d58; /* Verde do Google Sheets */
+            --secondary-color: #1b73e8; /* Azul do Google */
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #3c4043;
+            --text-light: #5f6368;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid #dadce0;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+        header p {
+            margin: 0.5rem 0 0 0;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .btn-voltar {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+        .btn-voltar:hover {
+            text-decoration: underline;
+        }
+        .aula-body {
+            background: var(--card-bg);
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
+        }
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #f1f3f4;
+            padding-bottom: 0.5rem;
+            margin-top: 2.5rem;
+        }
+        h3 {
+            color: var(--text-color);
+            margin-top: 1.5rem;
+        }
+        ul, ol {
+            padding-left: 1.2rem;
+            color: var(--text-light);
+        }
+        li {
+            margin-bottom: 0.6rem;
+        }
+        .destaque {
+            background-color: #e8f0fe;
+            border-left: 4px solid var(--secondary-color);
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+            color: #1967d2;
+            font-weight: 500;
+        }
+        .exemplo-box {
+            background-color: #f1f3f4;
+            border-radius: 4px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        .exemplo-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        th, td {
+            border: 1px solid #dadce0;
+            padding: 10px 14px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f9fa;
+            color: var(--text-color);
+        }
+        code {
+            background-color: #f1f3f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            color: #c7254e;
+        }
+        .code-block {
+            display: block;
+            background-color: #fafafa;
+            padding: 12px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            color: #333;
+            margin: 10px 0;
+            border-left: 3px solid #5f6368;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border-top: 1px solid #dadce0;
+            background: var(--card-bg);
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Planilhas Google</h1>
+        <p>Prof. MSc. Carlos Schaeffer</p>
+    </header>
+    <div class="container">
+        <a href="index.html" class="btn-voltar">&larr; Voltar ao Menu</a>
+        <article class="aula-body">
+            <h1>Aula 8: Extração de Relatórios com a Função QUERY</h1>
+            <p>Na aula anterior, conhecemos a função <code>FILTER</code>, que nos permite extrair linhas de uma tabela de forma dinâmica. Contudo, e se você precisasse de extrair apenas algumas colunas específicas, ordenando os nomes em ordem alfabética e trazendo somente quem atingiu uma determinada pontuação? Fazer isso juntando várias fórmulas comuns deixaria a planilha lenta. Para resolver isso, o ecossistema Google possui a função <strong>QUERY</strong>, capaz de ler instruções escritas em formato de frase estruturada para montar relatórios imediatos.</p>
+
+            <div class="destaque">
+                Objetivo da Aula: Compreender a estrutura de escrita da função QUERY, dominar as três cláusulas essenciais de seleção administrativa (SELECT, WHERE e ORDER BY) e construir tabelas de auditoria cruzada automáticas.
+            </div>
+
+            <h2>1. Como Funciona a Sintaxe da QUERY?</h2>
+            <p>Diferente de outras funções, a QUERY usa instruções em inglês que funcionam como ordens diretas para o sistema. A estrutura básica da fórmula possui três argumentos:</p>
+            
+            <span class="code-block">=QUERY(intervalo_dados; "frase_de_comando"; [linhas_de_cabeçalho])</span>
+
+            <ul>
+                <li><code>intervalo_dados</code>: A matriz ou tabela completa de onde os dados serão extraídos (Ex: <code>A1:E500</code>).</li>
+                <li><code>"frase_de_comando"</code>: O texto escrito entre aspas duplas contendo as instruções do que fazer com as informações.</li>
+                <li><code>linhas_de_cabeçalho</code>: Número que indica quantas linhas de títulos a sua tabela possui no topo (geralmente usamos o número <code>1</code>).</li>
+            </ul>
+
+            <h2>2. As Três Cláusulas Principais (O Vocabulário)</h2>
+            <p>Para conversar com a função QUERY, montamos a frase utilizando três palavras-chave principais, sempre escritas em letras maiúsculas dentro das aspas:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cláusula</th>
+                        <th>O que ela faz</th>
+                        <th>Tradução Prática para a Rotina</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>SELECT</code></td>
+                        <td>Indica quais colunas devem ser trazidas para o relatório final.</td>
+                        <td>"Traga apenas as colunas A e C, pule o resto."</td>
+                    </tr>
+                    <tr>
+                        <td><code>WHERE</code></td>
+                        <td>Aplica as regras e condições de filtragem.</td>
+                        <td>"Apenas mostre quem é da Secretaria e tem mais de 30 dias de prazo."</td>
+                    </tr>
+                    <tr>
+                        <td><code>ORDER BY</code></td>
+                        <td>Organiza a classificação de exibição dos dados.</td>
+                        <td>"Ordene o resultado final do maior valor para o menor."</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>3. Cenário Prático: Construindo um Painel de Auditoria</h2>
+            <p>Imagine que o setor de Recursos Humanos da Universidade possui uma planilha principal chamada <code>CadastroDocentes</code> com as seguintes colunas:</p>
+            <ul>
+                <li><strong>Coluna A:</strong> Nome do Professor</li>
+                <li><strong>Coluna B:</strong> Faculdade/Centro</li>
+                <li><strong>Coluna C:</strong> Regime de Trabalho (Integral ou Parcial)</li>
+                <li><strong>Coluna D:</strong> Quantidade de Turmas Alocadas</li>
+            </ul>
+            <p>O diretor precisa de um relatório urgente que exiba **apenas o Nome (A) e o Regime de Trabalho (C)**, mas apenas dos professores lotados na faculdade de **"Tecnologia"** e organizados por **ordem alfabética (A)**.</p>
+
+            <div class="exemplo-box">
+                <div class="exemplo-title">A Solução com uma única Fórmula QUERY:</div>
+                Você abre uma aba em branco e, na célula A1, digita apenas esta fórmula:
+                <br>
+                <span class="code-block">=QUERY(CadastroDocentes!A1:D500; "SELECT A, C WHERE B = 'Tecnologia' ORDER BY A ASC"; 1)</span>
+                <br>
+                <strong>Análise da Instrução Interna:</strong>
+                <ul>
+                    <li><code>SELECT A, C</code>: Diz à planilha para ocultar as colunas B e D no relatório final.</li>
+                    <li><code>WHERE B = 'Tecnologia'</code>: Filtra a tabela original. Note que o termo textual procurado deve ficar entre <strong>aspas simples</strong> (<code>'Tecnologia'</code>).</li>
+                    <li><code>ORDER BY A ASC</code>: Organiza a listagem de nomes (Coluna A) em ordem crescente (ASC), ou seja, de A a Z.</li>
+                </ul>
+            </div>
+
+            <h2>4. Cuidados Especiais e Regras de Ouro</h2>
+            <ul>
+                <li><strong>Letras das Colunas:</strong> Dentro das aspas da QUERY, as colunas devem ser escritas obrigatoriamente com letras **maiusculas** (Use <code>SELECT A</code> e nunca <code>SELECT a</code>).</li>
+                <li><strong>Aspas Simples para Texto:</strong> Como a frase de comando já fica dentro de aspas duplas, qualquer texto interno de comparação no filtro precisa usar aspas simples (Ex: <code>WHERE C = 'Integral'</code>).</li>
+                <li><strong>Números Sem Aspas:</strong> Se você for filtrar um valor numérico, ele entra direto sem aspas (Ex: para filtrar quem tem mais de 3 turmas, use <code>WHERE D &gt; 3</code>).</li>
+            </ul>
+
+            <div class="exemplo-box">
+                <div class="exemplo-title">Exemplo Combinado (Texto + Número):</div>
+                Caso precise de puxar professores em regime 'Integral' que tenham mais de 4 turmas alocadas:
+                <span class="code-block">=QUERY(A1:D500; "SELECT A WHERE C = 'Integral' AND D &gt; 4"; 1)</span>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull; Universidade de Passo Fundo 
+    </footer>
+
+</body>
+</html>

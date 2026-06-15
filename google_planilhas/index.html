@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Planilhas Google - Prof. Carlos Schaeffer</title>
+    <style>
+        :root {
+            --primary-color: #0f9d58;
+            --secondary-color: #1b73e8;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #3c4043;
+            --text-light: #5f6368;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid #dadce0;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 2.2rem;
+        }
+
+        header p {
+            margin: 0.5rem 0 0 0;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .nivel-section {
+            margin-bottom: 3rem;
+        }
+
+        .nivel-title {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            border-left: 5px solid var(--primary-color);
+            padding-left: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            border-bottom: 1px solid #f1f3f4;
+            padding-bottom: 0.5rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .exemplo-box {
+            background-color: #f1f3f4;
+            border-radius: 4px;
+            padding: 0.8rem;
+            margin-top: 1rem;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.85rem;
+            border-left: 3px solid var(--secondary-color);
+        }
+
+        .exemplo-title {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 0.3rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border-top: 1px solid #dadce0;
+            background: var(--card-bg);
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Planilhas Google</h1>
+        <p>Prof. MSc. Carlos Adriani Lara Schaeffer</p>
+    </header>
+    <div class="container">
+        <section class="nivel-section">
+            <div class="nivel-title">Nível I - Organização de Dados</div>
+            <div class="grid">
+                <div class="card">
+                    <h3>
+                        <a href="google_planilhas-aula01.html">
+                            1. Interface e Introdução aos Dados
+                        </a>
+                    </h3>
+                    <p>Navegação básica, linhas, colunas e a importância de classificar dados de forma correta (nomes de
+                        alunos, datas de matrículas e valores de taxas).</p>
+                    <div class="exemplo-box">
+                        <div class="exemplo-title">Exemplo Prático:</div>
+                        Criação de uma lista de presença e controlo de entrega de documentos para pastas de alunos.
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>
+                        <a href="google_planilhas-aula02.html">
+                            2. Fórmulas de Controle Diário
+                        </a>
+                    </h3>
+                    <p>Uso de operadores matemáticos e funções essenciais como SOMA, MÉDIA, CONT.NUM e CONT.VALORES para
+                        estatísticas rápidas.</p>
+                    <div class="exemplo-box">
+                        <div class="exemplo-title">Fórmula Exemplo:</div>
+                        <code>=SOMA(B2:B20)</code> para totalizar atendimentos realizados na secretaria ao longo do dia.
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>
+                        <a href="google_planilhas-aula03.html">
+                            3. Formatação Condicional
+                        </a>
+                    </h3>
+                    <p>Destacar automaticamente prazos vencidos, faltas críticas ou orçamentos estourados utilizando
+                        cores de alerta.</p>
+                    <div class="exemplo-box">
+                        <div class="exemplo-title">Exemplo Visível:</div>
+                        Pintar de vermelho os alunos com mais de 15 faltas ou processos parados há mais de 5 dias.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="nivel-section">
+            <div class="nivel-title">Nível II - Lógica Administrativa e Relatórios</div>
+            <div class="grid">
+                <div class="card">
+                    <h3>
+                        <a href="google_planilhas-aula04.html">
+                            4. Funções Lógicas (SE, E, OU)
+                        </a>
+                    </h3>
+                    <p>Automação de respostas baseadas em critérios. Ideal para cálculo automático de resultados
+                        acadêmicos ou triagem de requisições.</p>
+                    <div class="exemplo-box">
+                        <div class="exemplo-title">Fórmula Exemplo:</div>
+                        <code>=SE(C2&gt;=7; "Aprovado"; "Exame")</code> para automatizar o fecho de pautas de notas.
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>
+                        <a href="google_planilhas-aula05.html">
+                            5. Cruzamento de Listas (XLOOKUP / PROCX)
+                        </a>
+                    </h3>
+                    <p>Como encontrar informações de um servidor ou aluno em tabelas diferentes usando o número de
+                        identificação ou ID.</p>
+                    <div class="exemplo-box">
+                        <div class="exemplo-title">Fórmula Exemplo:</div>
+                        Trazer instantaneamente o e-mail institucional do docente a partir de uma lista geral de
+                        Recursos Humanos.
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>
+                        <a href="google_planilhas-aula06.html">
+                            6. Tabelas e Gráficos Dinâmicos
+                        </a>
+                        </h3>
+                    <p>Agrupamento de grandes volumes de registos para apresentar relatórios sumarizados.</p>
+                    <div class="exemplo-box">
+                        <div class="exemplo-title">Exemplo Prático:</div>
+                        Descobrir quantos alunos trancaram o curso por semestre sem precisar contar linha por linha.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer>
+        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull; Gestão e Produtividade Universitária
+    </footer>
+</body>
+
+</html>

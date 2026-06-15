@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula Complementar: Teclas de Atalho e Produtividade - Prof. Carlos Schaeffer</title>
+    <style>
+        :root {
+            --primary-color: #0f9d58; /* Verde do Google Sheets */
+            --secondary-color: #1b73e8; /* Azul do Google */
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #3c4043;
+            --text-light: #5f6368;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid #dadce0;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+        header p {
+            margin: 0.5rem 0 0 0;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .btn-voltar {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+        .btn-voltar:hover {
+            text-decoration: underline;
+        }
+        .aula-body {
+            background: var(--card-bg);
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
+        }
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #f1f3f4;
+            padding-bottom: 0.5rem;
+            margin-top: 2.5rem;
+        }
+        h3 {
+            color: var(--text-color);
+            margin-top: 1.5rem;
+        }
+        ul, ol {
+            padding-left: 1.2rem;
+            color: var(--text-light);
+        }
+        li {
+            margin-bottom: 0.6rem;
+        }
+        .destaque {
+            background-color: #e8f0fe;
+            border-left: 4px solid var(--secondary-color);
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+            color: #1967d2;
+            font-weight: 500;
+        }
+        .exemplo-box {
+            background-color: #f1f3f4;
+            border-radius: 4px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        .exemplo-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        th, td {
+            border: 1px solid #dadce0;
+            padding: 10px 14px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f9fa;
+            color: var(--text-color);
+        }
+        kbd {
+            background-color: #eee;
+            border: 1px solid #b4b4b4;
+            border-radius: 3px;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.2), 0 2px 0 0 rgba(255,255,255,0.7) inset;
+            color: #333;
+            display: inline-block;
+            font-family: sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            line-height: 1;
+            padding: 2px 5px;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Planilhas Google</h1>
+        <p>Prof. MSc. Carlos Schaeffer</p>
+    </header>
+    <div class="container">
+        <a href="index.html" class="btn-voltar">&larr; Voltar ao Menu</a>
+        <article class="aula-body">
+            <h1>Aula 11: Teclas de Atalho e Alta Produtividade</h1>
+            <p>Trabalhar com planilhas de forma eficiente envolve diminuir a dependência do rato. Cada vez que tira as mãos do teclado para procurar um pequeno botão de menu, perde ritmo e foco. O Planilhas Google possui um ecossistema rico de <strong>teclas de atalho</strong> que permitem navegar por listas gigantescas, selecionar dados e aplicar formatações complexas instantaneamente.</p>
+
+            <div class="destaque">
+                Objetivo da Aula: Dominar os comandos de salto e seleção em matrizes extensas, utilizar combinações de formatação rápida de dados administrativos e aprender a abrir o catálogo de ajuda nativo do sistema.
+            </div>
+
+            <h2>1. Navegação e Salto em Listas Longas</h2>
+            <p>Se você tem uma planilha com 3.000 linhas de alunos cadastrados, usar a roda do rato para rolar até o final da lista é uma perda de tempo. Podemos usar os atalhos de direção inteligente:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ação Operacional</th>
+                        <th>Windows / Linux</th>
+                        <th>macOS (Apple)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ir direto para a última linha preenchida da tabela</td>
+                        <td><kbd>Ctrl</kbd> + <kbd>&darr;</kbd></td>
+                        <td><kbd>&9451; Cmd</kbd> + <kbd>&darr;</kbd></td>
+                    </tr>
+                    <tr>
+                        <td>Ir direto para a primeira linha (topo) da tabela</td>
+                        <td><kbd>Ctrl</kbd> + <kbd>&uarr;</kbd></td>
+                        <td><kbd>&9451; Cmd</kbd> + <kbd>&uarr;</kbd></td>
+                    </tr>
+                    <tr>
+                        <td>Ir para o extremo esquerdo ou direito da linha</td>
+                        <td><kbd>Ctrl</kbd> + <kbd>&larr;</kbd> ou <kbd>&rarr;</kbd></td>
+                        <td><kbd>&9451; Cmd</kbd> + <kbd>&larr;</kbd> ou <kbd>&rarr;</kbd></td>
+                    </tr>
+                    <tr>
+                        <td>Ir para a célula inicial da planilha (<code style="color: inherit;">A1</code>)</td>
+                        <td><kbd>Ctrl</kbd> + <kbd>Home</kbd></td>
+                        <td><kbd>&9843; Fn</kbd> + <kbd>&9451; Cmd</kbd> + <kbd>&larr;</kbd></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="exemplo-box">
+                <div class="exemplo-title">Exemplo Prático 1: Adicionar um Novo Aluno no Fim da Fila</div>
+                Você abriu a planilha de inscritos do vestibular que possui milhares de linhas. Em vez de rolar a tela, clique na célula <code>A1</code>, pressione <kbd>Ctrl</kbd> + <kbd>&darr;</kbd>. A seleção saltará imediatamente para o último nome cadastrado. Pressione <kbd>&darr;</kbd> mais uma vez (sem Ctrl) e você estará na linha em branco pronto para digitar.
+            </div>
+
+            <h2>2. Seleção de Blocos de Dados em Segundos</h2>
+            <p>A tecla mágica para seleção é o <strong>Shift</strong>. Quando combinamos o <code>Shift</code> (que seleciona) com o <code>Ctrl</code> (que salta), conseguimos destacar tabelas inteiras instantaneamente.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ação Operacional</th>
+                        <th>Windows / Linux</th>
+                        <th>macOS (Apple)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Selecionar a coluna inteira a partir da célula atual</td>
+                        <td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>&darr;</kbd></td>
+                        <td><kbd>&9451; Cmd</kbd> + <kbd>&129144; Shift</kbd> + <kbd>&darr;</kbd></td>
+                    </tr>
+                    <tr>
+                        <td>Selecionar a linha inteira a partir da célula atual</td>
+                        <td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>&rarr;</kbd></td>
+                        <td><kbd>&9451; Cmd</kbd> + <kbd>&129144; Shift</kbd> + <kbd>&rarr;</kbd></td>
+                    </tr>
+                    <tr>
+                        <td>Selecionar toda a tabela ativa ativa</td>
+                        <td><kbd>Ctrl</kbd> + <kbd>A</kbd></td>
+                        <td><kbd>&9451; Cmd</kbd> + <kbd>A</kbd></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="exemplo-box">
+                <div class="exemplo-title">Exemplo Prático 2: Copiar uma Coluna para Outra Aba</div>
+                Você precisa copiar toda a coluna de e-mails dos servidores (da linha 2 até a 1500) para enviar um comunicado. 
+                <br><br>
+                Clique na célula do primeiro e-mail. Pressione <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>&darr;</kbd>. Toda a coluna será destacada. Pressione <kbd>Ctrl</kbd> + <kbd>C</kbd> (Copiar), vá até a aba de destino e pressione <kbd>Ctrl</kbd> + <kbd>V</kbd> (Colar). Pronto, tarefa executada sem um único arrasto de rato.
+            </div>
+
+            <h2>3. Formatação Rápida de Valores e Moedas</h2>
+            <p>Não perca tempo clicando no menu de formatos para arrumar números. Deixe os dados limpos com estes comandos rápidos aplicados sobre a seleção:</p>
+
+            <ul>
+                <li><strong>Formatar como Moeda (R$):</strong> <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>4</kbd> (Pense no símbolo do cifrão <code>$</code> que fica na tecla 4).</li>
+                <li><strong>Formatar como Porcentagem (%):</strong> <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>5</kbd> (Pense no símbolo de porcentagem <code>%</code> que fica na tecla 5).</li>
+                <li><strong>Formatar como Data Padrão:</strong> <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>3</kbd> (Transforma números gerais em formato DD/MM/AAAA).</li>
+                <li><strong>Limpar toda a formatação da célula:</strong> <kbd>Ctrl</kbd> + <kbd>\</kbd> (Remove cores e negritos voltando ao padrão de texto cru).</li>
+            </ul>
+
+            <h2>4. O Guia Secreto de Atalhos Nativo</h2>
+            <p>O Planilhas Google muda os atalhos dependendo do navegador e do sistema operacional do usuário. Se você esquecer algum comando ou quiser buscar uma função específica, o sistema traz uma central de consulta oculta dentro de qualquer planilha:</p>
+            
+            <div class="destaque" style="text-align: center; font-size: 1.1rem;">
+                Para abrir a lista completa de atalhos na tela, pressione:<br>
+                <kbd>Ctrl</kbd> + <kbd>/</kbd> (no Windows) ou <kbd>&9451; Cmd</kbd> + <kbd>/</kbd> (no Mac).
+            </div>
+            <p>Uma tela de busca se abrirá por cima das células permitindo pesquisar por qualquer comando em tempo real.</p>
+        </article>
+    </div>
+
+    <footer>
+        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull; Universidade de Passo Fundo 
+    </footer>
+
+</body>
+</html>

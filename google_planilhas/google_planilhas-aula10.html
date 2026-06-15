@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula Complementar: Visualização de Dados e Gráficos - Prof. Carlos Schaeffer</title>
+    <style>
+        :root {
+            --primary-color: #0f9d58; /* Verde do Google Sheets */
+            --secondary-color: #1b73e8; /* Azul do Google */
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #3c4043;
+            --text-light: #5f6368;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid #dadce0;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+        header p {
+            margin: 0.5rem 0 0 0;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .btn-voltar {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+        .btn-voltar:hover {
+            text-decoration: underline;
+        }
+        .aula-body {
+            background: var(--card-bg);
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
+        }
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #f1f3f4;
+            padding-bottom: 0.5rem;
+            margin-top: 2.5rem;
+        }
+        h3 {
+            color: var(--text-color);
+            margin-top: 1.5rem;
+        }
+        ul, ol {
+            padding-left: 1.2rem;
+            color: var(--text-light);
+        }
+        li {
+            margin-bottom: 0.6rem;
+        }
+        .destaque {
+            background-color: #e8f0fe;
+            border-left: 4px solid var(--secondary-color);
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+            color: #1967d2;
+            font-weight: 500;
+        }
+        .exemplo-box {
+            background-color: #f1f3f4;
+            border-radius: 4px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        .exemplo-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        th, td {
+            border: 1px solid #dadce0;
+            padding: 10px 14px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f9fa;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Planilhas Google</h1>
+        <p>Prof. MSc. Carlos Schaeffer</p>
+    </header>
+    <div class="container">
+        <a href="index.html" class="btn-voltar">&larr; Voltar ao Menu</a>
+        <article class="aula-body">
+            <h1>Aula 10: Comunicação Visual com Gráficos Inteligentes</h1>
+            <p>Muitas vezes, apresentar uma tabela cheia de números para uma diretoria ou reitoria atrasa a tomada de decisões. O cérebro humano processa formas e cores de maneira muito mais rápida do que texto escrito. Criar um gráfico no Planilhas Google é uma tarefa simples de poucos cliques, mas criar o gráfico <strong>correto</strong> e remover poluições visuais é o que diferencia um relatório comum de um sumário executivo profissional.</p>
+
+            <div class="destaque">
+                Objetivo da Aula: Dominar os principais tipos de gráficos aplicados à gestão, aprender a selecionar corretamente os intervalos de dados e personalizar legendas e eixos para relatórios gerenciais claros.
+            </div>
+
+            <h2>1. Escolhendo o Gráfico Certo para Cada Situação</h2>
+            <p>Um dos maiores erros em planilhas é utilizar o tipo errado de visualização. Cada formato serve para responder a uma pergunta específica:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo de Gráfico</th>
+                        <th>Quando Utilizar</th>
+                        <th>Exemplo na Rotina Universitária</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Colunas / Barras</strong></td>
+                        <td>Para comparar categorias ou quantidades discretas entre si.</td>
+                        <td>Comparar o total de alunos matriculados entre diferentes cursos.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Linhas</strong></td>
+                        <td>Ideal para mostrar tendências e evoluções ao longo do tempo.</td>
+                        <td>Acompanhar a taxa de evasão ou número de inscrições mês a mês.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pizza / Rosca</strong></td>
+                        <td>Para mostrar a composição de partes de um todo (Use apenas com poucas categorias, no máximo 5).</td>
+                        <td>Distribuição percentual do orçamento por departamento técnico.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>2. Passo a Passo para Criar um Gráfico de Desempenho</h2>
+            <p>Imagine que você consolidou o número de projetos de extensão aprovados por setor no último semestre:</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Centro Acadêmico (Coluna A)</th>
+                        <th>Projetos Aprovados (Coluna B)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tecnologia e Engenharia</td>
+                        <td>42</td>
+                    </tr>
+                    <tr>
+                        <td>Ciências da Saúde</td>
+                        <td>35</td>
+                    </tr>
+                    <tr>
+                        <td>Humanas e Sociais</td>
+                        <td>18</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>Para transformar estes dados num gráfico de colunas limpo, execute os seguintes passos:</p>
+            <ol>
+                <li>Selecione todo o intervalo de dados, incluindo os títulos (de <code>A1</code> até <code>B4</code>).</li>
+                <li>No menu superior, clique em <code>Inserir &gt; Gráfico</code>.</li>
+                <li>O Planilhas Google abrirá automaticamente o painel <strong>Editor de Gráficos</strong> do lado direito da tela e gerará uma sugestão inicial.</li>
+                <li>No campo "Tipo de gráfico", mude para <strong>Gráfico de colunas</strong> caso o sistema não tenha selecionado este por padrão.</li>
+            </ol>
+
+            <h2>3. Boas Práticas de Customização (Design Limpo)</h2>
+            <p>No painel do lado direito, clique na aba <strong>Personalizar</strong>. Para garantir uma leitura executiva perfeita, adote as seguintes configurações:</p>
+            <ul>
+                <li><strong>Títulos Claros:</strong> Em <em>Títulos dos gráficos e eixos</em>, escreva um nome descritivo completo, como "Volume de Projetos de Extensão por Centro Acadêmico - 2026", em vez de apenas "Projetos".</li>
+                <li><strong>Legendas Desnecessárias:</strong> Se o seu gráfico possui apenas uma cor de coluna (como no nosso exemplo), a legenda lateral escrita "Projetos Aprovados" é redundante. Aceda a <em>Legenda &gt; Posição</em> e mude para <strong>Nenhuma</strong>.</li>
+                <li><strong>Rótulos de Dados:</strong> Em <em>Série</em>, marque a caixa <strong>Rótulos de dados</strong>. Isso colocará o número exato em cima de cada coluna, eliminando a necessidade de o leitor ficar tentando adivinhar o valor olhando para o eixo lateral.</li>
+            </ul>
+
+            <div class="exemplo-box">
+                <div class="exemplo-title">Dica Avançada: Seleção de Colunas Não Adjacentes</div>
+                E se a tabela original for gigante e você quiser criar um gráfico contendo apenas a <strong>Coluna A (Nomes)</strong> e a <strong>Coluna E (Orçamento Final)</strong>, pulando as colunas B, C e D?
+                <br><br>
+                <strong>Como fazer:</strong> Selecione o intervalo desejado na Coluna A normalmente. Em seguida, mantenha pressionada a tecla <code>CTRL</code> (no Windows) ou <code>CMD</code> (no Mac) e use o rato para selecionar o intervalo correspondente na Coluna E. Com as duas áreas separadas destacadas ao mesmo tempo, clique em <code>Inserir &gt; Gráfico</code>.
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull; Universidade de Passo Fundo 
+    </footer>
+
+</body>
+</html>
