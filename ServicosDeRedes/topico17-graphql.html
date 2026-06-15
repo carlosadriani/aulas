@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17. GraphQL e Otimização de Consultas - Serviços de Redes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        .navbar-brand {
+            font-weight: 700;
+        }
+        .sidebar-nav {
+            position: sticky;
+            top: 2rem;
+        }
+        .nav-link-topic {
+            color: #495057;
+            border-left: 2px solid #dee2e6;
+            padding-left: 10px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .nav-link-topic:hover, .nav-link-topic.active {
+            color: #0d6efd;
+            border-left-color: #0d6efd;
+            font-weight: 500;
+        }
+        .card-topic {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        pre {
+            background-color: #212529;
+            color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fa-solid fa-network-wired me-2"></i>Serviços de Redes
+            </a>
+            <span class="navbar-text d-none d-sm-inline">
+                Prof. Carlos Schaeffer
+            </span>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Início</a></li>
+                <li class="breadcrumb-item active" aria-current="page">17. GraphQL e Otimização</li>
+            </ol>
+        </nav>
+
+        <div class="row pt-2">
+            <div class="col-lg-3 d-none d-lg-block">
+                <div class="sidebar-nav">
+                    <h6 class="text-uppercase text-muted fw-bold mb-3" style="font-size: 0.8rem;">Nesta Aula</h6>
+                    <nav class="nav flex-column gap-2">
+                        <a class="nav-link-topic active" href="#introducao">01. O que é o GraphQL</a>
+                        <a class="nav-link-topic" href="#problemas-rest">02. Limitações do REST</a>
+                        <a class="nav-link-topic" href="#funcionamento">03. Anatomia da Consulta</a>
+                        <a class="nav-link-topic" href="#operacoes">04. Query vs. Mutation</a>
+                        <a class="nav-link-topic" href="#impacto-rede">05. Análise de Tráfego</a>
+                    </nav>
+                    <hr class="my-4">
+                    <a href="index.html" class="btn btn-outline-secondary btn-sm w-100">
+                        <i class="fa-solid fa-arrow-left me-2"></i>Voltar ao Portal
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-9 col-12">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h1 class="fw-bold m-0">17. GraphQL e Otimização de Consultas na Web</h1>
+                    <span class="badge bg-primary px-3 py-2 fs-6">ADS</span>
+                </div>
+                <p class="lead text-muted mb-4">Estudo detalhado do GraphQL como linguagem de consulta e ambiente de execução de dados. Compreensão de como a modelagem orientada a grafos soluciona ineficiências de banda e requisições repetitivas na rede.</p>
+
+                <section id="introducao" class="mb-5">
+                    <div class="card card-topic">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-3 text-primary">
+                                <i class="fa-solid fa-circle-nodes me-2"></i>01. O que é o GraphQL?
+                            </h3>
+                            <p>Criado pelo Facebook em 2012 e disponibilizado como código aberto em 2015, o <strong>GraphQL</strong> é uma especificação para uma linguagem de consulta de dados (Query Language) combinada com um runtime no lado do servidor para responder a essas consultas através de um sistema de tipagem estrita.</p>
+                            
+                            <div class="alert alert-light border-start border-primary border-3 my-3">
+                                <strong>Perspetiva de Arquitetura de Redes:</strong> Diferente do REST que distribui o sistema em dezenas de URIs/endpoints expostos, o GraphQL centraliza toda a comunicação em um <strong>único endpoint HTTP</strong> (geralmente `POST /graphql`). O cliente submete a estrutura exata do grafo de dados que deseja e o servidor responde em um único pacote consolidado.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="problemas-rest" class="mb-5">
+                    <div class="card card-topic">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-3 text-primary">
+                                <i class="fa-solid fa-triangle-exclamation me-2"></i>02. Eficiência de Rede: Over-fetching e Under-fetching
+                            </h3>
+                            <p>Em ambientes móveis ou redes de baixa velocidade, as restrições nativas do REST costumam criar desperdício de infraestrutura através de dois problemas clássicos:</p>
+                            
+                            <div class="row g-4 my-2">
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-0 bg-light p-3">
+                                        <h6 class="fw-bold text-danger"><i class="fa-solid fa-cloud-arrow-down me-2"></i>Over-fetching (Sobrecarga de Dados)</h6>
+                                        <p class="small text-muted m-0">Ocorre quando o endpoint do servidor retorna mais dados do que o cliente realmente necessita para renderizar a interface atual. 
+                                        <br><br><strong>Exemplo:</strong> Chamar `GET /usuarios/1` apenas para mostrar o nome na tela, mas o payload JSON vir acompanhado de endereços, histórico de compras, tokens e preferências, desperdiçando pacotes na rede.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-0 bg-light p-3">
+                                        <h6 class="fw-bold text-danger"><i class="fa-solid fa-network-wired me-2"></i>Under-fetching (Múltiplas Requisições)</h6>
+                                        <p class="small text-muted m-0">Ocorre quando um único endpoint não possui dados suficientes, forçando a aplicação cliente a disparar requisições HTTP sequenciais em cascata (problema do N+1).
+                                        <br><br><strong>Exemplo:</strong> Chamar `/usuarios` para ler a lista, depois `/usuarios/1/posts` para ler os posts e, por fim, `/posts/99/comentarios`, gerando alta latência de handshakes na rede.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="funcionamento" class="mb-5">
+                    <div class="card card-topic">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-3 text-primary">
+                                <i class="fa-solid fa-receipt me-2"></i>03. Anatomia da Consulta e Resposta
+                            </h3>
+                            <p>O GraphQL transfere o controle de previsibilidade para o cliente. A estrutura da requisição espelha perfeitamente o formato da resposta JSON.</p>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="small fw-bold text-secondary mb-1">Requisição do Cliente (Query Body):</p>
+<pre><code>query {
+  usuario(id: "42") {
+    nome
+    email
+    posts {
+      titulo
+    }
+  }
+}</code></pre>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="small fw-bold text-secondary mb-1">Resposta Exata do Servidor (JSON):</p>
+<pre><code>{
+  "data": {
+    "usuario": {
+      "nome": "Carlos",
+      "email": "carlos@edu.br",
+      "posts": [
+        {"titulo": "Introdução ao TCP/IP"}
+      ]
+    }
+  }
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="operacoes" class="mb-5">
+                    <div class="card card-topic">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-3 text-primary">
+                                <i class="fa-solid fa-sliders me-2"></i>04. O Sistema de Tipagem e Operações
+                            </h3>
+                            <p>No backend, define-se estritamente um <strong>Schema</strong> utilizando a *Schema Definition Language (SDL)*. Este contrato prevê três tipos principais de operações raíz que mapeiam as intenções da camada de aplicação:</p>
+                            
+                            <div class="table-responsive">
+                                <table class="table table-bordered align-middle">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Operação</th>
+                                            <th>Propósito Técnico</th>
+                                            <th>Equivalente no REST</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="fw-bold text-primary">Query</td>
+                                            <td>Leitura e recuperação de dados isolados ou encadeados. Não gera efeitos colaterais no servidor.</td>
+                                            <td><span class="badge bg-success">GET</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold text-warning text-dark">Mutation</td>
+                                            <td>Operações de escrita que alteram o estado da aplicação (Criação, Atualização, Remoção).</td>
+                                            <td><span class="badge bg-primary">POST</span> <span class="badge bg-warning text-dark">PUT</span> <span class="badge bg-danger">DELETE</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold text-success">Subscription</td>
+                                            <td>Conexão persistente em tempo real. O servidor envia dados ao cliente continuamente assim que eventos acontecem.</td>
+                                            <td><span class="badge bg-dark">WebSockets / SSE</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="impacto-rede" class="mb-5">
+                    <div class="card card-topic">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-3 text-primary">
+                                <i class="fa-solid fa-chart-line me-2"></i>05. Impacto de Infraestrutura e Redes
+                            </h3>
+                            <p>Apesar dos grandes benefícios na economia de tráfego de banda, a implementação do GraphQL impõe novos desafios técnicos para as equipas de infraestrutura e engenharia de redes:</p>
+                            
+                            <ul>
+                                <li class="mb-3"><strong>Dificuldade de Caching HTTP:</strong> Como o GraphQL utiliza majoritariamente requisições <code class="bg-light px-1">POST</code> direcionadas a um único endpoint, mecanismos nativos de cache web baseados em URIs (como proxies reversos, CDNs, Varnish ou o próprio cache do navegador) deixam de funcionar automaticamente. A estratégia de cache deve ser deslocada para o nível de aplicação ou persistência interna.</li>
+                                <li class="mb-3"><strong>Risco de Ataques de Complexidade (DoS):</strong> Como o cliente define o formato da árvore de consulta, um atacante pode injetar uma query com recursividade infinita ou níveis profundos de aninhamento de grafos (ex: usuário que puxa posts, que puxa comentários, que puxa usuário do comentário, e assim por diante), derrubando os recursos de processamento computacional e memória do servidor. 
+                                <br><small class="text-muted"><strong>Solução:</strong> Implementar algoritmos de análise de profundidade máxima de consulta (Query Depth Limiting) ou cálculo de custo de query.</small></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="d-block d-lg-none mt-4 text-center">
+                    <a href="index.html" class="btn btn-dark w-100 py-2">
+                        <i class="fa-solid fa-arrow-left me-2"></i>Voltar para a Página Inicial
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+            <small>&copy; 2026 - Disciplina de Serviços de Redes - Curso de ADS</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

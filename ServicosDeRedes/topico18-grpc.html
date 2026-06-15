@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18. gRPC e Protocolos de Alta Performance - Serviços de Redes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        .navbar-brand {
+            font-weight: 700;
+        }
+        .sidebar-nav {
+            position: sticky;
+            top: 2rem;
+        }
+        .nav-link-topic {
+            color: #495057;
+            border-left: 2px solid #dee2e6;
+            padding-left: 10px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .nav-link-topic:hover, .nav-link-topic.active {
+            color: #0d6efd;
+            border-left-color: #0d6efd;
+            font-weight: 500;
+        }
+        .card-topic {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        pre {
+            background-color: #212529;
+            color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fa-solid fa-network-wired me-2"></i>Serviços de Redes
+            </a>
+            <span class="navbar-text d-none d-sm-inline">
+                Prof. Carlos Schaeffer
+            </span>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Início</a></li>
+                <li class="breadcrumb-item active" aria-current="page">18. gRPC e Performance</li>
+            </ol>
+        </nav>
+
+        <div class="row pt-2">
+            <div class="col-lg-3 d-none d-lg-block">
+                <div class="sidebar-nav">
+                    <h6 class="text-uppercase text-muted fw-bold mb-3" style="font-size: 0.8rem;">Nesta Aula</h6>
+                    <nav class="nav flex-column gap-2">
+                        <a class="nav-link-topic active" href="#conceito">01. O que é o gRPC</a>
+                        <a class="nav-link-topic" href="#protobuf">02. Protocol Buffers</a>
+                        <a class="nav-link-topic" href="#http2">03. O gRPC sobre HTTP/2</a>
+                        <a class="nav-link-topic" href="#modelos">04. Modelos de Comunicação</a>
+                        <a class="nav-link-topic" href="#comparativo">05. gRPC × REST JSON</a>
+                    </nav>
+                    <hr class="my-4">
+                    <a href="index.html" class="btn btn-outline-secondary btn-sm w-100">
+                        <i class="fa-solid fa-arrow-left me-2"></i>Voltar ao Portal
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-9 col-12">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h1 class="fw-bold m-0">18. gRPC e Protocolos de Alta Performance</h1>
+                    <span class="badge bg-primary px-3 py-2 fs-6">ADS</span>
+                </div>
+                <p class="lead text-muted mb-4">Análise detalhada do gRPC (Google Remote Procedure Call) como framework de comunicação binária de alto desempenho para arquiteturas de microsserviços distribuídos.</p>
+
+                <section id="conceito" class="mb-5">
+                    <div class="card card-topic">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-3 text-primary">
+                                <i class="fa-solid fa-bolt me-2"></i>01. Introdução ao ecossistema gRPC
+                            </h3>
+                            <p>O <strong>gRPC</strong> é um framework de chamada de procedimento remoto (RPC) de código aberto, moderno e de alto desempenho, desenvolvido originalmente pela Google. Ele simplifica a criação de sistemas distribuídos ao permitir que uma aplicação cliente chame diretamente métodos em um servidor localizado em outra máquina como se fosse uma chamada local.</p>
+                            
+                            <div class="alert alert-light border-start border-primary border-3 my-3">
+                                <strong>Infraestrutura de Redes:</strong> Diferente de arquiteturas baseadas em texto (como REST/JSON), o gRPC foi projetado de forma nativa para operar com **dados binários compactados**, reduzindo drasticamente a carga útil trafegada na rede e minimizando o tempo de processamento de CPU para serialização.
+                            </div>
+                            <p>Ele baseia-se em dois pilares tecnológicos fundamentais para atingir a sua performance extrema:</p>
+                            <ul>
+                                <li><strong>Protocol Buffers (Protobuf):</strong> Utilizado como linguagem de definição de interface (IDL) e formato de serialização de dados.</li>
+                                <li><strong>HTTP/2:</strong> Utilizado como protocolo de transporte na camada de aplicação, herdando todas as suas vantagens de infraestrutura física e lógica.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="protobuf" class="mb-5">
+                    <div class="card card-topic">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-3 text-primary">
+                                <i class="fa-solid fa-file-code me-2"></i>02. Mecanismo de Serialização: Protocol Buffers
+                            </h3>
+                            <p>Em sistemas RESTful, a tipagem é dinâmica ou ausente, e os dados viajam como texto claro via JSON. No gRPC, os dados são fortemente tipados através de contratos escritos em arquivos extensivos <code class="bg-light px-1">.proto</code>.</p>
+                            
+                            <p class="small text-muted mb-2">Exemplo Prático de um Arquivo de Contrato Protobuf (`servico.proto`):</p>
+<pre><code>syntax = "proto3";
+
+package redes;
+
+// Definição do Serviço
+service DisciplinaService {
+  rpc ObterTopico (TopicoRequest) returns (TopicoResponse);
+}
+
+// Estruturas de Mensagem Binária
+message TopicoRequest {
+  int32 id = 1;
+}
+
+message TopicoResponse {
+  int32 id = 1;
+  string nome = 2;
+  string status = 3;
+}</code></pre>
+                            <p class="mt-3">A partir deste contrato fixo, compiladores automáticos geram stubs de código de forma nativa nas linguagens utilizadas (Java, Python, C#, Node.js, Go), garantindo interoperabilidade total com validação em tempo de compilação.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="http2" class="mb-5">
+                    <div class="card card-topic">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-3 text-primary">
+                                <i class="fa-solid fa-network-wired me-2"></i>03. Acoplamento à Infraestrutura do HTTP/2
+                            </h3>
+                            <p>O gRPC exige o protocolo **HTTP/2** por questões de eficiência na camada de transporte de dados. As propriedades que viabilizam essa performance são:</p>
+                            
+                            <dl class="row mt-3">
+                                <dt class="col-sm-3 text-primary">Multiplexação de Streams</dt>
+                                <dd class="col-sm-9">Permite o envio de múltiplas requisições e respostas em paralelo através de uma **única conexão TCP** ativa. Isso elimina a latência causada por sucessivos handshakes TCP e conexões concorrentes bloqueantes.</dd>
+
+                                <dt class="col-sm-3 text-primary">Framing Binário</dt>
+                                <dd class="col-sm-9">O HTTP/2 divide as mensagens em quadros binários menores intercalados, tornando o parseamento de pacotes na placa de rede infinitamente mais rápido que ler cabeçalhos textuais puros.</dd>
+
+                                <dt class="col-sm-3 text-primary">Compressão de Headers (HPACK)</dt>
+                                <dd class="col-sm-9">Cabeçalhos HTTP repetitivos são comprimidos utilizando uma tabela estática compartilhada, reduzindo substancialmente o tráfego em redes congestionadas.</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="modelos" class="mb-5">
+                    <div class="card card-topic">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-3 text-primary">
+                                <i class="fa-solid fa-arrows-spin me-2"></i>04. Modelos de Comunicação Nativos
+                            </h3>
+                            <p>Além do modelo tradicional síncrono, o suporte nativo a fluxos de dados contínuos (Streams) do HTTP/2 permite ao gRPC implementar 4 padrões de arquitetura de chamada:</p>
+                            
+                            <ol class="list-group list-group-numbered mb-3">
+                                <li class="list-group-item bg-light border-0"><strong>RPC Unário (Unary):</strong> O modelo clássico. O cliente envia uma única requisição e recebe uma única resposta do servidor.</li>
+                                <li class="list-group-item bg-light border-0"><strong>Server Streaming RPC:</strong> O cliente envia uma única requisição e o servidor devolve um fluxo contínuo de dados (stream) em vários pedaços. <small class="text-muted">(Ex: Feed de logs em tempo real)</small>.</li>
+                                <li class="list-group-item bg-light border-0"><strong>Client Streaming RPC:</strong> O cliente abre um canal e envia uma sequência contínua de mensagens. Quando finaliza, o servidor processa e retorna uma única resposta consolidadada. <small class="text-muted">(Ex: Upload de arquivos em chunks)</small>.</li>
+                                <li class="list-group-item bg-light border-0"><strong>Bidirectional Streaming RPC:</strong> Ambos operam enviando e recebendo fluxos de dados de forma assíncrona e paralela sobre o mesmo canal TCP.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="comparativo" class="mb-5">
+                    <div class="card card-topic">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-3 text-primary">
+                                <i class="fa-solid fa-code-compare me-2"></i>05. Análise de Viabilidade: REST × gRPC
+                            </h3>
+                            <p>Mapeamento de critérios para engenharia de decisão de software e infraestrutura de rede:</p>
+                            
+                            <div class="table-responsive my-3">
+                                <table class="table table-bordered align-middle">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Característica</th>
+                                            <th>REST (JSON)</th>
+                                            <th>gRPC (Protobuf)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="fw-bold">Formato do Dado</td>
+                                            <td>Texto plano (JSON/XML) - Pesado</td>
+                                            <td class="text-success">Binário compactado (Protobuf) - Ultraleve</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Protocolo Base</td>
+                                            <td>HTTP/1.1 ou HTTP/2</td>
+                                            <td class="text-success">HTTP/2 estrito</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Tipagem</td>
+                                            <td>Fraca / Dinâmica</td>
+                                            <td class="text-success">Forte / Estrita (via arquivo .proto)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Navegadores</td>
+                                            <td class="text-success">Suporte nativo e universal</td>
+                                            <td class="text-danger">Limitado (Exige proxies como gRPC-Web)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Caso de Uso Principal</td>
+                                            <td>APIs públicas, Integração Front-End</td>
+                                            <td class="text-success">Comunicação interna de Microsserviços</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="d-block d-lg-none mt-4 text-center">
+                    <a href="index.html" class="btn btn-dark w-100 py-2">
+                        <i class="fa-solid fa-arrow-left me-2"></i>Voltar para a Página Inicial
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+            <small>&copy; 2026 - Disciplina de Serviços de Redes - Curso de ADS</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

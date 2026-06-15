@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16. Webhooks e Arquiteturas Baseadas em Eventos - Serviços de Redes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        .navbar-brand {
+            font-weight: 700;
+        }
+        .sidebar-nav {
+            position: sticky;
+            top: 2rem;
+        }
+        .nav-link-topic {
+            color: #495057;
+            border-left: 2px solid #dee2e6;
+            padding-left: 10px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .nav-link-topic:hover, .nav-link-topic.active {
+            color: #0d6efd;
+            border-left-color: #0d6efd;
+            font-weight: 500;
+        }
+        .card-topic {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        pre {
+            background-color: #212529;
+            color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+        .badge-method {
+            font-family: monospace;
+            min-width: 70px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fa-solid fa-network-wired me-2"></i>Serviços de Redes
+            </a>
+            <span class="navbar-text d-none d-sm-inline">
+                Prof. Carlos Schaeffer
+            </span>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Início</a></li>
+                <li class="breadcrumb-item active" aria-current="page">16. Webhooks e Eventos</li>
+            </ol>
+        </nav>
+
+        <div class="row pt-2">
+            <div class="col-lg-3 d-none d-lg-block">
+                <div class="sidebar-nav">
+                    <h6 class="text-uppercase text-muted fw-bold mb-3" style="font-size: 0.8rem;">Nesta Aula</h6>
+                    <nav class="nav flex-column gap-2">
+                        <a class="nav-link-topic active" href="#conceito">01. O que são Webhooks</a>
+                        <a class="nav-link-topic" href="#polling-vs-webhook">02. Polling vs. Webhook</a>
+                        <a class="nav-link-topic" href="#anatomia">03. Anatomia de um Webhook</a>
+                        <a class="nav-link-topic" href="#resiliencia">04. Resiliência de Rede</a>
+                        <a class="nav-link-topic" href="#seguranca">05. Segurança Avançada</a>
+                    </nav>
+                    <hr class="my-4">
+                    <a href="index.html" class="btn btn-outline-secondary btn-sm w-100">
+                        <i class="fa-solid fa-arrow-left me-2"></i>Voltar ao Portal
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-9 col-12">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h1 class="fw-bold m-0">16. Webhooks e Eventos</h1>
+                    <span class="badge bg-primary px-3 py-2 fs-6">ADS</span>
+                </div>
+                <p class="lead text-muted mb-4">Compreensão profunda do modelo de comunicação orientada a eventos na Web através do fluxo inverso do protocolo HTTP, focando na otimização de infraestrutura e tráfego de rede.</p>
+
+                <section id="conceito" class="mb-5">
+                    <div class="card card-topic">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-3 text-primary">
+                                <i class="fa-solid fa-circle-nodes me-2"></i>01. O que são Webhooks?
+                            </h3>
+                            <p>Um <strong>Webhook</strong> é uma mecânica de comunicação assíncrona entre sistemas baseada no padrão de <strong>Inversão de Controlo (IoC)</strong>. Em vez de um cliente perguntar periodicamente se uma informação mudou, o servidor assume a responsabilidade de notificar ativamente o cliente no exato momento em que um evento interno relevante acontece.</p>
+                            
+                            <div class="alert alert-light border-start border-primary border-3 my-3">
+                                <strong>Perspetiva de Redes:</strong> Em termos de infraestrutura, um Webhook transforma o servidor original em cliente e o cliente original em servidor. O sistema recetor precisa de expor um endpoint público na Camada de Aplicação (HTTP/HTTPS) para escutar e processar as requisições recebidas[cite: 8, 29].
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="polling-vs-webhook" class="mb-5">
+                    <div class="card card-topic">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-3 text-primary">
+                                <i class="fa-solid fa-code-compare me-2"></i>02. Análise de Eficiência: Polling vs. Webhook
+                            </h3>
+                            <p>Para entender o impacto de rede e desempenho de software, compara-se o modelo tradicional de requisição-resposta repetitiva (Polling) com o modelo baseado em gatilhos orientados a eventos (Webhooks):</p>
+                            
+                            <div class="table-responsive my-3">
+                                <table class="table table-bordered align-middle">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Critério Técnico</th>
+                                            <th>Short/Long Polling</th>
+                                            <th>Webhook (Event-Driven)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="fw-bold">Consumo de Banda</td>
+                                            <td class="text-danger">Muito Alto (Múltiplos headers HTTP vazios trafegados)</td>
+                                            <td class="text-success">Mínimo (Apenas trafega dados se o evento ocorrer)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Direção do Fluxo</td>
+                                            <td>Cliente &rarr; Servidor</td>
+                                            <td>Servidor &rarr; URL do Cliente (Inverso)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Latência do Dado</td>
+                                            <td>Depende do intervalo de verificação configurado</td>
+                                            <td class="text-success">Próxima de zero (Tempo real / Real-time)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Infraestrutura</td>
+                                            <td>Fácil (Cliente gerencia as chamadas em loop)</td>
+                                            <td>Exige que o cliente mantenha uma porta exposta à Internet</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="anatomia" class="mb-5">
+                    <div class="card card-topic">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-3 text-primary">
+                                <i class="fa-solid fa-receipt me-2"></i>03. Anatomia de um Webhook
+                            </h3>
+                            <p>Os Webhooks operam quase em exclusividade enviando requisições com o método <strong>HTTP POST</strong>. O corpo da mensagem transporta metadados estruturados (geralmente JSON) identificando a entidade e a ação que disparou o gatilho[cite: 23, 29].</p>
+
+                            <p class="small text-muted mb-2">Exemplo real de Cabeçalhos e Payload JSON enviados por um Webhook (Ex: Gateway de Pagamento):</p>
+<pre><code>POST /webhooks/receber-pagamento HTTP/1.1
+Host: api.seuapp.com
+Content-Type: application/json
+X-Webhook-Event: payment.captured
+X-Webhook-Signature: t=1672531199,v1=7a8b9c...
+
+{
+  "event_id": "evt_90213812",
+  "type": "payment.captured",
+  "created_at": "2026-06-15T17:51:00Z",
+  "data": {
+    "transaction_id": "tx_441029",
+    "amount": 250.00,
+    "currency": "BRL",
+    "status": "confirmed"
+  }
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="resiliencia" class="mb-5">
+                    <div class="card card-topic">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-3 text-primary">
+                                <i class="fa-solid fa-shield-cat me-2"></i>04. Resiliência, Retries e Idempotência
+                            </h3>
+                            <p>A comunicação através de redes públicas está sujeita a falhas temporárias (latência alta, perdas de pacotes ou instabilidades do servidor recetor). Por esse motivo, sistemas robustos que emitem Webhooks adotam práticas estritas de engenharia de confiabilidade:</p>
+                            
+                            <ul>
+                                <li class="mb-2"><strong>Políticas de Retry (Retentativas):</strong> Quando o recetor não responde com um código HTTP de sucesso (`2xx`), o emissor tenta enviar o payload novamente usando algoritmos de <em>Exponential Backoff</em> (afastamento exponencial) com jitter, evitando um ataque de negação de serviço (DoS) involuntário no cliente[cite: 20].</li>
+                                <li class="mb-2"><strong>Dead Letter Queue (DLQ):</strong> Se um número limite de tentativas falhar consecutivamente (ex: 5 vezes), a mensagem é movida para uma fila de falhas estruturada para auditoria manual.</li>
+                                <li class="mb-2"><strong>Idempotência Obrigatória no Recetor:</strong> Como pacotes podem sofrer duplicidade na rede, o recetor do Webhook <strong>deve</strong> validar o campo `event_id` no banco de dados antes de processar as regras de negócio, garantindo que o mesmo evento nunca seja processado duas vezes.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="seguranca" class="mb-5">
+                    <div class="card card-topic">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-3 text-primary">
+                                <i class="fa-solid fa-user-shield me-2"></i>05. Segurança Avançada em Webhooks
+                            </h3>
+                            <p>Manter um endpoint público exposto à Internet para receber dados acarreta riscos críticos de segurança (como injeção de payloads maliciosos oriundos de atacantes fingindo ser o servidor legítimo).</p>
+
+                            <h5 class="fw-bold mt-4 mb-3 text-secondary">A Solução: Assinaturas Criptográficas com Segredo Partilhado (HMAC)</h5>
+                            <p>Para mitigar ataques de personificação, o emissor e o recetor partilham previamente uma chave secreta (Secret Key). O processo de validação baseia-se nas seguintes etapas:</p>
+                            
+                            <ol class="list-group list-group-numbered mb-4">
+                                <li class="list-group-item bg-light border-0">O emissor concatena o <em>timestamp</em> da requisição com o corpo bruto da mensagem (JSON)[cite: 23].</li>
+                                <li class="list-group-item bg-light border-0">Gera um hash hash hash criptográfico utilizando o algoritmo **HMAC-SHA256** com a chave secreta.</li>
+                                <li class="list-group-item bg-light border-0">Envia esse hash no cabeçalho customizado da requisição (ex: `X-Webhook-Signature`).</li>
+                                <li class="list-group-item bg-light border-0">Ao receber a requisição, o recetor recalcula localmente o hash com os mesmos dados recebidos. Se os valores baterem, a autenticidade e integridade do pacote estão validadas.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="d-block d-lg-none mt-4 text-center">
+                    <a href="index.html" class="btn btn-dark w-100 py-2">
+                        <i class="fa-solid fa-arrow-left me-2"></i>Voltar para a Página Inicial
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+            <small>&copy; 2026 - Disciplina de Serviços de Redes - Curso de ADS</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

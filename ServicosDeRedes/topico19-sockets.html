@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19. Comunicação com Sockets e Jogos em Rede - Serviços de Redes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        .navbar-brand {
+            font-weight: 700;
+        }
+        .sidebar-nav {
+            position: sticky;
+            top: 2rem;
+        }
+        .nav-link-topic {
+            color: #495057;
+            border-left: 2px solid #dee2e6;
+            padding-left: 10px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .nav-link-topic:hover, .nav-link-topic.active {
+            color: #0d6efd;
+            border-left-color: #0d6efd;
+            font-weight: 500;
+        }
+        .card-topic {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        pre {
+            background-color: #212529;
+            color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fa-solid fa-network-wired me-2"></i>Serviços de Redes
+            </a>
+            <span class="navbar-text d-none d-sm-inline">
+                Prof. Carlos Schaeffer
+            </span>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Início</a></li>
+                <li class="breadcrumb-item active" aria-current="page">19. Sockets e Jogos em Rede</li>
+            </ol>
+        </nav>
+
+        <div class="row pt-2">
+            <div class="col-lg-3 d-none d-lg-block">
+                <div class="sidebar-nav">
+                    <h6 class="text-uppercase text-muted fw-bold mb-3" style="font-size: 0.8rem;">Nesta Aula</h6>
+                    <nav class="nav flex-column gap-2">
+                        <a class="nav-link-topic active" href="#conceito">01. O que são Sockets</a>
+                        <a class="nav-link-topic" href="#fluxo-tcp">02. Ciclo de Vida TCP</a>
+                        <a class="nav-link-topic" href="#codigo-python">03. Servidor em Python</a>
+                        <a class="nav-link-topic" href="#codigo-dart">04. Cliente em Dart</a>
+                        <a class="nav-link-topic" href="#analise">05. Protocolo de Aplicação</a>
+                    </nav>
+                    <hr class="my-4">
+                    <a href="index.html" class="btn btn-outline-secondary btn-sm w-100">
+                        <i class="fa-solid fa-arrow-left me-2"></i>Voltar ao Portal
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-9 col-12">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h1 class="fw-bold m-0">19. Sockets e Jogos em Rede</h1>
+                    <span class="badge bg-primary px-3 py-2 fs-6">ADS</span>
+                </div>
+                <p class="lead text-muted mb-4">Abstração de baixo nível para comunicação entre processos na rede. Estudo de fluxos stream síncronos e assíncronos aplicados a jogos multiplayer em tempo real.</p>
+
+                <section id="conceito" class="mb-5">
+                    <div class="card card-topic">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-3 text-primary">
+                                <i class="fa-solid fa-plug me-2"></i>01. O que são Sockets de Rede?
+                            </h3>
+                            <p>Um <strong>Socket</strong> é uma abstração do sistema operacional que funciona como um ponto de extremidade (endpoint) para comunicação bidirecional entre processos rodando em máquinas diferentes. Ele serve como interface entre a <strong>Camada de Aplicação (7)</strong> e a <strong>Camada de Transporte (4)</strong>.</p>
+                            
+                            <div class="alert alert-light border-start border-primary border-3 my-3">
+                                <strong>Arquitetura de Endereçamento:</strong> Um socket de internet é identificado de forma única pela combinação de um **Endereço IP** (camada de rede) e um **Número de Porta** (camada de transporte). Ex: <code class="bg-light px-1">127.0.0.1:5000</code>.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="fluxo-tcp" class="mb-5">
+                    <div class="card card-topic">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-3 text-primary">
+                                <i class="fa-solid fa-diagram-project me-2"></i>02. Ciclo de Vida das Conexões Stream (TCP)
+                            </h3>
+                            <p>Para estabelecer um canal confiável orientado a fluxo de bytes (TCP), o servidor e o cliente executam primitivas específicas do sistema operacional:</p>
+                            <ul>
+                                <li><strong>Servidor:</strong> Executa <code class="bg-light px-1">socket()</code> para instanciar, <code class="bg-light px-1">bind()</code> para amarrar à porta local, <code class="bg-light px-1">listen()</code> para entrar em estado de escuta passiva, e <code class="bg-light px-1">accept()</code> que bloqueia a execução até a chegada de um handshake de cliente.</li>
+                                <li><strong>Cliente:</strong> Executa <code class="bg-light px-1">connect()</code> disparando ativamente o Handshake de 3 Vias do TCP para abrir o canal estável.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="codigo-python" class="mb-5">
+                    <div class="card card-topic">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-3 text-primary">
+                                <i class="fa-solid fa-brands fa-python me-2"></i>03. Servidor Multi-Cliente e Cliente CLI em Python
+                            </h3>
+                            <p>Abaixo encontra-se a implementação completa de um **Servidor Multithreading TCP** em Python. Ele gerencia as regras de negócio de um jogo da velha, coordena os estados de dois jogadores e valida as vitórias ou empates.</p>
+                            
+                            <h5 class="fw-bold text-secondary mt-3">Código do Servidor (`server.py`)</h5>
+<pre><code>import socket
+import threading
+
+HOST = '127.0.0.1'
+PORT = 5000
+
+# Estado global do Jogo da Velha
+jogadores = []  # Lista com as conexões dos 2 clientes
+tabuleiro = [" "] * 9
+turno_atual = 0  # 0 para Jogador X, 1 para Jogador O
+
+def verificar_vencedor():
+    linhas_vitoria = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],  # Linhas
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],  # Colunas
+        [0, 4, 8], [2, 4, 6]              # Diagonais
+    ]
+    for linha in lines_vitoria:
+        if tabuleiro[linha[0]] == tabuleiro[linha[1]] == tabuleiro[linha[2]] != " ":
+            return tabuleiro[linha[0]]
+    if " " not in tabuleiro:
+        return "Empate"
+    return None
+
+def transmitir(mensagem):
+    """Envia uma mensagem de texto para ambos os jogadores"""
+    for j in jogadores:
+        try:
+            j.sendall((mensagem + "\n").encode('utf-8'))
+        except:
+            pass
+
+def gerenciar_partida():
+    global turno_atual
+    transmitir("JOGO_INICIADO")
+    jogadores[0].sendall("VOCE_E_X\nSUA_VEZ\n".encode('utf-8'))
+    jogadores[1].sendall("VOCE_E_O\nAGUARDE_ADVERSARIO\n".encode('utf-8'))
+
+    while True:
+        conn_atual = jogadores[turno_atual]
+        conn_adversario = jogadores[1 - turno_atual]
+        simbolo = "X" if turno_atual == 0 else "O"
+
+        try:
+            data = conn_atual.recv(1024).decode('utf-8').strip()
+            if not data:
+                break
+            
+            # Processa o movimento enviado pelo cliente (ex: "4")
+            posicao = int(data)
+            if tabuleiro[posicao] == " ":
+                tabuleiro[posicao] = simbolo
+                
+                status = verificar_vencedor()
+                if status:
+                    transmitir(f"MOVIMENTO:{posicao}:{simbolo}")
+                    if status == "Empate":
+                        transmitir("FIM:EMPATE")
+                    else:
+                        transmitir(f"FIM:VENCEDOR:{status}")
+                    break
+                else:
+                    # Informa o lance para continuar o jogo
+                    conn_adversario.sendall(f"MOVIMENTO:{posicao}:{simbolo}\nSUA_VEZ\n".encode('utf-8'))
+                    conn_atual.sendall(f"AGUARDE_ADVERSARIO\n".encode('utf-8'))
+                    turno_atual = 1 - turno_atual
+            else:
+                conn_atual.sendall("POSICAO_INVALIDA\nSUA_VEZ\n".encode('utf-8'))
+        except Exception as e:
+            print(f"Erro na partida: {e}")
+            break
+
+def iniciar_servidor():
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.bind((HOST, PORT))
+    server.listen(2)
+    print(f"[*] Servidor de Tic-Tac-Toe rodando em {HOST}:{PORT}")
+
+    while len(jogadores) < 2:
+        conn, addr = server.accept()
+        jogadores.append(conn)
+        id_jogador = len(jogadores)
+        print(f"[+] Jogador {id_jogador} conectado de {addr}")
+        
+        if id_jogador == 1:
+            conn.sendall("AGUARDAR_INICIO\n".encode('utf-8'))
+        elif id_jogador == 2:
+            threading.Thread(target=gerenciar_partida).start()
+
+if __name__ == "__main__":
+    iniciar_servidor()</code></pre>
+
+                            <h5 class="fw-bold text-secondary mt-4">Código do Cliente CLI em Python (`client.py`)</h5>
+                            <p>Um exemplo funcional de cliente texto puro em Python para teste imediato das chamadas:</p>
+<pre><code>import socket
+import threading
+import sys
+
+def desenhar_tabuleiro(tab):
+    print(f"\n {tab[0]} | {tab[1]} | {tab[2]} ")
+    print("---|---|---")
+    print(f" {tab[3]} | {tab[4]} | {tab[5]} ")
+    print("---|---|---")
+    print(f" {tab[6]} | {tab[7]} | {tab[8]} \n")
+
+def escutar_servidor(client_socket):
+    tabuleiro = [" "] * 9
+    try:
+        while True:
+            linhas = client_socket.recv(1024).decode('utf-8').split('\n')
+            for linha in linhas:
+                if not linha: continue
+                
+                if "AGUARDAR_INICIO" in linha:
+                    print("[Server] Aguardando o segundo jogador se conectar...")
+                elif "JOGO_INICIADO" in linha:
+                    print("[Server] Partida iniciada!")
+                elif "VOCE_E_" in linha:
+                    print(f"[Info] {linha}")
+                elif "MOVIMENTO" in linha:
+                    _, pos, simb = linha.split(':')
+                    tabuleiro[int(pos)] = simb
+                    desenhar_tabuleiro(tabuleiro)
+                elif "SUA_VEZ" in linha:
+                    desenhar_tabuleiro(tabuleiro)
+                    posicao = input("Sua vez! Escolha uma posição (0-8): ")
+                    client_socket.sendall((posicao + "\n").encode('utf-8'))
+                elif "AGUARDE_ADVERSARIO" in linha:
+                    print("[Info] Aguardando a jogada do oponente...")
+                elif "FIM" in linha:
+                    print(f"\n[FIM DE JOGO] {linha}")
+                    return
+    except Exception as e:
+        print(f"Conexão perdida: {e}")
+    finally:
+        client_socket.close()
+
+def iniciar_cliente():
+    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client.connect(('127.0.0.1', 5000))
+    print("[*] Conectado ao servidor!")
+    threading.Thread(target=escutar_servidor, args=(client,), daemon=True).start()
+    
+    # Mantém o processo principal vivo
+    try:
+        while True: pass
+    except KeyboardInterrupt:
+        client.close()
+
+if __name__ == "__main__":
+    iniciar_cliente()</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="codigo-dart" class="mb-5">
+                    <div class="card card-topic">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-3 text-primary">
+                                <i class="fa-solid fa-brands fa-dart me-2"></i>04. Cliente Assíncrono em Dart (Console/Flutter Engine)
+                            </h3>
+                            <p>Abaixo está o código em **Dart** focado em processamento reativo de streams, compatível com aplicações de console e facilmente integrável ao ciclo de estados do Flutter.</p>
+<pre><code>import 'dart:io';
+import 'dart:convert';
+
+void desenharTabuleiro(List&lt;String&gt; tab) {
+  print("\n ${tab[0]} | ${tab[1]} | ${tab[2]} ");
+  print("---|---|---");
+  print(f" ${tab[3]} | ${tab[4]} | ${tab[5]} ");
+  print("---|---|---");
+  print(f" ${tab[6]} | ${tab[7]} | {tab[8]} \n");
+}
+
+void main() async {
+  final String host = '127.0.0.1';
+  final int porta = 5000;
+  List&lt;String&gt; tabuleiro = List.filled(9, " ");
+
+  print("[*] Renderizando Grid Inicial...");
+  desenharTabuleiro(tabuleiro);
+
+  try {
+    print("[*] Solicitando conexão ao servidor TCP ($host:$porta)...");
+    final socket = await Socket.connect(host, porta);
+    print("[+] Conectado com sucesso!");
+
+    // Ouve as mensagens emitidas pelo servidor de forma assíncrona
+    socket.transform(utf8.decoder).transform(const LineSplitter()).listen(
+      (String linha) {
+        if (linha.isEmpty) return;
+
+        // Regra: Quando receber mensagem do servidor, mostra ao usuário
+        if (linha.contains("AGUARDAR_INICIO")) {
+          print("[Mensagem Servidor] Aguarde o início do jogo. Aguardando oponente...");
+        } else if (linha.contains("JOGO_INICIADO")) {
+          print("[Mensagem Servidor] O jogo começou!");
+        } else if (linha.contains("VOCE_E_")) {
+          print("[Regra de Jogo] $linha");
+        } else if (linha.contains("AGUARDE_ADVERSARIO")) {
+          print("[Status] Aguarde o lance do adversário...");
+        } else if (linha.contains("MOVIMENTO")) {
+          var partes = linha.split(':');
+          int pos = int.parse(partes[1]);
+          String simb = partes[2];
+          tabuleiro[pos] = simb;
+          desenharTabuleiro(tabuleiro);
+        } else if (linha.contains("SUA_VEZ")) {
+          desenharTabuleiro(tabuleiro);
+          stdout.write("Sua vez de jogar! Digite a posição desejada (0-8): ");
+          String? entrada = stdin.readLineSync();
+          if (entrada != null && entrada.isNotEmpty) {
+            socket.write("$entrada\n");
+          }
+        } else if (linha.contains("POSICAO_INVALIDA")) {
+          print("[Erro] Posição já preenchida! Tente outra.");
+        } else if (linha.contains("FIM")) {
+          print("\n[PARTIDA ENCERRADA] $linha");
+          socket.destroy();
+          exit(0);
+        }
+      },
+      onError: (err) {
+        print("[Erro] Falha no fluxo: $err");
+        exit(1);
+      },
+      onDone: () {
+        print("[-] Conexão encerrada pelo servidor remoto.");
+        exit(0);
+      },
+    );
+
+  } catch (e) {
+    print("[Erro Crítico] Não foi possível conectar ao servidor: $e");
+  }
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="analise" class="mb-5">
+                    <div class="card card-topic">
+                        <div class="card-body p-4">
+                            <h3 class="card-title fw-bold mb-3 text-primary">
+                                <i class="fa-solid fa-gears me-2"></i>05. Análise de Protocolo: Mensagens de Controle
+                            </h3>
+                            <p>Na engenharia de sistemas de redes, estabelecer um **Protocolo de Aplicação customizado** sobre o fluxo bruto do TCP é obrigatório. Veja a especificação das strings de controle adotadas neste laboratório:</p>
+                            
+                            <div class="table-responsive">
+                                <table class="table table-striped align-middle">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Comando / Payload</th>
+                                            <th>Origem &rarr; Destino</th>
+                                            <th>Ação na Infraestrutura</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code class="bg-dark text-white p-1 rounded">AGUARDAR_INICIO</code></td>
+                                            <td>Servidor &rarr; Cliente 1</td>
+                                            <td>Informa ao primeiro cliente que a conexão TCP foi aceita, mas o jogo precisa de um oponente.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code class="bg-dark text-white p-1 rounded">VOCE_E_X</code> / <code class="bg-dark text-white p-1 rounded">VOCE_E_O</code></td>
+                                            <td>Servidor &rarr; Clientes</td>
+                                            <td>Define a atribuição de papéis e símbolos para o tratamento lógico dos lances.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code class="bg-dark text-white p-1 rounded">MOVIMENTO:posicao:simbolo</code></td>
+                                            <td>Servidor &rarr; Adversário</td>
+                                            <td>Atualiza o grid de exibição local do oponente sem necessidade de trafegar o tabuleiro inteiro.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code class="bg-dark text-white p-1 rounded">FIM:VENCEDOR:X</code></td>
+                                            <td>Servidor &rarr; Ambos</td>
+                                            <td>Encerra a escuta do Socket em virtude do atingimento de um estado terminal de jogo.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="d-block d-lg-none mt-4 text-center">
+                    <a href="index.html" class="btn btn-dark w-100 py-2">
+                        <i class="fa-solid fa-arrow-left me-2"></i>Voltar para a Página Inicial
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+            <small>&copy; 2026 - Disciplina de Serviços de Redes - Curso de ADS</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
