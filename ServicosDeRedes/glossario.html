@@ -69,6 +69,10 @@
   <h3 class="gl-term">AIMD <span class='gl-full'>Additive Increase / Multiplicative Decrease</span></h3>
   <p class="gl-desc">Princípio do controle de congestionamento do TCP: aumenta a janela linearmente e a reduz pela metade ao detectar perda, buscando estabilidade e justiça.</p>
 </div>
+<div class="gl-item" id="api" data-term="api application programming interface (interface de programação de aplicações)">
+  <h3 class="gl-term">API <span class='gl-full'>Application Programming Interface (interface de programação de aplicações)</span></h3>
+  <p class="gl-desc">Contrato de comunicação que abstrai a integração e troca de dados entre softwares na Camada de Aplicação (Camada 7).</p>
+</div>
 <div class="gl-item" id="ap" data-term="ap access point (ponto de acesso)">
   <h3 class="gl-term">AP <span class='gl-full'>Access Point (ponto de acesso)</span></h3>
   <p class="gl-desc">Equipamento que faz a ponte entre as estações Wi-Fi e a rede cabeada, coordenando o BSS.</p>
@@ -153,6 +157,10 @@
   <h3 class="gl-term">DHT <span class='gl-full'>Distributed Hash Table</span></h3>
   <p class="gl-desc">Tabela hash distribuída usada por redes P2P estruturadas (como Chord e Kademlia) para localizar conteúdo de forma eficiente e descentralizada.</p>
 </div>
+<div class="gl-item" id="dlq" data-term="dlq dead letter queue (fila de mensagens mortas)">
+  <h3 class="gl-term">DLQ <span class='gl-full'>Dead Letter Queue (fila de mensagens mortas)</span></h3>
+  <p class="gl-desc">Fila de contingência usada em arquiteturas baseadas em eventos para armazenar payloads de Webhooks que falharam consecutivamente após esgotadas as políticas de retentativas.</p>
+</div>
 <div class="gl-item" id="broadcast-domain" data-term="domínio de broadcast broadcast domain">
   <h3 class="gl-term">domínio de broadcast <span class='gl-full'>broadcast domain</span></h3>
   <p class="gl-desc">Conjunto de dispositivos que recebem os broadcasts uns dos outros. Roteadores e VLANs separam domínios de broadcast.</p>
@@ -176,6 +184,10 @@
 <div class="gl-item" id="ecdsa" data-term="ecdsa elliptic curve digital signature algorithm">
   <h3 class="gl-term">ECDSA <span class='gl-full'>Elliptic Curve Digital Signature Algorithm</span></h3>
   <p class="gl-desc">Esquema de assinatura digital sobre curvas elípticas, que fornece autenticidade, integridade e não repúdio com assinaturas compactas.</p>
+</div>
+<div class="gl-item" id="eda" data-term="eda event-driven architecture (arquitetura orientada a eventos)">
+  <h3 class="gl-term">EDA <span class='gl-full'>Event-Driven Architecture (arquitetura orientada a eventos)</span></h3>
+  <p class="gl-desc">Modelo de arquitetura de software no qual o fluxo é determinado pela ocorrência de eventos ou mudanças de estado, fornecendo a base técnica para a integração por Webhooks.</p>
 </div>
 <div class="gl-item" id="ess" data-term="ess extended service set">
   <h3 class="gl-term">ESS <span class='gl-full'>Extended Service Set</span></h3>
@@ -217,6 +229,14 @@
   <h3 class="gl-term">gateway </h3>
   <p class="gl-desc">Ponto de saída de uma rede para outra; o gateway padrão é, na prática, a interface do roteador que leva ao mundo externo.</p>
 </div>
+<div class="gl-item" id="grpc" data-term="grpc google remote procedure call">
+  <h3 class="gl-term">gRPC <span class='gl-full'>Google Remote Procedure Call</span></h3>
+  <p class="gl-desc">Framework RPC de alto desempenho mantido pela Google. Opera sobre conexões multiplexadas do HTTP/2 e utiliza Protocol Buffers para serialização binária.</p>
+</div>
+<div class="gl-item" id="graphql" data-term="graphql graph query language">
+  <h3 class="gl-term">GraphQL <span class='gl-full'>Graph Query Language</span></h3>
+  <p class="gl-desc">Linguagem de consulta e runtime de dados que permite ao cliente requisitar esquemas e campos específicos em um único endpoint, reduzindo overhead de rede.</p>
+</div>
 <div class="gl-item" id="half-duplex" data-term="half-duplex —">
   <h3 class="gl-term">half-duplex </h3>
   <p class="gl-desc">Modo de comunicação em que só se transmite ou recebe por vez, compartilhando o meio. É o caso da Ethernet clássica e do rádio Wi-Fi.</p>
@@ -231,11 +251,11 @@
 </div>
 <div class="gl-item" id="hmac" data-term="hmac hash-based message authentication code">
   <h3 class="gl-term">HMAC <span class='gl-full'>Hash-based Message Authentication Code</span></h3>
-  <p class="gl-desc">Combinação de uma função de hash com uma chave secreta, que prova integridade e autenticidade de uma mensagem entre quem compartilha a chave.</p>
+  <p class="gl-desc">Cálculo de assinatura criptográfica que associa uma função de hash a uma chave secreta privada. Essencial para verificar a integridade e origem de Webhooks.</p>
 </div>
 <div class="gl-item" id="hsts" data-term="hsts http strict transport security">
   <h3 class="gl-term">HSTS <span class='gl-full'>HTTP Strict Transport Security</span></h3>
-  <p class="gl-desc">Cabeçalho que força o navegador a sempre usar HTTPS para um site, bloqueando downgrades para HTTP.</p>
+  <p class="gl-desc">Cabeçalho que força o navegador a sempre usar HTTPS para um site, blocking downgrades para HTTP.</p>
 </div>
 <div class="gl-item" id="http" data-term="http hypertext transfer protocol">
   <h3 class="gl-term">HTTP <span class='gl-full'>HyperText Transfer Protocol</span></h3>
@@ -265,6 +285,10 @@
   <h3 class="gl-term">IEEE 802.3 </h3>
   <p class="gl-desc">Padrão do IEEE que especifica a Ethernet — quadro, endereçamento MAC, acesso ao meio e camadas física e MAC.</p>
 </div>
+<div class="gl-item" id="ioc" data-term="ioc inversion of control (inversão de controle)">
+  <h3 class="gl-term">IoC <span class='gl-full'>Inversion of Control (inversão de controle)</span></h3>
+  <p class="gl-desc">Princípio arquitetural onde o fluxo convencional é invertido. No tráfego de Webhooks, transfere para o servidor a ação de notificar o cliente via requisição reversa.</p>
+</div>
 <div class="gl-item" id="ip" data-term="ip internet protocol">
   <h3 class="gl-term">IP <span class='gl-full'>Internet Protocol</span></h3>
   <p class="gl-desc">Protocolo da camada de rede responsável por endereçar e encaminhar pacotes entre redes distintas. É não orientado a conexão e de melhor esforço.</p>
@@ -283,7 +307,7 @@
 </div>
 <div class="gl-item" id="jwt" data-term="jwt json web token">
   <h3 class="gl-term">JWT <span class='gl-full'>JSON Web Token</span></h3>
-  <p class="gl-desc">Token assinado que carrega, de forma verificável, a identidade do usuário, usado para autenticação sobre HTTP sem manter estado no servidor.</p>
+  <p class="gl-desc">Token compacto e autoconstido assinado via criptografia (RFC 7519). Utilizado para autenticação e transmissão segura de declarações em APIs stateless.</p>
 </div>
 <div class="gl-item" id="lan" data-term="lan local area network">
   <h3 class="gl-term">LAN <span class='gl-full'>Local Area Network</span></h3>
@@ -353,6 +377,10 @@
   <h3 class="gl-term">OUI <span class='gl-full'>Organizationally Unique Identifier</span></h3>
   <p class="gl-desc">Os 24 bits iniciais de um endereço MAC, atribuídos pelo IEEE a cada fabricante para garantir unicidade global das placas de rede.</p>
 </div>
+<div class="gl-item" id="over-fetching" data-term="over-fetching (sobrecarga de dados na rede)">
+  <h3 class="gl-term">Over-fetching <span class='gl-full'>Sobrecarga de dados na rede</span></h3>
+  <p class="gl-desc">Ineficiência em arquiteturas de APIs na qual o servidor transfere um volume de dados maior do que o cliente precisa, gerando desperdício de banda de rede.</p>
+</div>
 <div class="gl-item" id="p2p" data-term="p2p peer-to-peer (ponto a ponto)">
   <h3 class="gl-term">P2P <span class='gl-full'>Peer-to-Peer (ponto a ponto)</span></h3>
   <p class="gl-desc">Modelo de comunicação descentralizado em que cada nó atua simultaneamente como cliente e servidor, compartilhando recursos diretamente. Exemplos: BitTorrent, blockchain e IPFS.</p>
@@ -383,11 +411,15 @@
 </div>
 <div class="gl-item" id="qam" data-term="qam quadrature amplitude modulation">
   <h3 class="gl-term">QAM <span class='gl-full'>Quadrature Amplitude Modulation</span></h3>
-  <p class="gl-desc">Modulação que combina amplitude e fase para transmitir vários bits por símbolo (até 1024/4096-QAM), elevando a taxa quando o sinal é bom.</p>
+  <p class="gl-desc">Modulação que combina amplitude e fase para transmitir vários bits por símbolo (tc. 1024/4096-QAM), elevando a taxa quando o sinal é bom.</p>
 </div>
 <div class="gl-item" id="quadro" data-term="quadro frame">
   <h3 class="gl-term">quadro <span class='gl-full'>frame</span></h3>
   <p class="gl-desc">Unidade de dados da camada de enlace, com endereços MAC de origem/destino, carga útil e verificação de erros (FCS). Em inglês, 'frame'.</p>
+</div>
+<div class="gl-item" id="query-depth" data-term="query depth (profundidade de consulta)">
+  <h3 class="gl-term">Query Depth <span class='gl-full'>Profundidade de Consulta</span></h3>
+  <p class="gl-desc">Nível de aninhamento de uma árvore de requisição GraphQL. Deve sofrer limitação técnica na infraestrutura para mitigar ataques de negação de serviço (DoS).</p>
 </div>
 <div class="gl-item" id="quic" data-term="quic —">
   <h3 class="gl-term">QUIC </h3>
@@ -404,6 +436,10 @@
 <div class="gl-item" id="repetidor" data-term="repetidor repeater">
   <h3 class="gl-term">repetidor <span class='gl-full'>repeater</span></h3>
   <p class="gl-desc">Equipamento de camada 1 que regenera o sinal para estender o alcance do enlace, sem interpretar os dados.</p>
+</div>
+<div class="gl-item" id="rest" data-term="rest representational state transfer (transferência de estado representacional)">
+  <h3 class="gl-term">REST <span class='gl-full'>Representational State Transfer (transferência de estado representacional)</span></h3>
+  <p class="gl-desc">Estilo arquitetural baseado em restrições (constraints) que governa sistemas de hipermídia e utiliza as semânticas nativas do HTTP para manipulação de recursos.</p>
 </div>
 <div class="gl-item" id="roteador" data-term="roteador router">
   <h3 class="gl-term">roteador <span class='gl-full'>router</span></h3>
@@ -441,6 +477,10 @@
   <h3 class="gl-term">SAE <span class='gl-full'>Simultaneous Authentication of Equals</span></h3>
   <p class="gl-desc">Método de troca de chave do WPA3 que substitui o handshake baseado em senha, impedindo ataques de dicionário off-line.</p>
 </div>
+<div class="gl-item" id="sdl" data-term="sdl schema definition language">
+  <h3 class="gl-term">SDL <span class='gl-full'>Schema Definition Language</span></h3>
+  <p class="gl-desc">Linguagem estritamente tipada usada em especificações GraphQL para definir contratos, estruturas de dados e operações aceitas pelo servidor.</p>
+</div>
 <div class="gl-item" id="sha" data-term="sha secure hash algorithm">
   <h3 class="gl-term">SHA <span class='gl-full'>Secure Hash Algorithm</span></h3>
   <p class="gl-desc">Família de funções de hash criptográficas (ex.: SHA-256) usada para verificar integridade e dentro de assinaturas e do HMAC.</p>
@@ -452,6 +492,10 @@
 <div class="gl-item" id="sni" data-term="sni server name indication">
   <h3 class="gl-term">SNI <span class='gl-full'>Server Name Indication</span></h3>
   <p class="gl-desc">Extensão do TLS que informa, já no ClientHello, qual site se deseja — permitindo vários domínios HTTPS no mesmo endereço IP.</p>
+</div>
+<div class="gl-item" id="soap" data-term="soap simple object access protocol">
+  <h3 class="gl-term">SOAP <span class='gl-full'>Simple Object Access Protocol</span></h3>
+  <p class="gl-desc">Protocolo rígido baseado em mensagens XML, contratos WSDL e regras de validação estruturadas (XSD), muito comum em integrações enterprise legadas.</p>
 </div>
 <div class="gl-item" id="ssid" data-term="ssid service set identifier">
   <h3 class="gl-term">SSID <span class='gl-full'>Service Set Identifier</span></h3>
@@ -505,6 +549,10 @@
   <h3 class="gl-term">UDP <span class='gl-full'>User Datagram Protocol</span></h3>
   <p class="gl-desc">Protocolo de transporte sem conexão e não confiável, com apenas 8 bytes de cabeçalho. Troca garantias por baixa latência (DNS, VoIP, streaming, QUIC).</p>
 </div>
+<div class="gl-item" id="under-fetching" data-term="under-fetching (insuficiência de dados)">
+  <h3 class="gl-term">Under-fetching <span class='gl-full'>Insuficiência de dados</span></h3>
+  <p class="gl-desc">Problema arquitetural do padrão REST no qual a resposta de um endpoint não contém dados suficientes, forçando o cliente a efetuar chamadas HTTP adicionais sequenciais.</p>
+</div>
 <div class="gl-item" id="url" data-term="url uniform resource locator">
   <h3 class="gl-term">URL <span class='gl-full'>Uniform Resource Locator</span></h3>
   <p class="gl-desc">Endereço que identifica um recurso na Web, indicando esquema, host, caminho e parâmetros (ex.: https://host/caminho?query).</p>
@@ -520,6 +568,10 @@
 <div class="gl-item" id="wan" data-term="wan wide area network">
   <h3 class="gl-term">WAN <span class='gl-full'>Wide Area Network</span></h3>
   <p class="gl-desc">Rede de longa distância, abrangendo países ou o mundo. A Internet é a maior WAN; usa tecnologias de operadoras como MPLS, enlaces dedicados e satélite.</p>
+</div>
+<div class="gl-item" id="webhook" data-term="webhook http reverso / gatilho de evento">
+  <h3 class="gl-term">Webhook <span class='gl-full'>HTTP Reverso / Gatilho de Evento</span></h3>
+  <p class="gl-desc">Estratégia de comunicação orientada a eventos. O sistema emissor envia uma requisição automática (geralmente HTTP POST) para um endpoint público mapeado pelo cliente no exato instante de um evento.</p>
 </div>
 <div class="gl-item" id="wep" data-term="wep wired equivalent privacy">
   <h3 class="gl-term">WEP <span class='gl-full'>Wired Equivalent Privacy</span></h3>
@@ -553,13 +605,21 @@
   <h3 class="gl-term">XSS <span class='gl-full'>Cross-Site Scripting</span></h3>
   <p class="gl-desc">Ataque que injeta scripts maliciosos em páginas web para executar no navegador da vítima. Mitigado por validação de entrada e CSP.</p>
 </div>
+<div class="gl-item" id="socket" data-term="socket ponto de extremidade / endpoint de rede">
+  <h3 class="gl-term">Socket <span class='gl-full'>Ponto de extremidade / Endpoint de rede</span></h3>
+  <p class="gl-desc">Abstração lógica que unifica um endereço IP e uma porta de transporte TCP/UDP, permitindo que processos troquem fluxos de bytes contínuos ou datagramas em rede.</p>
+</div>
+<div class="gl-item" id="stream-splitting" data-term="stream splitting / line splitter divisão de fluxo">
+  <h3 class="gl-term">LineSplitter <span class='gl-full'>Divisão de fluxo por quebra de linha</span></h3>
+  <p class="gl-desc">Transformador de dados utilizado em Sockets (comum no Dart e Node) para bufferizar fragmentos binários e remontar as strings com base no caractere de quebra de linha (\n), evitando corrupção de mensagens coladas.</p>
+</div>
         </div>
         <p class="gl-empty" id="glEmpty" hidden>Nenhum termo encontrado.</p>
     </main>
 
     <footer class="site-footer">
         <p>&copy; 2026 Prof. Me. Carlos A. L. Schaeffer | Disciplina de Serviços de Redes</p>
-        <p>Glossário de referência — 128 verbetes.</p>
+        <p>Glossário de referência — 138 verbetes.</p>
     </footer>
 
     <script>

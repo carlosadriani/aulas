@@ -26,18 +26,22 @@
         <div class="toolbar">
             <div class="toolbar__search">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="search" data-role="search" placeholder="Pesquisar tópico por conteúdo..." aria-label="Pesquisar tópicos">
+                <input type="search" data-role="search" placeholder="Pesquisar tópico por conteúdo..."
+                    aria-label="Pesquisar tópicos">
             </div>
             <button class="toolbar__btn" data-role="fav-filter" type="button">
                 <i class="fa-solid fa-star"></i> Só favoritos
             </button>
-            <p class="toolbar__hint">Clique na estrela para favoritar e arraste os cards para reordenar — suas escolhas ficam salvas neste navegador.</p>
+            <p class="toolbar__hint">Clique na estrela para favoritar e arraste os cards para reordenar — suas escolhas
+                ficam salvas neste navegador.</p>
         </div>
 
         <div class="topic-grid" data-course="redes" id="topicGrid">
 
-            <article class="topic-card" data-id="introducao" data-keywords="introdução redes fundamentos histórico tipos lan man wan pan">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="introducao"
+                data-keywords="introdução redes fundamentos histórico tipos lan man wan pan">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-network-wired"></i></div>
                 <h2 class="topic-card__title">01. Introdução às Redes</h2>
@@ -45,129 +49,183 @@
                 <a class="topic-card__link" href="topico01-introducao.html">Ver Tópico</a>
             </article>
 
-            <article class="topic-card" data-id="arquiteturas" data-keywords="arquiteturas topologias barramento estrela anel malha física lógica pan lan man wan abrangência cliente servidor p2p peer to peer dht bittorrent">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="arquiteturas"
+                data-keywords="arquiteturas topologias barramento estrela anel malha física lógica pan lan man wan abrangência cliente servidor p2p peer to peer dht bittorrent">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-sitemap"></i></div>
                 <h2 class="topic-card__title">02. Arquiteturas de Redes</h2>
-                <p class="topic-card__desc">Topologias (barramento, estrela, anel, malha), abrangência (PAN/LAN/MAN/WAN) e os modelos cliente-servidor e P2P.</p>
+                <p class="topic-card__desc">Topologias (barramento, estrela, anel, malha), abrangência (PAN/LAN/MAN/WAN)
+                    e os modelos cliente-servidor e P2P.</p>
                 <a class="topic-card__link" href="topico02-arquiteturas.html">Ver Tópico</a>
             </article>
 
-            <article class="topic-card" data-id="icmp" data-keywords="icmp protocolo controle erro diagnóstico ping traceroute echo time exceeded destination unreachable pmtud icmpv6 ndp rfc 792 checksum">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="icmp"
+                data-keywords="icmp protocolo controle erro diagnóstico ping traceroute echo time exceeded destination unreachable pmtud icmpv6 ndp rfc 792 checksum">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-tower-broadcast"></i></div>
                 <h2 class="topic-card__title">03. Protocolo ICMP</h2>
-                <p class="topic-card__desc">Controle e diagnóstico: estrutura da mensagem, tipos/códigos, ping, traceroute, PMTUD, ICMPv6 e segurança.</p>
+                <p class="topic-card__desc">Controle e diagnóstico: estrutura da mensagem, tipos/códigos, ping,
+                    traceroute, PMTUD, ICMPv6 e segurança.</p>
                 <a class="topic-card__link" href="topico03-icmp.html">Ver Tópico</a>
             </article>
 
-            <article class="topic-card" data-id="ipv4" data-keywords="ipv4 protocolo ip camada de rede endereçamento sub-redes cidr datagrama cabeçalho ttl fragmentação nat icmp roteamento rfc 791">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="ipv4"
+                data-keywords="ipv4 protocolo ip camada de rede endereçamento sub-redes cidr datagrama cabeçalho ttl fragmentação nat icmp roteamento rfc 791">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-diagram-project"></i></div>
                 <h2 class="topic-card__title">04. Protocolo IPv4</h2>
-                <p class="topic-card__desc">Endereçamento de 32 bits, sub-redes/CIDR, datagrama, TTL, fragmentação, checksum, ICMP e NAT.</p>
+                <p class="topic-card__desc">Endereçamento de 32 bits, sub-redes/CIDR, datagrama, TTL, fragmentação,
+                    checksum, ICMP e NAT.</p>
                 <a class="topic-card__link" href="topico04-ipv4.html">Ver Tópico</a>
             </article>
 
-            <article class="topic-card" data-id="ipv6" data-keywords="ipv6 protocolo ip camada de rede 128 bits hexadecimal slaac ndp icmpv6 cabeçalho de extensão dual stack nat64 rfc 8200 multicast">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="ipv6"
+                data-keywords="ipv6 protocolo ip camada de rede 128 bits hexadecimal slaac ndp icmpv6 cabeçalho de extensão dual stack nat64 rfc 8200 multicast">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-infinity"></i></div>
                 <h2 class="topic-card__title">05. Protocolo IPv6</h2>
-                <p class="topic-card__desc">Endereçamento de 128 bits, notação/compressão, cabeçalho fixo, extensões, ICMPv6/NDP, SLAAC e transição.</p>
+                <p class="topic-card__desc">Endereçamento de 128 bits, notação/compressão, cabeçalho fixo, extensões,
+                    ICMPv6/NDP, SLAAC e transição.</p>
                 <a class="topic-card__link" href="topico05-ipv6.html">Ver Tópico</a>
             </article>
 
-            <article class="topic-card" data-id="dhcp" data-keywords="dhcp configuração dinâmica host ip automático lease concessão dora discover offer request ack bootp relay giaddr opções dhcpv6 udp 67 68 rfc 2131">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="dhcp"
+                data-keywords="dhcp configuração dinâmica host ip automático lease concessão dora discover offer request ack bootp relay giaddr opções dhcpv6 udp 67 68 rfc 2131">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-gears"></i></div>
                 <h2 class="topic-card__title">06. Protocolo DHCP</h2>
-                <p class="topic-card__desc">Configuração automática de hosts: DORA, concessão/lease, opções, relay agent, DHCPv6 e segurança.</p>
+                <p class="topic-card__desc">Configuração automática de hosts: DORA, concessão/lease, opções, relay
+                    agent, DHCPv6 e segurança.</p>
                 <a class="topic-card__link" href="topico06-dhcp.html">Ver Tópico</a>
             </article>
 
-            <article class="topic-card" data-id="transporte" data-keywords="camada transporte tcp udp portas segmentos handshake confiabilidade">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="transporte"
+                data-keywords="camada transporte tcp udp portas segmentos handshake confiabilidade">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-arrows-left-right"></i></div>
                 <h2 class="topic-card__title">07. Camada de Transporte</h2>
-                <p class="topic-card__desc">Protocolos TCP e UDP: portas, confiabilidade, controle de fluxo e casos de uso.</p>
+                <p class="topic-card__desc">Protocolos TCP e UDP: portas, confiabilidade, controle de fluxo e casos de
+                    uso.</p>
                 <a class="topic-card__link" href="topico07-camadaDeTransporte.html">Ver Tópico</a>
             </article>
 
-            <article class="topic-card" data-id="tcp" data-keywords="tcp transmission control protocol confiável conexão handshake three way sequência ack retransmissão janela controle de fluxo congestionamento slow start aimd cwnd rwnd time_wait syn fin rst rfc 793 9293">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="tcp"
+                data-keywords="tcp transmission control protocol confiável conexão handshake three way sequência ack retransmissão janela controle de fluxo congestionamento slow start aimd cwnd rwnd time_wait syn fin rst rfc 793 9293">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-link"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-link"></i></div>
                 <h2 class="topic-card__title">08. Protocolo TCP</h2>
-                <p class="topic-card__desc">Transmissão confiável: handshake, segmento, ACK/retransmissão, controle de fluxo e de congestionamento, encerramento e segurança.</p>
+                <p class="topic-card__desc">Transmissão confiável: handshake, segmento, ACK/retransmissão, controle de
+                    fluxo e de congestionamento, encerramento e segurança.</p>
                 <a class="topic-card__link" href="topico08-tcp.html">Ver Tópico</a>
             </article>
 
-            <article class="topic-card" data-id="udp" data-keywords="udp user datagram protocol sem conexão não confiável datagrama 8 bytes checksum porta dns voip streaming quic http3 amplificação reflexão ddos rfc 768">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="udp"
+                data-keywords="udp user datagram protocol sem conexão não confiável datagrama 8 bytes checksum porta dns voip streaming quic http3 amplificação reflexão ddos rfc 768">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-bolt"></i></div>
                 <h2 class="topic-card__title">09. Protocolo UDP</h2>
-                <p class="topic-card__desc">Transporte sem conexão: datagrama de 8 bytes, checksum, UDP×TCP, casos de uso (DNS, VoIP, QUIC) e segurança.</p>
+                <p class="topic-card__desc">Transporte sem conexão: datagrama de 8 bytes, checksum, UDP×TCP, casos de
+                    uso (DNS, VoIP, QUIC) e segurança.</p>
                 <a class="topic-card__link" href="topico09-udp.html">Ver Tópico</a>
             </article>
 
-            <article class="topic-card" data-id="tls" data-keywords="tls ssl segurança https handshake certificado pki x509 cipher suite aes ecdhe rsa ecdsa forward secrecy tls 1.3 record criptografia híbrida poodle heartbleed rfc 8446">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="tls"
+                data-keywords="tls ssl segurança https handshake certificado pki x509 cipher suite aes ecdhe rsa ecdsa forward secrecy tls 1.3 record criptografia híbrida poodle heartbleed rfc 8446">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-lock"></i></div>
                 <h2 class="topic-card__title">10. Protocolos SSL e TLS</h2>
-                <p class="topic-card__desc">Segurança de transporte: criptografia híbrida, cipher suites, handshakes TLS 1.2/1.3, certificados/PKI, forward secrecy e ataques.</p>
+                <p class="topic-card__desc">Segurança de transporte: criptografia híbrida, cipher suites, handshakes TLS
+                    1.2/1.3, certificados/PKI, forward secrecy e ataques.</p>
                 <a class="topic-card__link" href="topico10-tls.html">Ver Tópico</a>
             </article>
 
-            <article class="topic-card" data-id="http" data-keywords="http hypertext transfer protocol web requisição resposta método get post status código cabeçalho cookie cache https http2 http3 quic multiplexação rfc 9110">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="http"
+                data-keywords="http hypertext transfer protocol web requisição resposta método get post status código cabeçalho cookie cache https http2 http3 quic multiplexação rfc 9110">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-globe"></i></div>
                 <h2 class="topic-card__title">11. Protocolo HTTP</h2>
-                <p class="topic-card__desc">A linguagem da Web: requisição/resposta, métodos, status, cabeçalhos, cookies, cache, evolução até o HTTP/3 e HTTPS.</p>
+                <p class="topic-card__desc">A linguagem da Web: requisição/resposta, métodos, status, cabeçalhos,
+                    cookies, cache, evolução até o HTTP/3 e HTTPS.</p>
                 <a class="topic-card__link" href="topico11-http.html">Ver Tópico</a>
             </article>
 
-            <article class="topic-card" data-id="ethernet" data-keywords="ethernet ieee 802.3 camada de enlace mac quadro frame ethertype csma cd colisão switch comutada full duplex vlan 802.1q stp spanning tree fcs crc">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="ethernet"
+                data-keywords="ethernet ieee 802.3 camada de enlace mac quadro frame ethertype csma cd colisão switch comutada full duplex vlan 802.1q stp spanning tree fcs crc">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-ethernet"></i></div>
                 <h2 class="topic-card__title">12. Ethernet</h2>
-                <p class="topic-card__desc">Camada de enlace: endereço MAC, quadro, EtherType, CSMA/CD, Ethernet comutada/full-duplex, switches, VLAN e STP.</p>
+                <p class="topic-card__desc">Camada de enlace: endereço MAC, quadro, EtherType, CSMA/CD, Ethernet
+                    comutada/full-duplex, switches, VLAN e STP.</p>
                 <a class="topic-card__link" href="topico12-ethernet.html">Ver Tópico</a>
             </article>
 
-            <article class="topic-card" data-id="wifi" data-keywords="wifi wi-fi 802.11 wlan sem fio wireless ssid bssid ap bss ess csma ca nó oculto rts cts mimo ofdma canais 2.4 5 6 ghz wep wpa wpa2 wpa3 sae">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="wifi"
+                data-keywords="wifi wi-fi 802.11 wlan sem fio wireless ssid bssid ap bss ess csma ca nó oculto rts cts mimo ofdma canais 2.4 5 6 ghz wep wpa wpa2 wpa3 sae">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-wifi"></i></div>
                 <h2 class="topic-card__title">13. Wi-Fi</h2>
-                <p class="topic-card__desc">Redes sem fio (802.11): gerações, bandas/canais, BSS/ESS, quadro, CSMA/CA, nó oculto, MIMO/OFDMA e segurança WEP→WPA3.</p>
+                <p class="topic-card__desc">Redes sem fio (802.11): gerações, bandas/canais, BSS/ESS, quadro, CSMA/CA,
+                    nó oculto, MIMO/OFDMA e segurança WEP→WPA3.</p>
                 <a class="topic-card__link" href="topico13-wifi.html">Ver Tópico</a>
             </article>
 
-            <article class="topic-card" data-id="equipamentos" data-keywords="equipamentos rede hub switch roteador bridge repetidor nic placa modem gateway access point firewall ids ips proxy load balancer domínio de colisão broadcast camadas osi">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="equipamentos"
+                data-keywords="equipamentos rede hub switch roteador bridge repetidor nic placa modem gateway access point firewall ids ips proxy load balancer domínio de colisão broadcast camadas osi">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-server"></i></div>
                 <h2 class="topic-card__title">14. Equipamentos de Rede</h2>
-                <p class="topic-card__desc">Dispositivos por camada: NIC, repetidor, hub, switch, roteador, AP, modem, firewall e domínios de colisão/broadcast.</p>
+                <p class="topic-card__desc">Dispositivos por camada: NIC, repetidor, hub, switch, roteador, AP, modem,
+                    firewall e domínios de colisão/broadcast.</p>
                 <a class="topic-card__link" href="topico14-equipamentos.html">Ver Tópico</a>
             </article>
 
-            <article class="topic-card" data-id="glossario" data-keywords="glossário siglas termos definições referência dicionário tcp ip udp dns mac vlan ssid wpa tls http ethernet">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="apis"
+                data-keywords="api ">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-server"></i></div>
+                <h2 class="topic-card__title">15. APIs e Serviços Web</h2>
+                <p class="topic-card__desc">Integração de sistemas: arquiteturas REST e SOAP, métodos HTTP, formatos
+                        JSON/XML, autenticação (OAuth2/Tokens), Webhooks e a evolução com GraphQL e gRPC.</p>
+                <a class="topic-card__link" href="topico15-apis.html">Ver Tópico</a>
+            </article>
+
+            <article class="topic-card" data-id="glossario"
+                data-keywords="glossário siglas termos definições referência dicionário tcp ip udp dns mac vlan ssid wpa tls http ethernet">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-book"></i></div>
                 <h2 class="topic-card__title">Glossário de Redes</h2>
-                <p class="topic-card__desc">Referência com 128 siglas e termos usados na disciplina, com definições detalhadas e busca.</p>
+                <p class="topic-card__desc">Referência com 128 siglas e termos usados na disciplina, com definições
+                    detalhadas e busca.</p>
                 <a class="topic-card__link" href="glossario.html">Abrir Glossário</a>
             </article>
 
