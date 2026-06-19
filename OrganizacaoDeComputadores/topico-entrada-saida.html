@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-br">
 
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Org. Computadores - Dispositivos de Entrada e Saída</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/slides.css">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Org. Computadores - Dispositivos de Entrada e Saída</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
         body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
         .slide { background: #ffffff; color: #1e293b; }
         .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
@@ -36,411 +34,396 @@
         .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
         .flow .arrow { color: #3b82f6; font-size: 26px; }
     </style>
-    <link rel="stylesheet" href="../assets/css/site.css">
+<link href="../assets/css/site.css" rel="stylesheet"/>
 </head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Organização de Computadores
+            </h1>
+<p>Entrada e Saída</p>
+</div>
+</header>
 
-<body class="slides-light">
-
-    <!-- Capa -->
-    <div class="slide hero">
-        <i class="fa-solid fa-plug" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
-        <h1>Entrada e Saída</h1>
-        <p style="font-size: 24px; opacity: 0.8;">Como o computador se comunica com o mundo</p>
-        <div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-plug" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+<h1>Entrada e Saída</h1>
+<p style="font-size: 24px; opacity: 0.8;">Como o computador se comunica com o mundo</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
             Organização de Computadores</div>
-    </div>
-
-    <!-- O que é E/S -->
-    <div class="slide">
-        <div class="header"><h2>O que são dispositivos de E/S?</h2></div>
-        <div class="content">
-            <p class="lead">Dispositivos de <span class="highlight">Entrada e Saída</span> (E/S ou I/O) são os
+</div>
+<!-- O que é E/S -->
+<div class="slide">
+<div class="header"><h2>O que são dispositivos de E/S?</h2></div>
+<div class="content">
+<p class="lead">Dispositivos de <span class="highlight">Entrada e Saída</span> (E/S ou I/O) são os
                 periféricos que conectam o computador ao mundo externo: pessoas, outros equipamentos e redes.</p>
-            <div class="info-box">
-                <p>A CPU e a memória sozinhas seriam inúteis: sem entrada não há o que processar, sem saída não há como
+<div class="info-box">
+<p>A CPU e a memória sozinhas seriam inúteis: sem entrada não há o que processar, sem saída não há como
                     ver o resultado. A E/S fecha o ciclo <b>entrada → processamento → saída</b>.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Classificação -->
-    <div class="slide">
-        <div class="header"><h2>Classificação dos periféricos</h2></div>
-        <div class="content">
-            <div class="grid-3">
-                <div class="card">
-                    <h3><i class="fa-solid fa-arrow-right-to-bracket"></i> Entrada</h3>
-                    <p>Levam dados para dentro.</p>
-                    <p style="margin-top:8px;">Teclado, mouse, scanner, microfone, câmera, sensores, leitor biométrico.</p>
-                </div>
-                <div class="card">
-                    <h3><i class="fa-solid fa-arrow-right-from-bracket"></i> Saída</h3>
-                    <p>Levam dados para fora.</p>
-                    <p style="margin-top:8px;">Monitor, impressora, alto-falante, projetor.</p>
-                </div>
-                <div class="card">
-                    <h3><i class="fa-solid fa-right-left"></i> Entrada e Saída</h3>
-                    <p>Fazem os dois.</p>
-                    <p style="margin-top:8px;">Tela sensível ao toque, placa de rede, HD/SSD, headset, pendrive.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Como a CPU enxerga -->
-    <div class="slide">
-        <div class="header"><h2>Como a CPU "enxerga" um periférico</h2></div>
-        <div class="content">
-            <p>A CPU não fala diretamente com o periférico. Entre eles há o <span class="highlight">controlador de
+</div>
+</div>
+</div>
+<!-- Classificação -->
+<div class="slide">
+<div class="header"><h2>Classificação dos periféricos</h2></div>
+<div class="content">
+<div class="grid-3">
+<div class="card">
+<h3><i class="fa-solid fa-arrow-right-to-bracket"></i> Entrada</h3>
+<p>Levam dados para dentro.</p>
+<p style="margin-top:8px;">Teclado, mouse, scanner, microfone, câmera, sensores, leitor biométrico.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-arrow-right-from-bracket"></i> Saída</h3>
+<p>Levam dados para fora.</p>
+<p style="margin-top:8px;">Monitor, impressora, alto-falante, projetor.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-right-left"></i> Entrada e Saída</h3>
+<p>Fazem os dois.</p>
+<p style="margin-top:8px;">Tela sensível ao toque, placa de rede, HD/SSD, headset, pendrive.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Como a CPU enxerga -->
+<div class="slide">
+<div class="header"><h2>Como a CPU "enxerga" um periférico</h2></div>
+<div class="content">
+<p>A CPU não fala diretamente com o periférico. Entre eles há o <span class="highlight">controlador de
                 E/S</span> (placa/chip) que traduz comandos e adapta velocidades.</p>
-            <div class="flow">
-                <div class="node">CPU</div>
-                <span class="arrow"><i class="fa-solid fa-arrows-left-right"></i></span>
-                <div class="node">Barramento</div>
-                <span class="arrow"><i class="fa-solid fa-arrows-left-right"></i></span>
-                <div class="node" style="background:#3b82f6;">Controlador<br>de E/S</div>
-                <span class="arrow"><i class="fa-solid fa-arrows-left-right"></i></span>
-                <div class="node">Periférico</div>
-            </div>
-            <div class="info-box">
-                <p>O controlador expõe <b>registradores</b> (de dados, de status e de controle). A CPU lê/escreve nesses
+<div class="flow">
+<div class="node">CPU</div>
+<span class="arrow"><i class="fa-solid fa-arrows-left-right"></i></span>
+<div class="node">Barramento</div>
+<span class="arrow"><i class="fa-solid fa-arrows-left-right"></i></span>
+<div class="node" style="background:#3b82f6;">Controlador<br/>de E/S</div>
+<span class="arrow"><i class="fa-solid fa-arrows-left-right"></i></span>
+<div class="node">Periférico</div>
+</div>
+<div class="info-box">
+<p>O controlador expõe <b>registradores</b> (de dados, de status e de controle). A CPU lê/escreve nesses
                     registradores para comandar o dispositivo e saber se ele está pronto.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Endereçamento -->
-    <div class="slide">
-        <div class="header"><h2>Como a CPU endereça a E/S</h2></div>
-        <div class="content">
-            <div class="grid">
-                <div class="card">
-                    <h3>E/S mapeada em memória</h3>
-                    <p>Os registradores do dispositivo ocupam endereços do mesmo espaço da memória. A CPU usa as mesmas
+</div>
+</div>
+</div>
+<!-- Endereçamento -->
+<div class="slide">
+<div class="header"><h2>Como a CPU endereça a E/S</h2></div>
+<div class="content">
+<div class="grid">
+<div class="card">
+<h3>E/S mapeada em memória</h3>
+<p>Os registradores do dispositivo ocupam endereços do mesmo espaço da memória. A CPU usa as mesmas
                         instruções de load/store. (Usado por ARM, RISC-V.)</p>
-                </div>
-                <div class="card">
-                    <h3>E/S isolada (por portas)</h3>
-                    <p>Há um espaço de endereços separado e instruções específicas (IN/OUT). (Usado pelo x86.)</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Técnicas de comunicação -->
-    <div class="slide">
-        <div class="header"><h2>Três formas de gerenciar a E/S</h2></div>
-        <div class="content">
-            <table class="table">
-                <tr><th>Técnica</th><th>Como funciona</th><th>Custo para a CPU</th></tr>
-                <tr><td><b>Programada (Polling)</b></td><td>A CPU fica perguntando repetidamente se o dispositivo está
+</div>
+<div class="card">
+<h3>E/S isolada (por portas)</h3>
+<p>Há um espaço de endereços separado e instruções específicas (IN/OUT). (Usado pelo x86.)</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Técnicas de comunicação -->
+<div class="slide">
+<div class="header"><h2>Três formas de gerenciar a E/S</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Técnica</th><th>Como funciona</th><th>Custo para a CPU</th></tr>
+<tr><td><b>Programada (Polling)</b></td><td>A CPU fica perguntando repetidamente se o dispositivo está
                     pronto.</td><td>Alto — desperdiça tempo em espera ativa</td></tr>
-                <tr><td><b>Por Interrupção</b></td><td>O dispositivo avisa a CPU quando está pronto; a CPU faz outra
+<tr><td><b>Por Interrupção</b></td><td>O dispositivo avisa a CPU quando está pronto; a CPU faz outra
                     coisa enquanto isso.</td><td>Médio — só atende quando necessário</td></tr>
-                <tr><td><b>DMA</b> (Acesso Direto à Memória)</td><td>Um controlador transfere dados direto entre o
+<tr><td><b>DMA</b> (Acesso Direto à Memória)</td><td>Um controlador transfere dados direto entre o
                     dispositivo e a memória, sem passar pela CPU.</td><td>Baixo — a CPU só inicia e é avisada no fim</td></tr>
-            </table>
-        </div>
-    </div>
-
-    <!-- Interrupção detalhe -->
-    <div class="slide">
-        <div class="header"><h2>Interrupções em detalhe</h2></div>
-        <div class="content">
-            <div class="grid">
-                <ul class="spaced">
-                    <li>O dispositivo envia um sinal de <span class="highlight">interrupção</span>.</li>
-                    <li>A CPU termina a instrução atual e <b>salva seu estado</b>.</li>
-                    <li>Executa a <span class="highlight">rotina de tratamento</span> (ISR) correspondente.</li>
-                    <li>Restaura o estado e <b>continua</b> de onde parou.</li>
-                </ul>
-                <div class="code-box">
-// CPU trabalhando...<br>
-[INT do teclado]<br>
-&nbsp;&nbsp;salva contexto<br>
-&nbsp;&nbsp;trata tecla<br>
-&nbsp;&nbsp;restaura contexto<br>
+</table>
+</div>
+</div>
+<!-- Interrupção detalhe -->
+<div class="slide">
+<div class="header"><h2>Interrupções em detalhe</h2></div>
+<div class="content">
+<div class="grid">
+<ul class="spaced">
+<li>O dispositivo envia um sinal de <span class="highlight">interrupção</span>.</li>
+<li>A CPU termina a instrução atual e <b>salva seu estado</b>.</li>
+<li>Executa a <span class="highlight">rotina de tratamento</span> (ISR) correspondente.</li>
+<li>Restaura o estado e <b>continua</b> de onde parou.</li>
+</ul>
+<div class="code-box">
+// CPU trabalhando...<br/>
+[INT do teclado]<br/>
+  salva contexto<br/>
+  trata tecla<br/>
+  restaura contexto<br/>
 // volta ao trabalho
                 </div>
-            </div>
-            <div class="info-box">
-                <p>Interrupções permitem que o computador seja <b>reativo</b>: ele não precisa ficar checando o teclado
+</div>
+<div class="info-box">
+<p>Interrupções permitem que o computador seja <b>reativo</b>: ele não precisa ficar checando o teclado
                     o tempo todo — só age quando uma tecla é pressionada.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- DMA detalhe -->
-    <div class="slide">
-        <div class="header"><h2>DMA: liberando a CPU</h2></div>
-        <div class="content">
-            <p>No <span class="highlight">DMA</span>, um controlador dedicado move grandes blocos de dados diretamente
+</div>
+</div>
+</div>
+<!-- DMA detalhe -->
+<div class="slide">
+<div class="header"><h2>DMA: liberando a CPU</h2></div>
+<div class="content">
+<p>No <span class="highlight">DMA</span>, um controlador dedicado move grandes blocos de dados diretamente
                 entre o periférico e a memória, deixando a CPU livre para processar.</p>
-            <div class="flow">
-                <div class="node">Disco/Rede</div>
-                <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                <div class="node" style="background:#3b82f6;">Controlador<br>DMA</div>
-                <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                <div class="node">Memória</div>
-            </div>
-            <div class="info-box">
-                <p>Essencial para transferências pesadas (HD/SSD, placa de rede, placa de som). Sem DMA, copiar um
+<div class="flow">
+<div class="node">Disco/Rede</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node" style="background:#3b82f6;">Controlador<br/>DMA</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Memória</div>
+</div>
+<div class="info-box">
+<p>Essencial para transferências pesadas (HD/SSD, placa de rede, placa de som). Sem DMA, copiar um
                     arquivo grande consumiria a CPU inteira.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Barramentos e portas -->
-    <div class="slide">
-        <div class="header"><h2>Barramentos e portas de conexão</h2></div>
-        <div class="content">
-            <table class="table">
-                <tr><th>Interface</th><th>Uso típico</th></tr>
-                <tr><td><b>USB</b></td><td>Padrão universal: teclado, mouse, pendrive, impressora</td></tr>
-                <tr><td><b>PCI Express (PCIe)</b></td><td>Placas internas de alta velocidade: GPU, SSD NVMe</td></tr>
-                <tr><td><b>SATA</b></td><td>Discos rígidos e SSDs convencionais</td></tr>
-                <tr><td><b>HDMI / DisplayPort</b></td><td>Vídeo e áudio para monitores e TVs</td></tr>
-                <tr><td><b>Ethernet</b></td><td>Conexão de rede com fio</td></tr>
-                <tr><td><b>Bluetooth / Wi-Fi</b></td><td>Conexões sem fio</td></tr>
-            </table>
-        </div>
-    </div>
-
-    <!-- Drivers -->
-    <div class="slide">
-        <div class="header"><h2>Drivers: o software da E/S</h2></div>
-        <div class="content">
-            <p class="lead">Um <span class="highlight">driver</span> é o programa que ensina o sistema operacional a
+</div>
+</div>
+</div>
+<!-- Barramentos e portas -->
+<div class="slide">
+<div class="header"><h2>Barramentos e portas de conexão</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Interface</th><th>Uso típico</th></tr>
+<tr><td><b>USB</b></td><td>Padrão universal: teclado, mouse, pendrive, impressora</td></tr>
+<tr><td><b>PCI Express (PCIe)</b></td><td>Placas internas de alta velocidade: GPU, SSD NVMe</td></tr>
+<tr><td><b>SATA</b></td><td>Discos rígidos e SSDs convencionais</td></tr>
+<tr><td><b>HDMI / DisplayPort</b></td><td>Vídeo e áudio para monitores e TVs</td></tr>
+<tr><td><b>Ethernet</b></td><td>Conexão de rede com fio</td></tr>
+<tr><td><b>Bluetooth / Wi-Fi</b></td><td>Conexões sem fio</td></tr>
+</table>
+</div>
+</div>
+<!-- Drivers -->
+<div class="slide">
+<div class="header"><h2>Drivers: o software da E/S</h2></div>
+<div class="content">
+<p class="lead">Um <span class="highlight">driver</span> é o programa que ensina o sistema operacional a
                 conversar com um dispositivo específico.</p>
-            <div class="info-box">
-                <p>Cada dispositivo tem suas particularidades. O driver esconde esses detalhes e oferece uma interface
+<div class="info-box">
+<p>Cada dispositivo tem suas particularidades. O driver esconde esses detalhes e oferece uma interface
                     padronizada ao SO. É por isso que, ao conectar uma impressora nova, às vezes é preciso instalar o
                     driver correspondente.</p>
-            </div>
-            <p style="margin-top:16px;">A <b>velocidade</b> dos periféricos varia enormemente: um teclado envia poucos
+</div>
+<p style="margin-top:16px;">A <b>velocidade</b> dos periféricos varia enormemente: um teclado envia poucos
                 bytes por segundo; uma GPU ou SSD movimenta gigabytes por segundo. Buffers e DMA ajudam a casar esses
                 ritmos diferentes.</p>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: Interrupções em profundidade -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: o mecanismo de interrupções</h2></div>
-        <div class="content">
-            <p>Interrupções não são todas iguais. Elas se classificam pela origem:</p>
-            <table class="table">
-                <tr><th>Tipo</th><th>Origem</th><th>Exemplo</th></tr>
-                <tr><td><b>Interrupção de hardware</b></td><td>Dispositivo externo (assíncrona)</td><td>Tecla pressionada, pacote de rede</td></tr>
-                <tr><td><b>Exceção / trap</b></td><td>A própria instrução (síncrona)</td><td>Divisão por zero, page fault</td></tr>
-                <tr><td><b>Interrupção de software</b></td><td>Instrução proposital</td><td>Chamada de sistema (syscall)</td></tr>
-            </table>
-            <ul class="spaced" style="margin-top: 12px;">
-                <li>Cada fonte tem um número (IRQ) que indexa a <span class="highlight">tabela/vetor de
+</div>
+</div>
+<!-- APROFUNDAMENTO: Interrupções em profundidade -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: o mecanismo de interrupções</h2></div>
+<div class="content">
+<p>Interrupções não são todas iguais. Elas se classificam pela origem:</p>
+<table class="table">
+<tr><th>Tipo</th><th>Origem</th><th>Exemplo</th></tr>
+<tr><td><b>Interrupção de hardware</b></td><td>Dispositivo externo (assíncrona)</td><td>Tecla pressionada, pacote de rede</td></tr>
+<tr><td><b>Exceção / trap</b></td><td>A própria instrução (síncrona)</td><td>Divisão por zero, page fault</td></tr>
+<tr><td><b>Interrupção de software</b></td><td>Instrução proposital</td><td>Chamada de sistema (syscall)</td></tr>
+</table>
+<ul class="spaced" style="margin-top: 12px;">
+<li>Cada fonte tem um número (IRQ) que indexa a <span class="highlight">tabela/vetor de
                     interrupções</span>, apontando para a rotina de tratamento (ISR) correta.</li>
-                <li>Interrupções têm <b>prioridade</b>: uma de maior prioridade pode interromper o tratamento de outra
+<li>Interrupções têm <b>prioridade</b>: uma de maior prioridade pode interromper o tratamento de outra
                     (interrupções <b>aninhadas</b>). As de baixa prioridade podem ser <b>mascaradas</b> temporariamente.</li>
-                <li>Um controlador dedicado (<b>PIC</b> e, hoje, <b>APIC</b>) coordena as várias linhas e as distribui
+<li>Um controlador dedicado (<b>PIC</b> e, hoje, <b>APIC</b>) coordena as várias linhas e as distribui
                     aos núcleos.</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: DMA em profundidade -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: modos de DMA e coerência</h2></div>
-        <div class="content">
-            <p>O controlador de DMA assume o barramento (torna-se <span class="highlight">bus master</span>) para mover
+</ul>
+</div>
+</div>
+<!-- APROFUNDAMENTO: DMA em profundidade -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: modos de DMA e coerência</h2></div>
+<div class="content">
+<p>O controlador de DMA assume o barramento (torna-se <span class="highlight">bus master</span>) para mover
                 dados. Ele pode fazê-lo de duas formas:</p>
-            <div class="grid" style="margin-top: 10px;">
-                <div class="card">
-                    <h3>Roubo de ciclo (cycle stealing)</h3>
-                    <p>O DMA transfere uma palavra por vez, "roubando" ciclos de barramento entre os acessos da CPU.
+<div class="grid" style="margin-top: 10px;">
+<div class="card">
+<h3>Roubo de ciclo (cycle stealing)</h3>
+<p>O DMA transfere uma palavra por vez, "roubando" ciclos de barramento entre os acessos da CPU.
                         A CPU mal percebe, mas a transferência é mais lenta.</p>
-                </div>
-                <div class="card">
-                    <h3>Modo rajada (burst)</h3>
-                    <p>O DMA toma o barramento e transfere um bloco inteiro de uma vez. Muito mais rápido, mas a CPU
+</div>
+<div class="card">
+<h3>Modo rajada (burst)</h3>
+<p>O DMA toma o barramento e transfere um bloco inteiro de uma vez. Muito mais rápido, mas a CPU
                         fica sem acesso ao barramento durante a rajada.</p>
-                </div>
-            </div>
-            <div class="info-box">
-                <p><b>Problema de coerência:</b> como o DMA escreve direto na RAM, a cache da CPU pode ficar com cópias
+</div>
+</div>
+<div class="info-box">
+<p><b>Problema de coerência:</b> como o DMA escreve direto na RAM, a cache da CPU pode ficar com cópias
                     desatualizadas. O hardware (snooping de cache) ou o SO precisa garantir a <b>coerência</b> entre o
                     que está na memória e o que está na cache.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: Barramentos -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: anatomia de um barramento</h2></div>
-        <div class="content">
-            <ul class="spaced" style="font-size: 21px;">
-                <li><span class="highlight">Síncrono x assíncrono:</span> o síncrono coordena tudo por um clock comum
+</div>
+</div>
+</div>
+<!-- APROFUNDAMENTO: Barramentos -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: anatomia de um barramento</h2></div>
+<div class="content">
+<ul class="spaced" style="font-size: 21px;">
+<li><span class="highlight">Síncrono x assíncrono:</span> o síncrono coordena tudo por um clock comum
                     (simples, mas limitado pelo dispositivo mais lento); o assíncrono usa <i>handshaking</i> (sinais de
                     pronto/confirma), acomodando velocidades diferentes.</li>
-                <li><span class="highlight">Arbitragem:</span> quando vários dispositivos querem o barramento ao mesmo
+<li><span class="highlight">Arbitragem:</span> quando vários dispositivos querem o barramento ao mesmo
                     tempo, um árbitro decide a ordem (centralizado ou distribuído), evitando colisões.</li>
-                <li><span class="highlight">Paralelo x serial:</span> barramentos largos e paralelos (PCI, IDE) sofriam
+<li><span class="highlight">Paralelo x serial:</span> barramentos largos e paralelos (PCI, IDE) sofriam
                     com <i>skew</i> entre os fios em altas frequências. A tendência atual é <b>serial ponto-a-ponto</b>
                     de alta velocidade com várias linhas (lanes), como PCIe e USB.</li>
-                <li><span class="highlight">Largura de banda:</span> banda = largura × frequência × transferências por
+<li><span class="highlight">Largura de banda:</span> banda = largura × frequência × transferências por
                     ciclo. É a métrica que define quanto dado o barramento move por segundo.</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: PCIe e interconexões -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: PCI Express por dentro</h2></div>
-        <div class="content">
-            <p>O <span class="highlight">PCIe</span> é a principal interconexão interna moderna. Ele agrupa
+</ul>
+</div>
+</div>
+<!-- APROFUNDAMENTO: PCIe e interconexões -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: PCI Express por dentro</h2></div>
+<div class="content">
+<p>O <span class="highlight">PCIe</span> é a principal interconexão interna moderna. Ele agrupa
                 <b>lanes</b> (pares seriais full-duplex); um slot pode ter x1, x4, x8 ou x16 lanes, e a banda dobra a
                 cada geração:</p>
-            <table class="table">
-                <tr><th>Geração</th><th>Banda por lane (cada sentido)</th><th>x16 (aprox.)</th></tr>
-                <tr><td>PCIe 3.0</td><td>~1 GB/s</td><td>~16 GB/s</td></tr>
-                <tr><td>PCIe 4.0</td><td>~2 GB/s</td><td>~32 GB/s</td></tr>
-                <tr><td>PCIe 5.0</td><td>~4 GB/s</td><td>~64 GB/s</td></tr>
-            </table>
-            <div class="info-box">
-                <p>É por isso que uma GPU usa um slot x16 e um SSD <b>NVMe</b> (que fala PCIe direto, sem o
+<table class="table">
+<tr><th>Geração</th><th>Banda por lane (cada sentido)</th><th>x16 (aprox.)</th></tr>
+<tr><td>PCIe 3.0</td><td>~1 GB/s</td><td>~16 GB/s</td></tr>
+<tr><td>PCIe 4.0</td><td>~2 GB/s</td><td>~32 GB/s</td></tr>
+<tr><td>PCIe 5.0</td><td>~4 GB/s</td><td>~64 GB/s</td></tr>
+</table>
+<div class="info-box">
+<p>É por isso que uma GPU usa um slot x16 e um SSD <b>NVMe</b> (que fala PCIe direto, sem o
                     intermediário SATA) é muito mais rápido que um SSD SATA limitado a ~0,6 GB/s.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: Desempenho de E/S -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: medindo o desempenho de E/S</h2></div>
-        <div class="content">
-            <p>Três métricas descrevem qualquer subsistema de E/S, e elas nem sempre andam juntas:</p>
-            <div class="grid-3">
-                <div class="card">
-                    <h3>Latência</h3>
-                    <p>Tempo de resposta de uma operação individual (ms, µs). Crítica para bancos de dados e jogos.</p>
-                </div>
-                <div class="card">
-                    <h3>Vazão (throughput)</h3>
-                    <p>Volume de dados por segundo (MB/s, GB/s). Crítica para vídeo e cópia de arquivos grandes.</p>
-                </div>
-                <div class="card">
-                    <h3>IOPS</h3>
-                    <p>Operações de E/S por segundo. Crítica para muitas leituras/escritas pequenas e aleatórias.</p>
-                </div>
-            </div>
-            <div class="info-box">
-                <p>Há um enorme <b>abismo de velocidade</b> entre CPU (ns), RAM (dezenas de ns), SSD (µs) e HD/rede (ms).
+</div>
+</div>
+</div>
+<!-- APROFUNDAMENTO: Desempenho de E/S -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: medindo o desempenho de E/S</h2></div>
+<div class="content">
+<p>Três métricas descrevem qualquer subsistema de E/S, e elas nem sempre andam juntas:</p>
+<div class="grid-3">
+<div class="card">
+<h3>Latência</h3>
+<p>Tempo de resposta de uma operação individual (ms, µs). Crítica para bancos de dados e jogos.</p>
+</div>
+<div class="card">
+<h3>Vazão (throughput)</h3>
+<p>Volume de dados por segundo (MB/s, GB/s). Crítica para vídeo e cópia de arquivos grandes.</p>
+</div>
+<div class="card">
+<h3>IOPS</h3>
+<p>Operações de E/S por segundo. Crítica para muitas leituras/escritas pequenas e aleatórias.</p>
+</div>
+</div>
+<div class="info-box">
+<p>Há um enorme <b>abismo de velocidade</b> entre CPU (ns), RAM (dezenas de ns), SSD (µs) e HD/rede (ms).
                     Buffers, DMA, filas de comandos e paralelismo existem justamente para esconder essas diferenças.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: RAID -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: RAID — desempenho e redundância</h2></div>
-        <div class="content">
-            <p>O <span class="highlight">RAID</span> combina vários discos em um único volume lógico para ganhar
+</div>
+</div>
+</div>
+<!-- APROFUNDAMENTO: RAID -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: RAID — desempenho e redundância</h2></div>
+<div class="content">
+<p>O <span class="highlight">RAID</span> combina vários discos em um único volume lógico para ganhar
                 velocidade, confiabilidade ou ambos:</p>
-            <table class="table">
-                <tr><th>Nível</th><th>Técnica</th><th>Resultado</th></tr>
-                <tr><td><b>RAID 0</b></td><td>Striping (divide dados entre discos)</td><td>Rápido, mas sem redundância</td></tr>
-                <tr><td><b>RAID 1</b></td><td>Mirroring (espelha os dados)</td><td>Tolera falha de 1 disco; metade da capacidade</td></tr>
-                <tr><td><b>RAID 5</b></td><td>Striping + paridade distribuída</td><td>Tolera 1 falha com bom uso de espaço</td></tr>
-                <tr><td><b>RAID 6</b></td><td>Dupla paridade</td><td>Tolera 2 falhas simultâneas</td></tr>
-                <tr><td><b>RAID 10</b></td><td>Espelhamento + striping</td><td>Desempenho e redundância (mais caro)</td></tr>
-            </table>
-            <div class="info-box">
-                <p>RAID protege contra <b>falha de hardware</b>, não substitui <b>backup</b>: se um arquivo é apagado ou
+<table class="table">
+<tr><th>Nível</th><th>Técnica</th><th>Resultado</th></tr>
+<tr><td><b>RAID 0</b></td><td>Striping (divide dados entre discos)</td><td>Rápido, mas sem redundância</td></tr>
+<tr><td><b>RAID 1</b></td><td>Mirroring (espelha os dados)</td><td>Tolera falha de 1 disco; metade da capacidade</td></tr>
+<tr><td><b>RAID 5</b></td><td>Striping + paridade distribuída</td><td>Tolera 1 falha com bom uso de espaço</td></tr>
+<tr><td><b>RAID 6</b></td><td>Dupla paridade</td><td>Tolera 2 falhas simultâneas</td></tr>
+<tr><td><b>RAID 10</b></td><td>Espelhamento + striping</td><td>Desempenho e redundância (mais caro)</td></tr>
+</table>
+<div class="info-box">
+<p>RAID protege contra <b>falha de hardware</b>, não substitui <b>backup</b>: se um arquivo é apagado ou
                     corrompido, ele é apagado/corrompido em todos os discos do conjunto.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Glossário -->
-    <div class="slide">
-        <div class="header"><h2>Glossário do tópico</h2></div>
-        <div class="content">
-            <table class="table">
-                <tr><td><b>Periférico</b></td><td>Dispositivo de E/S conectado ao computador.</td></tr>
-                <tr><td><b>Controlador de E/S</b></td><td>Intermediário entre CPU e periférico.</td></tr>
-                <tr><td><b>Polling</b></td><td>CPU verifica repetidamente o estado do dispositivo.</td></tr>
-                <tr><td><b>Interrupção</b></td><td>Sinal que avisa a CPU de um evento.</td></tr>
-                <tr><td><b>DMA</b></td><td>Transferência direta dispositivo↔memória sem a CPU.</td></tr>
-                <tr><td><b>Driver</b></td><td>Software que controla um dispositivo.</td></tr>
-                <tr><td><b>IRQ / Vetor</b></td><td>Número da interrupção que indexa a rotina de tratamento (ISR).</td></tr>
-                <tr><td><b>Bus master</b></td><td>Dispositivo que assume o barramento (ex.: DMA) para transferir dados.</td></tr>
-                <tr><td><b>PCIe / lane</b></td><td>Interconexão serial; banda dobra a cada geração e por nº de lanes.</td></tr>
-                <tr><td><b>IOPS</b></td><td>Operações de E/S por segundo; mede E/S aleatória.</td></tr>
-                <tr><td><b>RAID</b></td><td>Conjunto de discos para desempenho e/ou redundância.</td></tr>
-            </table>
-        </div>
-    </div>
-
-    <!-- Exercícios resolvidos -->
-    <div class="slide">
-        <div class="header"><h2>Exercícios resolvidos</h2></div>
-        <div class="content">
-            <div style="display:flex; flex-direction:column; gap:16px;">
-                <div>
-                    <p style="font-size:21px;"><b>1.</b> Compare <b>polling</b>, <b>interrupção</b> e <b>DMA</b> quanto
+</div>
+</div>
+</div>
+<!-- Glossário -->
+<div class="slide">
+<div class="header"><h2>Glossário do tópico</h2></div>
+<div class="content">
+<table class="table">
+<tr><td><b>Periférico</b></td><td>Dispositivo de E/S conectado ao computador.</td></tr>
+<tr><td><b>Controlador de E/S</b></td><td>Intermediário entre CPU e periférico.</td></tr>
+<tr><td><b>Polling</b></td><td>CPU verifica repetidamente o estado do dispositivo.</td></tr>
+<tr><td><b>Interrupção</b></td><td>Sinal que avisa a CPU de um evento.</td></tr>
+<tr><td><b>DMA</b></td><td>Transferência direta dispositivo↔memória sem a CPU.</td></tr>
+<tr><td><b>Driver</b></td><td>Software que controla um dispositivo.</td></tr>
+<tr><td><b>IRQ / Vetor</b></td><td>Número da interrupção que indexa a rotina de tratamento (ISR).</td></tr>
+<tr><td><b>Bus master</b></td><td>Dispositivo que assume o barramento (ex.: DMA) para transferir dados.</td></tr>
+<tr><td><b>PCIe / lane</b></td><td>Interconexão serial; banda dobra a cada geração e por nº de lanes.</td></tr>
+<tr><td><b>IOPS</b></td><td>Operações de E/S por segundo; mede E/S aleatória.</td></tr>
+<tr><td><b>RAID</b></td><td>Conjunto de discos para desempenho e/ou redundância.</td></tr>
+</table>
+</div>
+</div>
+<!-- Exercícios resolvidos -->
+<div class="slide">
+<div class="header"><h2>Exercícios resolvidos</h2></div>
+<div class="content">
+<div style="display:flex; flex-direction:column; gap:16px;">
+<div>
+<p style="font-size:21px;"><b>1.</b> Compare <b>polling</b>, <b>interrupção</b> e <b>DMA</b> quanto
                         ao uso da CPU ao transferir dados.</p>
-                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
-                        <div class="info-box" style="margin-top:10px;">Polling: a CPU fica em espera ativa checando o
+<details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+<div class="info-box" style="margin-top:10px;">Polling: a CPU fica em espera ativa checando o
                             dispositivo — desperdício máximo. Interrupção: a CPU faz outra coisa e só é avisada quando o
                             dispositivo está pronto — custo médio. DMA: um controlador move o bloco direto para a
                             memória; a CPU só inicia e é avisada no fim — custo mínimo, ideal para transferências
                             grandes.</div>
-                    </details>
-                </div>
-                <div>
-                    <p style="font-size:21px;"><b>2.</b> Qual a banda aproximada de um enlace <b>PCIe 4.0 x4</b>?</p>
-                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
-                        <div class="info-box" style="margin-top:10px;">PCIe 4.0 fornece ~2 GB/s por lane (cada sentido).
+</details>
+</div>
+<div>
+<p style="font-size:21px;"><b>2.</b> Qual a banda aproximada de um enlace <b>PCIe 4.0 x4</b>?</p>
+<details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+<div class="info-box" style="margin-top:10px;">PCIe 4.0 fornece ~2 GB/s por lane (cada sentido).
                             Com 4 lanes: 4 × 2 = <b>~8 GB/s</b>. É a faixa típica de um SSD NVMe Gen4.</div>
-                    </details>
-                </div>
-                <div>
-                    <p style="font-size:21px;"><b>3.</b> Quanto tempo leva para transferir <b>2 GB</b> a uma taxa de
+</details>
+</div>
+<div>
+<p style="font-size:21px;"><b>3.</b> Quanto tempo leva para transferir <b>2 GB</b> a uma taxa de
                         <b>500 MB/s</b>?</p>
-                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
-                        <div class="info-box" style="margin-top:10px;">Tempo = volume / taxa = 2000 MB / 500 MB/s =
+<details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+<div class="info-box" style="margin-top:10px;">Tempo = volume / taxa = 2000 MB / 500 MB/s =
                             <b>4 segundos</b> (usando 1 GB = 1000 MB).</div>
-                    </details>
-                </div>
-                <div>
-                    <p style="font-size:21px;"><b>4.</b> Um <b>RAID 5</b> usa <b>4 discos de 2 TB</b>. Qual a capacidade
+</details>
+</div>
+<div>
+<p style="font-size:21px;"><b>4.</b> Um <b>RAID 5</b> usa <b>4 discos de 2 TB</b>. Qual a capacidade
                         útil e quantas falhas ele tolera?</p>
-                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
-                        <div class="info-box" style="margin-top:10px;">O RAID 5 reserva o equivalente a 1 disco para
+<details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+<div class="info-box" style="margin-top:10px;">O RAID 5 reserva o equivalente a 1 disco para
                             paridade: capacidade útil = (4 − 1) × 2 TB = <b>6 TB</b>. Tolera a falha de <b>1 disco</b>
                             sem perda de dados.</div>
-                    </details>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Encerramento -->
-    <div class="slide hero">
-        <h1 style="color:#3b82f6;">Resumindo</h1>
-        <p style="font-size: 22px; max-width: 820px; opacity: 0.9;">Os dispositivos de E/S conectam o computador ao
+</details>
+</div>
+</div>
+</div>
+</div>
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#3b82f6;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">Os dispositivos de E/S conectam o computador ao
             mundo. A CPU os acessa por controladores, usando polling, interrupções ou DMA, através de barramentos e
             portas como USB e PCIe — e os drivers fazem o software falar com cada hardware.</p>
-        <div style="margin-top: 40px;">
-            <a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
-                <i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
             </a>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-6 sm:py-8 mt-auto">
-        <div class="container mx-auto px-4 sm:px-6 text-center text-sm sm:text-base" style="color: white;">
-            <p>&copy; 2026 Prof. MSc. Carlos A. L. Schaeffer | Organização de Computadores</p>
-        </div>
-    </footer>
-
+</div>
+</div>
+<!-- Footer -->
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Organização de Computadores</p>
+</footer>
 </body>
-
 </html>

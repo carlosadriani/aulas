@@ -1,27 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interpretadores de Comandos e Bash (Usuários vs Admins) | Organização de Computadores</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f7f9fa;
-        }
-        header {
-            background: linear-gradient(135deg, #2c3e50, #f39c12);
-            color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Interpretadores de Comandos e Bash (Usuários vs Admins) | Organização de Computadores</title>
+<style>
         h1 { margin: 0; font-size: 2.2rem; }
         h2 { color: #2c3e50; border-bottom: 2px solid #f39c12; padding-bottom: 5px; margin-top: 40px; }
         h3 { color: #d35400; margin-top: 25px; }
@@ -75,138 +59,131 @@
             font-size: 0.8rem;
             font-weight: bold;
         }
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            font-size: 0.9rem;
-            color: #7f8c8d;
-        }
     </style>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Fira+Code:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/site.css" rel="stylesheet"/>
 </head>
-<body>
-
-<header>
-    <h1>O Interpretador de Comandos Bash</h1>
-    <p>Ecossistema de Execução para Usuários e Administradores</p>
-</header>
-
+<body class="site-body">
+<header class="site-header">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Organização de Computadores
+            </h1>
+<p>O Interpretador de Comandos Bash — Ecossistema de Execução para Usuários e Administradores</p>
+</div>
+</header><main class="site-main doc">
 <section class="card">
-    <h2>1. O que é um Interpretador de Comandos (Shell)?</h2>
-    <p>O <strong>Shell</strong> é uma camada de software que atua como interface entre o usuário e o Kernel do sistema operacional. Ele aguarda que o usuário digite um comando textualmente, interpreta essa string, verifica a sintaxe, localiza o binário correspondente no hardware (armazenamento) e solicita ao Kernel a criação de um processo para executá-lo.</p>
-    
-    <p>Embora existam vários interpretadores (sh, csh, zsh), o <strong>Bash (Bourne-Again SHell)</strong> é o padrão definitivo na esmagadora maioria das distribuições Linux.</p>
-
-    <h3>Variáveis de Ambiente e o PATH</h3>
-    <p>Quando você digita um comando como <code>ls</code>, o Bash não sabe magicamente onde ele está. Ele consulta uma variável de sistema chamada <code>$PATH</code>, que contém uma lista de diretórios onde os executáveis estão guardados. Você pode exibir o conteúdo dessa variável digitando:</p>
-    <pre>echo $PATH</pre>
+<h2>1. O que é um Interpretador de Comandos (Shell)?</h2>
+<p>O <strong>Shell</strong> é uma camada de software que atua como interface entre o usuário e o Kernel do sistema operacional. Ele aguarda que o usuário digite um comando textualmente, interpreta essa string, verifica a sintaxe, localiza o binário correspondente no hardware (armazenamento) e solicita ao Kernel a criação de um processo para executá-lo.</p>
+<p>Embora existam vários interpretadores (sh, csh, zsh), o <strong>Bash (Bourne-Again SHell)</strong> é o padrão definitivo na esmagadora maioria das distribuições Linux.</p>
+<h3>Variáveis de Ambiente e o PATH</h3>
+<p>Quando você digita um comando como <code>ls</code>, o Bash não sabe magicamente onde ele está. Ele consulta uma variável de sistema chamada <code>$PATH</code>, que contém uma lista de diretórios onde os executáveis estão guardados. Você pode exibir o conteúdo dessa variável digitando:</p>
+<pre>echo $PATH</pre>
 </section>
-
 <section class="card">
-    <h2>2. Comandos Principais para Usuários Comuns</h2>
-    <p>Destinados à produtividade diária, manipulação de arquivos locais e consulta de informações sem privilégios administrativos.</p>
-    
-    <table>
-        <thead>
-            <tr>
-                <th>Comando</th>
-                <th>Função Principal</th>
-                <th>Exemplo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>whoami</code></td>
-                <td>Exibe o nome do usuário logado na sessão atual.</td>
-                <td><code>whoami</code></td>
-            </tr>
-            <tr>
-                <td><code>man</code></td>
-                <td>Acessa o manual de instruções oficial de qualquer comando.</td>
-                <td><code>man grep</code></td>
-            </tr>
-            <tr>
-                <td><code>tar</code></td>
-                <td>Compacta ou descompacta arquivos empacotados (arquivamento).</td>
-                <td><code>tar -vzxf arquivo.tar.gz</code></td>
-            </tr>
-            <tr>
-                <td><code>history</code></td>
-                <td>Mostra a lista cronológica de comandos digitados no terminal.</td>
-                <td><code>history | tail -n 10</code></td>
-            </tr>
-            <tr>
-                <td><code>alias</code></td>
-                <td>Cria um apelido ou atalho customizado para comandos longos.</td>
-                <td><code>alias ll='ls -la'</code></td>
-            </tr>
-            <tr>
-                <td><code>clear</code></td>
-                <td>Limpa a tela visível do terminal (atalho Ctrl + L).</td>
-                <td><code>clear</code></td>
-            </tr>
-        </tbody>
-    </table>
+<h2>2. Comandos Principais para Usuários Comuns</h2>
+<p>Destinados à produtividade diária, manipulação de arquivos locais e consulta de informações sem privilégios administrativos.</p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Função Principal</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>whoami</code></td>
+<td>Exibe o nome do usuário logado na sessão atual.</td>
+<td><code>whoami</code></td>
+</tr>
+<tr>
+<td><code>man</code></td>
+<td>Acessa o manual de instruções oficial de qualquer comando.</td>
+<td><code>man grep</code></td>
+</tr>
+<tr>
+<td><code>tar</code></td>
+<td>Compacta ou descompacta arquivos empacotados (arquivamento).</td>
+<td><code>tar -vzxf arquivo.tar.gz</code></td>
+</tr>
+<tr>
+<td><code>history</code></td>
+<td>Mostra a lista cronológica de comandos digitados no terminal.</td>
+<td><code>history | tail -n 10</code></td>
+</tr>
+<tr>
+<td><code>alias</code></td>
+<td>Cria um apelido ou atalho customizado para comandos longos.</td>
+<td><code>alias ll='ls -la'</code></td>
+</tr>
+<tr>
+<td><code>clear</code></td>
+<td>Limpa a tela visível do terminal (atalho Ctrl + L).</td>
+<td><code>clear</code></td>
+</tr>
+</tbody>
+</table>
 </section>
-
 <section class="card">
-    <h2>3. Comandos Principais para Administradores (Root / SysAdmin)</h2>
-    <p>Estes comandos exigem privilégios elevados (via <code>sudo</code>) e possuem impacto direto no hardware, serviços em segundo plano, tabela de roteamento e segurança do sistema.</p>
-    
-    <table>
-        <thead>
-            <tr>
-                <th>Comando</th>
-                <th>Área de Atuação</th>
-                <th>Descrição / Uso Técnico</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>useradd</code> / <code>userdel</code></td>
-                <td>Gestão de Usuários</td>
-                <td><code>sudo useradd -m novo_aluno</code> <br><small>Cria um novo usuário e seu diretório /home.</small></td>
-            </tr>
-            <tr>
-                <td><code>chown</code></td>
-                <td>Segurança</td>
-                <td><code>sudo chown root:www-data index.html</code> <br><small>Modifica o proprietário e o grupo de um arquivo.</small></td>
-            </tr>
-            <tr>
-                <td><code>systemctl</code></td>
-                <td>Gerenciamento do Kernel</td>
-                <td><code>sudo systemctl restart nginx</code> <br><small>Controla o sistema de inicialização (systemd) e serviços.</small></td>
-            </tr>
-            <tr>
-                <td><code>ip a</code> / <code>ip route</code></td>
-                <td>Redes e Hardware</td>
-                <td><code>ip a</code> <br><small>Substituto moderno do antigo 'ifconfig'. Lista as interfaces físicas de rede.</small></td>
-            </tr>
-            <tr>
-                <td><code>df -h</code></td>
-                <td>Armazenamento</td>
-                <td><code>df -h</code> <br><small>Exibe o espaço livre/ocupado em disco de todas as partições montadas.</small></td>
-            </tr>
-            <tr>
-                <td><code>kill</code> / <code>killall</code></td>
-                <td>Processos</td>
-                <td><code>sudo kill -9 1423</code> <br><small>Envia o sinal SIGKILL direto ao hardware para encerrar um PID travado.</small></td>
-            </tr>
-        </tbody>
-    </table>
+<h2>3. Comandos Principais para Administradores (Root / SysAdmin)</h2>
+<p>Estes comandos exigem privilégios elevados (via <code>sudo</code>) e possuem impacto direto no hardware, serviços em segundo plano, tabela de roteamento e segurança do sistema.</p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Área de Atuação</th>
+<th>Descrição / Uso Técnico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>useradd</code> / <code>userdel</code></td>
+<td>Gestão de Usuários</td>
+<td><code>sudo useradd -m novo_aluno</code> <br/><small>Cria um novo usuário e seu diretório /home.</small></td>
+</tr>
+<tr>
+<td><code>chown</code></td>
+<td>Segurança</td>
+<td><code>sudo chown root:www-data index.html</code> <br/><small>Modifica o proprietário e o grupo de um arquivo.</small></td>
+</tr>
+<tr>
+<td><code>systemctl</code></td>
+<td>Gerenciamento do Kernel</td>
+<td><code>sudo systemctl restart nginx</code> <br/><small>Controla o sistema de inicialização (systemd) e serviços.</small></td>
+</tr>
+<tr>
+<td><code>ip a</code> / <code>ip route</code></td>
+<td>Redes e Hardware</td>
+<td><code>ip a</code> <br/><small>Substituto moderno do antigo 'ifconfig'. Lista as interfaces físicas de rede.</small></td>
+</tr>
+<tr>
+<td><code>df -h</code></td>
+<td>Armazenamento</td>
+<td><code>df -h</code> <br/><small>Exibe o espaço livre/ocupado em disco de todas as partições montadas.</small></td>
+</tr>
+<tr>
+<td><code>kill</code> / <code>killall</code></td>
+<td>Processos</td>
+<td><code>sudo kill -9 1423</code> <br/><small>Envia o sinal SIGKILL direto ao hardware para encerrar um PID travado.</small></td>
+</tr>
+</tbody>
+</table>
 </section>
-
 <section class="card">
-    <h2>4. Diferença Visual no Prompt de Comando</h2>
-    <p>O próprio interpretador Bash fornece uma dica visual para sabermos se estamos operando em modo seguro ou administrativo através do caractere final do prompt:</p>
-    <ul>
-        <li><span class="badge-user">Sifrão ($)</span> : Indica que você está logado como um <strong>usuário comum</strong> (limitações de segurança estritas).</li>
-        <li><span class="badge-admin">Hashtag (#)</span> : Indica que você é o <strong>Superusuário (root)</strong>. Qualquer comando errado aqui pode danificar o sistema operacional permanentemente.</li>
-    </ul>
+<h2>4. Diferença Visual no Prompt de Comando</h2>
+<p>O próprio interpretador Bash fornece uma dica visual para sabermos se estamos operando em modo seguro ou administrativo através do caractere final do prompt:</p>
+<ul>
+<li><span class="badge-user">Sifrão ($)</span> : Indica que você está logado como um <strong>usuário comum</strong> (limitações de segurança estritas).</li>
+<li><span class="badge-admin">Hashtag (#)</span> : Indica que você é o <strong>Superusuário (root)</strong>. Qualquer comando errado aqui pode danificar o sistema operacional permanentemente.</li>
+</ul>
 </section>
-
-<footer>
-    <p>Material de Apoio — Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas</p>
+</main><footer class="site-footer">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Organização de Computadores</p>
 </footer>
-
 </body>
 </html>

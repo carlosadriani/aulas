@@ -4,124 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curso de Planilhas Google - Prof. Carlos Schaeffer</title>
+    <title>Google Planilhas - Prof. Carlos Schaeffer</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="/assets/js/cabecalho.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/site.css">
-    <!-- <style>
-        :root {
-            --primary-color: #0f9d58;
-            --secondary-color: #1b73e8;
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-color: #3c4043;
-            --text-light: #5f6368;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--card-bg);
-            border-bottom: 1px solid #dadce0;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            color: var(--primary-color);
-            font-size: 2.2rem;
-        }
-
-        header p {
-            margin: 0.5rem 0 0 0;
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        .nivel-section {
-            margin-bottom: 3rem;
-        }
-
-        .nivel-title {
-            font-size: 1.5rem;
-            color: var(--text-color);
-            border-left: 5px solid var(--primary-color);
-            padding-left: 10px;
-            margin-bottom: 1.5rem;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid #dadce0;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3);
-            transition: transform 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-        }
-
-        .card h3 {
-            margin-top: 0;
-            color: var(--primary-color);
-            font-size: 1.25rem;
-            border-bottom: 1px solid #f1f3f4;
-            padding-bottom: 0.5rem;
-        }
-
-        .card p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-        }
-
-        .exemplo-box {
-            background-color: #f1f3f4;
-            border-radius: 4px;
-            padding: 0.8rem;
-            margin-top: 1rem;
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 0.85rem;
-            border-left: 3px solid var(--secondary-color);
-        }
-
-        .exemplo-title {
-            font-weight: bold;
-            color: var(--secondary-color);
-            margin-bottom: 0.3rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            border-top: 1px solid #dadce0;
-            background: var(--card-bg);
-            margin-top: 4rem;
-        }
-    </style> -->
 </head>
 
 <body>
@@ -134,11 +21,45 @@
             <a class="site-header__back" href="/index.html"><i class="fa-solid fa-arrow-left"></i> Página inicial</a>
         </div>
     </header>
-    <div class="container">
-        <section class="nivel-section">
-            <div class="nivel-title">Nível I - Organização de Dados</div>
-            <div class="grid">
-                <div class="card">
+
+    <main class="site-main">
+        <div class="toolbar">
+            <div class="toolbar__search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" data-role="search" placeholder="Pesquisar tópico por conteúdo..." aria-label="Pesquisar tópicos">
+            </div>
+            <button class="toolbar__btn" data-role="fav-filter" type="button">
+                <i class="fa-solid fa-star"></i> Só favoritos
+            </button>
+            <p class="toolbar__hint">Clique na estrela para favoritar e arraste os cards para reordenar — suas escolhas ficam salvas neste navegador.</p>
+        </div>
+
+        <div class="topic-grid" data-course="org-comp" id="topicGrid">
+
+            <!-- Introdução / história -->
+            <article class="topic-card" data-id="historico" data-keywords="histórico história evolução válvulas transistor microprocessador gerações computadores">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                <span class="topic-card__badge">Histórico</span>
+                <h2 class="topic-card__title">Interface e Introdução aos Dados</h2>
+                <p class="topic-card__desc">Navegação básica, linhas, colunas e a importância de classificar dados de forma correta (nomes de
+                        alunos, datas de matrículas e valores de taxas).</p>
+                <a class="topic-card__link" href="google_planilhas-aula01.html">Ver Tópico</a>
+            </article>
+
+        </div>
+
+        <p class="topic-empty" data-role="empty" hidden>Nenhum tópico encontrado para sua busca.</p>
+
+        <div class="back-portal">
+            <a href="../index.html"><i class="fa-solid fa-arrow-left"></i> Voltar ao Portal de Aulas</a>
+        </div>
+
+    </main>
+
+
+             <div class="card">
                     <h3>
                         <a href="google_planilhas-aula01.html">
                             1. Interface e Introdução aos Dados
@@ -151,6 +72,7 @@
                         Criação de uma lista de presença e controlo de entrega de documentos para pastas de alunos.
                     </div>
                 </div>
+
                 <div class="card">
                     <h3>
                         <a href="google_planilhas-aula02.html">

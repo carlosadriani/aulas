@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-br">
 
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Org. Computadores - Organização Básica de Sistemas Computacionais</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/slides.css">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Org. Computadores - Organização Básica de Sistemas Computacionais</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
         body {
             background-color: #0f172a;
             font-family: "DM Sans", sans-serif;
@@ -111,453 +109,438 @@
         .lead { font-size: 24px; line-height: 1.6; }
         ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
     </style>
-    <link rel="stylesheet" href="../assets/css/site.css">
+<link href="../assets/css/site.css" rel="stylesheet"/>
 </head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Organização de Computadores
+            </h1>
+<p>Organização Básica de Sistemas Computacionais</p>
+</div>
+</header>
 
-<body class="slides-light">
-
-    <!-- Capa -->
-    <div class="slide hero">
-        <i class="fa-solid fa-sitemap" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
-        <h1>Organização Básica de Sistemas Computacionais</h1>
-        <p style="font-size: 24px; opacity: 0.8;">Como um computador é estruturado por dentro</p>
-        <div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-sitemap" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+<h1>Organização Básica de Sistemas Computacionais</h1>
+<p style="font-size: 24px; opacity: 0.8;">Como um computador é estruturado por dentro</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
             Organização de Computadores</div>
-    </div>
-
-    <!-- O que é um sistema computacional -->
-    <div class="slide">
-        <div class="header"><h2>O que é um sistema computacional?</h2></div>
-        <div class="content">
-            <p class="lead">Um <span class="highlight">sistema computacional</span> é um conjunto integrado de
+</div>
+<!-- O que é um sistema computacional -->
+<div class="slide">
+<div class="header"><h2>O que é um sistema computacional?</h2></div>
+<div class="content">
+<p class="lead">Um <span class="highlight">sistema computacional</span> é um conjunto integrado de
                 componentes de <b>hardware</b> e <b>software</b> que, trabalhando juntos, recebem dados, processam
                 informações e produzem resultados úteis.</p>
-            <div class="info-box">
-                <p>Toda tarefa de um computador, por mais complexa que pareça (um jogo, um navegador, uma planilha),
+<div class="info-box">
+<p>Toda tarefa de um computador, por mais complexa que pareça (um jogo, um navegador, uma planilha),
                     reduz-se a três ações fundamentais: <b>entrada</b> de dados, <b>processamento</b> e
                     <b>saída</b> de resultados — com <b>armazenamento</b> dando suporte a todo o processo.</p>
-            </div>
-            <div class="flow">
-                <div class="node"><i class="fa-solid fa-keyboard"></i><br>Entrada</div>
-                <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                <div class="node"><i class="fa-solid fa-microchip"></i><br>Processamento</div>
-                <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                <div class="node"><i class="fa-solid fa-display"></i><br>Saída</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Organização x Arquitetura -->
-    <div class="slide">
-        <div class="header"><h2>Organização x Arquitetura</h2></div>
-        <div class="content">
-            <p class="lead">São duas perspectivas diferentes sobre a mesma máquina. É a distinção clássica feita por
+</div>
+<div class="flow">
+<div class="node"><i class="fa-solid fa-keyboard"></i><br/>Entrada</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node"><i class="fa-solid fa-microchip"></i><br/>Processamento</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node"><i class="fa-solid fa-display"></i><br/>Saída</div>
+</div>
+</div>
+</div>
+<!-- Organização x Arquitetura -->
+<div class="slide">
+<div class="header"><h2>Organização x Arquitetura</h2></div>
+<div class="content">
+<p class="lead">São duas perspectivas diferentes sobre a mesma máquina. É a distinção clássica feita por
                 Stallings:</p>
-            <div class="grid" style="margin-top: 20px;">
-                <div class="card">
-                    <h3><i class="fa-solid fa-eye"></i> Arquitetura</h3>
-                    <p>Atributos <b>visíveis ao programador</b>, que afetam diretamente a execução de um programa.</p>
-                    <p style="margin-top:10px;">Exemplos: conjunto de instruções, número de bits para representar dados,
+<div class="grid" style="margin-top: 20px;">
+<div class="card">
+<h3><i class="fa-solid fa-eye"></i> Arquitetura</h3>
+<p>Atributos <b>visíveis ao programador</b>, que afetam diretamente a execução de um programa.</p>
+<p style="margin-top:10px;">Exemplos: conjunto de instruções, número de bits para representar dados,
                         modos de endereçamento, registradores disponíveis.</p>
-                </div>
-                <div class="card">
-                    <h3><i class="fa-solid fa-screwdriver-wrench"></i> Organização</h3>
-                    <p>Como os recursos são <b>implementados fisicamente</b> para concretizar a arquitetura.</p>
-                    <p style="margin-top:10px;">Exemplos: sinais de controle, tecnologia de memória usada, se há
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-screwdriver-wrench"></i> Organização</h3>
+<p>Como os recursos são <b>implementados fisicamente</b> para concretizar a arquitetura.</p>
+<p style="margin-top:10px;">Exemplos: sinais de controle, tecnologia de memória usada, se há
                         multiplicador em hardware, tamanho real da cache.</p>
-                </div>
-            </div>
-            <div class="info-box">
-                <p>Analogia: a arquitetura é <b>"o que"</b> a máquina faz (o contrato); a organização é <b>"como"</b>
+</div>
+</div>
+<div class="info-box">
+<p>Analogia: a arquitetura é <b>"o que"</b> a máquina faz (o contrato); a organização é <b>"como"</b>
                     ela faz. Várias organizações podem implementar a mesma arquitetura — é por isso que processadores
                     de gerações diferentes rodam o mesmo software.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modelo de von Neumann -->
-    <div class="slide">
-        <div class="header"><h2>O Modelo de von Neumann</h2></div>
-        <div class="content">
-            <p>Proposto em 1945, é a base de praticamente todos os computadores atuais. Sua ideia central é o
+</div>
+</div>
+</div>
+<!-- Modelo de von Neumann -->
+<div class="slide">
+<div class="header"><h2>O Modelo de von Neumann</h2></div>
+<div class="content">
+<p>Proposto em 1945, é a base de praticamente todos os computadores atuais. Sua ideia central é o
                 <span class="highlight">programa armazenado</span>: instruções e dados ficam na <b>mesma memória</b>,
                 permitindo que o computador seja reprogramado sem alterar o hardware.</p>
-            <div class="flow" style="margin-top: 30px;">
-                <div class="node"><i class="fa-solid fa-keyboard"></i><br>Entrada</div>
-                <span class="arrow"><i class="fa-solid fa-arrows-left-right"></i></span>
-                <div class="node" style="background:#3b82f6;"><i class="fa-solid fa-microchip"></i><br>CPU<br><span style="font-size:14px;font-weight:400;">(UC + ULA)</span></div>
-                <span class="arrow"><i class="fa-solid fa-arrows-left-right"></i></span>
-                <div class="node"><i class="fa-solid fa-memory"></i><br>Memória</div>
-                <span class="arrow"><i class="fa-solid fa-arrows-left-right"></i></span>
-                <div class="node"><i class="fa-solid fa-display"></i><br>Saída</div>
-            </div>
-            <div class="info-box">
-                <p><b>Gargalo de von Neumann:</b> como instruções e dados compartilham o mesmo barramento até a memória,
+<div class="flow" style="margin-top: 30px;">
+<div class="node"><i class="fa-solid fa-keyboard"></i><br/>Entrada</div>
+<span class="arrow"><i class="fa-solid fa-arrows-left-right"></i></span>
+<div class="node" style="background:#3b82f6;"><i class="fa-solid fa-microchip"></i><br/>CPU<br/><span style="font-size:14px;font-weight:400;">(UC + ULA)</span></div>
+<span class="arrow"><i class="fa-solid fa-arrows-left-right"></i></span>
+<div class="node"><i class="fa-solid fa-memory"></i><br/>Memória</div>
+<span class="arrow"><i class="fa-solid fa-arrows-left-right"></i></span>
+<div class="node"><i class="fa-solid fa-display"></i><br/>Saída</div>
+</div>
+<div class="info-box">
+<p><b>Gargalo de von Neumann:</b> como instruções e dados compartilham o mesmo barramento até a memória,
                     a CPU frequentemente espera pela memória. Esse limite motivou o surgimento das memórias cache e da
                     arquitetura Harvard (memórias separadas para dados e instruções).</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Os cinco componentes -->
-    <div class="slide">
-        <div class="header"><h2>Os componentes funcionais</h2></div>
-        <div class="content">
-            <table class="table">
-                <tr><th>Componente</th><th>Função</th></tr>
-                <tr><td><b>Unidade Central de Processamento (CPU)</b></td>
-                    <td>O "cérebro". Busca, decodifica e executa instruções. Contém a Unidade de Controle (UC) e a
+</div>
+</div>
+</div>
+<!-- Os cinco componentes -->
+<div class="slide">
+<div class="header"><h2>Os componentes funcionais</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Componente</th><th>Função</th></tr>
+<tr><td><b>Unidade Central de Processamento (CPU)</b></td>
+<td>O "cérebro". Busca, decodifica e executa instruções. Contém a Unidade de Controle (UC) e a
                         Unidade Lógica e Aritmética (ULA).</td></tr>
-                <tr><td><b>Memória Principal</b></td>
-                    <td>Armazena temporariamente instruções e dados em uso. Volátil (RAM).</td></tr>
-                <tr><td><b>Dispositivos de Entrada</b></td>
-                    <td>Convertem informação do mundo externo em dados digitais (teclado, mouse, sensores).</td></tr>
-                <tr><td><b>Dispositivos de Saída</b></td>
-                    <td>Convertem dados digitais em informação para o usuário (monitor, impressora, alto-falante).</td></tr>
-                <tr><td><b>Barramentos (Bus)</b></td>
-                    <td>Canais de comunicação que interligam todos os componentes.</td></tr>
-            </table>
-        </div>
-    </div>
-
-    <!-- Dentro da CPU -->
-    <div class="slide">
-        <div class="header"><h2>Dentro da CPU: UC e ULA</h2></div>
-        <div class="content">
-            <div class="grid">
-                <div class="card">
-                    <h3><i class="fa-solid fa-traffic-light"></i> Unidade de Controle (UC)</h3>
-                    <p>Coordena e sincroniza todas as operações. Não processa dados — ela <b>comanda</b>: decide o que
+<tr><td><b>Memória Principal</b></td>
+<td>Armazena temporariamente instruções e dados em uso. Volátil (RAM).</td></tr>
+<tr><td><b>Dispositivos de Entrada</b></td>
+<td>Convertem informação do mundo externo em dados digitais (teclado, mouse, sensores).</td></tr>
+<tr><td><b>Dispositivos de Saída</b></td>
+<td>Convertem dados digitais em informação para o usuário (monitor, impressora, alto-falante).</td></tr>
+<tr><td><b>Barramentos (Bus)</b></td>
+<td>Canais de comunicação que interligam todos os componentes.</td></tr>
+</table>
+</div>
+</div>
+<!-- Dentro da CPU -->
+<div class="slide">
+<div class="header"><h2>Dentro da CPU: UC e ULA</h2></div>
+<div class="content">
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-traffic-light"></i> Unidade de Controle (UC)</h3>
+<p>Coordena e sincroniza todas as operações. Não processa dados — ela <b>comanda</b>: decide o que
                         cada parte deve fazer e quando, gerando os sinais de controle.</p>
-                </div>
-                <div class="card">
-                    <h3><i class="fa-solid fa-calculator"></i> Unidade Lógica e Aritmética (ULA)</h3>
-                    <p>Executa as operações <b>aritméticas</b> (soma, subtração) e <b>lógicas</b> (AND, OR, NOT,
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-calculator"></i> Unidade Lógica e Aritmética (ULA)</h3>
+<p>Executa as operações <b>aritméticas</b> (soma, subtração) e <b>lógicas</b> (AND, OR, NOT,
                         comparações). É onde o "cálculo" realmente acontece.</p>
-                </div>
-            </div>
-            <div class="info-box">
-                <p><b>Registradores:</b> pequenas memórias ultrarrápidas dentro da CPU que guardam os dados sendo
+</div>
+</div>
+<div class="info-box">
+<p><b>Registradores:</b> pequenas memórias ultrarrápidas dentro da CPU que guardam os dados sendo
                     manipulados no instante. São o nível mais alto (e mais veloz) da hierarquia de memória.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Barramentos -->
-    <div class="slide">
-        <div class="header"><h2>Barramentos: as "estradas" de dados</h2></div>
-        <div class="content">
-            <p>Um <span class="highlight">barramento</span> é um conjunto de fios que transporta informação entre
+</div>
+</div>
+</div>
+<!-- Barramentos -->
+<div class="slide">
+<div class="header"><h2>Barramentos: as "estradas" de dados</h2></div>
+<div class="content">
+<p>Um <span class="highlight">barramento</span> é um conjunto de fios que transporta informação entre
                 componentes. Existem três tipos lógicos:</p>
-            <table class="table">
-                <tr><th>Barramento</th><th>O que carrega</th><th>Sentido</th></tr>
-                <tr><td><b>Dados</b></td><td>As informações trocadas (instruções, valores)</td><td>Bidirecional</td></tr>
-                <tr><td><b>Endereços</b></td><td>A posição de memória/dispositivo a acessar</td><td>Unidirecional (CPU → memória)</td></tr>
-                <tr><td><b>Controle</b></td><td>Sinais de comando (leitura, escrita, clock, interrupção)</td><td>Bidirecional</td></tr>
-            </table>
-            <div class="info-box">
-                <p>A <b>largura</b> do barramento de dados (8, 16, 32, 64 bits) define quantos bits trafegam de uma vez.
+<table class="table">
+<tr><th>Barramento</th><th>O que carrega</th><th>Sentido</th></tr>
+<tr><td><b>Dados</b></td><td>As informações trocadas (instruções, valores)</td><td>Bidirecional</td></tr>
+<tr><td><b>Endereços</b></td><td>A posição de memória/dispositivo a acessar</td><td>Unidirecional (CPU → memória)</td></tr>
+<tr><td><b>Controle</b></td><td>Sinais de comando (leitura, escrita, clock, interrupção)</td><td>Bidirecional</td></tr>
+</table>
+<div class="info-box">
+<p>A <b>largura</b> do barramento de dados (8, 16, 32, 64 bits) define quantos bits trafegam de uma vez.
                     A largura do barramento de endereços define quanta memória pode ser endereçada: com <i>n</i> linhas,
-                    o máximo é 2<sup><i>n</i></sup> endereços. Por isso processadores de 32 bits endereçam até 4&nbsp;GB.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Ciclo de instrução -->
-    <div class="slide">
-        <div class="header"><h2>O Ciclo de Instrução (Busca-Decodificação-Execução)</h2></div>
-        <div class="content">
-            <p>É o ritmo fundamental da máquina, repetido bilhões de vezes por segundo:</p>
-            <div class="grid" style="margin-top: 10px;">
-                <ul class="spaced" style="font-size: 22px;">
-                    <li><span class="highlight">1. Busca (Fetch):</span> a UC lê da memória a próxima instrução,
+                    o máximo é 2<sup><i>n</i></sup> endereços. Por isso processadores de 32 bits endereçam até 4 GB.</p>
+</div>
+</div>
+</div>
+<!-- Ciclo de instrução -->
+<div class="slide">
+<div class="header"><h2>O Ciclo de Instrução (Busca-Decodificação-Execução)</h2></div>
+<div class="content">
+<p>É o ritmo fundamental da máquina, repetido bilhões de vezes por segundo:</p>
+<div class="grid" style="margin-top: 10px;">
+<ul class="spaced" style="font-size: 22px;">
+<li><span class="highlight">1. Busca (Fetch):</span> a UC lê da memória a próxima instrução,
                         apontada pelo registrador <b>PC</b> (Program Counter).</li>
-                    <li><span class="highlight">2. Decodificação (Decode):</span> a UC interpreta o código da instrução
+<li><span class="highlight">2. Decodificação (Decode):</span> a UC interpreta o código da instrução
                         e descobre qual operação realizar.</li>
-                    <li><span class="highlight">3. Execução (Execute):</span> a ULA ou outro recurso realiza a operação;
+<li><span class="highlight">3. Execução (Execute):</span> a ULA ou outro recurso realiza a operação;
                         o resultado é guardado em registrador ou memória.</li>
-                </ul>
-                <div class="code-box">
-PC → endereço da<br>
-&nbsp;&nbsp;próxima instrução<br><br>
-loop:<br>
-&nbsp;&nbsp;instr = MEM[PC]&nbsp;&nbsp;// fetch<br>
-&nbsp;&nbsp;decode(instr)&nbsp;&nbsp;&nbsp;&nbsp;// decode<br>
-&nbsp;&nbsp;execute(instr)&nbsp;&nbsp;&nbsp;// execute<br>
-&nbsp;&nbsp;PC = PC + 1<br>
-&nbsp;&nbsp;goto loop
+</ul>
+<div class="code-box">
+PC → endereço da<br/>
+  próxima instrução<br/><br/>
+loop:<br/>
+  instr = MEM[PC]  // fetch<br/>
+  decode(instr)    // decode<br/>
+  execute(instr)   // execute<br/>
+  PC = PC + 1<br/>
+  goto loop
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Hardware x Software -->
-    <div class="slide">
-        <div class="header"><h2>Hardware, Software e as camadas</h2></div>
-        <div class="content">
-            <p>Um sistema computacional é organizado em <span class="highlight">camadas</span>, da mais física à mais
+</div>
+</div>
+</div>
+<!-- Hardware x Software -->
+<div class="slide">
+<div class="header"><h2>Hardware, Software e as camadas</h2></div>
+<div class="content">
+<p>Um sistema computacional é organizado em <span class="highlight">camadas</span>, da mais física à mais
                 próxima do usuário:</p>
-            <table class="table">
-                <tr><th>Camada</th><th>Exemplo</th></tr>
-                <tr><td>Aplicativos do usuário</td><td>Navegador, editor de texto, jogos</td></tr>
-                <tr><td>Software de sistema / Utilitários</td><td>Compiladores, drivers, antivírus</td></tr>
-                <tr><td>Sistema Operacional</td><td>Windows, Linux, Android</td></tr>
-                <tr><td>Firmware / BIOS-UEFI</td><td>Inicialização e controle de baixo nível</td></tr>
-                <tr><td>Hardware</td><td>CPU, memória, dispositivos</td></tr>
-            </table>
-            <div class="info-box">
-                <p>Cada camada usa os serviços da camada inferior e oferece serviços à superior. O usuário interage com
+<table class="table">
+<tr><th>Camada</th><th>Exemplo</th></tr>
+<tr><td>Aplicativos do usuário</td><td>Navegador, editor de texto, jogos</td></tr>
+<tr><td>Software de sistema / Utilitários</td><td>Compiladores, drivers, antivírus</td></tr>
+<tr><td>Sistema Operacional</td><td>Windows, Linux, Android</td></tr>
+<tr><td>Firmware / BIOS-UEFI</td><td>Inicialização e controle de baixo nível</td></tr>
+<tr><td>Hardware</td><td>CPU, memória, dispositivos</td></tr>
+</table>
+<div class="info-box">
+<p>Cada camada usa os serviços da camada inferior e oferece serviços à superior. O usuário interage com
                     o topo sem precisar conhecer os detalhes elétricos da base — isso é <b>abstração</b>.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Desempenho -->
-    <div class="slide">
-        <div class="header"><h2>O que torna um computador "rápido"?</h2></div>
-        <div class="content">
-            <ul class="spaced" style="font-size: 22px;">
-                <li><span class="highlight">Frequência de clock (GHz):</span> número de ciclos por segundo. 3&nbsp;GHz =
+</div>
+</div>
+</div>
+<!-- Desempenho -->
+<div class="slide">
+<div class="header"><h2>O que torna um computador "rápido"?</h2></div>
+<div class="content">
+<ul class="spaced" style="font-size: 22px;">
+<li><span class="highlight">Frequência de clock (GHz):</span> número de ciclos por segundo. 3 GHz =
                     3 bilhões de ciclos/s. Mais ciclos, mais operações — mas não é o único fator.</li>
-                <li><span class="highlight">Número de núcleos:</span> CPUs modernas têm vários núcleos que processam
+<li><span class="highlight">Número de núcleos:</span> CPUs modernas têm vários núcleos que processam
                     tarefas em paralelo.</li>
-                <li><span class="highlight">Largura de palavra:</span> processar 64 bits por vez é mais eficiente que 32.</li>
-                <li><span class="highlight">Hierarquia de memória/cache:</span> manter dados perto da CPU evita a espera
+<li><span class="highlight">Largura de palavra:</span> processar 64 bits por vez é mais eficiente que 32.</li>
+<li><span class="highlight">Hierarquia de memória/cache:</span> manter dados perto da CPU evita a espera
                     pela memória principal (o gargalo de von Neumann).</li>
-                <li><span class="highlight">Arquitetura do conjunto de instruções:</span> instruções bem projetadas
+<li><span class="highlight">Arquitetura do conjunto de instruções:</span> instruções bem projetadas
                     fazem mais com menos.</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: Máquina multinível -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: a máquina multinível</h2></div>
-        <div class="content">
-            <p>Tanenbaum descreve o computador como uma <span class="highlight">máquina de níveis</span>: cada nível é
+</ul>
+</div>
+</div>
+<!-- APROFUNDAMENTO: Máquina multinível -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: a máquina multinível</h2></div>
+<div class="content">
+<p>Tanenbaum descreve o computador como uma <span class="highlight">máquina de níveis</span>: cada nível é
                 uma máquina virtual que esconde os detalhes do nível inferior. Programar em um nível dispensa conhecer
                 como ele é realizado abaixo — é a ideia de <b>abstração em camadas</b>.</p>
-            <table class="table">
-                <tr><th>Nível</th><th>Camada</th><th>Como é executado</th></tr>
-                <tr><td>5</td><td>Linguagem de alto nível (C, Java, Python)</td><td>Tradução (compilador) ou interpretação</td></tr>
-                <tr><td>4</td><td>Linguagem de montagem (Assembly)</td><td>Tradução pelo montador</td></tr>
-                <tr><td>3</td><td>Máquina do sistema operacional</td><td>Parcialmente interpretado pelo SO</td></tr>
-                <tr><td>2</td><td>Arquitetura do conjunto de instruções (ISA)</td><td>Interpretado pelo microprograma ou hardware</td></tr>
-                <tr><td>1</td><td>Microarquitetura (datapath + microprograma)</td><td>Executado diretamente pelo hardware</td></tr>
-                <tr><td>0</td><td>Lógica digital (portas, flip-flops)</td><td>Eletrônica física</td></tr>
-            </table>
-            <div class="info-box">
-                <p>A <b>ISA</b> (nível 2) é a fronteira crítica: é o "contrato" estável que permite que software escrito
+<table class="table">
+<tr><th>Nível</th><th>Camada</th><th>Como é executado</th></tr>
+<tr><td>5</td><td>Linguagem de alto nível (C, Java, Python)</td><td>Tradução (compilador) ou interpretação</td></tr>
+<tr><td>4</td><td>Linguagem de montagem (Assembly)</td><td>Tradução pelo montador</td></tr>
+<tr><td>3</td><td>Máquina do sistema operacional</td><td>Parcialmente interpretado pelo SO</td></tr>
+<tr><td>2</td><td>Arquitetura do conjunto de instruções (ISA)</td><td>Interpretado pelo microprograma ou hardware</td></tr>
+<tr><td>1</td><td>Microarquitetura (datapath + microprograma)</td><td>Executado diretamente pelo hardware</td></tr>
+<tr><td>0</td><td>Lógica digital (portas, flip-flops)</td><td>Eletrônica física</td></tr>
+</table>
+<div class="info-box">
+<p>A <b>ISA</b> (nível 2) é a fronteira crítica: é o "contrato" estável que permite que software escrito
                     hoje rode em processadores futuros, mesmo que a microarquitetura (nível 1) mude completamente.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: Microarquitetura -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: dentro da microarquitetura</h2></div>
-        <div class="content">
-            <p>Abaixo da ISA, a microarquitetura organiza o processador em duas partes que cooperam a cada ciclo de
+</div>
+</div>
+</div>
+<!-- APROFUNDAMENTO: Microarquitetura -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: dentro da microarquitetura</h2></div>
+<div class="content">
+<p>Abaixo da ISA, a microarquitetura organiza o processador em duas partes que cooperam a cada ciclo de
                 clock:</p>
-            <div class="grid" style="margin-top: 14px;">
-                <div class="card">
-                    <h3><i class="fa-solid fa-route"></i> Caminho de dados (datapath)</h3>
-                    <p>Os recursos por onde os dados fluem e são transformados: ULA, banco de registradores,
+<div class="grid" style="margin-top: 14px;">
+<div class="card">
+<h3><i class="fa-solid fa-route"></i> Caminho de dados (datapath)</h3>
+<p>Os recursos por onde os dados fluem e são transformados: ULA, banco de registradores,
                         multiplexadores, barramentos internos e registradores de estágio (MAR, MBR, IR).</p>
-                </div>
-                <div class="card">
-                    <h3><i class="fa-solid fa-traffic-light"></i> Unidade de controle</h3>
-                    <p>Gera, a cada ciclo, os <b>sinais de controle</b> que abrem/fecham os caminhos do datapath
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-traffic-light"></i> Unidade de controle</h3>
+<p>Gera, a cada ciclo, os <b>sinais de controle</b> que abrem/fecham os caminhos do datapath
                         (qual operação a ULA faz, qual registrador é lido/escrito, se a memória lê ou grava).</p>
-                </div>
-            </div>
-            <div class="info-box">
-                <p>Duas formas de implementar o controle: <b>cabeado (hardwired)</b> — lógica combinacional fixa, rápida,
+</div>
+</div>
+<div class="info-box">
+<p>Duas formas de implementar o controle: <b>cabeado (hardwired)</b> — lógica combinacional fixa, rápida,
                     típica de RISC; e <b>microprogramado</b> — cada instrução da ISA vira uma sequência de
                     microinstruções armazenadas numa memória de controle, mais flexível e usado historicamente em CISC.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: von Neumann e IAS -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: a máquina IAS e a arquitetura Harvard</h2></div>
-        <div class="content">
-            <p>O artigo de von Neumann (1945) deu origem à <span class="highlight">máquina IAS</span> (Princeton,
+</div>
+</div>
+</div>
+<!-- APROFUNDAMENTO: von Neumann e IAS -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: a máquina IAS e a arquitetura Harvard</h2></div>
+<div class="content">
+<p>O artigo de von Neumann (1945) deu origem à <span class="highlight">máquina IAS</span> (Princeton,
                 concluída em 1952), modelo de quase toda CPU posterior. Ela já definia uma estrutura de registradores
                 que persiste hoje:</p>
-            <div class="grid" style="margin-top: 10px;">
-                <table class="table">
-                    <tr><th>Registrador</th><th>Função (já na IAS)</th></tr>
-                    <tr><td>PC</td><td>Endereço da próxima instrução</td></tr>
-                    <tr><td>MAR</td><td>Endereço a acessar na memória</td></tr>
-                    <tr><td>MBR</td><td>Dado lido/escrito na memória</td></tr>
-                    <tr><td>IR</td><td>Instrução em execução</td></tr>
-                    <tr><td>AC / MQ</td><td>Operandos e resultados da ULA</td></tr>
-                </table>
-                <div>
-                    <p>A IAS usava palavras de <b>40 bits</b> e podia guardar duas instruções de 20 bits por palavra.
+<div class="grid" style="margin-top: 10px;">
+<table class="table">
+<tr><th>Registrador</th><th>Função (já na IAS)</th></tr>
+<tr><td>PC</td><td>Endereço da próxima instrução</td></tr>
+<tr><td>MAR</td><td>Endereço a acessar na memória</td></tr>
+<tr><td>MBR</td><td>Dado lido/escrito na memória</td></tr>
+<tr><td>IR</td><td>Instrução em execução</td></tr>
+<tr><td>AC / MQ</td><td>Operandos e resultados da ULA</td></tr>
+</table>
+<div>
+<p>A IAS usava palavras de <b>40 bits</b> e podia guardar duas instruções de 20 bits por palavra.
                         O conceito-chave permanece: <b>instruções e dados na mesma memória</b>, indistinguíveis a não ser
                         pelo contexto.</p>
-                    <p style="margin-top: 12px;">A alternativa é a <b>arquitetura Harvard</b>: memórias e barramentos
+<p style="margin-top: 12px;">A alternativa é a <b>arquitetura Harvard</b>: memórias e barramentos
                         separados para instruções e dados, permitindo buscá-los simultaneamente. CPUs modernas são
                         <b>Harvard modificada</b> — von Neumann na memória principal, mas caches L1 separadas de
                         instrução e de dados.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: Equação de desempenho -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: medindo desempenho cientificamente</h2></div>
-        <div class="content">
-            <p>O desempenho de uma CPU não se resume ao clock. A <span class="highlight">equação fundamental do tempo de
+</div>
+</div>
+</div>
+</div>
+<!-- APROFUNDAMENTO: Equação de desempenho -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: medindo desempenho cientificamente</h2></div>
+<div class="content">
+<p>O desempenho de uma CPU não se resume ao clock. A <span class="highlight">equação fundamental do tempo de
                 CPU</span> reúne os três fatores que realmente importam:</p>
-            <div class="code-box" style="margin-top: 14px;">
-T<sub>CPU</sub> = IC × CPI × T<sub>clock</sub><br><br>
-IC&nbsp;&nbsp;&nbsp;&nbsp;= nº de instruções executadas<br>
-CPI&nbsp;&nbsp;&nbsp;= ciclos médios por instrução<br>
+<div class="code-box" style="margin-top: 14px;">
+T<sub>CPU</sub> = IC × CPI × T<sub>clock</sub><br/><br/>
+IC    = nº de instruções executadas<br/>
+CPI   = ciclos médios por instrução<br/>
 T<sub>clock</sub> = duração do ciclo (= 1 / frequência)
             </div>
-            <div class="info-box">
-                <p>Cada fator é influenciado por um fator de projeto: a <b>ISA e o compilador</b> mexem no IC; a
+<div class="info-box">
+<p>Cada fator é influenciado por um fator de projeto: a <b>ISA e o compilador</b> mexem no IC; a
                     <b>microarquitetura</b> (pipeline, cache) mexe no CPI; a <b>tecnologia do circuito</b> mexe no
                     T<sub>clock</sub>. Métricas como <b>MIPS</b> e <b>FLOPS</b> são derivadas, mas enganam entre
                     arquiteturas diferentes — por isso usam-se <b>benchmarks</b> padronizados (SPEC CPU) com média
                     geométrica para comparar máquinas de forma justa.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: Lei de Amdahl -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: a Lei de Amdahl</h2></div>
-        <div class="content">
-            <div class="grid">
-                <div>
-                    <p>Quando se acelera apenas <b>parte</b> de um sistema, o ganho global é limitado pela fração que
+</div>
+</div>
+</div>
+<!-- APROFUNDAMENTO: Lei de Amdahl -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: a Lei de Amdahl</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<p>Quando se acelera apenas <b>parte</b> de um sistema, o ganho global é limitado pela fração que
                         <b>não</b> foi acelerada. Esse é o princípio que rege qualquer otimização — inclusive o
                         paralelismo.</p>
-                    <div class="code-box" style="margin-top: 12px;">
-Speedup = 1 / ( (1 − f) + f / s )<br><br>
-f = fração afetada pela melhoria<br>
+<div class="code-box" style="margin-top: 12px;">
+Speedup = 1 / ( (1 − f) + f / s )<br/><br/>
+f = fração afetada pela melhoria<br/>
 s = aceleração dessa fração
                     </div>
-                </div>
-                <div class="info-box" style="margin-top:0;">
-                    <p><b>Exemplo:</b> se 90% de um programa é paralelizável (f = 0,9) e usamos infinitos núcleos
+</div>
+<div class="info-box" style="margin-top:0;">
+<p><b>Exemplo:</b> se 90% de um programa é paralelizável (f = 0,9) e usamos infinitos núcleos
                         (s → ∞), o speedup máximo é 1 / (1 − 0,9) = <b>10×</b>. Os 10% sequenciais impõem o teto.</p>
-                    <p style="margin-top: 10px;">Conclusão científica: <b>a parte serial domina</b>. Vale mais reduzir o
+<p style="margin-top: 10px;">Conclusão científica: <b>a parte serial domina</b>. Vale mais reduzir o
                         trecho sequencial do que adicionar processadores indefinidamente.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: Moore, Dennard e multicore -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: Moore, Dennard e a virada multinúcleo</h2></div>
-        <div class="content">
-            <ul class="spaced" style="font-size: 22px;">
-                <li><span class="highlight">Lei de Moore (1965):</span> o número de transistores em um chip dobra a cada
+</div>
+</div>
+</div>
+</div>
+<!-- APROFUNDAMENTO: Moore, Dennard e multicore -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: Moore, Dennard e a virada multinúcleo</h2></div>
+<div class="content">
+<ul class="spaced" style="font-size: 22px;">
+<li><span class="highlight">Lei de Moore (1965):</span> o número de transistores em um chip dobra a cada
                     ~2 anos. É uma tendência econômica/empírica, não uma lei física — e vem desacelerando.</li>
-                <li><span class="highlight">Escalonamento de Dennard:</span> historicamente, transistores menores
+<li><span class="highlight">Escalonamento de Dennard:</span> historicamente, transistores menores
                     consumiam proporcionalmente menos energia, permitindo elevar o clock sem aumentar a densidade de
                     potência. Esse escalonamento <b>cessou por volta de 2005/2006</b>.</li>
-                <li><span class="highlight">A consequência ("power wall"):</span> sem o ganho de Dennard, elevar o clock
+<li><span class="highlight">A consequência ("power wall"):</span> sem o ganho de Dennard, elevar o clock
                     passou a gerar calor inviável. A indústria respondeu colocando <b>mais núcleos</b> em vez de clocks
                     maiores — daí o domínio dos processadores <b>multinúcleo</b> e a importância do paralelismo (e da Lei
                     de Amdahl).</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Glossário -->
-    <div class="slide">
-        <div class="header"><h2>Glossário do tópico</h2></div>
-        <div class="content">
-            <table class="table">
-                <tr><td><b>CPU</b></td><td>Unidade Central de Processamento; executa as instruções.</td></tr>
-                <tr><td><b>UC</b></td><td>Unidade de Controle; coordena as operações.</td></tr>
-                <tr><td><b>ULA</b></td><td>Unidade Lógica e Aritmética; faz cálculos e comparações.</td></tr>
-                <tr><td><b>PC</b></td><td>Program Counter; aponta a próxima instrução.</td></tr>
-                <tr><td><b>Barramento</b></td><td>Conjunto de fios que conecta os componentes.</td></tr>
-                <tr><td><b>von Neumann</b></td><td>Modelo de programa armazenado; instruções e dados na mesma memória.</td></tr>
-                <tr><td><b>Microarquitetura</b></td><td>Implementação da ISA: datapath + unidade de controle.</td></tr>
-                <tr><td><b>CPI</b></td><td>Ciclos por instrução; fator central do desempenho.</td></tr>
-                <tr><td><b>Lei de Amdahl</b></td><td>O ganho global é limitado pela fração não acelerada (parte serial).</td></tr>
-            </table>
-        </div>
-    </div>
-
-    <!-- Exercícios resolvidos -->
-    <div class="slide">
-        <div class="header"><h2>Exercícios resolvidos</h2></div>
-        <div class="content">
-            <div style="display:flex; flex-direction:column; gap:16px;">
-                <div>
-                    <p style="font-size:21px;"><b>1.</b> Explique, com um exemplo, a diferença entre <b>arquitetura</b> e
+</ul>
+</div>
+</div>
+<!-- Glossário -->
+<div class="slide">
+<div class="header"><h2>Glossário do tópico</h2></div>
+<div class="content">
+<table class="table">
+<tr><td><b>CPU</b></td><td>Unidade Central de Processamento; executa as instruções.</td></tr>
+<tr><td><b>UC</b></td><td>Unidade de Controle; coordena as operações.</td></tr>
+<tr><td><b>ULA</b></td><td>Unidade Lógica e Aritmética; faz cálculos e comparações.</td></tr>
+<tr><td><b>PC</b></td><td>Program Counter; aponta a próxima instrução.</td></tr>
+<tr><td><b>Barramento</b></td><td>Conjunto de fios que conecta os componentes.</td></tr>
+<tr><td><b>von Neumann</b></td><td>Modelo de programa armazenado; instruções e dados na mesma memória.</td></tr>
+<tr><td><b>Microarquitetura</b></td><td>Implementação da ISA: datapath + unidade de controle.</td></tr>
+<tr><td><b>CPI</b></td><td>Ciclos por instrução; fator central do desempenho.</td></tr>
+<tr><td><b>Lei de Amdahl</b></td><td>O ganho global é limitado pela fração não acelerada (parte serial).</td></tr>
+</table>
+</div>
+</div>
+<!-- Exercícios resolvidos -->
+<div class="slide">
+<div class="header"><h2>Exercícios resolvidos</h2></div>
+<div class="content">
+<div style="display:flex; flex-direction:column; gap:16px;">
+<div>
+<p style="font-size:21px;"><b>1.</b> Explique, com um exemplo, a diferença entre <b>arquitetura</b> e
                         <b>organização</b> de um computador.</p>
-                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
-                        <div class="info-box" style="margin-top:10px;">Arquitetura são os atributos visíveis ao
+<details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+<div class="info-box" style="margin-top:10px;">Arquitetura são os atributos visíveis ao
                             programador (ex.: o conjunto de instruções, ter ou não a instrução de multiplicação).
                             Organização é como isso é implementado fisicamente (ex.: a multiplicação ser feita por um
                             circuito dedicado ou por somas repetidas). Duas CPUs com a mesma arquitetura rodam o mesmo
                             software, mesmo tendo organizações internas diferentes.</div>
-                    </details>
-                </div>
-                <div>
-                    <p style="font-size:21px;"><b>2.</b> Um barramento de endereços possui <b>24 linhas</b>. Qual a
+</details>
+</div>
+<div>
+<p style="font-size:21px;"><b>2.</b> Um barramento de endereços possui <b>24 linhas</b>. Qual a
                         quantidade máxima de memória endereçável?</p>
-                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
-                        <div class="info-box" style="margin-top:10px;">Com <i>n</i> linhas, endereçam-se 2<sup>n</sup>
+<details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+<div class="info-box" style="margin-top:10px;">Com <i>n</i> linhas, endereçam-se 2<sup>n</sup>
                             posições. 2<sup>24</sup> = 16.777.216 endereços = <b>16 MiB</b> (considerando 1 byte por
                             endereço).</div>
-                    </details>
-                </div>
-                <div>
-                    <p style="font-size:21px;"><b>3.</b> Um programa executa 10<sup>9</sup> instruções, com CPI médio
+</details>
+</div>
+<div>
+<p style="font-size:21px;"><b>3.</b> Um programa executa 10<sup>9</sup> instruções, com CPI médio
                         de <b>2</b>, em uma CPU de <b>2 GHz</b>. Qual o tempo de execução?</p>
-                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
-                        <div class="info-box" style="margin-top:10px;">T<sub>CPU</sub> = IC × CPI × T<sub>clock</sub>.
+<details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+<div class="info-box" style="margin-top:10px;">T<sub>CPU</sub> = IC × CPI × T<sub>clock</sub>.
                             T<sub>clock</sub> = 1 / (2×10<sup>9</sup>) = 0,5 ns. Logo T = 10<sup>9</sup> × 2 × 0,5 ns =
                             10<sup>9</sup> ns = <b>1 segundo</b>.</div>
-                    </details>
-                </div>
-                <div>
-                    <p style="font-size:21px;"><b>4.</b> Um programa é 80% paralelizável. Qual o ganho máximo (speedup)
+</details>
+</div>
+<div>
+<p style="font-size:21px;"><b>4.</b> Um programa é 80% paralelizável. Qual o ganho máximo (speedup)
                         ao usar <b>4 núcleos</b>, pela Lei de Amdahl?</p>
-                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
-                        <div class="info-box" style="margin-top:10px;">Speedup = 1 / ((1 − f) + f/s) =
+<details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+<div class="info-box" style="margin-top:10px;">Speedup = 1 / ((1 − f) + f/s) =
                             1 / ((1 − 0,8) + 0,8/4) = 1 / (0,2 + 0,2) = <b>2,5×</b>. Note que, mesmo com infinitos
                             núcleos, o teto seria 1/0,2 = 5×.</div>
-                    </details>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Encerramento -->
-    <div class="slide hero">
-        <h1 style="color:#3b82f6;">Resumindo</h1>
-        <p style="font-size: 22px; max-width: 800px; opacity: 0.9;">Um computador é um sistema de camadas: hardware
+</details>
+</div>
+</div>
+</div>
+</div>
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#3b82f6;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 800px; opacity: 0.9;">Um computador é um sistema de camadas: hardware
             organizado segundo o modelo de von Neumann (CPU, memória, E/S e barramentos), executando o ciclo de
             busca-decodificação-execução, controlado por software que abstrai a complexidade para o usuário.</p>
-        <div style="margin-top: 40px;">
-            <a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
-                <i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
             </a>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-6 sm:py-8 mt-auto">
-        <div class="container mx-auto px-4 sm:px-6 text-center text-sm sm:text-base" style="color: white;">
-            <p>&copy; 2026 Prof. MSc. Carlos A. L. Schaeffer | Organização de Computadores</p>
-        </div>
-    </footer>
-
+</div>
+</div>
+<!-- Footer -->
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Organização de Computadores</p>
+</footer>
 </body>
-
 </html>

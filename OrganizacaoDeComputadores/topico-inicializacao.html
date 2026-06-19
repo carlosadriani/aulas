@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-br">
 
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Org. Computadores - O que acontece ao ligar o computador</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/slides.css">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Org. Computadores - O que acontece ao ligar o computador</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
         body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
         .slide { background: #ffffff; color: #1e293b; }
         .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
@@ -42,449 +40,433 @@
         .timeline li b { color: #1e3a8a; }
         .step-num { display: inline-flex; width: 34px; height: 34px; align-items: center; justify-content: center; background: #3b82f6; color: #fff; border-radius: 50%; font-weight: bold; margin-right: 10px; }
     </style>
-    <link rel="stylesheet" href="../assets/css/site.css">
+<link href="../assets/css/site.css" rel="stylesheet"/>
 </head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Organização de Computadores
+            </h1>
+<p>Ao ligar o computador: firmware, POST, bootloader e kernel</p>
+</div>
+</header>
 
-<body class="slides-light">
-
-    <!-- Capa -->
-    <div class="slide hero">
-        <i class="fa-solid fa-power-off" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
-        <h1>Ao ligar o computador</h1>
-        <p style="font-size: 24px; opacity: 0.8;">O que realmente acontece, da energia à área de trabalho</p>
-        <div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-power-off" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+<h1>Ao ligar o computador</h1>
+<p style="font-size: 24px; opacity: 0.8;">O que realmente acontece, da energia à área de trabalho</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
             Organização de Computadores</div>
-    </div>
-
-    <!-- Visão geral -->
-    <div class="slide">
-        <div class="header"><h2>Visão geral: uma corrente de entregas</h2></div>
-        <div class="content">
-            <p class="lead">Ligar o computador dispara uma <span class="highlight">sequência de inicialização (boot)</span>:
+</div>
+<!-- Visão geral -->
+<div class="slide">
+<div class="header"><h2>Visão geral: uma corrente de entregas</h2></div>
+<div class="content">
+<p class="lead">Ligar o computador dispara uma <span class="highlight">sequência de inicialização (boot)</span>:
                 cada etapa prepara o ambiente e <b>entrega o controle</b> à etapa seguinte, do hardware mais bruto até a
                 interface do usuário.</p>
-            <div class="flow" style="margin-top: 18px;">
-                <div class="node"><i class="fa-solid fa-bolt"></i><br>Energia</div>
-                <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                <div class="node"><i class="fa-solid fa-microchip"></i><br>Firmware<br><span style="font-weight:400;font-size:13px;">BIOS/UEFI</span></div>
-                <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                <div class="node"><i class="fa-solid fa-clipboard-check"></i><br>POST</div>
-                <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                <div class="node"><i class="fa-solid fa-hard-drive"></i><br>Bootloader</div>
-                <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                <div class="node" style="background:#3b82f6;"><i class="fa-solid fa-gears"></i><br>Kernel<br><span style="font-weight:400;font-size:13px;">do SO</span></div>
-                <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                <div class="node"><i class="fa-solid fa-user"></i><br>Usuário</div>
-            </div>
-            <div class="info-box">
-                <p>A palavra <b>"boot"</b> vem de <i>bootstrap</i> ("erguer-se pelos próprios cadarços"): o computador
+<div class="flow" style="margin-top: 18px;">
+<div class="node"><i class="fa-solid fa-bolt"></i><br/>Energia</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node"><i class="fa-solid fa-microchip"></i><br/>Firmware<br/><span style="font-weight:400;font-size:13px;">BIOS/UEFI</span></div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node"><i class="fa-solid fa-clipboard-check"></i><br/>POST</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node"><i class="fa-solid fa-hard-drive"></i><br/>Bootloader</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node" style="background:#3b82f6;"><i class="fa-solid fa-gears"></i><br/>Kernel<br/><span style="font-weight:400;font-size:13px;">do SO</span></div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node"><i class="fa-solid fa-user"></i><br/>Usuário</div>
+</div>
+<div class="info-box">
+<p>A palavra <b>"boot"</b> vem de <i>bootstrap</i> ("erguer-se pelos próprios cadarços"): o computador
                     precisa carregar um software para funcionar, mas ainda não tem software carregado. A solução é uma
                     corrente de programas cada vez maiores, começando por um minúsculo código fixo no hardware.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Passo 1: energia -->
-    <div class="slide">
-        <div class="header"><h2><span class="step-num">1</span>O pulso de energia</h2></div>
-        <div class="content">
-            <div class="grid">
-                <div>
-                    <p>Ao pressionar o botão, a placa-mãe sinaliza à <span class="highlight">fonte de alimentação
+</div>
+</div>
+</div>
+<!-- Passo 1: energia -->
+<div class="slide">
+<div class="header"><h2><span class="step-num">1</span>O pulso de energia</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<p>Ao pressionar o botão, a placa-mãe sinaliza à <span class="highlight">fonte de alimentação
                         (PSU)</span> que ligue. A fonte converte a corrente alternada da tomada em tensões contínuas
                         estáveis (+12V, +5V, +3,3V).</p>
-                    <p style="margin-top: 12px;">Quando essas tensões estabilizam, a fonte envia o sinal
+<p style="margin-top: 12px;">Quando essas tensões estabilizam, a fonte envia o sinal
                         <span class="highlight">Power Good</span>. Só então o circuito libera o <b>reset</b> da CPU e o
                         <b>clock</b> começa a oscilar.</p>
+</div>
+<div class="code-box">
+botão → placa-mãe<br/>
+  → PSU liga<br/>
+  → tensões estabilizam<br/>
+  → sinal "Power Good"<br/>
+  → libera RESET da CPU<br/>
+  → clock ativo
                 </div>
-                <div class="code-box">
-botão → placa-mãe<br>
-&nbsp;&nbsp;→ PSU liga<br>
-&nbsp;&nbsp;→ tensões estabilizam<br>
-&nbsp;&nbsp;→ sinal "Power Good"<br>
-&nbsp;&nbsp;→ libera RESET da CPU<br>
-&nbsp;&nbsp;→ clock ativo
-                </div>
-            </div>
-            <div class="info-box">
-                <p>Sem o sinal Power Good, a CPU é mantida em <b>reset</b>: nada executa enquanto a energia não for
+</div>
+<div class="info-box">
+<p>Sem o sinal Power Good, a CPU é mantida em <b>reset</b>: nada executa enquanto a energia não for
                     confiável. É uma proteção — operar com tensão instável corromperia dados e danificaria componentes.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Passo 2: vetor de reset -->
-    <div class="slide">
-        <div class="header"><h2><span class="step-num">2</span>A CPU "acorda": o vetor de reset</h2></div>
-        <div class="content">
-            <p>Quando o reset é liberado, a CPU está em um estado conhecido de fábrica. Seu registrador <b>PC</b>
+</div>
+</div>
+</div>
+<!-- Passo 2: vetor de reset -->
+<div class="slide">
+<div class="header"><h2><span class="step-num">2</span>A CPU "acorda": o vetor de reset</h2></div>
+<div class="content">
+<p>Quando o reset é liberado, a CPU está em um estado conhecido de fábrica. Seu registrador <b>PC</b>
                 (contador de programa) aponta para um endereço fixo, o <span class="highlight">vetor de reset</span> —
                 gravado no projeto do processador.</p>
-            <p style="margin-top: 12px;">Esse endereço é mapeado, pelo <i>chipset</i>, para a memória <b>ROM/flash do
+<p style="margin-top: 12px;">Esse endereço é mapeado, pelo <i>chipset</i>, para a memória <b>ROM/flash do
                 firmware</b>. Ou seja: a primeiríssima instrução que a CPU executa já é a do BIOS/UEFI, não da RAM (que
                 ainda está vazia e nem foi inicializada).</p>
-            <div class="info-box">
-                <p>Nos PCs x86 clássicos, a CPU acorda em <b>modo real</b> (16 bits, compatível com o 8086 de 1978) e
+<div class="info-box">
+<p>Nos PCs x86 clássicos, a CPU acorda em <b>modo real</b> (16 bits, compatível com o 8086 de 1978) e
                     começa perto do topo do espaço de endereços (0xFFFFFFF0). Uma das tarefas do firmware é levar a
                     máquina a um modo moderno (protegido/longo, 32/64 bits).</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Passo 3: firmware BIOS x UEFI -->
-    <div class="slide">
-        <div class="header"><h2><span class="step-num">3</span>O firmware: BIOS e UEFI</h2></div>
-        <div class="content">
-            <p class="lead">O <span class="highlight">firmware</span> é o software de baixo nível gravado em memória
+</div>
+</div>
+</div>
+<!-- Passo 3: firmware BIOS x UEFI -->
+<div class="slide">
+<div class="header"><h2><span class="step-num">3</span>O firmware: BIOS e UEFI</h2></div>
+<div class="content">
+<p class="lead">O <span class="highlight">firmware</span> é o software de baixo nível gravado em memória
                 não-volátil na placa-mãe. Ele é o primeiro a rodar e tem uma missão: <b>preparar o hardware e encontrar
                 o sistema operacional</b>.</p>
-            <div class="grid" style="margin-top: 16px;">
-                <div class="card">
-                    <h3>BIOS (legado)</h3>
-                    <p>Padrão desde os anos 1980. Opera em 16 bits, usa o esquema de partição <b>MBR</b> (limite de
+<div class="grid" style="margin-top: 16px;">
+<div class="card">
+<h3>BIOS (legado)</h3>
+<p>Padrão desde os anos 1980. Opera em 16 bits, usa o esquema de partição <b>MBR</b> (limite de
                         ~2 TB) e procura o boot no primeiro setor do disco.</p>
-                </div>
-                <div class="card">
-                    <h3>UEFI (moderno)</h3>
-                    <p>Substituto atual. Opera em 32/64 bits, usa <b>GPT</b> (discos enormes), tem interface gráfica,
+</div>
+<div class="card">
+<h3>UEFI (moderno)</h3>
+<p>Substituto atual. Opera em 32/64 bits, usa <b>GPT</b> (discos enormes), tem interface gráfica,
                         rede, e um gerenciador de boot próprio. Suporta <b>Secure Boot</b>.</p>
-                </div>
-            </div>
-            <div class="info-box">
-                <p>Hoje "BIOS" virou sinônimo popular do menu de configuração, mas a tecnologia real na maioria das
+</div>
+</div>
+<div class="info-box">
+<p>Hoje "BIOS" virou sinônimo popular do menu de configuração, mas a tecnologia real na maioria das
                     máquinas é <b>UEFI</b> (muitas vezes em modo de compatibilidade com a BIOS legada, o <i>CSM</i>).</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Passo 4: POST -->
-    <div class="slide">
-        <div class="header"><h2><span class="step-num">4</span>POST: o autoteste de inicialização</h2></div>
-        <div class="content">
-            <p>A primeira grande rotina do firmware é o <span class="highlight">POST</span> (<i>Power-On Self-Test</i>):
+</div>
+</div>
+</div>
+<!-- Passo 4: POST -->
+<div class="slide">
+<div class="header"><h2><span class="step-num">4</span>POST: o autoteste de inicialização</h2></div>
+<div class="content">
+<p>A primeira grande rotina do firmware é o <span class="highlight">POST</span> (<i>Power-On Self-Test</i>):
                 um diagnóstico que verifica se o hardware essencial está presente e funcional <b>antes</b> de tentar
                 carregar qualquer sistema.</p>
-            <ul class="spaced" style="margin-top: 8px;">
-                <li>Confere a CPU, testa e inicializa a <b>memória RAM</b> (incluindo o <i>memory training</i> da DDR).</li>
-                <li>Detecta e inicializa o vídeo, o teclado e os controladores básicos.</li>
-                <li>Em caso de falha grave (ex.: sem memória), emite <b>códigos de bipe</b> ou códigos no display de
+<ul class="spaced" style="margin-top: 8px;">
+<li>Confere a CPU, testa e inicializa a <b>memória RAM</b> (incluindo o <i>memory training</i> da DDR).</li>
+<li>Detecta e inicializa o vídeo, o teclado e os controladores básicos.</li>
+<li>Em caso de falha grave (ex.: sem memória), emite <b>códigos de bipe</b> ou códigos no display de
                     diagnóstico — pois ainda não há tela garantida.</li>
-            </ul>
-            <div class="warn-box">
-                <p><b>Por que bipes e não mensagens?</b> No início do POST, a placa de vídeo pode ainda não estar pronta.
+</ul>
+<div class="warn-box">
+<p><b>Por que bipes e não mensagens?</b> No início do POST, a placa de vídeo pode ainda não estar pronta.
                     O som (ou um LED/POST code) é a única forma de comunicar um defeito tão cedo.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Passo 5: inicialização e enumeração de dispositivos -->
-    <div class="slide">
-        <div class="header"><h2><span class="step-num">5</span>Inicialização e descoberta de dispositivos</h2></div>
-        <div class="content">
-            <p>Passado o POST, o firmware <span class="highlight">enumera os dispositivos</span> conectados: percorre os
+</div>
+</div>
+</div>
+<!-- Passo 5: inicialização e enumeração de dispositivos -->
+<div class="slide">
+<div class="header"><h2><span class="step-num">5</span>Inicialização e descoberta de dispositivos</h2></div>
+<div class="content">
+<p>Passado o POST, o firmware <span class="highlight">enumera os dispositivos</span> conectados: percorre os
                 barramentos (PCIe, USB, SATA/NVMe) descobrindo o que existe e atribuindo recursos a cada um.</p>
-            <table class="table">
-                <tr><th>Tarefa</th><th>O que faz</th></tr>
-                <tr><td>Enumeração PCIe</td><td>Descobre placas e dispositivos; aloca endereços de memória e interrupções (IRQ)</td></tr>
-                <tr><td>Inicialização de controladores</td><td>Prepara SATA/NVMe, USB, rede e áudio para uso</td></tr>
-                <tr><td>Option ROMs</td><td>Executa firmwares embutidos em placas (ex.: boot por rede/PXE, RAID)</td></tr>
-                <tr><td>Tabelas ACPI</td><td>Monta tabelas que descrevem o hardware e a energia para o futuro SO</td></tr>
-            </table>
-            <div class="info-box">
-                <p>O firmware também monta as <b>tabelas ACPI</b>: um "mapa do hardware" que ele entrega ao sistema
+<table class="table">
+<tr><th>Tarefa</th><th>O que faz</th></tr>
+<tr><td>Enumeração PCIe</td><td>Descobre placas e dispositivos; aloca endereços de memória e interrupções (IRQ)</td></tr>
+<tr><td>Inicialização de controladores</td><td>Prepara SATA/NVMe, USB, rede e áudio para uso</td></tr>
+<tr><td>Option ROMs</td><td>Executa firmwares embutidos em placas (ex.: boot por rede/PXE, RAID)</td></tr>
+<tr><td>Tabelas ACPI</td><td>Monta tabelas que descrevem o hardware e a energia para o futuro SO</td></tr>
+</table>
+<div class="info-box">
+<p>O firmware também monta as <b>tabelas ACPI</b>: um "mapa do hardware" que ele entrega ao sistema
                     operacional, descrevendo dispositivos, interrupções e recursos de gerenciamento de energia.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Passo 6: seleção do dispositivo de boot -->
-    <div class="slide">
-        <div class="header"><h2><span class="step-num">6</span>Escolhendo de onde dar boot</h2></div>
-        <div class="content">
-            <p>Com o hardware pronto, o firmware decide <b>de onde</b> carregar o sistema, seguindo a <span
-                class="highlight">ordem de boot</span> configurada (SSD, USB, rede...).</p>
-            <div class="grid" style="margin-top: 12px;">
-                <div class="card">
-                    <h3>Caminho BIOS / MBR</h3>
-                    <p>Lê o <b>MBR</b> — o primeiro setor (512 bytes) do disco. Ali há um pequeno código de boot e a
+</div>
+</div>
+</div>
+<!-- Passo 6: seleção do dispositivo de boot -->
+<div class="slide">
+<div class="header"><h2><span class="step-num">6</span>Escolhendo de onde dar boot</h2></div>
+<div class="content">
+<p>Com o hardware pronto, o firmware decide <b>de onde</b> carregar o sistema, seguindo a <span class="highlight">ordem de boot</span> configurada (SSD, USB, rede...).</p>
+<div class="grid" style="margin-top: 12px;">
+<div class="card">
+<h3>Caminho BIOS / MBR</h3>
+<p>Lê o <b>MBR</b> — o primeiro setor (512 bytes) do disco. Ali há um pequeno código de boot e a
                         tabela de partições. O firmware carrega esse código e lhe passa o controle.</p>
-                </div>
-                <div class="card">
-                    <h3>Caminho UEFI / GPT</h3>
-                    <p>Lê a <b>ESP</b> (EFI System Partition), uma partição FAT com arquivos <code>.efi</code>. O
+</div>
+<div class="card">
+<h3>Caminho UEFI / GPT</h3>
+<p>Lê a <b>ESP</b> (EFI System Partition), uma partição FAT com arquivos <code>.efi</code>. O
                         gerenciador de boot da UEFI executa o <b>bootloader</b> diretamente, sem depender do setor 0.</p>
-                </div>
-            </div>
-            <div class="info-box">
-                <p>É aqui que aparece o erro <i>"No bootable device"</i>: o firmware percorreu a lista e não encontrou,
+</div>
+</div>
+<div class="info-box">
+<p>É aqui que aparece o erro <i>"No bootable device"</i>: o firmware percorreu a lista e não encontrou,
                     em nenhum dispositivo, um carregador de boot válido.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Passo 7: bootloader -->
-    <div class="slide">
-        <div class="header"><h2><span class="step-num">7</span>O bootloader (ex.: GRUB)</h2></div>
-        <div class="content">
-            <p>O <span class="highlight">bootloader</span> é um programa especializado cuja única função é
+</div>
+</div>
+</div>
+<!-- Passo 7: bootloader -->
+<div class="slide">
+<div class="header"><h2><span class="step-num">7</span>O bootloader (ex.: GRUB)</h2></div>
+<div class="content">
+<p>O <span class="highlight">bootloader</span> é um programa especializado cuja única função é
                 <b>carregar o kernel do sistema operacional</b> na memória e iniciá-lo. Exemplos: GRUB (Linux),
                 Windows Boot Manager, systemd-boot.</p>
-            <ul class="spaced" style="margin-top: 8px;">
-                <li>Exibe o <b>menu de boot</b> (escolher o SO ou a versão do kernel, em dual boot).</li>
-                <li>Conhece o <b>sistema de arquivos</b> o suficiente para localizar o kernel e o <i>initramfs</i> no
+<ul class="spaced" style="margin-top: 8px;">
+<li>Exibe o <b>menu de boot</b> (escolher o SO ou a versão do kernel, em dual boot).</li>
+<li>Conhece o <b>sistema de arquivos</b> o suficiente para localizar o kernel e o <i>initramfs</i> no
                     disco.</li>
-                <li>Carrega o kernel na RAM, passa <b>parâmetros</b> (ex.: qual é a partição raiz) e transfere o
+<li>Carrega o kernel na RAM, passa <b>parâmetros</b> (ex.: qual é a partição raiz) e transfere o
                     controle.</li>
-            </ul>
-            <div class="info-box">
-                <p>Bootloaders complexos costumam ter <b>estágios</b>: um trecho minúsculo (que cabe no MBR ou na ESP)
+</ul>
+<div class="info-box">
+<p>Bootloaders complexos costumam ter <b>estágios</b>: um trecho minúsculo (que cabe no MBR ou na ESP)
                     carrega um segundo estágio maior, capaz de ler o disco e mostrar o menu. É a corrente do bootstrap
                     em ação, novamente.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Passo 8: carregamento do kernel -->
-    <div class="slide">
-        <div class="header"><h2><span class="step-num">8</span>Carregando o kernel</h2></div>
-        <div class="content">
-            <div class="grid">
-                <div>
-                    <p>O bootloader copia para a memória dois itens e entrega o controle ao kernel:</p>
-                    <ul class="spaced" style="margin-top: 8px;">
-                        <li><span class="highlight">Kernel</span>: o núcleo do SO, geralmente comprimido — ele se
+</div>
+</div>
+</div>
+<!-- Passo 8: carregamento do kernel -->
+<div class="slide">
+<div class="header"><h2><span class="step-num">8</span>Carregando o kernel</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<p>O bootloader copia para a memória dois itens e entrega o controle ao kernel:</p>
+<ul class="spaced" style="margin-top: 8px;">
+<li><span class="highlight">Kernel</span>: o núcleo do SO, geralmente comprimido — ele se
                             descompacta na RAM.</li>
-                        <li><span class="highlight">initramfs / initrd</span>: um mini sistema de arquivos temporário,
+<li><span class="highlight">initramfs / initrd</span>: um mini sistema de arquivos temporário,
                             com os drivers essenciais para enxergar o disco real (ex.: controlador NVMe, RAID,
                             criptografia).</li>
-                    </ul>
-                </div>
-                <div class="code-box">
-GRUB carrega:<br>
-&nbsp;&nbsp;/boot/vmlinuz  (kernel)<br>
-&nbsp;&nbsp;/boot/initramfs (drivers)<br><br>
-parâmetros:<br>
-&nbsp;&nbsp;root=/dev/nvme0n1p2<br>
-&nbsp;&nbsp;quiet splash<br><br>
+</ul>
+</div>
+<div class="code-box">
+GRUB carrega:<br/>
+  /boot/vmlinuz  (kernel)<br/>
+  /boot/initramfs (drivers)<br/><br/>
+parâmetros:<br/>
+  root=/dev/nvme0n1p2<br/>
+  quiet splash<br/><br/>
 → salta para o kernel
                 </div>
-            </div>
-            <div class="info-box">
-                <p>O <b>initramfs</b> resolve um problema do tipo "ovo e galinha": para montar o disco onde está o
+</div>
+<div class="info-box">
+<p>O <b>initramfs</b> resolve um problema do tipo "ovo e galinha": para montar o disco onde está o
                     sistema, às vezes é preciso de um driver que está... nesse mesmo disco. O initramfs traz esses
                     drivers já na RAM.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Passo 9: inicialização do kernel -->
-    <div class="slide">
-        <div class="header"><h2><span class="step-num">9</span>O kernel assume o comando</h2></div>
-        <div class="content">
-            <p>Agora o <span class="highlight">kernel</span> está no comando e configura o computador para a operação
+</div>
+</div>
+</div>
+<!-- Passo 9: inicialização do kernel -->
+<div class="slide">
+<div class="header"><h2><span class="step-num">9</span>O kernel assume o comando</h2></div>
+<div class="content">
+<p>Agora o <span class="highlight">kernel</span> está no comando e configura o computador para a operação
                 normal e multitarefa:</p>
-            <ul class="spaced" style="margin-top: 8px;">
-                <li>Coloca a CPU em <b>modo protegido/longo</b> e ativa a <b>memória virtual</b> (paginação, MMU).</li>
-                <li>Inicializa o escalonador, a gerência de memória e as estruturas internas.</li>
-                <li>Carrega os <b>drivers</b> e detecta os dispositivos (usando as tabelas ACPI do firmware).</li>
-                <li>Monta o <b>sistema de arquivos raiz</b> ("/") definitivo e descarta o initramfs.</li>
-            </ul>
-            <div class="info-box">
-                <p>A partir daqui, o firmware sai de cena: quem controla o hardware é o <b>kernel</b>, em modo
+<ul class="spaced" style="margin-top: 8px;">
+<li>Coloca a CPU em <b>modo protegido/longo</b> e ativa a <b>memória virtual</b> (paginação, MMU).</li>
+<li>Inicializa o escalonador, a gerência de memória e as estruturas internas.</li>
+<li>Carrega os <b>drivers</b> e detecta os dispositivos (usando as tabelas ACPI do firmware).</li>
+<li>Monta o <b>sistema de arquivos raiz</b> ("/") definitivo e descarta o initramfs.</li>
+</ul>
+<div class="info-box">
+<p>A partir daqui, o firmware sai de cena: quem controla o hardware é o <b>kernel</b>, em modo
                     privilegiado. O BIOS/UEFI só voltaria a atuar em um novo boot.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Passo 10: primeiro processo -->
-    <div class="slide">
-        <div class="header"><h2><span class="step-num">10</span>O primeiro processo (PID 1)</h2></div>
-        <div class="content">
-            <p>Com o ambiente pronto, o kernel cria o <span class="highlight">primeiro processo de usuário</span> — o
+</div>
+</div>
+</div>
+<!-- Passo 10: primeiro processo -->
+<div class="slide">
+<div class="header"><h2><span class="step-num">10</span>O primeiro processo (PID 1)</h2></div>
+<div class="content">
+<p>Com o ambiente pronto, o kernel cria o <span class="highlight">primeiro processo de usuário</span> — o
                 <b>init</b> (hoje, geralmente o <b>systemd</b> no Linux). Ele recebe o <b>PID 1</b> e é o ancestral de
                 todos os outros processos.</p>
-            <table class="table">
-                <tr><th>Tarefa do init/systemd</th><th>Exemplo</th></tr>
-                <tr><td>Iniciar serviços do sistema</td><td>Rede, áudio, impressão, registro de logs</td></tr>
-                <tr><td>Montar os demais sistemas de arquivos</td><td>Partições de dados, swap</td></tr>
-                <tr><td>Subir o ambiente de login</td><td>Console de texto ou servidor gráfico</td></tr>
-            </table>
-            <div class="info-box">
-                <p>Os SOs antigos usavam <b>runlevels</b> sequenciais; o systemd usa <b>targets</b> e inicia serviços em
+<table class="table">
+<tr><th>Tarefa do init/systemd</th><th>Exemplo</th></tr>
+<tr><td>Iniciar serviços do sistema</td><td>Rede, áudio, impressão, registro de logs</td></tr>
+<tr><td>Montar os demais sistemas de arquivos</td><td>Partições de dados, swap</td></tr>
+<tr><td>Subir o ambiente de login</td><td>Console de texto ou servidor gráfico</td></tr>
+</table>
+<div class="info-box">
+<p>Os SOs antigos usavam <b>runlevels</b> sequenciais; o systemd usa <b>targets</b> e inicia serviços em
                     <b>paralelo</b>, respeitando dependências — por isso os boots modernos são tão mais rápidos.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Passo 11: espaço de usuário -->
-    <div class="slide">
-        <div class="header"><h2><span class="step-num">11</span>Chega ao usuário</h2></div>
-        <div class="content">
-            <p>Por fim, sobe a camada que interage com a pessoa:</p>
-            <div class="flow">
-                <div class="node">Servidor gráfico<br><span style="font-weight:400;font-size:13px;">(Wayland/X11)</span></div>
-                <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                <div class="node">Gerenciador<br>de login</div>
-                <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                <div class="node" style="background:#3b82f6;">Sessão /<br>Área de trabalho</div>
-            </div>
-            <div class="info-box">
-                <p>Após a autenticação, o SO carrega o <b>ambiente de trabalho</b> (ou o shell de texto) e os programas
+</div>
+</div>
+</div>
+<!-- Passo 11: espaço de usuário -->
+<div class="slide">
+<div class="header"><h2><span class="step-num">11</span>Chega ao usuário</h2></div>
+<div class="content">
+<p>Por fim, sobe a camada que interage com a pessoa:</p>
+<div class="flow">
+<div class="node">Servidor gráfico<br/><span style="font-weight:400;font-size:13px;">(Wayland/X11)</span></div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Gerenciador<br/>de login</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node" style="background:#3b82f6;">Sessão /<br/>Área de trabalho</div>
+</div>
+<div class="info-box">
+<p>Após a autenticação, o SO carrega o <b>ambiente de trabalho</b> (ou o shell de texto) e os programas
                     de inicialização do usuário. O computador finalmente está <b>pronto para uso</b> — encerrando uma
                     cadeia que durou de poucos segundos a alguns instantes.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: Secure Boot -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: segurança da cadeia de boot</h2></div>
-        <div class="content">
-            <p>Cada elo do boot carrega o próximo — então um invasor que comprometa um elo inicial controla todo o
+</div>
+</div>
+</div>
+<!-- APROFUNDAMENTO: Secure Boot -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: segurança da cadeia de boot</h2></div>
+<div class="content">
+<p>Cada elo do boot carrega o próximo — então um invasor que comprometa um elo inicial controla todo o
                 sistema (um <i>bootkit</i>). Por isso a UEFI moderna protege essa cadeia:</p>
-            <div class="grid" style="margin-top: 12px;">
-                <div class="card">
-                    <h3><i class="fa-solid fa-shield-halved"></i> Secure Boot</h3>
-                    <p>A UEFI só executa bootloaders/kernels <b>assinados digitalmente</b> por chaves confiáveis. Código
+<div class="grid" style="margin-top: 12px;">
+<div class="card">
+<h3><i class="fa-solid fa-shield-halved"></i> Secure Boot</h3>
+<p>A UEFI só executa bootloaders/kernels <b>assinados digitalmente</b> por chaves confiáveis. Código
                         adulterado é recusado.</p>
-                </div>
-                <div class="card">
-                    <h3><i class="fa-solid fa-fingerprint"></i> TPM e Measured Boot</h3>
-                    <p>Um chip <b>TPM</b> registra "medições" (hashes) de cada etapa. Permite detectar adulteração e
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-fingerprint"></i> TPM e Measured Boot</h3>
+<p>Um chip <b>TPM</b> registra "medições" (hashes) de cada etapa. Permite detectar adulteração e
                         liberar chaves (ex.: BitLocker) só se o boot estiver íntegro.</p>
-                </div>
-            </div>
-            <div class="info-box">
-                <p>É a ideia de <b>cadeia de confiança (root of trust)</b>: confia-se em uma raiz imutável no hardware,
+</div>
+</div>
+<div class="info-box">
+<p>É a ideia de <b>cadeia de confiança (root of trust)</b>: confia-se em uma raiz imutável no hardware,
                     que verifica o próximo elo, que verifica o seguinte — estendendo a confiança até o SO.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: tipos de boot -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: boot a frio, a quente, suspensão e hibernação</h2></div>
-        <div class="content">
-            <p>Nem todo "ligar" é igual. O estado de onde o computador parte muda o que acontece:</p>
-            <table class="table">
-                <tr><th>Modo</th><th>O que ocorre</th></tr>
-                <tr><td><b>Boot a frio</b></td><td>Parte da máquina desligada: executa POST completo e toda a cadeia.</td></tr>
-                <tr><td><b>Boot a quente (reset)</b></td><td>Reinício com a energia já presente; pode pular partes do POST.</td></tr>
-                <tr><td><b>Suspensão (RAM / S3)</b></td><td>O estado fica na RAM (que continua energizada). Retorno quase instantâneo; perde tudo se faltar energia.</td></tr>
-                <tr><td><b>Hibernação (disco / S4)</b></td><td>O conteúdo da RAM é salvo no disco e a máquina desliga. Retorna ao estado anterior, mais lento que a suspensão.</td></tr>
-            </table>
-            <div class="info-box">
-                <p>Por isso retomar da <b>suspensão</b> é muito mais rápido que um boot completo: não há POST nem
+</div>
+</div>
+</div>
+<!-- APROFUNDAMENTO: tipos de boot -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: boot a frio, a quente, suspensão e hibernação</h2></div>
+<div class="content">
+<p>Nem todo "ligar" é igual. O estado de onde o computador parte muda o que acontece:</p>
+<table class="table">
+<tr><th>Modo</th><th>O que ocorre</th></tr>
+<tr><td><b>Boot a frio</b></td><td>Parte da máquina desligada: executa POST completo e toda a cadeia.</td></tr>
+<tr><td><b>Boot a quente (reset)</b></td><td>Reinício com a energia já presente; pode pular partes do POST.</td></tr>
+<tr><td><b>Suspensão (RAM / S3)</b></td><td>O estado fica na RAM (que continua energizada). Retorno quase instantâneo; perde tudo se faltar energia.</td></tr>
+<tr><td><b>Hibernação (disco / S4)</b></td><td>O conteúdo da RAM é salvo no disco e a máquina desliga. Retorna ao estado anterior, mais lento que a suspensão.</td></tr>
+</table>
+<div class="info-box">
+<p>Por isso retomar da <b>suspensão</b> é muito mais rápido que um boot completo: não há POST nem
                     recarregamento do kernel — apenas se restaura o estado que ficou guardado na memória.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Linha do tempo resumida -->
-    <div class="slide">
-        <div class="header"><h2>A cadeia completa, em ordem</h2></div>
-        <div class="content">
-            <ul class="timeline">
-                <li><b>Energia:</b> PSU estabiliza as tensões e emite "Power Good"; a CPU sai do reset.</li>
-                <li><b>Vetor de reset:</b> a CPU executa a primeira instrução, vinda da ROM do firmware.</li>
-                <li><b>Firmware (BIOS/UEFI):</b> assume o controle da máquina.</li>
-                <li><b>POST:</b> testa CPU, memória e dispositivos essenciais.</li>
-                <li><b>Enumeração:</b> descobre dispositivos e monta as tabelas ACPI.</li>
-                <li><b>Seleção de boot:</b> encontra um carregador válido (MBR ou ESP).</li>
-                <li><b>Bootloader:</b> carrega kernel + initramfs e passa o controle.</li>
-                <li><b>Kernel:</b> ativa memória virtual, drivers e monta a raiz.</li>
-                <li><b>init/systemd (PID 1):</b> sobe os serviços do sistema.</li>
-                <li><b>Espaço de usuário:</b> login e área de trabalho — pronto para uso.</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Glossário -->
-    <div class="slide">
-        <div class="header"><h2>Glossário do tópico</h2></div>
-        <div class="content">
-            <table class="table">
-                <tr><td><b>Bootstrap / Boot</b></td><td>Processo de inicialização que "ergue" o computador por etapas.</td></tr>
-                <tr><td><b>Firmware (BIOS/UEFI)</b></td><td>Software em ROM/flash que roda primeiro e encontra o SO.</td></tr>
-                <tr><td><b>POST</b></td><td>Autoteste do hardware essencial ao ligar.</td></tr>
-                <tr><td><b>Vetor de reset</b></td><td>Endereço fixo onde a CPU começa a executar após o reset.</td></tr>
-                <tr><td><b>MBR / GPT / ESP</b></td><td>Esquemas de partição e a partição de boot da UEFI.</td></tr>
-                <tr><td><b>Bootloader</b></td><td>Programa que carrega o kernel do SO (ex.: GRUB).</td></tr>
-                <tr><td><b>initramfs</b></td><td>Mini sistema temporário com drivers para montar o disco real.</td></tr>
-                <tr><td><b>init / systemd (PID 1)</b></td><td>Primeiro processo de usuário; inicia os serviços.</td></tr>
-                <tr><td><b>Secure Boot / TPM</b></td><td>Mecanismos que garantem a integridade da cadeia de boot.</td></tr>
-            </table>
-        </div>
-    </div>
-
-    <!-- Exercícios resolvidos -->
-    <div class="slide">
-        <div class="header"><h2>Exercícios resolvidos</h2></div>
-        <div class="content">
-            <div style="display:flex; flex-direction:column; gap:16px;">
-                <div>
-                    <p style="font-size:21px;"><b>1.</b> Por que a CPU não pode simplesmente começar executando o
+</div>
+</div>
+</div>
+<!-- Linha do tempo resumida -->
+<div class="slide">
+<div class="header"><h2>A cadeia completa, em ordem</h2></div>
+<div class="content">
+<ul class="timeline">
+<li><b>Energia:</b> PSU estabiliza as tensões e emite "Power Good"; a CPU sai do reset.</li>
+<li><b>Vetor de reset:</b> a CPU executa a primeira instrução, vinda da ROM do firmware.</li>
+<li><b>Firmware (BIOS/UEFI):</b> assume o controle da máquina.</li>
+<li><b>POST:</b> testa CPU, memória e dispositivos essenciais.</li>
+<li><b>Enumeração:</b> descobre dispositivos e monta as tabelas ACPI.</li>
+<li><b>Seleção de boot:</b> encontra um carregador válido (MBR ou ESP).</li>
+<li><b>Bootloader:</b> carrega kernel + initramfs e passa o controle.</li>
+<li><b>Kernel:</b> ativa memória virtual, drivers e monta a raiz.</li>
+<li><b>init/systemd (PID 1):</b> sobe os serviços do sistema.</li>
+<li><b>Espaço de usuário:</b> login e área de trabalho — pronto para uso.</li>
+</ul>
+</div>
+</div>
+<!-- Glossário -->
+<div class="slide">
+<div class="header"><h2>Glossário do tópico</h2></div>
+<div class="content">
+<table class="table">
+<tr><td><b>Bootstrap / Boot</b></td><td>Processo de inicialização que "ergue" o computador por etapas.</td></tr>
+<tr><td><b>Firmware (BIOS/UEFI)</b></td><td>Software em ROM/flash que roda primeiro e encontra o SO.</td></tr>
+<tr><td><b>POST</b></td><td>Autoteste do hardware essencial ao ligar.</td></tr>
+<tr><td><b>Vetor de reset</b></td><td>Endereço fixo onde a CPU começa a executar após o reset.</td></tr>
+<tr><td><b>MBR / GPT / ESP</b></td><td>Esquemas de partição e a partição de boot da UEFI.</td></tr>
+<tr><td><b>Bootloader</b></td><td>Programa que carrega o kernel do SO (ex.: GRUB).</td></tr>
+<tr><td><b>initramfs</b></td><td>Mini sistema temporário com drivers para montar o disco real.</td></tr>
+<tr><td><b>init / systemd (PID 1)</b></td><td>Primeiro processo de usuário; inicia os serviços.</td></tr>
+<tr><td><b>Secure Boot / TPM</b></td><td>Mecanismos que garantem a integridade da cadeia de boot.</td></tr>
+</table>
+</div>
+</div>
+<!-- Exercícios resolvidos -->
+<div class="slide">
+<div class="header"><h2>Exercícios resolvidos</h2></div>
+<div class="content">
+<div style="display:flex; flex-direction:column; gap:16px;">
+<div>
+<p style="font-size:21px;"><b>1.</b> Por que a CPU não pode simplesmente começar executando o
                         sistema operacional a partir da RAM ao ser ligada?</p>
-                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
-                        <div class="info-box" style="margin-top:10px;">A RAM é volátil: ao ligar, está vazia e sequer
+<details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+<div class="info-box" style="margin-top:10px;">A RAM é volátil: ao ligar, está vazia e sequer
                             foi inicializada. Por isso a CPU acorda no <b>vetor de reset</b>, que aponta para a
                             <b>ROM/flash do firmware</b> — um código fixo e não-volátil. Esse firmware é que,
                             posteriormente, carrega o SO do disco para a RAM. É a essência do <i>bootstrap</i>.</div>
-                    </details>
-                </div>
-                <div>
-                    <p style="font-size:21px;"><b>2.</b> Coloque em ordem: kernel, POST, bootloader, init/systemd,
+</details>
+</div>
+<div>
+<p style="font-size:21px;"><b>2.</b> Coloque em ordem: kernel, POST, bootloader, init/systemd,
                         firmware.</p>
-                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
-                        <div class="info-box" style="margin-top:10px;"><b>Firmware → POST → bootloader → kernel →
+<details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+<div class="info-box" style="margin-top:10px;"><b>Firmware → POST → bootloader → kernel →
                             init/systemd.</b> O firmware roda primeiro e executa o POST; depois encontra e roda o
                             bootloader, que carrega o kernel; o kernel, por fim, cria o init (PID 1).</div>
-                    </details>
-                </div>
-                <div>
-                    <p style="font-size:21px;"><b>3.</b> Qual a função do <b>initramfs</b> e que problema ele resolve?</p>
-                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
-                        <div class="info-box" style="margin-top:10px;">É um mini sistema de arquivos carregado na RAM
+</details>
+</div>
+<div>
+<p style="font-size:21px;"><b>3.</b> Qual a função do <b>initramfs</b> e que problema ele resolve?</p>
+<details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+<div class="info-box" style="margin-top:10px;">É um mini sistema de arquivos carregado na RAM
                             junto com o kernel, contendo os <b>drivers essenciais</b> (NVMe, RAID, criptografia) para o
                             kernel conseguir <b>enxergar e montar o disco raiz</b>. Resolve o paradoxo de precisar de um
                             driver que estaria no próprio disco que ainda não pode ser lido.</div>
-                    </details>
-                </div>
-                <div>
-                    <p style="font-size:21px;"><b>4.</b> Por que retomar da <b>suspensão</b> é mais rápido que um boot
+</details>
+</div>
+<div>
+<p style="font-size:21px;"><b>4.</b> Por que retomar da <b>suspensão</b> é mais rápido que um boot
                         completo, e como o <b>Secure Boot</b> protege a inicialização?</p>
-                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
-                        <div class="info-box" style="margin-top:10px;">Na suspensão (S3), o estado do sistema permanece
+<details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+<div class="info-box" style="margin-top:10px;">Na suspensão (S3), o estado do sistema permanece
                             na <b>RAM energizada</b>; o retorno apenas restaura esse estado, sem POST nem recarga do
                             kernel. Já o <b>Secure Boot</b> faz a UEFI executar apenas bootloaders/kernels <b>assinados
                             digitalmente</b>, impedindo que um código adulterado (bootkit) sequestre a cadeia de boot.</div>
-                    </details>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Encerramento -->
-    <div class="slide hero">
-        <h1 style="color:#3b82f6;">Resumindo</h1>
-        <p style="font-size: 22px; max-width: 850px; opacity: 0.9;">Ligar o computador dispara uma cadeia de bootstrap:
+</details>
+</div>
+</div>
+</div>
+</div>
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#3b82f6;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 850px; opacity: 0.9;">Ligar o computador dispara uma cadeia de bootstrap:
             a energia estabiliza e libera a CPU; o firmware (BIOS/UEFI) roda o POST, prepara o hardware e encontra o
             bootloader; este carrega o kernel, que assume a máquina, sobe o init/systemd e entrega o controle ao
             usuário. Cada elo prepara e confia no próximo — do primeiro volt até a área de trabalho.</p>
-        <div style="margin-top: 40px;">
-            <a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
-                <i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
             </a>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-6 sm:py-8 mt-auto">
-        <div class="container mx-auto px-4 sm:px-6 text-center text-sm sm:text-base" style="color: white;">
-            <p>&copy; 2026 Prof. MSc. Carlos A. L. Schaeffer | Organização de Computadores</p>
-        </div>
-    </footer>
-
+</div>
+</div>
+<!-- Footer -->
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Organização de Computadores</p>
+</footer>
 </body>
-
 </html>

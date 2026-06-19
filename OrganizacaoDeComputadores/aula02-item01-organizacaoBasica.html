@@ -1,60 +1,52 @@
 <!DOCTYPE html>
+
 <html lang="pt-br">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1. Organização Básica de Sistemas Computacionais</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/site.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>1. Organização Básica de Sistemas Computacionais</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Fira+Code:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/site.css" rel="stylesheet"/>
 </head>
-
 <body class="site-body">
-
-    <header class="site-header">
-        <div class="site-header__inner">
-            <a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
-            <span class="eyebrow">Organização de Computadores</span>
-            <h1>Capítulo 1: Organização Básica de Sistemas Computacionais</h1>
-            <p>A arquitetura clássica de Von Neumann e os barramentos de sistema</p>
-        </div>
-    </header>
-
-    <main class="site-main doc">
+<header class="site-header">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Organização de Computadores
+            </h1>
+<p>Capítulo 1: Organização Básica de Sistemas Computacionais — A arquitetura clássica de Von Neumann e os barramentos de sistema</p>
+</div>
+</header>
+<main class="site-main doc">
 <h2>Introdução ao Modelo de Von Neumann</h2>
-        <p>Proposta em 1945 pelo matemático John von Neumann, esta arquitetura define um computador digital eletrônico com subsistemas específicos trabalhando de forma integrada. O grande marco foi o conceito de <strong>Programa Armazenado</strong>, onde os dados de trabalho e as instruções do programa compartilham o mesmo espaço de endereçamento de memória física.</p>
-
-        <h2>Os Três Pilares do Hardware</h2>
-        <p>Qualquer sistema computacional fundamentado neste modelo divide-se em três macro-componentes:</p>
-        <ul>
-            <li><strong>CPU (Unidade Central de Processamento):</strong> O "cérebro" do sistema, responsável por executar operações lógicas e matemáticas e controlar os demais componentes.</li>
-            <li><strong>Memória Principal:</strong> Um vetor linear de células endereçáveis que armazena temporariamente os códigos operacionais (instruções) e os operandos (dados).</li>
-            <li><strong>Subsistema de Entrada e Saída (I/O):</strong> Mecanismos de comunicação com o ecossistema externo (redes, usuários, armazenamento magnético/óptico).</li>
-        </ul>
-
-        <h2>O Gargalo de Von Neumann</h2>
-        <p>Como dados e instruções trafegam pelas mesmas vias físicas (barramentos), a CPU não consegue realizar a busca de uma instrução e a leitura/escrita de um dado simultaneamente. Esse limite físico de vazão é chamado de <span class="highlight">Gargalo de Von Neumann</span>. Para mitigar esse problema, arquiteturas modernas utilizam caches complexas e técnicas de pipeline.</p>
-
-        <h2>Arquitetura Harvard: A Alternativa</h2>
-        <p>Diferente de Von Neumann, a <strong>Arquitetura Harvard</strong> possui barramentos e memórias fisicamente separados para dados e para instruções. Isso permite acessos simultâneos, eliminando o gargalo de barramento comum. É amplamente utilizada em Processadores de Sinal Digital (DSP) e microcontroladores modernos (como arquiteturas ARM Cortex-M).</p>
-
-        <h2>O Sistema de Barramentos (Buses)</h2>
-        <p>A interconexão entre CPU, Memória e I/O é realizada por linhas de comunicação paralelas divididas em três categorias funcionais:</p>
-        <ol>
-            <li><strong>Barramento de Dados (Data Bus):</strong> Bidirecional. Transporta a informação útil (dados ou instruções) entre os módulos.</li>
-            <li><strong>Barramento de Endereços (Address Bus):</strong> Unidirecional (gerado pela CPU). Determina a origem ou o destino do dado no barramento. A largura desse barramento define a capacidade máxima de memória mapeável (ex: $2^{32}$ endereços para 32 bits).</li>
-            <li><strong>Barramento de Controle (Control Bus):</strong> Misto. Conduz sinais de sincronismo e ordens do sistema, como comandos de leitura (Read), escrita (Write) e requisições de interrupção (IRQ).</li>
-        </ol>
-        <div class="back-portal">
-            <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
-        </div>
-    </main>
-
-    <footer class="site-footer">
-        <p>&copy; 2026 Prof. MSc. Carlos A. L. Schaeffer | Organização de Computadores</p>
-    </footer>
-
+<p>Proposta em 1945 pelo matemático John von Neumann, esta arquitetura define um computador digital eletrônico com subsistemas específicos trabalhando de forma integrada. O grande marco foi o conceito de <strong>Programa Armazenado</strong>, onde os dados de trabalho e as instruções do programa compartilham o mesmo espaço de endereçamento de memória física.</p>
+<h2>Os Três Pilares do Hardware</h2>
+<p>Qualquer sistema computacional fundamentado neste modelo divide-se em três macro-componentes:</p>
+<ul>
+<li><strong>CPU (Unidade Central de Processamento):</strong> O "cérebro" do sistema, responsável por executar operações lógicas e matemáticas e controlar os demais componentes.</li>
+<li><strong>Memória Principal:</strong> Um vetor linear de células endereçáveis que armazena temporariamente os códigos operacionais (instruções) e os operandos (dados).</li>
+<li><strong>Subsistema de Entrada e Saída (I/O):</strong> Mecanismos de comunicação com o ecossistema externo (redes, usuários, armazenamento magnético/óptico).</li>
+</ul>
+<h2>O Gargalo de Von Neumann</h2>
+<p>Como dados e instruções trafegam pelas mesmas vias físicas (barramentos), a CPU não consegue realizar a busca de uma instrução e a leitura/escrita de um dado simultaneamente. Esse limite físico de vazão é chamado de <span class="highlight">Gargalo de Von Neumann</span>. Para mitigar esse problema, arquiteturas modernas utilizam caches complexas e técnicas de pipeline.</p>
+<h2>Arquitetura Harvard: A Alternativa</h2>
+<p>Diferente de Von Neumann, a <strong>Arquitetura Harvard</strong> possui barramentos e memórias fisicamente separados para dados e para instruções. Isso permite acessos simultâneos, eliminando o gargalo de barramento comum. É amplamente utilizada em Processadores de Sinal Digital (DSP) e microcontroladores modernos (como arquiteturas ARM Cortex-M).</p>
+<h2>O Sistema de Barramentos (Buses)</h2>
+<p>A interconexão entre CPU, Memória e I/O é realizada por linhas de comunicação paralelas divididas em três categorias funcionais:</p>
+<ol>
+<li><strong>Barramento de Dados (Data Bus):</strong> Bidirecional. Transporta a informação útil (dados ou instruções) entre os módulos.</li>
+<li><strong>Barramento de Endereços (Address Bus):</strong> Unidirecional (gerado pela CPU). Determina a origem ou o destino do dado no barramento. A largura desse barramento define a capacidade máxima de memória mapeável (ex: $2^{32}$ endereços para 32 bits).</li>
+<li><strong>Barramento de Controle (Control Bus):</strong> Misto. Conduz sinais de sincronismo e ordens do sistema, como comandos de leitura (Read), escrita (Write) e requisições de interrupção (IRQ).</li>
+</ol>
+<div class="back-portal">
+<a href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+</div>
+</main>
+<footer class="site-footer">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Organização de Computadores</p>
+</footer>
 </body>
-
 </html>

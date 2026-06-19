@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
     <style>
         :root {
             --bg: #f1f5f9;
@@ -18,47 +19,9 @@
             --text-dim: #475569;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
         html,
         body {
             overflow-x: hidden;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            padding: clamp(16px, 4vw, 40px);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: clamp(28px, 6vw, 50px);
-            border-bottom: 2px solid var(--card-bg);
-            padding-bottom: 20px;
-        }
-
-        h1 {
-            font-size: clamp(1.6rem, 5vw, 2.5rem);
-            color: var(--accent);
-            margin-bottom: 10px;
-            line-height: 1.15;
-        }
-
-        .subtitle {
-            color: var(--text-dim);
-            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
         }
 
         .section {
@@ -154,13 +117,20 @@
     </style>
 </head>
 
-<body>
+<body class="site-body">
 
-    <div class="container">
-        <header>
-            <h1><i class="fa-solid fa-binary"></i> Laboratório Prático</h1>
-            <p class="subtitle">Arquitetura e Organização de Computadores - Aula 01</p>
-        </header>
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+            <h1>
+                <img src="/imagens/AjudaProfessor-logo.png" width="100" alt="Ajuda Professor">
+                Organização de Computadores
+            </h1>
+            <p>Laboratório Prático — Exercícios de bases numéricas (Aula 01)</p>
+        </div>
+    </header>
+
+    <main class="site-main">
 
         <!-- Parte 1 -->
         <div class="section">
@@ -212,13 +182,11 @@
             </ol>
         </div>
 
-        <!-- Footer -->
-        <footer class="bg-slate-900 text-slate-400 py-6 sm:py-8 mt-auto">
-            <div class="container mx-auto px-4 sm:px-6 text-center text-sm sm:text-base">
-                <p>&copy; 2026 Prof. MSc. Carlos A. L. Schaeffer | Organização de Computadoress</p>
-            </div>
-        </footer>
-    </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. MSc. Carlos A. L. Schaeffer | Organização de Computadores</p>
+    </footer>
 
 </body>
 

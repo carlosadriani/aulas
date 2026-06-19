@@ -1,60 +1,51 @@
 <!DOCTYPE html>
+
 <html lang="pt-br">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>5. Bases Numéricas Computacionais</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/site.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>5. Bases Numéricas Computacionais</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Fira+Code:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/site.css" rel="stylesheet"/>
 </head>
-
 <body class="site-body">
-
-    <header class="site-header">
-        <div class="site-header__inner">
-            <a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
-            <span class="eyebrow">Organização de Computadores</span>
-            <h1>Capítulo 5: Bases Numéricas</h1>
-            <p>A matemática posicional por trás dos circuitos de chaveamento binário</p>
-        </div>
-    </header>
-
-    <main class="site-main doc">
+<header class="site-header">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Organização de Computadores
+            </h1>
+<p>Capítulo 5: Bases Numéricas — A matemática posicional por trás dos circuitos de chaveamento binário</p>
+</div>
+</header>
+<main class="site-main doc">
 <h2>Sistemas Numéricos Posicionais</h2>
-        <p>Em sistemas posicionais, o valor representado por um dígito depende estritamente da sua posição relativa na string numérica. O valor total é a soma ponderada de cada dígito multiplicado por potências sucessivas do valor da base.</p>
-        
-        <div class="math-box">
-            A forma estrutural de expansão é dada por:<br>
+<p>Em sistemas posicionais, o valor representado por um dígito depende estritamente da sua posição relativa na string numérica. O valor total é a soma ponderada de cada dígito multiplicado por potências sucessivas do valor da base.</p>
+<div class="math-box">
+            A forma estrutural de expansão é dada por:<br/>
             $$N = d_n \cdot b^n + d_{n-1} \cdot b^{n-1} + \dots + d_0 \cdot b^0 + d_{-1} \cdot b^{-1} + \dots$$
         </div>
-
-        <h2>As Quatro Bases Cruciais do Hardware</h2>
-        <ul>
-            <li><strong>Binário (Base 2):</strong> Utiliza o alfabeto $\{0, 1\}$. É a representação natural de tensões elétricas (Alto/Baixo, Ligado/Desligado) nos transistores de efeito de campo.</li>
-            <li><strong>Octal (Base 8):</strong> Utiliza os algarismos de $\{0 \dots 7\}$. Agrupa blocos exatos de 3 bits ($2^3 = 8$).</li>
-            <li><strong>Decimal (Base 10):</strong> O sistema humano convencional baseado nos algarismos $\{0 \dots 9\}$.</li>
-            <li><strong>Hexadecimal (Base 16):</strong> Utiliza os caracteres de $\{0 \dots 9\}$ estendidos pelas letras $\{A, B, C, D, E, F\}$ (onde $A=10_{10}$ e $F=15_{10}$). É o padrão industrial para exibir dump de memórias e endereços mac/IPv6, pois compacta perfeitamente blocos de 4 bits (um <em>Nibble</em>) em um único caractere ($2^4 = 16$).</li>
-        </ul>
-
-        <h2>Mecanismos Algorítmicos de Conversão</h2>
-        
-        <h3>1. De Decimal para Qualquer Base (Divisões Sucessivas)</h3>
-        <p>Para extrair a representação em uma base genérica $b$, divide-se sucessivamente o número decimal por $b$. O quociente inteiro é reaproveitado na próxima iteração, e os restos gerados em cada divisão são acumulados na ordem reversa (do último resto obtido até o primeiro).</p>
-
-        <h3>2. De Binário para Hexadecimal (Mapeamento Direto)</h3>
-        <p>Como 16 é uma potência exata de 2 ($2^4$), a conversão não exige cálculos aritméticos pesados. Basta agrupar a string binária em quartetos de bits a partir da direita (LSD) e substituir cada bloco pelo seu caractere correspondente na tabela hexadecimal.</p>
-        <p>Exemplo: <code>1101 0011_2</code> &rarr; <code>1101_2 = D_{16}</code> e <code>0011_2 = 3_{16}</code> &rarr; Resultado: <code>D3_{16}</code>.</p>
-        <div class="back-portal">
-            <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
-        </div>
-    </main>
-
-    <footer class="site-footer">
-        <p>&copy; 2026 Prof. MSc. Carlos A. L. Schaeffer | Organização de Computadores</p>
-    </footer>
-
+<h2>As Quatro Bases Cruciais do Hardware</h2>
+<ul>
+<li><strong>Binário (Base 2):</strong> Utiliza o alfabeto $\{0, 1\}$. É a representação natural de tensões elétricas (Alto/Baixo, Ligado/Desligado) nos transistores de efeito de campo.</li>
+<li><strong>Octal (Base 8):</strong> Utiliza os algarismos de $\{0 \dots 7\}$. Agrupa blocos exatos de 3 bits ($2^3 = 8$).</li>
+<li><strong>Decimal (Base 10):</strong> O sistema humano convencional baseado nos algarismos $\{0 \dots 9\}$.</li>
+<li><strong>Hexadecimal (Base 16):</strong> Utiliza os caracteres de $\{0 \dots 9\}$ estendidos pelas letras $\{A, B, C, D, E, F\}$ (onde $A=10_{10}$ e $F=15_{10}$). É o padrão industrial para exibir dump de memórias e endereços mac/IPv6, pois compacta perfeitamente blocos de 4 bits (um <em>Nibble</em>) em um único caractere ($2^4 = 16$).</li>
+</ul>
+<h2>Mecanismos Algorítmicos de Conversão</h2>
+<h3>1. De Decimal para Qualquer Base (Divisões Sucessivas)</h3>
+<p>Para extrair a representação em uma base genérica $b$, divide-se sucessivamente o número decimal por $b$. O quociente inteiro é reaproveitado na próxima iteração, e os restos gerados em cada divisão são acumulados na ordem reversa (do último resto obtido até o primeiro).</p>
+<h3>2. De Binário para Hexadecimal (Mapeamento Direto)</h3>
+<p>Como 16 é uma potência exata de 2 ($2^4$), a conversão não exige cálculos aritméticos pesados. Basta agrupar a string binária em quartetos de bits a partir da direita (LSD) e substituir cada bloco pelo seu caractere correspondente na tabela hexadecimal.</p>
+<p>Exemplo: <code>1101 0011_2</code> → <code>1101_2 = D_{16}</code> e <code>0011_2 = 3_{16}</code> → Resultado: <code>D3_{16}</code>.</p>
+<div class="back-portal">
+<a href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+</div>
+</main>
+<footer class="site-footer">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Organização de Computadores</p>
+</footer>
 </body>
-
 </html>

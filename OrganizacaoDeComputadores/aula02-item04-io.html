@@ -1,65 +1,56 @@
 <!DOCTYPE html>
+
 <html lang="pt-br">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4. Dispositivos de Entrada e Saída (I/O)</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/site.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>4. Dispositivos de Entrada e Saída (I/O)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Fira+Code:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/site.css" rel="stylesheet"/>
 </head>
-
 <body class="site-body">
-
-    <header class="site-header">
-        <div class="site-header__inner">
-            <a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
-            <span class="eyebrow">Organização de Computadores</span>
-            <h1>Capítulo 4: Subsistema de Entrada e Saída</h1>
-            <p>Módulos de E/S, mapeamento em memória e técnicas de gerenciamento de dados externos</p>
-        </div>
-    </header>
-
-    <main class="site-main doc">
+<header class="site-header">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Organização de Computadores
+            </h1>
+<p>Capítulo 4: Subsistema de Entrada e Saída — Módulos de E/S, mapeamento em memória e técnicas de gerenciamento de dados externos</p>
+</div>
+</header>
+<main class="site-main doc">
 <h2>O Papel do Módulo de E/S (I/O Module)</h2>
-        <p>A CPU e a memória principal não se comunicam diretamente com os periféricos externos (teclados, placas de rede, monitores) devido a disparidades drásticas de velocidade de transferência, formatos de sinal elétrico e protocolos de comunicação. O <strong>Módulo de E/S</strong> atua como um controlador intermediário inteligente que expõe registradores internos de dados, controle e estado para a CPU.</p>
-
-        <h2>Abordagens de Mapeamento de Dispositivos</h2>
-        <ul>
-            <li><strong>I/O Mapeado em Memória (Memory-Mapped I/O):</strong> Os registradores do módulo de E/S compartilham o mesmo espaço lógico de endereçamento da memória RAM convencional. A CPU utiliza as mesmas instruções de leitura e escrita em memória (ex: <code>MOV</code> ou ponteiros em C) para manipular o hardware externo. É o padrão utilizado em arquiteturas ARM e barramentos PCIe modernos.</li>
-            <li><strong>I/O Isolado (Port-Mapped I/O):</strong> O sistema possui um espaço de endereçamento exclusivo para dispositivos externos separado da memória RAM. Exige instruções específicas de nível de máquina do processador (como <code>IN</code> e <code>OUT</code> na arquitetura x86) para interagir com as portas de hardware.</li>
-        </ul>
-
-        <h2>Técnicas de Gerenciamento de Transferência de Dados</h2>
-        <p>Existem três métodos fundamentais de controle e sincronização de dados entre a periferia e o núcleo de processamento:</p>
-
-        <div class="method-card">
-            <h3>1. E/S Programada (Polling ou Varredura)</h3>
-            <p>A CPU emite um comando para o módulo de E/S e entra em um loop infinito monitorando continuamente o registrador de estado do dispositivo para verificar se a operação terminou.</p>
-            <p><strong>Desvantagem:</strong> Desperdiça ciclos computacionais valiosos mantendo a CPU ocupada com esperas ociosas (busy-waiting).</p>
-        </div>
-
-        <div class="method-card">
-            <h3>2. E/S Controlada por Interrupções</h3>
-            <p>Em vez de forçar a CPU a esperar, o módulo de E/S assume o trabalho. Quando o dispositivo externo está pronto (ex: uma tecla foi pressionada ou um pacote de rede chegou), ele envia um sinal elétrico para um pino físico da CPU chamado linha de <strong>Interrupção (IRQ)</strong>.</p>
-            <p>O processador suspende temporariamente a execução do programa do usuário, salva o contexto atual de registradores na pilha de memória e salta para executar uma função específica de software do driver chamada <strong>Rotina de Tratamento de Interrupção (ISR - Interrupt Service Routine)</strong>. Ao terminar, restaura o contexto e continua o processamento original.</p>
-        </div>
-
-        <div class="method-card">
-            <h3>3. DMA (Direct Memory Access - Acesso Direto à Memória)</h3>
-            <p>Para transmissões de dados em massa (como leitura de arquivos em SSDs NVMe ou pacotes em redes Gigabit), o uso de interrupções bit a bit saturaria a CPU. O controlador de <strong>DMA</strong> assume o controle dos barramentos do sistema.</p>
-            <p>A CPU apenas configura o DMA informando o endereço de origem, o endereço de destino na memória RAM e o tamanho do bloco de dados. O DMA realiza toda a transferência de bytes de forma independente e paralela. Ao final da transferência do bloco inteiro, o DMA emite uma única interrupção para avisar a CPU que o bloco está pronto.</p>
-        </div>
-        <div class="back-portal">
-            <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
-        </div>
-    </main>
-
-    <footer class="site-footer">
-        <p>&copy; 2026 Prof. MSc. Carlos A. L. Schaeffer | Organização de Computadores</p>
-    </footer>
-
+<p>A CPU e a memória principal não se comunicam diretamente com os periféricos externos (teclados, placas de rede, monitores) devido a disparidades drásticas de velocidade de transferência, formatos de sinal elétrico e protocolos de comunicação. O <strong>Módulo de E/S</strong> atua como um controlador intermediário inteligente que expõe registradores internos de dados, controle e estado para a CPU.</p>
+<h2>Abordagens de Mapeamento de Dispositivos</h2>
+<ul>
+<li><strong>I/O Mapeado em Memória (Memory-Mapped I/O):</strong> Os registradores do módulo de E/S compartilham o mesmo espaço lógico de endereçamento da memória RAM convencional. A CPU utiliza as mesmas instruções de leitura e escrita em memória (ex: <code>MOV</code> ou ponteiros em C) para manipular o hardware externo. É o padrão utilizado em arquiteturas ARM e barramentos PCIe modernos.</li>
+<li><strong>I/O Isolado (Port-Mapped I/O):</strong> O sistema possui um espaço de endereçamento exclusivo para dispositivos externos separado da memória RAM. Exige instruções específicas de nível de máquina do processador (como <code>IN</code> e <code>OUT</code> na arquitetura x86) para interagir com as portas de hardware.</li>
+</ul>
+<h2>Técnicas de Gerenciamento de Transferência de Dados</h2>
+<p>Existem três métodos fundamentais de controle e sincronização de dados entre a periferia e o núcleo de processamento:</p>
+<div class="method-card">
+<h3>1. E/S Programada (Polling ou Varredura)</h3>
+<p>A CPU emite um comando para o módulo de E/S e entra em um loop infinito monitorando continuamente o registrador de estado do dispositivo para verificar se a operação terminou.</p>
+<p><strong>Desvantagem:</strong> Desperdiça ciclos computacionais valiosos mantendo a CPU ocupada com esperas ociosas (busy-waiting).</p>
+</div>
+<div class="method-card">
+<h3>2. E/S Controlada por Interrupções</h3>
+<p>Em vez de forçar a CPU a esperar, o módulo de E/S assume o trabalho. Quando o dispositivo externo está pronto (ex: uma tecla foi pressionada ou um pacote de rede chegou), ele envia um sinal elétrico para um pino físico da CPU chamado linha de <strong>Interrupção (IRQ)</strong>.</p>
+<p>O processador suspende temporariamente a execução do programa do usuário, salva o contexto atual de registradores na pilha de memória e salta para executar uma função específica de software do driver chamada <strong>Rotina de Tratamento de Interrupção (ISR - Interrupt Service Routine)</strong>. Ao terminar, restaura o contexto e continua o processamento original.</p>
+</div>
+<div class="method-card">
+<h3>3. DMA (Direct Memory Access - Acesso Direto à Memória)</h3>
+<p>Para transmissões de dados em massa (como leitura de arquivos em SSDs NVMe ou pacotes em redes Gigabit), o uso de interrupções bit a bit saturaria a CPU. O controlador de <strong>DMA</strong> assume o controle dos barramentos do sistema.</p>
+<p>A CPU apenas configura o DMA informando o endereço de origem, o endereço de destino na memória RAM e o tamanho do bloco de dados. O DMA realiza toda a transferência de bytes de forma independente e paralela. Ao final da transferência do bloco inteiro, o DMA emite uma única interrupção para avisar a CPU que o bloco está pronto.</p>
+</div>
+<div class="back-portal">
+<a href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+</div>
+</main>
+<footer class="site-footer">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Organização de Computadores</p>
+</footer>
 </body>
-
 </html>

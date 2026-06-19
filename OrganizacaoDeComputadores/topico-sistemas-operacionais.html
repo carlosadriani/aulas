@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-br">
 
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Org. Computadores - Sistemas Operacionais e Softwares de Sistema</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/slides.css">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Org. Computadores - Sistemas Operacionais e Softwares de Sistema</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
         body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
         .slide { background: #ffffff; color: #1e293b; }
         .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
@@ -35,444 +33,427 @@
         .layers { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
         .layers .lyr { padding: 14px; border-radius: 6px; text-align: center; font-weight: bold; color: #fff; }
     </style>
-    <link rel="stylesheet" href="../assets/css/site.css">
+<link href="../assets/css/site.css" rel="stylesheet"/>
 </head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Organização de Computadores
+            </h1>
+<p>Sistemas Operacionais</p>
+</div>
+</header>
 
-<body class="slides-light">
-
-    <!-- Capa -->
-    <div class="slide hero">
-        <i class="fa-solid fa-layer-group" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
-        <h1>Sistemas Operacionais</h1>
-        <p style="font-size: 24px; opacity: 0.8;">e Softwares de Sistema</p>
-        <div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-layer-group" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+<h1>Sistemas Operacionais</h1>
+<p style="font-size: 24px; opacity: 0.8;">e Softwares de Sistema</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
             Organização de Computadores</div>
-    </div>
-
-    <!-- O que é um SO -->
-    <div class="slide">
-        <div class="header"><h2>O que é um Sistema Operacional?</h2></div>
-        <div class="content">
-            <p class="lead">O <span class="highlight">Sistema Operacional</span> (SO) é o software que gerencia o
+</div>
+<!-- O que é um SO -->
+<div class="slide">
+<div class="header"><h2>O que é um Sistema Operacional?</h2></div>
+<div class="content">
+<p class="lead">O <span class="highlight">Sistema Operacional</span> (SO) é o software que gerencia o
                 hardware e oferece serviços aos programas. É a camada intermediária entre o usuário/aplicativos e a
                 máquina física.</p>
-            <div class="info-box">
-                <p>Sem SO, cada programa teria que controlar diretamente o hardware. O SO faz duas coisas centrais: ser
+<div class="info-box">
+<p>Sem SO, cada programa teria que controlar diretamente o hardware. O SO faz duas coisas centrais: ser
                     uma <b>máquina estendida</b> (esconde a complexidade do hardware) e um <b>gerenciador de
                     recursos</b> (distribui CPU, memória e dispositivos entre os programas).</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Camadas -->
-    <div class="slide">
-        <div class="header"><h2>Onde o SO se encaixa</h2></div>
-        <div class="content">
-            <div class="grid">
-                <div class="layers">
-                    <div class="lyr" style="background:#1e3a8a;">Usuário</div>
-                    <div class="lyr" style="background:#1d4ed8;">Aplicativos</div>
-                    <div class="lyr" style="background:#3b82f6;">Software de Sistema (compiladores, utilitários)</div>
-                    <div class="lyr" style="background:#2563eb;">Sistema Operacional (kernel)</div>
-                    <div class="lyr" style="background:#60a5fa; color:#1e293b;">Hardware</div>
-                </div>
-                <div>
-                    <p>Cada camada se apoia na de baixo e serve a de cima. O <span class="highlight">kernel</span> é o
+</div>
+</div>
+</div>
+<!-- Camadas -->
+<div class="slide">
+<div class="header"><h2>Onde o SO se encaixa</h2></div>
+<div class="content">
+<div class="grid">
+<div class="layers">
+<div class="lyr" style="background:#1e3a8a;">Usuário</div>
+<div class="lyr" style="background:#1d4ed8;">Aplicativos</div>
+<div class="lyr" style="background:#3b82f6;">Software de Sistema (compiladores, utilitários)</div>
+<div class="lyr" style="background:#2563eb;">Sistema Operacional (kernel)</div>
+<div class="lyr" style="background:#60a5fa; color:#1e293b;">Hardware</div>
+</div>
+<div>
+<p>Cada camada se apoia na de baixo e serve a de cima. O <span class="highlight">kernel</span> é o
                         núcleo do SO: roda em modo privilegiado e tem acesso direto ao hardware.</p>
-                    <p style="margin-top: 12px;">Os aplicativos pedem serviços ao SO por meio de <b>chamadas de
+<p style="margin-top: 12px;">Os aplicativos pedem serviços ao SO por meio de <b>chamadas de
                         sistema</b> (system calls), como abrir um arquivo ou enviar dados pela rede.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Funções do SO -->
-    <div class="slide">
-        <div class="header"><h2>Principais funções do SO</h2></div>
-        <div class="content">
-            <table class="table">
-                <tr><th>Gerência</th><th>O que faz</th></tr>
-                <tr><td><b>Processos</b></td><td>Cria, escalona e encerra programas em execução; divide o tempo da CPU.</td></tr>
-                <tr><td><b>Memória</b></td><td>Aloca e protege a memória entre os processos; gerencia memória virtual.</td></tr>
-                <tr><td><b>Arquivos</b></td><td>Organiza dados em arquivos e pastas; controla acesso.</td></tr>
-                <tr><td><b>Dispositivos (E/S)</b></td><td>Coordena periféricos por meio de drivers.</td></tr>
-                <tr><td><b>Segurança</b></td><td>Autentica usuários e controla permissões.</td></tr>
-                <tr><td><b>Rede</b></td><td>Gerencia comunicação entre computadores.</td></tr>
-            </table>
-        </div>
-    </div>
-
-    <!-- Processos -->
-    <div class="slide">
-        <div class="header"><h2>Processos e escalonamento</h2></div>
-        <div class="content">
-            <div class="grid">
-                <div>
-                    <p>Um <span class="highlight">processo</span> é um programa em execução, com seu próprio espaço de
+</div>
+</div>
+</div>
+</div>
+<!-- Funções do SO -->
+<div class="slide">
+<div class="header"><h2>Principais funções do SO</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Gerência</th><th>O que faz</th></tr>
+<tr><td><b>Processos</b></td><td>Cria, escalona e encerra programas em execução; divide o tempo da CPU.</td></tr>
+<tr><td><b>Memória</b></td><td>Aloca e protege a memória entre os processos; gerencia memória virtual.</td></tr>
+<tr><td><b>Arquivos</b></td><td>Organiza dados em arquivos e pastas; controla acesso.</td></tr>
+<tr><td><b>Dispositivos (E/S)</b></td><td>Coordena periféricos por meio de drivers.</td></tr>
+<tr><td><b>Segurança</b></td><td>Autentica usuários e controla permissões.</td></tr>
+<tr><td><b>Rede</b></td><td>Gerencia comunicação entre computadores.</td></tr>
+</table>
+</div>
+</div>
+<!-- Processos -->
+<div class="slide">
+<div class="header"><h2>Processos e escalonamento</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<p>Um <span class="highlight">processo</span> é um programa em execução, com seu próprio espaço de
                         memória. Como há mais processos que núcleos, o SO faz <b>multitarefa</b>: alterna rapidamente
                         entre eles, dando a impressão de simultaneidade.</p>
-                    <p style="margin-top: 12px;">O <span class="highlight">escalonador</span> decide quem usa a CPU e
+<p style="margin-top: 12px;">O <span class="highlight">escalonador</span> decide quem usa a CPU e
                         por quanto tempo (a "fatia de tempo" ou <i>quantum</i>).</p>
-                </div>
-                <div class="card">
-                    <h3>Estados de um processo</h3>
-                    <ul class="spaced" style="margin-top:8px;">
-                        <li><b>Pronto:</b> esperando a CPU.</li>
-                        <li><b>Executando:</b> usando a CPU.</li>
-                        <li><b>Bloqueado:</b> esperando E/S.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="info-box">
-                <p><b>Threads</b> são linhas de execução dentro de um mesmo processo, compartilhando sua memória — úteis
+</div>
+<div class="card">
+<h3>Estados de um processo</h3>
+<ul class="spaced" style="margin-top:8px;">
+<li><b>Pronto:</b> esperando a CPU.</li>
+<li><b>Executando:</b> usando a CPU.</li>
+<li><b>Bloqueado:</b> esperando E/S.</li>
+</ul>
+</div>
+</div>
+<div class="info-box">
+<p><b>Threads</b> são linhas de execução dentro de um mesmo processo, compartilhando sua memória — úteis
                     para fazer várias coisas ao mesmo tempo (ex.: baixar e exibir simultaneamente).</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Memória virtual -->
-    <div class="slide">
-        <div class="header"><h2>Gerência de memória e memória virtual</h2></div>
-        <div class="content">
-            <p>O SO dá a cada processo a ilusão de ter toda a memória só para si — a <span class="highlight">memória
+</div>
+</div>
+</div>
+<!-- Memória virtual -->
+<div class="slide">
+<div class="header"><h2>Gerência de memória e memória virtual</h2></div>
+<div class="content">
+<p>O SO dá a cada processo a ilusão de ter toda a memória só para si — a <span class="highlight">memória
                 virtual</span>. Endereços virtuais são traduzidos para físicos pela MMU (hardware).</p>
-            <ul class="spaced" style="margin-top: 8px;">
-                <li><span class="highlight">Isolamento:</span> um processo não acessa a memória de outro (proteção).</li>
-                <li><span class="highlight">Paginação:</span> a memória é dividida em páginas; partes pouco usadas vão
+<ul class="spaced" style="margin-top: 8px;">
+<li><span class="highlight">Isolamento:</span> um processo não acessa a memória de outro (proteção).</li>
+<li><span class="highlight">Paginação:</span> a memória é dividida em páginas; partes pouco usadas vão
                     para o disco (swap).</li>
-                <li><span class="highlight">Swap:</span> permite rodar programas maiores que a RAM física — ao custo de
+<li><span class="highlight">Swap:</span> permite rodar programas maiores que a RAM física — ao custo de
                     velocidade.</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Sistema de arquivos -->
-    <div class="slide">
-        <div class="header"><h2>Sistema de arquivos</h2></div>
-        <div class="content">
-            <p>É a forma como o SO organiza os dados no armazenamento, em <span class="highlight">arquivos</span> e
+</ul>
+</div>
+</div>
+<!-- Sistema de arquivos -->
+<div class="slide">
+<div class="header"><h2>Sistema de arquivos</h2></div>
+<div class="content">
+<p>É a forma como o SO organiza os dados no armazenamento, em <span class="highlight">arquivos</span> e
                 <span class="highlight">diretórios</span> (pastas), escondendo os detalhes físicos do disco.</p>
-            <table class="table">
-                <tr><th>Sistema de arquivos</th><th>Usado por</th></tr>
-                <tr><td>NTFS</td><td>Windows</td></tr>
-                <tr><td>ext4</td><td>Linux</td></tr>
-                <tr><td>APFS</td><td>macOS</td></tr>
-                <tr><td>FAT32 / exFAT</td><td>Pendrives, cartões SD</td></tr>
-            </table>
-            <div class="info-box">
-                <p>O sistema de arquivos também controla <b>permissões</b> (quem pode ler/escrever/executar) e mantém
+<table class="table">
+<tr><th>Sistema de arquivos</th><th>Usado por</th></tr>
+<tr><td>NTFS</td><td>Windows</td></tr>
+<tr><td>ext4</td><td>Linux</td></tr>
+<tr><td>APFS</td><td>macOS</td></tr>
+<tr><td>FAT32 / exFAT</td><td>Pendrives, cartões SD</td></tr>
+</table>
+<div class="info-box">
+<p>O sistema de arquivos também controla <b>permissões</b> (quem pode ler/escrever/executar) e mantém
                     <b>metadados</b> (data, tamanho, dono).</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Tipos de SO -->
-    <div class="slide">
-        <div class="header"><h2>Tipos de Sistemas Operacionais</h2></div>
-        <div class="content">
-            <div class="grid-3">
-                <div class="card">
-                    <h3>Desktop</h3>
-                    <p>Windows, macOS, distribuições Linux. Foco em uso pessoal e produtividade.</p>
-                </div>
-                <div class="card">
-                    <h3>Móvel</h3>
-                    <p>Android, iOS. Otimizados para bateria, toque e mobilidade.</p>
-                </div>
-                <div class="card">
-                    <h3>Servidor / Embarcado</h3>
-                    <p>Linux Server, Windows Server; e os de tempo real em carros, eletrodomésticos, IoT.</p>
-                </div>
-            </div>
-            <div class="info-box">
-                <p>Quanto à interação: <b>monousuário/multiusuário</b>, <b>monotarefa/multitarefa</b> e, em casos
+</div>
+</div>
+</div>
+<!-- Tipos de SO -->
+<div class="slide">
+<div class="header"><h2>Tipos de Sistemas Operacionais</h2></div>
+<div class="content">
+<div class="grid-3">
+<div class="card">
+<h3>Desktop</h3>
+<p>Windows, macOS, distribuições Linux. Foco em uso pessoal e produtividade.</p>
+</div>
+<div class="card">
+<h3>Móvel</h3>
+<p>Android, iOS. Otimizados para bateria, toque e mobilidade.</p>
+</div>
+<div class="card">
+<h3>Servidor / Embarcado</h3>
+<p>Linux Server, Windows Server; e os de tempo real em carros, eletrodomésticos, IoT.</p>
+</div>
+</div>
+<div class="info-box">
+<p>Quanto à interação: <b>monousuário/multiusuário</b>, <b>monotarefa/multitarefa</b> e, em casos
                     críticos, <b>tempo real</b> (resposta dentro de um prazo garantido).</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Software de sistema vs aplicativo -->
-    <div class="slide">
-        <div class="header"><h2>Software de Sistema x Aplicativo</h2></div>
-        <div class="content">
-            <div class="grid">
-                <div class="card">
-                    <h3>Software de Sistema</h3>
-                    <p>Faz o computador funcionar e dá suporte aos demais programas.</p>
-                    <p style="margin-top:10px;"><b>Ex.:</b> sistema operacional, drivers, compiladores, montadores,
+</div>
+</div>
+</div>
+<!-- Software de sistema vs aplicativo -->
+<div class="slide">
+<div class="header"><h2>Software de Sistema x Aplicativo</h2></div>
+<div class="content">
+<div class="grid">
+<div class="card">
+<h3>Software de Sistema</h3>
+<p>Faz o computador funcionar e dá suporte aos demais programas.</p>
+<p style="margin-top:10px;"><b>Ex.:</b> sistema operacional, drivers, compiladores, montadores,
                         utilitários (antivírus, desfragmentador, backup), firmware/BIOS.</p>
-                </div>
-                <div class="card">
-                    <h3>Software Aplicativo</h3>
-                    <p>Resolve tarefas do usuário final.</p>
-                    <p style="margin-top:10px;"><b>Ex.:</b> navegador, editor de texto, planilha, jogos, players de
+</div>
+<div class="card">
+<h3>Software Aplicativo</h3>
+<p>Resolve tarefas do usuário final.</p>
+<p style="margin-top:10px;"><b>Ex.:</b> navegador, editor de texto, planilha, jogos, players de
                         mídia, aplicativos de banco.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Softwares de sistema em detalhe -->
-    <div class="slide">
-        <div class="header"><h2>Softwares de sistema essenciais</h2></div>
-        <div class="content">
-            <table class="table">
-                <tr><th>Software</th><th>Papel</th></tr>
-                <tr><td><b>Tradutores</b> (compilador, interpretador, montador)</td><td>Convertem código-fonte em
+</div>
+</div>
+</div>
+</div>
+<!-- Softwares de sistema em detalhe -->
+<div class="slide">
+<div class="header"><h2>Softwares de sistema essenciais</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Software</th><th>Papel</th></tr>
+<tr><td><b>Tradutores</b> (compilador, interpretador, montador)</td><td>Convertem código-fonte em
                     linguagem de máquina executável.</td></tr>
-                <tr><td><b>Drivers</b></td><td>Permitem ao SO comunicar-se com cada dispositivo de hardware.</td></tr>
-                <tr><td><b>Utilitários</b></td><td>Manutenção do sistema: backup, compactação, antivírus, limpeza.</td></tr>
-                <tr><td><b>Firmware (BIOS/UEFI)</b></td><td>Inicia o computador e carrega o SO (boot).</td></tr>
-                <tr><td><b>Carregador (loader) e linker</b></td><td>Montam e carregam programas na memória para execução.</td></tr>
-            </table>
-        </div>
-    </div>
-
-    <!-- Boot -->
-    <div class="slide">
-        <div class="header"><h2>O processo de inicialização (boot)</h2></div>
-        <div class="content">
-            <div class="code-box">
-1. Liga o computador<br>
-2. <b>BIOS/UEFI</b> (firmware na ROM) faz o POST<br>
-&nbsp;&nbsp;&nbsp;(testa hardware)<br>
-3. Localiza o dispositivo de boot<br>
-4. Carrega o <b>bootloader</b> (ex.: GRUB)<br>
-5. Bootloader carrega o <b>kernel</b> do SO<br>
+<tr><td><b>Drivers</b></td><td>Permitem ao SO comunicar-se com cada dispositivo de hardware.</td></tr>
+<tr><td><b>Utilitários</b></td><td>Manutenção do sistema: backup, compactação, antivírus, limpeza.</td></tr>
+<tr><td><b>Firmware (BIOS/UEFI)</b></td><td>Inicia o computador e carrega o SO (boot).</td></tr>
+<tr><td><b>Carregador (loader) e linker</b></td><td>Montam e carregam programas na memória para execução.</td></tr>
+</table>
+</div>
+</div>
+<!-- Boot -->
+<div class="slide">
+<div class="header"><h2>O processo de inicialização (boot)</h2></div>
+<div class="content">
+<div class="code-box">
+1. Liga o computador<br/>
+2. <b>BIOS/UEFI</b> (firmware na ROM) faz o POST<br/>
+   (testa hardware)<br/>
+3. Localiza o dispositivo de boot<br/>
+4. Carrega o <b>bootloader</b> (ex.: GRUB)<br/>
+5. Bootloader carrega o <b>kernel</b> do SO<br/>
 6. SO inicia serviços e a interface do usuário
             </div>
-            <div class="info-box">
-                <p>Esse encadeamento mostra as camadas em ação: do firmware gravado em ROM até a interface gráfica,
+<div class="info-box">
+<p>Esse encadeamento mostra as camadas em ação: do firmware gravado em ROM até a interface gráfica,
                     cada etapa entrega o controle à seguinte.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: Modo usuário x núcleo -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: modo usuário, modo núcleo e a trap</h2></div>
-        <div class="content">
-            <p>A proteção do sistema depende de um suporte do <b>hardware</b>: a CPU opera em pelo menos dois níveis de
+</div>
+</div>
+</div>
+<!-- APROFUNDAMENTO: Modo usuário x núcleo -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: modo usuário, modo núcleo e a trap</h2></div>
+<div class="content">
+<p>A proteção do sistema depende de um suporte do <b>hardware</b>: a CPU opera em pelo menos dois níveis de
                 privilégio (os "anéis"). Aplicativos rodam em <span class="highlight">modo usuário</span> (restrito); o
                 kernel roda em <span class="highlight">modo núcleo</span> (acesso total).</p>
-            <ul class="spaced" style="margin-top: 8px;">
-                <li>Instruções privilegiadas (acessar hardware, mexer na tabela de páginas) <b>só</b> funcionam em modo
+<ul class="spaced" style="margin-top: 8px;">
+<li>Instruções privilegiadas (acessar hardware, mexer na tabela de páginas) <b>só</b> funcionam em modo
                     núcleo. Em modo usuário, elas geram uma exceção.</li>
-                <li>Para pedir um serviço, o programa executa uma <span class="highlight">chamada de sistema</span>, que
+<li>Para pedir um serviço, o programa executa uma <span class="highlight">chamada de sistema</span>, que
                     dispara uma <b>trap</b>: a CPU muda para modo núcleo e desvia para o ponto de entrada do SO.</li>
-                <li>Trocar entre processos exige uma <b>troca de contexto</b>: salvar registradores, PC e mapa de
+<li>Trocar entre processos exige uma <b>troca de contexto</b>: salvar registradores, PC e mapa de
                     memória de um processo e restaurar os do próximo — operação com custo, minimizada pelo SO.</li>
-            </ul>
-            <div class="info-box">
-                <p>Essa fronteira é o que impede um aplicativo de derrubar o sistema ou ler a memória de outro: todo
+</ul>
+<div class="info-box">
+<p>Essa fronteira é o que impede um aplicativo de derrubar o sistema ou ler a memória de outro: todo
                     acesso sensível passa, obrigatoriamente, pelo kernel.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: Escalonamento -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: algoritmos de escalonamento</h2></div>
-        <div class="content">
-            <p>O escalonador decide qual processo pronto recebe a CPU. Há vários algoritmos, com compromissos
+</div>
+</div>
+</div>
+<!-- APROFUNDAMENTO: Escalonamento -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: algoritmos de escalonamento</h2></div>
+<div class="content">
+<p>O escalonador decide qual processo pronto recebe a CPU. Há vários algoritmos, com compromissos
                 diferentes:</p>
-            <table class="table">
-                <tr><th>Algoritmo</th><th>Como decide</th><th>Limitação</th></tr>
-                <tr><td><b>FCFS</b></td><td>Ordem de chegada</td><td>Um processo longo atrasa todos (efeito comboio)</td></tr>
-                <tr><td><b>SJF</b></td><td>Menor tarefa primeiro</td><td>Ótimo na espera média, mas exige prever a duração</td></tr>
-                <tr><td><b>Round Robin</b></td><td>Fatia de tempo (quantum) rotativa</td><td>Justo e interativo; sensível ao tamanho do quantum</td></tr>
-                <tr><td><b>Prioridade</b></td><td>Maior prioridade primeiro</td><td>Pode causar <i>starvation</i> dos de baixa prioridade</td></tr>
-                <tr><td><b>Multinível com realimentação</b></td><td>Várias filas que ajustam prioridade dinamicamente</td><td>Flexível, mas complexo de ajustar</td></tr>
-            </table>
-            <div class="info-box">
-                <p>Critérios de avaliação: <b>vazão</b>, tempo de <b>retorno</b> (turnaround), tempo de <b>espera</b> e
+<table class="table">
+<tr><th>Algoritmo</th><th>Como decide</th><th>Limitação</th></tr>
+<tr><td><b>FCFS</b></td><td>Ordem de chegada</td><td>Um processo longo atrasa todos (efeito comboio)</td></tr>
+<tr><td><b>SJF</b></td><td>Menor tarefa primeiro</td><td>Ótimo na espera média, mas exige prever a duração</td></tr>
+<tr><td><b>Round Robin</b></td><td>Fatia de tempo (quantum) rotativa</td><td>Justo e interativo; sensível ao tamanho do quantum</td></tr>
+<tr><td><b>Prioridade</b></td><td>Maior prioridade primeiro</td><td>Pode causar <i>starvation</i> dos de baixa prioridade</td></tr>
+<tr><td><b>Multinível com realimentação</b></td><td>Várias filas que ajustam prioridade dinamicamente</td><td>Flexível, mas complexo de ajustar</td></tr>
+</table>
+<div class="info-box">
+<p>Critérios de avaliação: <b>vazão</b>, tempo de <b>retorno</b> (turnaround), tempo de <b>espera</b> e
                     tempo de <b>resposta</b>. Sistemas interativos priorizam resposta; servidores, vazão. O
                     escalonamento <b>preemptivo</b> (RR) pode tirar a CPU à força; o não-preemptivo, não.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: Concorrência -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: concorrência e sincronização</h2></div>
-        <div class="content">
-            <p>Quando processos/threads compartilham dados, surge a <span class="highlight">condição de corrida</span>:
+</div>
+</div>
+</div>
+<!-- APROFUNDAMENTO: Concorrência -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: concorrência e sincronização</h2></div>
+<div class="content">
+<p>Quando processos/threads compartilham dados, surge a <span class="highlight">condição de corrida</span>:
                 o resultado depende da ordem (imprevisível) de execução.</p>
-            <div class="code-box" style="margin-top: 10px; font-size:17px;">
-saldo = 100;  // dois saques de 50 em paralelo<br>
-T1: lê saldo (100) ............ grava 50<br>
-T2: ...... lê saldo (100) ............ grava 50<br>
+<div class="code-box" style="margin-top: 10px; font-size:17px;">
+saldo = 100;  // dois saques de 50 em paralelo<br/>
+T1: lê saldo (100) ............ grava 50<br/>
+T2: ...... lê saldo (100) ............ grava 50<br/>
 // resultado: 50 (deveria ser 0!) → corrida
             </div>
-            <div class="info-box">
-                <p>A solução é a <b>exclusão mútua</b>: garantir que só um entre por vez na <b>seção crítica</b>. Os
+<div class="info-box">
+<p>A solução é a <b>exclusão mútua</b>: garantir que só um entre por vez na <b>seção crítica</b>. Os
                     mecanismos clássicos são o <b>mutex</b> (trava binária) e o <b>semáforo</b> (contador com operações
                     atômicas <i>wait/signal</i>), propostos por Dijkstra. Usados de forma errada, geram bugs sutis e
                     travamentos.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: Deadlock -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: impasse (deadlock)</h2></div>
-        <div class="content">
-            <p>Um <span class="highlight">deadlock</span> trava processos que esperam, em ciclo, recursos uns dos outros.
+</div>
+</div>
+</div>
+<!-- APROFUNDAMENTO: Deadlock -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: impasse (deadlock)</h2></div>
+<div class="content">
+<p>Um <span class="highlight">deadlock</span> trava processos que esperam, em ciclo, recursos uns dos outros.
                 Coffman mostrou que ele só ocorre se as <b>quatro condições</b> valerem ao mesmo tempo:</p>
-            <table class="table">
-                <tr><th>Condição</th><th>Significado</th></tr>
-                <tr><td><b>Exclusão mútua</b></td><td>O recurso só pode ser usado por um processo por vez</td></tr>
-                <tr><td><b>Posse e espera</b></td><td>Processo segura um recurso e espera por outro</td></tr>
-                <tr><td><b>Não preempção</b></td><td>Recurso não pode ser tomado à força</td></tr>
-                <tr><td><b>Espera circular</b></td><td>Existe um ciclo de processos esperando uns aos outros</td></tr>
-            </table>
-            <div class="info-box">
-                <p>Estratégias do SO: <b>prevenir</b> (negar uma das condições), <b>evitar</b> (algoritmo do banqueiro,
+<table class="table">
+<tr><th>Condição</th><th>Significado</th></tr>
+<tr><td><b>Exclusão mútua</b></td><td>O recurso só pode ser usado por um processo por vez</td></tr>
+<tr><td><b>Posse e espera</b></td><td>Processo segura um recurso e espera por outro</td></tr>
+<tr><td><b>Não preempção</b></td><td>Recurso não pode ser tomado à força</td></tr>
+<tr><td><b>Espera circular</b></td><td>Existe um ciclo de processos esperando uns aos outros</td></tr>
+</table>
+<div class="info-box">
+<p>Estratégias do SO: <b>prevenir</b> (negar uma das condições), <b>evitar</b> (algoritmo do banqueiro,
                     de Dijkstra), <b>detectar e recuperar</b>, ou simplesmente <b>ignorar</b> (a "abordagem do avestruz",
                     comum em SOs de uso geral, pois deadlocks reais são raros).</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: Memória virtual em profundidade -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: paginação e substituição de páginas</h2></div>
-        <div class="content">
-            <p>A memória virtual divide o espaço em <b>páginas</b> (e a RAM em <b>quadros</b>). A <span
-                class="highlight">tabela de páginas</span> mapeia páginas virtuais em quadros físicos; a <b>TLB</b> faz
+</div>
+</div>
+</div>
+<!-- APROFUNDAMENTO: Memória virtual em profundidade -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: paginação e substituição de páginas</h2></div>
+<div class="content">
+<p>A memória virtual divide o espaço em <b>páginas</b> (e a RAM em <b>quadros</b>). A <span class="highlight">tabela de páginas</span> mapeia páginas virtuais em quadros físicos; a <b>TLB</b> faz
                 cache desse mapeamento. Quando uma página não está na RAM, ocorre um <span class="highlight">page
                 fault</span> e o SO a traz do disco.</p>
-            <p style="margin-top: 12px;">Se a RAM está cheia, qual página remover? Os algoritmos de <b>substituição</b>
+<p style="margin-top: 12px;">Se a RAM está cheia, qual página remover? Os algoritmos de <b>substituição</b>
                 tentam acertar:</p>
-            <table class="table">
-                <tr><th>Algoritmo</th><th>Ideia</th></tr>
-                <tr><td><b>Ótimo</b></td><td>Remove a que será usada mais tarde (teórico, irrealizável — serve de referência)</td></tr>
-                <tr><td><b>FIFO</b></td><td>Remove a mais antiga (sofre da anomalia de Belady)</td></tr>
-                <tr><td><b>LRU</b></td><td>Remove a menos usada recentemente (boa, mas cara de implementar exatamente)</td></tr>
-                <tr><td><b>Clock / segunda chance</b></td><td>Aproximação eficiente de LRU usando um bit de referência</td></tr>
-            </table>
-            <div class="info-box">
-                <p><b>Thrashing:</b> se há páginas de menos para muitos processos, o sistema passa mais tempo trocando
+<table class="table">
+<tr><th>Algoritmo</th><th>Ideia</th></tr>
+<tr><td><b>Ótimo</b></td><td>Remove a que será usada mais tarde (teórico, irrealizável — serve de referência)</td></tr>
+<tr><td><b>FIFO</b></td><td>Remove a mais antiga (sofre da anomalia de Belady)</td></tr>
+<tr><td><b>LRU</b></td><td>Remove a menos usada recentemente (boa, mas cara de implementar exatamente)</td></tr>
+<tr><td><b>Clock / segunda chance</b></td><td>Aproximação eficiente de LRU usando um bit de referência</td></tr>
+</table>
+<div class="info-box">
+<p><b>Thrashing:</b> se há páginas de menos para muitos processos, o sistema passa mais tempo trocando
                     páginas com o disco do que executando — o desempenho despenca.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: Arquiteturas de kernel -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: arquiteturas de kernel</h2></div>
-        <div class="content">
-            <div class="grid-3">
-                <div class="card">
-                    <h3>Monolítico</h3>
-                    <p>Todo o SO (drivers, sistema de arquivos, rede) roda no núcleo. Rápido, mas um bug pode derrubar
+</div>
+</div>
+</div>
+<!-- APROFUNDAMENTO: Arquiteturas de kernel -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: arquiteturas de kernel</h2></div>
+<div class="content">
+<div class="grid-3">
+<div class="card">
+<h3>Monolítico</h3>
+<p>Todo o SO (drivers, sistema de arquivos, rede) roda no núcleo. Rápido, mas um bug pode derrubar
                         tudo. Ex.: <b>Linux</b>.</p>
-                </div>
-                <div class="card">
-                    <h3>Microkernel</h3>
-                    <p>O núcleo é mínimo; serviços rodam como processos em modo usuário. Robusto e modular, com custo de
+</div>
+<div class="card">
+<h3>Microkernel</h3>
+<p>O núcleo é mínimo; serviços rodam como processos em modo usuário. Robusto e modular, com custo de
                         comunicação. Ex.: <b>Minix</b>, QNX.</p>
-                </div>
-                <div class="card">
-                    <h3>Híbrido</h3>
-                    <p>Combina os dois: núcleo com serviços essenciais, mas modular. Ex.: <b>Windows NT</b>, núcleo do
+</div>
+<div class="card">
+<h3>Híbrido</h3>
+<p>Combina os dois: núcleo com serviços essenciais, mas modular. Ex.: <b>Windows NT</b>, núcleo do
                         <b>macOS</b> (XNU).</p>
-                </div>
-            </div>
-            <div class="info-box">
-                <p>O debate monolítico × microkernel (célebre entre Linus Torvalds e Andrew Tanenbaum, 1992) ilustra o
+</div>
+</div>
+<div class="info-box">
+<p>O debate monolítico × microkernel (célebre entre Linus Torvalds e Andrew Tanenbaum, 1992) ilustra o
                     eterno trade-off entre <b>desempenho</b> e <b>isolamento/segurança</b> em sistemas.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Glossário -->
-    <div class="slide">
-        <div class="header"><h2>Glossário do tópico</h2></div>
-        <div class="content">
-            <table class="table">
-                <tr><td><b>Kernel</b></td><td>Núcleo do SO; controla o hardware diretamente.</td></tr>
-                <tr><td><b>Processo / Thread</b></td><td>Programa em execução / linha de execução interna.</td></tr>
-                <tr><td><b>Escalonador</b></td><td>Decide qual processo usa a CPU.</td></tr>
-                <tr><td><b>Memória virtual</b></td><td>Abstração que isola e expande a memória dos processos.</td></tr>
-                <tr><td><b>System call</b></td><td>Pedido de um programa por um serviço do SO.</td></tr>
-                <tr><td><b>Driver</b></td><td>Software que controla um dispositivo.</td></tr>
-                <tr><td><b>Modo usuário/núcleo</b></td><td>Níveis de privilégio da CPU; protegem o sistema.</td></tr>
-                <tr><td><b>Semáforo / Mutex</b></td><td>Mecanismos de exclusão mútua na seção crítica.</td></tr>
-                <tr><td><b>Deadlock</b></td><td>Impasse circular (4 condições de Coffman).</td></tr>
-                <tr><td><b>Page fault / Thrashing</b></td><td>Falta de página no acesso / troca excessiva de páginas.</td></tr>
-            </table>
-        </div>
-    </div>
-
-    <!-- Exercícios resolvidos -->
-    <div class="slide">
-        <div class="header"><h2>Exercícios resolvidos</h2></div>
-        <div class="content">
-            <div style="display:flex; flex-direction:column; gap:16px;">
-                <div>
-                    <p style="font-size:21px;"><b>1.</b> Três processos chegam em t=0 com surtos de CPU P1=24, P2=3 e
+</div>
+</div>
+</div>
+<!-- Glossário -->
+<div class="slide">
+<div class="header"><h2>Glossário do tópico</h2></div>
+<div class="content">
+<table class="table">
+<tr><td><b>Kernel</b></td><td>Núcleo do SO; controla o hardware diretamente.</td></tr>
+<tr><td><b>Processo / Thread</b></td><td>Programa em execução / linha de execução interna.</td></tr>
+<tr><td><b>Escalonador</b></td><td>Decide qual processo usa a CPU.</td></tr>
+<tr><td><b>Memória virtual</b></td><td>Abstração que isola e expande a memória dos processos.</td></tr>
+<tr><td><b>System call</b></td><td>Pedido de um programa por um serviço do SO.</td></tr>
+<tr><td><b>Driver</b></td><td>Software que controla um dispositivo.</td></tr>
+<tr><td><b>Modo usuário/núcleo</b></td><td>Níveis de privilégio da CPU; protegem o sistema.</td></tr>
+<tr><td><b>Semáforo / Mutex</b></td><td>Mecanismos de exclusão mútua na seção crítica.</td></tr>
+<tr><td><b>Deadlock</b></td><td>Impasse circular (4 condições de Coffman).</td></tr>
+<tr><td><b>Page fault / Thrashing</b></td><td>Falta de página no acesso / troca excessiva de páginas.</td></tr>
+</table>
+</div>
+</div>
+<!-- Exercícios resolvidos -->
+<div class="slide">
+<div class="header"><h2>Exercícios resolvidos</h2></div>
+<div class="content">
+<div style="display:flex; flex-direction:column; gap:16px;">
+<div>
+<p style="font-size:21px;"><b>1.</b> Três processos chegam em t=0 com surtos de CPU P1=24, P2=3 e
                         P3=3 (ms). Compare o <b>tempo médio de espera</b> em FCFS (ordem P1, P2, P3) e em SJF.</p>
-                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
-                        <div class="info-box" style="margin-top:10px;">FCFS: esperas = 0, 24, 27 → média =
+<details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+<div class="info-box" style="margin-top:10px;">FCFS: esperas = 0, 24, 27 → média =
                             (0+24+27)/3 = <b>17 ms</b>. SJF (ordem P2, P3, P1): esperas = 0, 3, 6 → média =
                             (0+3+6)/3 = <b>3 ms</b>. O SJF reduz drasticamente a espera ao priorizar tarefas curtas.</div>
-                    </details>
-                </div>
-                <div>
-                    <p style="font-size:21px;"><b>2.</b> Em um sistema de <b>32 bits</b> com páginas de <b>4 KB</b>,
+</details>
+</div>
+<div>
+<p style="font-size:21px;"><b>2.</b> Em um sistema de <b>32 bits</b> com páginas de <b>4 KB</b>,
                         quantas páginas tem o espaço de endereçamento virtual?</p>
-                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
-                        <div class="info-box" style="margin-top:10px;">Espaço = 2<sup>32</sup> bytes; página =
+<details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+<div class="info-box" style="margin-top:10px;">Espaço = 2<sup>32</sup> bytes; página =
                             2<sup>12</sup> bytes. Nº de páginas = 2<sup>32</sup> / 2<sup>12</sup> = 2<sup>20</sup> =
                             <b>1.048.576 páginas</b>.</div>
-                    </details>
-                </div>
-                <div>
-                    <p style="font-size:21px;"><b>3.</b> Cite uma forma de <b>prevenir deadlock</b> quebrando uma das
+</details>
+</div>
+<div>
+<p style="font-size:21px;"><b>3.</b> Cite uma forma de <b>prevenir deadlock</b> quebrando uma das
                         condições de Coffman.</p>
-                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
-                        <div class="info-box" style="margin-top:10px;">Exemplo: quebrar a <b>espera circular</b>
+<details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+<div class="info-box" style="margin-top:10px;">Exemplo: quebrar a <b>espera circular</b>
                             impondo uma <b>ordem global</b> de aquisição de recursos (todo processo só pode pedir
                             recursos em ordem crescente de id). Sem ciclo possível, não há deadlock. Outras opções:
                             exigir que o processo peça todos os recursos de uma vez (quebra "posse e espera") ou permitir
                             preempção de recursos.</div>
-                    </details>
-                </div>
-                <div>
-                    <p style="font-size:21px;"><b>4.</b> Qual a diferença entre <b>processo</b> e <b>thread</b>?</p>
-                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
-                        <div class="info-box" style="margin-top:10px;">Um processo é um programa em execução com seu
+</details>
+</div>
+<div>
+<p style="font-size:21px;"><b>4.</b> Qual a diferença entre <b>processo</b> e <b>thread</b>?</p>
+<details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+<div class="info-box" style="margin-top:10px;">Um processo é um programa em execução com seu
                             <b>próprio espaço de memória</b> isolado. Threads são linhas de execução <b>dentro</b> de um
                             processo, que <b>compartilham</b> a mesma memória e recursos. Criar e alternar threads é mais
                             leve, mas o compartilhamento exige sincronização para evitar condições de corrida.</div>
-                    </details>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Encerramento -->
-    <div class="slide hero">
-        <h1 style="color:#3b82f6;">Resumindo</h1>
-        <p style="font-size: 22px; max-width: 820px; opacity: 0.9;">O sistema operacional é o gerente do computador:
+</details>
+</div>
+</div>
+</div>
+</div>
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#3b82f6;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">O sistema operacional é o gerente do computador:
             controla processos, memória, arquivos e dispositivos, oferecendo serviços via chamadas de sistema. Ao lado
             dele, os softwares de sistema (drivers, compiladores, utilitários, firmware) mantêm tudo funcionando, abaixo
             dos aplicativos do usuário.</p>
-        <div style="margin-top: 40px;">
-            <a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
-                <i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
             </a>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-6 sm:py-8 mt-auto">
-        <div class="container mx-auto px-4 sm:px-6 text-center text-sm sm:text-base" style="color: white;">
-            <p>&copy; 2026 Prof. MSc. Carlos A. L. Schaeffer | Organização de Computadores</p>
-        </div>
-    </footer>
-
+</div>
+</div>
+<!-- Footer -->
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Organização de Computadores</p>
+</footer>
 </body>
-
 </html>
