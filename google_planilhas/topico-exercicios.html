@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Planilhas Google - Exercícios Práticos</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #3b82f6; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #3b82f6; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+        .info-box { border-left: 5px solid #3b82f6; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .sheet { width: 100%; border-collapse: collapse; margin-top: 18px; font-family: "Fira Code", monospace; font-size: 16px; }
+        .sheet th { background: #1e293b; color: #fff; padding: 8px 10px; border: 1px solid #cbd5e1; }
+        .sheet td { padding: 8px 10px; border: 1px solid #cbd5e1; background: #fff; }
+        .sheet td.rowhdr, .sheet th.corner { background: #e2e8f0; color: #1e293b; text-align: center; font-weight: bold; }
+        details summary { cursor:pointer; color:#3b82f6; font-weight:bold; margin-top:6px; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Planilhas Google
+            </h1>
+<p>Exercícios Práticos</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-pen-to-square" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+<h1>Exercícios Práticos</h1>
+<p style="font-size: 24px; opacity: 0.8;">Importar, tratar, integrar, exportar e automatizar</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Uso de Dados em Planilhas Google</div>
+</div>
+
+<!-- O cenário -->
+<div class="slide">
+<div class="header"><h2>O cenário dos exercícios</h2></div>
+<div class="content">
+<p class="lead">Você trabalha na Secretaria e recebeu o arquivo <code>matriculas.csv</code> do sistema
+                acadêmico. O RH mantém o arquivo <b>"Cadastro RH"</b> com os e-mails. Vamos do dado bruto ao relatório.</p>
+<table class="sheet">
+<tr><th class="corner"></th><th>A</th><th>B</th><th>C</th><th>D</th></tr>
+<tr><td class="rowhdr">1</td><td>matricula</td><td>nome</td><td>curso</td><td>situacao</td></tr>
+<tr><td class="rowhdr">2</td><td>20231</td><td>"  ana souza "</td><td>ads</td><td>Ativa</td></tr>
+<tr><td class="rowhdr">3</td><td>20232</td><td>"BRUNO lima"</td><td>ADS</td><td>Trancada</td></tr>
+<tr><td class="rowhdr">4</td><td>20233</td><td>"carla DIAS"</td><td>Redes</td><td>Ativa</td></tr>
+</table>
+</div>
+</div>
+
+<!-- Ex 1 importar -->
+<div class="slide">
+<div class="header"><h2>Exercício 1 — Importar</h2></div>
+<div class="content">
+<p style="font-size:21px;"><b>1.</b> Como trazer o arquivo <code>matriculas.csv</code> para uma nova aba sem
+                substituir os dados existentes, garantindo que a matrícula <code>20231</code> seja tratada como número?</p>
+<details>
+<summary>Ver solução</summary>
+<div class="info-box">
+<code>Arquivo &gt; Importar &gt; Fazer upload</code>, em <b>Local de importação</b> escolher
+                    <b>"Inserir nova(s) página(s)"</b>, conferir o <b>separador</b> (vírgula ou ponto e vírgula) e
+                    marcar <b>"Converter texto em números, datas e fórmulas"</b>.</div>
+</details>
+</div>
+</div>
+
+<!-- Ex 2 tratar -->
+<div class="slide">
+<div class="header"><h2>Exercício 2 — Tratar o texto</h2></div>
+<div class="content">
+<p style="font-size:21px;"><b>2.</b> A coluna <b>nome</b> tem espaços sobrando e caixa inconsistente. Escreva
+                uma fórmula em E2 que devolva o nome padronizado (ex.: <code>Ana Souza</code>) e que possa ser aplicada
+                a todas as linhas de uma vez.</p>
+<details>
+<summary>Ver solução</summary>
+<div class="info-box">
+<code>=ARRAYFORMULA(ARRUMAR(PRI.MAIÚSCULA(B2:B4)))</code><br/>
+                    A <b>ARRUMAR</b> remove os espaços, a <b>PRI.MAIÚSCULA</b> ajusta a caixa e a
+                    <b>ARRAYFORMULA</b> aplica a todas as linhas com uma única fórmula.</div>
+</details>
+</div>
+</div>
+
+<!-- Ex 3 padronizar curso -->
+<div class="slide">
+<div class="header"><h2>Exercício 3 — Padronizar a coluna curso</h2></div>
+<div class="content">
+<p style="font-size:21px;"><b>3.</b> O curso aparece como <code>ads</code>, <code>ADS</code> e
+                <code>Redes</code>. Como garantir que, daqui pra frente, ninguém digite o curso fora do padrão?</p>
+<details>
+<summary>Ver solução</summary>
+<div class="info-box">
+                    Padronizar o que já existe com <code>=MAIÚSCULA(C2)</code> (ou PRI.MAIÚSCULA) e, na origem,
+                    aplicar <code>Dados &gt; Validação de dados</code> com uma <b>lista suspensa</b> contendo apenas
+                    os valores válidos ("ADS", "Redes", …). Assim a digitação livre é bloqueada.</div>
+</details>
+</div>
+</div>
+
+<!-- Ex 4 contar -->
+<div class="slide">
+<div class="header"><h2>Exercício 4 — Resumir com QUERY</h2></div>
+<div class="content">
+<p style="font-size:21px;"><b>4.</b> Quantos alunos <b>ativos</b> existem por curso? Resolva com uma única
+                fórmula.</p>
+<details>
+<summary>Ver solução</summary>
+<div class="info-box">
+<code>=QUERY(A1:D4; "select C, count(A) where D = 'Ativa' group by C"; 1)</code><br/>
+                    A QUERY filtra a situação "Ativa", agrupa por curso (coluna C) e conta as matrículas (coluna A).</div>
+</details>
+</div>
+</div>
+
+<!-- Ex 5 importrange -->
+<div class="slide">
+<div class="header"><h2>Exercício 5 — Trazer o e-mail de outro arquivo</h2></div>
+<div class="content">
+<p style="font-size:21px;"><b>5.</b> O e-mail de cada aluno está na planilha <b>"Cadastro RH"</b> (aba
+                <code>Pessoas</code>, matrícula na coluna A, e-mail na coluna C). Como exibir, em F2, o e-mail do aluno
+                cuja matrícula está em A2?</p>
+<details>
+<summary>Ver solução</summary>
+<div class="info-box">
+<code>=PROCX(A2; IMPORTRANGE("ID_DO_RH";"Pessoas!A:A"); IMPORTRANGE("ID_DO_RH";"Pessoas!C:C"))</code><br/>
+                    Na primeira vez, clicar em <b>"Permitir acesso"</b> para conectar as duas planilhas. É preciso ter
+                    permissão de leitura no arquivo do RH.</div>
+</details>
+</div>
+</div>
+
+<!-- Ex 6 exportar -->
+<div class="slide">
+<div class="header"><h2>Exercício 6 — Exportar o relatório</h2></div>
+<div class="content">
+<p style="font-size:21px;"><b>6.</b> A diretoria quer um relatório <b>para ler e imprimir</b>, com o cabeçalho
+                repetido em todas as páginas. O sistema acadêmico, por sua vez, quer <b>só as colunas matrícula e
+                situação</b> para reimportar. O que você gera em cada caso?</p>
+<details>
+<summary>Ver solução</summary>
+<div class="info-box">
+                    Diretoria: <code>Arquivo &gt; Fazer download &gt; PDF</code>, orientação paisagem, "ajustar à
+                    largura" e com a 1ª linha <b>congelada</b> (repete o cabeçalho). Sistema acadêmico: criar uma aba só
+                    com as colunas matrícula e situação e usar <code>Fazer download &gt; CSV</code> (exporta apenas a
+                    aba ativa, só com valores).</div>
+</details>
+</div>
+</div>
+
+<!-- Ex 7 automatizar -->
+<div class="slide">
+<div class="header"><h2>Exercício 7 — Automatizar</h2></div>
+<div class="content">
+<p style="font-size:21px;"><b>7.</b> Toda segunda-feira você repete a mesma formatação no relatório e gostaria
+                de avisar por e-mail os alunos com situação "Trancada". Que ferramentas usar em cada parte?</p>
+<details>
+<summary>Ver solução</summary>
+<div class="info-box">
+                    Formatação repetitiva: <b>gravar uma macro</b> (Extensões &gt; Macros &gt; Gravar macro) e rodá-la
+                    por atalho. Aviso por e-mail: um <b>Apps Script</b> com <code>MailApp.sendEmail</code> percorrendo
+                    as linhas "Trancada"; para rodar sozinho toda semana, configurar um <b>gatilho por tempo</b>
+                    (semanal).</div>
+</details>
+</div>
+</div>
+
+<!-- Desafio integrador -->
+<div class="slide">
+<div class="header"><h2>Desafio integrador</h2></div>
+<div class="content">
+<p>Monte, do zero, um <span class="highlight">painel da coordenação</span> que:</p>
+<ul class="spaced">
+<li>importe o CSV de matrículas semanal;</li>
+<li>limpe nomes e padronize cursos com ARRAYFORMULA e validação;</li>
+<li>traga os e-mails do "Cadastro RH" via IMPORTRANGE + PROCX;</li>
+<li>resuma ativos por curso com QUERY;</li>
+<li>gere um PDF mensal e o envie por e-mail com Apps Script agendado.</li>
+</ul>
+<div class="info-box">
+<p>Esse desafio reúne os cinco tópicos do curso. Faça-o com dados fictícios — é o melhor jeito de fixar o
+                    fluxo completo de <b>uso de dados</b> em Planilhas Google.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#3b82f6;">Bom trabalho!</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">Você percorreu o ciclo completo: importar, tratar,
+            integrar com outras planilhas, exportar e automatizar. Esse é o caminho que transforma um arquivo bruto em
+            informação útil para a tomada de decisão.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Planilhas Google</p>
+</footer>
+</body>
+</html>

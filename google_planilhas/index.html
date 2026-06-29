@@ -1,305 +1,228 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curso de Planilhas Google - Prof. Carlos Schaeffer</title>
+    <title>Planilhas Google - Prof. Carlos Schaeffer</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="/assets/js/cabecalho.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/site.css">
-    <!-- <style>
-        :root {
-            --primary-color: #0f9d58;
-            --secondary-color: #1b73e8;
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-color: #3c4043;
-            --text-light: #5f6368;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--card-bg);
-            border-bottom: 1px solid #dadce0;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            color: var(--primary-color);
-            font-size: 2.2rem;
-        }
-
-        header p {
-            margin: 0.5rem 0 0 0;
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        .nivel-section {
-            margin-bottom: 3rem;
-        }
-
-        .nivel-title {
-            font-size: 1.5rem;
-            color: var(--text-color);
-            border-left: 5px solid var(--primary-color);
-            padding-left: 10px;
-            margin-bottom: 1.5rem;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid #dadce0;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3);
-            transition: transform 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-        }
-
-        .card h3 {
-            margin-top: 0;
-            color: var(--primary-color);
-            font-size: 1.25rem;
-            border-bottom: 1px solid #f1f3f4;
-            padding-bottom: 0.5rem;
-        }
-
-        .card p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-        }
-
-        .exemplo-box {
-            background-color: #f1f3f4;
-            border-radius: 4px;
-            padding: 0.8rem;
-            margin-top: 1rem;
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 0.85rem;
-            border-left: 3px solid var(--secondary-color);
-        }
-
-        .exemplo-title {
-            font-weight: bold;
-            color: var(--secondary-color);
-            margin-bottom: 0.3rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            border-top: 1px solid #dadce0;
-            background: var(--card-bg);
-            margin-top: 4rem;
-        }
-    </style> -->
 </head>
 
-<body>
+<body class="site-body">
     <header class="site-header">
         <div class="site-header__inner">
             <h1>
                <img src="/imagens/AjudaProfessor-logo.png" width="100px" alt="">
-                Google Planilhas
+                Planilhas Google
             </h1>
             <a class="site-header__back" href="/index.html"><i class="fa-solid fa-arrow-left"></i> Página inicial</a>
         </div>
     </header>
-    <div class="container">
-        <section class="nivel-section">
-            <div class="nivel-title">Nível I - Organização de Dados</div>
-            <div class="grid">
-                <div class="card">
-                    <h3>
-                        <a href="google_planilhas-aula01.html">
-                            1. Interface e Introdução aos Dados
-                        </a>
-                    </h3>
-                    <p>Navegação básica, linhas, colunas e a importância de classificar dados de forma correta (nomes de
-                        alunos, datas de matrículas e valores de taxas).</p>
-                    <div class="exemplo-box">
-                        <div class="exemplo-title">Exemplo Prático:</div>
-                        Criação de uma lista de presença e controlo de entrega de documentos para pastas de alunos.
-                    </div>
-                </div>
-                <div class="card">
-                    <h3>
-                        <a href="google_planilhas-aula02.html">
-                            2. Fórmulas de Controle Diário
-                        </a>
-                    </h3>
-                    <p>Uso de operadores matemáticos e funções essenciais como SOMA, MÉDIA, CONT.NUM e CONT.VALORES para
-                        estatísticas rápidas.</p>
-                    <div class="exemplo-box">
-                        <div class="exemplo-title">Fórmula Exemplo:</div>
-                        <code>=SOMA(B2:B20)</code> para totalizar atendimentos realizados na secretaria ao longo do dia.
-                    </div>
-                </div>
-                <div class="card">
-                    <h3>
-                        <a href="google_planilhas-aula03.html">
-                            3. Formatação Condicional
-                        </a>
-                    </h3>
-                    <p>Destacar automaticamente prazos vencidos, faltas críticas ou orçamentos estourados utilizando
-                        cores de alerta.</p>
-                    <div class="exemplo-box">
-                        <div class="exemplo-title">Exemplo Visível:</div>
-                        Pintar de vermelho os alunos com mais de 15 faltas ou processos parados há mais de 5 dias.
-                    </div>
-                </div>
+
+    <main class="site-main">
+        <div class="toolbar">
+            <div class="toolbar__search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" data-role="search" placeholder="Pesquisar tópico por conteúdo..." aria-label="Pesquisar tópicos">
             </div>
-        </section>
+            <button class="toolbar__btn" data-role="fav-filter" type="button">
+                <i class="fa-solid fa-star"></i> Só favoritos
+            </button>
+            <p class="toolbar__hint">Clique na estrela para favoritar e arraste os cards para reordenar — suas escolhas ficam salvas neste navegador.</p>
+        </div>
 
-        <section class="nivel-section">
-            <div class="nivel-title">Nível II - Lógica Administrativa e Relatórios</div>
-            <div class="grid">
-                <div class="card">
-                    <h3>
-                        <a href="google_planilhas-aula04.html">
-                            4. Funções Lógicas (SE, E, OU)
-                        </a>
-                    </h3>
-                    <p>Automação de respostas baseadas em critérios. Ideal para cálculo automático de resultados
-                        acadêmicos ou triagem de requisições.</p>
-                    <div class="exemplo-box">
-                        <div class="exemplo-title">Fórmula Exemplo:</div>
-                        <code>=SE(C2&gt;=7; "Aprovado"; "Exame")</code> para automatizar o fecho de pautas de notas.
-                    </div>
-                </div>
-                <div class="card">
-                    <h3>
-                        <a href="google_planilhas-aula05.html">
-                            5. Cruzamento de Listas (XLOOKUP / PROCX)
-                        </a>
-                    </h3>
-                    <p>Como encontrar informações de um servidor ou aluno em tabelas diferentes usando o número de
-                        identificação ou ID.</p>
-                    <div class="exemplo-box">
-                        <div class="exemplo-title">Fórmula Exemplo:</div>
-                        Trazer instantaneamente o e-mail institucional do docente a partir de uma lista geral de
-                        Recursos Humanos.
-                    </div>
-                </div>
-                <div class="card">
-                    <h3>
-                        <a href="google_planilhas-aula06.html">
-                            6. Tabelas e Gráficos Dinâmicos
-                        </a>
-                        </h3>
-                    <p>Agrupamento de grandes volumes de registos para apresentar relatórios sumarizados.</p>
-                    <div class="exemplo-box">
-                        <div class="exemplo-title">Exemplo Prático:</div>
-                        Descobrir quantos alunos trancaram o curso por semestre sem precisar contar linha por linha.
-                    </div>
-                </div>
-            
-                <div class="card">
-                    <h3>
-                        <a href="google_planilhas-aula07.html">
-                            7. Extração Automática de Dados com FILTER e UNIQUE
-                        </a>
-                    </h3>
-                    <p>Criação de listas suspensas inteligentes, regras de consistência para entrada de dados e manuseio de filtros para relatórios rápidos.</p>
-<!--
-                    <div class="exemplo-box">
-                        <div class="exemplo-title">Exemplo Prático:</div>
-                    </div>
--->
-                </div>
+        <div class="topic-grid" data-course="google-planilhas" id="topicGrid">
 
-                <div class="card">
-                    <h3>
-                        <a href="google_planilhas-aula08.html">
-                            8. Extração de Relatórios com a Função QUERY
-                        </a>
-                    </h3>
-                    <p>Agrupamento inteligente de dados em larga escala, cruzamento de matrizes acadêmicas e geração de resumos gerenciais automáticos.</p>
-<!--
-                    <div class="exemplo-box">
-                        <div class="exemplo-title">Exemplo Prático:</div>
-                    </div>
--->                    
-                </div>
+            <!-- ============ NOVO: USO DE DADOS (aprofundado) ============ -->
+            <article class="topic-card" data-id="dados-importacao" data-keywords="importar importação csv xlsx excel ods importdata importhtml importxml dados externos uso de dados">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-file-import"></i></div>
+                <span class="topic-card__badge">Uso de Dados</span>
+                <h2 class="topic-card__title">Importação de Dados</h2>
+                <p class="topic-card__desc">Importar CSV, Excel e ODS; menu Arquivo &gt; Importar; funções IMPORTDATA, IMPORTHTML e IMPORTXML; colar especial.</p>
+                <a class="topic-card__link" href="topico-importacao.html">Ver Slides</a>
+            </article>
 
-                <div class="card">
-                    <h3>
-                        <a href="google_planilhas-aula09.html">
-                            9. Introdução à Automação com Apps Script
-                        </a>
-                    </h3>
-                    <p>Automação básica de rotinas com JavaScript para manipulação e envio automatizado de dados contidos nas abas.</p>
-<!--
-                    <div class="exemplo-box">
-                        <div class="exemplo-title">Exemplo Prático:</div>
-                    </div>
--->                    
-                </div>
+            <article class="topic-card" data-id="dados-exportacao" data-keywords="exportar exportação download pdf csv xlsx ods tsv publicar na web compartilhar uso de dados">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-file-export"></i></div>
+                <span class="topic-card__badge">Uso de Dados</span>
+                <h2 class="topic-card__title">Exportação de Dados</h2>
+                <p class="topic-card__desc">Baixar como PDF, XLSX, CSV e TSV; publicar na web; compartilhar; exportar abas e recortes com cuidado de LGPD.</p>
+                <a class="topic-card__link" href="topico-exportacao.html">Ver Slides</a>
+            </article>
 
-                <div class="card">
-                    <h3>
-                        <a href="google_planilhas-aula10.html">
-                            10. Visualização de Dados e Gráficos
-                        </a>
-                    </h3>
-                    <p></p>
-<!--
-                    <div class="exemplo-box">
-                        <div class="exemplo-title">Exemplo Prático:</div>
-                    </div>
--->
-                </div>
+            <article class="topic-card" data-id="dados-tratamento" data-keywords="tratamento limpeza dados arrumar trim substituir dividir texto duplicatas validação arrayformula query formatação condicional uso de dados">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-broom"></i></div>
+                <span class="topic-card__badge">Uso de Dados</span>
+                <h2 class="topic-card__title">Tratamento de Dados</h2>
+                <p class="topic-card__desc">Limpar e organizar: ARRUMAR, SUBSTITUIR, dividir texto, remover duplicatas, validação, ARRAYFORMULA e QUERY.</p>
+                <a class="topic-card__link" href="topico-tratamento.html">Ver Slides</a>
+            </article>
 
-                <div class="card">
-                    <h3>
-                        <a href="google_planilhas-aula11.html">
-                            10. Teclas de Atalho e Produtividade
-                        </a>
-                    </h3>
-                    <p></p>
-<!--
-                    <div class="exemplo-box">
-                        <div class="exemplo-title">Exemplo Prático:</div>
-                    </div>
--->
-                </div>
+            <article class="topic-card" data-id="dados-importrange" data-keywords="importrange outro arquivo planilha google drive referência entre abas query filtro procx acesso dados externos uso de dados">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-link"></i></div>
+                <span class="topic-card__badge">Uso de Dados</span>
+                <h2 class="topic-card__title">Acesso a Outra Planilha (Drive)</h2>
+                <p class="topic-card__desc">Ler dados de outro arquivo do Drive com IMPORTRANGE; autorização; combinar com QUERY e PROCX entre setores.</p>
+                <a class="topic-card__link" href="topico-importrange.html">Ver Slides</a>
+            </article>
 
+            <article class="topic-card" data-id="dados-macros" data-keywords="macros automação apps script javascript gatilhos triggers onedit onopen gravar macro e-mail pdf uso de dados">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-robot"></i></div>
+                <span class="topic-card__badge">Uso de Dados</span>
+                <h2 class="topic-card__title">Macros e Apps Script</h2>
+                <p class="topic-card__desc">Gravar e editar macros, atalhos, introdução ao Apps Script, gatilhos por tempo/edição e automações.</p>
+                <a class="topic-card__link" href="topico-macros.html">Ver Slides</a>
+            </article>
 
-            </div>
-        </section>
-    </div>
-    <footer>
-        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull;
+            <article class="topic-card" data-id="dados-exercicios" data-keywords="exercícios práticos atividades desafio importar tratar exportar importrange macro query uso de dados">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-pen-to-square"></i></div>
+                <span class="topic-card__badge">Exercícios</span>
+                <h2 class="topic-card__title">Exercícios Práticos</h2>
+                <p class="topic-card__desc">Do dado bruto ao relatório: exercícios resolvidos integrando importação, tratamento, IMPORTRANGE, exportação e macros.</p>
+                <a class="topic-card__link" href="topico-exercicios.html">Ver Exercícios</a>
+            </article>
+
+            <!-- ============ CURSO BÁSICO (aulas 01 a 11) ============ -->
+            <article class="topic-card" data-id="aula01" data-keywords="aula 1 interface introdução dados linhas colunas células organização cadastro importar csv básico">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-table-cells"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-table-cells"></i></div>
+                <span class="topic-card__badge">Aula 01</span>
+                <h2 class="topic-card__title">Interface e Introdução aos Dados</h2>
+                <p class="topic-card__desc">Navegação básica, linhas, colunas e como classificar dados corretamente.</p>
+                <a class="topic-card__link" href="google_planilhas-aula01.html">Ver Aula</a>
+            </article>
+
+            <article class="topic-card" data-id="aula02" data-keywords="aula 2 fórmulas soma média cont.num cont.valores operadores estatísticas básico">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-calculator"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-calculator"></i></div>
+                <span class="topic-card__badge">Aula 02</span>
+                <h2 class="topic-card__title">Fórmulas de Controle Diário</h2>
+                <p class="topic-card__desc">Operadores matemáticos e funções essenciais: SOMA, MÉDIA, CONT.NUM e CONT.VALORES.</p>
+                <a class="topic-card__link" href="google_planilhas-aula02.html">Ver Aula</a>
+            </article>
+
+            <article class="topic-card" data-id="aula03" data-keywords="aula 3 formatação condicional cores alerta prazos vencidos destaque básico">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-fill-drip"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-fill-drip"></i></div>
+                <span class="topic-card__badge">Aula 03</span>
+                <h2 class="topic-card__title">Formatação Condicional</h2>
+                <p class="topic-card__desc">Destacar automaticamente prazos vencidos, faltas críticas ou orçamentos estourados.</p>
+                <a class="topic-card__link" href="google_planilhas-aula03.html">Ver Aula</a>
+            </article>
+
+            <article class="topic-card" data-id="aula04" data-keywords="aula 4 funções lógicas se e ou condicional automação critérios básico">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-code-branch"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-code-branch"></i></div>
+                <span class="topic-card__badge">Aula 04</span>
+                <h2 class="topic-card__title">Funções Lógicas (SE, E, OU)</h2>
+                <p class="topic-card__desc">Automação de respostas por critérios: resultados acadêmicos e triagem de requisições.</p>
+                <a class="topic-card__link" href="google_planilhas-aula04.html">Ver Aula</a>
+            </article>
+
+            <article class="topic-card" data-id="aula05" data-keywords="aula 5 procx procv xlookup cruzamento listas id busca básico">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-magnifying-glass-arrow-right"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-magnifying-glass-arrow-right"></i></div>
+                <span class="topic-card__badge">Aula 05</span>
+                <h2 class="topic-card__title">Cruzamento de Listas (PROCX/PROCV)</h2>
+                <p class="topic-card__desc">Encontrar informações de um servidor ou aluno em tabelas diferentes pelo ID.</p>
+                <a class="topic-card__link" href="google_planilhas-aula05.html">Ver Aula</a>
+            </article>
+
+            <article class="topic-card" data-id="aula06" data-keywords="aula 6 tabelas dinâmicas gráficos agrupamento relatórios sumarizados básico">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-table-list"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-table-list"></i></div>
+                <span class="topic-card__badge">Aula 06</span>
+                <h2 class="topic-card__title">Tabelas e Gráficos Dinâmicos</h2>
+                <p class="topic-card__desc">Agrupar grandes volumes de registros para relatórios sumarizados.</p>
+                <a class="topic-card__link" href="google_planilhas-aula06.html">Ver Aula</a>
+            </article>
+
+            <article class="topic-card" data-id="aula07" data-keywords="aula 7 filter unique extração automática listas suspensas filtros básico">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-filter"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-filter"></i></div>
+                <span class="topic-card__badge">Aula 07</span>
+                <h2 class="topic-card__title">Extração com FILTER e UNIQUE</h2>
+                <p class="topic-card__desc">Listas suspensas inteligentes, consistência de entrada e filtros para relatórios rápidos.</p>
+                <a class="topic-card__link" href="google_planilhas-aula07.html">Ver Aula</a>
+            </article>
+
+            <article class="topic-card" data-id="aula08" data-keywords="aula 8 query relatórios agrupamento cruzamento matrizes resumos gerenciais básico">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-database"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-database"></i></div>
+                <span class="topic-card__badge">Aula 08</span>
+                <h2 class="topic-card__title">Relatórios com a Função QUERY</h2>
+                <p class="topic-card__desc">Agrupamento inteligente em larga escala e geração de resumos gerenciais automáticos.</p>
+                <a class="topic-card__link" href="google_planilhas-aula08.html">Ver Aula</a>
+            </article>
+
+            <article class="topic-card" data-id="aula09" data-keywords="aula 9 apps script automação javascript abas envio dados introdução básico">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-gears"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-gears"></i></div>
+                <span class="topic-card__badge">Aula 09</span>
+                <h2 class="topic-card__title">Introdução ao Apps Script</h2>
+                <p class="topic-card__desc">Automação básica de rotinas com JavaScript para manipular e enviar dados das abas.</p>
+                <a class="topic-card__link" href="google_planilhas-aula09.html">Ver Aula</a>
+            </article>
+
+            <article class="topic-card" data-id="aula10" data-keywords="aula 10 visualização dados gráficos charts dashboards básico">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-chart-pie"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-chart-pie"></i></div>
+                <span class="topic-card__badge">Aula 10</span>
+                <h2 class="topic-card__title">Visualização de Dados e Gráficos</h2>
+                <p class="topic-card__desc">Transformar tabelas em gráficos claros para apresentar resultados.</p>
+                <a class="topic-card__link" href="google_planilhas-aula10.html">Ver Aula</a>
+            </article>
+
+            <article class="topic-card" data-id="aula11" data-keywords="aula 11 teclas de atalho produtividade atalhos eficiência básico">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-keyboard"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-keyboard"></i></div>
+                <span class="topic-card__badge">Aula 11</span>
+                <h2 class="topic-card__title">Teclas de Atalho e Produtividade</h2>
+                <p class="topic-card__desc">Atalhos essenciais para ganhar velocidade no trabalho diário com planilhas.</p>
+                <a class="topic-card__link" href="google_planilhas-aula11.html">Ver Aula</a>
+            </article>
+
+        </div>
+
+        <p class="topic-empty" data-role="empty" hidden>Nenhum tópico encontrado para sua busca.</p>
+
+        <div class="back-portal">
+            <a href="../index.html"><i class="fa-solid fa-arrow-left"></i> Voltar ao Portal de Aulas</a>
+        </div>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. MSc. Carlos A. L. Schaeffer | Planilhas Google</p>
     </footer>
+
+    <script src="../assets/js/cards.js"></script>
 </body>
 
 </html>

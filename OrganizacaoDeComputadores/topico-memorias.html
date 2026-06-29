@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-br">
 
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Org. Computadores - Memórias: Tipos e Unidades de Armazenamento</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/slides.css">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Org. Computadores - Memórias: Tipos e Unidades de Armazenamento</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
         body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
         .slide { background: #ffffff; color: #1e293b; }
         .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
@@ -34,428 +32,412 @@
         .pyramid { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 20px; }
         .pyramid .level { color: #fff; padding: 12px; border-radius: 6px; text-align: center; font-weight: bold; }
     </style>
-    <link rel="stylesheet" href="../assets/css/site.css">
+<link href="../assets/css/site.css" rel="stylesheet"/>
 </head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Organização de Computadores
+            </h1>
+<p>Memórias: tipos e unidades de armazenamento</p>
+</div>
+</header>
 
-<body class="slides-light">
-
-    <!-- Capa -->
-    <div class="slide hero">
-        <i class="fa-solid fa-memory" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
-        <h1>Memórias</h1>
-        <p style="font-size: 24px; opacity: 0.8;">Tipos de memória e unidades de armazenamento</p>
-        <div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-memory" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+<h1>Memórias</h1>
+<p style="font-size: 24px; opacity: 0.8;">Tipos de memória e unidades de armazenamento</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
             Organização de Computadores</div>
-    </div>
-
-    <!-- O que é memória -->
-    <div class="slide">
-        <div class="header"><h2>O que é memória?</h2></div>
-        <div class="content">
-            <p class="lead"><span class="highlight">Memória</span> é qualquer dispositivo capaz de armazenar
+</div>
+<!-- O que é memória -->
+<div class="slide">
+<div class="header"><h2>O que é memória?</h2></div>
+<div class="content">
+<p class="lead"><span class="highlight">Memória</span> é qualquer dispositivo capaz de armazenar
                 informação (dados e instruções) para uso imediato ou futuro pelo computador.</p>
-            <div class="info-box">
-                <p>Nenhuma tecnologia de memória é, ao mesmo tempo, <b>rápida, barata e de grande capacidade</b>. Por
+<div class="info-box">
+<p>Nenhuma tecnologia de memória é, ao mesmo tempo, <b>rápida, barata e de grande capacidade</b>. Por
                     isso o computador combina vários tipos em uma <b>hierarquia</b>: pouca memória rápida e cara perto
                     da CPU, muita memória lenta e barata mais distante.</p>
-            </div>
-            <p style="margin-top: 16px;">Três parâmetros descrevem qualquer memória: <span class="highlight">tempo de
-                acesso</span> (latência), <span class="highlight">capacidade</span> (quanto armazena) e <span
-                class="highlight">custo por bit</span>.</p>
-        </div>
-    </div>
-
-    <!-- Hierarquia de memória -->
-    <div class="slide">
-        <div class="header"><h2>A Hierarquia de Memória</h2></div>
-        <div class="content">
-            <div class="grid">
-                <div class="pyramid">
-                    <div class="level" style="background:#1e3a8a; width:40%;">Registradores</div>
-                    <div class="level" style="background:#1d4ed8; width:55%;">Cache (L1, L2, L3)</div>
-                    <div class="level" style="background:#3b82f6; width:70%;">Memória Principal (RAM)</div>
-                    <div class="level" style="background:#60a5fa; width:85%; color:#1e293b;">SSD / Disco Rígido</div>
-                    <div class="level" style="background:#bfdbfe; width:100%; color:#1e293b;">Backup / Nuvem / Fita</div>
-                </div>
-                <div>
-                    <p>Quanto mais <b>perto do topo</b>:</p>
-                    <ul class="spaced">
-                        <li>mais <span class="highlight">rápido</span> o acesso;</li>
-                        <li>mais <span class="highlight">caro</span> por bit;</li>
-                        <li><span class="highlight">menor</span> a capacidade.</li>
-                    </ul>
-                    <p style="margin-top: 10px;">O princípio da <b>localidade de referência</b> (dados usados
+</div>
+<p style="margin-top: 16px;">Três parâmetros descrevem qualquer memória: <span class="highlight">tempo de
+                acesso</span> (latência), <span class="highlight">capacidade</span> (quanto armazena) e <span class="highlight">custo por bit</span>.</p>
+</div>
+</div>
+<!-- Hierarquia de memória -->
+<div class="slide">
+<div class="header"><h2>A Hierarquia de Memória</h2></div>
+<div class="content">
+<div class="grid">
+<div class="pyramid">
+<div class="level" style="background:#1e3a8a; width:40%;">Registradores</div>
+<div class="level" style="background:#1d4ed8; width:55%;">Cache (L1, L2, L3)</div>
+<div class="level" style="background:#3b82f6; width:70%;">Memória Principal (RAM)</div>
+<div class="level" style="background:#60a5fa; width:85%; color:#1e293b;">SSD / Disco Rígido</div>
+<div class="level" style="background:#bfdbfe; width:100%; color:#1e293b;">Backup / Nuvem / Fita</div>
+</div>
+<div>
+<p>Quanto mais <b>perto do topo</b>:</p>
+<ul class="spaced">
+<li>mais <span class="highlight">rápido</span> o acesso;</li>
+<li>mais <span class="highlight">caro</span> por bit;</li>
+<li><span class="highlight">menor</span> a capacidade.</li>
+</ul>
+<p style="margin-top: 10px;">O princípio da <b>localidade de referência</b> (dados usados
                         recentemente tendem a ser usados de novo) faz essa hierarquia funcionar muito bem.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Volátil x não-volátil -->
-    <div class="slide">
-        <div class="header"><h2>Volátil x Não-volátil</h2></div>
-        <div class="content">
-            <div class="grid">
-                <div class="card">
-                    <h3><i class="fa-solid fa-bolt"></i> Volátil</h3>
-                    <p>Perde o conteúdo quando a energia é cortada. Usada para trabalho temporário.</p>
-                    <p style="margin-top:10px;"><b>Exemplos:</b> RAM (DRAM, SRAM), registradores, cache.</p>
-                </div>
-                <div class="card">
-                    <h3><i class="fa-solid fa-box-archive"></i> Não-volátil</h3>
-                    <p>Mantém o conteúdo sem energia. Usada para armazenamento permanente.</p>
-                    <p style="margin-top:10px;"><b>Exemplos:</b> ROM, SSD, HD, pendrive, cartão SD, DVD.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Memória principal: RAM -->
-    <div class="slide">
-        <div class="header"><h2>Memória RAM</h2></div>
-        <div class="content">
-            <p><span class="highlight">RAM</span> (<i>Random Access Memory</i> — memória de acesso aleatório) permite
+</div>
+</div>
+</div>
+</div>
+<!-- Volátil x não-volátil -->
+<div class="slide">
+<div class="header"><h2>Volátil x Não-volátil</h2></div>
+<div class="content">
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-bolt"></i> Volátil</h3>
+<p>Perde o conteúdo quando a energia é cortada. Usada para trabalho temporário.</p>
+<p style="margin-top:10px;"><b>Exemplos:</b> RAM (DRAM, SRAM), registradores, cache.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-box-archive"></i> Não-volátil</h3>
+<p>Mantém o conteúdo sem energia. Usada para armazenamento permanente.</p>
+<p style="margin-top:10px;"><b>Exemplos:</b> ROM, SSD, HD, pendrive, cartão SD, DVD.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Memória principal: RAM -->
+<div class="slide">
+<div class="header"><h2>Memória RAM</h2></div>
+<div class="content">
+<p><span class="highlight">RAM</span> (<i>Random Access Memory</i> — memória de acesso aleatório) permite
                 ler/escrever qualquer posição diretamente, no mesmo tempo. É a memória de trabalho do computador:
                 volátil e de leitura/escrita.</p>
-            <table class="table">
-                <tr><th>Tipo</th><th>Característica</th><th>Uso típico</th></tr>
-                <tr><td><b>SRAM</b> (estática)</td><td>Muito rápida, cara, não precisa de refresh</td><td>Memória cache</td></tr>
-                <tr><td><b>DRAM</b> (dinâmica)</td><td>Mais lenta e barata, precisa de refresh periódico</td><td>Memória principal</td></tr>
-                <tr><td><b>SDRAM / DDR</b></td><td>DRAM sincronizada com o clock; DDR transfere 2 dados por ciclo</td><td>Pentes de memória (DDR4, DDR5)</td></tr>
-            </table>
-            <div class="info-box">
-                <p>"Acesso aleatório" não significa desordenado: significa que o tempo para acessar qualquer endereço é
+<table class="table">
+<tr><th>Tipo</th><th>Característica</th><th>Uso típico</th></tr>
+<tr><td><b>SRAM</b> (estática)</td><td>Muito rápida, cara, não precisa de refresh</td><td>Memória cache</td></tr>
+<tr><td><b>DRAM</b> (dinâmica)</td><td>Mais lenta e barata, precisa de refresh periódico</td><td>Memória principal</td></tr>
+<tr><td><b>SDRAM / DDR</b></td><td>DRAM sincronizada com o clock; DDR transfere 2 dados por ciclo</td><td>Pentes de memória (DDR4, DDR5)</td></tr>
+</table>
+<div class="info-box">
+<p>"Acesso aleatório" não significa desordenado: significa que o tempo para acessar qualquer endereço é
                     o mesmo, ao contrário de uma fita, onde é preciso percorrer sequencialmente.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- ROM -->
-    <div class="slide">
-        <div class="header"><h2>Memória ROM e variantes</h2></div>
-        <div class="content">
-            <p><span class="highlight">ROM</span> (<i>Read Only Memory</i>) é não-volátil e guarda informações que
+</div>
+</div>
+</div>
+<!-- ROM -->
+<div class="slide">
+<div class="header"><h2>Memória ROM e variantes</h2></div>
+<div class="content">
+<p><span class="highlight">ROM</span> (<i>Read Only Memory</i>) é não-volátil e guarda informações que
                 raramente mudam, como o firmware de inicialização (BIOS/UEFI).</p>
-            <table class="table">
-                <tr><th>Tipo</th><th>Pode ser regravada?</th></tr>
-                <tr><td><b>ROM</b></td><td>Não — gravada na fabricação</td></tr>
-                <tr><td><b>PROM</b></td><td>Uma única vez, pelo usuário</td></tr>
-                <tr><td><b>EPROM</b></td><td>Sim — apagada por luz ultravioleta</td></tr>
-                <tr><td><b>EEPROM</b></td><td>Sim — apagada eletricamente, byte a byte</td></tr>
-                <tr><td><b>Flash</b></td><td>Sim — EEPROM rápida, apagada em blocos (base de SSDs e pendrives)</td></tr>
-            </table>
-        </div>
-    </div>
-
-    <!-- Cache -->
-    <div class="slide">
-        <div class="header"><h2>Memória Cache</h2></div>
-        <div class="content">
-            <p>A <span class="highlight">cache</span> é uma memória pequena e muito rápida (SRAM) que fica entre a CPU e
+<table class="table">
+<tr><th>Tipo</th><th>Pode ser regravada?</th></tr>
+<tr><td><b>ROM</b></td><td>Não — gravada na fabricação</td></tr>
+<tr><td><b>PROM</b></td><td>Uma única vez, pelo usuário</td></tr>
+<tr><td><b>EPROM</b></td><td>Sim — apagada por luz ultravioleta</td></tr>
+<tr><td><b>EEPROM</b></td><td>Sim — apagada eletricamente, byte a byte</td></tr>
+<tr><td><b>Flash</b></td><td>Sim — EEPROM rápida, apagada em blocos (base de SSDs e pendrives)</td></tr>
+</table>
+</div>
+</div>
+<!-- Cache -->
+<div class="slide">
+<div class="header"><h2>Memória Cache</h2></div>
+<div class="content">
+<p>A <span class="highlight">cache</span> é uma memória pequena e muito rápida (SRAM) que fica entre a CPU e
                 a RAM. Ela guarda cópias dos dados mais usados para evitar o acesso lento à memória principal.</p>
-            <div class="grid" style="margin-top: 10px;">
-                <ul class="spaced">
-                    <li><span class="highlight">L1:</span> a menor e mais rápida, dentro de cada núcleo.</li>
-                    <li><span class="highlight">L2:</span> maior, um pouco mais lenta.</li>
-                    <li><span class="highlight">L3:</span> grande, compartilhada entre os núcleos.</li>
-                </ul>
-                <div class="info-box" style="margin-top:0;">
-                    <p><b>Hit</b> = o dado estava na cache (ótimo). <b>Miss</b> = não estava, precisa buscar na RAM
+<div class="grid" style="margin-top: 10px;">
+<ul class="spaced">
+<li><span class="highlight">L1:</span> a menor e mais rápida, dentro de cada núcleo.</li>
+<li><span class="highlight">L2:</span> maior, um pouco mais lenta.</li>
+<li><span class="highlight">L3:</span> grande, compartilhada entre os núcleos.</li>
+</ul>
+<div class="info-box" style="margin-top:0;">
+<p><b>Hit</b> = o dado estava na cache (ótimo). <b>Miss</b> = não estava, precisa buscar na RAM
                         (lento). Uma alta <b>taxa de acerto</b> é o que faz a cache valer a pena.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Armazenamento secundário -->
-    <div class="slide">
-        <div class="header"><h2>Armazenamento Secundário</h2></div>
-        <div class="content">
-            <p>Memória não-volátil de grande capacidade para guardar arquivos e programas de forma permanente.</p>
-            <table class="table">
-                <tr><th>Tecnologia</th><th>Como funciona</th><th>Velocidade</th></tr>
-                <tr><td><b>HD (disco rígido)</b></td><td>Discos magnéticos girando + cabeça de leitura</td><td>Lento (partes móveis)</td></tr>
-                <tr><td><b>SSD</b></td><td>Memória flash, sem partes móveis</td><td>Rápido</td></tr>
-                <tr><td><b>NVMe</b></td><td>SSD ligado direto ao barramento PCIe</td><td>Muito rápido</td></tr>
-                <tr><td><b>Óptico (CD/DVD/Blu-ray)</b></td><td>Leitura por laser de sulcos na superfície</td><td>Lento</td></tr>
-                <tr><td><b>Fita magnética</b></td><td>Acesso sequencial</td><td>Muito lento (backup)</td></tr>
-            </table>
-        </div>
-    </div>
-
-    <!-- Bit e Byte -->
-    <div class="slide">
-        <div class="header"><h2>A menor unidade: bit e byte</h2></div>
-        <div class="content">
-            <div class="grid">
-                <div>
-                    <p class="lead">O <span class="highlight">bit</span> (<i>binary digit</i>) é a menor unidade de
+</div>
+</div>
+</div>
+</div>
+<!-- Armazenamento secundário -->
+<div class="slide">
+<div class="header"><h2>Armazenamento Secundário</h2></div>
+<div class="content">
+<p>Memória não-volátil de grande capacidade para guardar arquivos e programas de forma permanente.</p>
+<table class="table">
+<tr><th>Tecnologia</th><th>Como funciona</th><th>Velocidade</th></tr>
+<tr><td><b>HD (disco rígido)</b></td><td>Discos magnéticos girando + cabeça de leitura</td><td>Lento (partes móveis)</td></tr>
+<tr><td><b>SSD</b></td><td>Memória flash, sem partes móveis</td><td>Rápido</td></tr>
+<tr><td><b>NVMe</b></td><td>SSD ligado direto ao barramento PCIe</td><td>Muito rápido</td></tr>
+<tr><td><b>Óptico (CD/DVD/Blu-ray)</b></td><td>Leitura por laser de sulcos na superfície</td><td>Lento</td></tr>
+<tr><td><b>Fita magnética</b></td><td>Acesso sequencial</td><td>Muito lento (backup)</td></tr>
+</table>
+</div>
+</div>
+<!-- Bit e Byte -->
+<div class="slide">
+<div class="header"><h2>A menor unidade: bit e byte</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<p class="lead">O <span class="highlight">bit</span> (<i>binary digit</i>) é a menor unidade de
                         informação: vale <b>0</b> ou <b>1</b>.</p>
-                    <p style="margin-top: 16px;">Um conjunto de <b>8 bits</b> forma um <span class="highlight">byte</span>,
+<p style="margin-top: 16px;">Um conjunto de <b>8 bits</b> forma um <span class="highlight">byte</span>,
                         que pode representar 2<sup>8</sup> = 256 valores diferentes — o suficiente para um caractere.</p>
-                    <p style="margin-top: 16px;">4 bits = 1 <b>nibble</b> (meio byte).</p>
-                </div>
-                <div class="code-box">
-1 bit&nbsp;&nbsp;→ 0 ou 1<br>
-1 nibble → 4 bits<br>
-1 byte&nbsp;&nbsp;→ 8 bits<br><br>
-'A' = 0100 0001<br>
+<p style="margin-top: 16px;">4 bits = 1 <b>nibble</b> (meio byte).</p>
+</div>
+<div class="code-box">
+1 bit  → 0 ou 1<br/>
+1 nibble → 4 bits<br/>
+1 byte  → 8 bits<br/><br/>
+'A' = 0100 0001<br/>
 = 1 byte
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Unidades de armazenamento -->
-    <div class="slide">
-        <div class="header"><h2>Unidades de Armazenamento</h2></div>
-        <div class="content">
-            <div class="grid">
-                <table class="table">
-                    <tr><th>Unidade</th><th>Equivale a</th></tr>
-                    <tr><td>1 Byte (B)</td><td>8 bits</td></tr>
-                    <tr><td>1 Kilobyte (KB)</td><td>1024 bytes</td></tr>
-                    <tr><td>1 Megabyte (MB)</td><td>1024 KB</td></tr>
-                    <tr><td>1 Gigabyte (GB)</td><td>1024 MB</td></tr>
-                    <tr><td>1 Terabyte (TB)</td><td>1024 GB</td></tr>
-                    <tr><td>1 Petabyte (PB)</td><td>1024 TB</td></tr>
-                </table>
-                <div class="info-box" style="margin-top:0;">
-                    <p><b>1000 ou 1024?</b> Tradicionalmente usa-se 1024 (potência de 2). O padrão SI define KB = 1000
+</div>
+</div>
+</div>
+<!-- Unidades de armazenamento -->
+<div class="slide">
+<div class="header"><h2>Unidades de Armazenamento</h2></div>
+<div class="content">
+<div class="grid">
+<table class="table">
+<tr><th>Unidade</th><th>Equivale a</th></tr>
+<tr><td>1 Byte (B)</td><td>8 bits</td></tr>
+<tr><td>1 Kilobyte (KB)</td><td>1024 bytes</td></tr>
+<tr><td>1 Megabyte (MB)</td><td>1024 KB</td></tr>
+<tr><td>1 Gigabyte (GB)</td><td>1024 MB</td></tr>
+<tr><td>1 Terabyte (TB)</td><td>1024 GB</td></tr>
+<tr><td>1 Petabyte (PB)</td><td>1024 TB</td></tr>
+</table>
+<div class="info-box" style="margin-top:0;">
+<p><b>1000 ou 1024?</b> Tradicionalmente usa-se 1024 (potência de 2). O padrão SI define KB = 1000
                         bytes e cria os prefixos binários <b>KiB, MiB, GiB</b> (1024) para evitar confusão.</p>
-                    <p style="margin-top:10px;">É por isso que um HD de "1 TB" mostra ~931 GB no sistema operacional: o
+<p style="margin-top:10px;">É por isso que um HD de "1 TB" mostra ~931 GB no sistema operacional: o
                         fabricante usa 1000, o SO usa 1024.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: Localidade -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: o princípio da localidade</h2></div>
-        <div class="content">
-            <p>A hierarquia de memória só funciona por causa de uma propriedade empírica dos programas reais: a
+</div>
+</div>
+</div>
+</div>
+<!-- APROFUNDAMENTO: Localidade -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: o princípio da localidade</h2></div>
+<div class="content">
+<p>A hierarquia de memória só funciona por causa de uma propriedade empírica dos programas reais: a
                 <span class="highlight">localidade de referência</span>. Ela tem duas formas:</p>
-            <div class="grid" style="margin-top: 12px;">
-                <div class="card">
-                    <h3><i class="fa-solid fa-clock"></i> Localidade temporal</h3>
-                    <p>Um dado acessado agora tende a ser acessado de novo em breve. Ex.: a variável contadora de um
+<div class="grid" style="margin-top: 12px;">
+<div class="card">
+<h3><i class="fa-solid fa-clock"></i> Localidade temporal</h3>
+<p>Um dado acessado agora tende a ser acessado de novo em breve. Ex.: a variável contadora de um
                         laço, lida e escrita a cada iteração.</p>
-                </div>
-                <div class="card">
-                    <h3><i class="fa-solid fa-arrows-left-right-to-line"></i> Localidade espacial</h3>
-                    <p>Se um endereço é acessado, os <b>vizinhos</b> provavelmente serão também. Ex.: percorrer um vetor
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-arrows-left-right-to-line"></i> Localidade espacial</h3>
+<p>Se um endereço é acessado, os <b>vizinhos</b> provavelmente serão também. Ex.: percorrer um vetor
                         ou executar instruções em sequência.</p>
-                </div>
-            </div>
-            <div class="info-box">
-                <p>Por isso a cache não traz apenas o byte pedido, e sim um <b>bloco</b> inteiro (tipicamente 64 bytes):
+</div>
+</div>
+<div class="info-box">
+<p>Por isso a cache não traz apenas o byte pedido, e sim um <b>bloco</b> inteiro (tipicamente 64 bytes):
                     aposta-se na localidade espacial. Um código que respeita a localidade (ex.: percorrer matrizes na
                     ordem em que estão na memória) pode ser <b>várias vezes mais rápido</b> que um que a ignora.</p>
+</div>
+</div>
+</div>
+<!-- APROFUNDAMENTO: Mapeamento de cache -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: como a cache encontra um dado</h2></div>
+<div class="content">
+<p>O endereço de memória é quebrado em três campos para localizar o dado na cache:</p>
+<div class="code-box" style="margin-top: 12px; font-size:18px;">
+[ ........ TAG ........ | ... ÍNDICE ... | OFFSET ]<br/><br/>
+OFFSET → posição do byte dentro do bloco<br/>
+ÍNDICE → qual linha/conjunto da cache<br/>
+TAG    → confirma se é o bloco certo
             </div>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: Mapeamento de cache -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: como a cache encontra um dado</h2></div>
-        <div class="content">
-            <p>O endereço de memória é quebrado em três campos para localizar o dado na cache:</p>
-            <div class="code-box" style="margin-top: 12px; font-size:18px;">
-[ ........ TAG ........ | ... ÍNDICE ... | OFFSET ]<br><br>
-OFFSET → posição do byte dentro do bloco<br>
-ÍNDICE → qual linha/conjunto da cache<br>
-TAG&nbsp;&nbsp;&nbsp; → confirma se é o bloco certo
-            </div>
-            <table class="table">
-                <tr><th>Organização</th><th>Como mapeia</th><th>Característica</th></tr>
-                <tr><td><b>Mapeamento direto</b></td><td>Cada bloco só pode ir a uma linha fixa</td><td>Rápida e simples; mais conflitos</td></tr>
-                <tr><td><b>Associativa por conjuntos</b></td><td>Bloco pode ir a qualquer via de um conjunto (2, 4, 8 vias)</td><td>Equilíbrio usado na prática</td></tr>
-                <tr><td><b>Totalmente associativa</b></td><td>Bloco pode ir a qualquer linha</td><td>Menos conflitos; cara (comparadores)</td></tr>
-            </table>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: AMAT e políticas -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: AMAT e políticas de cache</h2></div>
-        <div class="content">
-            <div class="grid">
-                <div>
-                    <p>O desempenho real da memória é medido pelo <span class="highlight">tempo médio de acesso</span>
+<table class="table">
+<tr><th>Organização</th><th>Como mapeia</th><th>Característica</th></tr>
+<tr><td><b>Mapeamento direto</b></td><td>Cada bloco só pode ir a uma linha fixa</td><td>Rápida e simples; mais conflitos</td></tr>
+<tr><td><b>Associativa por conjuntos</b></td><td>Bloco pode ir a qualquer via de um conjunto (2, 4, 8 vias)</td><td>Equilíbrio usado na prática</td></tr>
+<tr><td><b>Totalmente associativa</b></td><td>Bloco pode ir a qualquer linha</td><td>Menos conflitos; cara (comparadores)</td></tr>
+</table>
+</div>
+</div>
+<!-- APROFUNDAMENTO: AMAT e políticas -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: AMAT e políticas de cache</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<p>O desempenho real da memória é medido pelo <span class="highlight">tempo médio de acesso</span>
                         (AMAT), que pondera acertos e faltas:</p>
-                    <div class="code-box" style="margin-top: 10px; font-size:17px;">
+<div class="code-box" style="margin-top: 10px; font-size:17px;">
 AMAT = t<sub>acerto</sub> + (taxa<sub>falta</sub> × penalidade<sub>falta</sub>)
                     </div>
-                    <p style="margin-top: 12px;">Reduzir a taxa de faltas (caches maiores/associativas) ou a penalidade
+<p style="margin-top: 12px;">Reduzir a taxa de faltas (caches maiores/associativas) ou a penalidade
                         (níveis L1/L2/L3) melhora o AMAT.</p>
-                </div>
-                <div>
-                    <p><b>Política de escrita:</b></p>
-                    <ul class="spaced">
-                        <li><b>Write-through:</b> escreve na cache e na RAM ao mesmo tempo (simples, mais tráfego).</li>
-                        <li><b>Write-back:</b> escreve só na cache; grava na RAM ao remover o bloco (eficiente, usa bit
+</div>
+<div>
+<p><b>Política de escrita:</b></p>
+<ul class="spaced">
+<li><b>Write-through:</b> escreve na cache e na RAM ao mesmo tempo (simples, mais tráfego).</li>
+<li><b>Write-back:</b> escreve só na cache; grava na RAM ao remover o bloco (eficiente, usa bit
                             <i>dirty</i>).</li>
-                    </ul>
-                    <p style="margin-top: 10px;"><b>Substituição:</b> ao encher, qual bloco sai? <b>LRU</b> (menos usado
+</ul>
+<p style="margin-top: 10px;"><b>Substituição:</b> ao encher, qual bloco sai? <b>LRU</b> (menos usado
                         recentemente), FIFO ou aleatório.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: DRAM por dentro -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: a DRAM por dentro</h2></div>
-        <div class="content">
-            <p>Cada bit de DRAM é guardado em uma célula <span class="highlight">1T1C</span>: um transistor e um
+</div>
+</div>
+</div>
+</div>
+<!-- APROFUNDAMENTO: DRAM por dentro -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: a DRAM por dentro</h2></div>
+<div class="content">
+<p>Cada bit de DRAM é guardado em uma célula <span class="highlight">1T1C</span>: um transistor e um
                 capacitor. A carga do capacitor (carregado = 1, descarregado = 0) <b>vaza</b> com o tempo — por isso a
                 DRAM precisa ser <b>recarregada (refresh)</b> milhares de vezes por segundo. É a origem do nome
                 "dinâmica".</p>
-            <ul class="spaced" style="margin-top: 8px;">
-                <li>As células formam uma <b>matriz</b>; o acesso seleciona primeiro uma linha (sinal <b>RAS</b>) e
+<ul class="spaced" style="margin-top: 8px;">
+<li>As células formam uma <b>matriz</b>; o acesso seleciona primeiro uma linha (sinal <b>RAS</b>) e
                     depois uma coluna (<b>CAS</b>).</li>
-                <li>Vários bancos, <i>ranks</i> e canais operam em paralelo para aumentar a <b>largura de banda</b>.</li>
-                <li><b>DDR</b> (Double Data Rate) transfere dados nas duas bordas do clock; cada geração (DDR3, DDR4,
+<li>Vários bancos, <i>ranks</i> e canais operam em paralelo para aumentar a <b>largura de banda</b>.</li>
+<li><b>DDR</b> (Double Data Rate) transfere dados nas duas bordas do clock; cada geração (DDR3, DDR4,
                     DDR5) eleva a frequência e a banda e reduz a tensão.</li>
-            </ul>
-            <div class="info-box">
-                <p>A <b>latência</b> (tempo até o primeiro dado, ligada aos tempos CAS/RAS) evoluiu pouco; o grande ganho
+</ul>
+<div class="info-box">
+<p>A <b>latência</b> (tempo até o primeiro dado, ligada aos tempos CAS/RAS) evoluiu pouco; o grande ganho
                     das gerações de DDR está na <b>banda</b> (bytes por segundo), não na latência.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: Flash NAND -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: memória Flash NAND (SSDs)</h2></div>
-        <div class="content">
-            <p>SSDs e pendrives usam <span class="highlight">Flash NAND</span>, que guarda carga em uma porta flutuante.
+</div>
+</div>
+</div>
+<!-- APROFUNDAMENTO: Flash NAND -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: memória Flash NAND (SSDs)</h2></div>
+<div class="content">
+<p>SSDs e pendrives usam <span class="highlight">Flash NAND</span>, que guarda carga em uma porta flutuante.
                 A quantidade de bits por célula define um trade-off entre densidade, custo e durabilidade:</p>
-            <table class="table">
-                <tr><th>Tipo</th><th>Bits/célula</th><th>Característica</th></tr>
-                <tr><td><b>SLC</b></td><td>1</td><td>Mais rápida e durável; cara (uso corporativo)</td></tr>
-                <tr><td><b>MLC</b></td><td>2</td><td>Equilíbrio</td></tr>
-                <tr><td><b>TLC</b></td><td>3</td><td>Comum em SSDs de consumo</td></tr>
-                <tr><td><b>QLC</b></td><td>4</td><td>Mais barata e densa; menos ciclos de escrita</td></tr>
-            </table>
-            <div class="info-box">
-                <p>A Flash lê/escreve em <b>páginas</b>, mas só apaga em <b>blocos</b> inteiros, e cada célula suporta um
+<table class="table">
+<tr><th>Tipo</th><th>Bits/célula</th><th>Característica</th></tr>
+<tr><td><b>SLC</b></td><td>1</td><td>Mais rápida e durável; cara (uso corporativo)</td></tr>
+<tr><td><b>MLC</b></td><td>2</td><td>Equilíbrio</td></tr>
+<tr><td><b>TLC</b></td><td>3</td><td>Comum em SSDs de consumo</td></tr>
+<tr><td><b>QLC</b></td><td>4</td><td>Mais barata e densa; menos ciclos de escrita</td></tr>
+</table>
+<div class="info-box">
+<p>A Flash lê/escreve em <b>páginas</b>, mas só apaga em <b>blocos</b> inteiros, e cada célula suporta um
                     número limitado de apagamentos. Por isso o controlador faz <b>wear leveling</b> (distribui o desgaste)
                     e <i>garbage collection</i>. O <b>3D NAND</b> empilha células verticalmente para ganhar capacidade.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- APROFUNDAMENTO: Confiabilidade e memória virtual -->
-    <div class="slide">
-        <div class="header"><h2>Aprofundamento: confiabilidade e memória virtual</h2></div>
-        <div class="content">
-            <div class="grid">
-                <div class="card">
-                    <h3><i class="fa-solid fa-shield-halved"></i> Memória ECC</h3>
-                    <p>Raios cósmicos e ruído podem inverter bits ("soft errors"). A memória <b>ECC</b> adiciona bits de
+</div>
+</div>
+</div>
+<!-- APROFUNDAMENTO: Confiabilidade e memória virtual -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: confiabilidade e memória virtual</h2></div>
+<div class="content">
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-shield-halved"></i> Memória ECC</h3>
+<p>Raios cósmicos e ruído podem inverter bits ("soft errors"). A memória <b>ECC</b> adiciona bits de
                         verificação (códigos de Hamming) capazes de <b>corrigir 1 bit</b> e <b>detectar 2 bits</b> por
                         palavra — essencial em servidores.</p>
-                </div>
-                <div class="card">
-                    <h3><i class="fa-solid fa-table-cells"></i> TLB e memória virtual</h3>
-                    <p>A memória vista pelos programas é <b>virtual</b>: a MMU traduz endereços virtuais em físicos
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-table-cells"></i> TLB e memória virtual</h3>
+<p>A memória vista pelos programas é <b>virtual</b>: a MMU traduz endereços virtuais em físicos
                         consultando a tabela de páginas. A <b>TLB</b> é uma cache dessas traduções, evitando acessos
                         extras à memória a cada referência.</p>
-                </div>
-            </div>
-            <div class="info-box">
-                <p>Note a recursão da ideia de cache: TLB faz cache de traduções, L1/L2/L3 fazem cache de dados, a RAM
+</div>
+</div>
+<div class="info-box">
+<p>Note a recursão da ideia de cache: TLB faz cache de traduções, L1/L2/L3 fazem cache de dados, a RAM
                     faz cache do disco (via paginação). Em todos os níveis vale a mesma lógica de localidade.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Glossário -->
-    <div class="slide">
-        <div class="header"><h2>Glossário do tópico</h2></div>
-        <div class="content">
-            <table class="table">
-                <tr><td><b>RAM</b></td><td>Memória volátil de trabalho, leitura e escrita.</td></tr>
-                <tr><td><b>ROM</b></td><td>Memória não-volátil, predominantemente de leitura.</td></tr>
-                <tr><td><b>Cache</b></td><td>Memória rápida intermediária entre CPU e RAM.</td></tr>
-                <tr><td><b>Volátil</b></td><td>Perde os dados sem energia.</td></tr>
-                <tr><td><b>Bit / Byte</b></td><td>Menor unidade (0/1) / conjunto de 8 bits.</td></tr>
-                <tr><td><b>Latência</b></td><td>Tempo até iniciar o acesso a um dado.</td></tr>
-                <tr><td><b>Localidade</b></td><td>Tendência de reusar dados (temporal) e vizinhos (espacial).</td></tr>
-                <tr><td><b>AMAT</b></td><td>Tempo médio de acesso = t<sub>acerto</sub> + taxa<sub>falta</sub> × penalidade.</td></tr>
-                <tr><td><b>DRAM / DDR</b></td><td>Célula 1T1C com refresh; DDR transfere nas duas bordas do clock.</td></tr>
-                <tr><td><b>ECC</b></td><td>Memória que corrige 1 bit e detecta 2 bits de erro.</td></tr>
-            </table>
-        </div>
-    </div>
-
-    <!-- Exercícios resolvidos -->
-    <div class="slide">
-        <div class="header"><h2>Exercícios resolvidos</h2></div>
-        <div class="content">
-            <div style="display:flex; flex-direction:column; gap:16px;">
-                <div>
-                    <p style="font-size:21px;"><b>1.</b> Um HD é vendido como <b>2 TB</b>. Por que o sistema
+</div>
+</div>
+</div>
+<!-- Glossário -->
+<div class="slide">
+<div class="header"><h2>Glossário do tópico</h2></div>
+<div class="content">
+<table class="table">
+<tr><td><b>RAM</b></td><td>Memória volátil de trabalho, leitura e escrita.</td></tr>
+<tr><td><b>ROM</b></td><td>Memória não-volátil, predominantemente de leitura.</td></tr>
+<tr><td><b>Cache</b></td><td>Memória rápida intermediária entre CPU e RAM.</td></tr>
+<tr><td><b>Volátil</b></td><td>Perde os dados sem energia.</td></tr>
+<tr><td><b>Bit / Byte</b></td><td>Menor unidade (0/1) / conjunto de 8 bits.</td></tr>
+<tr><td><b>Latência</b></td><td>Tempo até iniciar o acesso a um dado.</td></tr>
+<tr><td><b>Localidade</b></td><td>Tendência de reusar dados (temporal) e vizinhos (espacial).</td></tr>
+<tr><td><b>AMAT</b></td><td>Tempo médio de acesso = t<sub>acerto</sub> + taxa<sub>falta</sub> × penalidade.</td></tr>
+<tr><td><b>DRAM / DDR</b></td><td>Célula 1T1C com refresh; DDR transfere nas duas bordas do clock.</td></tr>
+<tr><td><b>ECC</b></td><td>Memória que corrige 1 bit e detecta 2 bits de erro.</td></tr>
+</table>
+</div>
+</div>
+<!-- Exercícios resolvidos -->
+<div class="slide">
+<div class="header"><h2>Exercícios resolvidos</h2></div>
+<div class="content">
+<div style="display:flex; flex-direction:column; gap:16px;">
+<div>
+<p style="font-size:21px;"><b>1.</b> Um HD é vendido como <b>2 TB</b>. Por que o sistema
                         operacional mostra cerca de <b>1862 GB</b>?</p>
-                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
-                        <div class="info-box" style="margin-top:10px;">O fabricante usa base 10: 2 TB = 2×10<sup>12</sup>
+<details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+<div class="info-box" style="margin-top:10px;">O fabricante usa base 10: 2 TB = 2×10<sup>12</sup>
                             bytes. O SO usa base 2 (GiB = 2<sup>30</sup>). 2×10<sup>12</sup> / 2<sup>30</sup> ≈
                             <b>1862 GiB</b>. Não há perda de espaço — apenas duas definições diferentes de "giga".</div>
-                    </details>
-                </div>
-                <div>
-                    <p style="font-size:21px;"><b>2.</b> Uma cache tem tempo de acerto de <b>1 ns</b>, taxa de falta de
+</details>
+</div>
+<div>
+<p style="font-size:21px;"><b>2.</b> Uma cache tem tempo de acerto de <b>1 ns</b>, taxa de falta de
                         <b>5%</b> e penalidade de falta de <b>100 ns</b>. Calcule o AMAT.</p>
-                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
-                        <div class="info-box" style="margin-top:10px;">AMAT = t<sub>acerto</sub> + (taxa<sub>falta</sub> ×
+<details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+<div class="info-box" style="margin-top:10px;">AMAT = t<sub>acerto</sub> + (taxa<sub>falta</sub> ×
                             penalidade) = 1 + (0,05 × 100) = <b>6 ns</b>. Mesmo com 95% de acertos, as faltas dominam o
                             tempo médio — daí a importância de reduzir a taxa de falta.</div>
-                    </details>
-                </div>
-                <div>
-                    <p style="font-size:21px;"><b>3.</b> Endereço de <b>32 bits</b>, blocos de <b>64 bytes</b>, cache de
+</details>
+</div>
+<div>
+<p style="font-size:21px;"><b>3.</b> Endereço de <b>32 bits</b>, blocos de <b>64 bytes</b>, cache de
                         mapeamento direto com <b>512 linhas</b>. Quantos bits têm os campos offset, índice e tag?</p>
-                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
-                        <div class="info-box" style="margin-top:10px;">Offset = log<sub>2</sub>64 = <b>6 bits</b>.
+<details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+<div class="info-box" style="margin-top:10px;">Offset = log<sub>2</sub>64 = <b>6 bits</b>.
                             Índice = log<sub>2</sub>512 = <b>9 bits</b>. Tag = 32 − 6 − 9 = <b>17 bits</b>.</div>
-                    </details>
-                </div>
-                <div>
-                    <p style="font-size:21px;"><b>4.</b> Por que a cache usa SRAM e a memória principal usa DRAM?</p>
-                    <details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
-                        <div class="info-box" style="margin-top:10px;">A SRAM é muito mais rápida e não precisa de
+</details>
+</div>
+<div>
+<p style="font-size:21px;"><b>4.</b> Por que a cache usa SRAM e a memória principal usa DRAM?</p>
+<details style="margin-top:6px;"><summary style="cursor:pointer; color:#3b82f6; font-weight:bold;">Ver solução</summary>
+<div class="info-box" style="margin-top:10px;">A SRAM é muito mais rápida e não precisa de
                             refresh, ideal para a cache (pequena e veloz), mas é cara e ocupa mais área por bit. A DRAM é
                             mais lenta e exige refresh, porém é barata e densa — adequada para a grande capacidade da
                             memória principal. É o trade-off velocidade × custo × capacidade da hierarquia.</div>
-                    </details>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Encerramento -->
-    <div class="slide hero">
-        <h1 style="color:#3b82f6;">Resumindo</h1>
-        <p style="font-size: 22px; max-width: 820px; opacity: 0.9;">A memória de um computador não é uma só: é uma
+</details>
+</div>
+</div>
+</div>
+</div>
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#3b82f6;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">A memória de um computador não é uma só: é uma
             hierarquia que troca velocidade por capacidade. Registradores e cache (rápidos e pequenos), RAM (volátil de
             trabalho), ROM/Flash e armazenamento secundário (não-voláteis e grandes). Tudo medido em bits e bytes e seus
             múltiplos.</p>
-        <div style="margin-top: 40px;">
-            <a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
-                <i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
             </a>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-6 sm:py-8 mt-auto">
-        <div class="container mx-auto px-4 sm:px-6 text-center text-sm sm:text-base" style="color: white;">
-            <p>&copy; 2026 Prof. MSc. Carlos A. L. Schaeffer | Organização de Computadores</p>
-        </div>
-    </footer>
-
+</div>
+</div>
+<!-- Footer -->
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Organização de Computadores</p>
+</footer>
 </body>
-
 </html>

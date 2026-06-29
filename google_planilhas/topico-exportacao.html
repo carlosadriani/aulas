@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Planilhas Google - Exportação de Dados</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #3b82f6; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #3b82f6; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+        .info-box { border-left: 5px solid #3b82f6; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #3b82f6; font-size: 26px; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Planilhas Google
+            </h1>
+<p>Exportação de Dados</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-file-export" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+<h1>Exportação de Dados</h1>
+<p style="font-size: 24px; opacity: 0.8;">Levando informações da planilha para o mundo</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Uso de Dados em Planilhas Google</div>
+</div>
+
+<!-- Por que exportar -->
+<div class="slide">
+<div class="header"><h2>Por que exportar?</h2></div>
+<div class="content">
+<p class="lead">Nem sempre quem recebe seus dados usa o Planilhas Google. Exportar é <span class="highlight">converter</span> sua planilha em um formato que outra pessoa, sistema ou impressora consiga
+                ler.</p>
+<div class="info-box">
+<p>Você exporta para entregar um relatório em PDF à diretoria, para enviar um CSV a um sistema que vai
+                    importá-lo, para abrir no Excel de um colega ou para publicar uma tabela num site. Cada finalidade
+                    pede um formato diferente.</p>
+</div>
+</div>
+</div>
+
+<!-- Formatos de download -->
+<div class="slide">
+<div class="header"><h2>Arquivo &gt; Fazer download</h2></div>
+<div class="content">
+<p>O caminho principal é o menu <code>Arquivo &gt; Fazer download</code>, que oferece:</p>
+<table class="table">
+<tr><th>Formato</th><th>Extensão</th><th>Use quando…</th></tr>
+<tr><td><b>Microsoft Excel</b></td><td>.xlsx</td><td>O destinatário usa Excel e precisa de fórmulas/abas</td></tr>
+<tr><td><b>OpenDocument</b></td><td>.ods</td><td>O destino usa LibreOffice/software livre</td></tr>
+<tr><td><b>PDF</b></td><td>.pdf</td><td>É um relatório para ler/imprimir, sem edição</td></tr>
+<tr><td><b>Página da web</b></td><td>.html</td><td>Vai publicar a tabela num site</td></tr>
+<tr><td><b>Valores separados por vírgula</b></td><td>.csv</td><td>Outro sistema vai importar os dados (só a aba atual)</td></tr>
+<tr><td><b>Valores separados por tabulação</b></td><td>.tsv</td><td>Sistema que espera tabulação como separador</td></tr>
+</table>
+<div class="warn-box">
+<p><b>CSV e TSV exportam apenas a aba ativa</b> e <b>somente os valores</b> — fórmulas viram resultados,
+                    cores e gráficos se perdem. Para preservar tudo, use XLSX ou ODS.</p>
+</div>
+</div>
+</div>
+
+<!-- O que cada formato preserva -->
+<div class="slide">
+<div class="header"><h2>O que cada formato preserva</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Recurso</th><th>XLSX/ODS</th><th>PDF</th><th>CSV/TSV</th></tr>
+<tr><td>Várias abas</td><td>Sim</td><td>Sim (opcional)</td><td>Não (só 1)</td></tr>
+<tr><td>Fórmulas</td><td>Sim</td><td>Não (só resultado)</td><td>Não (só resultado)</td></tr>
+<tr><td>Formatação e cores</td><td>Sim</td><td>Sim</td><td>Não</td></tr>
+<tr><td>Gráficos e imagens</td><td>Sim</td><td>Sim</td><td>Não</td></tr>
+<tr><td>Editável depois</td><td>Sim</td><td>Não</td><td>Sim (texto)</td></tr>
+</table>
+<div class="info-box">
+<p>Regra prática: <b>PDF</b> para <i>ler</i>, <b>XLSX</b> para <i>editar</i>, <b>CSV</b> para
+                    <i>alimentar outro sistema</i>.</p>
+</div>
+</div>
+</div>
+
+<!-- Exportar PDF -->
+<div class="slide">
+<div class="header"><h2>Exportar um PDF bem feito</h2></div>
+<div class="content">
+<p>Ao escolher <code>Arquivo &gt; Fazer download &gt; PDF</code>, abre-se uma tela de ajustes que define a
+                qualidade do relatório:</p>
+<ul class="spaced">
+<li><b>Exportar:</b> planilha inteira, apenas a aba atual ou apenas as células selecionadas.</li>
+<li><b>Orientação:</b> retrato ou paisagem (tabelas largas pedem paisagem).</li>
+<li><b>Tamanho do papel e margens:</b> A4 é o padrão; margens estreitas cabem mais.</li>
+<li><b>Ajustar à largura:</b> evita que colunas "vazem" para outra página.</li>
+<li><b>Quebras de página, linhas de grade, cabeçalhos/rodapés</b> com número de página e data.</li>
+<li><b>Repetir linhas de cabeçalho</b> congeladas em todas as páginas.</li>
+</ul>
+<div class="info-box">
+<p>Congelar a linha de títulos (<code>Visualizar &gt; Congelar &gt; 1 linha</code>) faz o cabeçalho se
+                    repetir em cada página do PDF — essencial em listas longas de alunos ou servidores.</p>
+</div>
+</div>
+</div>
+
+<!-- Exportar parte -->
+<div class="slide">
+<div class="header"><h2>Exportar só uma parte dos dados</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<p>Nem sempre você quer o arquivo inteiro. Para exportar um recorte:</p>
+<ul class="spaced">
+<li><b>Selecione</b> o intervalo desejado antes de exportar e escolha "células selecionadas" (no PDF).</li>
+<li><b>Esconda</b> colunas/abas sigilosas antes de gerar o arquivo.</li>
+<li><b>Crie uma aba-resumo</b> só com o que será compartilhado e exporte apenas ela em CSV.</li>
+</ul>
+</div>
+<div class="warn-box">
+<p>Ao enviar dados para fora, lembre-se da <b>LGPD</b>: remova CPF, telefones e outros dados pessoais que
+                    não sejam necessários para quem vai receber o arquivo.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Compartilhamento vs exportação -->
+<div class="slide">
+<div class="header"><h2>Compartilhar não é a mesma coisa que exportar</h2></div>
+<div class="content">
+<table class="table">
+<tr><th></th><th>Compartilhar (Drive)</th><th>Exportar (download)</th></tr>
+<tr><td>Resultado</td><td>Link para a planilha viva</td><td>Arquivo estático no formato escolhido</td></tr>
+<tr><td>Atualiza?</td><td>Sim, em tempo real</td><td>Não, é uma "foto" do momento</td></tr>
+<tr><td>Controle</td><td>Leitor / Comentarista / Editor</td><td>Quem tem o arquivo faz o que quiser</td></tr>
+<tr><td>Ideal para</td><td>Colaboração contínua</td><td>Entrega final, anexos de e-mail</td></tr>
+</table>
+<div class="info-box">
+<p>No botão <b>Compartilhar</b>, você define o papel de cada pessoa (Leitor, Comentarista, Editor) e pode
+                    restringir o download/cópia para leitores — um meio-termo entre os dois mundos.</p>
+</div>
+</div>
+</div>
+
+<!-- Publicar na web -->
+<div class="slide">
+<div class="header"><h2>Publicar na web</h2></div>
+<div class="content">
+<div class="flow">
+<div class="node">Arquivo</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Compartilhar</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Publicar na web</div>
+</div>
+<p style="margin-top:20px;">A opção <code>Publicar na web</code> gera um <b>link público</b> ou um código
+                <b>&lt;iframe&gt;</b> para embutir a tabela/gráfico em um site. Você escolhe publicar a planilha toda ou
+                só uma aba, como página web ou como CSV/XLSX.</p>
+<div class="info-box">
+<p>O conteúdo publicado se atualiza automaticamente (com pequeno atraso). Um gráfico publicado pode ser
+                    incorporado num portal e refletirá sempre os dados mais recentes da planilha.</p>
+</div>
+<div class="warn-box">
+<p>Publicar torna o conteúdo <b>acessível a qualquer pessoa com o link</b>, sem login. Nunca publique abas
+                    com dados pessoais ou sigilosos.</p>
+</div>
+</div>
+</div>
+
+<!-- Exportar por URL / Apps Script -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: exportação automática por URL</h2></div>
+<div class="content">
+<p>Toda planilha tem URLs especiais que geram um arquivo exportado na hora — úteis para integrações e para
+                links de "baixar relatório":</p>
+<div class="code-box" style="font-size:15px;">
+.../export?format=pdf      → PDF da planilha<br/>
+.../export?format=xlsx     → pasta Excel<br/>
+.../export?format=csv&amp;gid=0 → CSV da aba de gid 0
+            </div>
+<div class="info-box">
+<p>Com <b>Apps Script</b> (visto no tópico de Macros), dá para programar a exportação: gerar um PDF do
+                    relatório do mês e enviá-lo por e-mail automaticamente, sem ninguém clicar em nada.</p>
+</div>
+</div>
+</div>
+
+<!-- Exemplo prático -->
+<div class="slide">
+<div class="header"><h2>Exemplo prático: ata e relatório para a diretoria</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Necessidade</th><th>Formato ideal</th><th>Como fazer</th></tr>
+<tr><td>Enviar a pauta de notas para o sistema acadêmico</td><td>CSV</td><td>Aba só com matrícula e nota &gt; Download &gt; CSV</td></tr>
+<tr><td>Mandar o relatório de gastos para a diretoria ler</td><td>PDF</td><td>Download &gt; PDF, paisagem, ajustar à largura</td></tr>
+<tr><td>Compartilhar a planilha com o colega para editar</td><td>XLSX (ou link)</td><td>Download &gt; XLSX, ou Compartilhar como Editor</td></tr>
+<tr><td>Mostrar um gráfico atualizado no portal do curso</td><td>Publicar na web</td><td>Publicar a aba/gráfico e embutir o iframe</td></tr>
+</table>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#3b82f6;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">Exportar converte a planilha em um arquivo para
+            outro uso. Escolha o formato pela finalidade: <b>PDF</b> para ler/imprimir, <b>XLSX/ODS</b> para editar
+            preservando tudo, <b>CSV/TSV</b> para alimentar sistemas. <b>Compartilhar</b> mantém o dado vivo;
+            <b>Publicar na web</b> divulga uma tabela pública. E lembre sempre da LGPD ao mandar dados para fora.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Planilhas Google</p>
+</footer>
+</body>
+</html>

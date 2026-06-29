@@ -1,64 +1,56 @@
 <!DOCTYPE html>
+
 <html lang="pt-br">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7. Sistemas Operacionais e Softwares de Sistema</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/site.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>7. Sistemas Operacionais e Softwares de Sistema</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Fira+Code:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/site.css" rel="stylesheet"/>
 </head>
-
 <body class="site-body">
-
-    <header class="site-header">
-        <div class="site-header__inner">
-            <a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
-            <span class="eyebrow">Organização de Computadores</span>
-            <h1>Capítulo 7: Sistemas Operacionais e Software de Sistema</h1>
-            <p>A interface lógica de abstração, modos de execução de hardware e a cadeia de tradução de código</p>
-        </div>
-    </header>
-
-    <main class="site-main doc">
+<header class="site-header">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Organização de Computadores
+            </h1>
+<p>Capítulo 7: Sistemas Operacionais e Software de Sistema — A interface lógica de abstração, modos de execução de hardware e a cadeia de tradução de código</p>
+</div>
+</header>
+<main class="site-main doc">
 <h2>Software de Sistema vs. Software de Aplicação</h2>
-        <p>O <strong>Software de Sistema</strong> gerencia o hardware físico e fornece uma infraestrutura básica para que outros programas rodem com segurança. Ele inclui o próprio Sistema Operacional, os drivers de dispositivos, utilitários de disco e a cadeia de ferramentas de compilação.</p>
-
-        <h2>Níveis de Privilégio: Modo Usuário vs. Modo Kernel</h2>
-        <p>Para garantir que uma aplicação comum de usuário (como um navegador web ou um script malicioso) não envie comandos de destruição física diretamente para as controladoras de disco ou trave a CPU, os processadores modernos implementam anéis de segurança em hardware (Ex: Rings da arquitetura x86):</p>
-        <ul>
-            <li><strong>Modo Usuário (Ring 3):</strong> Modo restrito. O código executado aqui não possui permissão para acessar diretamente o hardware ou ler áreas protegidas da memória RAM pertencentes a outros processos.</li>
-            <li><strong>Modo Supervisor/Kernel (Ring 0):</strong> Modo privilegiado total. O núcleo do Sistema Operacional (Kernel) opera aqui com acesso irrestrito às instruções de máquina mais críticas e a todo o mapa de hardware físico.</li>
-        </ul>
-        <p>Quando um programa em modo usuário precisa abrir um arquivo ou enviar dados pela rede, ele faz uma requisição controlada ao sistema através de uma <strong style="color: #c0392b;">System Call (Chamada de Sistema)</strong>, que altera o privilégio do hardware temporariamente para o modo kernel de forma segura.</p>
-
-        <h2>Gerenciamento de Recursos pelo Kernel</h2>
-        <div class="kernel-box">
-            <ul>
-                <li><strong>Gerenciamento de Processos (Escalonamento):</strong> O escalonador do SO gerencia quais threads ou processos ganham tempo de processamento na CPU, dividindo o uso do tempo de máquina através de interrupções de clock periódicas (multitarefa por preempção).</li>
-                <li><strong>Gerenciamento de Memória Virtual:</strong> Através da Unidade de Gerenciamento de Memória (MMU) do processador, o SO mapeia endereços lógicos isolados para cada processo na memória física RAM. Isso permite a técnica de <em>Paginação</em>, onde partes inativas da memória de um programa podem ser temporariamente descarregadas para o armazenamento secundário (Swap), simulando uma capacidade de memória superior à fisicamente instalada.</li>
-            </ul>
-        </div>
-
-        <h2>A Cadeia de Tradução e Geração de Software</h2>
-        <p>O hardware puro entende apenas instruções em formato de código de máquina binário. A transformação de uma linguagem de alto nível até o arquivo binário final executável segue este encadeamento de engenharia de software de sistema:</p>
-        
-        <ol>
-            <li><strong>Código-Fonte:</strong> Texto escrito pelo programador humano em linguagens como C, C++ ou Rust.</li>
-            <li><strong>Compilador:</strong> Software que analisa a sintaxe do código-fonte de alto nível e traduz sua lógica para uma representação de baixo nível específica de uma arquitetura alvo, gerando código <strong>Assembly</strong>.</li>
-            <li><strong>Montador (Assembler):</strong> Pega as mnemônicas legíveis do Assembly (como <code>MOV</code>, <code>ADD</code>) e as converte diretamente nos padrões de bits binários equivalentes do OpCode, gerando arquivos de código de objeto (.obj ou .o).</li>
-            <li><strong>Ligador (Linker):</strong> Pega os diversos arquivos de objetos espalhados criados no projeto, resolve as referências de chamadas de funções de bibliotecas externas externas prontas e junta tudo em um único arquivo estruturado contendo cabeçalhos compreensíveis pelo SO (como os formatos ELF no Linux, PE no Windows ou Mach-O no macOS).</li>
-        </ol>
-        <div class="back-portal">
-            <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
-        </div>
-    </main>
-
-    <footer class="site-footer">
-        <p>&copy; 2026 Prof. MSc. Carlos A. L. Schaeffer | Organização de Computadores</p>
-    </footer>
-
+<p>O <strong>Software de Sistema</strong> gerencia o hardware físico e fornece uma infraestrutura básica para que outros programas rodem com segurança. Ele inclui o próprio Sistema Operacional, os drivers de dispositivos, utilitários de disco e a cadeia de ferramentas de compilação.</p>
+<h2>Níveis de Privilégio: Modo Usuário vs. Modo Kernel</h2>
+<p>Para garantir que uma aplicação comum de usuário (como um navegador web ou um script malicioso) não envie comandos de destruição física diretamente para as controladoras de disco ou trave a CPU, os processadores modernos implementam anéis de segurança em hardware (Ex: Rings da arquitetura x86):</p>
+<ul>
+<li><strong>Modo Usuário (Ring 3):</strong> Modo restrito. O código executado aqui não possui permissão para acessar diretamente o hardware ou ler áreas protegidas da memória RAM pertencentes a outros processos.</li>
+<li><strong>Modo Supervisor/Kernel (Ring 0):</strong> Modo privilegiado total. O núcleo do Sistema Operacional (Kernel) opera aqui com acesso irrestrito às instruções de máquina mais críticas e a todo o mapa de hardware físico.</li>
+</ul>
+<p>Quando um programa em modo usuário precisa abrir um arquivo ou enviar dados pela rede, ele faz uma requisição controlada ao sistema através de uma <strong style="color: #c0392b;">System Call (Chamada de Sistema)</strong>, que altera o privilégio do hardware temporariamente para o modo kernel de forma segura.</p>
+<h2>Gerenciamento de Recursos pelo Kernel</h2>
+<div class="kernel-box">
+<ul>
+<li><strong>Gerenciamento de Processos (Escalonamento):</strong> O escalonador do SO gerencia quais threads ou processos ganham tempo de processamento na CPU, dividindo o uso do tempo de máquina através de interrupções de clock periódicas (multitarefa por preempção).</li>
+<li><strong>Gerenciamento de Memória Virtual:</strong> Através da Unidade de Gerenciamento de Memória (MMU) do processador, o SO mapeia endereços lógicos isolados para cada processo na memória física RAM. Isso permite a técnica de <em>Paginação</em>, onde partes inativas da memória de um programa podem ser temporariamente descarregadas para o armazenamento secundário (Swap), simulando uma capacidade de memória superior à fisicamente instalada.</li>
+</ul>
+</div>
+<h2>A Cadeia de Tradução e Geração de Software</h2>
+<p>O hardware puro entende apenas instruções em formato de código de máquina binário. A transformação de uma linguagem de alto nível até o arquivo binário final executável segue este encadeamento de engenharia de software de sistema:</p>
+<ol>
+<li><strong>Código-Fonte:</strong> Texto escrito pelo programador humano em linguagens como C, C++ ou Rust.</li>
+<li><strong>Compilador:</strong> Software que analisa a sintaxe do código-fonte de alto nível e traduz sua lógica para uma representação de baixo nível específica de uma arquitetura alvo, gerando código <strong>Assembly</strong>.</li>
+<li><strong>Montador (Assembler):</strong> Pega as mnemônicas legíveis do Assembly (como <code>MOV</code>, <code>ADD</code>) e as converte diretamente nos padrões de bits binários equivalentes do OpCode, gerando arquivos de código de objeto (.obj ou .o).</li>
+<li><strong>Ligador (Linker):</strong> Pega os diversos arquivos de objetos espalhados criados no projeto, resolve as referências de chamadas de funções de bibliotecas externas externas prontas e junta tudo em um único arquivo estruturado contendo cabeçalhos compreensíveis pelo SO (como os formatos ELF no Linux, PE no Windows ou Mach-O no macOS).</li>
+</ol>
+<div class="back-portal">
+<a href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos</a>
+</div>
+</main>
+<footer class="site-footer">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Organização de Computadores</p>
+</footer>
 </body>
-
 </html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Planilhas Google - Acesso a Dados de Outra Planilha</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #3b82f6; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #3b82f6; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+        .info-box { border-left: 5px solid #3b82f6; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #3b82f6; font-size: 26px; }
+        .sheet { width: 100%; border-collapse: collapse; margin-top: 18px; font-family: "Fira Code", monospace; font-size: 16px; }
+        .sheet th { background: #1e293b; color: #fff; padding: 8px 10px; border: 1px solid #cbd5e1; }
+        .sheet td { padding: 8px 10px; border: 1px solid #cbd5e1; background: #fff; }
+        .sheet td.rowhdr, .sheet th.corner { background: #e2e8f0; color: #1e293b; text-align: center; font-weight: bold; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Planilhas Google
+            </h1>
+<p>Acesso a Dados de Outra Planilha (Drive)</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-link" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+<h1>IMPORTRANGE</h1>
+<p style="font-size: 24px; opacity: 0.8;">Lendo dados que estão em outro arquivo do Google Drive</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Uso de Dados em Planilhas Google</div>
+</div>
+
+<!-- Referência dentro vs fora -->
+<div class="slide">
+<div class="header"><h2>Dentro do arquivo x fora do arquivo</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Situação</th><th>Como referenciar</th><th>Exemplo</th></tr>
+<tr><td>Outra <b>aba</b> do mesmo arquivo</td><td>Nome da aba + ! + intervalo</td><td><code>='Alunos'!A2:D100</code></td></tr>
+<tr><td>Outro <b>arquivo</b> de planilha (no Drive)</td><td>Função <b>IMPORTRANGE</b></td><td><code>=IMPORTRANGE(url; "Alunos!A2:D100")</code></td></tr>
+</table>
+<div class="info-box">
+<p>Referenciar uma aba do mesmo arquivo é direto. Mas uma planilha <b>não enxerga outra planilha</b>
+                    automaticamente — para isso existe a função <span class="highlight">IMPORTRANGE</span>, a estrela
+                    deste tópico.</p>
+</div>
+</div>
+</div>
+
+<!-- O que é IMPORTRANGE -->
+<div class="slide">
+<div class="header"><h2>O que é o IMPORTRANGE?</h2></div>
+<div class="content">
+<p class="lead">O <span class="highlight">IMPORTRANGE</span> cria uma "janela viva" de um intervalo que está em
+                <b>outro arquivo</b> de planilha do Google. Quando o arquivo de origem muda, sua planilha se atualiza
+                sozinha.</p>
+<div class="info-box">
+<p>É a função que permite <b>integrar planilhas de setores diferentes</b>: o RH mantém a sua, a Secretaria
+                    mantém a dela, e você monta um painel que lê pedaços de cada uma sem precisar de cópias manuais.</p>
+</div>
+</div>
+</div>
+
+<!-- Sintaxe -->
+<div class="slide">
+<div class="header"><h2>A sintaxe</h2></div>
+<div class="content">
+<div class="code-box" style="font-size:16px;">
+=IMPORTRANGE(<br/>
+&nbsp;&nbsp;"url_ou_id_da_planilha_de_origem";<br/>
+&nbsp;&nbsp;"NomeDaAba!Intervalo"<br/>
+)
+            </div>
+<table class="table" style="margin-top:20px;">
+<tr><th>Argumento</th><th>O que é</th><th>Exemplo</th></tr>
+<tr><td><b>1º — chave/URL</b></td><td>O endereço (ou só o ID) da planilha de origem, entre aspas</td><td><code>"https://docs.google.com/spreadsheets/d/1AbC.../edit"</code></td></tr>
+<tr><td><b>2º — intervalo</b></td><td>Aba e células a trazer, entre aspas</td><td><code>"Servidores!A1:E200"</code></td></tr>
+</table>
+<div class="info-box">
+<p>O <b>ID</b> é o trecho longo da URL entre <code>/d/</code> e <code>/edit</code>. Você pode usar a URL
+                    inteira ou só esse ID — ambos funcionam.</p>
+</div>
+</div>
+</div>
+
+<!-- Autorização -->
+<div class="slide">
+<div class="header"><h2>O passo que todo mundo esquece: autorizar o acesso</h2></div>
+<div class="content">
+<div class="flow">
+<div class="node">Digita a fórmula</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Aparece #REF!</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">"Permitir acesso"</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Dados fluem</div>
+</div>
+<p style="margin-top:22px;">Na primeira vez que você liga duas planilhas, o IMPORTRANGE mostra
+                <code>#REF!</code> com a mensagem <b>"É necessário conectar estas planilhas"</b>. Passe o mouse sobre a
+                célula e clique em <span class="highlight">Permitir acesso</span>.</p>
+<div class="warn-box">
+<p>Quem clica em "Permitir acesso" precisa ter <b>permissão de leitura</b> na planilha de origem. Se você
+                    não tem acesso ao arquivo do outro setor, peça que o compartilhem com você primeiro — o IMPORTRANGE
+                    respeita as permissões do Drive, não as contorna.</p>
+</div>
+</div>
+</div>
+
+<!-- Exemplo completo -->
+<div class="slide">
+<div class="header"><h2>Exemplo passo a passo</h2></div>
+<div class="content">
+<p><b>Origem</b> — arquivo "Cadastro RH", aba <code>Servidores</code>:</p>
+<table class="sheet">
+<tr><th class="corner"></th><th>A</th><th>B</th><th>C</th></tr>
+<tr><td class="rowhdr">1</td><td>matricula</td><td>nome</td><td>email</td></tr>
+<tr><td class="rowhdr">2</td><td>1001</td><td>Ana Souza</td><td>ana@uni.br</td></tr>
+<tr><td class="rowhdr">3</td><td>1002</td><td>Bruno Lima</td><td>bruno@uni.br</td></tr>
+</table>
+<p style="margin-top:16px;"><b>Destino</b> — seu painel, célula A1:</p>
+<div class="code-box" style="font-size:15px;">
+=IMPORTRANGE("1AbC...XyZ"; "Servidores!A1:C100")
+            </div>
+<div class="info-box">
+<p>Resultado: as três colunas aparecem no seu arquivo e se atualizam sempre que o RH editar o cadastro.
+                    Você nunca mais redigita esses dados.</p>
+</div>
+</div>
+</div>
+
+<!-- Combinar com QUERY -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: filtrar o que vem de fora</h2></div>
+<div class="content">
+<p>Raramente você quer <i>tudo</i> da outra planilha. Combine o IMPORTRANGE com
+                <span class="highlight">QUERY</span> ou <span class="highlight">FILTRO</span> para trazer só o
+                necessário:</p>
+<div class="code-box" style="font-size:14px;">
+=QUERY(<br/>
+&nbsp;IMPORTRANGE("1AbC...XyZ";"Servidores!A1:E500");<br/>
+&nbsp;"select Col2, Col3 where Col4 = 'Ativo'"; 1)
+            </div>
+<div class="info-box">
+<p>Repare: dentro do QUERY, as colunas viram <b>Col1, Col2, Col3…</b> (e não A, B, C), porque o resultado
+                    do IMPORTRANGE é uma matriz virtual sem letras de coluna. Esse é o erro nº 1 de quem está
+                    começando.</p>
+</div>
+</div>
+</div>
+
+<!-- PROCV entre arquivos -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: PROCX/PROCV buscando em outro arquivo</h2></div>
+<div class="content">
+<p>Para "puxar" um dado específico de outra planilha pela chave (matrícula, CPF, ID), embrulhe o
+                IMPORTRANGE dentro do PROCX:</p>
+<div class="code-box" style="font-size:14px;">
+=PROCX(A2;<br/>
+&nbsp;IMPORTRANGE("1AbC...XyZ";"Servidores!A:A");<br/>
+&nbsp;IMPORTRANGE("1AbC...XyZ";"Servidores!C:C"))
+            </div>
+<p style="margin-top:14px;">Lê-se: procure a matrícula de A2 na coluna A da planilha do RH e devolva o
+                e-mail correspondente da coluna C.</p>
+<div class="info-box">
+<p>Assim você traz <b>só o e-mail do servidor que interessa</b>, em vez de importar a tabela inteira — mais
+                    leve e mais focado.</p>
+</div>
+</div>
+</div>
+
+<!-- Boas práticas -->
+<div class="slide">
+<div class="header"><h2>Boas práticas e desempenho</h2></div>
+<div class="content">
+<ul class="spaced">
+<li><b>Importe uma vez, referencie muitas:</b> faça <i>um</i> IMPORTRANGE numa aba "espelho" e, no resto do arquivo, referencie essa aba local. Evita repetir a função e deixa tudo mais rápido.</li>
+<li><b>Limite o intervalo:</b> <code>A1:E500</code> é melhor que <code>A:Z</code> — colunas/linhas vazias pesam.</li>
+<li><b>Guarde os IDs numa célula:</b> coloque a URL/ID numa célula de configuração e referencie-a, para trocar a origem em um só lugar.</li>
+<li><b>Atenção à atualização:</b> o IMPORTRANGE atualiza periodicamente (a cada ~1 hora ou ao editar), não é instantâneo ao segundo.</li>
+</ul>
+</div>
+</div>
+
+<!-- Erros comuns -->
+<div class="slide">
+<div class="header"><h2>Erros comuns do IMPORTRANGE</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Erro</th><th>Causa</th><th>Solução</th></tr>
+<tr><td><code>#REF!</code> "conectar planilhas"</td><td>Acesso ainda não autorizado</td><td>Clicar em "Permitir acesso"</td></tr>
+<tr><td><code>#REF!</code> sem mensagem</td><td>Você não tem permissão na origem</td><td>Pedir compartilhamento do arquivo</td></tr>
+<tr><td><code>#N/A</code> "resultado não autom."</td><td>Nome da aba ou intervalo errado</td><td>Conferir aspas, nome exato da aba e o <code>!</code></td></tr>
+<tr><td><code>#ERRO!</code></td><td>Falta aspas na URL ou no intervalo</td><td>Ambos os argumentos vão entre aspas</td></tr>
+<tr><td>Colunas viraram Col1, Col2…</td><td>Uso dentro de QUERY</td><td>Referenciar por Col1, Col2 em vez de A, B</td></tr>
+</table>
+</div>
+</div>
+
+<!-- Cenário institucional -->
+<div class="slide">
+<div class="header"><h2>Cenário institucional: um painel que se monta sozinho</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<p>Imagine três arquivos mantidos por setores diferentes:</p>
+<ul class="spaced">
+<li><b>RH:</b> cadastro de servidores.</li>
+<li><b>Secretaria:</b> matrículas por curso.</li>
+<li><b>Financeiro:</b> taxas pagas.</li>
+</ul>
+</div>
+<div>
+<p>Seu <b>painel da coordenação</b> usa IMPORTRANGE para ler um pedaço de cada um e cruzá-los com QUERY
+                        e PROCX — sem cópias, sem retrabalho.</p>
+<div class="info-box">
+<p>Cada setor continua dono do seu arquivo; o painel só <b>lê</b>. Mudou na origem, muda no painel.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#3b82f6;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">Para ler dados de <b>outro arquivo</b> do Drive,
+            use <b>IMPORTRANGE(url; "Aba!Intervalo")</b> e clique em <b>Permitir acesso</b> na primeira vez. Combine-o
+            com <b>QUERY</b> e <b>PROCX</b> para filtrar e buscar só o que importa (lembrando das colunas Col1, Col2…).
+            Importe uma vez numa aba-espelho, limite os intervalos e centralize os IDs. Assim, planilhas de setores
+            diferentes conversam entre si — atualizadas automaticamente.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Planilhas Google</p>
+</footer>
+</body>
+</html>

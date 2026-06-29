@@ -1,208 +1,140 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula 7: Matrizes Dinâmicas (FILTER e UNIQUE) - Prof. Carlos Schaeffer</title>
-    <style>
-        :root {
-            --primary-color: #0f9d58; /* Verde do Google Sheets */
-            --secondary-color: #1b73e8; /* Azul do Google */
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-color: #3c4043;
-            --text-light: #5f6368;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        header {
-            background-color: var(--card-bg);
-            border-bottom: 1px solid #dadce0;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            color: var(--primary-color);
-            font-size: 2rem;
-        }
-        header p {
-            margin: 0.5rem 0 0 0;
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        .btn-voltar {
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.95rem;
-        }
-        .btn-voltar:hover {
-            text-decoration: underline;
-        }
-        .aula-body {
-            background: var(--card-bg);
-            border: 1px solid #dadce0;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
-        }
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid #f1f3f4;
-            padding-bottom: 0.5rem;
-            margin-top: 2.5rem;
-        }
-        h3 {
-            color: var(--text-color);
-            margin-top: 1.5rem;
-        }
-        ul, ol {
-            padding-left: 1.2rem;
-            color: var(--text-light);
-        }
-        li {
-            margin-bottom: 0.6rem;
-        }
-        .destaque {
-            background-color: #e8f0fe;
-            border-left: 4px solid var(--secondary-color);
-            padding: 1.2rem;
-            margin: 1.5rem 0;
-            border-radius: 0 4px 4px 0;
-            color: #1967d2;
-            font-weight: 500;
-        }
-        .exemplo-box {
-            background-color: #f1f3f4;
-            border-radius: 4px;
-            padding: 1.2rem;
-            margin: 1.5rem 0;
-            border-left: 4px solid var(--primary-color);
-        }
-        .exemplo-title {
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-        code {
-            background-color: #f1f3f4;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.95rem;
-            color: #c7254e;
-        }
-        .code-block {
-            display: block;
-            background-color: #fafafa;
-            padding: 12px;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.95rem;
-            color: #333;
-            margin: 10px 0;
-            border-left: 3px solid #5f6368;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            border-top: 1px solid #dadce0;
-            background: var(--card-bg);
-            margin-top: 4rem;
-        }
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Planilhas Google - Aula 07: Extração com FILTER e UNIQUE</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #3b82f6; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #3b82f6; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+        .info-box { border-left: 5px solid #3b82f6; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #3b82f6; font-size: 26px; }
     </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
 </head>
-<body>
-    <header>
-        <h1>Planilhas Google</h1>
-        <p>Prof. MSc. Carlos Schaeffer</p>
-    </header>
-    <div class="container">
-        <a href="index.html" class="btn-voltar">&larr; Voltar ao Menu</a>
-        <article class="aula-body">
-            <h1>Aula 7: Extração Automática de Dados com FILTER e UNIQUE</h1>
-            <p>Seja bem-vindo ao nível avançado. Até agora, quando você precisava separar os dados de uma planilha (como isolar apenas os alunos de biologia ou descobrir quais cursos diferentes estão na lista), você provavelmente usava o menu de Filtros manual ou copiava e colava os dados para outra aba. O problema é que se a lista original mudar, o seu trabalho colado fica desatualizado. Nesta aula, aprenderemos o conceito de <strong>Matrizes Dinâmicas</strong>: fórmulas que criam tabelas automáticas e vivas, que se atualizam sozinhas.</p>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Planilhas Google
+            </h1>
+<p>Aula 07 — Extração com FILTER e UNIQUE</p>
+</div>
+</header>
 
-            <div class="destaque">
-                Objetivo da Aula: Compreender o comportamento de transbordo (spill) de fórmulas matriciais, utilizar a função UNIQUE para limpeza e deduplicação de listas administrativas e aplicar a função FILTER para criar sub-relatórios automáticos.
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-filter" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+<h1>FILTER e UNIQUE</h1>
+<p style="font-size: 24px; opacity: 0.8;">Matrizes dinâmicas: tabelas vivas que se atualizam sozinhas</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Curso de Planilhas Google — Aula 07</div>
+</div>
+
+<!-- Spill -->
+<div class="slide">
+<div class="header"><h2>O efeito de "transbordo" (spill)</h2></div>
+<div class="content">
+<p class="lead">As funções de matriz são diferentes: você digita a fórmula em <b>uma</b> célula, mas ela cria
+                e preenche várias linhas e colunas automaticamente. Isso é o <span class="highlight">transbordo</span>.</p>
+<div class="warn-box">
+<p><b>Atenção ao erro #REF!:</b> como a fórmula precisa de espaço para desenhar a tabela, se houver
+                    qualquer texto no caminho dela, ela trava ("o resultado não foi expandido porque colidiria com os
+                    dados…"). Basta apagar o texto obstrutor para a tabela aparecer.</p>
+</div>
+</div>
+</div>
+
+<!-- UNIQUE -->
+<div class="slide">
+<div class="header"><h2>Deduplicação com UNIQUE</h2></div>
+<div class="content">
+<p>Numa lista de 2.000 atendimentos, a coluna "Setor" repete "Biblioteca" e "Secretaria" centenas de vezes.
+                A função <span class="highlight">UNIQUE</span> devolve uma lista limpa, com cada item uma só vez.</p>
+<div class="code-box" style="font-size:16px;">
+=UNIQUE(CadastroGeral!C2:C5000)
             </div>
+<div class="info-box">
+<p>A planilha cria instantaneamente a lista de cursos existentes sem repetição. Se um curso novo entrar na
+                    lista original, ele aparece aqui <b>automaticamente</b>.</p>
+</div>
+</div>
+</div>
 
-            <h2>1. O Efeito de "Transbordo" (Spill)</h2>
-            <p>Até aqui, toda fórmula que você digitava devolvia o resultado em uma única célula. As funções do Nível III são diferentes: você digita a fórmula em <strong>uma célula</strong>, mas ela cria e preenche várias linhas e colunas abaixo e para o lado automaticamente. A esse comportamento damos o nome de transbordo.</p>
-            
-            <div class="destaque">
-                Atenção ao Erro #REF!: Como essas fórmulas precisam de espaço físico para desenhar a nova tabela na tela, se houver qualquer texto digitado manualmente no caminho delas, a fórmula travará e exibirá o erro <code>#REF!</code> (com a mensagem: "O resultado não foi expandido porque colidiria com os dados..."). Basta apagar o texto obstrutor para a tabela aparecer.
+<!-- FILTER -->
+<div class="slide">
+<div class="header"><h2>Extração condicional com FILTER</h2></div>
+<div class="content">
+<p>A função <span class="highlight">FILTER</span> copia para outro local apenas as linhas que atendem a um
+                critério, mantendo o vínculo com a matriz original.</p>
+<div class="code-box" style="font-size:15px;">
+=FILTER(intervalo_dados; condição1; [condição2; ...])
             </div>
+<div class="info-box">
+<p><b>Exemplo — sub-relatório por departamento:</b> na aba Geral, colunas A (Funcionário), B (Cargo),
+                    C (Departamento). Em uma aba "RH", célula A1:<br/>
+<code>=FILTER(Geral!A2:C1000; Geral!C2:C1000 = "Recursos Humanos")</code><br/>
+                    Se o RH contratar alguém na lista geral, a aba do chefe se atualiza sozinha no mesmo segundo.</p>
+</div>
+</div>
+</div>
 
-            <h2>2. Deduplicação de Listas com a Função UNIQUE</h2>
-            <p>Imagine que você recebeu uma planilha com 2.000 registros de atendimentos realizados no balcão e quer saber quais setores participaram da ação. Se você olhar a coluna "Setor", a palavra "Biblioteca" ou "Secretaria" vai se repetir centenas de vezes. A função <code>UNIQUE</code> limpa as repetições e devolve uma lista limpa, com apenas uma ocorrência de cada item.</p>
-            
-            <span class="code-block">=UNIQUE(intervalo)</span>
-
-            <div class="exemplo-box">
-                <div class="exemplo-title">Exemplo Prático: Mapeando Cursos Ativos</div>
-                Se a coluna C contiver os cursos de todos os estudantes matriculados da faculdade (gerando milhares de linhas repetidas), basta ir para uma célula livre em outra aba e digitar:
-                <span class="code-block">=UNIQUE(CadastroGeral!C2:C5000)</span>
-                A planilha criará instantaneamente uma lista vertical perfeita listando apenas uma vez cada curso existente no sistema. Se um curso novo for adicionado lá na lista original, ele aparecerá nesta lista automaticamente.
+<!-- Combinando -->
+<div class="slide">
+<div class="header"><h2>Combinando FILTER + UNIQUE</h2></div>
+<div class="content">
+<p>Como as funções de matriz conversam entre si, podemos aninhá-las para relatórios mais refinados.</p>
+<div class="code-box" style="font-size:15px;">
+=UNIQUE( FILTER(C2:C1000; B2:B1000 = "Biblioteca") )
             </div>
+<div class="info-box">
+<p><b>Como a planilha lê:</b> primeiro o FILTER isola os tipos de problema apenas do setor "Biblioteca";
+                    depois o UNIQUE remove as repetições — uma lista limpa e cirúrgica para a tomada de decisão do
+                    almoxarifado.</p>
+</div>
+</div>
+</div>
 
-            <h2>3. Extração Condicional com a Função FILTER</h2>
-            <p>A função <code>FILTER</code> é uma das ferramentas mais fantásticas do ecossistema Google. Ela copia automaticamente para outro local apenas as linhas de uma tabela que atendam a um critério específico, mantendo os dados conectados à matriz original.</p>
-            
-            <span class="code-block">=FILTER(intervalo_dados; condição1; [condição2; ...])</span>
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#3b82f6;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">As matrizes dinâmicas "transbordam" para preencher
+            tabelas vivas. <b>UNIQUE</b> remove repetições; <b>FILTER</b> extrai linhas por critério, mantendo tudo
+            conectado à origem. Combinadas, geram sub-relatórios automáticos que se atualizam sozinhos — sem copiar e
+            colar.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
 
-            <ul>
-                <li><code>intervalo_dados</code>: Toda a tabela original que você deseja copiar (Ex: Todas as colunas de A a D).</li>
-                <li><code>condição1</code>: O teste lógico que define quem entra no relatório (Ex: Filtrar apenas onde a Coluna C for igual a "Trancado").</li>
-            </ul>
-
-            <div class="exemplo-box">
-                <div class="exemplo-title">Exemplo Prático: Sub-relatório Automático por Departamento</div>
-                Sua planilha principal (na aba <code>Geral</code>) tem as colunas: <strong>A (Funcionário)</strong>, <strong>B (Cargo)</strong> e <strong>C (Departamento)</strong>. O chefe do departamento de "Recursos Humanos" quer uma lista apenas com os funcionários dele. 
-                <br><br>
-                Em vez de filtrar, copiar e colar, você cria uma nova aba chamada <code>RH</code> e digita na célula A1:
-                <span class="code-block">=FILTER(Geral!A2:C1000; Geral!C2:C1000 = "Recursos Humanos")</span>
-                <br>
-                <strong>O Milagre da Automação:</strong> O Planilhas Google vai ler a tabela inteira, extrair apenas as linhas do RH e desenhar a tabela completa na nova aba. Se o RH contratar um novo funcionário na lista geral, a tabela da aba do chefe se atualizará sozinha no mesmo segundo.
-            </div>
-
-            <h2>4. Combinando as Funções: FILTER + UNIQUE</h2>
-            <p>Como as funções de matriz dinâmica conversam entre si, podemos aninhá-las para criar relatórios ainda mais refinados e profundos.</p>
-
-            <div class="exemplo-box">
-                <div class="exemplo-title">Exemplo Avançado: Quais tipos de chamados o setor "A" abriu?</div>
-                Imagine uma planilha de chamados de manutenção, onde a coluna B é o Setor e a coluna C é o Tipo de Problema (Ar condicionado, Lâmpada, Computador). Você quer uma lista sem repetições apenas dos problemas do setor "Biblioteca".
-                <br><br>
-                Combinamos as duas ferramentas em uma única linha:
-                <span class="code-block">=UNIQUE( FILTER(C2:C1000; B2:B1000 = "Biblioteca") )</span>
-                <p><em>Como a planilha lê:</em> Primeiro o <code>FILTER</code> isola apenas os problemas da Biblioteca. Depois, o <code>UNIQUE</code> pega esse resultado e remove as palavras repetidas, deixando uma lista limpa e cirúrgica para a tomada de decisão do almoxarifado.</p>
-            </div>
-        </article>
-    </div>
-
-    <footer>
-<<<<<<< HEAD
-        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull;  
-=======
-        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull; 
->>>>>>> 890f33e (Atualização da página inicial confoorme o dominio ajudaprofessor.com.br)
-    </footer>
-
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Planilhas Google</p>
+</footer>
 </body>
 </html>

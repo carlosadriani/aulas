@@ -1,92 +1,162 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula 2: Cálculos e Contagens de Rotina - Prof. Carlos Schaeffer</title>
-    <style>
-        :root {
-            --primary-color: #0f9d58;
-            --secondary-color: #1b73e8;
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-color: #3c4043;
-            --text-light: #5f6368;
-        }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; line-height: 1.6; }
-        header { background-color: var(--card-bg); border-bottom: 1px solid #dadce0; padding: 2rem 1rem; text-align: center; }
-        header h1 { margin: 0; color: var(--primary-color); }
-        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-        .btn-voltar { display: inline-block; margin-bottom: 1.5rem; color: var(--secondary-color); text-decoration: none; font-weight: bold; }
-        .aula-body { background: var(--card-bg); border: 1px solid #dadce0; border-radius: 8px; padding: 2rem; box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3); }
-        h2 { color: var(--primary-color); border-bottom: 2px solid #f1f3f4; padding-bottom: 0.5rem; margin-top: 2rem; }
-        h3 { color: var(--text-color); }
-        .destaque { background-color: #e8f0fe; border-left: 4px solid var(--secondary-color); padding: 1rem; margin: 1.5rem 0; color: #1967d2; }
-        .exemplo-box { background-color: #f1f3f4; border-radius: 4px; padding: 1rem; margin: 1.5rem 0; border-left: 4px solid var(--primary-color); }
-        .exemplo-title { font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem; }
-        .code-block { display: block; background-color: #f1f3f4; padding: 10px; border-radius: 4px; font-family: monospace; font-size: 1rem; color: #c7254e; margin: 10px 0; border-left: 3px solid #5f6368; }
-        footer { text-align: center; padding: 2rem; color: var(--text-light); border-top: 1px solid #dadce0; margin-top: 4rem; background: var(--card-bg); }
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Planilhas Google - Aula 02: Fórmulas de Controle Diário</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #3b82f6; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #3b82f6; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+        .info-box { border-left: 5px solid #3b82f6; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #3b82f6; font-size: 26px; }
     </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
 </head>
-<body>
-    <header>
-        <h1>Planilhas Google</h1>
-        <p>Prof. MSc. Carlos Schaeffer</p>
-    </header>
-    <div class="container">
-        <a href="index.html" class="btn-voltar">&larr; Voltar ao Menu</a>
-        <article class="aula-body">
-            <h1>Aula 2: Fórmulas Práticas de Soma e Contagem Administrativa</h1>
-            <p>Nesta aula, daremos os primeiros passos para fazer a planilha calcular por nós. Veremos como automatizar a soma de despesas de um setor, tirar médias de notas de avaliações institucionais e realizar contagens automatizadas de processos em andamento.</p>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Planilhas Google
+            </h1>
+<p>Aula 02 — Fórmulas de Controle Diário</p>
+</div>
+</header>
 
-            <div class="destaque">
-                Objetivo da Aula: Aprender a ativar cálculos usando o sinal de igual (=) e dominar as quatro funções básicas de matemática e contagem do dia a dia de uma universidade.
-            </div>
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-calculator" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+<h1>Fórmulas Diárias</h1>
+<p style="font-size: 24px; opacity: 0.8;">Somar, tirar média e contar registros de rotina</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Curso de Planilhas Google — Aula 02</div>
+</div>
 
-            <h2>1. Ativando as Contas: O Sinal de Igual <code>=</code></h2>
-            <p>Para a planilha entender que você deseja realizar um cálculo matemático e não apenas escrever um texto comum, você deve **obrigatoriamente** começar a digitar a célula com o sinal de igual <code>=</code>.</p>
-            
-            <div class="exemplo-box">
-                <div class="exemplo-title">Exemplo de Operações Diretas:</div>
-                Se digitar <code>=10 + 5</code> na célula e pressionar Enter, a planilha mostrará imediatamente o resultado <strong>15</strong>.<br>
-                Para subtrair use o traço (<code>-</code>), para multiplicar use o asterisco (<code>*</code>) e para dividir use a barra (<code>/</code>).
-            </div>
+<!-- O sinal de igual -->
+<div class="slide">
+<div class="header"><h2>Ativando os cálculos: o sinal de igual</h2></div>
+<div class="content">
+<p class="lead">Para a planilha entender que você quer um <span class="highlight">cálculo</span> e não um texto,
+                comece a digitar a célula com o sinal de igual <code>=</code>.</p>
+<div class="grid" style="margin-top:10px;">
+<div>
+<p>Operações diretas: se digitar <code>=10+5</code> e pressionar Enter, aparece <b>15</b>.</p>
+<table class="table">
+<tr><th>Operação</th><th>Símbolo</th></tr>
+<tr><td>Somar</td><td><code>+</code></td></tr>
+<tr><td>Subtrair</td><td><code>-</code></td></tr>
+<tr><td>Multiplicar</td><td><code>*</code></td></tr>
+<tr><td>Dividir</td><td><code>/</code></td></tr>
+</table>
+</div>
+<div class="code-box">
+=10 + 5    → 15<br/>
+=20 - 8    → 12<br/>
+=6 * 7     → 42<br/>
+=100 / 4   → 25
+                </div>
+</div>
+</div>
+</div>
 
-            <h2>2. Funções Essenciais de Agrupamento</h2>
-            <p>Não precisamos de somar as células uma a uma fazendo <code>=A1+A2+A3</code>. Para facilitar o trabalho com listas compridas, o sistema oferece funções inteligentes:</p>
+<!-- Funções de agrupamento -->
+<div class="slide">
+<div class="header"><h2>Funções essenciais de agrupamento</h2></div>
+<div class="content">
+<p>Não precisamos somar célula a célula como <code>=A1+A2+A3</code>. Para listas compridas, há funções
+                inteligentes:</p>
+<div class="grid">
+<div class="card">
+<h3>SOMA</h3>
+<p>Soma todos os números de um intervalo.</p>
+<div class="code-box" style="font-size:16px;">=SOMA(B2:B30)</div>
+<p style="margin-top:10px;">Total de gastos com material de escritório pedidos no mês.</p>
+</div>
+<div class="card">
+<h3>MÉDIA</h3>
+<p>Soma os valores e divide pela quantidade automaticamente.</p>
+<div class="code-box" style="font-size:16px;">=MÉDIA(C2:C100)</div>
+<p style="margin-top:10px;">Nota média de satisfação dos alunos com o atendimento.</p>
+</div>
+</div>
+</div>
+</div>
 
-            <h3>A) Função SOMA</h3>
-            <p>Soma todos os números que estão dentro de um intervalo selecionado.</p>
-            <span class="code-block">=SOMA(B2:B30)</span>
-            <p><em>Aplicação prática:</em> Calcular o total de gastos com materiais de escritório pedidos no mês pelo setor.</p>
+<!-- Contar números vs nomes -->
+<div class="slide">
+<div class="header"><h2>Contar números x contar nomes</h2></div>
+<div class="content">
+<p>Um dos maiores truques para evitar erros nos relatórios mensais é entender estas duas contagens:</p>
+<table class="table">
+<tr><th>Função</th><th>O que conta</th><th>O que ignora</th></tr>
+<tr><td><b>CONT.NUM</b></td><td>Apenas células que contêm <b>números</b></td><td>Palavras, justificativas em texto</td></tr>
+<tr><td><b>CONT.VALORES</b></td><td>Qualquer célula <b>preenchida</b> (nome, número ou data)</td><td>Apenas o que está totalmente em branco</td></tr>
+</table>
+<div class="info-box">
+<p><b>Exemplo:</b> numa lista em que a coluna A tem o número do protocolo do pedido e a coluna B tem
+                    observações em texto, para saber o total de pedidos do dia use <code>=CONT.VALORES(A2:A50)</code> —
+                    ela conta todos os registros presentes.</p>
+</div>
+</div>
+</div>
 
-            <h3>B) Função MÉDIA</h3>
-            <p>Soma os valores e divide pela quantidade automaticamente.</p>
-            <span class="code-block">=MÉDIA(C2:C100)</span>
-            <p><em>Aplicação prática:</em> Encontrar a nota média de satisfação dos alunos em relação ao atendimento da biblioteca.</p>
+<!-- Exemplo aplicado -->
+<div class="slide">
+<div class="header"><h2>Exemplo aplicado: atendimentos da secretaria</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Pergunta</th><th>Fórmula</th></tr>
+<tr><td>Quantos atendimentos foram registrados hoje?</td><td><code>=CONT.VALORES(A2:A50)</code></td></tr>
+<tr><td>Qual o total de itens entregues?</td><td><code>=SOMA(C2:C50)</code></td></tr>
+<tr><td>Qual a média de itens por atendimento?</td><td><code>=MÉDIA(C2:C50)</code></td></tr>
+<tr><td>Quantas células de valor numérico há?</td><td><code>=CONT.NUM(C2:C50)</code></td></tr>
+</table>
+<div class="warn-box">
+<p>Cuidado ao escolher entre CONT.NUM e CONT.VALORES: usar a errada é a causa nº 1 de "o relatório não
+                    bate". Pergunte sempre: estou contando <i>números</i> ou <i>registros preenchidos</i>?</p>
+</div>
+</div>
+</div>
 
-            <h2>3. Contar Números vs. Contar Nomes (Contagens de Rotina)</h2>
-            <p>Um dos maiores truques para evitar erros de relatórios mensais é entender a diferença entre estas duas funções de contagem automática:</p>
-            
-            <ul>
-                <li><strong><code>CONT.NUM</code>:</strong> Conta apenas quadradinhos que têm números dentro. Ignora células com palavras ou justificativas de faltas em texto.</li>
-                <li><strong><code>CONT.VALORES</code>:</strong> Conta qualquer quadradinho que esteja preenchido (seja com nome, número ou data). Só ignora o que estiver totalmente em branco.</li>
-            </ul>
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#3b82f6;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">Toda fórmula começa com <b>=</b>. Use
+            <b>SOMA</b> para totalizar, <b>MÉDIA</b> para a média e escolha com cuidado entre <b>CONT.NUM</b> (só
+            números) e <b>CONT.VALORES</b> (qualquer célula preenchida). São as quatro funções que resolvem a maioria
+            dos controles diários.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
 
-            <div class="exemplo-box">
-                <div class="exemplo-title">Exemplo Prático: Gestão de Atendimento de Alunos</div>
-                Imagine uma lista de controle onde a coluna A possui o número do protocolo do pedido do aluno e a coluna B possui observações textuais (Ex: "Documento pendente").
-                <br><br>
-                Para saber o total de pedidos que deram entrada hoje, usamos <code>=CONT.VALORES(A2:A50)</code> (visto que ela vai contar todos os registros de nomes ou códigos presentes).
-            </div>
-        </article>
-    </div>
-    <footer>
-<<<<<<< HEAD
-        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull;  
-=======
-        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull; 
->>>>>>> 890f33e (Atualização da página inicial confoorme o dominio ajudaprofessor.com.br)
-    </footer>
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Planilhas Google</p>
+</footer>
 </body>
 </html>

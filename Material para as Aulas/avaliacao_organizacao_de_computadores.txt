@@ -1,0 +1,397 @@
+========================================================================
+AVALIAÇÃO — ORGANIZAÇÃO DE COMPUTADORES
+Curso: Análise e Desenvolvimento de Sistemas
+Nível: Médio | 20 questões objetivas | Valor: 10,0 pontos (0,5 cada)
+========================================================================
+
+Nome: ______________________________________  Data: ____/____/______
+
+Instruções: assinale apenas UMA alternativa por questão. É permitido o
+uso de rascunho para as conversões e cálculos. Justifique seu raciocínio
+mentalmente antes de marcar — várias questões exigem mais do que memória.
+
+------------------------------------------------------------------------
+PARTE I — FUNDAMENTOS: NUMERAÇÃO E LÓGICA
+------------------------------------------------------------------------
+
+1) Um sensor envia o byte 10110110 em binário puro (sem sinal). Qual é
+   o valor decimal correspondente?
+   a) 174
+   b) 180
+   c) 182
+   d) 186
+   e) 190
+
+2) Em uma arquitetura de 8 bits que usa complemento de dois, como é
+   representado o número decimal -45?
+   a) 00101101
+   b) 11010010
+   c) 11010011
+   d) 10101101
+   e) 11010100
+
+3) Um endereço de registrador aparece na documentação como 0x2F.
+   Qual é o seu valor em decimal?
+   a) 45
+   b) 47
+   c) 57
+   d) 79
+   e) 63
+
+4) Considerando a álgebra de Boole, a expressão F = A·B + A·B'
+   é equivalente a:
+   a) A
+   b) B
+   c) A + B
+   d) A·B
+   e) B'
+
+5) Em uma soma de 8 bits em complemento de dois, ocorre OVERFLOW
+   (estouro) quando:
+   a) há "vai-um" (carry) saindo do bit mais significativo, sempre.
+   b) somam-se dois números positivos e o resultado dá negativo,
+      ou somam-se dois negativos e o resultado dá positivo.
+   c) o resultado é zero.
+   d) um dos operandos é zero.
+   e) o resultado é igual a um dos operandos.
+
+6) A operação lógica que retorna 1 somente quando os dois bits de
+   entrada são DIFERENTES é a base de circuitos somadores. Trata-se da
+   porta:
+   a) AND
+   b) OR
+   c) XOR
+   d) NAND
+   e) NOR
+
+------------------------------------------------------------------------
+PARTE II — ARQUITETURA E UNIDADE CENTRAL DE PROCESSAMENTO (CPU)
+------------------------------------------------------------------------
+
+7) Durante o ciclo de instrução, qual sequência representa corretamente
+   as etapas básicas executadas pela CPU?
+   a) Executar → Decodificar → Buscar
+   b) Buscar (fetch) → Decodificar → Executar
+   c) Decodificar → Buscar → Armazenar
+   d) Executar → Buscar → Decodificar
+   e) Buscar → Executar → Decodificar
+
+8) O registrador PC (Program Counter / Contador de Programa) tem a
+   função de:
+   a) armazenar o resultado da última operação da ULA.
+   b) guardar o endereço da próxima instrução a ser buscada.
+   c) decodificar o código de operação da instrução atual.
+   d) controlar a frequência do clock.
+   e) armazenar temporariamente o dado lido da memória.
+
+9) A Unidade Lógica e Aritmética (ULA) é responsável por:
+   a) gerar os sinais de controle de todo o processador.
+   b) armazenar permanentemente os dados do programa.
+   c) realizar operações aritméticas e lógicas sobre os operandos.
+   d) traduzir endereços lógicos em endereços físicos.
+   e) gerenciar as interrupções dos dispositivos de E/S.
+
+10) Uma das diferenças centrais entre as filosofias RISC e CISC é que,
+    de modo geral, processadores RISC tendem a ter:
+    a) um conjunto grande de instruções complexas e de tamanho variável.
+    b) um conjunto reduzido de instruções simples, favorecendo pipeline.
+    c) ausência de registradores internos.
+    d) impossibilidade de executar laços de repetição.
+    e) todas as instruções interpretadas por microcódigo extenso.
+
+11) O pipeline aumenta o desempenho do processador porque:
+    a) reduz a quantidade de instruções do programa.
+    b) sobrepõe a execução de várias instruções em estágios diferentes,
+       elevando o throughput (instruções concluídas por unidade de tempo).
+    c) elimina totalmente a necessidade de memória cache.
+    d) executa cada instrução em um único pulso de clock, sem estágios.
+    e) duplica automaticamente a frequência do clock do processador.
+
+12) Um programa possui 2 × 10^9 instruções, executa com CPI médio de 1,5
+    e roda em um processador de 3 GHz. Qual é o tempo aproximado de
+    execução? (Tempo = Nº instruções × CPI ÷ frequência)
+    a) 0,5 segundo
+    b) 1 segundo
+    c) 2 segundos
+    d) 3 segundos
+    e) 4 segundos
+
+13) O modo de endereçamento IMEDIATO caracteriza-se por:
+    a) o operando estar contido na própria instrução.
+    b) a instrução indicar o endereço de memória do operando.
+    c) o operando estar em um registrador apontado por outro registrador.
+    d) o endereço ser calculado somando-se um deslocamento a uma base.
+    e) o operando estar sempre no topo da pilha (stack) do sistema.
+
+------------------------------------------------------------------------
+PARTE III — MEMÓRIA, BARRAMENTOS E HIERARQUIA
+------------------------------------------------------------------------
+
+14) Um barramento de endereços possui 20 linhas (20 bits). Quantas
+    posições distintas de memória ele consegue endereçar?
+    a) 64 K
+    b) 256 K
+    c) 1 M
+    d) 4 M
+    e) 16 M
+
+15) Um módulo de memória é especificado como 4K × 8. Quantas linhas de
+    endereço esse módulo exige?
+    a) 8
+    b) 10
+    c) 12
+    d) 16
+    e) 14
+
+16) A existência da memória cache se justifica principalmente pelo
+    PRINCÍPIO DA LOCALIDADE. Um laço que percorre um vetor posição a
+    posição, em ordem, explora sobretudo a:
+    a) localidade temporal.
+    b) localidade espacial.
+    c) ausência de localidade.
+    d) localidade de controle.
+    e) localidade aleatória.
+
+17) Em um sistema, o acesso à cache leva 2 ns e o acesso à memória
+    principal leva 100 ns. Se a taxa de acertos (hit rate) da cache é de
+    95%, qual é o tempo médio de acesso aproximado?
+    (Tempo médio = acerto × t_cache + erro × t_memória)
+    a) 2,0 ns
+    b) 6,9 ns
+    c) 51,0 ns
+    d) 100,0 ns
+    e) 98,0 ns
+
+18) Sobre os barramentos do computador, é correto afirmar que o
+    barramento de DADOS:
+    a) define a quantidade de memória endereçável.
+    b) transporta os bits de informação entre CPU, memória e E/S, e sua
+       largura influencia quantos bits trafegam por vez.
+    c) carrega apenas os sinais de controle de leitura e escrita.
+    d) é unidirecional, sempre da memória para a CPU.
+    e) armazena permanentemente as instruções do programa.
+
+------------------------------------------------------------------------
+PARTE IV — TIPOS DE ARMAZENAGEM DE DADOS
+------------------------------------------------------------------------
+
+19) Sobre a volatilidade das memórias, é correto afirmar que:
+    a) a memória RAM é volátil e a memória ROM é não volátil.
+    b) tanto RAM quanto ROM perdem os dados ao desligar o computador.
+    c) a memória ROM é volátil e a RAM é não volátil.
+    d) nenhuma memória semicondutora é volátil.
+    e) a memória RAM é não volátil, como a memória flash.
+
+20) Ao comparar um disco rígido (HD magnético) com uma unidade de estado
+    sólido (SSD), pode-se afirmar que, de modo geral:
+    a) o HD não possui partes móveis e o SSD possui pratos giratórios.
+    b) o SSD usa memória flash, não tem partes móveis e oferece tempos de
+       acesso menores que o HD magnético.
+    c) ambos armazenam dados magneticamente em pratos giratórios.
+    d) o SSD é volátil, perdendo os dados quando desligado.
+    e) o HD é sempre mais rápido que o SSD no acesso aleatório.
+
+------------------------------------------------------------------------
+PARTE V — QUESTÕES COMPLEMENTARES (uma fácil e uma difícil por tema)
+------------------------------------------------------------------------
+
+>> Tema: Fundamentos — Numeração e Lógica
+
+21) [FÁCIL] Quantos valores distintos podem ser representados com 4 bits?
+    a) 4
+    b) 8
+    c) 15
+    d) 16
+    e) 32
+
+22) [DIFÍCIL] O número binário 1101,01 (com parte fracionária) corresponde,
+    em decimal, a:
+    a) 13,1
+    b) 13,25
+    c) 13,5
+    d) 13,75
+    e) 26,5
+
+>> Tema: Arquitetura e CPU
+
+23) [FÁCIL] A sigla CPU corresponde a:
+    a) Central de Periféricos Universais
+    b) Unidade Central de Processamento
+    c) Controlador de Processos da Unidade
+    d) Circuito Programável Único
+    e) Unidade de Cálculo e Programação
+
+24) [DIFÍCIL] Dois processadores executam o MESMO programa e usam a mesma
+    ISA. O processador A opera a 2 GHz com CPI médio 2; o processador B
+    opera a 3 GHz com CPI médio 4. Qual é mais rápido?
+    a) B, pois possui maior frequência de clock.
+    b) A, pois o tempo por instrução é 1 ns, contra ≈1,33 ns de B.
+    c) Empatam, pois frequência e CPI se cancelam.
+    d) B, pois um CPI maior significa mais desempenho.
+    e) Impossível decidir sem conhecer o número de instruções.
+
+>> Tema: Memória e Barramentos
+
+25) [FÁCIL] Em relação à memória principal, a memória cache é, em geral:
+    a) maior e mais lenta.
+    b) menor e mais rápida.
+    c) maior e mais rápida.
+    d) menor e mais lenta.
+    e) do mesmo tamanho e da mesma velocidade.
+
+26) [DIFÍCIL] Em uma cache mapeada diretamente com 8 linhas, para qual
+    linha será mapeado o bloco de memória de número 35?
+    a) 0
+    b) 3
+    c) 4
+    d) 5
+    e) 7
+
+>> Tema: Armazenagem de Dados
+
+27) [FÁCIL] Qual dos dispositivos a seguir armazena dados de forma NÃO
+    volátil (mantém o conteúdo mesmo sem energia)?
+    a) Memória RAM
+    b) Registradores da CPU
+    c) Memória cache
+    d) Unidade de estado sólido (SSD)
+    e) Memória DRAM
+
+28) [DIFÍCIL] Ordene os elementos a seguir em ordem CRESCENTE de tempo de
+    acesso (do mais rápido para o mais lento):
+    I. Disco rígido magnético   II. Registradores
+    III. Memória RAM            IV. Memória cache
+    a) II, IV, III, I
+    b) I, III, IV, II
+    c) IV, II, III, I
+    d) II, III, IV, I
+    e) III, II, IV, I
+
+========================================================================
+GABARITO COMENTADO
+========================================================================
+
+1) C — 182.
+   10110110 = 128 + 32 + 16 + 4 + 2 = 182. Basta somar os pesos
+   (2^7..2^0) das posições em que há bit 1.
+
+2) C — 11010011.
+   45 em binário é 00101101. Para obter -45 em complemento de dois,
+   inverte-se todos os bits (11010010) e soma-se 1 → 11010011.
+
+3) B — 47.
+   0x2F = 2×16 + 15 = 32 + 15 = 47. (O dígito F vale 15 em hexadecimal.)
+
+4) A — A.
+   F = A·B + A·B' = A·(B + B') = A·1 = A. O termo A é colocado em
+   evidência e B + B' = 1.
+
+5) B.
+   Overflow em complemento de dois é detectado pela inconsistência de
+   sinal: positivo + positivo = negativo, ou negativo + negativo =
+   positivo. O simples "vai-um" final NÃO indica, por si só, overflow
+   em aritmética com sinal.
+
+6) C — XOR.
+   A porta XOR (OU-exclusivo) gera 1 quando as entradas são diferentes;
+   é a base da soma sem o "vai-um" em um meio-somador.
+
+7) B.
+   O ciclo básico é Buscar (fetch) a instrução, Decodificar o que ela
+   significa e, por fim, Executar a operação.
+
+8) B.
+   O PC guarda o endereço da PRÓXIMA instrução; após cada busca, ele é
+   incrementado (ou alterado por um desvio).
+
+9) C.
+   A ULA executa operações aritméticas (soma, subtração) e lógicas
+   (AND, OR, comparações). Gerar sinais de controle é tarefa da Unidade
+   de Controle.
+
+10) B.
+    RISC = conjunto Reduzido de Instruções simples e regulares, o que
+    facilita o uso de pipeline. CISC tende a instruções complexas e de
+    tamanho variável.
+
+11) B.
+    O pipeline divide a execução em estágios e sobrepõe instruções
+    diferentes em estágios diferentes, aumentando o throughput — não
+    reduz a quantidade de instruções nem dispensa a cache.
+
+12) B — 1 segundo.
+    Tempo = (2×10^9 × 1,5) ÷ (3×10^9) = (3×10^9) ÷ (3×10^9) = 1 s.
+
+13) A.
+    No endereçamento imediato, o próprio operando já está na instrução,
+    sem necessidade de novo acesso à memória para buscá-lo.
+
+14) C — 1 M.
+    Com 20 bits de endereço: 2^20 = 1.048.576 = 1 M posições.
+
+15) C — 12.
+    4K = 4096 = 2^12 palavras, logo são necessárias 12 linhas de
+    endereço. O "× 8" indica a largura (8 bits) de cada palavra.
+
+16) B — localidade espacial.
+    Acessar posições vizinhas em sequência explora a localidade
+    espacial (dados próximos tendem a ser usados em seguida). Reutilizar
+    o MESMO dado seria localidade temporal.
+
+17) B — 6,9 ns.
+    Tempo médio = 0,95 × 2 + 0,05 × 100 = 1,9 + 5 = 6,9 ns.
+
+18) B.
+    O barramento de dados transporta a informação propriamente dita; sua
+    largura (8, 16, 32, 64 bits) define quantos bits trafegam por ciclo.
+    Quem determina a memória endereçável é o barramento de endereços.
+
+19) A.
+    RAM é volátil (perde o conteúdo ao desligar); ROM é não volátil
+    (mantém o conteúdo gravado mesmo sem energia).
+
+20) B.
+    O SSD usa memória flash (não volátil), não possui partes móveis e
+    apresenta tempos de acesso bem menores que o HD magnético, que
+    depende de pratos giratórios e cabeças mecânicas.
+
+--- Questões complementares (Parte V) ---
+
+21) D — 16.
+    Com n bits representam-se 2^n valores; 2^4 = 16 combinações distintas.
+
+22) B — 13,25.
+    Parte inteira: 1101 = 8 + 4 + 1 = 13. Parte fracionária: ,01 =
+    0×2^-1 + 1×2^-2 = 0,25. Total = 13 + 0,25 = 13,25.
+
+23) B — Unidade Central de Processamento.
+    É o componente que busca, decodifica e executa as instruções.
+
+24) B — A é mais rápido.
+    O tempo por instrução é CPI ÷ frequência. A: 2 ÷ 2×10^9 = 1 ns;
+    B: 4 ÷ 3×10^9 ≈ 1,33 ns. Como o programa e a ISA são os mesmos,
+    o menor tempo por instrução (A) vence — frequência maior não basta.
+
+25) B — menor e mais rápida.
+    A cache é uma memória pequena e veloz, próxima da CPU, usada para
+    guardar dados mais prováveis de serem reutilizados.
+
+26) B — linha 3.
+    No mapeamento direto: linha = (nº do bloco) mod (nº de linhas) =
+    35 mod 8 = 3.
+
+27) D — SSD.
+    O SSD (memória flash) é não volátil. RAM, DRAM, cache e registradores
+    são voláteis e perdem o conteúdo ao desligar.
+
+28) A — II, IV, III, I.
+    Do mais rápido ao mais lento: Registradores → Cache → RAM → Disco
+    magnético. Essa é a ordem clássica da hierarquia de memória.
+
+========================================================================
+Total: 28 questões. Questões 1–20: nível médio. Parte V (21–28):
+uma questão fácil e uma difícil por tema.
+Temas: Fundamentos/Lógica (1–6, 21–22) · Arquitetura/CPU (7–13, 23–24)
+· Memória e Barramentos (14–18, 25–26) · Armazenagem de Dados (19–20,
+27–28).
+========================================================================

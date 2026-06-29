@@ -1,251 +1,176 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula 3: Formatação Condicional Avançada na Gestão - Prof. Carlos Schaeffer</title>
-    <style>
-        :root {
-            --primary-color: #0f9d58; /* Verde do Google Sheets */
-            --secondary-color: #1b73e8; /* Azul do Google */
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-color: #3c4043;
-            --text-light: #5f6368;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        header {
-            background-color: var(--card-bg);
-            border-bottom: 1px solid #dadce0;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            color: var(--primary-color);
-            font-size: 2rem;
-        }
-        header p {
-            margin: 0.5rem 0 0 0;
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        .btn-voltar {
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.95rem;
-        }
-        .btn-voltar:hover {
-            text-decoration: underline;
-        }
-        .aula-body {
-            background: var(--card-bg);
-            border: 1px solid #dadce0;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
-        }
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid #f1f3f4;
-            padding-bottom: 0.5rem;
-            margin-top: 2.5rem;
-        }
-        h3 {
-            color: var(--text-color);
-            margin-top: 1.5rem;
-        }
-        ul, ol {
-            padding-left: 1.2rem;
-            color: var(--text-light);
-        }
-        li {
-            margin-bottom: 0.6rem;
-        }
-        .destaque {
-            background-color: #e8f0fe;
-            border-left: 4px solid var(--secondary-color);
-            padding: 1.2rem;
-            margin: 1.5rem 0;
-            border-radius: 0 4px 4px 0;
-            color: #1967d2;
-            font-weight: 500;
-        }
-        .exemplo-box {
-            background-color: #f1f3f4;
-            border-radius: 4px;
-            padding: 1.2rem;
-            margin: 1.5rem 0;
-            border-left: 4px solid var(--primary-color);
-        }
-        .exemplo-title {
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-        }
-        th, td {
-            border: 1px solid #dadce0;
-            padding: 10px 14px;
-            text-align: left;
-        }
-        th {
-            background-color: #f8f9fa;
-            color: var(--text-color);
-        }
-        code {
-            background-color: #f1f3f4;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.95rem;
-            color: #c7254e;
-        }
-        .code-block {
-            display: block;
-            background-color: #fafafa;
-            padding: 12px;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.95rem;
-            color: #333;
-            margin: 10px 0;
-            border-left: 3px solid #5f6368;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            border-top: 1px solid #dadce0;
-            background: var(--card-bg);
-            margin-top: 4rem;
-        }
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Planilhas Google - Aula 03: Formatação Condicional</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #3b82f6; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #3b82f6; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+        .info-box { border-left: 5px solid #3b82f6; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #3b82f6; font-size: 26px; }
     </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
 </head>
-<body>
-    <header>
-        <h1>Planilhas Google</h1>
-        <p>Prof. MSc. Carlos Schaeffer</p>
-    </header>
-    <div class="container">
-        <a href="index.html" class="btn-voltar">&larr; Voltar ao Menu</a>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Planilhas Google
+            </h1>
+<p>Aula 03 — Formatação Condicional</p>
+</div>
+</header>
 
-        <article class="aula-body">
-            <h1>Aula 3: Formatação Condicional e Alertas Visuais Automáticos</h1>
-            <p>Conforme o volume de registros em uma planilha administrativa cresce, torna-se humanamente impossível ler linha por linha para identificar problemas. A <strong>Formatação Condicional</strong> atua como um monitor automático, alterando o design de uma célula (cor de fundo, cor do texto, negrito) apenas quando ela atende a um critério pré-estabelecido.</p>
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-fill-drip" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+<h1>Formatação Condicional</h1>
+<p style="font-size: 24px; opacity: 0.8;">Alertas visuais automáticos para grandes listas</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Curso de Planilhas Google — Aula 03</div>
+</div>
 
-            <div class="destaque">
-                Objetivo da Aula: Criar regras de formatação de cor única, aplicar escalas cromáticas para análise de volumetria e construir filtros visuais personalizados usando fórmulas lógicas para destacar linhas inteiras de processos atrasados.
+<!-- Objetivo -->
+<div class="slide">
+<div class="header"><h2>Por que automatizar o visual?</h2></div>
+<div class="content">
+<p class="lead">Quando o volume de registros cresce, fica impossível ler linha por linha para achar problemas.
+                A <span class="highlight">formatação condicional</span> age como um monitor automático: muda a cor da
+                célula apenas quando ela atende a um critério.</p>
+<div class="info-box">
+<p><b>Objetivo:</b> criar regras de cor única, aplicar escalas cromáticas para análise de volume e
+                    construir filtros visuais com fórmulas para destacar linhas inteiras de processos atrasados. Tudo em
+                    <code>Formatar &gt; Formatação condicional</code>.</p>
+</div>
+</div>
+</div>
+
+<!-- Regras por texto, data, número -->
+<div class="slide">
+<div class="header"><h2>Regras por texto, data e número</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Vertente</th><th>Exemplos de condição</th></tr>
+<tr><td><b>Texto</b></td><td>Identificar status: "Pendente", "Aprovado", "Atrasado"</td></tr>
+<tr><td><b>Datas</b></td><td>Relativas ao calendário: "anterior a hoje", "é amanhã"</td></tr>
+<tr><td><b>Números</b></td><td>Desvios: "maior que", "menor ou igual a"</td></tr>
+</table>
+<div class="info-box">
+<p><b>Exemplo — devolução de chaves/equipamentos:</b> selecione <code>C2:C100</code>, escolha "o texto é
+                    exatamente" e digite <code>Em aberto</code>, com preenchimento amarelo claro. Sempre que um item
+                    sair, a célula pisca em alerta para a equipe.</p>
+</div>
+</div>
+</div>
+
+<!-- Rastreamento de prazos -->
+<div class="slide">
+<div class="header"><h2>Rastreamento de prazos críticos</h2></div>
+<div class="content">
+<p>Comparando as datas digitadas com o dia de hoje, a planilha calcula vencimentos dinamicamente:</p>
+<table class="table">
+<tr><th>Cenário</th><th>Regra recomendada</th><th>Estilo sugerido</th></tr>
+<tr><td>Processo com prazo estourado</td><td>A data é anterior a → Hoje</td><td>Fundo vermelho claro (urgência)</td></tr>
+<tr><td>Documento vence hoje</td><td>A data é → Hoje</td><td>Fundo laranja (atenção máxima)</td></tr>
+<tr><td>Prazo futuro garantido</td><td>A data é posterior a → Hoje</td><td>Fundo verde claro (regularizado)</td></tr>
+</table>
+</div>
+</div>
+
+<!-- Escala de cores -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: escala de cores</h2></div>
+<div class="content">
+<p>Em vez de "tudo ou nada", a <span class="highlight">escala de cores</span> analisa o menor e o maior valor
+                do intervalo e cria um gradiente suave — ideal para enxergar a distribuição de cargas e despesas.</p>
+<div class="info-box">
+<p><b>Exemplo — orçamento por setor:</b> aplique uma escala bicolor (branco → vermelho) em
+                    <code>D2:D20</code>. Os setores que gastaram pouco ficam brancos; os que centralizam os gastos da
+                    instituição ganham tons progressivamente mais escuros de vermelho, automaticamente.</p>
+</div>
+</div>
+</div>
+
+<!-- Fórmula personalizada / linha inteira -->
+<div class="slide">
+<div class="header"><h2>Avançado: pintar a linha inteira com fórmula</h2></div>
+<div class="content">
+<p>Por padrão, só a célula com o valor é pintada. Para colorir a <b>linha toda</b> do aluno ou do processo,
+                use a opção <code>A fórmula personalizada é</code>.</p>
+<div class="code-box">
+=$C2="Trancado"
             </div>
+<div class="warn-box">
+<p><b>Regra de ouro do cifrão ($):</b> para pintar a linha inteira a partir de uma única coluna, trave a
+                    <i>coluna</i> com <code>$</code> (<code>$C2</code>). Sem isso, a regra "se perde" ao caminhar
+                    horizontalmente.</p>
+</div>
+</div>
+</div>
 
-            <h2>1. Regras Baseadas em Texto e Valores Dinâmicos</h2>
-            <p>O uso mais imediato da formatação condicional é rastrear palavras-chave ou prazos numéricos através do menu <code>Formatar &gt; Formatação condicional</code>.</p>
-            <p>Podemos aplicar condições baseadas em três vertentes de dados:</p>
-            <ul>
-                <li><strong>Texto:</strong> Identificar status exatos (Ex: "Pendente", "Aprovado", "Atrasado").</li>
-                <li><strong>Datas:</strong> Criar regras relativas ao calendário de hoje (Ex: "A data é anterior a hoje", "A data é amanhã").</li>
-                <li><strong>Números:</strong> Identificar desvios financeiros ou quantitativos (Ex: "Maior que", "Menor ou igual a").</li>
-            </ul>
+<!-- Passo a passo desistentes -->
+<div class="slide">
+<div class="header"><h2>Exemplo: destacar alunos que trancaram</h2></div>
+<div class="content">
+<p>Nomes na coluna A, e-mails na B, situação ("Ativo"/"Trancado") na C. Para pintar de cinza a linha de quem
+                trancou:</p>
+<div class="flow">
+<div class="node">Selecionar A2:C50</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Fórmula personalizada</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">=$C2="Trancado"</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Cor cinza</div>
+</div>
+<div class="info-box">
+<p>Como a coluna C está travada (<code>$C</code>), o Planilhas testa cada linha e aplica o cinza às colunas
+                    A, B e C ao mesmo tempo para aquele registro. Leitura horizontal instantânea.</p>
+</div>
+</div>
+</div>
 
-            <div class="exemplo-box">
-                <div class="exemplo-title">Exemplo 1: Fluxo de Devolução de Chaves/Equipamentos</div>
-                Na planilha de controle da portaria ou do almoxarifado, a Coluna C registra o status da devolução. 
-                <br><br>
-                <strong>Configuração da Regra:</strong><br>
-                1. Selecione o intervalo <code>C2:C100</code>.<br>
-                2. Em regras de formatação, escolha: <code>O texto é exatamente</code> e digite <code>"Em aberto"</code>.<br>
-                3. Estilo: Defina o preenchimento como amarelo claro. Sempre que um item sair, a linha piscará em alerta para a equipe.
-            </div>
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#3b82f6;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">A formatação condicional colore células sozinha
+            conforme regras de texto, data ou número. A <b>escala de cores</b> revela distribuições; a <b>fórmula
+            personalizada</b> com <b>$</b> pinta linhas inteiras. É um monitor visual que aponta os problemas antes que
+            você precise procurá-los.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
 
-            <h2>2. Rastreamento de Prazos e Alertas Críticos</h2>
-            <p>Para secretarias acadêmicas ou setores que lidam com prazos de editais e processos administrativos, a planilha pode calcular dinamicamente o vencimento de documentos comparando as datas introduzidas com o dia de hoje.</p>
-            
-            <table>
-                <thead>
-                    <tr>
-                        <th>Cenário Prático</th>
-                        <th>Regra de Formatação Recomendada</th>
-                        <th>Estilo Visual Sugerido</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Processo com prazo estourado</td>
-                        <td><code>A data é anterior a &gt; Hoje</code></td>
-                        <td>Fundo Vermelho Claro (Urgência)</td>
-                    </tr>
-                    <tr>
-                        <td>Documento vence hoje</td>
-                        <td><code>A data é &gt; Hoje</code></td>
-                        <td>Fundo Laranja (Atenção Máxima)</td>
-                    </tr>
-                    <tr>
-                        <td>Prazo futuro garantido</td>
-                        <td><code>A data é posterior a &gt; Hoje</code></td>
-                        <td>Fundo Verde Claro (Regularizado)</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h2>3. Aprofundamento Técnico: Escala de Cores</h2>
-            <p>Em vez de aplicar uma cor estática (tudo ou nada), a <strong>Escala de Cores</strong> analisa o menor e o maior valor do intervalo e cria uma transição suave (gradiente). É ideal para identificar a distribuição de cargas de trabalho e despesas entre os departamentos.</p>
-
-            <div class="exemplo-box">
-                <div class="exemplo-title">Exemplo 2: Monitoramento de Orçamento por Setor</div>
-                Imagine que a coluna D lista o valor gasto no mês por cada departamento da faculdade.<br><br>
-                Ao aplicar a <strong>Escala de Cores (Bicolor: do Branco ao Vermelho)</strong> no intervalo <code>D2:D20</code>, as secretarias que gastaram muito pouco ficarão totalmente brancas, enquanto os setores que estão centralizando os gastos da instituição ganharão tons progressivamente mais escuros de vermelho automaticamente.
-            </div>
-
-            <h2>4. Avançado: Formatando Linhas Inteiras com Fórmulas</h2>
-            <p>Por padrão, a formatação condicional pinta apenas a célula que tem o valor. Contudo, na gestão universitária, o ideal é que <strong>a linha inteira do aluno ou do processo fique colorida</strong> para facilitar a leitura horizontal na tela.</p>
-            <p>Para conseguir esse efeito, selecionamos toda a tabela e escolhemos a opção de regra <code>A fórmula personalizada é</code>.</p>
-
-            <div class="destaque">
-                Regra de Ouro do Travamento ($): Para pintar a linha inteira com base em uma única coluna, precisamos "travar" a referência da coluna usando o caractere cifrão (<code>$</code>). Caso contrário, a regra se perde ao navegar horizontalmente.
-            </div>
-
-            <div class="exemplo-box">
-                <div class="exemplo-title">Exemplo Prático: Destacar Linhas de Alunos Desistentes</div>
-                Suponha que os nomes dos alunos estão na Coluna A, os e-mails na Coluna B, e a situação da matrícula na Coluna C ("Ativo" ou "Trancado"). Queremos pintar a linha toda do aluno de cinza caso ele tranque o curso.
-                <br><br>
-                <strong>Passo a Passo:</strong><br>
-                1. Selecione toda a tabela de dados, por exemplo, o intervalo de <code>A2:C50</code>.<br>
-                2. No menu de formatação condicional, escolha: <code>A fórmula personalizada é</code>.<br>
-                3. Digite exatamente a fórmula abaixo:
-                <span class="code-block">=$C2="Trancado"</span>
-                4. Escolha a cor de preenchimento cinza e clique em Concluir.<br>
-                <strong>Resultado:</strong> Como a coluna C possui o cifrão (<code>$C</code>), o Planilhas Google testará a situação de cada linha e aplicará a cor cinza nas colunas A, B e C simultaneamente para aquele registro.
-            </div>
-        </article>
-    </div>
-
-    <footer>
-<<<<<<< HEAD
-        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull;  
-=======
-        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull; 
->>>>>>> 890f33e (Atualização da página inicial confoorme o dominio ajudaprofessor.com.br)
-    </footer>
-
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Planilhas Google</p>
+</footer>
 </body>
 </html>
