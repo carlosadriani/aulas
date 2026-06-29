@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Planilhas Google - Importação de Dados</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #3b82f6; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #3b82f6; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+        .info-box { border-left: 5px solid #3b82f6; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #3b82f6; font-size: 26px; }
+        .sheet { width: 100%; border-collapse: collapse; margin-top: 18px; font-family: "Fira Code", monospace; font-size: 16px; }
+        .sheet th { background: #1e293b; color: #fff; padding: 8px 10px; border: 1px solid #cbd5e1; }
+        .sheet td { padding: 8px 10px; border: 1px solid #cbd5e1; background: #fff; }
+        .sheet td.rowhdr, .sheet th.corner { background: #e2e8f0; color: #1e293b; text-align: center; font-weight: bold; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Planilhas Google
+            </h1>
+<p>Importação de Dados</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-file-import" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+<h1>Importação de Dados</h1>
+<p style="font-size: 24px; opacity: 0.8;">Trazendo informações de fora para dentro da planilha</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Uso de Dados em Planilhas Google</div>
+</div>
+
+<!-- Por que importar -->
+<div class="slide">
+<div class="header"><h2>Por que importar dados?</h2></div>
+<div class="content">
+<p class="lead">No dia a dia da universidade, raramente os dados <span class="highlight">nascem</span> dentro da
+                planilha. Eles chegam de sistemas acadêmicos, do RH, da biblioteca, de formulários e de relatórios em
+                outros formatos.</p>
+<div class="info-box">
+<p><b>Importar</b> é o ato de trazer esses dados externos para dentro do Planilhas Google, convertendo-os em
+                    linhas e colunas que você pode somar, filtrar e cruzar. Saber importar bem evita o trabalho manual
+                    de redigitar centenas de registros — e os erros que vêm junto.</p>
+</div>
+<p style="margin-top:16px;">Vamos ver dois grandes caminhos: a <b>importação manual</b> (menu Arquivo &gt;
+                Importar) e a <b>importação por fórmulas</b> (funções <code>IMPORT…</code>), que se atualizam sozinhas.</p>
+</div>
+</div>
+
+<!-- Formatos comuns -->
+<div class="slide">
+<div class="header"><h2>Formatos de arquivo mais comuns</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Formato</th><th>O que é</th><th>De onde costuma vir</th></tr>
+<tr><td><b>.csv</b></td><td>Texto puro com valores separados por vírgula (ou ponto e vírgula)</td><td>Sistemas acadêmicos, ERPs, exportações de bancos de dados</td></tr>
+<tr><td><b>.xlsx / .xls</b></td><td>Pasta de trabalho do Microsoft Excel</td><td>Setores que usam Excel, relatórios gerenciais</td></tr>
+<tr><td><b>.tsv / .txt</b></td><td>Texto separado por tabulação</td><td>Exportações de sistemas legados</td></tr>
+<tr><td><b>.ods</b></td><td>Planilha do LibreOffice/OpenOffice</td><td>Órgãos públicos e softwares livres</td></tr>
+</table>
+<div class="info-box">
+<p>O <b>CSV</b> é o "idioma universal" das planilhas: qualquer sistema sabe gerá-lo e qualquer programa sabe
+                    lê-lo. Por isso é o formato que você mais vai encontrar ao puxar relatórios.</p>
+</div>
+</div>
+</div>
+
+<!-- Anatomia de um CSV -->
+<div class="slide">
+<div class="header"><h2>Entendendo um arquivo CSV por dentro</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<p>Um CSV é apenas <b>texto</b>. Cada linha do arquivo vira uma linha da planilha, e cada
+                        <span class="highlight">separador</span> marca o fim de uma coluna. Abra-o no Bloco de Notas e
+                        verá algo assim:</p>
+<div class="warn-box">
+<p>No Brasil, a vírgula costuma ser o separador <b>decimal</b> (R$ 1.250,50). Por isso muitos sistemas
+                        usam <b>ponto e vírgula</b> (;) como separador de colunas. Fique atento a isso na hora de
+                        importar.</p>
+</div>
+</div>
+<div class="code-box" style="font-size:16px;">
+matricula;nome;curso;media<br/>
+20231;Ana Souza;ADS;8,5<br/>
+20232;Bruno Lima;ADS;6,0<br/>
+20233;Carla Dias;Redes;9,2
+                </div>
+</div>
+<div class="info-box">
+<p>Esse mesmo conteúdo, depois de importado, vira uma tabela de 4 colunas e 3 linhas de dados. O Planilhas
+                    Google detecta o separador automaticamente na maioria dos casos, mas permite escolhê-lo manualmente.</p>
+</div>
+</div>
+</div>
+
+<!-- Importação manual: passo a passo -->
+<div class="slide">
+<div class="header"><h2>Importação manual: Arquivo &gt; Importar</h2></div>
+<div class="content">
+<div class="flow">
+<div class="node">Arquivo</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Importar</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Fazer upload</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Configurar</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Importar dados</div>
+</div>
+<table class="table" style="margin-top:24px;">
+<tr><th>Passo</th><th>O que fazer</th></tr>
+<tr><td><b>1</b></td><td>Menu <code>Arquivo</code> &gt; <code>Importar</code>.</td></tr>
+<tr><td><b>2</b></td><td>Na aba <code>Fazer upload</code>, arraste o arquivo (CSV, XLSX, ODS…) ou escolha um já guardado no Drive.</td></tr>
+<tr><td><b>3</b></td><td>Em <b>Local de importação</b>, escolha: criar nova planilha, inserir nova(s) aba(s) ou substituir a aba atual.</td></tr>
+<tr><td><b>4</b></td><td>Em <b>Tipo de separador</b>, deixe "Detectar automaticamente" ou force vírgula / ponto e vírgula / tabulação.</td></tr>
+<tr><td><b>5</b></td><td>Marque "Converter texto em números, datas e fórmulas" se quiser que <code>8,5</code> vire número.</td></tr>
+<tr><td><b>6</b></td><td>Clique em <code>Importar dados</code>.</td></tr>
+</table>
+</div>
+</div>
+
+<!-- Local de importação detalhado -->
+<div class="slide">
+<div class="header"><h2>As opções de "Local de importação"</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Opção</th><th>Efeito</th><th>Quando usar</th></tr>
+<tr><td><b>Criar nova planilha</b></td><td>Gera um novo arquivo só com os dados importados</td><td>Quando o relatório é independente</td></tr>
+<tr><td><b>Inserir nova(s) página(s)</b></td><td>Adiciona o conteúdo em novas abas da planilha atual</td><td>Para juntar várias fontes num só arquivo</td></tr>
+<tr><td><b>Substituir página atual</b></td><td>Apaga o conteúdo da aba e coloca o novo</td><td>Atualização periódica de uma mesma aba</td></tr>
+<tr><td><b>Substituir dados na célula selecionada</b></td><td>Cola a partir da célula ativa</td><td>Encaixar dados ao lado de algo existente</td></tr>
+<tr><td><b>Anexar à página atual</b></td><td>Adiciona as linhas no fim da tabela existente</td><td>Acumular registros de várias remessas</td></tr>
+</table>
+<div class="warn-box">
+<p><b>Cuidado com "Substituir":</b> ele apaga o que estava lá sem aviso. Antes de substituir uma aba
+                    importante, faça uma cópia (botão direito na aba &gt; Duplicar).</p>
+</div>
+</div>
+</div>
+
+<!-- Importar do Excel -->
+<div class="slide">
+<div class="header"><h2>Importando planilhas do Excel (.xlsx)</h2></div>
+<div class="content">
+<p>Arquivos <code>.xlsx</code> podem ser abertos de duas formas:</p>
+<ul class="spaced">
+<li><b>Abrir como Planilhas Google:</b> no Drive, dê dois cliques no arquivo e use <code>Abrir com &gt; Planilhas Google</code>. Isso cria uma cópia convertida, preservando fórmulas compatíveis, abas e formatação.</li>
+<li><b>Importar para dentro de uma planilha existente:</b> use <code>Arquivo &gt; Importar</code> para trazer apenas os dados de uma aba específica.</li>
+</ul>
+<div class="info-box">
+<p>Nem tudo converte 100%: macros do Excel (VBA), alguns gráficos e funções muito específicas podem não
+                    funcionar. Fórmulas comuns (SOMA, SE, PROCV) são convertidas para os equivalentes em português
+                    (SOMA, SE, PROCV/PROCX) automaticamente.</p>
+</div>
+</div>
+</div>
+
+<!-- Colar de outras fontes -->
+<div class="slide">
+<div class="header"><h2>Copiar e colar de outras fontes</h2></div>
+<div class="content">
+<p>Muitas vezes os dados estão num e-mail, num PDF ou numa página web. Você pode simplesmente
+                <b>copiar (Ctrl+C)</b> e <b>colar (Ctrl+V)</b> na planilha. Para controlar o resultado, use
+                <span class="highlight">Colar especial</span>:</p>
+<table class="table">
+<tr><th>Colar especial</th><th>O que cola</th></tr>
+<tr><td><b>Somente valores</b> (Ctrl+Shift+V)</td><td>Apenas o texto/número, sem formatação nem fórmulas</td></tr>
+<tr><td><b>Somente formato</b></td><td>Só cores, bordas e fontes — útil para padronizar</td></tr>
+<tr><td><b>Transposto</b></td><td>Troca linhas por colunas</td></tr>
+</table>
+<div class="warn-box">
+<p>Ao colar texto "grudado" numa coluna só, selecione a coluna e use <code>Dados &gt; Dividir texto em
+                    colunas</code> para separá-lo. Veremos isso em detalhe no tópico de <b>Tratamento de Dados</b>.</p>
+</div>
+</div>
+</div>
+
+<!-- Importação por fórmulas -->
+<div class="slide">
+<div class="header"><h2>Importação viva: as funções IMPORT…</h2></div>
+<div class="content">
+<p class="lead">Diferente da importação manual, as funções <span class="highlight">IMPORT…</span> criam uma
+                ligação <b>dinâmica</b>: quando a fonte muda, a planilha se atualiza sozinha.</p>
+<table class="table">
+<tr><th>Função</th><th>Para que serve</th></tr>
+<tr><td><b>IMPORTDATA</b></td><td>Importa um arquivo CSV ou TSV publicado em uma URL</td></tr>
+<tr><td><b>IMPORTHTML</b></td><td>Importa uma tabela ou lista de uma página web</td></tr>
+<tr><td><b>IMPORTXML</b></td><td>Importa dados específicos via caminho XPath</td></tr>
+<tr><td><b>IMPORTFEED</b></td><td>Importa um feed RSS/Atom (notícias, blogs)</td></tr>
+<tr><td><b>IMPORTRANGE</b></td><td>Importa intervalos de <i>outra planilha do Google</i> (tópico próprio)</td></tr>
+</table>
+</div>
+</div>
+
+<!-- IMPORTDATA -->
+<div class="slide">
+<div class="header"><h2>IMPORTDATA: puxar um CSV da web</h2></div>
+<div class="content">
+<div class="code-box">
+=IMPORTDATA("https://dados.exemplo.gov.br/matriculas.csv")
+            </div>
+<p style="margin-top:16px;">A função busca o arquivo na URL e despeja todo o conteúdo a partir da célula
+                onde foi digitada. É ideal para <b>dados abertos</b> de órgãos públicos ou relatórios que o sistema
+                publica num link fixo.</p>
+<div class="info-box">
+<p>Você pode indicar o separador e a localidade: <br/>
+<code>=IMPORTDATA("https://...arquivo.csv"; ";"; "pt_BR")</code><br/>
+                    Assim o ponto e vírgula é tratado como separador de colunas e a vírgula como decimal.</p>
+</div>
+</div>
+</div>
+
+<!-- IMPORTHTML -->
+<div class="slide">
+<div class="header"><h2>IMPORTHTML: capturar uma tabela de um site</h2></div>
+<div class="content">
+<div class="code-box">
+=IMPORTHTML("https://pt.wikipedia.org/wiki/Brasil"; "table"; 1)
+            </div>
+<p style="margin-top:16px;">Os três argumentos são: a <b>URL</b>, se você quer uma <code>"table"</code> ou
+                uma <code>"list"</code>, e o <b>número de ordem</b> do elemento na página (a 1ª tabela, a 2ª, etc.).</p>
+<div class="info-box">
+<p>Excelente para trazer cotações, rankings, calendários acadêmicos publicados em HTML ou listas de feriados
+                    sem copiar e colar manualmente — e o dado se atualiza quando a página muda.</p>
+</div>
+<div class="warn-box">
+<p>Se a tabela vier vazia, tente outro índice (2, 3…): a "tabela 1" da página nem sempre é a que você vê. E
+                    a função só funciona com páginas públicas que não exigem login.</p>
+</div>
+</div>
+</div>
+
+<!-- IMPORTXML -->
+<div class="slide">
+<div class="header"><h2>IMPORTXML: extrair um dado específico</h2></div>
+<div class="content">
+<div class="code-box" style="font-size:17px;">
+=IMPORTXML("https://exemplo.com/cotacao"; "//span[@id='dolar']")
+            </div>
+<p style="margin-top:16px;">Quando você não quer a tabela inteira, mas só <b>um pedaço</b> da página (um
+                preço, um título, uma data), o <span class="highlight">IMPORTXML</span> usa um caminho
+                <b>XPath</b> para apontar exatamente onde está o dado.</p>
+<div class="info-box">
+<p>XPath é como um "endereço" dentro do código da página. Exemplos comuns: <code>//h1</code> (todos os
+                    títulos), <code>//a/@href</code> (todos os links), <code>//div[@class='preco']</code> (divs com a
+                    classe "preco"). É a função mais poderosa e a mais técnica do grupo.</p>
+</div>
+</div>
+</div>
+
+<!-- Boas práticas e erros -->
+<div class="slide">
+<div class="header"><h2>Erros comuns ao importar e como resolver</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Sintoma</th><th>Causa provável</th><th>Solução</th></tr>
+<tr><td>Tudo veio numa coluna só</td><td>Separador errado</td><td>Reimportar escolhendo ; ou tabulação, ou usar Dividir texto em colunas</td></tr>
+<tr><td>Números viraram texto (à esquerda)</td><td>Vírgula decimal não reconhecida</td><td>Marcar "converter em números" e ajustar a localidade da planilha</td></tr>
+<tr><td>Acentos quebrados (Ã©, Ã£)</td><td>Codificação diferente de UTF-8</td><td>Reabrir/salvar o CSV em UTF-8 antes de importar</td></tr>
+<tr><td><code>#REF!</code> ou <code>#N/A</code> em IMPORT…</td><td>URL inacessível ou sem permissão</td><td>Verificar se o link é público e está correto</td></tr>
+<tr><td>Datas trocadas (mês/dia)</td><td>Formato americano MM/DD</td><td>Ajustar a localidade em Arquivo &gt; Configurações</td></tr>
+</table>
+</div>
+</div>
+
+<!-- Exemplo prático universidade -->
+<div class="slide">
+<div class="header"><h2>Exemplo prático: relatório de matrículas</h2></div>
+<div class="content">
+<p>A Secretaria recebe do sistema acadêmico um arquivo <code>matriculas_2026-1.csv</code>. Depois de
+                <code>Arquivo &gt; Importar &gt; Fazer upload</code>, a aba fica assim:</p>
+<table class="sheet">
+<tr><th class="corner"></th><th>A</th><th>B</th><th>C</th><th>D</th></tr>
+<tr><td class="rowhdr">1</td><td>matricula</td><td>nome</td><td>curso</td><td>situacao</td></tr>
+<tr><td class="rowhdr">2</td><td>20231</td><td>Ana Souza</td><td>ADS</td><td>Ativa</td></tr>
+<tr><td class="rowhdr">3</td><td>20232</td><td>Bruno Lima</td><td>ADS</td><td>Trancada</td></tr>
+<tr><td class="rowhdr">4</td><td>20233</td><td>Carla Dias</td><td>Redes</td><td>Ativa</td></tr>
+</table>
+<div class="info-box">
+<p>A partir daqui, em segundos é possível contar matrículas ativas com
+                    <code>=CONT.SE(D2:D4;"Ativa")</code>, sem conferir registro por registro. Importar bem é o primeiro
+                    passo de todo relatório.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#3b82f6;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">Importar é trazer dados externos para a planilha.
+            Use <b>Arquivo &gt; Importar</b> para arquivos (CSV, XLSX, ODS), prestando atenção ao separador, à
+            codificação e ao local de importação. Para ligações que se atualizam sozinhas, use as funções
+            <b>IMPORTDATA, IMPORTHTML e IMPORTXML</b>. Com os dados dentro da planilha, o trabalho de análise pode
+            começar.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Planilhas Google</p>
+</footer>
+</body>
+</html>

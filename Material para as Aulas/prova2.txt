@@ -1,0 +1,96 @@
+Universidade de Passo Fundo
+Análise e Desenvolvimento de Sistemas
+Organização de Computadores
+Prof. MSc. Carlos Adriani Lara Schaeffer
+Avaliação - modelo 2
+25 de junho de 2026
+Matrícula/Nome:_________________________________________________________
+
+
+Instruções: 
+- Assinale apenas UMA alternativa por questão.
+- É permitido rascunhar nas folhas para as conversões e cálculos. A resposta que vale é a que está na grade final
+- Justifique seu raciocínio mentalmente antes de marcar
+
+
+1. Ao comparar um disco rígido (HD magnético) com uma unidade de estado
+   sólido (SSD), pode-se afirmar que, de modo geral:
+   a) o SSD usa memória flash, não tem partes móveis e oferece tempos
+      de acesso menores que o HD magnético.
+   b) ambos armazenam dados magneticamente em pratos giratórios.
+   c) o HD é sempre mais rápido que o SSD no acesso aleatório.
+   d) o HD não possui partes móveis e o SSD possui pratos giratórios.
+   e) o SSD é volátil, perdendo os dados quando desligado.
+
+2. Sobre a volatilidade das memórias, é correto afirmar que:
+   a) tanto RAM quanto ROM perdem os dados ao desligar o computador.
+   b) a memória ROM é volátil e a RAM é não volátil.
+   c) a memória RAM é não volátil, como a memória flash.
+   d) nenhuma memória semicondutora é volátil.
+   e) a memória RAM é volátil e a memória ROM é não volátil.
+
+3. Um sensor envia o byte 10110110 em binário puro (sem sinal). Qual é o
+   valor decimal correspondente?
+   a) 174
+   b) 182
+   c) 186
+   d) 180
+   e) 190
+
+4. A sigla CPU corresponde a:
+   a) Circuito Programável Único
+   b) Unidade Central de Processamento
+   c) Unidade de Cálculo e Programação
+   d) Central de Periféricos Universais
+   e) Controlador de Processos da Unidade
+
+5. A Unidade Lógica e Aritmética (ULA) é responsável por:
+   a) armazenar permanentemente os dados do programa.
+   b) gerar os sinais de controle de todo o processador.
+   c) traduzir endereços lógicos em endereços físicos.
+   d) realizar operações aritméticas e lógicas sobre os operandos.
+   e) gerenciar as interrupções dos dispositivos de E/S.
+
+6. Qual dos dispositivos a seguir armazena dados de forma NÃO volátil
+   (mantém o conteúdo mesmo sem energia)?
+   a) Registradores da CPU
+   b) Memória DRAM
+   c) Memória cache
+   d) Unidade de estado sólido (SSD)
+   e) Memória RAM
+
+7. Um endereço de registrador aparece na documentação como 0x2F. Qual é
+   o seu valor em decimal?
+   a) 57
+   b) 63
+   c) 47
+   d) 79
+   e) 45
+
+8. Uma das diferenças centrais entre as filosofias RISC e CISC é que, de
+   modo geral, processadores RISC tendem a ter:
+   a) ausência de registradores internos.
+   b) um conjunto reduzido de instruções simples, favorecendo
+      pipeline.
+   c) um conjunto grande de instruções complexas e de tamanho
+      variável.
+   d) impossibilidade de executar laços de repetição.
+   e) todas as instruções interpretadas por microcódigo extenso.
+
+9. Quantos valores distintos podem ser representados com 4 bits?
+   a) 16
+   b) 15
+   c) 32
+   d) 8
+   e) 4
+
+10. Em relação à memória principal, a memória cache é, em geral:
+   a) maior e mais rápida.
+   b) menor e mais rápida.
+   c) do mesmo tamanho e da mesma velocidade.
+   d) menor e mais lenta.
+   e) maior e mais lenta.
+
+
+GRADE DE RESPOSTAS (preencher):
+  1:___  2:___  3:___  4:___  5:___  6:___  7:___  8:___  9:___  10:___

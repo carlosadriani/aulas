@@ -1,249 +1,159 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula 5: Cruzamento de Tabelas com XLOOKUP (PROCX) - Prof. Carlos Schaeffer</title>
-    <style>
-        :root {
-            --primary-color: #0f9d58; /* Verde do Google Sheets */
-            --secondary-color: #1b73e8; /* Azul do Google */
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-color: #3c4043;
-            --text-light: #5f6368;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        header {
-            background-color: var(--card-bg);
-            border-bottom: 1px solid #dadce0;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            color: var(--primary-color);
-            font-size: 2rem;
-        }
-        header p {
-            margin: 0.5rem 0 0 0;
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        .btn-voltar {
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.95rem;
-        }
-        .btn-voltar:hover {
-            text-decoration: underline;
-        }
-        .aula-body {
-            background: var(--card-bg);
-            border: 1px solid #dadce0;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
-        }
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid #f1f3f4;
-            padding-bottom: 0.5rem;
-            margin-top: 2.5rem;
-        }
-        h3 {
-            color: var(--text-color);
-            margin-top: 1.5rem;
-        }
-        ul, ol {
-            padding-left: 1.2rem;
-            color: var(--text-light);
-        }
-        li {
-            margin-bottom: 0.6rem;
-        }
-        .destaque {
-            background-color: #e8f0fe;
-            border-left: 4px solid var(--secondary-color);
-            padding: 1.2rem;
-            margin: 1.5rem 0;
-            border-radius: 0 4px 4px 0;
-            color: #1967d2;
-            font-weight: 500;
-        }
-        .exemplo-box {
-            background-color: #f1f3f4;
-            border-radius: 4px;
-            padding: 1.2rem;
-            margin: 1.5rem 0;
-            border-left: 4px solid var(--primary-color);
-        }
-        .exemplo-title {
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-        }
-        th, td {
-            border: 1px solid #dadce0;
-            padding: 10px 14px;
-            text-align: left;
-        }
-        th {
-            background-color: #f8f9fa;
-            color: var(--text-color);
-        }
-        code {
-            background-color: #f1f3f4;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.95rem;
-            color: #c7254e;
-        }
-        .code-block {
-            display: block;
-            background-color: #fafafa;
-            padding: 12px;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.95rem;
-            color: #333;
-            margin: 10px 0;
-            border-left: 3px solid #5f6368;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            border-top: 1px solid #dadce0;
-            background: var(--card-bg);
-            margin-top: 4rem;
-        }
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Planilhas Google - Aula 05: Busca com PROCX (XLOOKUP)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #3b82f6; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #3b82f6; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+        .info-box { border-left: 5px solid #3b82f6; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #3b82f6; font-size: 26px; }
+        .sheet { width: 100%; border-collapse: collapse; margin-top: 18px; font-family: "Fira Code", monospace; font-size: 16px; }
+        .sheet th { background: #1e293b; color: #fff; padding: 8px 10px; border: 1px solid #cbd5e1; }
+        .sheet td { padding: 8px 10px; border: 1px solid #cbd5e1; background: #fff; }
+        .sheet td.rowhdr, .sheet th.corner { background: #e2e8f0; color: #1e293b; text-align: center; font-weight: bold; }
     </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
 </head>
-<body>
-    <header>
-        <h1>Planilhas Google</h1>
-        <p>Prof. MSc. Carlos Schaeffer</p>
-    </header>
-    <div class="container">
-        <a href="index.html" class="btn-voltar">&larr; Voltar ao Menu</a>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Planilhas Google
+            </h1>
+<p>Aula 05 — Busca Inteligente com PROCX</p>
+</div>
+</header>
 
-        <article class="aula-body">
-            <h1>Aula 5: Busca Inteligente e Vinculação de Dados com XLOOKUP (PROCX)</h1>
-            <p>Em sistemas administrativos, é comum trabalharmos com listas separadas. Por exemplo, você pode receber uma lista do setor financeiro contendo apenas o número de matrícula do aluno e o status do pagamento, e precisar descobrir o nome e o e-mail desse aluno que estão salvos em outra planilha de cadastro geral. Em vez de procurar manualmente um por um, utilizamos a função de busca mais moderna do mercado: o <strong>XLOOKUP</strong> (ou <strong>PROCX</strong>, dependendo do idioma configurado na sua conta).</p>
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-magnifying-glass-arrow-right" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+<h1>PROCX (XLOOKUP)</h1>
+<p style="font-size: 24px; opacity: 0.8;">Vinculando dados entre listas diferentes</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Curso de Planilhas Google — Aula 05</div>
+</div>
 
-            <div class="destaque">
-                Objetivo da Aula: Compreender a mecânica de mapeamento da função XLOOKUP, substituir o uso legado do PROCV eliminando suas limitações estruturais e aprender a tratar dados não localizados de forma limpa.
+<!-- Contexto -->
+<div class="slide">
+<div class="header"><h2>O problema das listas separadas</h2></div>
+<div class="content">
+<p class="lead">Você recebe do Financeiro uma lista só com a <b>matrícula</b> e o status de pagamento, e
+                precisa descobrir o <b>nome</b> e o <b>e-mail</b> que estão em outra planilha de cadastro.</p>
+<div class="info-box">
+<p>Em vez de procurar um a um, usamos a função de busca mais moderna: o <span class="highlight">PROCX</span>
+                    (XLOOKUP). <b>Objetivo:</b> entender o mapeamento da função, substituir o antigo PROCV e tratar
+                    dados não encontrados de forma limpa.</p>
+</div>
+</div>
+</div>
+
+<!-- PROCV vs PROCX -->
+<div class="slide">
+<div class="header"><h2>Por que o PROCX substituiu o PROCV?</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Limitação do PROCV</th><th>Solução do PROCX</th></tr>
+<tr><td>Só buscava da esquerda para a direita</td><td>Busca em <b>qualquer direção</b> (esquerda, direita, acima, abaixo)</td></tr>
+<tr><td>Quebrava ao inserir uma coluna no meio</td><td>Guarda a referência direta das colunas, resiste a mudanças de layout</td></tr>
+<tr><td>Precisava de SEERRO para esconder erros</td><td>Tem <b>tratamento de erro integrado</b></td></tr>
+</table>
+</div>
+</div>
+
+<!-- Sintaxe -->
+<div class="slide">
+<div class="header"><h2>Anatomia do PROCX</h2></div>
+<div class="content">
+<div class="code-box" style="font-size:15px;">
+=PROCX(chave_pesquisa; intervalo_pesquisa; intervalo_resultado; [se_não_encontrado])
             </div>
+<ul class="spaced" style="margin-top:14px;">
+<li><b>chave_pesquisa:</b> a informação única que você tem em mãos (a matrícula do aluno).</li>
+<li><b>intervalo_pesquisa:</b> a coluna de origem onde essa chave está cadastrada.</li>
+<li><b>intervalo_resultado:</b> a coluna de onde quer extrair a resposta (o nome).</li>
+<li><b>se_não_encontrado:</b> (opcional, recomendado) texto exibido se a chave não existir.</li>
+</ul>
+</div>
+</div>
 
-            <h2>1. Por que o XLOOKUP substituiu o antigo PROCV?</h2>
-            <p>O antigo <code>PROCV</code> (VLOOKUP) foi útil por décadas, mas possuía falhas graves que geravam retrabalho nos escritórios. O <code>XLOOKUP</code> resolve todas elas:</p>
-            <ul>
-                <li><strong>Direção da busca:</strong> O PROCV só conseguia buscar da esquerda para a direita. O XLOOKUP busca em qualquer direção (esquerda, direita, acima ou abaixo).</li>
-                <li><strong>Segurança Estrutural:</strong> Se você inserisse uma nova coluna no meio da sua tabela, o PROCV quebrava e exibia dados errados. O XLOOKUP armazena a referência direta das colunas, resistindo a qualquer alteração de layout.</li>
-                <li><strong>Tratamento de Erros Integrado:</strong> Não é mais necessário usar funções adicionais como <code>SEERRO</code> para ocultar avisos feios do sistema quando um dado não é encontrado.</li>
-            </ul>
-
-            <h2>2. Anatomia e Sintaxe do XLOOKUP</h2>
-            <p>Diferente de outras funções complexas, o XLOOKUP trabalha de forma muito visual. Ele pede que você aponte: <strong>O que</strong> você está procurando, <strong>onde</strong> essa informação está na tabela de origem, e <strong>qual coluna</strong> contém a resposta que você quer trazer de volta.</p>
-            
-            <span class="code-block">=XLOOKUP(chave_pesquisa; intervalo_pesquisa; intervalo_resultado; [valor_não_encontrado])</span>
-
-            <ol>
-                <li><code>chave_pesquisa</code>: O código ou informação única que você tem em mãos (Ex: O número da matrícula do aluno na sua planilha atual).</li>
-                <li><code>intervalo_pesquisa</code>: A coluna na tabela de origem onde esse código está cadastrado (Ex: A coluna de matrículas da lista geral).</li>
-                <li><code>intervalo_resultado</code>: A coluna de onde você quer extrair a resposta final (Ex: A coluna contendo os nomes dos alunos na lista geral).</li>
-                <li><code>valor_não_encontrado</code> <em>(Opcional, mas altamente recomendado)</em>: O texto que aparecerá caso o código não exista no cadastro (Ex: "Matrícula não localizada").</li>
-            </ol>
-
-            <h2>3. Cenário Prático: Unificando Informações de Matrícula</h2>
-            <p>Imagine que você está na Secretaria Acadêmica com duas planilhas em abas ou arquivos diferentes:</p>
-
-            <h3>Tabela A (Sua Planilha Atual de Trabalho)</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Célula A (Matrícula)</th>
-                        <th>Célula B (Nome do Aluno)</th>
-                        <th>Célula C (Situação Financeira)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>20260045</code></td>
-                        <td><em>(Inserir Fórmula aqui)</em></td>
-                        <td>Pago</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3>Tabela B (Cadastro Geral da Universidade - Aba Oculta ou de Consulta)</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Coluna X (Nome Completo)</th>
-                        <th>Coluna Y (Nº Matrícula)</th>
-                        <th>Coluna Z (Curso)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Ana Silva Santos</td>
-                        <td><code>20260045</code></td>
-                        <td>Administração</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="exemplo-box">
-                <div class="exemplo-title">A Fórmula em Ação:</div>
-                Note que na <strong>Tabela B</strong> (origem), o Nome está à esquerda da Matrícula. O PROCV seria incapaz de realizar essa busca. Com o XLOOKUP, escrevemos na célula B2 da Tabela A:
-                <br>
-                <span class="code-block">=XLOOKUP(A2; TabelaB!Y:Y; TabelaB!X:X; "Cadastro Não Encontrado")</span>
-                <br>
-                <strong>Como o sistema processa:</strong> Ele pega o número <code>20260045</code> (de A2), vai até a coluna Y da Tabela B e procura essa linha. Ao achar, ele navega até a coluna X daquela mesma linha, extrai o texto "Ana Silva Santos" e o exibe perfeitamente na Tabela A.
+<!-- Cenário prático -->
+<div class="slide">
+<div class="header"><h2>Cenário: unificando informações de matrícula</h2></div>
+<div class="content">
+<p><b>Tabela B (cadastro geral)</b> — repare que o Nome (X) está <i>à esquerda</i> da Matrícula (Y):</p>
+<table class="sheet">
+<tr><th class="corner"></th><th>X (Nome)</th><th>Y (Matrícula)</th><th>Z (Curso)</th></tr>
+<tr><td class="rowhdr">2</td><td>Ana Silva Santos</td><td>20260045</td><td>Administração</td></tr>
+</table>
+<p style="margin-top:14px;">Na sua tabela atual, em B2, busque o nome a partir da matrícula em A2:</p>
+<div class="code-box" style="font-size:14px;">
+=PROCX(A2; TabelaB!Y:Y; TabelaB!X:X; "Cadastro Não Encontrado")
             </div>
+<div class="info-box">
+<p>O PROCV seria incapaz disso (Nome à esquerda da chave). O PROCX pega <code>20260045</code>, acha a linha
+                    na coluna Y e devolve "Ana Silva Santos" da coluna X.</p>
+</div>
+</div>
+</div>
 
-            <h2>4. Boas Práticas e Travamento de Intervalos ($)</h2>
-            <p>Se em vez de selecionar a coluna inteira (como <code>Y:Y</code>) você selecionar um intervalo limitado (como <code>Y2:Y500</code>), lembre-se da <strong>Regra de Ouro</strong> aprendida na aula anterior: você deve travar o intervalo usando o caractere cifrão (<code>$</code>) antes de arrastar a fórmula para as linhas de baixo.</p>
-            
-            <div class="exemplo-box">
-                <div class="exemplo-title">Exemplo Correto com Travamento:</div>
-                <span class="code-block">=XLOOKUP(A2; TabelaB!$Y$2:$Y$500; TabelaB!$X$2:$X$500; "Não encontrado")</span>
-                Se não travar com <code>$</code>, ao arrastar a fórmula para a linha 3, o intervalo de busca mudará erroneamente para <code>Y3:Y501</code>, fazendo com que a planilha ignore os dados cadastrados na segunda linha.
+<!-- Travamento -->
+<div class="slide">
+<div class="header"><h2>Boas práticas: travamento de intervalos ($)</h2></div>
+<div class="content">
+<p>Se você usar intervalos limitados (<code>Y2:Y500</code>) em vez da coluna inteira, trave-os com
+                <code>$</code> antes de arrastar a fórmula:</p>
+<div class="code-box" style="font-size:14px;">
+=PROCX(A2; TabelaB!$Y$2:$Y$500; TabelaB!$X$2:$X$500; "Não encontrado")
             </div>
-        </article>
-    </div>
+<div class="warn-box">
+<p>Sem o <code>$</code>, ao arrastar para a linha 3 o intervalo viraria <code>Y3:Y501</code> — e a planilha
+                    passaria a ignorar a 2ª linha de dados. O travamento mantém a busca sempre na mesma área.</p>
+</div>
+</div>
+</div>
 
-    <footer>
-<<<<<<< HEAD
-        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull;  
-=======
-        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull; 
->>>>>>> 890f33e (Atualização da página inicial confoorme o dominio ajudaprofessor.com.br)
-    </footer>
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#3b82f6;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">O <b>PROCX</b> cruza listas: você dá uma chave
+            (matrícula), aponta onde ela está e qual coluna trazer de volta. Busca em qualquer direção, resiste a
+            mudanças de layout e trata o "não encontrado". Lembre de travar os intervalos com <b>$</b> ao arrastar a
+            fórmula.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
 
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Planilhas Google</p>
+</footer>
 </body>
 </html>

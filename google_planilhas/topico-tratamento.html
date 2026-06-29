@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Planilhas Google - Tratamento de Dados</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #3b82f6; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #3b82f6; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+        .info-box { border-left: 5px solid #3b82f6; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #3b82f6; font-size: 26px; }
+        .sheet { width: 100%; border-collapse: collapse; margin-top: 18px; font-family: "Fira Code", monospace; font-size: 16px; }
+        .sheet th { background: #1e293b; color: #fff; padding: 8px 10px; border: 1px solid #cbd5e1; }
+        .sheet td { padding: 8px 10px; border: 1px solid #cbd5e1; background: #fff; }
+        .sheet td.rowhdr, .sheet th.corner { background: #e2e8f0; color: #1e293b; text-align: center; font-weight: bold; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Planilhas Google
+            </h1>
+<p>Tratamento e Limpeza de Dados</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-broom" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+<h1>Tratamento de Dados</h1>
+<p style="font-size: 24px; opacity: 0.8;">Limpando e organizando antes de analisar</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Uso de Dados em Planilhas Google</div>
+</div>
+
+<!-- Por que tratar -->
+<div class="slide">
+<div class="header"><h2>Dado bruto x dado tratado</h2></div>
+<div class="content">
+<p class="lead">Dados importados quase nunca chegam prontos: vêm com espaços sobrando, maiúsculas
+                inconsistentes, duplicatas e colunas misturadas. <span class="highlight">Tratar</span> é deixá-los
+                limpos e confiáveis antes de somar, filtrar ou cruzar.</p>
+<div class="info-box">
+<p>Há um ditado na área de dados: <b>"lixo entra, lixo sai"</b>. Um relatório só é tão bom quanto a
+                    qualidade dos dados que o alimentam. Por isso o tratamento costuma ser a etapa mais demorada — e a
+                    mais importante.</p>
+</div>
+</div>
+</div>
+
+<!-- Problemas comuns -->
+<div class="slide">
+<div class="header"><h2>Problemas típicos em dados "sujos"</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Problema</th><th>Exemplo</th><th>Consequência</th></tr>
+<tr><td>Espaços invisíveis</td><td><code>"Ana "</code> vs <code>"Ana"</code></td><td>PROCV não encontra, contagens erradas</td></tr>
+<tr><td>Maiúsc./minúsc. inconsistentes</td><td><code>ADS</code>, <code>ads</code>, <code>Ads</code></td><td>"Cursos" diferentes que são o mesmo</td></tr>
+<tr><td>Duplicatas</td><td>Mesmo aluno em 2 linhas</td><td>Totais inflados</td></tr>
+<tr><td>Número como texto</td><td><code>"1.250,50"</code> à esquerda</td><td>Não soma</td></tr>
+<tr><td>Tudo numa coluna</td><td><code>"Ana;ADS;8,5"</code></td><td>Impossível filtrar por curso</td></tr>
+<tr><td>Datas em texto</td><td><code>"23/02/2026"</code> à esquerda</td><td>Não ordena por data</td></tr>
+</table>
+</div>
+</div>
+
+<!-- Funções de texto -->
+<div class="slide">
+<div class="header"><h2>Funções para limpar texto</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Função</th><th>O que faz</th><th>Exemplo</th></tr>
+<tr><td><b>ARRUMAR</b> (TRIM)</td><td>Remove espaços extras antes, depois e duplicados</td><td><code>=ARRUMAR(A2)</code></td></tr>
+<tr><td><b>LIMPAR</b> (CLEAN)</td><td>Remove caracteres invisíveis de controle</td><td><code>=LIMPAR(A2)</code></td></tr>
+<tr><td><b>MAIÚSCULA</b> / <b>MINÚSCULA</b></td><td>Padroniza a caixa do texto</td><td><code>=MAIÚSCULA(C2)</code></td></tr>
+<tr><td><b>PRI.MAIÚSCULA</b> (PROPER)</td><td>Primeira letra de cada palavra em maiúscula</td><td><code>=PRI.MAIÚSCULA(B2)</code></td></tr>
+<tr><td><b>SUBSTITUIR</b> (SUBSTITUTE)</td><td>Troca um trecho por outro</td><td><code>=SUBSTITUIR(A2;".";"")</code></td></tr>
+<tr><td><b>VALOR</b> (VALUE)</td><td>Converte texto numérico em número</td><td><code>=VALOR(A2)</code></td></tr>
+</table>
+<div class="info-box">
+<p>É comum combiná-las: <code>=ARRUMAR(MAIÚSCULA(A2))</code> tira os espaços <i>e</i> padroniza em
+                    maiúsculas de uma vez só. Funções podem ser "aninhadas" — uma dentro da outra.</p>
+</div>
+</div>
+</div>
+
+<!-- Exemplo limpeza -->
+<div class="slide">
+<div class="header"><h2>Exemplo: padronizando uma lista</h2></div>
+<div class="content">
+<p>A coluna A veio do formulário com inconsistências. Em B, padronizamos:</p>
+<table class="sheet">
+<tr><th class="corner"></th><th>A (bruto)</th><th>B (=ARRUMAR(PRI.MAIÚSCULA(A2)))</th></tr>
+<tr><td class="rowhdr">2</td><td>"  ana souza "</td><td>Ana Souza</td></tr>
+<tr><td class="rowhdr">3</td><td>"BRUNO  lima"</td><td>Bruno Lima</td></tr>
+<tr><td class="rowhdr">4</td><td>"carla DIAS "</td><td>Carla Dias</td></tr>
+</table>
+<div class="info-box">
+<p>Depois de conferir, copie a coluna B e use <b>Colar especial &gt; Somente valores</b> sobre a coluna A
+                    para "fixar" o resultado e apagar a coluna auxiliar.</p>
+</div>
+</div>
+</div>
+
+<!-- Dividir texto em colunas -->
+<div class="slide">
+<div class="header"><h2>Dividir texto em colunas</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<p>Quando vários dados vêm "grudados" numa célula, separe-os:</p>
+<ul class="spaced">
+<li><b>Menu:</b> selecione a coluna &gt; <code>Dados &gt; Dividir texto em colunas</code> &gt; escolha o separador (vírgula, ponto e vírgula, espaço ou personalizado).</li>
+<li><b>Fórmula:</b> <code>=DIVIDIRTEXTO(A2;";")</code> (SPLIT) faz o mesmo de forma dinâmica.</li>
+</ul>
+</div>
+<div class="code-box" style="font-size:16px;">
+A2 = "Ana;ADS;8,5"<br/><br/>
+=DIVIDIRTEXTO(A2;";")<br/><br/>
+→ Ana | ADS | 8,5
+                </div>
+</div>
+<div class="info-box">
+<p>O inverso — juntar colunas — usa <b>&amp;</b> ou <b>UNIRTEXTO</b>:
+                    <code>=A2&amp;" "&amp;B2</code> ou <code>=UNIRTEXTO(" ";VERDADEIRO;A2:C2)</code>.</p>
+</div>
+</div>
+</div>
+
+<!-- Remover duplicatas -->
+<div class="slide">
+<div class="header"><h2>Remover duplicatas</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Método</th><th>Como</th><th>Quando usar</th></tr>
+<tr><td><b>Limpeza de dados</b></td><td><code>Dados &gt; Limpeza de dados &gt; Remover duplicados</code></td><td>Apagar de vez linhas repetidas</td></tr>
+<tr><td><b>ÚNICO</b> (UNIQUE)</td><td><code>=ÚNICO(A2:A100)</code></td><td>Gerar uma lista sem repetições, dinâmica</td></tr>
+<tr><td><b>CONT.SE</b></td><td><code>=CONT.SE(A$2:A2;A2)&gt;1</code></td><td>Marcar/realçar as duplicatas sem apagar</td></tr>
+</table>
+<div class="warn-box">
+<p>Antes de remover duplicatas de verdade, <b>limpe os espaços e padronize a caixa</b> — senão "Ana " e
+                    "ana" serão tratadas como pessoas diferentes e a duplicata não será detectada.</p>
+</div>
+</div>
+</div>
+
+<!-- Validação de dados -->
+<div class="slide">
+<div class="header"><h2>Validação de dados: evitar a sujeira na origem</h2></div>
+<div class="content">
+<p>Melhor que limpar depois é <span class="highlight">impedir</span> o erro na digitação. Em
+                <code>Dados &gt; Validação de dados</code> você define regras para uma célula:</p>
+<ul class="spaced">
+<li><b>Lista suspensa (dropdown):</b> só permite valores de uma lista (ex.: "Ativa", "Trancada", "Cancelada") — fim das variações de digitação.</li>
+<li><b>Intervalo de números:</b> nota entre 0 e 10, por exemplo.</li>
+<li><b>Data válida</b> ou <b>texto que contém</b> certo padrão.</li>
+<li><b>Rejeitar a entrada</b> inválida ou apenas mostrar um aviso.</li>
+</ul>
+<div class="info-box">
+<p>Listas suspensas são o recurso mais poderoso para manter uma planilha colaborativa consistente: dez
+                    pessoas diferentes preenchendo, mas sempre com os mesmos valores.</p>
+</div>
+</div>
+</div>
+
+<!-- Formatação condicional -->
+<div class="slide">
+<div class="header"><h2>Formatação condicional: enxergar problemas</h2></div>
+<div class="content">
+<p>Em <code>Formatar &gt; Formatação condicional</code>, células se colorem sozinhas conforme regras —
+                ótimo para auditar dados:</p>
+<table class="table">
+<tr><th>Regra</th><th>Efeito</th></tr>
+<tr><td>Célula vazia</td><td>Pintar de amarelo campos não preenchidos</td></tr>
+<tr><td>Texto contém erro / "#"</td><td>Destacar registros problemáticos</td></tr>
+<tr><td>Fórmula personalizada <code>=CONT.SE(A:A;A1)&gt;1</code></td><td>Realçar duplicatas em vermelho</td></tr>
+<tr><td>Escala de cores</td><td>Mapa de calor de notas, gastos, faltas</td></tr>
+</table>
+<div class="info-box">
+<p>A formatação condicional não altera o dado — só o <b>visual</b>. É reversível e ideal para revisar uma
+                    base antes de fechar um relatório.</p>
+</div>
+</div>
+</div>
+
+<!-- ARRAYFORMULA -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: tratar a coluna inteira com ARRAYFORMULA</h2></div>
+<div class="content">
+<p>Em vez de arrastar uma fórmula por mil linhas, a <span class="highlight">FÓRMULAMATRICIAL</span>
+                (ARRAYFORMULA) aplica a operação a um intervalo todo de uma vez:</p>
+<div class="code-box" style="font-size:17px;">
+=ARRAYFORMULA(ARRUMAR(MAIÚSCULA(A2:A1000)))
+            </div>
+<div class="info-box">
+<p>Uma única fórmula na célula B2 já preenche B2 até B1000. Vantagens: mais leve, sem risco de esquecer de
+                    arrastar e atualiza sozinha quando chegam linhas novas. É a base de planilhas que "se mantêm
+                    limpas".</p>
+</div>
+</div>
+</div>
+
+<!-- QUERY -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: QUERY, o "mini-banco de dados"</h2></div>
+<div class="content">
+<p>A função <span class="highlight">QUERY</span> usa uma linguagem parecida com SQL para filtrar, ordenar e
+                resumir dados — tratando e analisando em um só passo:</p>
+<div class="code-box" style="font-size:15px;">
+=QUERY(A1:D100; "select B, C where D = 'Ativa' order by C"; 1)
+            </div>
+<p style="margin-top:14px;">Lê-se: "selecione as colunas B e C, onde a coluna D é 'Ativa', ordenando por C".
+                O último argumento (1) indica que há 1 linha de cabeçalho.</p>
+<div class="info-box">
+<p>QUERY consegue agrupar e contar: <code>select C, count(B) group by C</code> conta quantos alunos há por
+                    curso. É uma das funções mais poderosas do Planilhas Google e dispensa muitas tabelas dinâmicas.</p>
+</div>
+</div>
+</div>
+
+<!-- Fluxo de tratamento -->
+<div class="slide">
+<div class="header"><h2>Um fluxo de tratamento recomendado</h2></div>
+<div class="content">
+<div class="flow">
+<div class="node">Importar</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Limpar texto</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Separar/Tipar</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Remover duplicatas</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Validar</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Analisar</div>
+</div>
+<div class="info-box" style="margin-top:26px;">
+<p>Dica de ouro: mantenha a <b>aba bruta</b> intocada e faça o tratamento em uma <b>aba de trabalho</b> com
+                    fórmulas. Assim, se algo der errado, você sempre volta ao dado original — e o processo fica
+                    repetível no próximo relatório.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#3b82f6;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">Tratar dados é limpá-los antes de analisar. Use
+            <b>ARRUMAR, MAIÚSCULA, SUBSTITUIR</b> para o texto; <b>Dividir texto em colunas</b> e <b>DIVIDIRTEXTO</b>
+            para separar; remova duplicatas com <b>ÚNICO</b>; previna erros com <b>validação de dados</b>; revise com
+            <b>formatação condicional</b>; e escale com <b>ARRAYFORMULA</b> e <b>QUERY</b>. Dado limpo é relatório
+            confiável.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Planilhas Google</p>
+</footer>
+</body>
+</html>

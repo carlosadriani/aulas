@@ -1,262 +1,158 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula 4: Funções Lógicas Avançadas (SE, E, OU) - Prof. Carlos Schaeffer</title>
-    <style>
-        :root {
-            --primary-color: #0f9d58; /* Verde do Google Sheets */
-            --secondary-color: #1b73e8; /* Azul do Google */
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-color: #3c4043;
-            --text-light: #5f6368;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        header {
-            background-color: var(--card-bg);
-            border-bottom: 1px solid #dadce0;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            color: var(--primary-color);
-            font-size: 2rem;
-        }
-        header p {
-            margin: 0.5rem 0 0 0;
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        .btn-voltar {
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.95rem;
-        }
-        .btn-voltar:hover {
-            text-decoration: underline;
-        }
-        .aula-body {
-            background: var(--card-bg);
-            border: 1px solid #dadce0;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
-        }
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid #f1f3f4;
-            padding-bottom: 0.5rem;
-            margin-top: 2.5rem;
-        }
-        h3 {
-            color: var(--text-color);
-            margin-top: 1.5rem;
-        }
-        ul, ol {
-            padding-left: 1.2rem;
-            color: var(--text-light);
-        }
-        li {
-            margin-bottom: 0.6rem;
-        }
-        .destaque {
-            background-color: #e8f0fe;
-            border-left: 4px solid var(--secondary-color);
-            padding: 1.2rem;
-            margin: 1.5rem 0;
-            border-radius: 0 4px 4px 0;
-            color: #1967d2;
-            font-weight: 500;
-        }
-        .exemplo-box {
-            background-color: #f1f3f4;
-            border-radius: 4px;
-            padding: 1.2rem;
-            margin: 1.5rem 0;
-            border-left: 4px solid var(--primary-color);
-        }
-        .exemplo-title {
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-        }
-        th, td {
-            border: 1px solid #dadce0;
-            padding: 10px 14px;
-            text-align: left;
-        }
-        th {
-            background-color: #f8f9fa;
-            color: var(--text-color);
-        }
-        code {
-            background-color: #f1f3f4;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.95rem;
-            color: #c7254e;
-        }
-        .code-block {
-            display: block;
-            background-color: #fafafa;
-            padding: 12px;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.95rem;
-            color: #333;
-            margin: 10px 0;
-            border-left: 3px solid #5f6368;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            border-top: 1px solid #dadce0;
-            background: var(--card-bg);
-            margin-top: 4rem;
-        }
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Planilhas Google - Aula 04: Funções Lógicas (SE, E, OU)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #3b82f6; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #3b82f6; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+        .info-box { border-left: 5px solid #3b82f6; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #3b82f6; font-size: 26px; }
     </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
 </head>
-<body>
-    <header>
-        <h1>Planilhas Google</h1>
-        <p>Prof. MSc. Carlos Schaeffer</p>
-    </header>
-    <div class="container">
-        <a href="index.html" class="btn-voltar">&larr; Voltar ao Menu</a>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Planilhas Google
+            </h1>
+<p>Aula 04 — Funções Lógicas (SE, E, OU)</p>
+</div>
+</header>
 
-        <article class="aula-body">
-            <h1>Aula 4: Automação Processual com Funções Lógicas (SE, E, OU)</h1>
-            <p>Até agora, aprendemos a extrair totais e médias das nossas tabelas. No entanto, o verdadeiro poder de automação do Planilhas Google surge quando ensinamos o sistema a <strong>tomar decisões por nós</strong> com base nos dados preenchidos. Em rotinas administrativas universitárias, isso elimina o trabalho mecânico de avaliar caso a caso.</p>
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-code-branch" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+<h1>Funções Lógicas</h1>
+<p style="font-size: 24px; opacity: 0.8;">Ensinando a planilha a tomar decisões</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Curso de Planilhas Google — Aula 04</div>
+</div>
 
-            <div class="destaque">
-                Objetivo da Aula: Dominar a sintaxe da função condicional SE, aprender a aninhar múltiplos SEs para cenários complexos e combinar critérios restritivos e flexíveis utilizando os operadores lógicos E e OU.
+<!-- Objetivo -->
+<div class="slide">
+<div class="header"><h2>O poder de automatizar decisões</h2></div>
+<div class="content">
+<p class="lead">O verdadeiro poder da automação surge quando ensinamos o sistema a <span class="highlight">tomar
+                decisões</span> com base nos dados — eliminando o trabalho de avaliar caso a caso.</p>
+<div class="info-box">
+<p><b>Objetivo:</b> dominar a função condicional <b>SE</b>, aprender a aninhar vários SEs para cenários
+                    complexos e combinar critérios com os operadores <b>E</b> e <b>OU</b>.</p>
+</div>
+</div>
+</div>
+
+<!-- SE -->
+<div class="slide">
+<div class="header"><h2>A estrutura de decisão: função SE</h2></div>
+<div class="content">
+<p>A função SE é uma encruzilhada: avalia um teste e escolhe um caminho se for verdadeiro, outro se for
+                falso.</p>
+<div class="code-box" style="font-size:17px;">
+=SE(teste_lógico; valor_se_verdadeiro; valor_se_falso)
             </div>
+<ul class="spaced" style="margin-top:14px;">
+<li><b>teste_lógico:</b> a comparação (com <code>&gt;</code>, <code>&lt;</code>, <code>=</code>, <code>&gt;=</code>, <code>&lt;=</code>).</li>
+<li><b>valor_se_verdadeiro:</b> o que exibir se a condição for atendida.</li>
+<li><b>valor_se_falso:</b> o que exibir se não for.</li>
+</ul>
+<div class="info-box">
+<p><b>Exemplo — triagem na manutenção:</b> se a coluna B tem os dias que uma ordem de reparo está aberta,
+                    <code>=SE(B2&gt;5; "URGENTE"; "No prazo")</code>. Texto de retorno sempre entre aspas duplas.</p>
+</div>
+</div>
+</div>
 
-            <h2>1. A Estrutura de Decisão: Função SE</h2>
-            <p>A função <code>SE</code> funciona como uma encruzilhada. Ela avalia um teste que você propõe e escolhe um caminho se a resposta for verdadeira, ou outro caminho se a resposta for falsa. Sua estrutura padrão possui três argumentos obrigatórios:</p>
-            
-            <span class="code-block">=SE(teste_lógico; valor_se_verdadeiro; valor_se_falso)</span>
-
-            <ul>
-                <li><code>teste_lógico</code>: A comparação que você deseja fazer (usando operadores como <code>&gt;</code>, <code>&lt;</code>, <code>=</code>, <code>&gt;=</code>, <code>&lt;=</code>).</li>
-                <li><code>valor_se_verdadeiro</code>: O texto ou o cálculo que a planilha exibirá se a condição for respeitada.</li>
-                <li><code>valor_se_falso</code>: O resultado exibido se a condição for violada.</li>
-            </ul>
-
-            <div class="exemplo-box">
-                <div class="exemplo-title">Exemplo 1: Triagem Automática na Secretaria de Manutenção</div>
-                Imagine que a Coluna B registra os dias que uma ordem de reparo em sala de aula está aberta. Se passar de 5 dias, o chamado deve ser marcado como "URGENTE", caso contrário, "No prazo".
-                <br><br>
-                <strong>Fórmula aplicada na linha 2:</strong>
-                <span class="code-block">=SE(B2 &gt; 5; "URGENTE"; "No prazo")</span>
-                <em>Nota: Sempre que o retorno desejado for um texto, ele deve ser escrito entre aspas duplas (<code>" "</code>).</em>
+<!-- SE aninhado -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: SE aninhado (vários critérios)</h2></div>
+<div class="content">
+<p>Quando há mais de dois caminhos (Aprovado, Exame, Reprovado), <b>aninhamos</b> um SE dentro do outro.</p>
+<div class="code-box" style="font-size:16px;">
+=SE(C2&gt;=7; "Aprovado"; SE(C2&gt;=4; "Exame"; "Reprovado"))
             </div>
+<div class="info-box">
+<p><b>Como a planilha lê:</b> testa a 1ª condição. Nota 8 → escreve "Aprovado" e para. Nota 5 → a 1ª é
+                    falsa, vai ao 2º SE, vê que 5 ≥ 4 e escreve "Exame". Abaixo de 4 → resta "Reprovado".</p>
+</div>
+</div>
+</div>
 
-            <h2>2. Aprofundamento: Funções SE Aninhadas (Vários Critérios)</h2>
-            <p>Muitas vezes, a administração universitária não trabalha apenas com "Sim" ou "Não". Um aluno, por exemplo, pode estar Aprovado, em Exame ou Reprovado. Para criar mais de dois caminhos de resposta, nós **aninhamos** uma função SE dentro da outra.</p>
+<!-- E e OU -->
+<div class="slide">
+<div class="header"><h2>Operadores E e OU</h2></div>
+<div class="content">
+<div class="grid">
+<div class="card">
+<h3>E — critérios cumulativos</h3>
+<p><b>Todas</b> as condições precisam ser verdadeiras ao mesmo tempo.</p>
+<div class="code-box" style="font-size:14px;">=SE(E(C2&gt;=7; D2&gt;=0,75);<br/>&nbsp;"Aprovado Direto";<br/>&nbsp;"Avaliar Retenção")</div>
+<p style="margin-top:10px;">Nota ≥ 7 <b>e</b> presença ≥ 75%. Nota 9 com 60% de presença → cai em "Avaliar Retenção".</p>
+</div>
+<div class="card">
+<h3>OU — critérios alternativos</h3>
+<p>Basta <b>uma</b> condição ser verdadeira.</p>
+<div class="code-box" style="font-size:14px;">=SE(OU(B2="Sim"; C2="Sim");<br/>&nbsp;"Enquadrado";<br/>&nbsp;"Não Elegível")</div>
+<p style="margin-top:10px;">Auxílio para quem mora em outra cidade <b>ou</b> tem renda per capita baixa.</p>
+</div>
+</div>
+</div>
+</div>
 
-            <div class="exemplo-box">
-                <div class="exemplo-title">Exemplo 2: Fechamento Automatizado de Pauta Acadêmica</div>
-                A coluna C guarda a média final do aluno. As regras institucionais ditam:
-                <ul>
-                    <li>Se a nota for maior ou igual a 7: <strong>"Aprovado"</strong>.</li>
-                    <li>Se a nota for entre 4 e 6.9: <strong>"Exame"</strong>.</li>
-                    <li>Se for menor que 4: <strong>"Reprovado"</strong>.</li>
-                </ul>
-                <strong>Fórmula estruturada passo a passo:</strong>
-                <span class="code-block">=SE(C2 &gt;= 7; "Aprovado"; SE(C2 &gt;= 4; "Exame"; "Reprovado"))</span>
-                <p><em>Como a planilha lê isso?</em> Ela testa a primeira condição. Se o aluno tirar 8, ela escreve "Aprovado" e para. Se ele tirar 5, a primeira regra é falsa; o sistema passa para o segundo SE, verifica que 5 é maior que 4 e escreve "Exame". Se for menor que 4, resta apenas a última opção.</p>
-            </div>
+<!-- Tabela comparativa -->
+<div class="slide">
+<div class="header"><h2>Tabela comparativa de decisão</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Combinação</th><th>Exigência</th><th>Exemplo na universidade</th></tr>
+<tr><td><code>SE(E(...))</code></td><td>Atender a <b>todos</b> os critérios</td><td>Validar documentos da matrícula (ficha + histórico + RG)</td></tr>
+<tr><td><code>SE(OU(...))</code></td><td>Atender a <b>qualquer um</b> dos critérios</td><td>Isenção de taxa (doador de sangue ou CadÚnico)</td></tr>
+<tr><td><code>SE(SE(...))</code></td><td>Classificar em <b>três ou mais</b> categorias</td><td>Prioridade de compras do almoxarifado (alta, média, baixa)</td></tr>
+</table>
+</div>
+</div>
 
-            <h2>3. Operador Lógico E (Critérios Cumulativos)</h2>
-            <p>O operador <code>E</code> é usado quando **todas** as condições inseridas precisam ser verdadeiras ao mesmo tempo para o processo avançar. Ele atua como o teste lógico principal dentro do SE.</p>
-            <span class="code-block">Sintaxe: E(condição1; condição2; ...)</span>
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#3b82f6;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">A função <b>SE</b> escolhe entre dois caminhos;
+            aninhada, cria várias categorias. <b>E</b> exige que todos os critérios sejam verdadeiros; <b>OU</b> exige
+            apenas um. Combinando-os, a planilha automatiza pautas, triagens e elegibilidades sem trabalho manual.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
 
-            <div class="exemplo-box">
-                <div class="exemplo-title">Exemplo 3: Aprovação por Nota E Frequência simultâneas</div>
-                Para um aluno ser aprovado direto na pauta da secretaria, ele precisa ter média final (Coluna C) maior ou igual a 7 **E** uma taxa de presença (Coluna D) maior ou igual a 75%.
-                <br><br>
-                <strong>Fórmula de validação dupla:</strong>
-                <span class="code-block">=SE( E(C2 &gt;= 7; D2 &gt;= 0,75) ; "Aprovado Direto"; "Avaliar Retenção")</span>
-                <p>Se o aluno tiver nota 9 mas presença de 60%, a função <code>E</code> falhará, empurrando o registro para o resultado "Avaliar Retenção".</p>
-            </div>
-
-            <h2>4. Operador Lógico OU (Critérios Alternativos)</h2>
-            <p>O operador <code>OU</code> confere flexibilidade ao processo. Ele retorna verdadeiro se **pelo menos uma** das condições listadas for satisfeita. É ideal para políticas de benefícios ou concessão de acessos.</p>
-            <span class="code-block">Sintaxe: OU(condição1; condição2; ...)</span>
-
-            <div class="exemplo-box">
-                <div class="exemplo-title">Exemplo 4: Triagem de Elegibilidade para Auxílio Estudantil</div>
-                O setor de Assistência Estudantil da Universidade concede um auxílio se o estudante morar em outra cidade (Coluna B = "Sim") **OU** se ele possuir renda familiar per capita inferior a 1.5 salário mínimo (Coluna C = "Sim").
-                <br><br>
-                <strong>Fórmula aplicada:</strong>
-                <span class="code-block">=SE( OU(B2 = "Sim"; C2 = "Sim") ; "Enquadrado"; "Não Elegível")</span>
-                <p>Neste caso, basta que apenas uma das colunas seja preenchida com "Sim" para o status mudar automaticamente para "Enquadrado".</p>
-            </div>
-
-            <h2>5. Tabela Comparativa de Tomada de Decisão</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Função Combinada</th>
-                        <th>Exigência do Fluxo</th>
-                        <th>Exemplo Prático na Universidade</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>SE(E(...))</code></td>
-                        <td>Obrigatório atender a **todos** os critérios informados.</td>
-                        <td>Validação de documentos para matrícula (Ficha + Histórico + RG entregues).</td>
-                    </tr>
-                    <tr>
-                        <td><code>SE(OU(...))</code></td>
-                        <td>Basta atender a **qualquer um** dos critérios informados.</td>
-                        <td>Isenção de taxa de inscrição (Doador de Sangue ou CadÚnico).</td>
-                    </tr>
-                    <tr>
-                        <td><code>SE(SE(...))</code></td>
-                        <td>Classificar um registro em **três ou mais** categorias.</td>
-                        <td>Prioridade de compras do almoxarifado (Alta, Média ou Baixa).</td>
-                    </tr>
-                </tbody>
-            </table>
-        </article>
-    </div>
-
-    <footer>
-<<<<<<< HEAD
-        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull;  
-=======
-        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull; 
->>>>>>> 890f33e (Atualização da página inicial confoorme o dominio ajudaprofessor.com.br)
-    </footer>
-
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Planilhas Google</p>
+</footer>
 </body>
 </html>

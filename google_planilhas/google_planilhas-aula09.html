@@ -1,207 +1,158 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula 9: Introdução à Automação com Apps Script - Prof. Carlos Schaeffer</title>
-    <style>
-        :root {
-            --primary-color: #0f9d58; /* Verde do Google Sheets */
-            --secondary-color: #1b73e8; /* Azul do Google */
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-color: #3c4043;
-            --text-light: #5f6368;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        header {
-            background-color: var(--card-bg);
-            border-bottom: 1px solid #dadce0;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            color: var(--primary-color);
-            font-size: 2rem;
-        }
-        header p {
-            margin: 0.5rem 0 0 0;
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        .btn-voltar {
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.95rem;
-        }
-        .btn-voltar:hover {
-            text-decoration: underline;
-        }
-        .aula-body {
-            background: var(--card-bg);
-            border: 1px solid #dadce0;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
-        }
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid #f1f3f4;
-            padding-bottom: 0.5rem;
-            margin-top: 2.5rem;
-        }
-        h3 {
-            color: var(--text-color);
-            margin-top: 1.5rem;
-        }
-        ul, ol {
-            padding-left: 1.2rem;
-            color: var(--text-light);
-        }
-        li {
-            margin-bottom: 0.6rem;
-        }
-        .destaque {
-            background-color: #e8f0fe;
-            border-left: 4px solid var(--secondary-color);
-            padding: 1.2rem;
-            margin: 1.5rem 0;
-            border-radius: 0 4px 4px 0;
-            color: #1967d2;
-            font-weight: 500;
-        }
-        .exemplo-box {
-            background-color: #f1f3f4;
-            border-radius: 4px;
-            padding: 1.2rem;
-            margin: 1.5rem 0;
-            border-left: 4px solid var(--primary-color);
-        }
-        .exemplo-title {
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-        code {
-            background-color: #f1f3f4;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.95rem;
-            color: #c7254e;
-        }
-        .code-block {
-            display: block;
-            background-color: #fafafa;
-            padding: 12px;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.95rem;
-            color: #333;
-            margin: 10px 0;
-            border-left: 3px solid #5f6368;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            border-top: 1px solid #dadce0;
-            background: var(--card-bg);
-            margin-top: 4rem;
-        }
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Planilhas Google - Aula 09: Macros e Apps Script</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #3b82f6; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #3b82f6; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+        .info-box { border-left: 5px solid #3b82f6; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #3b82f6; font-size: 26px; }
+        .code-box .cmt { color: #94a3b8; }
+        .code-box .kw { color: #f472b6; }
     </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
 </head>
-<body>
-    <header>
-        <h1>Planilhas Google</h1>
-        <p>Prof. MSc. Carlos Schaeffer</p>
-    </header>
-    <div class="container">
-        <a href="index.html" class="btn-voltar">&larr; Voltar ao Menu</a>
-        <article class="aula-body">
-            <h1>Aula 9: Otimização de Rotinas com Macros e Apps Script</h1>
-            <p>Chegamos à última aula do nosso curso! Ao longo do treinamento, aprendeu a organizar, validar, filtrar e resumir dados. Contudo, na rotina diária de uma universidade, existem tarefas repetitivas que fazemos exatamente do mesmo jeito todas as semanas — como baixar um relatório do sistema central, apagar três colunas inúteis, pintar o título de verde e colocar as linhas em ordem alfabética. Nesta aula, veremos como o <strong>Google Apps Script</strong> pode gravar essas ações e executá-las com apenas um clique.</p>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Planilhas Google
+            </h1>
+<p>Aula 09 — Macros e Apps Script</p>
+</div>
+</header>
 
-            <div class="destaque">
-                Objetivo da Aula: Entender o funcionamento do Gravador de Macros, criar botões operacionais na planilha para acionar automações e compreender a lógica básica de gatilhos automáticos de data e hora (Timestamps).
-            </div>
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-gears" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+<h1>Macros e Automação</h1>
+<p style="font-size: 24px; opacity: 0.8;">Otimizando rotinas com um clique</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Curso de Planilhas Google — Aula 09</div>
+</div>
 
-            <h2>1. O que são Macros e o Apps Script?</h2>
-            <p>O <strong>Apps Script</strong> é o motor de programação que roda por trás do Planilhas Google, baseado na linguagem JavaScript. Para quem trabalha em escritório, o Google criou o <strong>Gravador de Macros</strong>: uma ferramenta que traduz os cliques do seu rato e as teclas que digita diretamente em código, sem que precise de escrever nenhuma linha de programação manualmente.</p>
+<!-- O que são -->
+<div class="slide">
+<div class="header"><h2>O que são macros e o Apps Script?</h2></div>
+<div class="content">
+<p class="lead">Existem tarefas que fazemos do mesmo jeito toda semana: baixar um relatório, apagar colunas
+                inúteis, pintar o título e ordenar. O <span class="highlight">gravador de macros</span> registra essas
+                ações e as repete com um clique.</p>
+<div class="info-box">
+<p>O <b>Apps Script</b> é o motor de programação (baseado em JavaScript) por trás do Planilhas Google. O
+                    gravador de macros traduz seus cliques em código, sem você precisar escrever nada manualmente.</p>
+</div>
+</div>
+</div>
 
-            <h2>2. Passo a Passo: Gravando sua Primeira Automação</h2>
-            <p>Imagine que todo mês você recebe uma lista crua de inscrições e precisa de aplicar a mesma formatação padrão do departamento.</p>
-            <ol>
-                <li>No menu superior, aceda a <code>Extensões &gt; Macros &gt; Gravar macro</code>.</li>
-                <li>Uma pequena janela aparecerá na parte inferior da tela, indicando que o sistema está gravando os seus passos.</li>
-                <li>Realize as ações desejadas. Exemplo:<br>
-                    &bull; Selecione a linha 1, coloque o texto em <strong>Negrito</strong> e mude a cor de fundo para verde.<br>
-                    &bull; Selecione a coluna B e mude a formatação para <strong>Data</strong>.<br>
-                    &bull; Ajuste a largura das colunas.
-                </li>
-                <li>Clique em <code>Salvar</code> no painel inferior, dê o nome de <code>"FormatarRelatorio"</code> e salve.</li>
-            </ol>
-            <p>Pronto! Da próxima vez que importar uma tabela feia, basta ir a <code>Extensões &gt; Macros &gt; FormatarRelatorio</code> para a planilha fazer todo o trabalho visual por si em um décimo de segundo.</p>
+<!-- Gravando -->
+<div class="slide">
+<div class="header"><h2>Gravando sua primeira automação</h2></div>
+<div class="content">
+<div class="flow">
+<div class="node">Extensões</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Macros</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Gravar macro</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Faz as ações</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Salvar</div>
+</div>
+<ul class="spaced" style="margin-top:20px;">
+<li>Em <code>Extensões &gt; Macros &gt; Gravar macro</code>, o sistema passa a registrar seus passos.</li>
+<li>Execute as ações: linha 1 em negrito e fundo verde, coluna B como Data, ajustar larguras.</li>
+<li>Clique em <b>Salvar</b>, dê o nome <code>FormatarRelatorio</code> e confirme.</li>
+<li>Da próxima vez: <code>Extensões &gt; Macros &gt; FormatarRelatorio</code> faz tudo num décimo de segundo.</li>
+</ul>
+</div>
+</div>
 
-            <h2>3. Vinculando a Macro a um Botão Visual</h2>
-            <p>Aceder ao menu de extensões toda hora pode ser cansativo. Podemos criar um botão na própria planilha para facilitar o acesso de qualquer funcionário do setor:</p>
-            <ul>
-                <li>Aceda ao menu <code>Inserir &gt; Desenho</code>.</li>
-                <li>Desenhe um retângulo, formate-o para parecer um botão (ex: cor azul com o texto "Formatar Tabela") e clique em <code>Salvar e Fechar</code>.</li>
-                <li>O retângulo aparecerá flutuando sobre as suas células. Clique nos <strong>três pontinhos</strong> no canto desse desenho.</li>
-                <li>Escolha a opção <code>Transferir script</code> e digite exatamente o nome da macro que salvou: <code>FormatarRelatorio</code>.</li>
-            </ul>
-            <p>Agora, basta clicar diretamente em cima do botão para disparar a formatação automática.</p>
+<!-- Botão -->
+<div class="slide">
+<div class="header"><h2>Vinculando a macro a um botão</h2></div>
+<div class="content">
+<p>Para qualquer funcionário acionar a automação facilmente, crie um botão na própria planilha:</p>
+<table class="table">
+<tr><th>Passo</th><th>Ação</th></tr>
+<tr><td><b>1</b></td><td><code>Inserir &gt; Desenho</code> e desenhe um retângulo (ex.: azul, texto "Formatar Tabela").</td></tr>
+<tr><td><b>2</b></td><td>Salvar e fechar — o retângulo flutua sobre as células.</td></tr>
+<tr><td><b>3</b></td><td>Clique nos três pontinhos do desenho &gt; <b>Atribuir script</b>.</td></tr>
+<tr><td><b>4</b></td><td>Digite o nome exato da macro: <code>FormatarRelatorio</code>.</td></tr>
+</table>
+<div class="info-box">
+<p>Agora basta clicar no botão para disparar a formatação automática.</p>
+</div>
+</div>
+</div>
 
-            <h2>4. Código Avançado: Carimbo de Data/Hora Automático</h2>
-            <p>Para fechar com um recurso avançado de engenharia de dados, os funcionários podem aceder ao editor de código em <code>Extensões &gt; Apps Script</code> e colar uma função pronta baseada em <strong>Gatilhos (Triggers)</strong>. Uma necessidade muito comum nas secretarias é registrar o dia e a hora exata em que uma tarefa foi concluída, sem que o funcionário precise digitar isso manualmente.</p>
-
-            <div class="exemplo-box">
-                <div class="exemplo-title">Código Pronto: Registrar Data de Modificação Automática</div>
-                Abra o editor do Apps Script, apague tudo o que estiver lá e cole este código criado pelo professor. Ele monitora a coluna 3 (Status) e, quando o funcionário muda para "Concluído", ele carimba a data e hora na coluna 4 automaticamente:
-                
-                <span class="code-block">
-function onEdit(e) {<br>
-&nbsp;&nbsp;var aba = e.source.getActiveSheet();<br>
-&nbsp;&nbsp;var celulaModificada = e.range;<br>
-&nbsp;&nbsp;<br>
-&nbsp;&nbsp;// Verifica se a alteração foi na coluna 3 (Coluna C - Status)<br>
-&nbsp;&nbsp;if (celulaModificada.getColumn() === 3 && e.value === "Concluído") {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;// Pega a célula logo ao lado (Coluna D) e insere a data e hora atual<br>
-&nbsp;&nbsp;&nbsp;&nbsp;var linha = celulaModificada.getRow();<br>
-&nbsp;&nbsp;&nbsp;&nbsp;aba.getRange(linha, 4).setValue(new Date());<br>
-&nbsp;&nbsp;}<br>
+<!-- Código onEdit -->
+<div class="slide">
+<div class="header"><h2>Código avançado: carimbo de data/hora automático</h2></div>
+<div class="content">
+<p>Em <code>Extensões &gt; Apps Script</code>, cole uma função baseada em <b>gatilhos</b>. Esta monitora a
+                coluna 3 (Status) e, quando muda para "Concluído", carimba a data/hora na coluna 4:</p>
+<div class="code-box" style="font-size:14px;">
+<span class="kw">function</span> onEdit(e) {<br/>
+&nbsp;&nbsp;<span class="kw">var</span> aba = e.source.getActiveSheet();<br/>
+&nbsp;&nbsp;<span class="kw">var</span> celula = e.range;<br/>
+&nbsp;&nbsp;<span class="cmt">// Alteração na coluna 3 (C - Status) = "Concluído"?</span><br/>
+&nbsp;&nbsp;<span class="kw">if</span> (celula.getColumn() === 3 &amp;&amp; e.value === <span class="cmt">"Concluído"</span>) {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">var</span> linha = celula.getRow();<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;aba.getRange(linha, 4).setValue(<span class="kw">new</span> Date());<br/>
+&nbsp;&nbsp;}<br/>
 }
-                </span>
-                <p><em>Impacto prático:</em> Auditoria perfeita de processos. O sistema registra de forma imutável o momento exato em que o servidor alterou o status da requisição ou do processo do aluno.</p>
             </div>
-        </article>
-    </div>
+<div class="info-box">
+<p><b>Impacto prático:</b> auditoria perfeita. O sistema registra de forma imutável o momento exato em que
+                    o servidor concluiu a requisição ou o processo do aluno.</p>
+</div>
+</div>
+</div>
 
-    <footer>
-<<<<<<< HEAD
-        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull;  
-=======
-        &copy; 2026 Prof. MSc. Carlos Adriani Lara Schaeffer &bull; 
->>>>>>> 890f33e (Atualização da página inicial confoorme o dominio ajudaprofessor.com.br)
-    </footer>
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#3b82f6;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">O gravador de macros transforma cliques em código
+            reutilizável, que você pode acionar por menu ou por um <b>botão</b> na planilha. Por baixo, é
+            <b>Apps Script</b> — que, com <b>gatilhos</b> como o <b>onEdit</b>, ainda automatiza carimbos de data,
+            avisos e auditorias.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
 
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Planilhas Google</p>
+</footer>
 </body>
 </html>

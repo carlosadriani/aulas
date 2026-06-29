@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Planilhas Google - Macros e Apps Script</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #3b82f6; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #3b82f6; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+        .info-box { border-left: 5px solid #3b82f6; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #3b82f6; font-size: 26px; }
+        .code-box .cmt { color: #94a3b8; }
+        .code-box .kw { color: #f472b6; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Planilhas Google
+            </h1>
+<p>Macros e Apps Script</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-robot" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+<h1>Macros e Automação</h1>
+<p style="font-size: 24px; opacity: 0.8;">Ensinando a planilha a fazer tarefas repetitivas sozinha</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Uso de Dados em Planilhas Google</div>
+</div>
+
+<!-- O que é macro -->
+<div class="slide">
+<div class="header"><h2>O que é uma macro?</h2></div>
+<div class="content">
+<p class="lead">Uma <span class="highlight">macro</span> é uma sequência de ações <b>gravada</b> que você
+                pode repetir com um clique. É como gravar um "passo a passo" e depois mandar a planilha refazê-lo.</p>
+<div class="info-box">
+<p>Se toda semana você importa um CSV, remove a primeira coluna, formata como moeda, congela o cabeçalho e
+                    ordena por nome — uma macro faz tudo isso em segundos, sempre igual, sem você lembrar a sequência.</p>
+</div>
+</div>
+</div>
+
+<!-- Gravar macro -->
+<div class="slide">
+<div class="header"><h2>Gravando sua primeira macro</h2></div>
+<div class="content">
+<div class="flow">
+<div class="node">Extensões</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Macros</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Gravar macro</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Faz as ações</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Salvar</div>
+</div>
+<table class="table" style="margin-top:22px;">
+<tr><th>Passo</th><th>Ação</th></tr>
+<tr><td><b>1</b></td><td>Menu <code>Extensões &gt; Macros &gt; Gravar macro</code>.</td></tr>
+<tr><td><b>2</b></td><td>Escolha <b>referências absolutas</b> (sempre as mesmas células) ou <b>relativas</b> (a partir de onde estiver o cursor).</td></tr>
+<tr><td><b>3</b></td><td>Execute normalmente as ações que quer automatizar.</td></tr>
+<tr><td><b>4</b></td><td>Clique em <b>Salvar</b>, dê um nome e, se quiser, um atalho (Ctrl+Alt+Shift+número).</td></tr>
+<tr><td><b>5</b></td><td>Para usar depois: <code>Extensões &gt; Macros &gt; (nome)</code> ou o atalho.</td></tr>
+</table>
+</div>
+</div>
+
+<!-- Absoluta vs relativa -->
+<div class="slide">
+<div class="header"><h2>Referências absolutas x relativas</h2></div>
+<div class="content">
+<table class="table">
+<tr><th></th><th>Absolutas</th><th>Relativas</th></tr>
+<tr><td>Comportamento</td><td>Age sempre nas <b>mesmas</b> células (ex.: A1:A10)</td><td>Age a partir da <b>célula selecionada</b> no momento</td></tr>
+<tr><td>Bom para</td><td>Formatar um cabeçalho fixo, limpar uma área específica</td><td>Aplicar a mesma formatação onde quer que você esteja</td></tr>
+<tr><td>Exemplo</td><td>"Pinte sempre a linha 1 de azul"</td><td>"Pinte a linha onde estou de azul"</td></tr>
+</table>
+<div class="warn-box">
+<p>Escolher errado é a causa nº 1 de macro que "não funciona". Se a macro deve se adaptar ao local do
+                    cursor, grave com referências <b>relativas</b>.</p>
+</div>
+</div>
+</div>
+
+<!-- Macro vira código -->
+<div class="slide">
+<div class="header"><h2>Toda macro é, na verdade, código</h2></div>
+<div class="content">
+<p>Quando você grava uma macro, o Planilhas Google escreve automaticamente um programa em
+                <span class="highlight">Apps Script</span> (uma versão do JavaScript). Em
+                <code>Extensões &gt; Macros &gt; Gerenciar macros &gt; Editar</code> você vê algo assim:</p>
+<div class="code-box" style="font-size:15px;">
+<span class="kw">function</span> formatarRelatorio() {<br/>
+&nbsp;&nbsp;<span class="kw">var</span> planilha = SpreadsheetApp.getActiveSheet();<br/>
+&nbsp;&nbsp;planilha.getRange(<span class="cmt">'A1:E1'</span>).setFontWeight(<span class="cmt">'bold'</span>);<br/>
+&nbsp;&nbsp;planilha.setFrozenRows(1);<br/>
+}
+            </div>
+<div class="info-box">
+<p>Ou seja: gravar macros é uma porta de entrada para a <b>programação</b>. Você pode editar esse código
+                    para ajustar a macro sem regravá-la do zero.</p>
+</div>
+</div>
+</div>
+
+<!-- Apps Script -->
+<div class="slide">
+<div class="header"><h2>Apps Script: indo além da gravação</h2></div>
+<div class="content">
+<p class="lead">O <span class="highlight">Apps Script</span> (<code>Extensões &gt; Apps Script</code>) é o
+                ambiente onde você escreve automações que a gravação de macros não alcança.</p>
+<table class="table">
+<tr><th>Com Apps Script você pode…</th></tr>
+<tr><td>Enviar e-mails automáticos a partir dos dados de uma aba</td></tr>
+<tr><td>Gerar um PDF do relatório e salvá-lo numa pasta do Drive</td></tr>
+<tr><td>Criar menus personalizados na própria planilha</td></tr>
+<tr><td>Validar formulários e consolidar várias abas</td></tr>
+<tr><td>Rodar tarefas em horários agendados (gatilhos por tempo)</td></tr>
+</table>
+</div>
+</div>
+
+<!-- Exemplo de função util -->
+<div class="slide">
+<div class="header"><h2>Exemplo: avisar por e-mail quem está com pendência</h2></div>
+<div class="content">
+<div class="code-box" style="font-size:14px;">
+<span class="kw">function</span> avisarPendencias() {<br/>
+&nbsp;&nbsp;<span class="kw">const</span> aba = SpreadsheetApp.getActiveSheet();<br/>
+&nbsp;&nbsp;<span class="kw">const</span> dados = aba.getRange(<span class="cmt">'A2:C100'</span>).getValues();<br/>
+&nbsp;&nbsp;dados.forEach(linha =&gt; {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const</span> [nome, email, situacao] = linha;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if</span> (situacao === <span class="cmt">'Pendente'</span> &amp;&amp; email) {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MailApp.sendEmail(email, <span class="cmt">'Documento pendente'</span>,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmt">'Olá '</span> + nome + <span class="cmt">', há um documento pendente.'</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;});<br/>
+}
+            </div>
+<div class="info-box">
+<p>Esse script percorre a lista, e para cada linha marcada como "Pendente" dispara um e-mail. O que levaria
+                    uma tarde de envios manuais roda em segundos.</p>
+</div>
+</div>
+</div>
+
+<!-- Gatilhos -->
+<div class="slide">
+<div class="header"><h2>Aprofundamento: gatilhos (triggers)</h2></div>
+<div class="content">
+<p>Um <span class="highlight">gatilho</span> faz um script rodar <b>automaticamente</b>, sem ninguém clicar.
+                No editor do Apps Script, ícone de relógio (<i>Acionadores</i>):</p>
+<table class="table">
+<tr><th>Tipo de gatilho</th><th>Dispara quando…</th><th>Exemplo de uso</th></tr>
+<tr><td><b>Por tempo</b></td><td>Em um horário/intervalo</td><td>Enviar o resumo do dia toda noite às 18h</td></tr>
+<tr><td><b>Ao abrir</b> (onOpen)</td><td>Alguém abre a planilha</td><td>Criar um menu personalizado</td></tr>
+<tr><td><b>Ao editar</b> (onEdit)</td><td>Uma célula é alterada</td><td>Carimbar a data/hora da última mudança</td></tr>
+<tr><td><b>Ao enviar formulário</b></td><td>Chega resposta de um Forms</td><td>Confirmar inscrição por e-mail</td></tr>
+</table>
+</div>
+</div>
+
+<!-- onEdit exemplo -->
+<div class="slide">
+<div class="header"><h2>Exemplo de gatilho simples: carimbo de data</h2></div>
+<div class="content">
+<div class="code-box" style="font-size:15px;">
+<span class="kw">function</span> onEdit(e) {<br/>
+&nbsp;&nbsp;<span class="kw">const</span> linha = e.range.getRow();<br/>
+&nbsp;&nbsp;<span class="kw">const</span> aba = e.source.getActiveSheet();<br/>
+&nbsp;&nbsp;aba.getRange(linha, 6).setValue(<span class="kw">new</span> Date());<br/>
+}
+            </div>
+<p style="margin-top:14px;">Sempre que alguém edita uma linha, a coluna 6 recebe a data/hora da alteração —
+                um histórico automático de "última atualização".</p>
+<div class="info-box">
+<p>Funções chamadas <code>onEdit</code> e <code>onOpen</code> são <b>gatilhos simples</b>: rodam sozinhas,
+                    sem precisar configurar nada no painel de acionadores.</p>
+</div>
+</div>
+</div>
+
+<!-- Permissões e segurança -->
+<div class="slide">
+<div class="header"><h2>Permissões, segurança e limites</h2></div>
+<div class="content">
+<ul class="spaced">
+<li><b>Autorização:</b> na primeira execução, o Google pede que você autorize o script a acessar a planilha, o e-mail etc. Leia o que está sendo pedido antes de aceitar.</li>
+<li><b>Cuidado com scripts de terceiros:</b> não cole código de origem desconhecida — ele roda com as suas permissões.</li>
+<li><b>Cotas diárias:</b> há limites (ex.: número de e-mails por dia em contas gratuitas/educacionais). Para envios em massa, verifique as cotas.</li>
+<li><b>Versionamento:</b> o editor guarda histórico; mantenha uma cópia do script importante.</li>
+</ul>
+<div class="warn-box">
+<p>Macros e scripts ficam <b>dentro do arquivo</b>. Ao compartilhar a planilha como editor, você também
+                    compartilha o código — e quem edita pode alterá-lo.</p>
+</div>
+</div>
+</div>
+
+<!-- Macro x fórmula -->
+<div class="slide">
+<div class="header"><h2>Quando usar macro/script e quando usar fórmula</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Precisa de…</th><th>Melhor ferramenta</th></tr>
+<tr><td>Cálculo que se atualiza ao mudar os dados</td><td>Fórmula (SOMA, QUERY, ARRAYFORMULA)</td></tr>
+<tr><td>Repetir uma sequência de cliques/formatação</td><td>Macro gravada</td></tr>
+<tr><td>Enviar e-mail, gerar PDF, agendar tarefa</td><td>Apps Script</td></tr>
+<tr><td>Reagir a uma edição ou ao abrir o arquivo</td><td>Gatilho (onEdit/onOpen)</td></tr>
+</table>
+<div class="info-box">
+<p>Regra prática: se dá para resolver com <b>fórmula</b>, prefira a fórmula (é mais simples e transparente).
+                    Reserve macros e scripts para <b>ações</b> e <b>automações</b> que a fórmula não faz.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#3b82f6;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">Macros gravam sequências de ações para repeti-las
+            com um clique (atenção a referências absolutas x relativas). Por baixo, toda macro é
+            <b>Apps Script</b> — que permite enviar e-mails, gerar PDFs, criar menus e rodar tarefas por
+            <b>gatilhos</b> (tempo, onOpen, onEdit). Use fórmulas para cálculos e reserve macros/scripts para ações e
+            automações, sempre atento a permissões e cotas.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Planilhas Google</p>
+</footer>
+</body>
+</html>
