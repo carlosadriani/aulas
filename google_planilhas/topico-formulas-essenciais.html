@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Planilhas Google - As 30 Fórmulas Mais Usadas</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #3b82f6; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #3b82f6; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #3b82f6; color: white; padding: 13px 15px; text-align: left; }
+        .table td { padding: 10px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .table td code, .table th + th { white-space: nowrap; }
+        .highlight { color: #3b82f6; font-weight: bold; }
+        .info-box { border-left: 5px solid #3b82f6; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .num { color: #3b82f6; font-weight: bold; }
+        code { background:#f1f5f9; padding:1px 5px; border-radius:4px; font-family:"Fira Code",monospace; font-size:0.92em; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Planilhas Google
+            </h1>
+<p>As 30 Fórmulas Mais Usadas</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-square-root-variable" style="font-size: 80px; margin-bottom: 30px; color: #3b82f6;"></i>
+<h1>As 30 Fórmulas Mais Usadas</h1>
+<p style="font-size: 24px; opacity: 0.8;">Um guia de referência rápida para o dia a dia</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Uso de Dados em Planilhas Google</div>
+</div>
+
+<!-- Como ler -->
+<div class="slide">
+<div class="header"><h2>Como usar este guia</h2></div>
+<div class="content">
+<p class="lead">Reunimos as <span class="highlight">30 fórmulas</span> que resolvem a maior parte do trabalho em
+                planilhas administrativas, organizadas por categoria com sintaxe e um exemplo prático de cada.</p>
+<ul class="spaced">
+<li>Toda fórmula começa com <code>=</code>.</li>
+<li>Os nomes estão em <b>português</b> (configuração padrão de contas no Brasil). Em inglês, os nomes mudam, mas a lógica é a mesma.</li>
+<li>O separador de argumentos aqui é o <b>ponto e vírgula</b> <code>;</code> — o padrão brasileiro.</li>
+</ul>
+<div class="info-box">
+<p>Guarde esta página nos favoritos: ela serve de "cola" sempre que você esquecer a estrutura de uma
+                    função.</p>
+</div>
+</div>
+</div>
+
+<!-- Categoria A: Agregação -->
+<div class="slide">
+<div class="header"><h2>Matemática e agregação</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>#</th><th>Função</th><th>Para que serve</th><th>Exemplo</th></tr>
+<tr><td class="num">1</td><td><b>SOMA</b></td><td>Soma todos os números de um intervalo</td><td><code>=SOMA(B2:B30)</code></td></tr>
+<tr><td class="num">2</td><td><b>MÉDIA</b></td><td>Média aritmética dos valores</td><td><code>=MÉDIA(C2:C30)</code></td></tr>
+<tr><td class="num">3</td><td><b>MÁXIMO</b></td><td>Maior valor do intervalo</td><td><code>=MÁXIMO(D2:D30)</code></td></tr>
+<tr><td class="num">4</td><td><b>MÍNIMO</b></td><td>Menor valor do intervalo</td><td><code>=MÍNIMO(D2:D30)</code></td></tr>
+<tr><td class="num">5</td><td><b>CONT.NÚM</b></td><td>Conta apenas células com números</td><td><code>=CONT.NÚM(B2:B30)</code></td></tr>
+<tr><td class="num">6</td><td><b>CONT.VALORES</b></td><td>Conta células preenchidas (texto ou número)</td><td><code>=CONT.VALORES(A2:A30)</code></td></tr>
+<tr><td class="num">7</td><td><b>ARRED</b></td><td>Arredonda um número a N casas decimais</td><td><code>=ARRED(E2;2)</code></td></tr>
+</table>
+</div>
+</div>
+
+<!-- Categoria B: Soma/contagem condicional -->
+<div class="slide">
+<div class="header"><h2>Soma e contagem condicional</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>#</th><th>Função</th><th>Para que serve</th><th>Exemplo</th></tr>
+<tr><td class="num">8</td><td><b>CONT.SE</b></td><td>Conta células que atendem a 1 critério</td><td><code>=CONT.SE(D2:D30;"Ativa")</code></td></tr>
+<tr><td class="num">9</td><td><b>CONT.SES</b></td><td>Conta com vários critérios ao mesmo tempo</td><td><code>=CONT.SES(D2:D30;"Ativa";C2:C30;"ADS")</code></td></tr>
+<tr><td class="num">10</td><td><b>SOMASE</b></td><td>Soma os valores que atendem a 1 critério</td><td><code>=SOMASE(C2:C30;"ADS";E2:E30)</code></td></tr>
+<tr><td class="num">11</td><td><b>SOMASES</b></td><td>Soma com vários critérios</td><td><code>=SOMASES(E2:E30;C2:C30;"ADS";D2:D30;"Ativa")</code></td></tr>
+</table>
+<div class="info-box">
+<p>Em <b>SOMASE</b> a ordem é (critério; valor; soma); em <b>SOMASES</b> a soma vem <i>primeiro</i>
+                    (soma; critério1; valor1; …). Trocar a ordem é o erro mais comum.</p>
+</div>
+</div>
+</div>
+
+<!-- Categoria C: Lógicas -->
+<div class="slide">
+<div class="header"><h2>Funções lógicas</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>#</th><th>Função</th><th>Para que serve</th><th>Exemplo</th></tr>
+<tr><td class="num">12</td><td><b>SE</b></td><td>Escolhe entre dois resultados por um teste</td><td><code>=SE(C2&gt;=7;"Aprovado";"Exame")</code></td></tr>
+<tr><td class="num">13</td><td><b>SES</b></td><td>Vários testes em sequência (sem aninhar SEs)</td><td><code>=SES(C2&gt;=7;"Aprovado";C2&gt;=4;"Exame";VERDADEIRO;"Reprovado")</code></td></tr>
+<tr><td class="num">14</td><td><b>E</b></td><td>Verdadeiro só se TODAS as condições forem</td><td><code>=SE(E(C2&gt;=7;D2&gt;=0,75);"Aprovado";"Reavaliar")</code></td></tr>
+<tr><td class="num">15</td><td><b>OU</b></td><td>Verdadeiro se PELO MENOS UMA condição for</td><td><code>=SE(OU(B2="Sim";C2="Sim");"Elegível";"Não")</code></td></tr>
+<tr><td class="num">16</td><td><b>SEERRO</b></td><td>Mostra um valor amigável no lugar de erros</td><td><code>=SEERRO(A2/B2;"—")</code></td></tr>
+</table>
+</div>
+</div>
+
+<!-- Categoria D: Procura -->
+<div class="slide">
+<div class="header"><h2>Procura e referência</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>#</th><th>Função</th><th>Para que serve</th><th>Exemplo</th></tr>
+<tr><td class="num">17</td><td><b>PROCX</b></td><td>Busca moderna em qualquer direção (recomendada)</td><td><code>=PROCX(A2;Cad!A:A;Cad!B:B;"não achado")</code></td></tr>
+<tr><td class="num">18</td><td><b>PROCV</b></td><td>Busca vertical clássica (esquerda → direita)</td><td><code>=PROCV(A2;Cad!A:C;3;FALSO)</code></td></tr>
+<tr><td class="num">19</td><td><b>ÍNDICE</b></td><td>Devolve o valor de uma posição do intervalo</td><td><code>=ÍNDICE(B2:B30;5)</code></td></tr>
+<tr><td class="num">20</td><td><b>CORRESP</b></td><td>Diz em qual posição um valor está</td><td><code>=CORRESP("Ana";A2:A30;0)</code></td></tr>
+</table>
+<div class="info-box">
+<p>A dupla <b>ÍNDICE + CORRESP</b> (<code>=ÍNDICE(B:B;CORRESP(A2;X:X;0))</code>) faz buscas flexíveis quando
+                    o PROCX não está disponível. Sempre que puder, prefira o <b>PROCX</b>.</p>
+</div>
+</div>
+</div>
+
+<!-- Categoria E1: Texto -->
+<div class="slide">
+<div class="header"><h2>Texto (parte 1)</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>#</th><th>Função</th><th>Para que serve</th><th>Exemplo</th></tr>
+<tr><td class="num">21</td><td><b>ARRUMAR</b></td><td>Remove espaços extras antes/depois/duplicados</td><td><code>=ARRUMAR(A2)</code></td></tr>
+<tr><td class="num">22</td><td><b>PRI.MAIÚSCULA</b></td><td>Primeira letra de cada palavra em maiúscula (ver também MAIÚSCULA / MINÚSCULA)</td><td><code>=PRI.MAIÚSCULA(A2)</code></td></tr>
+<tr><td class="num">23</td><td><b>&amp; (concatenar)</b></td><td>Junta textos de várias células</td><td><code>=A2&amp;" "&amp;B2</code></td></tr>
+<tr><td class="num">24</td><td><b>UNIRTEXTO</b></td><td>Junta um intervalo usando um separador</td><td><code>=UNIRTEXTO(", ";VERDADEIRO;A2:A5)</code></td></tr>
+</table>
+</div>
+</div>
+
+<!-- Categoria E2: Texto -->
+<div class="slide">
+<div class="header"><h2>Texto (parte 2)</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>#</th><th>Função</th><th>Para que serve</th><th>Exemplo</th></tr>
+<tr><td class="num">25</td><td><b>ESQUERDA / DIREITA / EXT.TEXTO</b></td><td>Extrai pedaços do texto (início, fim ou meio)</td><td><code>=ESQUERDA(A2;3)</code></td></tr>
+<tr><td class="num">26</td><td><b>NÚM.CARACT</b></td><td>Conta quantos caracteres há na célula</td><td><code>=NÚM.CARACT(A2)</code></td></tr>
+<tr><td class="num">27</td><td><b>SUBSTITUIR</b></td><td>Troca um trecho de texto por outro</td><td><code>=SUBSTITUIR(A2;".";"")</code></td></tr>
+</table>
+<div class="info-box">
+<p>Combinações poderosas: <code>=ARRUMAR(MAIÚSCULA(A2))</code> limpa e padroniza de uma vez; útil antes de
+                    cruzar listas com PROCX (espaços ou caixa diferente fazem a busca "não encontrar").</p>
+</div>
+</div>
+</div>
+
+<!-- Categoria F: Data e dinâmicas -->
+<div class="slide">
+<div class="header"><h2>Data e dados dinâmicos</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>#</th><th>Função</th><th>Para que serve</th><th>Exemplo</th></tr>
+<tr><td class="num">28</td><td><b>HOJE</b></td><td>A data de hoje (atualiza sozinha)</td><td><code>=HOJE()</code></td></tr>
+<tr><td class="num">29</td><td><b>AGORA</b></td><td>Data e hora atuais</td><td><code>=AGORA()</code></td></tr>
+<tr><td class="num">30</td><td><b>ÚNICO</b></td><td>Lista sem repetições, viva e automática</td><td><code>=ÚNICO(C2:C30)</code></td></tr>
+</table>
+<div class="info-box">
+<p>Com <b>HOJE()</b> você calcula prazos: <code>=HOJE()-A2</code> dá quantos dias se passaram desde a data
+                    em A2 — ótimo para alertar processos parados.</p>
+</div>
+</div>
+</div>
+
+<!-- Dica: referências absolutas -->
+<div class="slide">
+<div class="header"><h2>A dica que vale por dez fórmulas: o $</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<p>Ao <b>arrastar</b> uma fórmula, as referências se movem junto. O cifrão <code>$</code> "trava" a
+                        referência:</p>
+<ul class="spaced">
+<li><code>A2</code> — relativa: muda ao copiar.</li>
+<li><code>$A$2</code> — absoluta: nunca muda.</li>
+<li><code>$A2</code> / <code>A$2</code> — mista: trava só a coluna ou só a linha.</li>
+</ul>
+<p>Atalho: selecione a referência e pressione <b>F4</b> para alternar.</p>
+</div>
+<div class="code-box" style="font-size:16px;">
+=B2*$F$1<br/><br/>
+<span style="color:#94a3b8;">// $F$1 (taxa fixa)</span><br/>
+<span style="color:#94a3b8;">// continua F1 ao arrastar</span>
+                </div>
+</div>
+<div class="warn-box">
+<p>Esquecer o <code>$</code> em intervalos de busca (PROCX, SOMASE) é a causa nº 1 de fórmulas que "param de
+                    funcionar" ao serem copiadas para baixo.</p>
+</div>
+</div>
+</div>
+
+<!-- Valores de erro -->
+<div class="slide">
+<div class="header"><h2>Decifrando os erros mais comuns</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Erro</th><th>O que significa</th><th>Como resolver</th></tr>
+<tr><td><code>#N/D</code></td><td>A busca não encontrou o valor</td><td>Conferir a chave; usar SEERRO para mensagem amigável</td></tr>
+<tr><td><code>#REF!</code></td><td>Referência inválida ou matriz sem espaço</td><td>Liberar células no caminho; revisar intervalos apagados</td></tr>
+<tr><td><code>#VALOR!</code></td><td>Tipo de dado errado (texto onde espera número)</td><td>Verificar se há texto numa conta</td></tr>
+<tr><td><code>#DIV/0!</code></td><td>Divisão por zero ou por célula vazia</td><td>Envolver com <code>=SEERRO(...;"—")</code></td></tr>
+<tr><td><code>#NOME?</code></td><td>Nome de função digitado errado</td><td>Conferir a grafia (acentos incluídos)</td></tr>
+</table>
+</div>
+</div>
+
+<!-- Bônus: além das 30 -->
+<div class="slide">
+<div class="header"><h2>Bônus: quatro funções que vão além</h2></div>
+<div class="content">
+<p>Estas quatro são poderosíssimas e têm tópicos próprios neste curso:</p>
+<table class="table">
+<tr><th>Função</th><th>Para que serve</th><th>Veja em</th></tr>
+<tr><td><b>FILTRO</b></td><td>Extrai linhas que atendem a critérios, de forma viva</td><td>Extração com FILTER e UNIQUE</td></tr>
+<tr><td><b>QUERY</b></td><td>Relatórios com linguagem tipo SQL (select/where/order)</td><td>Relatórios com a função QUERY</td></tr>
+<tr><td><b>ARRAYFORMULA</b></td><td>Aplica uma fórmula a uma coluna inteira de uma vez</td><td>Tratamento de Dados</td></tr>
+<tr><td><b>IMPORTRANGE</b></td><td>Lê dados de outro arquivo de planilha do Drive</td><td>Acesso a Outra Planilha</td></tr>
+</table>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#3b82f6;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 840px; opacity: 0.9;">Com <b>SOMA, MÉDIA</b> e as contagens você totaliza;
+            com <b>CONT.SE/SOMASE</b> condiciona; com <b>SE, E, OU, SEERRO</b> decide; com <b>PROCX</b> cruza listas; e
+            com as funções de <b>texto</b> e <b>data</b> trata o que chega bagunçado. Domine o <b>$</b> e entenda os
+            erros — e essas 30 fórmulas darão conta de quase tudo no dia a dia.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Planilhas Google</p>
+</footer>
+</body>
+</html>
