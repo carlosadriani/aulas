@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tecnologias Digitais na Prática Docente - Canva para Educação</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #00868b; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #005f63; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #00868b; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #00868b; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #00868b; font-weight: bold; }
+        .info-box { border-left: 5px solid #00868b; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .tip-box { border-left: 5px solid #10b981; background: #ecfdf5; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #00868b; font-size: 26px; }
+        .steps { counter-reset: step; list-style: none; padding: 0; margin-top: 10px; }
+        .steps li { position: relative; padding: 14px 14px 14px 62px; margin-bottom: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; line-height: 1.6; }
+        .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; background: #00868b; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .prompt-box { background: #1e293b; color: #e2e8f0; padding: 24px 28px; border-radius: 10px; border-left: 8px solid #00868b; line-height: 1.7; font-size: 18px; margin-top: 20px; }
+        .prompt-box .label { display:inline-block; font-family:"Fira Code",monospace; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#38bdf8; margin-bottom:10px; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Digitais na Prática Docente
+            </h1>
+<p>Canva para Educação</p>
+</div>
+</header>
+
+<!-- ===================== SLIDES ===================== -->
+
+<!-- 1. Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-palette" style="font-size:80px;margin-bottom:30px;color:#00868b;"></i>
+<h1>Canva para Educação</h1>
+<p style="font-size: 24px; opacity: 0.8;">Criar materiais bonitos e profissionais sem ser designer</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Design gráfico a serviço da sala de aula</div>
+</div>
+
+<!-- 2. O que é o Canva -->
+<div class="slide">
+<div class="header"><h2>O que é o Canva?</h2></div>
+<div class="content">
+<p class="lead">O Canva é uma <span class="highlight">ferramenta de design gráfico online</span> que permite
+                criar materiais visuais bonitos de forma simples — mesmo para quem nunca estudou design.</p>
+<div class="info-box">
+<p>Toda a lógica do Canva é <b>arrastar e soltar</b> (<i>drag and drop</i>). Você escolhe um modelo pronto,
+                    clica no que quer mudar, arrasta uma imagem para o lugar e troca as palavras. Não é preciso instalar
+                    programa nenhum: funciona direto no navegador e também em aplicativo para celular e tablet.</p>
+</div>
+<p style="margin-top:16px;">Na prática, ele resolve um problema antigo do professor: produzir cartazes,
+                atividades, apresentações e avisos com boa aparência <b>sem dominar softwares complexos</b> como o
+                Photoshop ou o Illustrator. O trabalho pesado de alinhamento, cores e tipografia já vem resolvido nos
+                modelos.</p>
+</div>
+</div>
+
+<!-- 3. Canva para Educação -->
+<div class="slide">
+<div class="header"><h2>A conta Canva para Educação</h2></div>
+<div class="content">
+<p>Além da versão gratuita comum, existe o <span class="highlight">Canva para Educação</span>: uma conta
+                <b>totalmente gratuita</b> voltada a professores e escolas. Para liberá-la, o Canva faz uma
+                <b>verificação de vínculo escolar</b> (e-mail institucional, comprovação de docência ou aprovação da
+                instituição).</p>
+<table class="table">
+<tr><th>Recurso</th><th>O que a conta de educação libera</th></tr>
+<tr><td><b>Recursos premium</b></td><td>Milhões de modelos, fotos, ícones, vídeos e fontes que na conta comum seriam pagos</td></tr>
+<tr><td><b>Turmas</b></td><td>Espaço para reunir os alunos, distribuir atividades de design e acompanhar o trabalho</td></tr>
+<tr><td><b>Biblioteca educacional</b></td><td>Modelos criados especialmente para a escola: planos de aula, fichas, boletins, murais</td></tr>
+<tr><td><b>Colaboração segura</b></td><td>Ambiente pensado para menores, com controles voltados ao contexto escolar</td></tr>
+</table>
+<div class="tip-box">
+<p>Vale muito a pena solicitar a verificação: você passa a ter acesso pago sem custo, e isso muda
+                    completamente a variedade de materiais que consegue produzir.</p>
+</div>
+</div>
+</div>
+
+<!-- 4. Interface -->
+<div class="slide">
+<div class="header"><h2>Conhecendo a interface</h2></div>
+<div class="content">
+<p>Ao abrir o Canva, a coluna da esquerda concentra tudo o que você precisa. Conhecer esses cinco painéis já
+                permite montar quase qualquer material.</p>
+<table class="table">
+<tr><th>Painel</th><th>Para que serve</th></tr>
+<tr><td><b>Modelos</b></td><td>Layouts prontos por tema; ponto de partida da maioria dos trabalhos</td></tr>
+<tr><td><b>Elementos</b></td><td>Formas, ícones, ilustrações, fotos, adesivos, gráficos e linhas</td></tr>
+<tr><td><b>Texto</b></td><td>Caixas de texto e combinações de fonte já estilizadas</td></tr>
+<tr><td><b>Uploads</b></td><td>Suas próprias imagens: foto da turma, logo da escola, desenho digitalizado</td></tr>
+<tr><td><b>Projetos</b></td><td>Todos os seus designs salvos, organizados em pastas</td></tr>
+</table>
+<div class="info-box">
+<p><b>Criar a partir de um modelo:</b> clique em <code>Modelos</code>, digite o tema (ex.: "cartaz reunião
+                    de pais"), escolha um layout e ele abre pronto para editar. Você só troca textos e imagens — a
+                    estrutura visual já está montada.</p>
+</div>
+</div>
+</div>
+
+<!-- 5. O que dá para criar na escola -->
+<div class="slide">
+<div class="header"><h2>O que dá para criar na escola</h2></div>
+<div class="content">
+<p>O Canva cobre praticamente toda a produção visual do dia a dia escolar. Alguns exemplos concretos:</p>
+<table class="table">
+<tr><th>Material</th><th>Uso na escola</th></tr>
+<tr><td><b>Apresentações</b></td><td>Aulas expositivas, seminários, reuniões pedagógicas</td></tr>
+<tr><td><b>Cartazes</b></td><td>Campanhas, avisos, decoração de eventos e datas comemorativas</td></tr>
+<tr><td><b>Atividades e fichas</b></td><td>Exercícios ilustrados, tarefas para imprimir, jogos de recorte</td></tr>
+<tr><td><b>Infográficos</b></td><td>Resumos visuais de conteúdo, linhas do tempo, esquemas</td></tr>
+<tr><td><b>Crachás e etiquetas</b></td><td>Identificação de alunos, organização de materiais e armários</td></tr>
+<tr><td><b>Certificados</b></td><td>Participação em feiras, olimpíadas, projetos e gincanas</td></tr>
+<tr><td><b>Materiais para mural</b></td><td>Painéis temáticos, calendário da turma, aniversariantes do mês</td></tr>
+<tr><td><b>Vídeos curtos</b></td><td>Avisos animados, recados, recapitulação de conteúdo</td></tr>
+<tr><td><b>Posts para redes da escola</b></td><td>Divulgação de eventos e comunicados nas redes sociais oficiais</td></tr>
+</table>
+</div>
+</div>
+
+<!-- 6. Trabalhando com modelos -->
+<div class="slide">
+<div class="header"><h2>Trabalhando com modelos</h2></div>
+<div class="content">
+<p class="lead">O segredo da produtividade no Canva é <span class="highlight">não começar do zero</span>: parta
+                sempre de um modelo e adapte.</p>
+<ol class="steps">
+<li><b>Buscar por tema:</b> digite o que precisa ("ficha de alfabetização", "certificado infantil", "cartaz do meio ambiente") e escolha entre as opções.</li>
+<li><b>Adaptar cores:</b> aplique as cores da sua escola ou uma paleta que combine com o tema; a mudança pode ser feita elemento por elemento ou de uma vez.</li>
+<li><b>Adaptar textos:</b> clique em cada texto e substitua pelo seu conteúdo, mantendo o estilo já definido.</li>
+<li><b>Adaptar imagens:</b> arraste suas próprias fotos por cima das do modelo para trocá-las na mesma moldura.</li>
+</ol>
+<div class="tip-box">
+<p><b>Identidade visual:</b> mantenha um padrão (mesmas cores, mesma fonte, mesmo logo) em todos os
+                    materiais da sua turma ou projeto. Isso cria reconhecimento e passa organização — pais e alunos
+                    identificam de imediato o que é "seu".</p>
+</div>
+</div>
+</div>
+
+<!-- 7. Recursos de IA (Magic Studio) -->
+<div class="slide">
+<div class="header"><h2>Recursos de IA: o Magic Studio</h2></div>
+<div class="content">
+<p>O Canva reúne suas ferramentas de inteligência artificial no <span class="highlight">Magic Studio</span>.
+                Elas ajudam a acelerar tarefas, mas exigem <b>revisão do professor</b>.</p>
+<table class="table">
+<tr><th>Recurso</th><th>O que faz</th></tr>
+<tr><td><b>Gerar imagem</b></td><td>Cria uma ilustração a partir de uma descrição em texto (ex.: "sistema solar em estilo infantil")</td></tr>
+<tr><td><b>Escrever textos</b></td><td>Sugere ou reescreve pequenos textos, títulos e chamadas</td></tr>
+<tr><td><b>Redimensionar</b></td><td>Adapta o mesmo design para outro formato (de cartaz para post, de A4 para slide)</td></tr>
+<tr><td><b>Remover fundo</b></td><td>Apaga o fundo de uma foto, deixando só a figura recortada</td></tr>
+</table>
+<div class="warn-box">
+<p><b>Cautela:</b> a IA pode gerar imagens com erros, dados incorretos ou representações inadequadas. Confira
+                    sempre antes de usar com alunos, e avalie a política da escola sobre uso de IA. A ferramenta é apoio,
+                    não substitui o olhar pedagógico.</p>
+</div>
+</div>
+</div>
+
+<!-- 8. Colaboração e turmas -->
+<div class="slide">
+<div class="header"><h2>Colaboração e turmas</h2></div>
+<div class="content">
+<p>O Canva permite que <b>várias pessoas editem o mesmo design ao mesmo tempo</b>, cada uma vendo as mudanças
+                da outra em tempo real — como acontece nos documentos do Google.</p>
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-users"></i> Alunos criando juntos</h3>
+<p>Um grupo produz o mesmo cartaz ou apresentação de forma colaborativa, dividindo as partes sem
+                        precisar juntar arquivos depois.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-list-check"></i> Atividades de design</h3>
+<p>Pelo recurso de <b>turmas</b>, o professor cria uma atividade, entrega um modelo e cada aluno recebe
+                        sua própria cópia para desenvolver.</p>
+</div>
+</div>
+<div class="info-box">
+<p><b>Acompanhamento:</b> dentro da turma, o professor visualiza os trabalhos em andamento, pode comentar
+                    diretamente no design e devolver com orientações, tornando a correção mais visual e dialogada.</p>
+</div>
+</div>
+</div>
+
+<!-- 9. Exemplos práticos por nível -->
+<div class="slide">
+<div class="header"><h2>Exemplos práticos por nível</h2></div>
+<div class="content">
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-child"></i> Ensino Fundamental</h3>
+<ul class="spaced">
+<li><b>Cartaz de campanha:</b> "Economize água" ou "Respeite o colega" — os alunos escolhem imagens e escrevem a mensagem.</li>
+<li><b>Ficha ilustrada:</b> atividade de leitura ou matemática com desenhos, cores e espaço para resposta, pronta para imprimir.</li>
+</ul>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-graduation-cap"></i> Ensino Médio</h3>
+<ul class="spaced">
+<li><b>Infográfico de pesquisa:</b> transformar dados de um trabalho em gráficos e ícones fáceis de entender.</li>
+<li><b>Apresentação de seminário:</b> slides organizados e coerentes para exposições orais.</li>
+<li><b>Portfólio:</b> reunir produções do bimestre num material visual único.</li>
+</ul>
+</div>
+</div>
+<div class="tip-box">
+<p>Ao pedir um trabalho no Canva, foque no <b>conteúdo</b> e em critérios de design simples (clareza,
+                    organização). O objetivo é aprender a comunicar visualmente, não competir por enfeites.</p>
+</div>
+</div>
+</div>
+
+<!-- 10. Exportar e compartilhar -->
+<div class="slide">
+<div class="header"><h2>Exportar e compartilhar</h2></div>
+<div class="content">
+<p>Depois de pronto, o material pode sair do Canva de várias formas, conforme o destino:</p>
+<table class="table">
+<tr><th>Ação</th><th>Formato / uso</th></tr>
+<tr><td><b>Baixar</b></td><td><code>PDF</code> (impressão e fichas), <code>PNG/JPG</code> (imagens e posts), <code>MP4</code> (vídeos)</td></tr>
+<tr><td><b>Imprimir</b></td><td>Gerar PDF para a impressora da escola; para cartazes, escolher o tamanho certo (A4, A3)</td></tr>
+<tr><td><b>Compartilhar por link</b></td><td>Enviar um endereço para outras pessoas verem ou editarem, sem anexar arquivo</td></tr>
+<tr><td><b>Apresentar direto do Canva</b></td><td>Exibir os slides em tela cheia sem baixar nada, com a internet no data show ou TV</td></tr>
+</table>
+<div class="info-box">
+<p>Para <b>fichas e atividades</b>, o PDF é o formato ideal: preserva o layout na impressão. Para
+                    <b>avisos e murais digitais</b>, use PNG. Para <b>vídeos</b>, exporte em MP4 e compartilhe onde a
+                    escola divulga.</p>
+</div>
+</div>
+</div>
+
+<!-- 11. Boas práticas de design e cuidados -->
+<div class="slide">
+<div class="header"><h2>Boas práticas de design e cuidados</h2></div>
+<div class="content">
+<p>Um bom material comunica com clareza. Princípios simples fazem grande diferença: <b>contraste</b> (texto
+                escuro em fundo claro, ou o contrário), <b>no máximo 2 ou 3 fontes</b>, <b>alinhamento</b> consistente e
+                a máxima <span class="highlight">"menos é mais"</span> — espaço em branco também comunica.</p>
+<table class="table">
+<tr><th>Faça</th><th>Evite</th></tr>
+<tr><td>Garantir contraste entre texto e fundo</td><td>Texto claro sobre fundo claro (fica ilegível)</td></tr>
+<tr><td>Limitar a 2 ou 3 fontes no material</td><td>Misturar muitas fontes e cores diferentes</td></tr>
+<tr><td>Usar elementos com direito de uso e creditar as fontes</td><td>Copiar imagens da internet sem verificar os direitos</td></tr>
+<tr><td>Deixar espaços em branco para respiro</td><td>Encher cada canto de enfeites e informação</td></tr>
+<tr><td>Cuidar da acessibilidade (tamanho de fonte, cores legíveis, texto alternativo)</td><td>Textos minúsculos ou cores que dificultam a leitura</td></tr>
+</table>
+<div class="warn-box">
+<p><b>Direitos de imagem:</b> use os elementos da biblioteca do Canva (já licenciados) e, ao inserir fotos
+                    externas ou citar dados, <b>credite a fonte</b>. Isso ensina os alunos, pelo exemplo, a respeitar o
+                    trabalho alheio.</p>
+</div>
+</div>
+</div>
+
+<!-- 12. Encerramento -->
+<div class="slide hero">
+<h1 style="color:#00868b;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">O Canva permite criar materiais visuais de qualidade
+            no esquema <b>arrastar e soltar</b>, partindo sempre de <b>modelos</b>. A conta <b>Canva para Educação</b> é
+            gratuita para professores e libera recursos premium, turmas e biblioteca escolar. Dá para produzir de
+            cartazes a certificados, colaborar com os alunos, exportar em <b>PDF, PNG ou MP4</b> e usar a IA com
+            cautela. Aplicando boas práticas de design e respeitando direitos de imagem, você transforma qualquer
+            conteúdo em comunicação clara e bonita.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Digitais na Prática Docente</p>
+</footer>
+</body>
+</html>

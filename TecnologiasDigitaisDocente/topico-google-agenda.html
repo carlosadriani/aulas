@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tecnologias Digitais na Prática Docente - Google Agenda</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #1a73e8; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #174ea6; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #1a73e8; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #1a73e8; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #1a73e8; font-weight: bold; }
+        .info-box { border-left: 5px solid #1a73e8; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .tip-box { border-left: 5px solid #10b981; background: #ecfdf5; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #1a73e8; font-size: 26px; }
+        .steps { counter-reset: step; list-style: none; padding: 0; margin-top: 10px; }
+        .steps li { position: relative; padding: 14px 14px 14px 62px; margin-bottom: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; line-height: 1.6; }
+        .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; background: #1a73e8; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .prompt-box { background: #1e293b; color: #e2e8f0; padding: 24px 28px; border-radius: 10px; border-left: 8px solid #1a73e8; line-height: 1.7; font-size: 18px; margin-top: 20px; }
+        .prompt-box .label { display:inline-block; font-family:"Fira Code",monospace; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#38bdf8; margin-bottom:10px; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Digitais na Prática Docente
+            </h1>
+<p>Google Agenda</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-calendar-days" style="font-size:80px;margin-bottom:30px;color:#1a73e8;"></i>
+<h1>Google Agenda</h1>
+<p style="font-size: 24px; opacity: 0.8;">Todo o seu tempo de professor organizado em um só lugar</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Organização e Produtividade Docente</div>
+</div>
+
+<!-- O que é e por que -->
+<div class="slide">
+<div class="header"><h2>O que é a Google Agenda?</h2></div>
+<div class="content">
+<p class="lead">A <span class="highlight">Google Agenda</span> (Google Calendar) é um calendário digital
+                gratuito que reúne, em um só lugar, tudo o que tem hora e dia marcados na sua rotina de professor:
+                aulas, provas, reuniões, prazos de entrega e compromissos pessoais.</p>
+<div class="info-box">
+<p>Diferente de uma agenda de papel, ela vive na <b>nuvem</b>: você cadastra um compromisso no computador
+                    da escola e ele aparece na mesma hora no celular, no tablet e em qualquer navegador. Nada se perde
+                    se o caderno ficar em casa.</p>
+</div>
+<div class="grid" style="margin-top:24px;">
+<div class="card">
+<h3><i class="fa-solid fa-layer-group"></i> Tudo junto</h3>
+<p>Grade de aulas, conselho de classe, semana de provas e o aniversário do filho convivem no mesmo painel,
+                        cada um com sua cor.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-mobile-screen"></i> Sempre com você</h3>
+<p>Sincroniza automaticamente com o app no celular. Um lembrete avisa antes da reunião, mesmo com o
+                        aparelho no bolso.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Visões e criar evento -->
+<div class="slide">
+<div class="header"><h2>Visões e como criar um evento</h2></div>
+<div class="content">
+<p>No canto superior direito você escolhe <span class="highlight">como enxergar</span> o tempo. Cada visão
+                serve a um propósito diferente do planejamento docente:</p>
+<table class="table">
+<tr><th>Visão</th><th>Para que serve no dia a dia</th></tr>
+<tr><td><b>Dia</b></td><td>Ver hora a hora a rotina de hoje: 1º tempo, intervalo, 3º tempo…</td></tr>
+<tr><td><b>Semana</b></td><td>A favorita do professor: mostra a grade de aulas da semana inteira lado a lado.</td></tr>
+<tr><td><b>Mês</b></td><td>Visão panorâmica: datas de provas, feriados e reuniões do bimestre.</td></tr>
+<tr><td><b>Agenda (Compromissos)</b></td><td>Lista simples, em ordem, dos próximos eventos — ótima no celular.</td></tr>
+</table>
+<div class="info-box">
+<p><b>Criar rápido:</b> clique em um horário vazio, digite o título (ex.: "Correção de provas") e salve.
+                    <b>Criar detalhado:</b> use o botão <b>Criar</b> &gt; <b>Evento</b> para acrescentar sala,
+                    convidados, descrição, anexos e lembretes.</p>
+</div>
+</div>
+</div>
+
+<!-- Eventos recorrentes -->
+<div class="slide">
+<div class="header"><h2>Eventos recorrentes: sua grade de aulas</h2></div>
+<div class="content">
+<p class="lead">Você não precisa cadastrar a mesma aula 40 vezes no semestre. Um evento
+                <span class="highlight">recorrente</span> se repete sozinho na frequência que você definir.</p>
+<ol class="steps">
+<li>Clique em <b>Criar</b> &gt; <b>Evento</b> e dê um título: <i>"Aula — 7º ano — Matemática"</i>.</li>
+<li>Defina o dia e a hora da primeira ocorrência: <b>segunda-feira, 07h30 às 08h20</b>.</li>
+<li>No campo de repetição (que mostra "Não se repete"), escolha <b>Semanalmente à segunda-feira</b>.</li>
+<li>Se a aula ocorre em mais dias, escolha <b>Personalizar</b> e marque também <b>quarta</b> e <b>sexta</b>.</li>
+<li>Defina quando termina a repetição: em uma data (fim do semestre) ou após X ocorrências.</li>
+<li>Salve. A aula aparecerá automaticamente em todas as semanas.</li>
+</ol>
+<div class="tip-box">
+<p>Ao editar um evento recorrente, o Google pergunta se a mudança vale para <b>"este evento"</b>,
+                    <b>"este e os seguintes"</b> ou <b>"todos"</b>. Use "este evento" para remarcar só a aula de um dia
+                    (feriado, jogo escolar) sem bagunçar a grade inteira.</p>
+</div>
+</div>
+</div>
+
+<!-- Lembretes e notificações -->
+<div class="slide">
+<div class="header"><h2>Lembretes e notificações</h2></div>
+<div class="content">
+<p>De nada adianta cadastrar um prazo se ele passar despercebido. Cada evento pode disparar
+                <span class="highlight">avisos com antecedência</span>, no formato que você preferir:</p>
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-bell"></i> Notificação (pop-up)</h3>
+<p>Um alerta aparece na tela do computador ou do celular. Ideal para avisos de última hora, poucos minutos
+                        antes: "reunião em 10 minutos".</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-envelope"></i> E-mail</h3>
+<p>Você recebe uma mensagem no Gmail. Perfeito para prazos com folga: "1 dia antes" da entrega das notas ou
+                        da reunião de pais.</p>
+</div>
+</div>
+<div class="info-box">
+<p>Você pode colocar <b>mais de um lembrete</b> no mesmo evento: um e-mail <b>2 dias antes</b> do conselho
+                    de classe e um pop-up <b>30 minutos antes</b>. Assim ninguém é pego de surpresa por reuniões e
+                    entregas de notas.</p>
+</div>
+</div>
+</div>
+
+<!-- Múltiplas agendas -->
+<div class="slide">
+<div class="header"><h2>Múltiplas agendas com cores</h2></div>
+<div class="content">
+<p>Misturar vida pessoal e trabalho no mesmo calendário vira confusão. A solução é criar
+                <span class="highlight">várias agendas</span>, cada uma com sua cor, todas visíveis no mesmo painel.</p>
+<table class="table">
+<tr><th>Agenda sugerida</th><th>Cor</th><th>O que colocar</th></tr>
+<tr><td><b>Pessoal</b></td><td>Verde</td><td>Médico, academia, aniversários, folgas</td></tr>
+<tr><td><b>Aulas</b></td><td>Azul</td><td>Grade de aulas recorrentes de cada turma</td></tr>
+<tr><td><b>Escola</b></td><td>Roxo</td><td>Reuniões pedagógicas, conselhos, eventos institucionais</td></tr>
+<tr><td><b>Provas</b></td><td>Vermelho</td><td>Datas de avaliações, entregas de trabalhos e notas</td></tr>
+</table>
+<div class="tip-box">
+<p>No menu lateral, cada agenda tem uma <b>caixinha</b>. Desmarque "Pessoal" antes de projetar a tela para
+                    a turma e só a rotina escolar fica visível. Marque de novo depois — nada foi apagado, só ficou
+                    oculto.</p>
+</div>
+</div>
+</div>
+
+<!-- Convidar, anexar, salas -->
+<div class="slide">
+<div class="header"><h2>Convidados, anexos e reserva de salas</h2></div>
+<div class="content">
+<p>Um evento pode ser <span class="highlight">colaborativo</span>. Ao abrir os detalhes, você encontra
+                recursos que transformam a agenda numa ferramenta de coordenação:</p>
+<ul class="spaced">
+<li><b>Convidar participantes:</b> digite os e-mails dos colegas ou da coordenação. Eles recebem o convite e
+                    respondem <b>RSVP</b> — <i>Sim</i>, <i>Não</i> ou <i>Talvez</i> — e você vê quem vai comparecer.</li>
+<li><b>Anexar arquivos:</b> junte ao evento a pauta da reunião, o gabarito da prova ou o slide da aula,
+                    puxados direto do Google Drive. Todos os convidados abrem o material com um clique.</li>
+<li><b>Reservar salas:</b> em escolas com Google Workspace, é possível reservar o <b>laboratório de
+                    informática</b> ou o <b>auditório</b> na hora de criar o evento, evitando dois professores na mesma
+                    sala.</li>
+</ul>
+<div class="info-box">
+<p>O RSVP economiza mensagens: em vez de perguntar um a um quem vai à formação de sábado, você olha a lista
+                    de confirmados dentro do próprio evento.</p>
+</div>
+</div>
+</div>
+
+<!-- Google Meet -->
+<div class="slide">
+<div class="header"><h2>Google Meet integrado ao evento</h2></div>
+<div class="content">
+<p class="lead">Dentro de qualquer evento existe o botão <span class="highlight">"Adicionar videochamada
+                do Google Meet"</span>. Com <b>um clique</b>, o evento ganha um link de sala virtual.</p>
+<div class="flow">
+<div class="node">Criar evento</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Adicionar Google Meet</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Convidar alunos/pais</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Entrar na hora marcada</div>
+</div>
+<div class="info-box" style="margin-top:24px;">
+<p>Serve para <b>aula online</b>, plantão de dúvidas ou <b>reunião com os pais</b> à distância. O link fica
+                    dentro do convite: na hora certa, professor e convidados clicam em <b>"Participar com o Google
+                    Meet"</b> e a chamada começa. Não é preciso combinar link por WhatsApp.</p>
+</div>
+<div class="tip-box">
+<p>Como o link já está no evento recorrente, uma aula online semanal usa <b>sempre o mesmo endereço</b> —
+                    os alunos decoram o caminho.</p>
+</div>
+</div>
+</div>
+
+<!-- Compartilhar e permissões -->
+<div class="slide">
+<div class="header"><h2>Compartilhar a agenda e níveis de permissão</h2></div>
+<div class="content">
+<p>Você pode <span class="highlight">compartilhar uma agenda inteira</span> (por exemplo, a "Escola") com
+                colegas, com a coordenação ou até com a turma. O segredo está em escolher o <b>nível de acesso</b>
+                certo para cada pessoa:</p>
+<table class="table">
+<tr><th>Nível de permissão</th><th>O que a pessoa pode fazer</th><th>Bom para</th></tr>
+<tr><td><b>Ver apenas disponível/ocupado</b></td><td>Vê que há um compromisso, mas não o conteúdo</td><td>Colegas que só precisam saber seus horários livres</td></tr>
+<tr><td><b>Ver todos os detalhes</b></td><td>Enxerga títulos, horários e descrições, sem alterar</td><td>A turma vendo o calendário de provas</td></tr>
+<tr><td><b>Alterar eventos</b></td><td>Cria, edita e apaga eventos da agenda</td><td>Um colega que divide a organização de um projeto</td></tr>
+<tr><td><b>Alterar e gerenciar</b></td><td>Faz tudo, inclusive compartilhar com outros</td><td>A coordenação, dona da agenda institucional</td></tr>
+</table>
+<div class="warn-box">
+<p>Conceda "Alterar" apenas a quem realmente precisa. Para a turma, o ideal é <b>"Ver todos os detalhes"</b>:
+                    os alunos acompanham prazos, mas não conseguem mexer nas datas.</p>
+</div>
+</div>
+</div>
+
+<!-- Exemplo prático semana letiva -->
+<div class="slide">
+<div class="header"><h2>Exemplo prático: montar a semana letiva</h2></div>
+<div class="content">
+<p>Vamos organizar, do zero, uma semana completa de uma professora do ensino fundamental:</p>
+<ol class="steps">
+<li>Crie a agenda <b>"Aulas"</b> (azul) e cadastre a grade recorrente: <b>Português — 6º ano</b>, seg/qua/sex
+                    às 07h30; <b>Português — 8º ano</b>, ter/qui às 09h20. Repetição semanal até o fim do bimestre.</li>
+<li>Na agenda <b>"Provas"</b> (vermelho), marque a <b>Avaliação do 6º ano</b> na sexta às 07h30 e ative um
+                    lembrete por e-mail <b>2 dias antes</b> para preparar a correção.</li>
+<li>Na agenda <b>"Escola"</b> (roxo), lance a <b>Reunião Pedagógica</b> na quarta às 17h; adicione o Google
+                    Meet e convide a coordenação.</li>
+<li>Anexe à reunião a <b>pauta em PDF</b> e ative pop-up <b>30 minutos antes</b>.</li>
+<li>Na visão <b>Semana</b>, confira o quadro colorido: azul (aulas), vermelho (prova) e roxo (reunião) não se
+                    sobrepõem.</li>
+<li>No celular, verifique se tudo sincronizou — sua semana está pronta e vai avisar você em cada etapa.</li>
+</ol>
+</div>
+</div>
+
+<!-- Integrações e cuidados -->
+<div class="slide">
+<div class="header"><h2>Integrações úteis, dicas e cuidados</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3><i class="fa-solid fa-plug"></i> Integrações que ajudam</h3>
+<ul class="spaced">
+<li><b>Google Sala de Aula (Classroom):</b> os <b>prazos das tarefas</b> aparecem automaticamente na sua
+                            Agenda, sem cadastrar nada.</li>
+<li><b>Google Tasks:</b> uma lista de <b>tarefas</b> ("corrigir redações", "lançar notas") aparece ao lado
+                            do calendário e some quando você conclui.</li>
+<li><b>Horário de foco:</b> reserve um bloco para planejar aulas em que a Agenda <b>recusa convites</b>
+                            automaticamente, protegendo seu tempo.</li>
+</ul>
+</div>
+<div>
+<div class="warn-box">
+<p><b>Fusos horários:</b> em cursos ou formações online com pessoas de outros estados, confira o fuso
+                            do evento para ninguém entrar na hora errada.</p>
+</div>
+<div class="warn-box">
+<p><b>Convites indevidos:</b> desconfie de convites de eventos de remetentes desconhecidos (podem ser
+                            spam). Não confirme e use a opção de <b>denunciar spam</b>.</p>
+</div>
+</div>
+</div>
+<div class="tip-box">
+<p>Reserve 5 minutos no fim de cada semana para olhar a visão <b>Semana</b> seguinte. Antecipar-se ao que
+                    vem é o maior benefício de manter a Agenda em dia.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#1a73e8;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">A <b>Google Agenda</b> reúne aulas, provas,
+            reuniões e prazos num calendário sincronizado no celular. Use <b>eventos recorrentes</b> para cadastrar a
+            grade de aulas de uma vez, <b>lembretes</b> por pop-up e e-mail para não esquecer nada, e <b>múltiplas
+            agendas coloridas</b> para separar pessoal, aulas, escola e provas. Convide participantes, anexe arquivos,
+            crie uma <b>videochamada do Google Meet</b> com um clique e <b>compartilhe</b> a agenda com a permissão
+            certa. Com integrações ao Sala de Aula e ao Tasks, todo o seu tempo de professor fica organizado e sob
+            controle.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Digitais na Prática Docente</p>
+</footer>
+</body>
+</html>

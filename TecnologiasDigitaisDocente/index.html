@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologias Digitais na Prática Docente - Prof. Carlos Schaeffer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body class="site-body">
+    <header class="site-header">
+        <div class="site-header__inner">
+            <h1>
+                <img src="/imagens/AjudaProfessor-logo.png" width="100px" alt="">
+                Tecnologias Digitais na Prática Docente
+            </h1>
+            <a class="site-header__back" href="/index.html"><i class="fa-solid fa-arrow-left"></i> Página inicial</a>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="toolbar">
+            <div class="toolbar__search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" data-role="search" placeholder="Pesquisar tópico por conteúdo..." aria-label="Pesquisar tópicos">
+            </div>
+            <button class="toolbar__btn" data-role="fav-filter" type="button">
+                <i class="fa-solid fa-star"></i> Só favoritos
+            </button>
+            <p class="toolbar__hint">Curso de formação de professores no uso pedagógico de tecnologias digitais. Clique na estrela para favoritar e arraste os cards para reordenar.</p>
+        </div>
+
+        <div class="topic-grid" data-course="tecnologias-digitais-docente" id="topicGrid">
+
+            <!-- ============ GOOGLE WORKSPACE ============ -->
+            <article class="topic-card" data-id="google-drive" data-keywords="google drive nuvem armazenamento arquivos pastas compartilhar organização backup workspace">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-brands fa-google-drive"></i></div>
+                <span class="topic-card__badge">Google Workspace</span>
+                <h2 class="topic-card__title">Google Drive</h2>
+                <p class="topic-card__desc">Armazenamento na nuvem, organização de pastas, compartilhamento seguro e acesso aos materiais de aula de qualquer lugar.</p>
+                <a class="topic-card__link" href="topico-google-drive.html">Ver Conteúdo</a>
+            </article>
+
+            <article class="topic-card" data-id="google-docs" data-keywords="google docs documentos texto colaborativo comentários formatação escrita workspace">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-file-lines"></i></div>
+                <span class="topic-card__badge">Google Workspace</span>
+                <h2 class="topic-card__title">Google Docs</h2>
+                <p class="topic-card__desc">Documentos colaborativos em tempo real: planos de aula, provas, comentários, correção e trabalhos em grupo.</p>
+                <a class="topic-card__link" href="topico-google-docs.html">Ver Conteúdo</a>
+            </article>
+
+            <article class="topic-card" data-id="google-forms" data-keywords="google forms formulários provas questionários quiz correção automática pesquisa avaliação workspace">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-clipboard-question"></i></div>
+                <span class="topic-card__badge">Google Workspace</span>
+                <h2 class="topic-card__title">Google Forms</h2>
+                <p class="topic-card__desc">Criação de provas e questionários com correção automática, pesquisas com a turma e coleta organizada de respostas.</p>
+                <a class="topic-card__link" href="topico-google-forms.html">Ver Conteúdo</a>
+            </article>
+
+            <article class="topic-card" data-id="google-agenda" data-keywords="google agenda calendar calendário eventos aulas lembretes reuniões meet horários workspace">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-calendar-days"></i></div>
+                <span class="topic-card__badge">Google Workspace</span>
+                <h2 class="topic-card__title">Google Agenda</h2>
+                <p class="topic-card__desc">Organização da rotina docente: horários de aula, prazos, eventos, lembretes e agendamento de reuniões e videochamadas.</p>
+                <a class="topic-card__link" href="topico-google-agenda.html">Ver Conteúdo</a>
+            </article>
+
+            <article class="topic-card" data-id="apresentacoes-google" data-keywords="apresentações google slides slide aula visual projetor exposição workspace">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-person-chalkboard"></i></div>
+                <span class="topic-card__badge">Google Workspace</span>
+                <h2 class="topic-card__title">Apresentações Google</h2>
+                <p class="topic-card__desc">Slides de aula colaborativos, modelos prontos, recursos visuais e apresentações que os alunos também podem construir.</p>
+                <a class="topic-card__link" href="topico-apresentacoes-google.html">Ver Conteúdo</a>
+            </article>
+
+            <article class="topic-card" data-id="google-classroom" data-keywords="google sala de aula classroom turmas atividades tarefas notas mural gestão workspace">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                <span class="topic-card__badge">Google Workspace</span>
+                <h2 class="topic-card__title">Google Sala de Aula</h2>
+                <p class="topic-card__desc">Gestão completa da turma: postar atividades, receber e corrigir tarefas, dar notas e centralizar a comunicação.</p>
+                <a class="topic-card__link" href="topico-google-classroom.html">Ver Conteúdo</a>
+            </article>
+
+            <!-- ============ INTELIGÊNCIA ARTIFICIAL ============ -->
+            <article class="topic-card" data-id="gemini" data-keywords="google gemini ia inteligência artificial chatbot planejamento plano de aula geração texto prompt">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <span class="topic-card__badge">Inteligência Artificial</span>
+                <h2 class="topic-card__title">Google Gemini</h2>
+                <p class="topic-card__desc">A IA do Google integrada ao Workspace: planejar aulas, criar atividades, resumir textos e gerar ideias com bons prompts.</p>
+                <a class="topic-card__link" href="topico-gemini.html">Ver Conteúdo</a>
+            </article>
+
+            <article class="topic-card" data-id="chatgpt" data-keywords="chatgpt openai ia inteligência artificial prompt geração de texto planejamento atividades doçência">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-robot"></i></div>
+                <span class="topic-card__badge">Inteligência Artificial</span>
+                <h2 class="topic-card__title">ChatGPT</h2>
+                <p class="topic-card__desc">A IA da OpenAI aplicada à docência: elaborar atividades, adaptar textos, criar rubricas e a arte de escrever bons prompts.</p>
+                <a class="topic-card__link" href="topico-chatgpt.html">Ver Conteúdo</a>
+            </article>
+
+            <article class="topic-card" data-id="notebooklm" data-keywords="notebooklm google ia estudos fontes resumo podcast áudio material próprio pesquisa">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-book-open-reader"></i></div>
+                <span class="topic-card__badge">Inteligência Artificial</span>
+                <h2 class="topic-card__title">NotebookLM</h2>
+                <p class="topic-card__desc">Assistente de estudos baseado nos SEUS materiais: resumos, mapas, perguntas e até podcasts a partir dos seus documentos.</p>
+                <a class="topic-card__link" href="topico-notebooklm.html">Ver Conteúdo</a>
+            </article>
+
+            <!-- ============ CRIAÇÃO VISUAL ============ -->
+            <article class="topic-card" data-id="canva" data-keywords="canva design educação cartazes atividades apresentações infográficos modelos visual criativo">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-palette"></i></div>
+                <span class="topic-card__badge">Criação Visual</span>
+                <h2 class="topic-card__title">Canva para Educação</h2>
+                <p class="topic-card__desc">Materiais visuais de alto impacto: cartazes, atividades, infográficos, apresentações e recursos com modelos prontos.</p>
+                <a class="topic-card__link" href="topico-canva.html">Ver Conteúdo</a>
+            </article>
+
+            <!-- ============ ÉTICA E CIDADANIA DIGITAL ============ -->
+            <article class="topic-card" data-id="ia-responsavel" data-keywords="ia responsável ética privacidade lgpd dados alunos plágio limites pedagógicos cidadania digital segurança">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                <span class="topic-card__badge">Ética e Cidadania Digital</span>
+                <h2 class="topic-card__title">IA Responsável, Privacidade e LGPD</h2>
+                <p class="topic-card__desc">Uso ético da IA em sala, proteção dos dados dos alunos, LGPD, plágio, vieses e os limites pedagógicos da tecnologia.</p>
+                <a class="topic-card__link" href="topico-ia-responsavel.html">Ver Conteúdo</a>
+            </article>
+
+        </div>
+
+        <p class="topic-empty" data-role="empty" hidden>Nenhum tópico encontrado para sua busca.</p>
+
+        <div class="back-portal">
+            <a href="../index.html"><i class="fa-solid fa-arrow-left"></i> Voltar ao Portal de Aulas</a>
+        </div>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Digitais na Prática Docente</p>
+    </footer>
+
+    <script src="../assets/js/cards.js"></script>
+</body>
+
+</html>

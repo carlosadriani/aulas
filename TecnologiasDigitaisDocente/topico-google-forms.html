@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tecnologias Digitais na Prática Docente - Google Forms</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #7248b9; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #4a2f78; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #7248b9; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #7248b9; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #7248b9; font-weight: bold; }
+        .info-box { border-left: 5px solid #7248b9; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .tip-box { border-left: 5px solid #10b981; background: #ecfdf5; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #7248b9; font-size: 26px; }
+        .steps { counter-reset: step; list-style: none; padding: 0; margin-top: 10px; }
+        .steps li { position: relative; padding: 14px 14px 14px 62px; margin-bottom: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; line-height: 1.6; }
+        .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; background: #7248b9; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .prompt-box { background: #1e293b; color: #e2e8f0; padding: 24px 28px; border-radius: 10px; border-left: 8px solid #7248b9; line-height: 1.7; font-size: 18px; margin-top: 20px; }
+        .prompt-box .label { display:inline-block; font-family:"Fira Code",monospace; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#38bdf8; margin-bottom:10px; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Digitais na Prática Docente
+            </h1>
+<p>Google Forms</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-clipboard-question" style="font-size:80px;margin-bottom:30px;color:#7248b9;"></i>
+<h1>Google Forms</h1>
+<p style="font-size: 24px; opacity: 0.8;">Formulários que coletam, pesquisam e corrigem provas sozinhos</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Formulários Google na Sala de Aula</div>
+</div>
+
+<!-- O que é e para que serve -->
+<div class="slide">
+<div class="header"><h2>O que é o Google Forms?</h2></div>
+<div class="content">
+<p class="lead">O <span class="highlight">Google Forms</span> (Formulários Google) é uma ferramenta gratuita para
+                criar <b>formulários on-line</b>: você monta as perguntas, envia um link e as respostas chegam
+                organizadas automaticamente, sem papel e sem digitar nada de volta.</p>
+<div class="info-box">
+<p>Ele faz parte do pacote Google (junto com Docs, Planilhas e Slides). Basta ter uma conta Google e acessar
+                    <b>forms.google.com</b> ou o botão <i class="fa-solid fa-plus"></i> dentro do Google Drive.</p>
+</div>
+<p style="margin-top:16px;">Na escola, o mesmo formulário serve para muitas situações diferentes:</p>
+<div class="grid" style="margin-top:16px;">
+<div class="card"><h3><i class="fa-solid fa-square-check"></i> Provas e quizzes</h3>
+<p>Avaliações objetivas que se corrigem sozinhas e já mostram a nota.</p></div>
+<div class="card"><h3><i class="fa-solid fa-chart-simple"></i> Pesquisas</h3>
+<p>Opinião dos pais, clima da turma, sondagem de conhecimentos prévios.</p></div>
+<div class="card"><h3><i class="fa-solid fa-clipboard-list"></i> Inscrições</h3>
+<p>Feira de ciências, passeios, oficinas, reunião de pais.</p></div>
+<div class="card"><h3><i class="fa-solid fa-user-check"></i> Presença</h3>
+<p>Registro de frequência ou "quem está aqui hoje" em poucos cliques.</p></div>
+</div>
+</div>
+</div>
+
+<!-- Criar do zero: tipos de pergunta -->
+<div class="slide">
+<div class="header"><h2>Criando do zero: os tipos de pergunta</h2></div>
+<div class="content">
+<p>Ao adicionar uma pergunta (botão <i class="fa-solid fa-circle-plus"></i>), você escolhe <b>o tipo de
+                resposta</b>. Cada tipo serve a uma intenção diferente:</p>
+<table class="table">
+<tr><th>Tipo de pergunta</th><th>Como o aluno responde</th><th>Bom para…</th></tr>
+<tr><td><b>Múltipla escolha</b></td><td>Escolhe <i>uma</i> opção entre várias</td><td>Questões de prova com uma resposta certa</td></tr>
+<tr><td><b>Caixas de seleção</b></td><td>Marca <i>várias</i> opções ao mesmo tempo</td><td>"Marque tudo o que se aplica"</td></tr>
+<tr><td><b>Lista suspensa</b></td><td>Abre um menu e escolhe um item</td><td>Turma, série, disciplina — listas longas</td></tr>
+<tr><td><b>Texto curto</b></td><td>Digita uma linha</td><td>Nome, número, palavra-chave</td></tr>
+<tr><td><b>Parágrafo</b></td><td>Digita um texto longo</td><td>Resposta discursiva, justificativa, redação</td></tr>
+<tr><td><b>Escala linear</b></td><td>Escolhe um número (ex.: de 1 a 5)</td><td>Nível de satisfação ou de dificuldade</td></tr>
+<tr><td><b>Grade de múltipla escolha</b></td><td>Cruza linhas e colunas</td><td>Avaliar vários itens com a mesma escala</td></tr>
+<tr><td><b>Data / Horário</b></td><td>Escolhe num calendário/relógio</td><td>Agendamento, data de nascimento</td></tr>
+</table>
+</div>
+</div>
+
+<!-- Transformar em Teste (Quiz) -->
+<div class="slide">
+<div class="header"><h2>Transformando o formulário em "Teste"</h2></div>
+<div class="content">
+<p>Por padrão, o Forms só coleta respostas. Para que ele funcione como <b>prova com nota</b>, é preciso
+                ativar o modo <span class="highlight">Teste</span> (Quiz):</p>
+<div class="flow">
+<div class="node"><i class="fa-solid fa-gear"></i> Configurações</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Transformar em teste</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Ativar</div>
+</div>
+<p style="margin-top:24px;">Com o modo Teste ligado, cada pergunta ganha o botão <b>Gabarito</b>. Ao abri-lo,
+                você:</p>
+<ul class="spaced">
+<li>Marca <b>qual é a resposta correta</b> (ou as corretas);</li>
+<li>Define <b>quantos pontos</b> aquela questão vale;</li>
+<li>Pode adicionar <b>feedback automático</b>: um texto que aparece para o aluno quando ele acerta e outro
+                    quando ele erra (ex.: "Reveja o Capítulo 3, página 42").</li>
+</ul>
+<div class="tip-box">
+<p>Use o feedback de erro como um mini-monitor: em vez de só dizer "errado", indique onde estudar. O aluno
+                    recebe orientação na hora, mesmo fora da sala.</p>
+</div>
+</div>
+</div>
+
+<!-- Correção automática -->
+<div class="slide">
+<div class="header"><h2>Correção automática: o Forms corrige por você</h2></div>
+<div class="content">
+<p class="lead">Uma vez que o gabarito está definido, o Forms <span class="highlight">compara</span> cada resposta
+                com a resposta correta e soma os pontos <b>sozinho</b>, no instante em que o aluno envia.</p>
+<div class="tip-box">
+<p><b>O que corrige automaticamente:</b> múltipla escolha, caixas de seleção e listas suspensas — tudo o que
+                    tem alternativas fechadas. A nota da turma inteira pode sair em segundos.</p>
+</div>
+<div class="warn-box">
+<p><b>Atenção às questões de texto:</b> perguntas de <b>parágrafo</b> e, muitas vezes, de <b>texto curto</b>
+                    exigem <b>correção manual</b>. O Forms até tenta comparar texto curto com o gabarito, mas se o aluno
+                    escrever "Dom Pedro I" em vez de "D. Pedro I" ele pode marcar como errado. Revise sempre as respostas
+                    discursivas antes de fechar a nota.</p>
+</div>
+<p style="margin-top:16px;">Você decide também <b>quando</b> o aluno vê a nota: logo após enviar
+                (imediato) ou só depois de você revisar manualmente.</p>
+</div>
+</div>
+
+<!-- Organização: seções e ramificação -->
+<div class="slide">
+<div class="header"><h2>Organizando: seções e lógica de ramificação</h2></div>
+<div class="content">
+<p>Formulários longos ficam melhores divididos em partes. Use os recursos de organização:</p>
+<table class="table">
+<tr><th>Recurso</th><th>O que faz</th><th>Uso na escola</th></tr>
+<tr><td><b>Seções</b></td><td>Divide o formulário em páginas separadas</td><td>Separar "Dados do aluno" da "Prova"</td></tr>
+<tr><td><b>Embaralhar perguntas</b></td><td>Muda a ordem das questões para cada aluno</td><td>Dificultar a "cola" entre colegas</td></tr>
+<tr><td><b>Embaralhar opções</b></td><td>Muda a ordem das alternativas</td><td>Evitar que todos marquem "a letra C"</td></tr>
+<tr><td><b>Ir para seção com base na resposta</b></td><td>Encaminha o aluno a páginas diferentes conforme o que ele responde</td><td>Trilhas por nível ou por interesse</td></tr>
+</table>
+<div class="info-box">
+<p>A <b>ramificação</b> (ir para seção) transforma o formulário em algo interativo: se o aluno responde
+                    "Sim, já estudei frações", ele pula para as questões avançadas; se responde "Não", vai para uma seção
+                    de revisão. É a lógica "se... então..." aplicada ao formulário.</p>
+</div>
+</div>
+</div>
+
+<!-- Configurações importantes -->
+<div class="slide">
+<div class="header"><h2>Configurações que todo professor deve conhecer</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Configuração</th><th>Para que serve</th></tr>
+<tr><td><b>Coletar e-mails</b></td><td>Registra o e-mail de quem responde — essencial para saber <i>quem</i> fez a prova</td></tr>
+<tr><td><b>Limitar a 1 resposta</b></td><td>Impede que o mesmo aluno responda várias vezes (exige login)</td></tr>
+<tr><td><b>Exigir login</b></td><td>Só quem tem conta (ex.: e-mail da escola) consegue responder</td></tr>
+<tr><td><b>Mensagem de confirmação</b></td><td>Texto que aparece após enviar (ex.: "Resposta registrada, bom descanso!")</td></tr>
+<tr><td><b>Aceitando respostas</b></td><td>Chave liga/desliga: ao <b>encerrar</b>, ninguém mais consegue enviar</td></tr>
+<tr><td><b>Editar após enviar</b></td><td>Permite (ou não) que o aluno volte e mude a resposta</td></tr>
+</table>
+<div class="warn-box">
+<p>Para provas, ative <b>Coletar e-mails</b> + <b>Limitar a 1 resposta</b>. Sem isso, você recebe respostas
+                    anônimas e o aluno pode enviar várias vezes. Lembre-se de <b>encerrar</b> o formulário quando o prazo
+                    da avaliação terminar.</p>
+</div>
+</div>
+</div>
+
+<!-- Vendo as respostas -->
+<div class="slide">
+<div class="header"><h2>Vendo as respostas</h2></div>
+<div class="content">
+<p>Na aba <span class="highlight">Respostas</span>, no topo do formulário, tudo aparece organizado em três
+                visões:</p>
+<div class="grid" style="margin-top:16px;">
+<div class="card"><h3><i class="fa-solid fa-chart-pie"></i> Resumo</h3>
+<p>Gráficos automáticos: barras, pizza e médias já prontos, mostrando o padrão de respostas da turma.</p></div>
+<div class="card"><h3><i class="fa-solid fa-list-ol"></i> Pergunta</h3>
+<p>Analisa uma questão por vez: quantos acertaram, quais alternativas foram mais marcadas.</p></div>
+<div class="card"><h3><i class="fa-solid fa-user"></i> Individual</h3>
+<p>Mostra a prova completa de <i>um</i> aluno específico, com acertos e erros.</p></div>
+</div>
+<div class="tip-box">
+<p>O botão <i class="fa-solid fa-table"></i> <b>"Vincular às Planilhas"</b> envia todas as respostas para uma
+                    <b>Planilha Google</b>, uma linha por aluno. Lá você soma, filtra, calcula médias e lança as notas no
+                    diário. As respostas continuam chegando em tempo real na planilha.</p>
+</div>
+</div>
+</div>
+
+<!-- Exemplo prático 1: prova objetiva -->
+<div class="slide">
+<div class="header"><h2>Exemplo prático: uma prova que se corrige sozinha</h2></div>
+<div class="content">
+<p>Vamos montar uma <b>prova objetiva de 10 questões</b> de História para o 7º ano:</p>
+<ol class="steps">
+<li>Em forms.google.com, crie um formulário em branco e dê o título <b>"Prova de História — Brasil Colônia"</b>.</li>
+<li>Abra <b>Configurações</b> <i class="fa-solid fa-gear"></i>, ative <b>Transformar em teste</b> e ligue <b>Coletar e-mails</b> e <b>Limitar a 1 resposta</b>.</li>
+<li>Na 1ª seção, peça <b>Nome</b> (texto curto) e <b>Turma</b> (lista suspensa: 7ºA, 7ºB…).</li>
+<li>Crie as 10 questões como <b>Múltipla escolha</b>, cada uma com 4 alternativas.</li>
+<li>Em cada questão, clique em <b>Gabarito</b>, marque a alternativa correta e defina <b>1 ponto</b> (total: 10).</li>
+<li>Ative <b>Embaralhar perguntas</b> e <b>embaralhar opções</b> para dificultar a cola.</li>
+<li>Clique em <b>Enviar</b> e copie o <b>link</b> (ou gere um QR Code) para a turma.</li>
+<li>Ao final do prazo, <b>encerre</b> as respostas e veja tudo já corrigido na aba <b>Respostas</b>.</li>
+</ol>
+<div class="info-box">
+<p>Resultado: 30 alunos respondem, e você recebe 30 notas prontas em segundos, com gráficos mostrando
+                    quais questões a turma mais errou — um retrato imediato do que precisa ser revisado.</p>
+</div>
+</div>
+</div>
+
+<!-- Outros usos poderosos -->
+<div class="slide">
+<div class="header"><h2>Outros usos poderosos na escola</h2></div>
+<div class="content">
+<div class="grid">
+<div class="card"><h3><i class="fa-solid fa-people-roof"></i> Pesquisa com os pais</h3>
+<p>Satisfação com a escola, feedback de reuniões, autorização de saídas. Use <b>escala linear</b> de 1 a 5
+                    e uma pergunta de <b>parágrafo</b> para sugestões.</p></div>
+<div class="card"><h3><i class="fa-solid fa-brain"></i> Autoavaliação dos alunos</h3>
+<p>"O quanto você entendeu deste conteúdo?" ajuda o aluno a refletir e mostra a você onde estão as dúvidas
+                    antes da prova.</p></div>
+<div class="card"><h3><i class="fa-solid fa-clipboard-user"></i> Presença / frequência</h3>
+<p>Um formulário curto ("Nome" + "Data") registra quem participou de uma aula, oficina ou atividade
+                    remota — tudo já numa planilha.</p></div>
+<div class="card"><h3><i class="fa-solid fa-hand-point-up"></i> Inscrição em atividades</h3>
+<p>Feira de ciências, clube de leitura, times esportivos. Use <b>listas suspensas</b> e feche as inscrições
+                    ao lotar as vagas.</p></div>
+</div>
+<div class="tip-box">
+<p>O mesmo formulário pode ser <b>reutilizado</b>: faça uma cópia (menu <i class="fa-solid fa-ellipsis-vertical"></i>
+                    &gt; Fazer uma cópia) e adapte as perguntas para a próxima turma ou o próximo bimestre.</p>
+</div>
+</div>
+</div>
+
+<!-- Personalização, acessibilidade e cuidados -->
+<div class="slide">
+<div class="header"><h2>Personalização, acessibilidade e cuidados</h2></div>
+<div class="content">
+<p>No botão <b>Personalizar tema</b> <i class="fa-solid fa-palette"></i> você muda <b>cores</b>, <b>fonte</b> e
+                adiciona uma <b>imagem de cabeçalho</b>, deixando o formulário com a cara da escola. Para acessibilidade,
+                use textos claros, adicione <b>descrição</b> nas imagens e evite depender só de cor para transmitir
+                informação.</p>
+<table class="table">
+<tr><th>Cuidado</th><th>Por quê / o que fazer</th></tr>
+<tr><td><b>Facilidade de cópia</b></td><td>É simples um aluno passar respostas para outro. Embaralhe perguntas e opções e prefira aplicar em sala, com supervisão.</td></tr>
+<tr><td><b>Não impede consulta</b></td><td>Fora da sala, o aluno pode pesquisar no celular. Bom para revisão; arriscado para avaliação valendo nota alta.</td></tr>
+<tr><td><b>Correção de texto é literal</b></td><td>Respostas discursivas precisam de revisão humana — não confie 100% na correção automática de texto.</td></tr>
+<tr><td><b>Privacidade dos dados</b></td><td>Ao coletar e-mails e nomes de menores, siga as regras da escola e da LGPD; não peça dados desnecessários.</td></tr>
+<tr><td><b>Depende de internet</b></td><td>Garanta que todos os alunos tenham acesso ao dispositivo e à rede antes de aplicar.</td></tr>
+</table>
+<div class="warn-box">
+<p><b>Quando NÃO usar para avaliação de alta importância:</b> em provas decisivas (recuperação final,
+                    vestibulinho), o Forms sozinho não garante a segurança de um exame presencial vigiado. Use-o para
+                    quizzes, treinos e avaliações formativas; reserve o formato tradicional para provas de alto peso.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#7248b9;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">O <b>Google Forms</b> cria formulários on-line para
+            provas, quizzes, pesquisas, inscrições e presença. Escolha o <b>tipo de pergunta</b> certo, ative o modo
+            <b>Teste</b> para definir gabarito e pontuação, e deixe o Forms <b>corrigir sozinho</b> — lembrando que
+            respostas discursivas exigem revisão manual. Organize com <b>seções e ramificação</b>, ajuste as
+            <b>configurações</b> (coletar e-mails, 1 resposta, encerrar), e acompanhe tudo na aba <b>Respostas</b>,
+            vinculada a uma <b>Planilha Google</b>. Uma ferramenta gratuita e poderosa — usada com bom senso nas
+            avaliações de maior peso.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Digitais na Prática Docente</p>
+</footer>
+</body>
+</html>

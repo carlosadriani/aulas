@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tecnologias Digitais na Prática Docente - Google Drive</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #1a73e8; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #174ea6; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #1a73e8; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #1a73e8; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #1a73e8; font-weight: bold; }
+        .info-box { border-left: 5px solid #1a73e8; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .tip-box { border-left: 5px solid #10b981; background: #ecfdf5; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #1a73e8; font-size: 26px; }
+        .steps { counter-reset: step; list-style: none; padding: 0; margin-top: 10px; }
+        .steps li { position: relative; padding: 14px 14px 14px 62px; margin-bottom: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; line-height: 1.6; }
+        .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; background: #1a73e8; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .prompt-box { background: #1e293b; color: #e2e8f0; padding: 24px 28px; border-radius: 10px; border-left: 8px solid #1a73e8; line-height: 1.7; font-size: 18px; margin-top: 20px; }
+        .prompt-box .label { display:inline-block; font-family:"Fira Code",monospace; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#38bdf8; margin-bottom:10px; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Digitais na Prática Docente
+            </h1>
+<p>Google Drive</p>
+</div>
+</header>
+
+<!-- ===================== SLIDES AQUI ===================== -->
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-brands fa-google-drive" style="font-size:80px;margin-bottom:30px;color:#1a73e8;"></i>
+<h1>Google Drive</h1>
+<p style="font-size: 24px; opacity: 0.8;">Seus arquivos guardados, organizados e acessíveis de qualquer lugar</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            A nuvem a serviço da sala de aula</div>
+</div>
+
+<!-- O que é o Drive / nuvem -->
+<div class="slide">
+<div class="header"><h2>O que é o Google Drive?</h2></div>
+<div class="content">
+<p class="lead">O Google Drive é um <span class="highlight">espaço de armazenamento na nuvem</span>: em vez de
+                guardar seus arquivos apenas no computador da escola ou no pen drive, você os guarda nos servidores do
+                Google, acessíveis pela internet a qualquer momento.</p>
+<div class="info-box">
+<p><b>"Nuvem" (cloud)</b> é só um nome bonito para "computadores de outra empresa, sempre ligados e
+                    protegidos, que guardam seus arquivos por você". Você faz o upload uma vez e aquele documento passa a
+                    existir fora do seu aparelho — se o notebook quebrar ou o celular for roubado, o arquivo continua lá.</p>
+</div>
+<p style="margin-top:16px;">Na prática, isso significa que a prova que você começou a montar no computador da
+                escola pode ser terminada em casa, no seu celular, no tablet ou em qualquer navegador — <b>o mesmo
+                arquivo, sempre atualizado</b>, sem precisar mandar e-mail para si mesmo nem carregar pen drive.</p>
+</div>
+</div>
+
+<!-- Por que todo professor deveria usar -->
+<div class="slide">
+<div class="header"><h2>Por que todo professor deveria usar</h2></div>
+<div class="content">
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-shield-halved"></i> Nunca mais perder material</h3>
+<p>Chega de "o pen drive corrompeu na véspera da prova" ou "o computador da sala reiniciou e apaguei tudo".
+                    No Drive o backup é <b>automático</b>: cada alteração é salva sozinha, na hora.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-house-laptop"></i> Escola e casa, o mesmo arquivo</h3>
+<p>Comece o plano de aula na escola no intervalo e termine em casa à noite. É sempre o <b>mesmo documento</b>,
+                    não uma cópia desatualizada que você não sabe qual é a mais nova.</p>
+</div>
+</div>
+<div class="grid" style="margin-top:24px;">
+<div class="card">
+<h3><i class="fa-solid fa-clock-rotate-left"></i> Reaproveitamento ano após ano</h3>
+<p>Suas provas, listas de exercícios e slides ficam guardados e organizados. No ano seguinte você abre a
+                    pasta do 6º ano e adapta — não recomeça do zero.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-share-nodes"></i> Compartilhar sem anexos</h3>
+<p>Mande à coordenação ou aos alunos um <b>link</b> em vez de anexar arquivos pesados no e-mail. Todos veem
+                    sempre a versão mais recente.</p>
+</div>
+</div>
+<div class="tip-box">
+<p>Se você tem uma conta Google (aquele endereço <code>@gmail.com</code> que já usa), o Drive
+                    <b>já está ativo</b> para você. Basta acessar <code>drive.google.com</code> ou instalar o app no
+                    celular. Muitas escolas também oferecem o <b>Google Workspace for Education</b>, com contas
+                    institucionais para professores e alunos.</p>
+</div>
+</div>
+</div>
+
+<!-- Meu Drive vs Compartilhados / espaço -->
+<div class="slide">
+<div class="header"><h2>Meu Drive, Drives compartilhados e espaço</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Área</th><th>O que é</th><th>Quando usar na escola</th></tr>
+<tr><td><b>Meu Drive</b></td><td>Seu espaço pessoal; tudo que você cria ou envia começa aqui</td><td>Seus planos de aula, provas, materiais pessoais</td></tr>
+<tr><td><b>Compartilhados comigo</b></td><td>Arquivos que outras pessoas compartilharam com você</td><td>Material que a coordenação ou colegas enviaram</td></tr>
+<tr><td><b>Drives compartilhados</b></td><td>Espaço da equipe (contas institucionais); os arquivos pertencem ao grupo, não a uma pessoa</td><td>Acervo do departamento de Matemática, projetos da escola</td></tr>
+<tr><td><b>Recentes / Com estrela / Lixeira</b></td><td>Atalhos para o que abriu há pouco, o que marcou como favorito e o que apagou</td><td>Achar rápido o que está usando na semana</td></tr>
+</table>
+<div class="info-box">
+<p>A conta gratuita oferece <b>15 GB</b> de espaço — mas atenção: esse espaço é <b>compartilhado</b> entre
+                    Google Drive, Gmail (seus e-mails e anexos) e Google Fotos. Documentos, planilhas e apresentações
+                    criados no próprio Google <b>não ocupam espaço</b>; já PDFs, vídeos e fotos, sim.</p>
+</div>
+</div>
+</div>
+
+<!-- Organização inteligente -->
+<div class="slide">
+<div class="header"><h2>Organização inteligente por pastas</h2></div>
+<div class="content">
+<p>O Drive só é útil se você <b>encontra</b> as coisas. O segredo é uma estrutura de pastas pensada por
+                <span class="highlight">disciplina, ano e turma</span>, com nomes padronizados.</p>
+<div class="grid">
+<div>
+<div class="code-box" style="font-size:15px;">
+📁 2026 - Matemática<br/>
+&nbsp;&nbsp;📁 6º Ano<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;📁 Turma A<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📄 Plano de Aula<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📄 Provas<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📄 Listas<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;📁 Turma B<br/>
+&nbsp;&nbsp;📁 7º Ano<br/>
+&nbsp;&nbsp;📁 Slides e Vídeos
+                </div>
+</div>
+<div>
+<table class="table">
+<tr><th>Recurso</th><th>Como ajuda</th></tr>
+<tr><td><b>Cores nas pastas</b></td><td>Botão direito &gt; Organizar &gt; cor. Ex.: azul = Matemática, verde = Ciências</td></tr>
+<tr><td><b>Estrela ⭐</b></td><td>Marca as pastas do bimestre atual para aparecerem em "Com estrela"</td></tr>
+<tr><td><b>Nomes padronizados</b></td><td>Comece pela data/ano: "2026-1 Prova 6A" ordena sozinho</td></tr>
+</table>
+</div>
+</div>
+<div class="tip-box">
+<p>Convenção que funciona: <code>ANO-BIMESTRE_TIPO_TURMA</code>. Exemplo: <code>2026-2_Prova_7B</code>.
+                    Assim os arquivos ficam em ordem cronológica automaticamente e você sabe o conteúdo só pelo nome.</p>
+</div>
+</div>
+</div>
+
+<!-- Upload e criação -->
+<div class="slide">
+<div class="header"><h2>Enviar arquivos e criar documentos</h2></div>
+<div class="content">
+<p>Colocar conteúdo no Drive é simples. Há três caminhos principais:</p>
+<ol class="steps">
+<li><b>Arrastar e soltar:</b> abra o Drive no navegador e arraste os arquivos do computador direto para a
+                    janela. Solte dentro da pasta certa e pronto — o upload começa sozinho.</li>
+<li><b>Botão "+ Novo":</b> no canto superior esquerdo, use <code>Novo &gt; Upload de arquivo</code> (ou de
+                    pasta inteira), ou crie na hora um <b>Documento</b>, <b>Planilha</b> ou <b>Apresentação</b> do Google.</li>
+<li><b>Digitalizar pelo celular:</b> no app do Drive, toque no <code>+</code> e em <b>Digitalizar</b>. A
+                    câmera fotografa a folha (uma redação escrita à mão, um bilhete assinado) e transforma em PDF direto
+                    na pasta.</li>
+</ol>
+<div class="info-box">
+<p>Criar um <b>Documento Google</b> em vez de um Word tem uma vantagem enorme para o professor: ele salva
+                    sozinho, pode ser aberto de qualquer lugar e é fácil de compartilhar com um link. Ideal para o plano
+                    de aula que você edita o ano inteiro.</p>
+</div>
+</div>
+</div>
+
+<!-- Compartilhamento: níveis -->
+<div class="slide">
+<div class="header"><h2>Compartilhamento: os níveis de acesso</h2></div>
+<div class="content">
+<p class="lead">Ao compartilhar, você decide <span class="highlight">o que a pessoa pode fazer</span> com o
+                arquivo. São três níveis, do mais restrito ao mais aberto:</p>
+<table class="table">
+<tr><th>Nível</th><th>O que a pessoa pode fazer</th><th>Exemplo na escola</th></tr>
+<tr><td><b>Leitor</b></td><td>Apenas abrir e ler; não altera nem comenta</td><td>Enviar a apostila e os slides para os alunos</td></tr>
+<tr><td><b>Comentarista</b></td><td>Ler e deixar comentários/sugestões, sem mudar o conteúdo</td><td>Coordenação revisar seu plano de aula sem editá-lo</td></tr>
+<tr><td><b>Editor</b></td><td>Alterar, apagar e até compartilhar o arquivo com outros</td><td>Montar a prova em conjunto com um colega da mesma matéria</td></tr>
+</table>
+<div class="info-box">
+<p>Para compartilhar: abra o arquivo, clique em <b>Compartilhar</b>, digite o <b>e-mail</b> da pessoa e
+                    escolha o nível. Ela recebe um aviso e o arquivo aparece no "Compartilhados comigo" dela. Esse é o
+                    modo mais seguro: só quem você adicionou nominalmente tem acesso.</p>
+</div>
+</div>
+</div>
+
+<!-- Compartilhar com segurança -->
+<div class="slide">
+<div class="header"><h2>Compartilhar com a turma com segurança</h2></div>
+<div class="content">
+<p>Além de compartilhar por e-mail, o Drive gera um <b>link geral</b>. É aí que mora o cuidado. Ao clicar em
+                <b>Compartilhar</b>, veja a opção "Acesso geral":</p>
+<table class="table">
+<tr><th>Opção de link</th><th>Quem consegue abrir</th></tr>
+<tr><td><b>Restrito</b></td><td>Só as pessoas que você adicionou por e-mail — <span class="highlight">o mais seguro</span></td></tr>
+<tr><td><b>Qualquer pessoa com o link</b></td><td>Todo mundo que tiver o link, mesmo sem conta Google</td></tr>
+</table>
+<div class="warn-box">
+<p><b>Atenção!</b> "Qualquer pessoa com o link pode ver" significa exatamente isso: se o link vazar num grupo
+                    de WhatsApp, num print ou for repassado, <b>estranhos podem acessar</b>. Nunca use esse modo para
+                    arquivos com notas, gabaritos de prova ou dados pessoais de alunos. Para material comum (uma apostila
+                    pública, um vídeo de aula), o link geral no modo <b>Leitor</b> é prático e adequado.</p>
+</div>
+<div class="tip-box">
+<p>Regra de ouro: <b>compartilhe sempre no menor acesso necessário</b>. Se a turma só precisa ler, use
+                    "Leitor". Se pode ser por e-mail institucional dos alunos, prefira "Restrito".</p>
+</div>
+</div>
+</div>
+
+<!-- Buscar, recentes, offline, app -->
+<div class="slide">
+<div class="header"><h2>Buscar, acessar offline e usar no celular</h2></div>
+<div class="content">
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-magnifying-glass"></i> Busca poderosa</h3>
+<p>A barra de pesquisa no topo acha por nome, por tipo ("PDF", "planilha") e até por palavras dentro do
+                    documento. Digite "prova geometria" e ele encontra, mesmo sem lembrar em que pasta guardou.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-clock"></i> Recentes e Com estrela</h3>
+<p>"Recentes" lista o que você abriu por último — ótimo para retomar o trabalho da véspera. A "Estrela"
+                    marca os favoritos do momento.</p>
+</div>
+</div>
+<div class="grid" style="margin-top:24px;">
+<div class="card">
+<h3><i class="fa-solid fa-wifi"></i> Acesso offline</h3>
+<p>Sem internet na sala? Marque o arquivo como <b>Disponível offline</b> (botão direito). Ele fica salvo no
+                    aparelho e sincroniza sozinho quando a conexão voltar. Perfeito para escolas com sinal instável.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-mobile-screen"></i> App no celular</h3>
+<p>O aplicativo do Drive (Android e iPhone) traz tudo na palma da mão: abrir, digitalizar folhas, mostrar
+                    um material para a turma pelo projetor e compartilhar na hora.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Exemplo prático completo -->
+<div class="slide">
+<div class="header"><h2>Exemplo prático: a "Pasta da Turma 2026"</h2></div>
+<div class="content">
+<p>Vamos montar uma pasta organizada para compartilhar materiais com o 8º Ano B e deixar os alunos como
+                <span class="highlight">leitores</span>:</p>
+<ol class="steps">
+<li>No Drive, clique em <code>Novo &gt; Nova pasta</code> e nomeie <b>2026 - 8º B - Materiais</b>.</li>
+<li>Dentro dela, crie subpastas: <b>Apostilas</b>, <b>Slides das Aulas</b>, <b>Listas de Exercícios</b> e
+                    <b>Avisos</b>.</li>
+<li>Envie os arquivos para cada subpasta (arrastando ou pelo botão Upload).</li>
+<li>Dê uma cor à pasta principal (botão direito &gt; Organizar) para achá-la rápido.</li>
+<li>Clique com o botão direito na pasta &gt; <b>Compartilhar</b>. Adicione os e-mails dos alunos (ou o
+                    e-mail do grupo/turma) definindo o nível como <b>Leitor</b>.</li>
+<li>Copie o link e cole no mural da turma, no Google Classroom ou no grupo oficial. Pronto: todos veem os
+                    materiais sempre atualizados, mas ninguém consegue alterar ou apagar.</li>
+</ol>
+<div class="info-box">
+<p>Como compartilhou a <b>pasta</b> (e não arquivo por arquivo), tudo o que você adicionar nela depois já
+                    fica disponível automaticamente para a turma — sem precisar reenviar link nenhum.</p>
+</div>
+</div>
+</div>
+
+<!-- Erros comuns e cuidados -->
+<div class="slide">
+<div class="header"><h2>Erros comuns e cuidados importantes</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Situação / Risco</th><th>Cuidado recomendado</th></tr>
+<tr><td>Compartilhamento aberto demais ("qualquer pessoa com o link")</td><td>Use "Restrito" e e-mails específicos para notas, gabaritos e provas; reserve o link geral para material público em modo Leitor</td></tr>
+<tr><td>Apagou um arquivo sem querer</td><td>Vá à <b>Lixeira</b>: o item fica lá por <b>30 dias</b> e pode ser restaurado. Passado esse prazo, some de vez</td></tr>
+<tr><td>Editou e "estragou" o documento</td><td>Em Docs/Sheets/Slides use <code>Arquivo &gt; Histórico de versões</code> para voltar a uma versão anterior</td></tr>
+<tr><td>Espaço dos 15 GB lotou</td><td>Esvazie a lixeira, apague vídeos/anexos pesados no Gmail e nas Fotos, ou converta arquivos em formato Google</td></tr>
+<tr><td>Dados pessoais de alunos (nomes, notas, laudos) — <b>LGPD</b></td><td>Compartilhe só com quem precisa, use e-mails institucionais, nunca deixe planilhas de notas em link público e evite subir dados sensíveis sem necessidade</td></tr>
+</table>
+<div class="warn-box">
+<p><b>LGPD na prática:</b> dados de crianças e adolescentes têm proteção especial. Antes de subir listas com
+                    nomes, matrículas ou notas, pergunte-se: "quem precisa mesmo ver isto?" e compartilhe apenas com essas
+                    pessoas, nominalmente.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#1a73e8;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">O Google Drive guarda seus arquivos na nuvem, com
+            <b>backup automático</b> e acesso de qualquer lugar — fim do pen drive perdido. Organize tudo em
+            <b>pastas por disciplina, ano e turma</b>, com nomes padronizados, cores e estrelas. Compartilhe escolhendo
+            o nível certo (<b>Leitor, Comentarista ou Editor</b>) e, por segurança, prefira o modo <b>Restrito</b> e
+            e-mails específicos — cuidado redobrado com dados de alunos por causa da <b>LGPD</b>. Com o Drive bem
+            arrumado, todo o seu material de anos de docência fica seguro, à mão e pronto para reaproveitar.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Digitais na Prática Docente</p>
+</footer>
+</body>
+</html>
