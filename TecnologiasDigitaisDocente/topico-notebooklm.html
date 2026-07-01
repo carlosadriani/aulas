@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tecnologias Digitais na Prática Docente - NotebookLM</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #2b6cb0; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1a4971; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #2b6cb0; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #2b6cb0; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #2b6cb0; font-weight: bold; }
+        .info-box { border-left: 5px solid #2b6cb0; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .tip-box { border-left: 5px solid #10b981; background: #ecfdf5; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #2b6cb0; font-size: 26px; }
+        .steps { counter-reset: step; list-style: none; padding: 0; margin-top: 10px; }
+        .steps li { position: relative; padding: 14px 14px 14px 62px; margin-bottom: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; line-height: 1.6; }
+        .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; background: #2b6cb0; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .prompt-box { background: #1e293b; color: #e2e8f0; padding: 24px 28px; border-radius: 10px; border-left: 8px solid #2b6cb0; line-height: 1.7; font-size: 18px; margin-top: 20px; }
+        .prompt-box .label { display:inline-block; font-family:"Fira Code",monospace; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#38bdf8; margin-bottom:10px; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Digitais na Prática Docente
+            </h1>
+<p>NotebookLM</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-book-open-reader" style="font-size:80px;margin-bottom:30px;color:#2b6cb0;"></i>
+<h1>NotebookLM</h1>
+<p style="font-size: 24px; opacity: 0.8;">O assistente de IA do Google que estuda com você — a partir das SUAS fontes</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Inteligência Artificial na Prática Docente</div>
+</div>
+
+<!-- O que é -->
+<div class="slide">
+<div class="header"><h2>O que é o NotebookLM?</h2></div>
+<div class="content">
+<p class="lead">O NotebookLM é um <span class="highlight">assistente de pesquisa e estudo com inteligência
+                artificial</span>, criado pelo Google, que responde às suas perguntas trabalhando <b>somente</b> com as
+                fontes que <b>você</b> envia.</p>
+<div class="info-box">
+<p>Pense nele como um "estagiário de pesquisa" que leu, do começo ao fim, exatamente os documentos que você
+                    entregou — os seus PDFs, o seu material de aula, os seus textos — e mais nada. Você monta um
+                    <b>caderno (notebook)</b>, coloca dentro dele as leituras de um tema e passa a conversar com esse
+                    conjunto de fontes.</p>
+</div>
+<p style="margin-top:16px;">Ao contrário de uma busca genérica na internet, o NotebookLM não sai "inventando"
+                a partir de tudo o que existe no mundo: ele se concentra na sua <b>biblioteca particular</b> de materiais.
+                Isso muda completamente a confiabilidade das respostas — como veremos a seguir.</p>
+</div>
+</div>
+
+<!-- Diferença crucial -->
+<div class="slide">
+<div class="header"><h2>A diferença crucial: respostas "aterradas" nas suas fontes</h2></div>
+<div class="content">
+<p>O ChatGPT e o Gemini respondem a partir de <b>tudo</b> o que aprenderam durante o treinamento. São ótimos
+                para criar e conversar, mas às vezes <span class="highlight">alucinam</span>: afirmam com confiança algo
+                que não é verdade. O NotebookLM funciona diferente.</p>
+<div class="grid" style="margin-top:20px;">
+<div class="card">
+<h3><i class="fa-solid fa-globe"></i> ChatGPT / Gemini comuns</h3>
+<p>Respondem a partir do conhecimento geral do modelo. A resposta pode ser correta, incompleta ou
+                        inventada — e nem sempre há como saber de onde ela veio.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-anchor"></i> NotebookLM</h3>
+<p>A resposta é <b>aterrada</b> (do inglês <i>grounded</i>) nas suas fontes e vem acompanhada de
+                        <b>citações</b> que apontam o trecho exato que a sustenta.</p>
+</div>
+</div>
+<div class="tip-box">
+<p><b>Por que isso importa para o professor?</b> Quando você prepara uma aula ou revisa uma bibliografia,
+                    precisa de informação <b>verificável</b>. Com as citações, você clica e confere no original se a IA
+                    entendeu direito. A alucinação cai muito, porque a máquina responde a partir do que está escrito nas
+                    suas fontes — não a partir de "achismos".</p>
+</div>
+</div>
+</div>
+
+<!-- Como usar: criar notebook e fontes -->
+<div class="slide">
+<div class="header"><h2>Como usar: criar um caderno e adicionar fontes</h2></div>
+<div class="content">
+<p>O acesso é pela conta Google, em <code>notebooklm.google.com</code>. O uso básico segue estes passos:</p>
+<ol class="steps">
+<li>Clique em <b>Criar novo</b> para abrir um <b>notebook</b> (caderno) vazio dedicado a um tema.</li>
+<li>Clique em <b>Adicionar fontes</b> e envie os materiais que a IA deve estudar.</li>
+<li>Aguarde alguns segundos: o NotebookLM <b>lê e indexa</b> cada fonte para poder respondê-las.</li>
+<li>Pronto — comece a fazer perguntas ou a gerar recursos a partir desse material.</li>
+</ol>
+<div class="info-box">
+<p><b>Tipos de fonte aceitos:</b> PDF, Google Docs e Google Slides, texto colado diretamente, páginas de
+                    sites (URL), vídeos do <b>YouTube</b> (usa a transcrição) e arquivos de <b>áudio</b>. Um mesmo
+                    notebook comporta cerca de <b>50 fontes</b>, o que dá muito espaço para reunir a bibliografia
+                    inteira de um assunto.</p>
+</div>
+</div>
+</div>
+
+<!-- Fazer perguntas -->
+<div class="slide">
+<div class="header"><h2>Fazer perguntas com citações clicáveis</h2></div>
+<div class="content">
+<p class="lead">No campo de conversa, você pergunta em <span class="highlight">linguagem natural</span> sobre o
+                material — como perguntaria a um colega que leu tudo.</p>
+<div class="prompt-box">
+<span class="label">Exemplo de pergunta</span>
+                "Quais são as principais causas da Revolução Industrial segundo estes textos? Resuma em tópicos."
+            </div>
+<div class="info-box">
+<p>A resposta vem com <b>números de citação</b> (como <b>[1] [2]</b>). Ao clicar em um número, o NotebookLM
+                    abre a fonte e destaca o <b>trecho exato</b> que embasou aquela afirmação. Assim você confere, em um
+                    clique, se a IA fundamentou bem a resposta — e localiza rapidamente a passagem original para citar
+                    em sala.</p>
+</div>
+<div class="tip-box">
+<p>Você também pode <b>selecionar quais fontes</b> entram em cada pergunta. Quer uma resposta só com base em
+                    dois dos cinco textos? Basta marcar apenas esses dois antes de perguntar.</p>
+</div>
+</div>
+</div>
+
+<!-- Recursos gerados automaticamente -->
+<div class="slide">
+<div class="header"><h2>Recursos gerados automaticamente</h2></div>
+<div class="content">
+<p>Além de responder perguntas, o NotebookLM cria, com um clique, materiais de estudo a partir das suas
+                fontes:</p>
+<table class="table">
+<tr><th>Recurso</th><th>O que ele produz</th></tr>
+<tr><td><b>Resumo</b></td><td>Uma síntese dos pontos centrais de todas as fontes reunidas</td></tr>
+<tr><td><b>Guia de estudo</b></td><td>Perguntas de revisão, respostas e conceitos-chave para estudar o tema</td></tr>
+<tr><td><b>FAQ (Perguntas frequentes)</b></td><td>As dúvidas mais prováveis sobre o material, já respondidas</td></tr>
+<tr><td><b>Documento informativo</b></td><td>Um texto organizado (briefing) explicando o assunto de forma corrida</td></tr>
+<tr><td><b>Linha do tempo</b></td><td>Os eventos e datas do material dispostos em ordem cronológica</td></tr>
+<tr><td><b>Índice de tópicos</b></td><td>Um mapa dos temas tratados nas fontes, para navegar pelo conteúdo</td></tr>
+</table>
+<div class="info-box">
+<p>Todos esses recursos também trazem <b>citações</b> às fontes originais, mantendo a rastreabilidade. É como
+                    ter um monitor que prepara o material de apoio da sua aula em segundos.</p>
+</div>
+</div>
+</div>
+
+<!-- Áudio Overview -->
+<div class="slide">
+<div class="header"><h2>Áudio Overview: um "podcast" sobre o seu material</h2></div>
+<div class="content">
+<p class="lead">Este é o recurso mais surpreendente: o NotebookLM gera um <span class="highlight">resumo em
+                áudio</span> em que <b>dois apresentadores de IA</b> conversam e discutem o seu material, como num
+                episódio de podcast.</p>
+<div class="info-box">
+<p>Os dois "locutores" explicam os conceitos, fazem perguntas um ao outro, dão exemplos e conectam as ideias
+                    das suas fontes num diálogo natural e envolvente. É excelente para <b>revisar</b> um tema enquanto
+                    você faz outra coisa — e para os <b>alunos que aprendem melhor ouvindo</b> do que lendo.</p>
+</div>
+<div class="tip-box">
+<p>É possível <b>personalizar</b>: você pode orientar o foco do episódio (ex.: "expliquem para alunos do
+                    9º ano" ou "aprofundem a parte de fotossíntese") e escolher o <b>idioma</b>, incluindo o
+                    <b>português</b>. Ainda dá para "entrar na conversa" e fazer perguntas aos apresentadores no modo
+                    interativo.</p>
+</div>
+</div>
+</div>
+
+<!-- Usos na docência -->
+<div class="slide">
+<div class="header"><h2>Usos na prática docente</h2></div>
+<div class="content">
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-book"></i> Estudar bibliografia densa</h3>
+<p>Reúna capítulos, artigos e apostilas de um tema e faça perguntas para entender e localizar passagens
+                        rapidamente, sem reler tudo.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-graduation-cap"></i> Guia de estudo para a turma</h3>
+<p>Transforme o material da sua aula em um guia de estudo pronto para distribuir aos alunos antes ou
+                        depois da explicação.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-clipboard-question"></i> Banco de perguntas</h3>
+<p>Gere um FAQ e um guia de estudo e use-os como base para elaborar questões de prova, exercícios e
+                        atividades de revisão.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-headphones"></i> Revisão antes da prova</h3>
+<p>Crie um Áudio Overview do conteúdo e disponibilize à turma como revisão para ouvir no caminho da
+                        escola.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Exemplo prático -->
+<div class="slide">
+<div class="header"><h2>Exemplo prático: montando a revisão de um tema</h2></div>
+<div class="content">
+<p>Imagine um professor do ensino médio preparando a revisão de <b>"Ciclo da água e clima"</b> para o
+                9º ano. Passo a passo:</p>
+<ol class="steps">
+<li>Crie um notebook chamado <b>"Ciclo da água — 9º ano"</b>.</li>
+<li>Adicione <b>3 fontes</b>: o PDF do capítulo do livro, um artigo de divulgação científica e as suas
+                próprias anotações coladas como texto.</li>
+<li>Peça um <b>Guia de estudo</b>: o NotebookLM devolve conceitos-chave e perguntas de revisão com citações.</li>
+<li>Gere o <b>FAQ</b> para antecipar as dúvidas mais comuns da turma sobre evaporação, condensação e
+                precipitação.</li>
+<li>Crie um <b>Áudio Overview em português</b>, orientado para "explicar de forma simples a alunos do 9º ano".</li>
+<li>Compartilhe o guia e o podcast com a turma como material de revisão para a prova.</li>
+</ol>
+<div class="tip-box">
+<p>Em poucos minutos, três leituras soltas viraram um kit de estudo completo — texto para ler e áudio para
+                    ouvir — todo ancorado nas fontes que você mesmo escolheu.</p>
+</div>
+</div>
+</div>
+
+<!-- Limites e cuidados -->
+<div class="slide">
+<div class="header"><h2>Limites e cuidados</h2></div>
+<div class="content">
+<p>O NotebookLM é poderoso, mas não é infalível. Alguns pontos de atenção:</p>
+<ul class="spaced">
+<li><b>A qualidade depende das fontes:</b> se você enviar um material fraco, desatualizado ou com erros, as
+                respostas herdarão esses problemas. "Fonte ruim, resposta ruim."</li>
+<li><b>Ainda pode errar:</b> mesmo aterrado, o modelo pode interpretar mal um trecho. Por isso, <b>sempre
+                confira as citações</b> antes de usar a informação em sala ou numa prova.</li>
+<li><b>Limites de tamanho e de fontes:</b> há um teto de fontes por notebook (cerca de 50) e limites de
+                tamanho por arquivo. Documentos muito longos podem exigir divisão.</li>
+<li><b>Idioma:</b> funciona muito bem em português, mas a qualidade de alguns recursos pode variar conforme
+                o idioma das fontes.</li>
+</ul>
+<div class="warn-box">
+<p><b>Regra de ouro:</b> o NotebookLM é um <b>assistente</b>, não um substituto do seu julgamento. Ele
+                    acelera o trabalho, mas a validação pedagógica do conteúdo continua sendo sua.</p>
+</div>
+</div>
+</div>
+
+<!-- Privacidade -->
+<div class="slide">
+<div class="header"><h2>Privacidade: cuidado com os dados dos alunos</h2></div>
+<div class="content">
+<p class="lead">Tudo o que você envia ao NotebookLM sai do seu computador e vai para um serviço na nuvem. Por
+                isso, escolha <span class="highlight">com cuidado</span> o que sobe.</p>
+<div class="warn-box">
+<p><b>NÃO envie dados pessoais ou sensíveis de alunos:</b> nomes completos, notas identificadas, laudos,
+                    endereços, fotos, informações de saúde ou qualquer dado que permita identificar uma criança ou
+                    adolescente. Isso protege a privacidade deles e respeita a LGPD.</p>
+</div>
+<div class="tip-box">
+<p><b>Use com segurança:</b> envie material didático, fontes públicas, seus próprios textos e conteúdos que
+                    você tem direito de usar. Se precisar trabalhar com dados de turma, <b>anonimize</b> antes (troque
+                    nomes por "Aluno 1", "Aluno 2").</p>
+</div>
+<div class="info-box">
+<p>Este cuidado se conecta diretamente ao tópico de <b>IA Responsável</b>: usar a tecnologia a favor da
+                    aprendizagem <b>sem</b> expor a privacidade de quem está sob a nossa responsabilidade.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#2b6cb0;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">O <b>NotebookLM</b> é o assistente de IA do Google que
+            trabalha somente com as <b>suas fontes</b>. Suas respostas são <b>aterradas</b> no material e vêm com
+            <b>citações clicáveis</b>, o que reduz a alucinação e permite conferir tudo no original. Você adiciona até
+            ~50 fontes (PDF, Docs, sites, YouTube, áudio), faz perguntas e ainda gera <b>resumos, guias de estudo, FAQ,
+            linhas do tempo</b> e o <b>Áudio Overview</b> — um podcast de revisão em português. Na docência, é um aliado
+            para estudar, preparar aulas e revisar com a turma — sempre <b>conferindo as citações</b> e
+            <b>protegendo os dados dos alunos</b>.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Digitais na Prática Docente</p>
+</footer>
+</body>
+</html>

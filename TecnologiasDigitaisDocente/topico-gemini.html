@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tecnologias Digitais na Prática Docente - Google Gemini</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #6c4cd8; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #4a2f9e; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #6c4cd8; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #6c4cd8; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #6c4cd8; font-weight: bold; }
+        .info-box { border-left: 5px solid #6c4cd8; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .tip-box { border-left: 5px solid #10b981; background: #ecfdf5; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #6c4cd8; font-size: 26px; }
+        .steps { counter-reset: step; list-style: none; padding: 0; margin-top: 10px; }
+        .steps li { position: relative; padding: 14px 14px 14px 62px; margin-bottom: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; line-height: 1.6; }
+        .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; background: #6c4cd8; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .prompt-box { background: #1e293b; color: #e2e8f0; padding: 24px 28px; border-radius: 10px; border-left: 8px solid #6c4cd8; line-height: 1.7; font-size: 18px; margin-top: 20px; }
+        .prompt-box .label { display:inline-block; font-family:"Fira Code",monospace; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#38bdf8; margin-bottom:10px; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Digitais na Prática Docente
+            </h1>
+<p>Google Gemini</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-wand-magic-sparkles" style="font-size:80px;margin-bottom:30px;color:#6c4cd8;"></i>
+<h1>Google Gemini</h1>
+<p style="font-size: 24px; opacity: 0.8;">A inteligência artificial do Google como aliada do professor</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            IA Generativa na Prática Docente</div>
+</div>
+
+<!-- O que é IA generativa e o Gemini -->
+<div class="slide">
+<div class="header"><h2>O que é IA generativa? E o que é o Gemini?</h2></div>
+<div class="content">
+<p class="lead">A <span class="highlight">inteligência artificial generativa</span> é uma tecnologia capaz de
+                <b>criar conteúdo novo</b> — textos, resumos, ideias, imagens — a partir de um pedido escrito em
+                linguagem natural, como se você conversasse com alguém.</p>
+<div class="info-box">
+<p>O <b>Google Gemini</b> é o assistente de IA do Google. Você digita (ou fala) o que precisa e ele
+                    responde: <b>conversa</b>, <b>escreve</b> textos, <b>resume</b> materiais longos, <b>cria</b>
+                    atividades, <b>traduz</b>, explica conceitos e sugere ideias. Ele não "busca" respostas prontas
+                    como um site de pesquisa: ele <b>gera</b> uma resposta original com base no que aprendeu.</p>
+</div>
+<p style="margin-top:16px;">Pense nele como um <b>estagiário incansável e muito bem informado</b>: rápido,
+                disposto e criativo — mas que precisa da sua supervisão de professor para garantir que tudo esteja
+                correto e adequado à sua turma.</p>
+</div>
+</div>
+
+<!-- Como acessar -->
+<div class="slide">
+<div class="header"><h2>Como acessar o Gemini</h2></div>
+<div class="content">
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-globe"></i> No navegador</h3>
+<p>Acesse <b>gemini.google.com</b> e faça login com sua conta Google. É a forma mais simples de começar.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-mobile-screen"></i> No celular</h3>
+<p>Baixe o <b>app Gemini</b> (Android/iOS). Permite digitar, falar por voz e até enviar fotos de um material.</p>
+</div>
+</div>
+<div class="info-box" style="margin-top:24px;">
+<p><b>Dentro do Google Workspace:</b> o Gemini também aparece <i>embutido</i> em ferramentas que você já
+                    usa — <b>Google Docs, Gmail, Planilhas, Apresentações e Drive</b> —, ajudando a escrever e resumir
+                    sem sair do documento.</p>
+</div>
+<table class="table">
+<tr><th>Versão</th><th>O que oferece</th><th>Indicada para</th></tr>
+<tr><td><b>Gratuita</b></td><td>Conversa, escrita, resumo e criação de atividades para o dia a dia</td><td>A maioria das tarefas do professor</td></tr>
+<tr><td><b>Paga (planos avançados)</b></td><td>Modelos mais potentes, respostas mais longas e recursos extras integrados ao Workspace</td><td>Uso intensivo e institucional</td></tr>
+</table>
+</div>
+</div>
+
+<!-- O que o Gemini faz pelo professor -->
+<div class="slide">
+<div class="header"><h2>O que o Gemini faz pelo professor</h2></div>
+<div class="content">
+<p>Na prática docente, o Gemini economiza tempo em tarefas repetitivas e ajuda a <span class="highlight">criar
+                material de qualidade</span> mais rápido:</p>
+<table class="table">
+<tr><th>Uso</th><th>Exemplo na sala de aula</th></tr>
+<tr><td><b>Planejar aulas</b></td><td>Estruturar um plano de aula com objetivos, atividades e tempo estimado</td></tr>
+<tr><td><b>Criar atividades e avaliações</b></td><td>Gerar exercícios, questões de múltipla escolha, gabaritos e provas</td></tr>
+<tr><td><b>Resumir textos longos</b></td><td>Condensar um artigo ou capítulo em pontos-chave para estudo</td></tr>
+<tr><td><b>Adaptar a linguagem</b></td><td>Reescrever um texto difícil no nível de leitura do 5º ou do 9º ano</td></tr>
+<tr><td><b>Traduzir</b></td><td>Verter textos e enunciados para inglês, espanhol ou outra língua</td></tr>
+<tr><td><b>Gerar exemplos e analogias</b></td><td>Explicar frações usando pizza, ou fotossíntese usando uma "fábrica"</td></tr>
+</table>
+<div class="tip-box">
+<p>O ganho não é só de tempo: ao pedir <b>variações</b> ("me dê 3 formas diferentes de explicar isso"),
+                    você amplia seu próprio repertório didático.</p>
+</div>
+</div>
+</div>
+
+<!-- Anatomia de um bom prompt -->
+<div class="slide">
+<div class="header"><h2>A anatomia de um bom prompt</h2></div>
+<div class="content">
+<p class="lead">O <b>prompt</b> é o pedido que você escreve. Quanto mais claro e completo, melhor a resposta.
+                Um bom prompt costuma ter <span class="highlight">cinco ingredientes</span>:</p>
+<div class="flow">
+<div class="node">PAPEL</div>
+<span class="arrow"><i class="fa-solid fa-plus"></i></span>
+<div class="node">TAREFA</div>
+<span class="arrow"><i class="fa-solid fa-plus"></i></span>
+<div class="node">CONTEXTO</div>
+<span class="arrow"><i class="fa-solid fa-plus"></i></span>
+<div class="node">FORMATO</div>
+<span class="arrow"><i class="fa-solid fa-plus"></i></span>
+<div class="node">PÚBLICO</div>
+</div>
+<table class="table" style="margin-top:24px;">
+<tr><th>Ingrediente</th><th>O que responde</th><th>Exemplo</th></tr>
+<tr><td><b>Papel</b></td><td>Quem o Gemini deve "ser"?</td><td>"Aja como um professor de Ciências…"</td></tr>
+<tr><td><b>Tarefa</b></td><td>O que você quer que ele faça?</td><td>"…crie 5 questões sobre o sistema solar…"</td></tr>
+<tr><td><b>Contexto</b></td><td>Qual a situação e o conteúdo?</td><td>"…com base no tema estudado nesta semana…"</td></tr>
+<tr><td><b>Formato</b></td><td>Como a resposta deve se apresentar?</td><td>"…em uma tabela, com gabarito ao final…"</td></tr>
+<tr><td><b>Público</b></td><td>Para quem é?</td><td>"…para uma turma do 6º ano."</td></tr>
+</table>
+</div>
+</div>
+
+<!-- Prompt fraco vs forte -->
+<div class="slide">
+<div class="header"><h2>Prompt fraco x prompt forte</h2></div>
+<div class="content">
+<p>Compare os dois pedidos abaixo. O primeiro é vago; o segundo aplica os cinco ingredientes:</p>
+<div class="prompt-box">
+<span class="label">Prompt fraco</span><br/>
+                Faça questões sobre a água.
+            </div>
+<div class="prompt-box" style="border-left-color:#10b981;">
+<span class="label" style="color:#6ee7b7;">Prompt forte</span><br/>
+                Aja como professor de Ciências do ensino fundamental. Crie <b>5 questões de múltipla escolha</b>
+                sobre o <b>ciclo da água</b>, com 4 alternativas cada e o <b>gabarito ao final</b>. Use linguagem
+                simples, adequada a uma turma do <b>4º ano</b>, com exemplos do cotidiano.
+            </div>
+<div class="info-box">
+<p><b>Por que o segundo é melhor?</b> Ele define o papel (professor de Ciências), a tarefa (5 questões de
+                    múltipla escolha), o contexto (ciclo da água), o formato (4 alternativas + gabarito) e o público
+                    (4º ano). O Gemini não precisa "adivinhar" — e a resposta chega quase pronta para usar.</p>
+</div>
+</div>
+</div>
+
+<!-- Prompts prontos para docência -->
+<div class="slide">
+<div class="header"><h2>Prompts prontos para a docência</h2></div>
+<div class="content">
+<p>Adapte estes modelos trocando o que está em <b>destaque</b> pelo seu conteúdo:</p>
+<div class="prompt-box">
+<span class="label">Plano de aula (BNCC)</span><br/>
+                Crie um plano de aula de <b>50 minutos</b> sobre <b>frações</b> para o <b>5º ano</b>, alinhado à
+                <b>BNCC</b>. Inclua objetivos, habilidade da BNCC, materiais, passo a passo e uma atividade de
+                verificação.
+            </div>
+<div class="prompt-box">
+<span class="label">Questões com gabarito</span><br/>
+                Gere <b>10 questões</b> sobre <b>a Independência do Brasil</b> para o <b>8º ano</b>: 6 de múltipla
+                escolha e 4 dissertativas. Apresente o <b>gabarito comentado</b> ao final.
+            </div>
+<div class="prompt-box">
+<span class="label">Adaptar um texto</span><br/>
+                Reescreva o texto abaixo em linguagem simples, para uma turma do <b>6º ano</b>, mantendo as ideias
+                principais e usando frases curtas. Texto: <b>[cole o texto aqui]</b>.
+            </div>
+<div class="prompt-box">
+<span class="label">Rubrica de avaliação</span><br/>
+                Crie uma <b>rubrica de avaliação</b> em tabela para um <b>trabalho sobre meio ambiente</b> do
+                <b>7º ano</b>, com 4 critérios e 4 níveis de desempenho (de "insuficiente" a "excelente").
+            </div>
+</div>
+</div>
+
+<!-- Gemini no Workspace -->
+<div class="slide">
+<div class="header"><h2>Gemini dentro do Google Workspace</h2></div>
+<div class="content">
+<p class="lead">Além do site, o Gemini aparece <span class="highlight">dentro das ferramentas</span> que você
+                já usa — sem precisar copiar e colar de um lado para o outro.</p>
+<div class="grid" style="margin-top:10px;">
+<div class="card">
+<h3><i class="fa-solid fa-file-lines"></i> No Docs e no Gmail</h3>
+<p>O recurso <b>"Ajude-me a escrever"</b> redige um primeiro rascunho de um bilhete aos pais, um comunicado
+                    ou o enunciado de uma atividade. Você revisa e ajusta.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-folder-open"></i> No Drive</h3>
+<p>É possível pedir para o Gemini <b>resumir um documento</b> longo guardado no Drive, extraindo os pontos
+                    principais em segundos.</p>
+</div>
+</div>
+<div class="tip-box">
+<p><b>Ganho de produtividade:</b> tarefas que levavam meia hora — escrever um comunicado, resumir um PDF —
+                    ficam prontas em poucos minutos, sobrando tempo para o que realmente importa: os alunos.</p>
+</div>
+</div>
+</div>
+
+<!-- Refinar respostas -->
+<div class="slide">
+<div class="header"><h2>Refinar respostas: converse em etapas</h2></div>
+<div class="content">
+<p>A primeira resposta raramente é perfeita — e não precisa ser. O Gemini <span class="highlight">lembra da
+                conversa</span>, então você vai ajustando com novos pedidos, como num diálogo:</p>
+<table class="table">
+<tr><th>Você quer…</th><th>Peça algo como</th></tr>
+<tr><td>Mais curto</td><td>"Resuma isso em 3 tópicos."</td></tr>
+<tr><td>Mais profundo</td><td>"Explique com mais detalhes e dê um exemplo."</td></tr>
+<tr><td>Outro tom</td><td>"Reescreva num tom mais leve e acolhedor."</td></tr>
+<tr><td>Outro nível</td><td>"Deixe mais fácil, para o 3º ano."</td></tr>
+<tr><td>Imitar um modelo</td><td>"Siga o estilo deste exemplo que eu gosto: [cole]."</td></tr>
+</table>
+<div class="info-box">
+<p>Essa <b>iteração</b> é o segredo de quem usa bem a IA: em vez de escrever o prompt perfeito de primeira,
+                    você <b>conversa</b> até chegar ao resultado ideal. Cada ajuste é rápido e gratuito.</p>
+</div>
+</div>
+</div>
+
+<!-- Limitações e cuidados -->
+<div class="slide">
+<div class="header"><h2>Limitações e cuidados essenciais</h2></div>
+<div class="content">
+<p class="lead">O Gemini é poderoso, mas <span class="highlight">não é infalível</span>. Entender seus limites
+                é parte de usá-lo com responsabilidade.</p>
+<ul class="spaced">
+<li><b>Alucinações:</b> às vezes ele <b>inventa fatos</b>, datas, citações ou fontes com total confiança —
+                mas errados.</li>
+<li><b>Erros de conta e de data:</b> pode escorregar em cálculos e informações que mudam com o tempo.</li>
+<li><b>Não é fonte final:</b> serve como <b>ponto de partida</b>, não como verdade absoluta.</li>
+</ul>
+<div class="warn-box">
+<p><b>Regra de ouro:</b> <b>sempre CONFIRA</b> o que o Gemini produz antes de levar para a sala de aula.
+                    Datas, nomes, contas e afirmações históricas ou científicas devem ser verificados. Quem assina o
+                    material — e responde por ele diante dos alunos — é o <b>professor</b>, não a IA.</p>
+</div>
+</div>
+</div>
+
+<!-- Exemplo prático completo -->
+<div class="slide">
+<div class="header"><h2>Exemplo prático: do prompt à aula pronta</h2></div>
+<div class="content">
+<p>Veja o caminho completo para produzir uma atividade sobre <b>sistema solar</b> para o 6º ano:</p>
+<ol class="steps">
+<li><b>Prompt inicial:</b> "Aja como professor de Ciências. Crie uma atividade sobre o sistema solar para o
+                6º ano, com um texto curto e 5 questões com gabarito."</li>
+<li><b>Refinar:</b> "Deixe o texto mais fácil e inclua uma pergunta de opinião no final."</li>
+<li><b>Adaptar formato:</b> "Coloque tudo em uma folha, com espaço para o nome do aluno no topo."</li>
+<li><b>Revisar (professor):</b> conferir se os dados estão corretos e ajustar o que não combina com a turma.</li>
+<li><b>Aplicar:</b> imprimir ou compartilhar no Google Sala de Aula. Material pronto e revisado.</li>
+</ol>
+<div class="warn-box">
+<p><b>Privacidade:</b> não insira <b>dados pessoais de alunos</b> (nomes completos, notas, laudos, endereços)
+                    nos prompts. Trate a turma de forma genérica. Aprofundamos esse tema no tópico de
+                    <b>IA Responsável</b>.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#6c4cd8;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">O <b>Google Gemini</b> é um assistente de IA que
+            conversa, escreve, resume e cria material didático. Acesse por <b>gemini.google.com</b>, pelo app ou dentro
+            do <b>Workspace</b>. Escreva bons prompts com <b>papel, tarefa, contexto, formato e público</b>, e
+            <b>converse em etapas</b> para refinar. Ele acelera o planejamento, mas <b>alucina</b> e erra: o professor
+            deve <b>sempre conferir</b> e nunca inserir <b>dados pessoais de alunos</b>. Usada com critério, a IA é uma
+            aliada — a supervisão pedagógica é sua.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Digitais na Prática Docente</p>
+</footer>
+</body>
+</html>

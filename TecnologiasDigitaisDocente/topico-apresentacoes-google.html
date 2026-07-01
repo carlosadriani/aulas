@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tecnologias Digitais na Prática Docente - Apresentações Google</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #e37400; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #a3480b; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #e37400; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #e37400; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #e37400; font-weight: bold; }
+        .info-box { border-left: 5px solid #e37400; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .tip-box { border-left: 5px solid #10b981; background: #ecfdf5; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #e37400; font-size: 26px; }
+        .steps { counter-reset: step; list-style: none; padding: 0; margin-top: 10px; }
+        .steps li { position: relative; padding: 14px 14px 14px 62px; margin-bottom: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; line-height: 1.6; }
+        .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; background: #e37400; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .prompt-box { background: #1e293b; color: #e2e8f0; padding: 24px 28px; border-radius: 10px; border-left: 8px solid #e37400; line-height: 1.7; font-size: 18px; margin-top: 20px; }
+        .prompt-box .label { display:inline-block; font-family:"Fira Code",monospace; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#38bdf8; margin-bottom:10px; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Digitais na Prática Docente
+            </h1>
+<p>Apresentações Google</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-person-chalkboard" style="font-size:80px;margin-bottom:30px;color:#e37400;"></i>
+<h1>Apresentações Google</h1>
+<p style="font-size: 24px; opacity: 0.8;">Slides na nuvem para dar aula, criar seminários e engajar a turma</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Ferramenta de apresentação do Google Workspace</div>
+</div>
+
+<!-- O que é -->
+<div class="slide">
+<div class="header"><h2>O que é o Apresentações Google?</h2></div>
+<div class="content">
+<p class="lead">O <span class="highlight">Apresentações Google</span> (Google Slides) é o programa de
+                criação de slides do Google. É o "primo" gratuito do PowerPoint, mas nasce já dentro da internet:
+                tudo o que você cria fica guardado na nuvem, no seu Google Drive.</p>
+<div class="grid" style="margin-top:10px;">
+<div class="card">
+<h3><i class="fa-solid fa-cloud"></i> Na nuvem</h3>
+<p>Suas apresentações ficam no Drive. Você abre a mesma aula em casa, na escola ou no celular, sem
+                        precisar levar pen drive nem se preocupar em "esquecer o arquivo".</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-floppy-disk"></i> Salvamento automático</h3>
+<p>Não existe botão "Salvar". Cada letra digitada é gravada na hora. Se a energia cair no meio da aula,
+                        o trabalho está seguro.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-users"></i> Colaborativo</h3>
+<p>Várias pessoas podem editar o mesmo arquivo ao mesmo tempo — perfeito para trabalhos em grupo dos
+                        alunos e para dividir a construção de material entre colegas professores.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-gift"></i> Gratuito</h3>
+<p>Basta ter uma conta Google (gratuita). Funciona no navegador, sem instalar nada, em qualquer
+                        computador da escola.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Interface -->
+<div class="slide">
+<div class="header"><h2>A interface: slides, layouts e miniaturas</h2></div>
+<div class="content">
+<p>Uma apresentação é uma sequência de <span class="highlight">slides</span> (as telas que aparecem
+                projetadas). A tela de edição tem três áreas que você precisa conhecer:</p>
+<table class="table">
+<tr><th>Área</th><th>Onde fica</th><th>Para que serve</th></tr>
+<tr><td><b>Painel de miniaturas</b></td><td>Faixa vertical à esquerda</td><td>Mostra todos os slides em miniatura; é aqui que você reordena, duplica e navega</td></tr>
+<tr><td><b>Slide em edição</b></td><td>Grande, no centro</td><td>Onde você digita textos, insere imagens e organiza o conteúdo</td></tr>
+<tr><td><b>Notas do orador</b></td><td>Faixa abaixo do slide</td><td>Um "cola" só para você, que o público não vê ao projetar</td></tr>
+</table>
+<div class="info-box">
+<p>Cada slide segue um <b>layout</b> (um molde): "Título", "Título e corpo", "Duas colunas", "Só imagem"
+                    etc. Escolher o layout certo já organiza os elementos para você — evita ficar arrastando caixas de
+                    texto uma a uma.</p>
+</div>
+</div>
+</div>
+
+<!-- Criar, duplicar, reordenar -->
+<div class="slide">
+<div class="header"><h2>Criar, duplicar e reordenar slides</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3>Operações essenciais</h3>
+<ul class="spaced">
+<li><b>Novo slide:</b> botão <code>+</code> na barra de ferramentas, ou <code>Ctrl+M</code>. Clique na
+                        setinha ao lado para escolher o layout.</li>
+<li><b>Duplicar:</b> botão direito na miniatura &gt; <code>Duplicar slide</code>. Ótimo para reaproveitar
+                        um slide já formatado.</li>
+<li><b>Reordenar:</b> arraste a miniatura para cima ou para baixo no painel da esquerda.</li>
+<li><b>Excluir:</b> botão direito na miniatura &gt; <code>Excluir</code>.</li>
+</ul>
+</div>
+<div class="flow" style="flex-direction:column;">
+<div class="node">Adicionar slide (Ctrl+M)</div>
+<span class="arrow"><i class="fa-solid fa-arrow-down"></i></span>
+<div class="node">Escolher layout</div>
+<span class="arrow"><i class="fa-solid fa-arrow-down"></i></span>
+<div class="node">Inserir conteúdo</div>
+<span class="arrow"><i class="fa-solid fa-arrow-down"></i></span>
+<div class="node">Reordenar (arrastar)</div>
+</div>
+</div>
+<div class="tip-box">
+<p><b>Dica de professor:</b> monte um slide "modelo" bem formatado (cores, fonte, logo da escola) e vá
+                    <b>duplicando</b> ele para os próximos. A aula inteira fica com aparência consistente sem esforço.</p>
+</div>
+</div>
+</div>
+
+<!-- Temas e modelos -->
+<div class="slide">
+<div class="header"><h2>Temas e modelos: consistência visual</h2></div>
+<div class="content">
+<p>Ninguém quer uma aula com cada slide de uma cor. O <span class="highlight">tema</span> resolve isso: é um
+                conjunto pronto de cores, fontes e fundos aplicado a <b>todos</b> os slides de uma vez.</p>
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-palette"></i> Aplicar um tema</h3>
+<p>Menu <code>Slide &gt; Alterar tema</code> abre um painel à direita com dezenas de temas. Clique em um e
+                        a apresentação inteira ganha visual novo — títulos, corpo e fundo mudam juntos.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-layer-group"></i> Usar modelos prontos</h3>
+<p>Na <b>Galeria de modelos</b> (tela inicial do Apresentações) existem apresentações prontas: aula,
+                        portfólio, boletim. Você abre, troca os textos e já tem um material pronto.</p>
+</div>
+</div>
+<div class="info-box">
+<p>Quer mudar o tema para <b>todos</b> os slides de forma profunda (mover o logo, trocar a fonte padrão)?
+                    Use <code>Slide &gt; Editar tema</code> (o "slide mestre"). O que você altera lá vale para a
+                    apresentação inteira automaticamente.</p>
+</div>
+</div>
+</div>
+
+<!-- Inserir conteúdo -->
+<div class="slide">
+<div class="header"><h2>Inserir conteúdo: muito além do texto</h2></div>
+<div class="content">
+<p>O menu <span class="highlight">Inserir</span> é a caixa de ferramentas do slide. Além de texto, você
+                pode enriquecer a aula com:</p>
+<table class="table">
+<tr><th>Elemento</th><th>Como usar em aula</th></tr>
+<tr><td><b>Caixa de texto</b></td><td>Títulos, tópicos, legendas de imagens</td></tr>
+<tr><td><b>Imagem</b></td><td>Do computador, da câmera, de uma URL ou direto do Google Drive/Fotos</td></tr>
+<tr><td><b>Vídeo do YouTube</b></td><td>Cole o link e o vídeo roda dentro do slide, sem sair da apresentação (dá para cortar o trecho)</td></tr>
+<tr><td><b>Formas e setas</b></td><td>Destacar partes, montar esquemas e mapas simples</td></tr>
+<tr><td><b>Diagramas</b></td><td>Fluxogramas, linhas do tempo e ciclos prontos (<code>Inserir &gt; Diagrama</code>)</td></tr>
+<tr><td><b>Tabela</b></td><td>Comparações, dados organizados, cronogramas</td></tr>
+<tr><td><b>Link</b></td><td>Ligar uma palavra a um site ou a outro slide da mesma apresentação</td></tr>
+<tr><td><b>Áudio</b></td><td>Narração ou música (arquivo enviado antes ao Drive)</td></tr>
+</table>
+<div class="tip-box">
+<p><b>Uma ideia poderosa:</b> ligar (com link) uma imagem a outro slide cria "botões" de navegação. Assim
+                    você monta um quiz ou uma aula em que a turma escolhe o caminho.</p>
+</div>
+</div>
+</div>
+
+<!-- Colaboração -->
+<div class="slide">
+<div class="header"><h2>Colaboração: a turma construindo junto</h2></div>
+<div class="content">
+<p class="lead">Aqui está o grande diferencial para a educação: <span class="highlight">várias pessoas
+                editam o mesmo arquivo ao mesmo tempo</span>, cada uma vendo o cursor da outra em tempo real.</p>
+<div class="grid">
+<div>
+<h3>Como compartilhar</h3>
+<ol class="steps">
+<li>Clique no botão <b>Compartilhar</b> (canto superior direito).</li>
+<li>Adicione os e-mails dos alunos <b>ou</b> gere um link.</li>
+<li>Defina a permissão: <b>Editor</b> (pode mexer), Comentarista ou Leitor.</li>
+</ol>
+</div>
+<div class="info-box">
+<p><b>Exemplo — Seminário do 8º ano:</b> a professora cria uma apresentação sobre "Sistema Solar" com um
+                        slide por planeta. Compartilha o link com permissão de <b>Editor</b>. Cada grupo fica responsável
+                        por um slide e todos trabalham na <b>mesma</b> aula, ao mesmo tempo, cada um no seu computador.
+                        No fim, a apresentação está pronta e coesa, e a professora acompanhou tudo pela tela.</p>
+</div>
+</div>
+<div class="warn-box">
+<p>Dando permissão de <b>Editor</b> a muitos alunos, um pode apagar o trabalho do outro. Combine regras
+                    ("cada grupo mexe só no seu slide") e lembre-se: o <b>histórico de versões</b>
+                    (<code>Arquivo &gt; Histórico de versões</code>) permite recuperar qualquer estado anterior.</p>
+</div>
+</div>
+</div>
+
+<!-- Apresentar -->
+<div class="slide">
+<div class="header"><h2>Apresentar: o modo apresentação</h2></div>
+<div class="content">
+<p>Chegou a hora de projetar. O botão <span class="highlight">Apresentar</span> (canto superior direito)
+                coloca os slides em tela cheia. Recursos que ajudam o professor:</p>
+<table class="table">
+<tr><th>Recurso</th><th>Para que serve</th></tr>
+<tr><td><b>Notas do orador</b></td><td>Escolha "Visualização do apresentador": você vê suas anotações e o próximo slide numa tela; a turma vê só o slide na outra</td></tr>
+<tr><td><b>Apontador a laser</b></td><td>Segure a tecla ou use a ferramenta para transformar o mouse num ponto vermelho e destacar algo na tela</td></tr>
+<tr><td><b>Apresentar em outra guia</b></td><td>A apresentação abre numa aba separada do navegador — prático para projetar numa tela enquanto controla noutra</td></tr>
+<tr><td><b>Setas / clique</b></td><td>Avançam e voltam slides; a tecla <code>B</code> escurece a tela para chamar a atenção da turma</td></tr>
+</table>
+<div class="tip-box">
+<p><b>Notas do orador</b> são o segredo de uma boa aula: em vez de encher o slide de texto (que você acaba
+                    lendo de costas para a turma), coloque poucas palavras no slide e o roteiro completo nas notas, só
+                    para você.</p>
+</div>
+</div>
+</div>
+
+<!-- Recursos ao vivo -->
+<div class="slide">
+<div class="header"><h2>Recursos ao vivo durante a apresentação</h2></div>
+<div class="content">
+<p>Enquanto projeta, o Apresentações oferece dois recursos que transformam a aula numa via de mão dupla:</p>
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-circle-question"></i> Perguntas do público (Q&amp;A)</h3>
+<p>Ao apresentar, ative <b>"Ferramentas do público"</b>. A tela mostra um <b>link curto</b>. Os alunos
+                        abrem esse link no celular e enviam perguntas por escrito; a turma pode <b>votar</b> nas melhores.
+                        Você escolhe quando exibir cada pergunta na projeção. Perfeito para dúvidas de quem tem
+                        vergonha de levantar a mão.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-closed-captioning"></i> Legendas automáticas</h3>
+<p>Ative as <b>legendas na apresentação</b> e o Google transcreve <b>a sua fala</b> em tempo real,
+                        exibindo o texto na base da tela. Ajuda alunos surdos ou com deficiência auditiva, quem está
+                        aprendendo o idioma e a compreensão em salas barulhentas.</p>
+</div>
+</div>
+<div class="info-box">
+<p>As legendas usam o microfone do computador e funcionam melhor em português com boa dicção. Não geram um
+                    arquivo de texto — são um apoio ao vivo, exibido durante a fala.</p>
+</div>
+</div>
+</div>
+
+<!-- Boas práticas de design -->
+<div class="slide">
+<div class="header"><h2>Design de slide para aula: faça e evite</h2></div>
+<div class="content">
+<p>O maior erro em sala é o "slide-livro": um bloco enorme de texto que ninguém lê. Um bom slide é um
+                <span class="highlight">apoio visual</span>, não o conteúdo inteiro.</p>
+<table class="table">
+<tr><th><i class="fa-solid fa-check"></i> Faça</th><th><i class="fa-solid fa-xmark"></i> Evite</th></tr>
+<tr><td>Uma ideia por slide</td><td>Vários assuntos amontoados na mesma tela</td></tr>
+<tr><td>Poucas palavras; frases curtas ou tópicos</td><td>Parágrafos longos que você acaba lendo de costas</td></tr>
+<tr><td>Fonte grande (lê-se do fundo da sala)</td><td>Letras miúdas que só quem está na frente enxerga</td></tr>
+<tr><td>Bom contraste (texto escuro em fundo claro ou vice-versa)</td><td>Texto amarelo em fundo branco, cinza sobre cinza</td></tr>
+<tr><td>Imagens grandes e de boa qualidade</td><td>Figurinhas pequenas, esticadas ou desfocadas</td></tr>
+<tr><td>Espaço em branco para "respirar"</td><td>Encher todo canto com caixas, setas e clip-art</td></tr>
+</table>
+<div class="tip-box">
+<p><b>Regra prática:</b> se o slide tem mais texto do que caberia num cartão-postal, provavelmente parte
+                    dele deveria estar nas <b>notas do orador</b> ou numa apostila — não na projeção.</p>
+</div>
+</div>
+</div>
+
+<!-- Exemplos práticos por objetivo -->
+<div class="slide">
+<div class="header"><h2>Exemplos práticos por objetivo</h2></div>
+<div class="content">
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-chalkboard-user"></i> Aula expositiva</h3>
+<p>Um slide por conceito, imagens grandes e roteiro nas notas. Insira um vídeo curto do YouTube para
+                        variar o ritmo. Ideal para introduzir um tema novo.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-users-rectangle"></i> Seminário dos alunos</h3>
+<p>Apresentação compartilhada como <b>Editor</b>: cada grupo monta o seu slide dentro do mesmo arquivo.
+                        Estimula colaboração e você acompanha o progresso à distância.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-images"></i> Mural visual da turma</h3>
+<p>Um slide grande onde cada aluno cola uma foto, um desenho ou uma frase (como um "quadro de avisos"
+                        digital). Ótimo para o "quem sou eu", datas comemorativas ou registro de um projeto.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-folder-open"></i> Portfólio</h3>
+<p>Cada slide guarda um trabalho do aluno ao longo do bimestre (redação, foto do experimento, áudio).
+                        Vira um registro de aprendizagem que evolui e pode ser mostrado à família.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Exportar, publicar, offline -->
+<div class="slide">
+<div class="header"><h2>Exportar, publicar e trabalhar offline</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3>Salvar em outros formatos</h3>
+<p>Menu <code>Arquivo &gt; Fazer download</code>:</p>
+<ul class="spaced">
+<li><b>PDF:</b> para enviar como apostila ou imprimir sem risco de a formatação mudar.</li>
+<li><b>PPTX:</b> para abrir no PowerPoint de outra escola/computador.</li>
+<li><b>Imagem (PNG/JPEG):</b> exporta o slide atual como figura — útil para colar num mural ou no
+                        Classroom.</li>
+</ul>
+<h3 style="margin-top:20px;">Imprimir com anotações</h3>
+<p>Em <code>Arquivo &gt; Imprimir</code> dá para imprimir vários slides por página <b>com as notas do
+                        orador</b>, gerando um material de estudo para a turma.</p>
+</div>
+<div>
+<h3>Publicar na web / incorporar</h3>
+<p>Em <code>Arquivo &gt; Compartilhar &gt; Publicar na Web</code> você gera um link público ou um código
+                        para <b>incorporar</b> a apresentação num blog, site da escola ou no Classroom, rodando dentro
+                        da página.</p>
+<h3 style="margin-top:20px;">Trabalhar offline</h3>
+<p>Com a extensão do Google no navegador e o modo offline ativado, você edita a aula <b>sem internet</b>;
+                        ao reconectar, tudo sincroniza sozinho.</p>
+</div>
+</div>
+<div class="warn-box">
+<p><b>Cuidados:</b> use imagens com <b>direitos de uso</b> (banco de imagens livres, Creative Commons ou
+                    autoria própria) — não basta "achar no Google". E fique de olho no <b>tamanho do arquivo</b>: dezenas
+                    de fotos pesadas e vídeos deixam a apresentação lenta para abrir e projetar.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#e37400;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 840px; opacity: 0.9;">O <b>Apresentações Google</b> cria slides na nuvem,
+            de graça, com salvamento automático e edição colaborativa em tempo real — um convite para que os
+            <b>alunos construam junto</b>. Domine a interface (miniaturas, layouts, temas), insira conteúdo rico
+            (imagens, vídeo do YouTube, tabelas, diagramas) e apresente com <b>notas do orador</b>, apontador a laser,
+            <b>perguntas do público (Q&amp;A)</b> e legendas automáticas. Acima de tudo: <b>uma ideia por slide</b>,
+            pouco texto e bom contraste. Assim a projeção apoia a sua aula, em vez de competir com você.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Digitais na Prática Docente</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tecnologias Digitais na Prática Docente - IA Responsável, Privacidade e LGPD</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #dc2626; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #991b1b; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #dc2626; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #dc2626; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #dc2626; font-weight: bold; }
+        .info-box { border-left: 5px solid #dc2626; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .tip-box { border-left: 5px solid #10b981; background: #ecfdf5; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #dc2626; font-size: 26px; }
+        .steps { counter-reset: step; list-style: none; padding: 0; margin-top: 10px; }
+        .steps li { position: relative; padding: 14px 14px 14px 62px; margin-bottom: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; line-height: 1.6; }
+        .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; background: #dc2626; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .prompt-box { background: #1e293b; color: #e2e8f0; padding: 24px 28px; border-radius: 10px; border-left: 8px solid #dc2626; line-height: 1.7; font-size: 18px; margin-top: 20px; }
+        .prompt-box .label { display:inline-block; font-family:"Fira Code",monospace; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#38bdf8; margin-bottom:10px; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Digitais na Prática Docente
+            </h1>
+<p>IA Responsável, Privacidade e LGPD</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-scale-balanced" style="font-size:80px;margin-bottom:30px;color:#f87171;"></i>
+<h1>IA Responsável, Privacidade e LGPD</h1>
+<p style="font-size: 24px; opacity: 0.8;">Usar tecnologia com potência exige usá-la com responsabilidade</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Ética, proteção de dados e cidadania digital na escola</div>
+</div>
+
+<!-- Por que falar disso AGORA -->
+<div class="slide">
+<div class="header"><h2>Por que falar de ética e responsabilidade agora</h2></div>
+<div class="content">
+<p class="lead">As ferramentas digitais e a inteligência artificial chegaram à sala de aula de forma
+                <span class="highlight">rápida e poderosa</span>. Com esse poder vêm deveres: cada facilidade nova traz
+                junto uma responsabilidade nova.</p>
+<div class="grid" style="margin-top:24px;">
+<div class="card">
+<h3><i class="fa-solid fa-bolt"></i> A tecnologia acelerou</h3>
+<p>Em pouco tempo, qualquer professor passou a poder gerar textos, imagens, provas e planos de aula em
+                        segundos. O que antes exigia formação técnica hoje cabe num aplicativo gratuito.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-user-shield"></i> O professor é referência</h3>
+<p>O aluno observa a conduta digital do professor. A forma como você usa (ou não) essas ferramentas
+                        ensina, na prática, o que é uso ético, cuidadoso e crítico da tecnologia.</p>
+</div>
+</div>
+<div class="info-box">
+<p>Este tópico não é sobre proibir a IA nem sobre usá-la sem freios. É sobre encontrar o
+                    <b>equilíbrio responsável</b>: aproveitar o que a tecnologia oferece de bom, protegendo os alunos,
+                    respeitando a lei e mantendo o julgamento humano no centro da educação.</p>
+</div>
+</div>
+</div>
+
+<!-- Privacidade dos alunos: regra de ouro -->
+<div class="slide">
+<div class="header"><h2>Privacidade dos alunos: a regra de ouro</h2></div>
+<div class="content">
+<p class="lead">A regra mais importante deste tópico cabe em uma frase:
+                <span class="highlight">nunca insira dados pessoais ou sensíveis de alunos em ferramentas de IA
+                públicas.</span></p>
+<div class="warn-box">
+<p><b>Não coloque em ChatGPT, Gemini, Copilot ou similares:</b> nome completo, matrícula, endereço, telefone,
+                    fotos, notas identificadas, redações com o nome do aluno, mensagens de responsáveis, laudos, dados de
+                    saúde, religião ou qualquer informação que permita <b>identificar uma criança ou adolescente</b>.
+                    O que você digita nessas ferramentas pode ser armazenado e usado para treinar os sistemas.</p>
+</div>
+<div class="tip-box">
+<p><b>Precisa da ajuda da IA com um caso real? Anonimize primeiro.</b> Troque "A redação de João Silva, 7º ano,
+                    da turma 71" por "a redação de um aluno do 7º ano". Substitua nomes por "Aluno A", "Aluno B". Remova
+                    datas, escola, endereço e qualquer detalhe único. A IA ajuda igual — sem expor ninguém.</p>
+</div>
+</div>
+</div>
+
+<!-- LGPD na escola: o essencial -->
+<div class="slide">
+<div class="header"><h2>LGPD na escola: o essencial</h2></div>
+<div class="content">
+<p>A <span class="highlight">Lei Geral de Proteção de Dados (Lei nº 13.709/2018)</span> regula como
+                organizações — incluindo escolas — coletam e usam dados de pessoas. Dados de crianças e adolescentes
+                recebem <b>proteção reforçada</b>. Veja os pontos essenciais:</p>
+<table class="table">
+<tr><th>Conceito</th><th>O que significa na prática escolar</th></tr>
+<tr><td><b>Dado pessoal</b></td><td>Qualquer informação que identifica alguém: nome, matrícula, foto, e-mail, notas ligadas a um aluno.</td></tr>
+<tr><td><b>Dado sensível</b></td><td>Categoria especial e mais protegida: saúde, deficiência, laudos, religião, raça/etnia, dados de crianças. Exige cuidado redobrado.</td></tr>
+<tr><td><b>Finalidade</b></td><td>Só use o dado para o objetivo educacional declarado — não para outros fins.</td></tr>
+<tr><td><b>Necessidade (minimização)</b></td><td>Colete e compartilhe apenas o mínimo indispensável. Se não precisa do nome, não use o nome.</td></tr>
+<tr><td><b>Transparência</b></td><td>As famílias têm direito de saber quais dados são tratados e como.</td></tr>
+<tr><td><b>Segurança</b></td><td>Proteja os dados: senhas fortes, não deixar listas expostas, cuidado com o que sai da escola.</td></tr>
+</table>
+<div class="info-box">
+<p>A <b>escola é a controladora</b> dos dados dos alunos — é ela quem responde legalmente pelo tratamento.
+                    Como o tratamento envolve <b>menores de idade</b>, em geral é necessário o <b>consentimento dos pais
+                    ou responsáveis</b> para determinados usos. Por isso, alinhe sempre com a instituição.</p>
+</div>
+<p style="margin-top:16px;font-size:15px;color:#64748b;"><i class="fa-solid fa-circle-info"></i>
+                Este material tem fim educativo e <b>não constitui aconselhamento jurídico</b>. Consulte a coordenação,
+                a direção e as normas de proteção de dados da sua instituição.</p>
+</div>
+</div>
+
+<!-- Vieses e alucinações -->
+<div class="slide">
+<div class="header"><h2>Vieses e alucinações: a IA erra</h2></div>
+<div class="content">
+<p class="lead">A inteligência artificial não é uma fonte de verdade. Ela pode
+                <span class="highlight">errar, inventar e reproduzir preconceitos</span> — muitas vezes com uma
+                aparência convincente.</p>
+<div class="grid" style="margin-top:20px;">
+<div class="card">
+<h3><i class="fa-solid fa-ghost"></i> Alucinações</h3>
+<p>A IA pode "inventar" fatos, datas, citações e referências que simplesmente não existem — e apresentá-los
+                        com total segurança. Um autor falso, uma lei que não existe, uma data trocada.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-scale-unbalanced"></i> Vieses</h3>
+<p>Como aprende com textos da internet, a IA pode reproduzir estereótipos de gênero, raça, região ou
+                        classe social, e apresentar visões parciais como se fossem neutras.</p>
+</div>
+</div>
+<div class="warn-box">
+<p><b>Regra prática:</b> nada gerado pela IA vai para a turma sem <b>revisão crítica do professor</b>. Confira
+                    fatos, datas e fontes; questione se há estereótipos; adapte a linguagem à faixa etária. Você é o
+                    filtro humano entre a máquina e o aluno.</p>
+</div>
+</div>
+</div>
+
+<!-- Integridade acadêmica e plágio -->
+<div class="slide">
+<div class="header"><h2>Integridade acadêmica e plágio</h2></div>
+<div class="content">
+<p>O uso honesto vale para <b>alunos e professores</b>. O ponto central é a diferença entre usar a IA para
+                <span class="highlight">aprender</span> e usá-la para <span class="highlight">burlar</span>.</p>
+<div class="grid" style="margin-top:20px;">
+<div class="card" style="border-left:5px solid #10b981;">
+<h3 style="color:#065f46;"><i class="fa-solid fa-circle-check"></i> Usar para aprender</h3>
+<p>Tirar dúvidas, pedir exemplos, receber explicações mais simples, revisar o próprio texto, gerar
+                        perguntas de estudo, testar ideias. A IA ajuda o aluno a <b>compreender e produzir</b>.</p>
+</div>
+<div class="card" style="border-left:5px solid #dc2626;">
+<h3><i class="fa-solid fa-circle-xmark"></i> Usar para burlar</h3>
+<p>Copiar e entregar como próprio o texto que a IA escreveu, sem entender nem revisar. Aqui não há
+                        aprendizagem — só a entrega de um trabalho que não representa o aluno.</p>
+</div>
+</div>
+<div class="tip-box">
+<p><b>Redesenhe as atividades para valorizar o processo:</b> peça rascunhos e versões, explicações orais do
+                    raciocínio, defesa das escolhas feitas, conexões com o que foi visto em aula e reflexão pessoal.
+                    Quando o processo vale nota, copiar uma resposta pronta deixa de ser um atalho.</p>
+</div>
+</div>
+</div>
+
+<!-- IA como apoio, não substituto -->
+<div class="slide">
+<div class="header"><h2>IA como apoio, não substituto</h2></div>
+<div class="content">
+<p class="lead">A IA <span class="highlight">amplia</span> o professor — não o substitui. O que é insubstituível
+                permanece humano.</p>
+<div class="flow">
+<div class="node">Julgamento<br/>pedagógico</div>
+<span class="arrow"><i class="fa-solid fa-plus"></i></span>
+<div class="node">Vínculo com<br/>o aluno</div>
+<span class="arrow"><i class="fa-solid fa-plus"></i></span>
+<div class="node">Mediação<br/>humana</div>
+<span class="arrow"><i class="fa-solid fa-equals"></i></span>
+<div class="node" style="background:#dc2626;">Educação<br/>de verdade</div>
+</div>
+<div class="grid" style="margin-top:28px;">
+<div class="card">
+<h3><i class="fa-solid fa-robot"></i> O que a IA faz bem</h3>
+<p>Gerar rascunhos, variar exemplos, resumir, sugerir atividades, poupar tempo em tarefas mecânicas.
+                        Ela é uma ótima <b>assistente</b>.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-heart"></i> O que só o professor faz</h3>
+<p>Conhecer cada aluno, perceber quem está com dificuldade, acolher, decidir o que aquela turma
+                        precisa, dar sentido e mediar o conhecimento com afeto.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Cidadania digital -->
+<div class="slide">
+<div class="header"><h2>Ensinar cidadania digital aos alunos</h2></div>
+<div class="content">
+<p>Mais do que usar a IA, o professor tem a missão de formar alunos capazes de conviver bem com a tecnologia.
+                Isso é <span class="highlight">cidadania digital</span>.</p>
+<ul class="spaced">
+<li><b>Pensamento crítico:</b> ensinar a duvidar, comparar e questionar — inclusive o que a IA responde.</li>
+<li><b>Checar fontes:</b> mostrar que toda informação precisa de confirmação em fontes confiáveis.</li>
+<li><b>A IA não é verdade absoluta:</b> deixar claro que ela erra, inventa e não "sabe" — apenas prevê palavras prováveis.</li>
+<li><b>Uso ético e consciente:</b> respeito, honestidade e privacidade — a começar pela dos próprios colegas.</li>
+<li><b>Adequar à idade:</b> nos anos iniciais, mediação total do adulto; no fundamental II e médio, autonomia crescente com orientação.</li>
+</ul>
+<div class="info-box">
+<p>Uma boa pergunta para fazer à turma: <i>"Como podemos ter certeza de que isso é verdade?"</i> Essa única
+                    pergunta, repetida ao longo do ano, ensina uma postura que serve para a vida inteira — dentro e fora
+                    da internet.</p>
+</div>
+</div>
+</div>
+
+<!-- Direitos autorais e conteúdo gerado -->
+<div class="slide">
+<div class="header"><h2>Direitos autorais e conteúdo gerado</h2></div>
+<div class="content">
+<p>Usar imagens, textos e materiais — criados por pessoas ou por IA — exige cuidado com
+                <span class="highlight">direitos autorais</span> e transparência.</p>
+<table class="table">
+<tr><th>Situação</th><th>Boa prática</th></tr>
+<tr><td>Usar uma imagem da internet</td><td>Prefira bancos livres/de domínio público ou com licença aberta; dê os créditos ao autor.</td></tr>
+<tr><td>Reproduzir um texto de outra pessoa</td><td>Cite a fonte e o autor; não apresente como se fosse seu.</td></tr>
+<tr><td>Usar conteúdo gerado por IA</td><td>Revise, adapte e informe que houve apoio de IA quando fizer diferença (materiais oficiais, avaliações).</td></tr>
+<tr><td>Pedir que os alunos usem IA</td><td>Combine que devem indicar quando usaram a ferramenta e como.</td></tr>
+</table>
+<div class="tip-box">
+<p><b>Transparência ensina.</b> Quando o professor diz "esta imagem foi gerada por IA" ou "este resumo eu fiz
+                    com ajuda de uma ferramenta e depois revisei", ele mostra na prática o que é uso honesto e aberto da
+                    tecnologia — exatamente o que espera dos alunos.</p>
+</div>
+</div>
+</div>
+
+<!-- Checklist de uso responsável -->
+<div class="slide">
+<div class="header"><h2>Checklist de uso responsável em sala</h2></div>
+<div class="content">
+<p>Antes de usar uma ferramenta digital ou de IA com a turma, passe por estas verificações:</p>
+<ol class="steps">
+<li><b>Privacidade:</b> não há nenhum dado pessoal de aluno sendo inserido na ferramenta? Anonimizei tudo?</li>
+<li><b>Fonte confiável:</b> a ferramenta é conhecida, segura e adequada à idade dos alunos?</li>
+<li><b>Revisão do conteúdo:</b> conferi fatos, datas e fontes, e removi possíveis vieses ou erros?</li>
+<li><b>Finalidade clara:</b> o uso tem um objetivo pedagógico definido — e não é só novidade pela novidade?</li>
+<li><b>Créditos e transparência:</b> dei crédito às fontes e informei o uso de IA quando necessário?</li>
+<li><b>Alinhamento institucional:</b> isso está de acordo com as normas da escola e com o consentimento das famílias?</li>
+</ol>
+<div class="info-box">
+<p>Se qualquer item ficar com um "não" ou um "não sei", pare e resolva antes de seguir. Cinco minutos de
+                    verificação evitam problemas sérios de privacidade e de confiança.</p>
+</div>
+</div>
+</div>
+
+<!-- Política simples de uso de IA com a turma -->
+<div class="slide">
+<div class="header"><h2>Uma política simples de uso de IA com a turma</h2></div>
+<div class="content">
+<p>Um conjunto curto e claro de regras, combinado com os alunos, orienta o uso da IA sem burocracia. Um
+                exemplo que você pode adaptar:</p>
+<div class="prompt-box">
+<span class="label">Combinado da turma — Uso de IA</span>
+1. Posso usar a IA para <b>estudar, tirar dúvidas e melhorar</b> meu trabalho.<br/>
+2. O que eu entrego precisa ser <b>meu</b>: entendo, reviso e sei explicar.<br/>
+3. Quando eu usar IA num trabalho, eu <b>aviso</b> como usei.<br/>
+4. Nunca coloco <b>dados pessoais</b> meus ou de colegas na ferramenta.<br/>
+5. Confiro se a informação é <b>verdadeira</b> antes de acreditar nela.<br/>
+6. Uso a IA com <b>respeito e honestidade</b> — ela ajuda, não faz por mim.
+            </div>
+<div class="warn-box">
+<p><b>Importante:</b> este é um exemplo educativo e <b>não é aconselhamento jurídico</b>. Antes de adotar uma
+                    política de uso de IA, consulte a coordenação, a direção e as normas da sua instituição, e adeque as
+                    regras à faixa etária e à realidade da sua turma.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#f87171;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 860px; opacity: 0.9;">A IA e as ferramentas digitais são poderosas — e
+            por isso pedem responsabilidade. <b>Nunca exponha dados de alunos</b> em ferramentas públicas; anonimize.
+            Respeite os princípios da <b>LGPD</b> (finalidade, minimização, transparência e segurança), lembrando que a
+            escola é a controladora e que menores exigem cuidado reforçado. <b>Revise criticamente</b> tudo que a IA
+            gera, pois ela erra e reproduz vieses. Valorize a <b>integridade acadêmica</b> e o processo de aprender.
+            Mantenha o <b>julgamento humano no centro</b>: a IA amplia o professor, não o substitui. E forme alunos para
+            a <b>cidadania digital</b>. Em caso de dúvida, consulte sempre as normas da sua instituição.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Digitais na Prática Docente</p>
+</footer>
+</body>
+</html>

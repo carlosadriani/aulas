@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tecnologias Digitais na Prática Docente - ChatGPT</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #10a37f; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #0b7a5f; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #10a37f; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #10a37f; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #10a37f; font-weight: bold; }
+        .info-box { border-left: 5px solid #10a37f; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .tip-box { border-left: 5px solid #10b981; background: #ecfdf5; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #10a37f; font-size: 26px; }
+        .steps { counter-reset: step; list-style: none; padding: 0; margin-top: 10px; }
+        .steps li { position: relative; padding: 14px 14px 14px 62px; margin-bottom: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; line-height: 1.6; }
+        .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; background: #10a37f; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .prompt-box { background: #1e293b; color: #e2e8f0; padding: 24px 28px; border-radius: 10px; border-left: 8px solid #10a37f; line-height: 1.7; font-size: 18px; margin-top: 20px; }
+        .prompt-box .label { display:inline-block; font-family:"Fira Code",monospace; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#38bdf8; margin-bottom:10px; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Digitais na Prática Docente
+            </h1>
+<p>ChatGPT</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-robot" style="font-size:80px;margin-bottom:30px;color:#10a37f;"></i>
+<h1>ChatGPT</h1>
+<p style="font-size: 24px; opacity: 0.8;">Seu assistente de conversa para preparar aulas, materiais e ideias</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Inteligência Artificial na Prática Docente</div>
+</div>
+
+<!-- O que é o ChatGPT -->
+<div class="slide">
+<div class="header"><h2>O que é o ChatGPT?</h2></div>
+<div class="content">
+<p class="lead">O <span class="highlight">ChatGPT</span> é um assistente de inteligência artificial criado pela
+                empresa <b>OpenAI</b>. Você conversa com ele em <b>linguagem natural</b> — escrevendo como falaria com
+                um colega — e ele responde com textos, explicações, listas, tabelas e ideias.</p>
+<div class="info-box">
+<p>Por baixo, ele funciona a partir de um <b>modelo de linguagem</b>: um programa treinado com uma enorme
+                    quantidade de textos que aprendeu a prever qual palavra faz mais sentido a seguir. Na prática, isso
+                    significa que ele é excelente para <b>redigir, reescrever, resumir, explicar e organizar</b> — tarefas
+                    de linguagem que ocupam boa parte do trabalho de um professor.</p>
+</div>
+<p style="margin-top:16px;">Vale lembrar de uma ideia central: o ChatGPT <b>não pensa nem sabe</b> como uma
+                pessoa. Ele gera respostas plausíveis com base em padrões de texto. É uma ferramenta poderosa de apoio —
+                não uma fonte de verdade absoluta. Guardaremos essa ideia até o fim da aula.</p>
+</div>
+</div>
+
+<!-- Como começar -->
+<div class="slide">
+<div class="header"><h2>Como começar a usar</h2></div>
+<div class="content">
+<div class="flow">
+<div class="node">Acesse<br/>chat.openai.com</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Crie<br/>uma conta</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Digite<br/>na caixa de conversa</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Leia e<br/>refine a resposta</div>
+</div>
+<ul class="spaced" style="margin-top:24px;">
+<li>Entre no site <code>chat.openai.com</code> pelo navegador ou baixe o <b>aplicativo</b> (Android/iOS).</li>
+<li>Crie uma conta gratuita com e-mail, ou entre com a conta Google.</li>
+<li>Na caixa de texto, escreva seu pedido e pressione Enter. Pronto: a conversa começou.</li>
+</ul>
+<div class="grid" style="margin-top:24px;">
+<div class="card">
+<h3><i class="fa-solid fa-gift"></i> Versão gratuita</h3>
+<p>Já resolve a maior parte do dia a dia docente: escrever textos, criar atividades, resumir, tirar dúvidas.
+                    Costuma usar um modelo um pouco mais simples e ter limites de uso em horários de pico.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-star"></i> Versão paga</h3>
+<p>Dá acesso aos modelos mais avançados, respostas mais rápidas e recursos extras (análise de arquivos,
+                    imagens, entre outros). Útil para quem usa a ferramenta com muita intensidade.</p>
+</div>
+</div>
+<div class="info-box">
+<p>Para <b>experimentar e aprender</b>, a versão gratuita é mais do que suficiente. Comece por ela.</p>
+</div>
+</div>
+</div>
+
+<!-- Usos na docência -->
+<div class="slide">
+<div class="header"><h2>Para que serve na sala de aula?</h2></div>
+<div class="content">
+<p class="lead">O ChatGPT é um <span class="highlight">assistente de preparação</span>: ele não dá a aula por
+                você, mas economiza horas nas tarefas de escrita e organização.</p>
+<table class="table">
+<tr><th>Tarefa</th><th>Como o ChatGPT ajuda</th></tr>
+<tr><td><b>Elaborar atividades e provas</b></td><td>Gerar questões de múltipla escolha, dissertativas e verdadeiro/falso sobre um tema, com gabarito</td></tr>
+<tr><td><b>Criar rubricas</b></td><td>Montar critérios de avaliação claros, com níveis de desempenho, para trabalhos e apresentações</td></tr>
+<tr><td><b>Adaptar e resumir textos</b></td><td>Simplificar um texto para a idade da turma ou resumir um capítulo longo em tópicos</td></tr>
+<tr><td><b>Gerar exemplos e analogias</b></td><td>Explicar frações usando pizza, ou fotossíntese comparada a uma cozinha</td></tr>
+<tr><td><b>Escrever comunicados e e-mails</b></td><td>Redigir bilhetes aos responsáveis, avisos e respostas com tom adequado</td></tr>
+<tr><td><b>Brainstorming de projetos</b></td><td>Sugerir ideias de projetos, feiras, dinâmicas e temas de redação</td></tr>
+</table>
+</div>
+</div>
+
+<!-- A arte do prompt -->
+<div class="slide">
+<div class="header"><h2>A arte do prompt: a fórmula que funciona</h2></div>
+<div class="content">
+<p class="lead">Um <span class="highlight">prompt</span> é o pedido que você escreve. A qualidade da resposta
+                depende diretamente da qualidade do pedido. Uma fórmula fácil de lembrar:</p>
+<div class="flow">
+<div class="node">PAPEL</div>
+<span class="arrow">+</span>
+<div class="node">TAREFA</div>
+<span class="arrow">+</span>
+<div class="node">FORMATO</div>
+<span class="arrow">+</span>
+<div class="node">CONTEXTO</div>
+<span class="arrow">+</span>
+<div class="node">RESTRIÇÕES</div>
+</div>
+<table class="table" style="margin-top:24px;">
+<tr><th>Elemento</th><th>O que definir</th><th>Exemplo</th></tr>
+<tr><td><b>Papel</b></td><td>Quem o ChatGPT deve "ser"</td><td>"Aja como um professor de Ciências do 6º ano"</td></tr>
+<tr><td><b>Tarefa</b></td><td>O que você quer que ele faça</td><td>"crie 5 questões sobre o ciclo da água"</td></tr>
+<tr><td><b>Formato</b></td><td>Como a resposta deve ser entregue</td><td>"em uma tabela, com gabarito ao final"</td></tr>
+<tr><td><b>Contexto</b></td><td>Detalhes da turma e do objetivo</td><td>"turma com dificuldade de leitura, escola pública"</td></tr>
+<tr><td><b>Restrições</b></td><td>Limites e regras</td><td>"linguagem simples, sem pegadinhas, no máximo 3 linhas por questão"</td></tr>
+</table>
+</div>
+</div>
+
+<!-- Prompt fraco vs forte -->
+<div class="slide">
+<div class="header"><h2>Prompt fraco x prompt forte</h2></div>
+<div class="content">
+<p>O mesmo objetivo, dois pedidos muito diferentes. Compare:</p>
+<div class="prompt-box" style="border-left-color:#f59e0b;">
+<span class="label" style="color:#fbbf24;">Prompt fraco</span><br/>
+                Faça umas perguntas sobre a água.
+            </div>
+<div class="warn-box">
+<p>Vago demais. O ChatGPT não sabe a idade da turma, quantas perguntas, o formato nem o objetivo. A resposta
+                    virá genérica e você terá retrabalho.</p>
+</div>
+<div class="prompt-box">
+<span class="label">Prompt forte</span><br/>
+                Aja como professor de Ciências do 5º ano. Crie 5 questões de múltipla escolha sobre o ciclo da água,
+                com 4 alternativas cada e o gabarito ao final. A turma tem dificuldade de leitura, então use frases
+                curtas e vocabulário simples. Apresente em formato de tabela.
+            </div>
+<div class="tip-box">
+<p>Repare que o prompt forte contém <b>papel, tarefa, formato, contexto e restrições</b>. Quanto mais claro
+                    o pedido, menos ajustes você precisará fazer depois.</p>
+</div>
+</div>
+</div>
+
+<!-- Técnicas úteis -->
+<div class="slide">
+<div class="header"><h2>Técnicas que melhoram qualquer resposta</h2></div>
+<div class="content">
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-child"></i> Defina o nível</h3>
+<p>Peça "explique <b>no nível do 5º ano</b>" ou "como se fosse para uma <b>criança de 8 anos</b>". Ele
+                    ajusta o vocabulário na hora.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-table-list"></i> Escolha o formato</h3>
+<p>Peça em <b>tabela</b>, em <b>lista numerada</b> ou em <b>passo a passo</b>. Isso deixa o material pronto
+                    para colar no seu plano.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-clone"></i> Peça variações</h3>
+<p>"Me dê <b>3 versões</b> diferentes deste enunciado" — e você escolhe a melhor ou combina pedaços.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-wand-magic-sparkles"></i> Dê um exemplo para imitar</h3>
+<p>Cole uma atividade que você já gosta e peça "faça outra <b>no mesmo estilo</b>, sobre o tema X".</p>
+</div>
+</div>
+<div class="info-box">
+<p>Combine as técnicas: "Explique a fotossíntese <b>como se fosse para uma criança</b>, usando uma
+                    <b>analogia</b> de cozinha, em <b>3 frases curtas</b>." Pequenas instruções, grande diferença.</p>
+</div>
+</div>
+</div>
+
+<!-- Biblioteca de prompts -->
+<div class="slide">
+<div class="header"><h2>Biblioteca de prompts prontos (copie e adapte)</h2></div>
+<div class="content">
+<div class="prompt-box">
+<span class="label">Plano de aula</span><br/>
+                Aja como coordenador pedagógico. Crie um plano de aula de 50 minutos sobre "frações" para o 4º ano.
+                Inclua: objetivo, materiais, uma atividade de abertura, o desenvolvimento passo a passo e uma avaliação
+                rápida no final. Use linguagem simples e adequada à BNCC.
+            </div>
+<div class="prompt-box">
+<span class="label">Lista de exercícios com gabarito</span><br/>
+                Crie 10 exercícios de matemática sobre multiplicação para o 3º ano, do mais fácil ao mais difícil.
+                Apresente os exercícios primeiro e, ao final, um gabarito comentado explicando cada resposta.
+            </div>
+<div class="prompt-box">
+<span class="label">Rubrica de avaliação</span><br/>
+                Monte uma rubrica para avaliar um seminário oral do 8º ano. Use 4 critérios (conteúdo, organização,
+                clareza da fala e uso de recursos visuais) e 3 níveis de desempenho (precisa melhorar, bom, excelente),
+                em formato de tabela.
+            </div>
+<div class="prompt-box">
+<span class="label">Adaptação de texto para inclusão</span><br/>
+                Reescreva o texto abaixo em linguagem mais simples, com frases curtas e palavras comuns, para um aluno
+                com dificuldade de leitura, mantendo todas as ideias principais. [cole o texto aqui]
+            </div>
+</div>
+</div>
+
+<!-- Conversa e iteração -->
+<div class="slide">
+<div class="header"><h2>Converse: refine em vez de recomeçar</h2></div>
+<div class="content">
+<p class="lead">O ChatGPT <span class="highlight">lembra do contexto</span> da conversa atual. Você não precisa
+                repetir tudo — basta pedir ajustes sobre a resposta anterior.</p>
+<div class="steps">
+<li>Faça o pedido inicial (ex.: "crie 5 questões sobre o Descobrimento do Brasil").</li>
+<li>Leia a resposta e peça um refinamento: <i>"deixe as questões mais fáceis"</i>.</li>
+<li>Ajuste novamente se preciso: <i>"transforme a questão 3 em dissertativa"</i>.</li>
+<li>Finalize o formato: <i>"agora coloque tudo em uma tabela com o gabarito"</i>.</li>
+</ul>
+</div>
+<div class="tip-box">
+<p>Pense na conversa como um diálogo com um estagiário atencioso: em vez de escrever um pedido gigante e
+                    perfeito de primeira, vá <b>lapidando</b> o resultado em pequenas rodadas. Costuma ser mais rápido e
+                    dar um material mais afinado com o que você imaginava.</p>
+</div>
+</div>
+</div>
+
+<!-- Limitações -->
+<div class="slide">
+<div class="header"><h2>Limitações: sempre confira!</h2></div>
+<div class="content">
+<p class="lead">O ChatGPT é um ótimo <b>rascunhador</b>, mas <span class="highlight">não é uma
+                enciclopédia</span>. Você continua sendo o especialista que revisa e aprova.</p>
+<table class="table">
+<tr><th>Limitação</th><th>O que significa na prática</th></tr>
+<tr><td><b>Alucinações</b></td><td>Ele pode inventar informações com total segurança, como se fossem verdade</td></tr>
+<tr><td><b>Referências falsas</b></td><td>Pode citar livros, autores ou fontes que não existem</td></tr>
+<tr><td><b>Viés</b></td><td>Reflete preconceitos e desequilíbrios presentes nos textos com que foi treinado</td></tr>
+<tr><td><b>Data de corte</b></td><td>Seu conhecimento vai até certa data; eventos recentes podem faltar ou estar errados</td></tr>
+</table>
+<div class="warn-box">
+<p><b>Regra de ouro:</b> tudo que for usado com os alunos — datas, fatos, contas, citações — deve ser
+                    <b>conferido por você</b> antes. Use o ChatGPT para acelerar a criação, nunca como palavra final.</p>
+</div>
+</div>
+</div>
+
+<!-- Comparativo -->
+<div class="slide">
+<div class="header"><h2>ChatGPT, Gemini ou NotebookLM?</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Ferramenta</th><th>Ponto forte</th><th>Bom para...</th></tr>
+<tr><td><b>ChatGPT</b> (OpenAI)</td><td>Conversa versátil e escrita de qualidade</td><td>Criar atividades, textos, ideias e materiais do zero</td></tr>
+<tr><td><b>Gemini</b> (Google)</td><td>Integração com o ecossistema Google (Docs, Gmail, Drive)</td><td>Quem já trabalha dentro das ferramentas Google</td></tr>
+<tr><td><b>NotebookLM</b> (Google)</td><td>Responde <i>a partir dos seus documentos</i></td><td>Estudar e resumir apostilas, PDFs e materiais que você enviou</td></tr>
+</table>
+<div class="info-box">
+<p>Não existe "a melhor": são complementares. Use o <b>ChatGPT</b> para criar do zero, o <b>NotebookLM</b>
+                    quando a resposta precisa vir dos seus próprios materiais, e o <b>Gemini</b> se seu fluxo já vive no
+                    Google.</p>
+</div>
+<div class="warn-box">
+<p><b>Cuidados importantes:</b> nunca insira <b>dados pessoais de alunos</b> (nomes completos, notas
+                    identificáveis, laudos) nessas ferramentas, e oriente que trabalhos <b>copiados</b> da IA configuram
+                    plágio. Aprofundamos isso no tópico de <b>IA Responsável</b>.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#10a37f;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">O <b>ChatGPT</b> é um assistente de conversa da
+            OpenAI que ajuda o professor a criar atividades, provas, rubricas, resumos e comunicados em segundos. O
+            segredo está em <b>bons prompts</b> — papel, tarefa, formato, contexto e restrições — e em <b>refinar</b>
+            a resposta em rodadas. Ele é rápido e criativo, mas pode errar e inventar: <b>confira sempre</b>, proteja os
+            dados dos alunos e use a ferramenta como apoio, não como substituta do seu julgamento pedagógico.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Digitais na Prática Docente</p>
+</footer>
+</body>
+</html>

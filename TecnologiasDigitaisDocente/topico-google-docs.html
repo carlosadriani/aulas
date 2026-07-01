@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tecnologias Digitais na Prática Docente - Google Docs</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #4285F4; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #174ea6; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #4285F4; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #4285F4; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #4285F4; font-weight: bold; }
+        .info-box { border-left: 5px solid #4285F4; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .tip-box { border-left: 5px solid #10b981; background: #ecfdf5; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #4285F4; font-size: 26px; }
+        .steps { counter-reset: step; list-style: none; padding: 0; margin-top: 10px; }
+        .steps li { position: relative; padding: 14px 14px 14px 62px; margin-bottom: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; line-height: 1.6; }
+        .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; background: #4285F4; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .prompt-box { background: #1e293b; color: #e2e8f0; padding: 24px 28px; border-radius: 10px; border-left: 8px solid #4285F4; line-height: 1.7; font-size: 18px; margin-top: 20px; }
+        .prompt-box .label { display:inline-block; font-family:"Fira Code",monospace; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#38bdf8; margin-bottom:10px; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Digitais na Prática Docente
+            </h1>
+<p>Google Docs</p>
+</div>
+</header>
+
+<!-- ===================== SLIDES AQUI ===================== -->
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-file-lines" style="font-size:80px;margin-bottom:30px;color:#4285F4;"></i>
+<h1>Google Docs</h1>
+<p style="font-size: 24px; opacity: 0.8;">O processador de texto na nuvem que escreve, corrige e colabora junto com você</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Documentos Google para a Prática Docente</div>
+</div>
+
+<!-- O que é -->
+<div class="slide">
+<div class="header"><h2>O que é o Google Docs?</h2></div>
+<div class="content">
+<p class="lead">O <span class="highlight">Google Docs</span> (Documentos Google) é um processador de texto que
+                funciona <b>direto no navegador</b>, sem precisar instalar nada. É o "Word que mora na nuvem".</p>
+<div class="grid" style="margin-top:10px;">
+<div class="card">
+<h3><i class="fa-solid fa-cloud"></i> Sempre salvo</h3>
+<p>Não existe o botão "Salvar". Cada letra que você digita é gravada automaticamente na sua conta Google. Se a
+                    energia cair no meio da prova, o documento está a salvo.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-users"></i> Feito para colaborar</h3>
+<p>Várias pessoas podem escrever no mesmo documento ao mesmo tempo — professor e aluno, ou vários alunos de um
+                    grupo — cada um vendo o que o outro digita.</p>
+</div>
+</div>
+<div class="info-box">
+<p>Tudo fica guardado no <b>Google Drive</b> e é acessível de qualquer aparelho: o computador da escola, o
+                    tablet da biblioteca ou o celular. Basta entrar com a mesma conta Google.</p>
+</div>
+</div>
+</div>
+
+<!-- Interface e formatação -->
+<div class="slide">
+<div class="header"><h2>Interface e formatação essencial</h2></div>
+<div class="content">
+<p>A tela lembra qualquer editor de texto: uma barra de menus (Arquivo, Editar, Inserir, Formatar…), uma
+                <b>barra de ferramentas</b> com os botões mais usados e a folha branca no centro.</p>
+<table class="table">
+<tr><th>Recurso</th><th>Onde fica</th><th>Para que serve na escola</th></tr>
+<tr><td><b>Estilos de título</b></td><td>Menu suspenso "Texto normal" na barra</td><td>Marcar Título 1, Título 2… organiza a prova ou o roteiro e gera o sumário automático</td></tr>
+<tr><td><b>Listas</b></td><td>Botões de marcadores e numeração</td><td>Enumerar questões, etapas de um experimento, itens de uma rubrica</td></tr>
+<tr><td><b>Tabelas</b></td><td>Inserir &gt; Tabela</td><td>Criar um cronograma, uma ficha de leitura ou um quadro de correção</td></tr>
+<tr><td><b>Imagens</b></td><td>Inserir &gt; Imagem</td><td>Colocar mapas, gráficos ou fotos de experimentos na apostila</td></tr>
+</table>
+<div class="tip-box">
+<p><b>Dica de ouro:</b> use os <b>estilos de título</b> em vez de só deixar o texto grande e em negrito.
+                    Eles dão estrutura ao documento — e é essa estrutura que faz o sumário e a navegação lateral
+                    funcionarem sozinhos.</p>
+</div>
+</div>
+</div>
+
+<!-- Colaboração em tempo real -->
+<div class="slide">
+<div class="header"><h2>A grande vantagem: colaboração em tempo real</h2></div>
+<div class="content">
+<p class="lead">Esta é a característica que mais transforma o trabalho do professor: <span class="highlight">várias
+                pessoas editando o mesmo documento ao mesmo tempo</span>, sem enviar arquivos por e-mail.</p>
+<div class="flow">
+<div class="node">Um único documento</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Vários editores</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Cada cursor colorido</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Salvo na hora</div>
+</div>
+<div class="info-box">
+<p>No canto superior direito aparecem os <b>ícones das pessoas online</b>. Dentro do texto, cada participante
+                    tem um <b>cursor de cor diferente</b> com o nome dele. Você vê, em tempo real, exatamente onde cada
+                    aluno está escrevendo — o parágrafo cresce diante dos seus olhos.</p>
+</div>
+<div class="tip-box">
+<p>Fim do "manda o Word por e-mail, cada um mexe na sua cópia e depois alguém junta tudo". Agora existe
+                    <b>uma cópia só</b>, sempre atualizada.</p>
+</div>
+</div>
+</div>
+
+<!-- Comentários e Modo Sugestão -->
+<div class="slide">
+<div class="header"><h2>Comentários e Modo Sugestão: feedback perfeito</h2></div>
+<div class="content">
+<p>Estes dois recursos são um presente para quem <b>corrige trabalhos</b>. Eles permitem opinar sem apagar o
+                que o aluno escreveu.</p>
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-comment"></i> Comentário</h3>
+<p>Selecione um trecho e clique no balão (ou <code>Ctrl+Alt+M</code>). Sua observação aparece na margem, ligada
+                    àquele ponto. O aluno responde ali mesmo e, quando resolve, clica em <b>"Marcar como resolvido"</b>.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-pen-nib"></i> Modo Sugestão</h3>
+<p>No canto superior direito, troque de <b>"Edição"</b> para <b>"Sugestão"</b> (o lápis vira um balão verde).
+                    Suas alterações não substituem o texto: viram <b>propostas</b> que o aluno pode <i>aceitar</i> ou
+                    <i>recusar</i>.</p>
+</div>
+</div>
+<div class="info-box">
+<p><b>Exemplo real:</b> a Maria, do 8º ano, entrega uma redação. Você abre em Modo Sugestão, risca "nós vai"
+                    e sugere "nós vamos", e escreve um comentário: "Ótimo argumento aqui! Reveja a concordância." A Maria
+                    <b>vê a correção, entende o porquê</b> e decide aplicar — aprendendo, não só recebendo a nota.</p>
+</div>
+</div>
+</div>
+
+<!-- Histórico de versões -->
+<div class="slide">
+<div class="header"><h2>Histórico de versões: a máquina do tempo</h2></div>
+<div class="content">
+<p>Como o documento salva sozinho a cada instante, o Google guarda um <b>histórico completo</b> de tudo o que
+                mudou. Acesse em <code>Arquivo &gt; Histórico de versões &gt; Ver histórico de versões</code>.</p>
+<ul class="spaced">
+<li>Uma linha do tempo à direita mostra <b>quando</b> cada alteração foi feita e <b>por quem</b>.</li>
+<li>As mudanças de cada pessoa aparecem <b>coloridas</b>, do mesmo jeito que os cursores.</li>
+<li>Gostou de uma versão antiga? Clique em <b>"Restaurar esta versão"</b> e o documento volta no tempo.</li>
+</ul>
+<div class="tip-box">
+<p><b>Perfeito para trabalho em grupo:</b> quando um aluno reclama "eu fiz tudo e o colega não ajudou", o
+                    histórico mostra objetivamente <b>quem escreveu o quê</b>. É uma ferramenta de justiça e de
+                    autoria para avaliar a participação de cada integrante.</p>
+</div>
+</div>
+</div>
+
+<!-- Recursos que poupam tempo -->
+<div class="slide">
+<div class="header"><h2>Recursos que poupam tempo</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Recurso</th><th>Como usar</th><th>Utilidade docente</th></tr>
+<tr><td><b>Sumário automático</b></td><td>Inserir &gt; Sumário</td><td>Cria o índice de uma apostila e se atualiza sozinho quando você muda os títulos</td></tr>
+<tr><td><b>Cabeçalho e rodapé</b></td><td>Inserir &gt; Cabeçalhos e rodapés</td><td>Colocar nome da escola, turma, data e número de página na prova</td></tr>
+<tr><td><b>Ditado por voz</b></td><td>Ferramentas &gt; Digitação por voz</td><td>Ditar o texto falando — ótimo para acessibilidade e para agilizar</td></tr>
+<tr><td><b>Definir / Traduzir</b></td><td>Ferramentas &gt; Dicionário / Traduzir documento</td><td>Consultar significados sem sair da tela; criar versão bilíngue</td></tr>
+<tr><td><b>Contagem de palavras</b></td><td><code>Ctrl+Shift+C</code></td><td>Conferir se a redação atingiu o mínimo de palavras exigido</td></tr>
+</table>
+<div class="info-box">
+<p>A <b>digitação por voz</b> merece destaque: além de rápida, é um recurso de <b>inclusão</b> valioso para
+                    alunos com dificuldade motora ou disgrafia, que conseguem produzir textos falando.</p>
+</div>
+</div>
+</div>
+
+<!-- Modelos prontos -->
+<div class="slide">
+<div class="header"><h2>Modelos prontos: não comece do zero</h2></div>
+<div class="content">
+<p>Na tela inicial (<code>docs.google.com</code>), a <b>Galeria de modelos</b> oferece documentos já formatados.
+                Você preenche e pronto — economizando um tempo precioso.</p>
+<table class="table">
+<tr><th>Modelo</th><th>Como aproveitar na escola</th></tr>
+<tr><td><b>Plano de aula</b></td><td>Estrutura pronta com objetivos, conteúdos, metodologia e avaliação; reaproveite mudando só o tema</td></tr>
+<tr><td><b>Ata de reunião</b></td><td>Registrar reuniões de conselho de classe, HTPC ou reunião de pais com pauta e encaminhamentos</td></tr>
+<tr><td><b>Carta / Ofício</b></td><td>Comunicados e cartas aos pais com aparência profissional e padronizada</td></tr>
+<tr><td><b>Cronograma / Agenda</b></td><td>Planejar o bimestre, uma feira de ciências ou uma excursão</td></tr>
+</table>
+<div class="tip-box">
+<p><b>Reuso inteligente:</b> criou um bom modelo de prova? Guarde-o e, a cada avaliação, use <code>Arquivo &gt;
+                    Fazer uma cópia</code>. Você mantém o original intacto e trabalha sempre a partir dele.</p>
+</div>
+</div>
+</div>
+
+<!-- Compartilhamento e permissões -->
+<div class="slide">
+<div class="header"><h2>Compartilhamento e permissões</h2></div>
+<div class="content">
+<p>O botão <b>Compartilhar</b> (azul, canto superior direito) é o coração do trabalho colaborativo. Ao
+                compartilhar, você escolhe <span class="highlight">o que cada pessoa pode fazer</span>:</p>
+<table class="table">
+<tr><th>Permissão</th><th>O que a pessoa pode fazer</th><th>Quando usar</th></tr>
+<tr><td><b>Leitor</b></td><td>Apenas ler o documento; não altera nada</td><td>Enviar um comunicado ou apostila final para a turma</td></tr>
+<tr><td><b>Comentarista</b></td><td>Ler e deixar comentários/sugestões, mas não editar o texto</td><td>Correção entre colegas; feedback dos pais sem risco de estragar o arquivo</td></tr>
+<tr><td><b>Editor</b></td><td>Alterar livremente todo o conteúdo</td><td>Trabalho em grupo em que todos escrevem juntos</td></tr>
+</table>
+<div class="info-box">
+<p>Você pode adicionar pessoas por <b>e-mail</b> ou gerar um <b>link</b>: em "Qualquer pessoa com o link",
+                    defina Leitor/Comentarista/Editor e cole o link no mural da turma. Simples de distribuir para 30 alunos
+                    de uma vez.</p>
+</div>
+<div class="warn-box">
+<p>Cuidado ao deixar o link como <b>"Editor" para qualquer pessoa</b>: alguém pode apagar o conteúdo. Para
+                    material que a turma só deve ler, use <b>Leitor</b>.</p>
+</div>
+</div>
+</div>
+
+<!-- Exemplos práticos na escola -->
+<div class="slide">
+<div class="header"><h2>Exemplos práticos na escola</h2></div>
+<div class="content">
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-people-group"></i> Trabalho colaborativo</h3>
+<p>Um grupo do 9º ano escreve um seminário sobre a Revolução Industrial no mesmo documento. Cada aluno cuida
+                    de uma parte e você acompanha o progresso em tempo real, sem esperar a entrega.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-spell-check"></i> Correção com sugestões</h3>
+<p>Peça as redações como <b>Comentarista</b> ou corrija em <b>Modo Sugestão</b>: o aluno vê a correção, entende
+                    e reescreve — a nota vira aprendizagem.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-clock"></i> Feedback assíncrono</h3>
+<p>Não precisa estar todos ao mesmo tempo. Você comenta à noite, o aluno responde no dia seguinte. A conversa
+                    fica registrada dentro do próprio documento.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-book-open"></i> Lista de leitura compartilhada</h3>
+<p>Um documento coletivo em que a turma vai acrescentando resenhas de livros lidos. Cresce ao longo do ano e
+                    vira acervo da classe.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Integração e produtividade -->
+<div class="slide">
+<div class="header"><h2>Integração e produtividade</h2></div>
+<div class="content">
+<ul class="spaced">
+<li><b>Exportar em vários formatos:</b> em <code>Arquivo &gt; Fazer download</code>, salve como <b>PDF</b>
+                    (para enviar a prova pronta), <b>Word (.docx)</b> (para quem ainda usa Office) ou <b>ePub</b>.</li>
+<li><b>"Ajude-me a escrever" (Gemini):</b> a inteligência artificial do Google ajuda a <b>rascunhar</b> um
+                    comunicado, <b>resumir</b> um texto longo ou <b>reformular</b> uma frase. Escreva a ideia e refine o
+                    resultado — sempre revisando com seu olhar de professor.</li>
+<li><b>Trabalhar offline:</b> ative o modo offline e edite mesmo sem internet; ao reconectar, tudo sincroniza
+                    automaticamente. Útil em escolas com conexão instável.</li>
+</ul>
+<div class="tip-box">
+<p>O Google Docs conversa com o resto do <b>Google Workspace</b>: você anexa documentos direto no
+                    <b>Google Classroom</b>, insere planilhas do <b>Sheets</b> e envia arquivos pelo <b>Gmail</b> em
+                    poucos cliques.</p>
+</div>
+</div>
+</div>
+
+<!-- Cuidados / boas práticas -->
+<div class="slide">
+<div class="header"><h2>Cuidados e boas práticas</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Boa prática</th><th>Por quê</th></tr>
+<tr><td>Nomeie bem cada documento</td><td>"Prova_Historia_9A_2bim" acha-se fácil; "Documento sem título" some no Drive</td></tr>
+<tr><td>Confira a permissão antes de enviar o link</td><td>Evita que a turma edite (ou apague) um material que deveria só ler</td></tr>
+<tr><td>Use "Fazer uma cópia" para reaproveitar</td><td>Preserva o original e não mistura turmas diferentes</td></tr>
+<tr><td>Oriente os alunos sobre conduta</td><td>Num documento coletivo, combine regras: não apagar o texto do colega, usar comentários para discordar</td></tr>
+<tr><td>Cuide dos dados dos alunos</td><td>Compartilhe informações sensíveis só com quem precisa; prefira contas escolares às pessoais</td></tr>
+</table>
+<div class="warn-box">
+<p>Lembre a turma de que <b>tudo fica registrado no histórico</b>. Isso desestimula brincadeiras de apagar o
+                    trabalho alheio — e ensina responsabilidade digital.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#4285F4;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">O <b>Google Docs</b> é um processador de texto na
+            nuvem, sempre salvo e feito para <b>colaborar</b>. Domine os <b>estilos de título</b>, a <b>edição em tempo
+            real</b>, os <b>comentários</b> e o <b>Modo Sugestão</b> para corrigir com feedback, e o <b>histórico de
+            versões</b> para acompanhar a autoria em trabalhos de grupo. Escolha bem as <b>permissões</b>
+            (Leitor, Comentarista, Editor) e aproveite modelos, exportação em PDF/Word e a ajuda do Gemini. Uma única
+            cópia, sempre atualizada, transforma a escrita em sala numa experiência coletiva e viva.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Digitais na Prática Docente</p>
+</footer>
+</body>
+</html>

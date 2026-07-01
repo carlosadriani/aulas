@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tecnologias Digitais na Prática Docente - Google Sala de Aula</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #1e8e3e; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #0d652d; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #1e8e3e; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #1e8e3e; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #1e8e3e; font-weight: bold; }
+        .info-box { border-left: 5px solid #1e8e3e; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .tip-box { border-left: 5px solid #10b981; background: #ecfdf5; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #1e8e3e; font-size: 26px; }
+        .steps { counter-reset: step; list-style: none; padding: 0; margin-top: 10px; }
+        .steps li { position: relative; padding: 14px 14px 14px 62px; margin-bottom: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; line-height: 1.6; }
+        .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; background: #1e8e3e; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .prompt-box { background: #1e293b; color: #e2e8f0; padding: 24px 28px; border-radius: 10px; border-left: 8px solid #1e8e3e; line-height: 1.7; font-size: 18px; margin-top: 20px; }
+        .prompt-box .label { display:inline-block; font-family:"Fira Code",monospace; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#38bdf8; margin-bottom:10px; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Digitais na Prática Docente
+            </h1>
+<p>Google Sala de Aula</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-chalkboard-user" style="font-size:80px;margin-bottom:30px;color:#1e8e3e;"></i>
+<h1>Google Sala de Aula</h1>
+<p style="font-size: 24px; opacity: 0.8;">Sua sala de aula, agora também no mundo digital</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Organizando aulas, atividades e notas com o Google Classroom</div>
+</div>
+
+<!-- O que é -->
+<div class="slide">
+<div class="header"><h2>O que é o Google Sala de Aula?</h2></div>
+<div class="content">
+<p class="lead">O <span class="highlight">Google Sala de Aula</span> (Google Classroom) é uma
+                <b>sala de aula virtual</b> gratuita: um lugar único onde o professor publica avisos, disponibiliza
+                materiais, cria atividades, recebe os trabalhos dos alunos e registra as notas.</p>
+<div class="info-box">
+<p>Pense nele como o <b>"caderno de recados" e o "quadro" da turma reunidos em um só lugar</b>, acessível pelo
+                    computador ou pelo celular. O aluno não perde mais a folha da atividade nem a data da entrega:
+                    está tudo organizado e centralizado.</p>
+</div>
+<p style="margin-top:16px;">Sua maior força é <b>conectar as outras ferramentas do Google</b> que o professor já
+                usa no dia a dia:</p>
+<div class="grid" style="margin-top:16px;">
+<div class="card"><h3><i class="fa-brands fa-google-drive"></i> Drive</h3>Guarda automaticamente cada material e cada trabalho entregue, em pastas organizadas por turma.</div>
+<div class="card"><h3><i class="fa-solid fa-file-lines"></i> Docs, Planilhas e Apresentações</h3>Permite criar e corrigir atividades sem sair da plataforma.</div>
+<div class="card"><h3><i class="fa-solid fa-square-poll-vertical"></i> Formulários (Forms)</h3>Vira "atividade com teste" corrigida automaticamente.</div>
+<div class="card"><h3><i class="fa-solid fa-video"></i> Meet e Agenda</h3>Cria links de videochamada da turma e coloca os prazos direto no calendário.</div>
+</div>
+</div>
+</div>
+
+<!-- Criar turma e adicionar alunos -->
+<div class="slide">
+<div class="header"><h2>Criar uma turma e adicionar alunos</h2></div>
+<div class="content">
+<p>Tudo começa criando a turma. No canto superior direito, clique no botão <code>+</code> &gt;
+                <code>Criar turma</code> e dê um nome (ex.: <i>"7º Ano B – Ciências"</i>), seção, sala e disciplina.
+                Feita a turma, há <b>três formas de trazer os alunos</b> para dentro dela:</p>
+<table class="table">
+<tr><th>Forma de entrada</th><th>Como funciona</th><th>Ideal para</th></tr>
+<tr><td><b>Código da turma</b></td><td>A turma ganha um código curto (ex.: <code>a7x2kq</code>). O aluno entra em <code>Participar da turma</code> e digita o código.</td><td>Fazer a turma inteira entrar de uma vez, em sala</td></tr>
+<tr><td><b>Convite por e-mail</b></td><td>Na aba <b>Pessoas</b>, o professor adiciona os e-mails dos alunos. Cada um recebe um convite para aceitar.</td><td>Turmas com lista de e-mails já pronta</td></tr>
+<tr><td><b>Link de convite</b></td><td>Um link que, ao ser aberto, leva direto para a inscrição na turma.</td><td>Compartilhar por WhatsApp, e-mail ou mural da escola</td></tr>
+</table>
+<div class="info-box">
+<p><b>Professor x aluno:</b> quem <u>cria</u> a turma é professor e tem controle total (postar, avaliar,
+                    remover alunos). Você também pode convidar <b>outros professores</b> para colaborar. Os alunos só
+                    veem o que é destinado a eles e não podem editar as postagens da turma.</p>
+</div>
+</div>
+</div>
+
+<!-- O Mural -->
+<div class="slide">
+<div class="header"><h2>O Mural: o coração da comunicação</h2></div>
+<div class="content">
+<p class="lead">O <span class="highlight">Mural</span> é a primeira tela que a turma vê. É o mural de avisos da
+                sala: um feed onde professor e (se autorizados) alunos publicam recados.</p>
+<div class="grid">
+<div class="card"><h3><i class="fa-solid fa-bullhorn"></i> Postar um aviso</h3>Comunicados rápidos: "Amanhã não haverá aula", "Tragam o livro na sexta". Pode anexar arquivos, links e vídeos.</div>
+<div class="card"><h3><i class="fa-solid fa-comments"></i> Iniciar uma discussão</h3>Faça uma pergunta aberta e deixe os alunos comentarem, criando debate — por exemplo, uma reflexão sobre um texto lido.</div>
+<div class="card"><h3><i class="fa-solid fa-clock"></i> Agendar postagens</h3>Escreva o aviso hoje e programe para aparecer na segunda de manhã. Ótimo para planejar a semana com antecedência.</div>
+<div class="card"><h3><i class="fa-solid fa-thumbtack"></i> Fixar comunicados</h3>Mova um aviso importante para o topo (mover para o início), para que ninguém deixe de vê-lo.</div>
+</div>
+<div class="tip-box">
+<p><b>Dica de gestão:</b> nas configurações da turma, você decide se os alunos <b>podem postar e comentar</b>,
+                    <b>apenas comentar</b> ou <b>somente ler</b>. Em turmas menores, liberar comentários incentiva a
+                    participação; em turmas grandes, restringir ajuda a manter o mural organizado.</p>
+</div>
+</div>
+</div>
+
+<!-- Trabalhos da turma -->
+<div class="slide">
+<div class="header"><h2>"Trabalhos da turma": onde tudo acontece</h2></div>
+<div class="content">
+<p>A aba <span class="highlight">Trabalhos da turma</span> (ou "Atividades") é o espaço pedagógico do
+                Classroom. Pelo botão <code>+ Criar</code>, você tem vários tipos de item:</p>
+<table class="table">
+<tr><th>Tipo</th><th>O que é</th><th>Exemplo escolar</th></tr>
+<tr><td><b>Atividade (tarefa)</b></td><td>Uma tarefa que o aluno entrega e você avalia.</td><td>"Resolver a lista de exercícios de frações"</td></tr>
+<tr><td><b>Atividade com teste</b></td><td>Uma atividade que já vem com um Formulário Google acoplado, com correção automática.</td><td>Quiz de 10 questões sobre o Sistema Solar</td></tr>
+<tr><td><b>Pergunta</b></td><td>Uma única pergunta (aberta ou de múltipla escolha) para resposta rápida.</td><td>"Em uma frase, o que você aprendeu hoje?"</td></tr>
+<tr><td><b>Material</b></td><td>Conteúdo de apoio, sem entrega nem nota.</td><td>Um PDF de leitura, um vídeo, os slides da aula</td></tr>
+</table>
+<div class="info-box">
+<p><b>Organize por Tópicos:</b> crie <b>tópicos</b> (ex.: "Unidade 1 – Números", "Unidade 2 – Geometria",
+                    "Leituras", "Provas") e agrupe cada item dentro de um deles. Sem tópicos, tudo vira uma pilha
+                    confusa; com eles, o aluno encontra o material da semana em segundos.</p>
+</div>
+</div>
+</div>
+
+<!-- Anexar e cópia para cada aluno -->
+<div class="slide">
+<div class="header"><h2>Anexos, prazos e a mágica da "cópia para cada aluno"</h2></div>
+<div class="content">
+<p>Ao criar uma atividade, você define alguns detalhes importantes:</p>
+<ul class="spaced">
+<li><b>Anexos:</b> arquivos do Drive, links, vídeos do YouTube ou documentos criados na hora (Docs, Slides…).</li>
+<li><b>Prazo (data de entrega):</b> dia e hora. Entregas depois disso são marcadas como <b>"Entregue com atraso"</b>.</li>
+<li><b>Pontuação:</b> o valor da atividade (ex.: 10 pontos) — ou marque como "sem nota".</li>
+<li><b>Para quem:</b> a turma inteira ou <b>apenas alguns alunos</b> selecionados (útil para atividades diferenciadas).</li>
+</ul>
+<div class="warn-box">
+<p>Ao anexar um documento do Google (Docs, Slides, Planilhas), aparece um menu com três opções. A escolha
+                    muda tudo:</p>
+</div>
+<table class="table">
+<tr><th>Opção do anexo</th><th>O que acontece</th></tr>
+<tr><td><b>Os alunos podem ver o arquivo</b></td><td>Todos veem o <u>mesmo</u> documento, apenas para leitura. Bom para um enunciado ou texto de apoio.</td></tr>
+<tr><td><b>Os alunos podem editar o arquivo</b></td><td>Todos escrevem no <u>mesmo</u> documento. Bom para um trabalho colaborativo da turma.</td></tr>
+<tr><td><b>Fazer uma cópia para cada aluno</b></td><td>O Classroom <b>duplica o arquivo automaticamente</b> e entrega uma cópia individual, já nomeada, para cada aluno no Drive.</td></tr>
+</table>
+<div class="info-box">
+<p><b>A "cópia para cada aluno" é a função mais poderosa do Classroom.</b> Imagine dar uma folha de redação
+                    com o cabeçalho já pronto: você prepara <u>um</u> modelo em Docs e o sistema cria, sozinho, 30
+                    cópias — "Redação – Ana", "Redação – Bruno"… Cada aluno escreve na <b>sua própria cópia</b>, sem
+                    interferir na dos colegas, e você recebe todas separadas para corrigir.</p>
+</div>
+</div>
+</div>
+
+<!-- Fluxo do aluno -->
+<div class="slide">
+<div class="header"><h2>O fluxo do aluno: da tarefa à entrega</h2></div>
+<div class="content">
+<div class="flow">
+<div class="node">Ver a tarefa</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Abrir os anexos</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Fazer o trabalho</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Anexar / criar</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Entregar</div>
+</div>
+<p style="margin-top:24px;">Do lado do aluno, tudo é simples. Ele abre a atividade e vê o enunciado, o prazo e
+                os anexos. Se recebeu uma cópia individual, ela já está lá, pronta para escrever. Terminado o trabalho,
+                ele clica no botão azul <span class="highlight">Entregar</span>.</p>
+<div class="grid" style="margin-top:16px;">
+<div class="card"><h3><i class="fa-solid fa-paperclip"></i> Anexar o trabalho</h3>Se a atividade pede um arquivo, o aluno usa "+ Adicionar ou criar" para anexar um documento, foto ou link antes de entregar.</div>
+<div class="card"><h3><i class="fa-solid fa-rotate-left"></i> Cancelar envio</h3>Percebeu um erro? O aluno pode "Cancelar envio", corrigir e entregar de novo, desde que dentro do prazo combinado.</div>
+</div>
+<div class="tip-box">
+<p><b>Ensine o botão "Entregar":</b> um erro comum de alunos iniciantes é fazer a tarefa mas esquecer de
+                    clicar em <b>Entregar</b> — para o professor, ela aparece como não entregue. Reforce esse passo nas
+                    primeiras atividades.</p>
+</div>
+</div>
+</div>
+
+<!-- Corrigir -->
+<div class="slide">
+<div class="header"><h2>Corrigir: notas, comentários e rubricas</h2></div>
+<div class="content">
+<p>Ao abrir uma atividade, o professor vê o <span class="highlight">painel de entregas</span>: quantos alunos
+                <b>entregaram</b>, quantos estão <b>com a atividade atribuída</b> (ainda não entregaram) e quantos
+                entregaram <b>com atraso</b>.</p>
+<div class="grid">
+<div class="card"><h3><i class="fa-solid fa-pen"></i> Dar nota</h3>Abra o trabalho de cada aluno, avalie e digite a nota no campo de pontuação.</div>
+<div class="card"><h3><i class="fa-solid fa-comment-dots"></i> Comentários privados</h3>Escreva um feedback que <b>só aquele aluno</b> vê — elogios, orientações, o que melhorar.</div>
+<div class="card"><h3><i class="fa-solid fa-highlighter"></i> Comentários no texto</h3>No próprio Docs, selecione um trecho e comente, como quem corrige com caneta vermelha na margem.</div>
+<div class="card"><h3><i class="fa-solid fa-reply"></i> Devolver</h3>Ao clicar em <b>Devolver</b>, a nota e os comentários são liberados; o aluno volta a poder editar (se necessário).</div>
+</div>
+<div class="info-box">
+<p><b>Rubricas:</b> ao criar a atividade, adicione uma <b>rubrica</b> — uma tabela de <b>critérios</b>
+                    (ex.: "Ortografia", "Argumentação", "Organização") com <b>níveis de desempenho</b> e pontos.
+                    Na hora de corrigir, você clica no nível de cada critério e a nota é somada automaticamente. Além
+                    de agilizar, deixa a avaliação <b>mais justa e transparente</b>: o aluno enxerga exatamente onde
+                    ganhou e onde perdeu pontos.</p>
+</div>
+</div>
+</div>
+
+<!-- Notas e integrações -->
+<div class="slide">
+<div class="header"><h2>Notas e integrações automáticas</h2></div>
+<div class="content">
+<p>A aba <span class="highlight">Notas</span> reúne, em uma grande tabela, todas as atividades (colunas) e
+                todos os alunos (linhas). É o seu <b>diário de classe digital</b>: dá para ver rapidamente quem está
+                em dia e quem tem pendências.</p>
+<table class="table">
+<tr><th>Recurso</th><th>Como ajuda o professor</th></tr>
+<tr><td><b>Página de Notas</b></td><td>Panorama completo do desempenho da turma, com médias por atividade.</td></tr>
+<tr><td><b>Exportar as notas</b></td><td>Baixe tudo como <b>planilha</b> (Google Sheets ou CSV) para fechar o boletim ou levar ao sistema da escola.</td></tr>
+<tr><td><b>Categorias de nota</b></td><td>Agrupe por peso (ex.: Provas 60%, Atividades 40%) para calcular a média ponderada do bimestre.</td></tr>
+</table>
+<div class="info-box">
+<p><b>Integração com a Google Agenda:</b> toda atividade com prazo aparece <b>automaticamente</b> no
+                    calendário da turma. O aluno abre a Agenda e vê "Entrega da Redação – sexta, 18h", sem que você
+                    precise avisar manualmente. Reuniões pelo Meet marcadas na turma também entram no calendário.</p>
+</div>
+</div>
+</div>
+
+<!-- Comunicação com responsáveis -->
+<div class="slide">
+<div class="header"><h2>Comunicação com os responsáveis</h2></div>
+<div class="content">
+<p class="lead">O Classroom (nas contas escolares) permite convidar <span class="highlight">pais e
+                responsáveis</span> para receberem <b>resumos por e-mail</b> — sem que eles precisem entrar na turma.</p>
+<div class="grid">
+<div class="card"><h3><i class="fa-solid fa-envelope-open-text"></i> O que o resumo traz</h3>Trabalhos <b>não entregues</b>, atividades com <b>prazo próximo</b> e as <b>novidades do mural</b> da turma.</div>
+<div class="card"><h3><i class="fa-solid fa-calendar-week"></i> Frequência</h3>O responsável escolhe receber o resumo <b>diário</b> ou <b>semanal</b>, no e-mail dele.</div>
+</div>
+<div class="info-box">
+<p>Para ativar, o professor (ou o administrador da escola) vai em <b>Pessoas &gt; Responsáveis</b> e convida
+                    o e-mail do pai/mãe/guardião. Isso aproxima a família do acompanhamento escolar, especialmente no
+                    ensino fundamental, sem sobrecarregar o professor com mensagens individuais.</p>
+</div>
+<div class="warn-box">
+<p>O recurso de resumo para responsáveis normalmente só está disponível em contas do
+                    <b>Google Workspace for Education</b> (contas institucionais da escola), não em contas Gmail pessoais.</p>
+</div>
+</div>
+</div>
+
+<!-- Exemplo prático completo -->
+<div class="slide">
+<div class="header"><h2>Exemplo completo: "Redação sobre meio ambiente"</h2></div>
+<div class="content">
+<p>Vamos montar, do início ao fim, uma atividade real de Língua Portuguesa para o 8º ano:</p>
+<ol class="steps">
+<li>Em <b>Trabalhos da turma &gt; + Criar &gt; Atividade</b>, dê o título <i>"Redação: cuidando do meio ambiente"</i> e escreva as instruções (tema, mínimo de 20 linhas, critérios gerais).</li>
+<li>Clique em <b>+ Adicionar ou criar &gt; Documentos Google</b>. Monte um modelo com o cabeçalho ("Nome:", "Turma:", "Título da redação:") e as linhas em branco.</li>
+<li>No menu do anexo, escolha <b>"Fazer uma cópia para cada aluno"</b>. O sistema criará automaticamente uma cópia individual (ex.: "Redação – Meio Ambiente – Ana").</li>
+<li>Defina a <b>pontuação</b> (ex.: 10 pontos) e o <b>prazo</b> (ex.: próxima sexta, 23h59), que já entra na Agenda dos alunos.</li>
+<li>Clique em <b>Rubrica &gt; Criar rubrica</b> com os critérios <i>Tema/Argumentação</i>, <i>Coesão</i> e <i>Ortografia</i>, cada um com níveis e pontos.</li>
+<li>Publique a atividade. Cada aluno abre a <b>sua cópia</b>, escreve a redação no Docs e clica em <b>Entregar</b>.</li>
+<li>No painel de entregas, abra cada redação, faça comentários no texto, clique nos níveis da <b>rubrica</b> (a nota é somada sozinha) e escreva um <b>comentário privado</b>.</li>
+<li>Clique em <b>Devolver</b>: o aluno recebe a nota, seus comentários e a rubrica preenchida, entendendo exatamente como pode melhorar.</li>
+</ol>
+</div>
+</div>
+
+<!-- Boas práticas e cuidados -->
+<div class="slide">
+<div class="header"><h2>Boas práticas e cuidados</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Tema</th><th>Recomendação</th></tr>
+<tr><td><b>Organização por tópicos</b></td><td>Crie tópicos por unidade, mês ou tipo de conteúdo. Nomeie atividades de forma clara e padronizada. Turma organizada = aluno que não se perde.</td></tr>
+<tr><td><b>Prazos realistas</b></td><td>Evite prazos "meia-noite em ponto". Combine horários e reserve tempo para dúvidas. Use o agendamento de postagens para distribuir os avisos.</td></tr>
+<tr><td><b>Privacidade dos alunos</b></td><td>Não exponha notas publicamente no mural. Use <b>comentários privados</b> para feedback individual. Cuidado ao compartilhar fotos e nomes de crianças.</td></tr>
+<tr><td><b>Convites e código da turma</b></td><td>Reative o código só quando precisar; desative-o depois que todos entrarem, para impedir que estranhos usem o código antigo.</td></tr>
+<tr><td><b>Contas escolares x pessoais</b></td><td>Prefira contas <b>Google Workspace for Education</b> da escola: mais segurança, controle de dados dos menores e recursos como resumo para responsáveis. Contas Gmail pessoais têm limitações.</td></tr>
+<tr><td><b>Backup e reaproveitamento</b></td><td>Ao final do ano, "arquive" a turma (ela some da tela, mas os arquivos ficam no Drive). Você pode <b>reutilizar postagens</b> de turmas anteriores no ano seguinte.</td></tr>
+</table>
+<div class="warn-box">
+<p><b>Proteção de dados de menores:</b> ao trabalhar com crianças e adolescentes, siga as orientações da
+                    escola e a legislação (como a LGPD). O uso de contas institucionais, com consentimento dos
+                    responsáveis, é o caminho mais seguro.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#1e8e3e;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">O <b>Google Sala de Aula</b> centraliza a vida da
+            turma: crie a turma e traga os alunos por <b>código, e-mail ou link</b>; comunique-se pelo <b>Mural</b>;
+            organize <b>atividades, materiais e testes</b> por tópicos. Use a <b>"cópia para cada aluno"</b> para dar
+            trabalhos individuais em Docs, defina <b>prazos</b> (que vão para a Agenda) e corrija com <b>notas,
+            comentários privados e rubricas</b>. Acompanhe tudo na página de <b>Notas</b> e aproxime as famílias com os
+            <b>resumos para responsáveis</b>. Bem usado, ele devolve ao professor o que mais importa: tempo para ensinar.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Digitais na Prática Docente</p>
+</footer>
+</body>
+</html>
