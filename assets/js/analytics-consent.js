@@ -112,11 +112,7 @@
       "opacity:.85;cursor:pointer;}" +
       ".ap-footer-links a:hover{opacity:1;}" +
       ".ap-footer-links.ap-standalone{background:#0f172a;color:#94a3b8;text-align:center;" +
-      "padding:16px;margin:32px 0 0;}" +
-      ".ap-support-btn{display:inline-flex;align-items:center;gap:6px;background:#f59e0b;" +
-      "color:#0f172a !important;text-decoration:none !important;font-weight:700;" +
-      "border-radius:999px;padding:7px 16px;font-size:.85rem;margin-bottom:8px;opacity:1 !important;}" +
-      ".ap-support-btn:hover{opacity:.9 !important;}";
+      "padding:16px;margin:32px 0 0;}";
     var s = document.createElement("style");
     s.id = "ap-footer-style";
     s.appendChild(document.createTextNode(css));
@@ -127,8 +123,6 @@
     if (document.getElementById("ap-footer-links")) return;
     injectFooterStyles();
     var html =
-      '<div><a class="ap-support-btn" href="/apoie.html">' +
-      '<span aria-hidden="true">&#10084;</span> Apoie o projeto</a></div>' +
       '<div>' +
       '<a href="/privacidade.html">Privacidade</a>' +
       '<span aria-hidden="true"> &middot; </span>' +
