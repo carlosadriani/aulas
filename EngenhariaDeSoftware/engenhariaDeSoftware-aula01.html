@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 1: Introdução à Engenharia de Software e Modelos de Processo</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #18bc9c;
+            --background-color: #f8f9fa;
+            --text-color: #333333;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--secondary-color);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.4rem;
+        }
+
+        header p {
+            margin: 0.5rem 0 0 0;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.4rem;
+            margin-top: 2.5rem;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background-color: #e8f4f8;
+            border-left: 5px solid #2980b9;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .quote-box {
+            background-color: #f1f5f9;
+            border-left: 5px solid var(--primary-color);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--card-bg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 0.8rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            color: #7f8c8d;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            table { display: block; overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Engenharia de Software</h1>
+        <p>Aula 1: Fundamentos, Crise do Software e Modelos de Processo</p>
+    </header>
+
+    <main>
+        <h2>1. Introdução Histórica: A Crise do Software</h2>
+        <p>Na década de 1960, o rápido avanço do hardware (computadores mais rápidos e potentes) gerou uma demanda sem precedentes por sistemas de software complexos. No entanto, as técnicas de programação da época eram majoritariamente artesanais.</p>
+        
+        <div class="highlight-box">
+            <strong>O que foi a Crise do Software?</strong><br>
+            Um termo cunhado na primeira conferência da OTAN sobre Engenharia de Software em 1968 para descrever os problemas crônicos da indústria: projetos que estouravam sistematicamente os prazos e orçamentos, sistemas entregues com baixa qualidade e softwares difíceis ou impossíveis de manter.
+        </div>
+
+        <h2>2. O que é Engenharia de Software?</h2>
+        <p>Para solucionar a crise, tornou-se evidente que o desenvolvimento de software precisava evoluir de uma atividade individualizada para uma disciplina de engenharia rigorosa.</p>
+        
+        <div class="quote-box">
+            "A aplicação de uma abordagem sistemática, disciplinada e quantificável ao desenvolvimento, operação e manutenção de software; isto é, a aplicação da engenharia ao software." <br>
+            <strong>— Definição Oficial do IEEE</strong>
+        </div>
+
+        <h3>Os Quatro Pilares da Engenharia de Software:</h3>
+        <ul>
+            <li><strong>Processos:</strong> A estrutura que mantém a estabilidade e o controle do projeto.</li>
+            <li><strong>Métodos:</strong> O "como fazer" técnico (modelagem, design de arquitetura, codificação).</li>
+            <li><strong>Ferramentas:</strong> O suporte automatizado ou semi-automatizado para os processos e métodos (Ex: IDEs, Git, CI/CD).</li>
+            <li><strong>Qualidade:</strong> O foco contínuo em garantir que o produto atenda aos requisitos e seja confiável.</li>
+        </ul>
+
+        <h2>3. Modelos de Processo de Software</h2>
+        <p>Um modelo de processo de software é uma representação abstrata de um ciclo de vida de desenvolvimento. Veremos os dois principais paradigmas de mercado.</p>
+
+        <h3>3.1 O Modelo Cascata (Waterfall)</h3>
+        <p>É o modelo clássico e linear, onde cada fase deve ser totalmente concluída antes que a próxima comece. As fases típicas incluem: Requisitos, Projeto, Implementação, Testes e Manutenção.</p>
+        <p><strong>Vantagem:</strong> Estrutura clara, fácil controle gerencial em projetos com escopo totalmente conhecido.</p>
+        <p><strong>Desvantagem:</strong> Altamente inflexível. Mudanças de requisitos no meio do projeto geram custos proibitivos.</p>
+
+        <h3>3.2 Metodologias Ágeis e o Framework Scrum</h3>
+        <p>Em contrapartida ao modelo tradicional, o Manifesto Ágil (2001) priorizou indivíduos e interações, software funcional, colaboração com o cliente e resposta rápida a mudanças.</p>
+        <p>O <strong>Scrum</strong> se destaca como o framework ágil mais utilizado do mercado, operando através de ciclos iterativos e incrementais chamados <em>Sprints</em> (geralmente de 2 a 4 semanas).</p>
+
+        <h2>4. Comparativo Técnico Avançado</h2>
+        <p>Abaixo, apresentamos um quadro analítico para apoiar a tomada de decisão arquitetural e gerencial:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Critério de Análise</th>
+                    <th>Engenharia Tradicional (Cascata)</th>
+                    <th>Engenharia Ágil (Scrum)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <strong><td>Flexibilidade de Escopo</td></strong>
+                    <td>Baixa. Mudanças exigem processos rígidos de controle.</td>
+                    <td>Alta. Escopo é dinâmico e reavaliado a cada ciclo.</td>
+                </tr>
+                <tr>
+                    <strong><td>Entrega de Valor</td></strong>
+                    <td>Tardia (somente na fase final do projeto).</td>
+                    <td>Antecipada e incremental (a cada final de Sprint).</td>
+                </tr>
+                <tr>
+                    <strong><td>Papel do Cliente</td></strong>
+                    <td>Ativo no início (requisitos) e no fim (homologação).</td>
+                    <td>Colaboração contínua ao longo de todo o processo.</td>
+                </tr>
+                <tr>
+                    <strong><td>Documentação</td></strong>
+                    <td>Extensa e exaustiva (foco em artefatos formais).</td>
+                    <td>Direcionada e viva (foco em código limpo e histórias).</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Ajuda Professor - Material Didático de Engenharia de Software. Permitido o uso para fins educacionais.</p>
+    </footer>
+
+</body>
+</html>

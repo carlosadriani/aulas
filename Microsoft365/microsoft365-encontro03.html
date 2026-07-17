@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com">
+<!-- Google Analytics 4 (gtag.js) + Consentimento LGPD -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHE86CNTZB"></script>
+<script src="/assets/js/analytics-consent.js"></script>
+<link rel="canonical" href="https://www.ajudaprofessor.com.br/Microsoft365/microsoft365-encontro03.html">
+<meta name="description" content="Encontro 03 do curso Tecnologias Microsoft 365: Forms, Lists e Power Automate, agentes de IA do Copilot, uso responsável, LGPD e projeto integrador.">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ajuda Professor">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Microsoft 365 - Encontro 03: Automação e IA na Prática">
+<meta property="og:description" content="Forms, Lists e Power Automate, agentes de IA do Copilot, uso responsável, LGPD e projeto integrador.">
+<meta property="og:url" content="https://www.ajudaprofessor.com.br/Microsoft365/microsoft365-encontro03.html">
+<meta property="og:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Microsoft 365 - Encontro 03: Automação e IA na Prática">
+<meta name="twitter:description" content="Forms, Lists e Power Automate, agentes de IA do Copilot, uso responsável, LGPD e projeto integrador.">
+<meta name="twitter:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Microsoft 365 - Encontro 03: Automação e IA na Prática</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #0078d4; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #0078d4; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #0078d4; color: white; padding: 13px 15px; text-align: left; }
+        .table td { padding: 10px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #0078d4; font-weight: bold; }
+        .info-box { border-left: 5px solid #0078d4; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .fire-box { border-left: 5px solid #d83b01; background: #fff5f2; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .num { color: #0078d4; font-weight: bold; }
+        .flow { display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:24px; }
+        .flow__step { background:#f0f9ff; border:2px solid #0078d4; border-radius:10px; padding:16px 20px; text-align:center; font-size:17px; min-width:150px; }
+        .flow__arrow { color:#0078d4; font-size:26px; }
+        code { background:#f1f5f9; padding:1px 5px; border-radius:4px; font-family:"Fira Code",monospace; font-size:0.92em; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos do curso</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Microsoft 365
+            </h1>
+<p>Encontro 03 — Automação e IA: Forms, Lists, Power Automate e Agentes</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-gears" style="font-size: 80px; margin-bottom: 30px; color: #0078d4;"></i>
+<h1>Automação e IA na Prática</h1>
+<p style="font-size: 24px; opacity: 0.8;">Forms, Lists e Power Automate + agentes de IA — sem escrever uma linha de código</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Encontro 03 &nbsp;•&nbsp; Curso Tecnologias Microsoft 365</div>
+</div>
+
+<!-- Panorama -->
+<div class="slide">
+<div class="header"><h2>Do papel ao fluxo digital</h2></div>
+<div class="content">
+<p class="lead">Pense em um processo comum: <span class="highlight">o cidadão solicita uma vistoria</span>. Hoje: telefone,
+            anotação, planilha manual, e-mail, esquecimento. Com o M365, cada etapa tem uma ferramenta:</p>
+<div class="flow">
+<div class="flow__step"><i class="fa-solid fa-clipboard-question" style="color:#0078d4;"></i><br/><b>Forms</b><br/>coleta a solicitação</div>
+<div class="flow__arrow"><i class="fa-solid fa-arrow-right"></i></div>
+<div class="flow__step"><i class="fa-solid fa-table-list" style="color:#0078d4;"></i><br/><b>Lists</b><br/>registra e controla</div>
+<div class="flow__arrow"><i class="fa-solid fa-arrow-right"></i></div>
+<div class="flow__step"><i class="fa-solid fa-diagram-project" style="color:#0078d4;"></i><br/><b>Power Automate</b><br/>notifica e aprova</div>
+<div class="flow__arrow"><i class="fa-solid fa-arrow-right"></i></div>
+<div class="flow__step"><i class="fa-solid fa-robot" style="color:#0078d4;"></i><br/><b>Agentes de IA</b><br/>analisam e relatam</div>
+</div>
+<div class="info-box">
+<p>É exatamente este fluxo que vamos <b>construir juntos</b> hoje, peça por peça — e, no final, os <b>agentes de IA</b> do Copilot analisam os dados coletados e ajudam a gerar o relatório do projeto integrador.</p>
+</div>
+</div>
+</div>
+
+<!-- Forms -->
+<div class="slide">
+<div class="header"><h2>Microsoft Forms: formulários e checklists</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3>Para que serve</h3>
+<ul class="spaced">
+<li><b>Coleta externa:</b> solicitações de vistoria, inscrições em cursos, pesquisas de satisfação;</li>
+<li><b>Coleta interna:</b> checklist diário de viatura, conferência de EPIs, relatório rápido pós-ocorrência;</li>
+<li><b>Quizzes:</b> avaliações de treinamento com correção automática.</li>
+</ul>
+<h3>Recursos-chave</h3>
+<ul class="spaced">
+<li>Tipos de pergunta: escolha, texto, data, Likert, upload de arquivo;</li>
+<li><b>Ramificação:</b> "Se respondeu NÃO, pule para a seção de justificativa";</li>
+<li>Respostas caem numa <b>planilha do Excel</b> em tempo real;</li>
+<li>Divulgação por <b>link ou QR Code</b> (ótimo para colar na viatura).</li>
+</ul>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-truck-fast" style="color:#d83b01;"></i> Exemplo: checklist de viatura</h3>
+<table class="table" style="font-size:16px;">
+<tr><th>Pergunta</th><th>Tipo</th></tr>
+<tr><td>Prefixo da viatura</td><td>Escolha</td></tr>
+<tr><td>Data da conferência</td><td>Data</td></tr>
+<tr><td>Nível de combustível</td><td>Escolha (1/4 a cheio)</td></tr>
+<tr><td>Equipamentos completos?</td><td>Sim/Não + ramificação</td></tr>
+<tr><td>Se não: o que falta?</td><td>Texto</td></tr>
+<tr><td>Foto de avaria (se houver)</td><td>Upload</td></tr>
+</table>
+<p style="margin-top:12px;">O Copilot pode <b>gerar o rascunho do formulário</b> a partir de uma descrição — você só ajusta.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Lists + Planner -->
+<div class="slide">
+<div class="header"><h2>Lists e Planner: controle de itens e de tarefas</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3><i class="fa-solid fa-table-list" style="color:#0078d4;"></i> Microsoft Lists</h3>
+<p>Ideal para <b>controles com status</b>: cada linha é um item com colunas tipadas, formulário próprio, histórico e regras.</p>
+<ul class="spaced">
+<li><b>Colunas inteligentes:</b> escolha (Pendente/Em análise/Concluída), pessoa responsável, data;</li>
+<li><b>Exibições:</b> tabela, <b>calendário</b> ou <b>quadro</b> (estilo Kanban);</li>
+<li><b>Formatação condicional:</b> atrasados em vermelho, concluídos em verde;</li>
+<li><b>Regras:</b> "quando o status mudar para Concluída, avise o solicitante";</li>
+<li>Integra com o Teams: a lista vira uma <b>aba do canal</b>.</li>
+</ul>
+</div>
+<div>
+<h3><i class="fa-solid fa-diagram-project" style="color:#0078d4;"></i> Planner</h3>
+<p>Quadro de <b>tarefas da equipe</b>: buckets (A fazer / Fazendo / Feito), responsável, prazo, checklist e gráficos de andamento. As tarefas aparecem no To Do pessoal e no Teams.</p>
+<p style="margin-top:10px;"><b>Agente do Planner (novidade 2026):</b> a IA quebra um objetivo em tarefas, sugere prazos e acompanha o progresso.</p>
+<div class="card" style="margin-top:14px;">
+<h3 style="font-size:19px;">Lista "Vistorias 2026"</h3>
+<p style="font-size:16px;">Nº do protocolo, estabelecimento, endereço, tipo (escolha), responsável (pessoa), prazo (data) e status (escolha com cores). Comece de um <b>modelo pronto</b> ou importe a planilha do Excel que a equipe já usa.</p>
+</div>
+</div>
+</div>
+<div class="info-box">
+<p><b>Quando usar Excel × Lists × Planner?</b> Excel: cálculos e análises. Lists: acompanhamento de <b>itens</b> com status e prazo. Planner: acompanhamento de <b>tarefas</b> de um projeto ou equipe.</p>
+</div>
+</div>
+</div>
+
+<!-- Power Automate -->
+<div class="slide">
+<div class="header"><h2>Power Automate: o robô que trabalha por você</h2></div>
+<div class="content">
+<p class="lead">O <span class="highlight">Power Automate</span> conecta os aplicativos com a lógica
+            <b>gatilho → condição → ação</b>, sem programação:</p>
+<div class="code-box" style="font-size:17px;">
+<span style="color:#94a3b8;">// Fluxo: Solicitação de vistoria</span><br/>
+QUANDO&nbsp;&nbsp;uma resposta chegar no Forms<br/>
+ENTÃO&nbsp;&nbsp;&nbsp;criar item na lista "Vistorias 2026"<br/>
+E&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enviar aprovação ao chefe da seção<br/>
+SE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aprovado → postar no canal do Teams + criar tarefa no Planner<br/>
+SENÃO&nbsp;&nbsp;&nbsp;e-mail automático ao solicitante com a justificativa
+            </div>
+<div class="grid" style="margin-top:20px;">
+<div class="card">
+<h3><i class="fa-solid fa-bolt" style="color:#0078d4;"></i> Outros fluxos úteis</h3>
+<ul class="spaced" style="font-size:17px;">
+<li>Salvar anexos de e-mail direto numa pasta do SharePoint;</li>
+<li>Lembrete no Teams 3 dias antes do prazo de cada vistoria;</li>
+<li>Aviso quando um checklist de viatura reportar item faltando;</li>
+<li>Resumo semanal por e-mail dos itens pendentes da lista.</li>
+</ul>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-wand-magic-sparkles" style="color:#0078d4;"></i> Copilot no Power Automate</h3>
+<p>Descreva o fluxo em português — <i>"quando chegar resposta no Forms, crie item na lista e avise no Teams"</i> — e o Copilot monta o rascunho do fluxo. Você só conecta as contas e testa.</p>
+<p style="margin-top:10px;">Use <b>modelos prontos</b> da galeria como ponto de partida: há centenas para Forms, aprovações e notificações.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Copilot Chat e agentes -->
+<div class="slide">
+<div class="header"><h2>Copilot Chat e agentes: a IA que executa tarefas</h2></div>
+<div class="content">
+<p class="lead">O <span class="highlight">Copilot Chat</span> conversa com todo o seu ambiente de trabalho (arquivos, e-mails,
+            reuniões, respeitando permissões). Já um <span class="highlight">agente</span> vai além: <b>planeja, executa em várias
+            etapas e entrega um resultado pronto</b>, pedindo sua aprovação no caminho.</p>
+<table class="table">
+<tr><th style="width:22%;">Agente</th><th>O que faz</th><th>Exemplo prático</th></tr>
+<tr><td><b>Agent Mode</b><br/>(Word/Excel/PPT)</td><td>Constrói e edita o documento em etapas, mostrando cada alteração</td><td>"Monte a planilha de controle de hidrantes com abas por bairro, fórmulas de vencimento e gráfico"</td></tr>
+<tr><td><b>Researcher</b></td><td>Pesquisa profunda: cruza documentos internos e fontes da web e entrega relatório com fontes</td><td>"Compare as exigências para eventos temporários na legislação estadual e nas normas internas"</td></tr>
+<tr><td><b>Analyst</b></td><td>Analista de dados: raciocina passo a passo sobre planilhas, gera estatísticas e gráficos</td><td>"Analise as ocorrências de 2025 e identifique padrões por horário, bairro e tipo"</td></tr>
+<tr><td><b>Agente do Planner</b></td><td>Quebra um objetivo em plano de tarefas e acompanha a execução</td><td>"Planeje a campanha de prevenção com tarefas, prazos e responsáveis"</td></tr>
+</table>
+<div class="info-box">
+<p><b>Ferramentas ao redor do Chat:</b> <b>Copilot Pages</b> (transforma respostas em páginas editáveis e compartilháveis), <b>Copilot Notebooks</b> (responde com base só nos arquivos de referência que você agrupar) e a <b>biblioteca de prompts</b> da equipe. Atenção ao modo: <b>Trabalho</b> (dados internos) × <b>Web</b> (internet).</p>
+</div>
+</div>
+</div>
+
+<!-- Uso responsável -->
+<div class="slide">
+<div class="header"><h2>Uso responsável: limites, LGPD e segurança</h2></div>
+<div class="content">
+<div class="grid-3">
+<div class="card">
+<h3><i class="fa-solid fa-triangle-exclamation" style="color:#f59e0b;"></i> Alucinações</h3>
+<p>A IA pode <b>inventar</b> números, artigos de lei e referências com aparência convincente. Todo dado crítico — prazos, normas, estatísticas — deve ser <b>conferido na fonte</b> antes de ir para um documento oficial.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-user-shield" style="color:#0078d4;"></i> Dados pessoais (LGPD)</h3>
+<p>Dados de cidadãos e ocorrências são <b>dados pessoais</b> — alguns, sensíveis. Use apenas as ferramentas <b>institucionais</b> (que mantêm os dados no ambiente da instituição) e nunca cole esses dados em IAs públicas ou contas pessoais.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-scale-balanced" style="color:#0078d4;"></i> Responsabilidade</h3>
+<p>O documento assinado é de quem assina, não da IA. A IA <b>apoia</b> a decisão; não decide. Transparência com a chefia sobre o uso de IA em documentos relevantes é boa prática.</p>
+</div>
+</div>
+<div class="fire-box">
+<p><b>Checklist antes de usar IA em um caso real:</b> ① Posso inserir estes dados aqui? ② O modo é o institucional (Trabalho)? ③ Conferi os fatos e as fontes? ④ Revisei o texto como se fosse meu? — porque é. E lembre: quanto mais autônomo o agente, mais importante a <b>revisão humana</b> etapa por etapa.</p>
+</div>
+</div>
+</div>
+
+<!-- Prática guiada + projeto integrador -->
+<div class="slide">
+<div class="header"><h2>Prática guiada e projeto integrador — o sistema de vistorias</h2></div>
+<div class="content">
+<p class="lead">Em equipes, montem e apresentem o sistema completo:</p>
+<ul class="spaced" style="font-size:20px;">
+<li><span class="num">1.</span> <b>Forms:</b> crie o formulário "Solicitação de Vistoria" (nome, estabelecimento, endereço, tipo, telefone) — pode pedir o rascunho ao Copilot;</li>
+<li><span class="num">2.</span> <b>Lists:</b> crie a lista "Vistorias 2026" com formatação condicional no Status;</li>
+<li><span class="num">3.</span> <b>Power Automate:</b> a partir do modelo pronto, monte o fluxo Forms → novo item na lista → aviso no canal do Teams;</li>
+<li><span class="num">4.</span> <b>Teste:</b> responda o formulário pelo QR Code no celular e veja o item nascer na lista e o aviso chegar no Teams;</li>
+<li><span class="num">5.</span> <b>Análise com IA:</b> use o <b>Analyst</b> ou o Copilot no Excel para gerar estatísticas das solicitações de teste;</li>
+<li><span class="num">6.</span> <b>Relatório e apresentação:</b> relatório final no Word com Copilot + 5 minutos de apresentação por equipe.</li>
+</ul>
+<div class="info-box">
+<p><b>Critérios de avaliação:</b> funcionamento do fluxo de ponta a ponta, organização dos arquivos, qualidade da revisão humana sobre o material gerado por IA e clareza da apresentação.</p>
+</div>
+</div>
+</div>
+
+<!-- Continuidade -->
+<div class="slide">
+<div class="header"><h2>Para continuar aprendendo</h2></div>
+<div class="content">
+<ul class="spaced" style="font-size:21px;">
+<li><b>Este site</b> — os slides e práticas ficam disponíveis permanentemente em <span class="highlight">www.ajudaprofessor.com.br</span>;</li>
+<li><b>Microsoft Learn</b> (<code>learn.microsoft.com/pt-br</code>) — trilhas gratuitas de M365 e Copilot, em português;</li>
+<li><b>Suporte do Microsoft 365</b> (<code>support.microsoft.com/pt-br</code>) — guias passo a passo de cada aplicativo;</li>
+<li><b>Blog do Microsoft 365</b> — novidades mensais do Copilot (o ritmo de lançamentos é intenso: o que vimos hoje continuará evoluindo);</li>
+<li><b>Comunidade interna:</b> mantenham o canal do curso no Teams vivo — dúvidas, descobertas e novos fluxos compartilhados entre colegas valem mais que qualquer apostila.</li>
+</ul>
+<div class="fire-box">
+<p><b>Compromisso de saída:</b> cada participante escolhe <b>uma rotina real</b> do seu setor para digitalizar nos próximos 30 dias usando o que aprendeu — e compartilha o resultado no canal da turma.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#0078d4;">Missão cumprida</h1>
+<p style="font-size: 22px; max-width: 840px; opacity: 0.9;">Em três encontros, saímos do arquivo no pendrive para um
+            <b>fluxo digital completo com IA</b>: nuvem organizada, documentos acelerados pelo <b>Copilot</b>, rotinas
+            automatizadas e <b>agentes</b> trabalhando sob supervisão humana. A tecnologia muda rápido — mas quem domina os
+            fundamentos (organização, bons prompts e revisão crítica) só precisa acompanhar as novidades.</p>
+<div style="margin-top: 40px;">
+<a href="microsoft365-encontro02.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Encontro 02
+            </a>
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px; margin-left: 12px;">
+                Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Microsoft 365</p>
+</footer>
+</body>
+</html>
