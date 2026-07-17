@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com">
+<!-- Google Analytics 4 (gtag.js) + Consentimento LGPD -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHE86CNTZB"></script>
+<script src="/assets/js/analytics-consent.js"></script>
+<link rel="canonical" href="https://www.ajudaprofessor.com.br/Microsoft365/topico-word-tcc-abnt.html">
+<meta name="description" content="Formatação de Trabalho de Conclusão de Curso (TCC) nas normas ABNT usando o Microsoft Word: NBR 14724, margens, estilos, citações NBR 10520, sumário automático e referências NBR 6023.">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ajuda Professor">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Microsoft 365 - TCC nas Normas ABNT com o Word">
+<meta property="og:description" content="NBR 14724, margens, estilos, citações NBR 10520, sumário automático e referências NBR 6023 no Microsoft Word.">
+<meta property="og:url" content="https://www.ajudaprofessor.com.br/Microsoft365/topico-word-tcc-abnt.html">
+<meta property="og:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Microsoft 365 - TCC nas Normas ABNT com o Word">
+<meta name="twitter:description" content="NBR 14724, margens, estilos, citações NBR 10520, sumário automático e referências NBR 6023 no Microsoft Word.">
+<meta name="twitter:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Microsoft 365 - TCC nas Normas ABNT com o Word</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #0078d4; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #0078d4; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #0078d4; color: white; padding: 13px 15px; text-align: left; }
+        .table td { padding: 10px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #0078d4; font-weight: bold; }
+        .info-box { border-left: 5px solid #0078d4; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .fire-box { border-left: 5px solid #d83b01; background: #fff5f2; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .num { color: #0078d4; font-weight: bold; }
+        code { background:#f1f5f9; padding:1px 5px; border-radius:4px; font-family:"Fira Code",monospace; font-size:0.92em; }
+        kbd { background:#1e293b; color:#f8fafc; border-radius:5px; padding:2px 8px; font-family:"Fira Code",monospace; font-size:0.88em; border-bottom:2px solid #0f172a; white-space:nowrap; }
+        .ref-ex { background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:14px 18px; font-size:16.5px; line-height:1.55; margin-top:10px; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos do curso</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Microsoft 365
+            </h1>
+<p>Word — Formatação de TCC nas Normas ABNT com o Word</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-graduation-cap" style="font-size: 80px; margin-bottom: 30px; color: #0078d4;"></i>
+<h1>TCC nas Normas ABNT</h1>
+<p style="font-size: 24px; opacity: 0.8;">Formatação completa do Trabalho de Conclusão no Microsoft Word</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Conteúdo Word &nbsp;•&nbsp; Curso Tecnologias Microsoft 365</div>
+</div>
+
+<!-- As normas -->
+<div class="slide">
+<div class="header"><h2>O mapa das normas: qual NBR cuida do quê</h2></div>
+<div class="content">
+<table class="table">
+<tr><th style="width:22%;">Norma</th><th>Assunto</th><th>Onde aparece no TCC</th></tr>
+<tr><td><b>NBR 14724:2011</b></td><td>Estrutura e apresentação de trabalhos acadêmicos</td><td>Margens, fonte, espaçamento, capa, folha de rosto, ordem dos elementos</td></tr>
+<tr><td><b>NBR 10520:2023</b></td><td>Citações em documentos</td><td>Citações diretas, indiretas e sistema autor-data</td></tr>
+<tr><td><b>NBR 6023:2018</b></td><td>Referências</td><td>Lista de referências ao final</td></tr>
+<tr><td><b>NBR 6024:2012</b></td><td>Numeração progressiva das seções</td><td>1, 1.1, 1.1.1... e a formatação dos títulos</td></tr>
+<tr><td><b>NBR 6027:2012</b></td><td>Sumário</td><td>Sumário com os títulos e páginas</td></tr>
+<tr><td><b>NBR 6028:2021</b></td><td>Resumo</td><td>Resumo e palavras-chave</td></tr>
+</table>
+<div class="warn-box">
+<p><b>Antes de tudo:</b> verifique se a sua instituição tem um <b>manual próprio de normalização</b> — muitas adaptam a ABNT. O manual da instituição prevalece sobre o padrão geral mostrado aqui.</p>
+</div>
+</div>
+</div>
+
+<!-- Estrutura -->
+<div class="slide">
+<div class="header"><h2>A estrutura do trabalho (NBR 14724)</h2></div>
+<div class="content">
+<div class="grid-3">
+<div class="card">
+<h3>Pré-textuais</h3>
+<ul class="spaced" style="font-size:16.5px;">
+<li>Capa <i>(obrigatório)</i></li>
+<li>Folha de rosto <i>(obrigatório)</i></li>
+<li>Errata <i>(opcional)</i></li>
+<li>Folha de aprovação <i>(obrigatório)</i></li>
+<li>Dedicatória, agradecimentos, epígrafe <i>(opcionais)</i></li>
+<li>Resumo e abstract <i>(obrigatórios)</i></li>
+<li>Listas de ilustrações, tabelas, siglas <i>(opcionais)</i></li>
+<li>Sumário <i>(obrigatório)</i></li>
+</ul>
+</div>
+<div class="card">
+<h3>Textuais</h3>
+<ul class="spaced" style="font-size:16.5px;">
+<li><b>Introdução:</b> tema, problema, objetivos, justificativa;</li>
+<li><b>Desenvolvimento:</b> referencial teórico, metodologia, resultados e discussão;</li>
+<li><b>Conclusão:</b> retoma os objetivos e aponta contribuições e limitações.</li>
+</ul>
+</div>
+<div class="card">
+<h3>Pós-textuais</h3>
+<ul class="spaced" style="font-size:16.5px;">
+<li><b>Referências</b> <i>(obrigatório)</i></li>
+<li>Glossário <i>(opcional)</i></li>
+<li>Apêndices — material <b>seu</b> <i>(opcional)</i></li>
+<li>Anexos — material <b>de terceiros</b> <i>(opcional)</i></li>
+<li>Índice <i>(opcional)</i></li>
+</ul>
+</div>
+</div>
+<div class="info-box">
+<p><b>Dica de organização no Word:</b> monte o esqueleto completo primeiro (todas as seções com seus títulos em estilos) e só depois escreva. O Painel de Navegação vira o seu mapa do trabalho.</p>
+</div>
+</div>
+</div>
+
+<!-- Configuração da página -->
+<div class="slide">
+<div class="header"><h2>Passo 1 — Configurar a página e o texto</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3>No Word: Layout → Margens → Personalizadas</h3>
+<table class="table">
+<tr><th>Item</th><th>Padrão ABNT</th></tr>
+<tr><td>Margem superior e esquerda</td><td><b>3 cm</b></td></tr>
+<tr><td>Margem inferior e direita</td><td><b>2 cm</b></td></tr>
+<tr><td>Papel</td><td>A4 (21 × 29,7 cm)</td></tr>
+<tr><td>Fonte do texto</td><td>Times New Roman ou Arial, <b>tamanho 12</b></td></tr>
+<tr><td>Espaçamento entre linhas</td><td><b>1,5</b> no texto corrente</td></tr>
+<tr><td>Recuo da 1ª linha do parágrafo</td><td>1,25 cm (padrão usual)</td></tr>
+<tr><td>Alinhamento</td><td>Justificado</td></tr>
+</table>
+</div>
+<div>
+<h3>Exceções em espaço simples e fonte menor (10)</h3>
+<ul class="spaced">
+<li>Citações longas (mais de 3 linhas);</li>
+<li>Notas de rodapé;</li>
+<li>Legendas e fontes de ilustrações e tabelas;</li>
+<li>Referências (simples, com uma linha em branco entre elas);</li>
+<li>Natureza do trabalho na folha de rosto.</li>
+</ul>
+<div class="info-box" style="margin-top:14px;">
+<p>Configure tudo isso <b>uma única vez</b>, nos estilos — o próximo slide mostra como.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Estilos ABNT -->
+<div class="slide">
+<div class="header"><h2>Passo 2 — Criar os estilos ABNT</h2></div>
+<div class="content">
+<p class="lead">Modifique os estilos nativos do Word (botão direito no estilo → <i>Modificar</i>) para que <b>todo o documento
+            obedeça à norma automaticamente</b>:</p>
+<table class="table">
+<tr><th>Estilo do Word</th><th>Configuração ABNT</th><th>Uso</th></tr>
+<tr><td><b>Normal</b></td><td>Fonte 12, justificado, espaço 1,5, recuo 1ª linha 1,25 cm</td><td>Texto corrente</td></tr>
+<tr><td><b>Título 1</b></td><td>MAIÚSCULAS, negrito, tamanho 12, numeração progressiva (1, 2, 3...), começa em página nova</td><td>Seções primárias (capítulos)</td></tr>
+<tr><td><b>Título 2</b></td><td>Maiúsculas sem negrito (ou conforme manual), numeração 1.1, 1.2...</td><td>Seções secundárias</td></tr>
+<tr><td><b>Título 3</b></td><td>Minúsculas com negrito/itálico, numeração 1.1.1...</td><td>Seções terciárias</td></tr>
+<tr><td><b>Citação Longa</b> (crie novo)</td><td>Fonte 10, espaço simples, recuo esquerdo de <b>4 cm</b>, sem recuo de 1ª linha, sem aspas</td><td>Citações com mais de 3 linhas</td></tr>
+<tr><td><b>Referências</b> (crie novo)</td><td>Fonte 12, espaço simples, alinhado à esquerda, espaço depois de 12 pt</td><td>Lista de referências</td></tr>
+</table>
+<div class="info-box">
+<p><b>Numeração automática dos títulos:</b> <i>Página Inicial → Lista de Vários Níveis → Definir nova lista</i> vinculando cada nível ao estilo Título correspondente (NBR 6024). Ponto de atenção: sem ponto após o número final e um espaço entre número e título.</p>
+</div>
+</div>
+</div>
+
+<!-- Citações -->
+<div class="slide">
+<div class="header"><h2>Passo 3 — Citações (NBR 10520:2023)</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3>Os três tipos</h3>
+<ul class="spaced" style="font-size:18px;">
+<li><b>Direta curta</b> (até 3 linhas): no corpo do texto, entre aspas duplas, com autor, ano e página.<br/>
+<span style="color:#475569;">Segundo Silva (2024, p. 15), "a transformação digital [...]".</span></li>
+<li><b>Direta longa</b> (mais de 3 linhas): bloco recuado 4 cm, fonte 10, espaço simples, <b>sem aspas</b> — aplique o estilo <i>Citação Longa</i>;</li>
+<li><b>Indireta</b> (paráfrase): ideia do autor com suas palavras — autor e ano; a indicação de página passou a ser <b>recomendada</b> na versão 2023.</li>
+</ul>
+</div>
+<div>
+<h3>Sistema autor-data na prática</h3>
+<ul class="spaced" style="font-size:18px;">
+<li>Autor citado na frase: <span style="color:#475569;">Silva (2024) afirma que...</span></li>
+<li>Autor no final: <span style="color:#475569;">...(SILVA, 2024, p. 15). — ou (Silva, 2024), conforme o padrão adotado; seja consistente</span></li>
+<li>Até 3 autores: cite todos; <b>4 ou mais:</b> primeiro autor + <i>et al.</i>;</li>
+<li>Supressões <code>[...]</code>, acréscimos <code>[ ]</code>, destaque: <i>grifo nosso</i>/<i>grifo do autor</i>;</li>
+<li><b>Apud</b> (citação de citação): use só quando o original for inacessível.</li>
+</ul>
+</div>
+</div>
+<div class="warn-box">
+<p><b>Toda citação precisa da referência completa</b> na lista final — e vice-versa: não deixe referência "órfã". Antes de entregar, confira um a um (o Copilot ajuda: "liste os autores citados no texto que não aparecem nas referências").</p>
+</div>
+</div>
+</div>
+
+<!-- Paginação e seções -->
+<div class="slide">
+<div class="header"><h2>Passo 4 — Numeração de páginas com quebras de seção</h2></div>
+<div class="content">
+<p class="lead">A regra da NBR 14724: as páginas são <span class="highlight">contadas a partir da folha de rosto</span>, mas o
+            número só é <span class="highlight">exibido a partir da introdução</span> (canto superior direito, algarismos arábicos).</p>
+<ul class="spaced" style="font-size:20px;">
+<li><span class="num">1.</span> Posicione o cursor no fim do último elemento pré-textual (sumário) e insira <i>Layout → Quebras → <b>Quebra de Seção (Próxima Página)</b></i>;</li>
+<li><span class="num">2.</span> Clique duas vezes no cabeçalho da página da introdução e <b>desative "Vincular ao Anterior"</b>;</li>
+<li><span class="num">3.</span> <i>Inserir → Número de Página → Início da Página → à direita</i>;</li>
+<li><span class="num">4.</span> <i>Número de Página → Formatar Números → Iniciar em:</i> informe o número real da página da introdução (conte capa? não — a capa não conta; a contagem começa na <b>folha de rosto</b>);</li>
+<li><span class="num">5.</span> Volte à seção pré-textual e apague qualquer número que tenha aparecido lá.</li>
+</ul>
+<div class="info-box">
+<p><b>Conferência rápida:</b> ative as marcas ocultas (¶) para ver onde estão as quebras de seção; o rodapé do cabeçalho mostra "Seção 1", "Seção 2" — confirme que a introdução está na seção 2.</p>
+</div>
+</div>
+</div>
+
+<!-- Sumário e listas -->
+<div class="slide">
+<div class="header"><h2>Passo 5 — Sumário e listas automáticas</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3>Sumário (NBR 6027)</h3>
+<ul class="spaced">
+<li>Com os títulos em estilos, vá em <i>Referências → Sumário → Sumário Automático</i>;</li>
+<li>O sumário reproduz a <b>mesma formatação dos títulos</b> do texto (maiúsculas, negrito etc.);</li>
+<li>Elementos pré-textuais <b>não entram</b> no sumário; referências, apêndices e anexos entram <b>sem numeração de seção</b>;</li>
+<li>Sempre que mudar o texto: clique no sumário → <i>Atualizar Sumário → o índice inteiro</i> (ou <kbd>F9</kbd>).</li>
+</ul>
+</div>
+<div>
+<h3>Figuras, tabelas e suas listas</h3>
+<ul class="spaced">
+<li>Toda ilustração tem <b>identificação em cima</b> (Ex.: "Figura 1 – Título") e <b>fonte embaixo</b>, mesmo quando é sua ("Fonte: elaborada pelo autor (2026)");</li>
+<li>Use <i>Referências → <b>Inserir Legenda</b></i> — o Word numera sozinho e renumera se você inserir outra no meio;</li>
+<li><i>Referências → Inserir Índice de Ilustrações</i> gera a Lista de Figuras/Tabelas automática;</li>
+<li>Tabela ABNT (IBGE): sem bordas laterais; traços horizontais no topo, no cabeçalho e no fechamento.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Referências -->
+<div class="slide">
+<div class="header"><h2>Passo 6 — Referências (NBR 6023:2018)</h2></div>
+<div class="content">
+<p class="lead">Lista única, em <span class="highlight">ordem alfabética</span>, alinhada à esquerda, espaço simples, com uma
+            linha em branco entre as entradas. Os modelos mais usados:</p>
+<div class="ref-ex"><b>Livro:</b> SOBRENOME, Nome. <b>Título em negrito</b>: subtítulo. 3. ed. Cidade: Editora, 2024.</div>
+<div class="ref-ex"><b>Capítulo de livro:</b> SOBRENOME, Nome. Título do capítulo. <i>In</i>: SOBRENOME, Nome (org.). <b>Título do livro</b>. Cidade: Editora, 2024. p. 55-80.</div>
+<div class="ref-ex"><b>Artigo de revista:</b> SOBRENOME, Nome. Título do artigo. <b>Nome da Revista</b>, Cidade, v. 10, n. 2, p. 15-30, 2024. DOI: https://doi.org/10.0000/xxxx.</div>
+<div class="ref-ex"><b>Site/documento on-line:</b> AUTOR (pessoa ou instituição). <b>Título da página</b>. Ano. Disponível em: https://endereco.com.br. Acesso em: 17 jul. 2026.</div>
+<div class="ref-ex"><b>Trabalho acadêmico:</b> SOBRENOME, Nome. <b>Título</b>. 2024. Trabalho de Conclusão de Curso (Graduação em Análise e Desenvolvimento de Sistemas) – Instituição, Cidade, 2024.</div>
+<div class="info-box">
+<p><b>Ferramentas:</b> o gerenciador nativo do Word (<i>Referências → Citações e Bibliografia</i>) não traz o padrão ABNT por completo — prefira <b>Zotero</b> ou <b>Mendeley</b> (com estilo ABNT) integrados ao Word, ou geradores como o MORE/UFSC, sempre <b>conferindo o resultado</b> com a norma.</p>
+</div>
+</div>
+</div>
+
+<!-- Checklist -->
+<div class="slide">
+<div class="header"><h2>Checklist final antes da entrega</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<ul class="spaced" style="font-size:19px;">
+<li>☐ Margens 3-3-2-2, A4, fonte 12, espaço 1,5;</li>
+<li>☐ Títulos com numeração progressiva correta e em estilos;</li>
+<li>☐ Citações longas: recuo 4 cm, fonte 10, sem aspas;</li>
+<li>☐ Número de página só a partir da introdução, contado da folha de rosto;</li>
+<li>☐ Sumário atualizado (<kbd>F9</kbd>) e conferido com o texto;</li>
+</ul>
+</div>
+<div>
+<ul class="spaced" style="font-size:19px;">
+<li>☐ Figuras/tabelas: título em cima, fonte embaixo, citadas no texto;</li>
+<li>☐ Toda citação tem referência — e toda referência é citada;</li>
+<li>☐ Referências em ordem alfabética, espaço simples, padrão NBR 6023;</li>
+<li>☐ Editor de ortografia executado; revisão humana final;</li>
+<li>☐ PDF gerado (<i>Arquivo → Salvar como → PDF</i>) e conferido página a página.</li>
+</ul>
+</div>
+</div>
+<div class="fire-box">
+<p><b>Prática guiada:</b> baixe o texto "cru" fornecido pelo professor e formate-o do zero: página, estilos, citações, quebras de seção, numeração, sumário e referências. Salve como modelo <code>.dotx</code> — seu "molde ABNT" para todos os próximos trabalhos.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#0078d4;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 840px; opacity: 0.9;">Formatar um TCC é aplicar <b>seis passos</b> no Word: página
+            (3-3-2-2, fonte 12, espaço 1,5), <b>estilos</b> para títulos e citações, <b>citações autor-data</b> pela NBR
+            10520:2023, <b>quebras de seção</b> para paginar a partir da introdução, <b>sumário e listas automáticos</b> e
+            <b>referências</b> pela NBR 6023. Configure uma vez, salve como modelo e nunca mais formate na mão.</p>
+<div style="margin-top: 40px;">
+<a href="topico-word-fundamentos.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Fundamentos do Word
+            </a>
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px; margin-left: 12px;">
+                Tópicos
+            </a>
+<a href="topico-word-artigo-abnt.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px; margin-left: 12px;">
+                Próximo: Artigo Científico <i class="fa-solid fa-arrow-right"></i>
+</a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Microsoft 365</p>
+</footer>
+</body>
+</html>

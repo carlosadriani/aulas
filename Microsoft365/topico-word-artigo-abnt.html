@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com">
+<!-- Google Analytics 4 (gtag.js) + Consentimento LGPD -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHE86CNTZB"></script>
+<script src="/assets/js/analytics-consent.js"></script>
+<link rel="canonical" href="https://www.ajudaprofessor.com.br/Microsoft365/topico-word-artigo-abnt.html">
+<meta name="description" content="Formatação de Artigo Científico nas normas ABNT usando o Microsoft Word: NBR 6022:2018, estrutura, resumo e palavras-chave, duas colunas, citações e referências.">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ajuda Professor">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Microsoft 365 - Artigo Científico nas Normas ABNT com o Word">
+<meta property="og:description" content="NBR 6022:2018, estrutura do artigo, resumo e palavras-chave, duas colunas, citações e referências no Microsoft Word.">
+<meta property="og:url" content="https://www.ajudaprofessor.com.br/Microsoft365/topico-word-artigo-abnt.html">
+<meta property="og:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Microsoft 365 - Artigo Científico nas Normas ABNT com o Word">
+<meta name="twitter:description" content="NBR 6022:2018, estrutura do artigo, resumo e palavras-chave, duas colunas, citações e referências no Microsoft Word.">
+<meta name="twitter:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Microsoft 365 - Artigo Científico nas Normas ABNT com o Word</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #0078d4; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #0078d4; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #0078d4; color: white; padding: 13px 15px; text-align: left; }
+        .table td { padding: 10px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #0078d4; font-weight: bold; }
+        .info-box { border-left: 5px solid #0078d4; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .fire-box { border-left: 5px solid #d83b01; background: #fff5f2; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .num { color: #0078d4; font-weight: bold; }
+        code { background:#f1f5f9; padding:1px 5px; border-radius:4px; font-family:"Fira Code",monospace; font-size:0.92em; }
+        kbd { background:#1e293b; color:#f8fafc; border-radius:5px; padding:2px 8px; font-family:"Fira Code",monospace; font-size:0.88em; border-bottom:2px solid #0f172a; white-space:nowrap; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos do curso</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Microsoft 365
+            </h1>
+<p>Word — Formatação de Artigo Científico nas Normas ABNT com o Word</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-file-lines" style="font-size: 80px; margin-bottom: 30px; color: #0078d4;"></i>
+<h1>Artigo Científico nas Normas ABNT</h1>
+<p style="font-size: 24px; opacity: 0.8;">Da estrutura da NBR 6022 à submissão, tudo no Microsoft Word</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Conteúdo Word &nbsp;•&nbsp; Curso Tecnologias Microsoft 365</div>
+</div>
+
+<!-- TCC x artigo -->
+<div class="slide">
+<div class="header"><h2>Artigo × TCC: o que muda?</h2></div>
+<div class="content">
+<table class="table">
+<tr><th></th><th>TCC / monografia (NBR 14724)</th><th>Artigo científico (NBR 6022:2018)</th></tr>
+<tr><td><b>Extensão</b></td><td>Dezenas de páginas, capítulos</td><td>Texto compacto (tipicamente 8–25 páginas)</td></tr>
+<tr><td><b>Elementos</b></td><td>Capa, folha de rosto, sumário, listas...</td><td>Sem capa nem sumário: título, autores, resumo e o texto direto</td></tr>
+<tr><td><b>Objetivo</b></td><td>Demonstrar formação — requisito de conclusão</td><td>Comunicar um resultado à comunidade — publicação em periódico ou evento</td></tr>
+<tr><td><b>Quem define o formato</b></td><td>ABNT + manual da instituição</td><td><b>O periódico ou evento</b> (template próprio); a ABNT vale quando não há template</td></tr>
+<tr><td><b>Avaliação</b></td><td>Banca examinadora</td><td>Revisão por pares, muitas vezes <i>às cegas</i></td></tr>
+</table>
+<div class="warn-box">
+<p><b>Regra de ouro da publicação:</b> antes de formatar qualquer coisa, baixe as <b>diretrizes para autores</b> do periódico ou evento. Se houver template (Word ou LaTeX), ele manda. Esta aula cobre o padrão ABNT usado por revistas brasileiras e trabalhos de disciplina.</p>
+</div>
+</div>
+</div>
+
+<!-- Estrutura NBR 6022 -->
+<div class="slide">
+<div class="header"><h2>A estrutura do artigo (NBR 6022:2018)</h2></div>
+<div class="content">
+<div class="grid-3">
+<div class="card">
+<h3>Pré-textuais</h3>
+<ul class="spaced" style="font-size:16.5px;">
+<li><b>Título</b> (e subtítulo) no idioma do texto;</li>
+<li>Título em outro idioma <i>(opcional)</i>;</li>
+<li><b>Autores</b>, com nota de rodapé: minicurrículo, vínculo institucional e e-mail;</li>
+<li><b>Resumo</b> no idioma do texto (NBR 6028);</li>
+<li><b>Palavras-chave</b> logo abaixo do resumo;</li>
+<li>Datas de submissão/aprovação <i>(quando o periódico exigir)</i>.</li>
+</ul>
+</div>
+<div class="card">
+<h3>Textuais</h3>
+<ul class="spaced" style="font-size:16.5px;">
+<li><b>Introdução:</b> contexto, problema, objetivo e organização do texto;</li>
+<li><b>Desenvolvimento:</b> referencial, metodologia, resultados e discussão — em seções numeradas (NBR 6024);</li>
+<li><b>Conclusão / Considerações finais.</b></li>
+</ul>
+</div>
+<div class="card">
+<h3>Pós-textuais</h3>
+<ul class="spaced" style="font-size:16.5px;">
+<li><b>Referências</b> (NBR 6023) <i>(obrigatório)</i>;</li>
+<li>Resumo e palavras-chave em outro idioma (<i>abstract</i> + <i>keywords</i>);</li>
+<li>Glossário, apêndices, anexos <i>(opcionais)</i>;</li>
+<li>Agradecimentos e nota de financiamento <i>(opcionais)</i>.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Formatação -->
+<div class="slide">
+<div class="header"><h2>Formatação-base no Word</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3>Página e texto (quando não há template)</h3>
+<table class="table">
+<tr><th>Item</th><th>Padrão usual</th></tr>
+<tr><td>Margens</td><td>3 cm (sup./esq.), 2 cm (inf./dir.)</td></tr>
+<tr><td>Fonte</td><td>Times New Roman ou Arial, 12</td></tr>
+<tr><td>Espaçamento</td><td>1,5 no texto; simples em resumo, citações longas, notas e referências</td></tr>
+<tr><td>Título do artigo</td><td>Centralizado, negrito, maiúsculas (ou conforme diretriz)</td></tr>
+<tr><td>Autores</td><td>Alinhados à direita ou centralizados, com nota de rodapé <i>(Referências → Inserir Nota de Rodapé)</i></td></tr>
+<tr><td>Títulos de seção</td><td>Numerados (1, 1.1...), alinhados à esquerda, em estilos Título 1/2</td></tr>
+</table>
+</div>
+<div>
+<h3>Resumo e palavras-chave (NBR 6028:2021)</h3>
+<ul class="spaced">
+<li>Parágrafo <b>único</b>, sem recuo, espaço simples, verbo na voz ativa e na 3ª pessoa;</li>
+<li>Artigos: em geral <b>100 a 250 palavras</b>, apresentando objetivo, método, resultados e conclusão;</li>
+<li>Logo abaixo: <b>Palavras-chave:</b> 3 a 5 termos, separados por ponto e vírgula e finalizados por ponto;</li>
+<li>Versão em inglês (<i>Abstract</i> / <i>Keywords</i>) conforme exigência da revista.</li>
+</ul>
+<div class="info-box" style="margin-top:14px;">
+<p>Use a <b>contagem de palavras</b> do Word (barra de status) selecionando só o resumo para conferir o limite.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Duas colunas -->
+<div class="slide">
+<div class="header"><h2>Artigos de eventos: trabalhando com duas colunas</h2></div>
+<div class="content">
+<p class="lead">Muitos eventos (e algumas revistas) usam layout em <span class="highlight">duas colunas</span> com título e
+            resumo em coluna única. No Word, isso se resolve com <b>quebras de seção contínuas</b>:</p>
+<ul class="spaced" style="font-size:20px;">
+<li><span class="num">1.</span> Escreva título, autores e resumo normalmente (coluna única);</li>
+<li><span class="num">2.</span> Posicione o cursor onde começa o texto em colunas e insira <i>Layout → Quebras → <b>Contínua</b></i>;</li>
+<li><span class="num">3.</span> Com o cursor após a quebra: <i>Layout → Colunas → Duas</i> (ajuste espaçamento de ~1 cm entre colunas);</li>
+<li><span class="num">4.</span> Para equilibrar as colunas na última página, insira outra quebra <i>Contínua</i> no final do texto;</li>
+<li><span class="num">5.</span> <i>Quebra de Coluna</i> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd>) força o texto a pular para a coluna seguinte.</li>
+</ul>
+<div class="warn-box">
+<p><b>Figuras em documentos com colunas:</b> figuras largas podem ocupar as duas colunas — configure a <i>Disposição do Texto</i> como "Superior e Inferior" e alinhe ao centro da página, ou posicione-as no topo/rodapé da página.</p>
+</div>
+</div>
+</div>
+
+<!-- Citações e referências -->
+<div class="slide">
+<div class="header"><h2>Citações e referências no artigo</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3>Citações (NBR 10520:2023)</h3>
+<ul class="spaced">
+<li>Mesmas regras do TCC: autor-data, diretas curtas entre aspas com página, longas em bloco recuado (4 cm, fonte 10, sem aspas);</li>
+<li>No artigo, prefira <b>citações curtas e paráfrases</b> — o espaço é precioso e o texto deve fluir;</li>
+<li>4 ou mais autores: primeiro autor + <i>et al.</i>;</li>
+<li>Cite software, datasets e IAs quando usados na metodologia, conforme a política do periódico.</li>
+</ul>
+</div>
+<div>
+<h3>Referências (NBR 6023:2018)</h3>
+<ul class="spaced">
+<li>Somente as obras <b>efetivamente citadas</b>;</li>
+<li>Ordem alfabética, alinhadas à esquerda, espaço simples, linha em branco entre elas;</li>
+<li>Inclua o <b>DOI</b> sempre que existir;</li>
+<li>Gerencie com <b>Zotero/Mendeley</b> (estilo ABNT): inserir citação no texto gera a referência final automaticamente — e renumera tudo se você remover um trecho.</li>
+</ul>
+</div>
+</div>
+<div class="info-box">
+<p><b>Copilot como revisor:</b> "verifique se todos os autores citados constam nas referências e liste divergências de ano" — depois confira manualmente. IA acelera a conferência; não substitui a leitura da norma.</p>
+</div>
+</div>
+</div>
+
+<!-- Submissão -->
+<div class="slide">
+<div class="header"><h2>Preparando a submissão</h2></div>
+<div class="content">
+<ul class="spaced" style="font-size:20px;">
+<li><b>Releia as diretrizes</b> do periódico/evento: limite de páginas, idioma, formato de arquivo (.docx ou PDF), template;</li>
+<li><b>Avaliação às cegas:</b> gere uma versão <b>anonimizada</b> — remova nomes e a nota de rodapé dos autores e as autocitações identificáveis ("nosso trabalho anterior (AUTOR, 2024)" → "trabalho anterior (AUTOR, 2024)");</li>
+<li><b>Limpe os metadados:</b> <i>Arquivo → Informações → Verificar Se Há Problemas → <b>Inspecionar Documento</b></i> → remova propriedades e informações pessoais (o nome do autor fica gravado no arquivo!);</li>
+<li><b>PDF final:</b> <i>Salvar como → PDF</i> e confira fonte, figuras e quebras página a página;</li>
+<li><b>Ética:</b> declare uso de IA quando o periódico exigir, cheque plágio e garanta que dados e imagens têm autorização de uso.</li>
+</ul>
+<div class="fire-box">
+<p><b>Prática guiada:</b> pegue o resumo expandido fornecido pelo professor e monte o artigo completo: estrutura NBR 6022, resumo + palavras-chave, duas colunas a partir da introdução, três citações (curta, longa e paráfrase), referências e versão anonimizada em PDF.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#0078d4;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 840px; opacity: 0.9;">O artigo científico é um texto <b>enxuto e direto</b>: título,
+            autores com nota de rodapé, <b>resumo com palavras-chave</b>, introdução → desenvolvimento → conclusão e referências
+            (NBR 6022). No Word, o trio que resolve tudo é <b>estilos</b>, <b>quebras de seção contínuas</b> (para as duas
+            colunas) e <b>gerenciador de referências</b>. E antes de submeter: template do periódico, versão anonimizada e
+            metadados limpos.</p>
+<div style="margin-top: 40px;">
+<a href="topico-word-tcc-abnt.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> TCC nas normas ABNT
+            </a>
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px; margin-left: 12px;">
+                Tópicos
+            </a>
+<a href="topico-word-atalhos.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px; margin-left: 12px;">
+                Próximo: Teclas de Atalho <i class="fa-solid fa-arrow-right"></i>
+</a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Microsoft 365</p>
+</footer>
+</body>
+</html>

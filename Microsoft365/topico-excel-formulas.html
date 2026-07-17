@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com">
+<!-- Google Analytics 4 (gtag.js) + Consentimento LGPD -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHE86CNTZB"></script>
+<script src="/assets/js/analytics-consent.js"></script>
+<link rel="canonical" href="https://www.ajudaprofessor.com.br/Microsoft365/topico-excel-formulas.html">
+<meta name="description" content="As 100 fórmulas mais usadas no Microsoft Excel, organizadas por categoria: agregação, condicionais, lógicas, procura, texto, datas, estatística, matrizes dinâmicas e financeiras.">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ajuda Professor">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Microsoft 365 - As 100 Fórmulas Mais Usadas no Excel">
+<meta property="og:description" content="Guia de referência com as 100 fórmulas essenciais do Excel por categoria, com sintaxe e exemplo prático de cada uma.">
+<meta property="og:url" content="https://www.ajudaprofessor.com.br/Microsoft365/topico-excel-formulas.html">
+<meta property="og:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Microsoft 365 - As 100 Fórmulas Mais Usadas no Excel">
+<meta name="twitter:description" content="Guia de referência com as 100 fórmulas essenciais do Excel por categoria, com sintaxe e exemplo prático de cada uma.">
+<meta name="twitter:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Microsoft 365 - As 100 Fórmulas Mais Usadas no Excel</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #0078d4; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #0078d4; color: white; padding: 12px 14px; text-align: left; }
+        .table td { padding: 8px 11px; border-bottom: 1px solid #e2e8f0; vertical-align: top; font-size: 17px; }
+        .highlight { color: #0078d4; font-weight: bold; }
+        .info-box { border-left: 5px solid #0078d4; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .fire-box { border-left: 5px solid #d83b01; background: #fff5f2; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .num { color: #0078d4; font-weight: bold; }
+        code { background:#f1f5f9; padding:1px 5px; border-radius:4px; font-family:"Fira Code",monospace; font-size:0.9em; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos do curso</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Microsoft 365
+            </h1>
+<p>Excel — As 100 Fórmulas Mais Usadas no Excel</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-square-root-variable" style="font-size: 80px; margin-bottom: 30px; color: #0078d4;"></i>
+<h1>As 100 Fórmulas Mais Usadas</h1>
+<p style="font-size: 24px; opacity: 0.8;">Guia de referência completo do Excel, por categoria</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Conteúdo Excel &nbsp;•&nbsp; Curso Tecnologias Microsoft 365</div>
+</div>
+
+<!-- Como usar -->
+<div class="slide">
+<div class="header"><h2>Como usar este guia</h2></div>
+<div class="content">
+<p class="lead">Reunimos as <span class="highlight">100 fórmulas</span> que resolvem praticamente todo o trabalho em planilhas,
+            organizadas em 12 categorias, com sintaxe e exemplo prático de cada uma.</p>
+<ul class="spaced">
+<li>Toda fórmula começa com <code>=</code>; o separador de argumentos é o <b>ponto e vírgula</b> <code>;</code> (padrão brasileiro);</li>
+<li>Os nomes estão em <b>português</b> (Excel em pt-BR); em inglês os nomes mudam, mas os argumentos são os mesmos;</li>
+<li>Argumentos entre colchetes <code>[ ]</code> são opcionais;</li>
+<li>Não decore: <b>salve nos favoritos</b> e volte quando precisar. Com o tempo, as 20 que você mais usa entram no reflexo;</li>
+<li>Ao digitar <code>=NOMEDAFUNÇÃO(</code>, o Excel mostra a dica de argumentos; o botão <i>fx</i> (ou <kbd>Shift</kbd>+<kbd>F3</kbd>) abre o assistente completo de funções.</li>
+</ul>
+<div class="info-box">
+<p><b>Com Copilot:</b> descreva o cálculo em português e peça a fórmula — depois use este guia para <b>entender e conferir</b> o que ele entregou.</p>
+</div>
+</div>
+</div>
+
+<!-- 1. Agregação -->
+<div class="slide">
+<div class="header"><h2>1. Matemática e agregação (1–10)</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>#</th><th>Função</th><th>Para que serve</th><th>Exemplo</th></tr>
+<tr><td class="num">1</td><td><b>SOMA</b></td><td>Soma os números de um intervalo</td><td><code>=SOMA(B2:B30)</code></td></tr>
+<tr><td class="num">2</td><td><b>MÉDIA</b></td><td>Média aritmética</td><td><code>=MÉDIA(C2:C30)</code></td></tr>
+<tr><td class="num">3</td><td><b>MÁXIMO</b></td><td>Maior valor</td><td><code>=MÁXIMO(D2:D30)</code></td></tr>
+<tr><td class="num">4</td><td><b>MÍNIMO</b></td><td>Menor valor</td><td><code>=MÍNIMO(D2:D30)</code></td></tr>
+<tr><td class="num">5</td><td><b>CONT.NÚM</b></td><td>Conta células com números</td><td><code>=CONT.NÚM(B2:B30)</code></td></tr>
+<tr><td class="num">6</td><td><b>CONT.VALORES</b></td><td>Conta células preenchidas (texto ou número)</td><td><code>=CONT.VALORES(A2:A30)</code></td></tr>
+<tr><td class="num">7</td><td><b>CONTAR.VAZIO</b></td><td>Conta células vazias</td><td><code>=CONTAR.VAZIO(E2:E30)</code></td></tr>
+<tr><td class="num">8</td><td><b>ARRED</b></td><td>Arredonda a N casas decimais</td><td><code>=ARRED(E2;2)</code></td></tr>
+<tr><td class="num">9</td><td><b>ABS</b></td><td>Valor absoluto (sem sinal)</td><td><code>=ABS(B2-C2)</code></td></tr>
+<tr><td class="num">10</td><td><b>SOMARPRODUTO</b></td><td>Multiplica pares e soma tudo de uma vez</td><td><code>=SOMARPRODUTO(B2:B30;C2:C30)</code></td></tr>
+</table>
+</div>
+</div>
+
+<!-- 2. Condicionais -->
+<div class="slide">
+<div class="header"><h2>2. Soma e contagem condicional (11–20)</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>#</th><th>Função</th><th>Para que serve</th><th>Exemplo</th></tr>
+<tr><td class="num">11</td><td><b>CONT.SE</b></td><td>Conta com 1 critério</td><td><code>=CONT.SE(D2:D30;"Ativo")</code></td></tr>
+<tr><td class="num">12</td><td><b>CONT.SES</b></td><td>Conta com vários critérios</td><td><code>=CONT.SES(D2:D30;"Ativo";C2:C30;"TI")</code></td></tr>
+<tr><td class="num">13</td><td><b>SOMASE</b></td><td>Soma com 1 critério</td><td><code>=SOMASE(C2:C30;"TI";E2:E30)</code></td></tr>
+<tr><td class="num">14</td><td><b>SOMASES</b></td><td>Soma com vários critérios (soma vem primeiro!)</td><td><code>=SOMASES(E2:E30;C2:C30;"TI";D2:D30;"Ativo")</code></td></tr>
+<tr><td class="num">15</td><td><b>MÉDIASE</b></td><td>Média com 1 critério</td><td><code>=MÉDIASE(C2:C30;"TI";E2:E30)</code></td></tr>
+<tr><td class="num">16</td><td><b>MÉDIASES</b></td><td>Média com vários critérios</td><td><code>=MÉDIASES(E2:E30;C2:C30;"TI";D2:D30;"Ativo")</code></td></tr>
+<tr><td class="num">17</td><td><b>MÁXIMOSES</b></td><td>Maior valor que atende a critérios</td><td><code>=MÁXIMOSES(E2:E30;C2:C30;"TI")</code></td></tr>
+<tr><td class="num">18</td><td><b>MÍNIMOSES</b></td><td>Menor valor que atende a critérios</td><td><code>=MÍNIMOSES(E2:E30;C2:C30;"TI")</code></td></tr>
+<tr><td class="num">19</td><td><b>SUBTOTAL</b></td><td>Soma/média/contagem só do que está <b>visível</b> (respeita filtros)</td><td><code>=SUBTOTAL(9;E2:E30)</code></td></tr>
+<tr><td class="num">20</td><td><b>AGREGAR</b></td><td>Como SUBTOTAL, mas também ignora erros</td><td><code>=AGREGAR(9;6;E2:E30)</code></td></tr>
+</table>
+<div class="info-box">
+<p>Critérios aceitam comparações e curingas: <code>"&gt;=10"</code>, <code>"&lt;&gt;Concluído"</code>, <code>"*silva*"</code> (contém), <code>"??-2026"</code> (? = 1 caractere).</p>
+</div>
+</div>
+</div>
+
+<!-- 3. Lógicas -->
+<div class="slide">
+<div class="header"><h2>3. Funções lógicas (21–28)</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>#</th><th>Função</th><th>Para que serve</th><th>Exemplo</th></tr>
+<tr><td class="num">21</td><td><b>SE</b></td><td>Escolhe entre dois resultados por um teste</td><td><code>=SE(C2&gt;=7;"Aprovado";"Exame")</code></td></tr>
+<tr><td class="num">22</td><td><b>SES</b></td><td>Vários testes em sequência, sem aninhar SEs</td><td><code>=SES(C2&gt;=7;"Aprovado";C2&gt;=4;"Exame";VERDADEIRO;"Reprovado")</code></td></tr>
+<tr><td class="num">23</td><td><b>E</b></td><td>VERDADEIRO só se TODAS as condições forem</td><td><code>=SE(E(C2&gt;=7;D2&gt;=0,75);"OK";"Rever")</code></td></tr>
+<tr><td class="num">24</td><td><b>OU</b></td><td>VERDADEIRO se PELO MENOS UMA condição for</td><td><code>=SE(OU(B2="Sim";C2="Sim");"Elegível";"Não")</code></td></tr>
+<tr><td class="num">25</td><td><b>NÃO</b></td><td>Inverte um teste lógico</td><td><code>=SE(NÃO(ÉCÉL.VAZIA(A2));"Preenchido";"")</code></td></tr>
+<tr><td class="num">26</td><td><b>SEERRO</b></td><td>Mostra valor amigável no lugar de erro</td><td><code>=SEERRO(A2/B2;"—")</code></td></tr>
+<tr><td class="num">27</td><td><b>SENÃODISP</b></td><td>Trata apenas o erro #N/D (procuras)</td><td><code>=SENÃODISP(PROCV(A2;Tab;2;0);"não achado")</code></td></tr>
+<tr><td class="num">28</td><td><b>PARÂMETRO</b></td><td>Compara um valor com uma lista de casos (switch)</td><td><code>=PARÂMETRO(B2;1;"Baixa";2;"Média";3;"Alta";"?")</code></td></tr>
+</table>
+</div>
+</div>
+
+<!-- 4. Procura -->
+<div class="slide">
+<div class="header"><h2>4. Procura e referência (29–38)</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>#</th><th>Função</th><th>Para que serve</th><th>Exemplo</th></tr>
+<tr><td class="num">29</td><td><b>PROCX</b></td><td>Busca moderna, em qualquer direção, com valor "se não achar" (recomendada)</td><td><code>=PROCX(A2;Cad!A:A;Cad!C:C;"não achado")</code></td></tr>
+<tr><td class="num">30</td><td><b>PROCV</b></td><td>Busca vertical clássica (só esquerda → direita)</td><td><code>=PROCV(A2;Cad!A:C;3;FALSO)</code></td></tr>
+<tr><td class="num">31</td><td><b>PROCH</b></td><td>Busca horizontal (dados em linhas)</td><td><code>=PROCH("Jan";A1:M2;2;FALSO)</code></td></tr>
+<tr><td class="num">32</td><td><b>ÍNDICE</b></td><td>Devolve o valor de uma posição do intervalo</td><td><code>=ÍNDICE(B2:B30;5)</code></td></tr>
+<tr><td class="num">33</td><td><b>CORRESP</b></td><td>Diz a posição de um valor no intervalo</td><td><code>=CORRESP("Ana";A2:A30;0)</code></td></tr>
+<tr><td class="num">34</td><td><b>CORRESPX</b></td><td>CORRESP moderna (busca exata por padrão)</td><td><code>=CORRESPX("Ana";A2:A30)</code></td></tr>
+<tr><td class="num">35</td><td><b>DESLOC</b></td><td>Intervalo deslocado a partir de um ponto (intervalos dinâmicos)</td><td><code>=SOMA(DESLOC(B2;0;0;10;1))</code></td></tr>
+<tr><td class="num">36</td><td><b>INDIRETO</b></td><td>Monta uma referência a partir de texto</td><td><code>=SOMA(INDIRETO(A1&amp;"!B2:B30"))</code></td></tr>
+<tr><td class="num">37</td><td><b>ESCOLHER</b></td><td>Devolve o item N de uma lista de opções</td><td><code>=ESCOLHER(B2;"Ouro";"Prata";"Bronze")</code></td></tr>
+<tr><td class="num">38</td><td><b>LIN / COL</b></td><td>Número da linha / coluna da célula</td><td><code>=LIN(A5)</code> → 5</td></tr>
+</table>
+<div class="info-box">
+<p>A dupla <b>ÍNDICE + CORRESP</b> resolve buscas flexíveis quando o PROCX não está disponível: <code>=ÍNDICE(C:C;CORRESP(A2;A:A;0))</code>.</p>
+</div>
+</div>
+</div>
+
+<!-- 5. Texto 1 -->
+<div class="slide">
+<div class="header"><h2>5. Texto — limpar e juntar (39–47)</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>#</th><th>Função</th><th>Para que serve</th><th>Exemplo</th></tr>
+<tr><td class="num">39</td><td><b>ARRUMAR</b></td><td>Remove espaços extras</td><td><code>=ARRUMAR(A2)</code></td></tr>
+<tr><td class="num">40</td><td><b>MAIÚSCULA</b></td><td>Tudo em maiúsculas</td><td><code>=MAIÚSCULA(A2)</code></td></tr>
+<tr><td class="num">41</td><td><b>MINÚSCULA</b></td><td>Tudo em minúsculas</td><td><code>=MINÚSCULA(A2)</code></td></tr>
+<tr><td class="num">42</td><td><b>PRI.MAIÚSCULA</b></td><td>Primeira letra de cada palavra em maiúscula</td><td><code>=PRI.MAIÚSCULA(A2)</code></td></tr>
+<tr><td class="num">43</td><td><b>CONCAT</b></td><td>Junta textos (ou use o operador <code>&amp;</code>)</td><td><code>=CONCAT(A2;" ";B2)</code></td></tr>
+<tr><td class="num">44</td><td><b>UNIRTEXTO</b></td><td>Junta um intervalo com separador</td><td><code>=UNIRTEXTO(", ";VERDADEIRO;A2:A6)</code></td></tr>
+<tr><td class="num">45</td><td><b>TEXTO</b></td><td>Número/data como texto formatado</td><td><code>=TEXTO(HOJE();"dd/mm/aaaa")</code></td></tr>
+<tr><td class="num">46</td><td><b>NÚM.CARACT</b></td><td>Conta os caracteres</td><td><code>=NÚM.CARACT(A2)</code></td></tr>
+<tr><td class="num">47</td><td><b>REPT</b></td><td>Repete um texto N vezes (mini-gráficos de barra!)</td><td><code>=REPT("█";B2/10)</code></td></tr>
+</table>
+<div class="info-box">
+<p>Combinação clássica de limpeza antes de cruzar listas: <code>=ARRUMAR(MAIÚSCULA(A2))</code> — espaços e caixa diferentes fazem o PROCX "não encontrar".</p>
+</div>
+</div>
+</div>
+
+<!-- 6. Texto 2 -->
+<div class="slide">
+<div class="header"><h2>6. Texto — extrair e substituir (48–56)</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>#</th><th>Função</th><th>Para que serve</th><th>Exemplo</th></tr>
+<tr><td class="num">48</td><td><b>ESQUERDA</b></td><td>N caracteres do início</td><td><code>=ESQUERDA(A2;3)</code></td></tr>
+<tr><td class="num">49</td><td><b>DIREITA</b></td><td>N caracteres do fim</td><td><code>=DIREITA(A2;4)</code></td></tr>
+<tr><td class="num">50</td><td><b>EXT.TEXTO</b></td><td>Trecho do meio (início; quantidade)</td><td><code>=EXT.TEXTO(A2;4;5)</code></td></tr>
+<tr><td class="num">51</td><td><b>LOCALIZAR</b></td><td>Posição de um texto dentro de outro</td><td><code>=LOCALIZAR("@";A2)</code></td></tr>
+<tr><td class="num">52</td><td><b>SUBSTITUIR</b></td><td>Troca um trecho por outro (pelo conteúdo)</td><td><code>=SUBSTITUIR(A2;".";"")</code></td></tr>
+<tr><td class="num">53</td><td><b>MUDAR</b></td><td>Troca um trecho pela posição</td><td><code>=MUDAR(A2;1;3;"ABC")</code></td></tr>
+<tr><td class="num">54</td><td><b>TEXTOANTES</b></td><td>Tudo antes de um delimitador</td><td><code>=TEXTOANTES(A2;"@")</code></td></tr>
+<tr><td class="num">55</td><td><b>TEXTODEPOIS</b></td><td>Tudo depois de um delimitador</td><td><code>=TEXTODEPOIS(A2;"@")</code></td></tr>
+<tr><td class="num">56</td><td><b>DIVIDIRTEXTO</b></td><td>Divide o texto em várias células por delimitador</td><td><code>=DIVIDIRTEXTO(A2;";")</code></td></tr>
+</table>
+<div class="info-box">
+<p>Sem fórmula: o <b>Preenchimento Relâmpago</b> (<kbd>Ctrl</kbd>+<kbd>E</kbd>) deduz extrações simples a partir de um exemplo digitado.</p>
+</div>
+</div>
+</div>
+
+<!-- 7. Datas 1 -->
+<div class="slide">
+<div class="header"><h2>7. Data e hora — o essencial (57–64)</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>#</th><th>Função</th><th>Para que serve</th><th>Exemplo</th></tr>
+<tr><td class="num">57</td><td><b>HOJE</b></td><td>Data de hoje (atualiza sozinha)</td><td><code>=HOJE()</code></td></tr>
+<tr><td class="num">58</td><td><b>AGORA</b></td><td>Data e hora atuais</td><td><code>=AGORA()</code></td></tr>
+<tr><td class="num">59</td><td><b>DATA</b></td><td>Monta uma data a partir de ano; mês; dia</td><td><code>=DATA(2026;7;17)</code></td></tr>
+<tr><td class="num">60</td><td><b>DIA</b></td><td>Extrai o dia de uma data</td><td><code>=DIA(A2)</code></td></tr>
+<tr><td class="num">61</td><td><b>MÊS</b></td><td>Extrai o mês</td><td><code>=MÊS(A2)</code></td></tr>
+<tr><td class="num">62</td><td><b>ANO</b></td><td>Extrai o ano</td><td><code>=ANO(A2)</code></td></tr>
+<tr><td class="num">63</td><td><b>DIA.DA.SEMANA</b></td><td>Dia da semana como número (1=domingo)</td><td><code>=DIA.DA.SEMANA(A2)</code></td></tr>
+<tr><td class="num">64</td><td><b>FIMMÊS</b></td><td>Último dia do mês (N meses à frente)</td><td><code>=FIMMÊS(A2;0)</code></td></tr>
+</table>
+<div class="info-box">
+<p>Data é número: <code>=HOJE()-A2</code> devolve quantos dias se passaram — a base de todo controle de prazos e vencimentos.</p>
+</div>
+</div>
+</div>
+
+<!-- 8. Datas 2 -->
+<div class="slide">
+<div class="header"><h2>8. Data e hora — prazos e jornadas (65–70)</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>#</th><th>Função</th><th>Para que serve</th><th>Exemplo</th></tr>
+<tr><td class="num">65</td><td><b>DATADIF</b></td><td>Diferença entre datas em dias ("d"), meses ("m") ou anos ("y") — função "escondida", não aparece na dica</td><td><code>=DATADIF(A2;HOJE();"y")</code></td></tr>
+<tr><td class="num">66</td><td><b>DIATRABALHOTOTAL</b></td><td>Dias úteis entre duas datas (aceita lista de feriados)</td><td><code>=DIATRABALHOTOTAL(A2;B2;Feriados)</code></td></tr>
+<tr><td class="num">67</td><td><b>DIATRABALHO</b></td><td>Data após N dias úteis (prazo de processo)</td><td><code>=DIATRABALHO(A2;15;Feriados)</code></td></tr>
+<tr><td class="num">68</td><td><b>DATAM</b></td><td>Mesma data N meses à frente/atrás</td><td><code>=DATAM(A2;6)</code></td></tr>
+<tr><td class="num">69</td><td><b>HORA / MINUTO</b></td><td>Extrai hora / minuto de um horário</td><td><code>=HORA(A2)</code></td></tr>
+<tr><td class="num">70</td><td><b>TEMPO</b></td><td>Monta um horário (h; m; s)</td><td><code>=A2+TEMPO(1;30;0)</code></td></tr>
+</table>
+<div class="warn-box">
+<p>Somando horas de plantão acima de 24h? Formate a célula do total como <code>[h]:mm</code> — sem os colchetes o Excel "zera" a cada 24 horas.</p>
+</div>
+</div>
+</div>
+
+<!-- 9. Estatística -->
+<div class="slide">
+<div class="header"><h2>9. Estatística (71–77)</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>#</th><th>Função</th><th>Para que serve</th><th>Exemplo</th></tr>
+<tr><td class="num">71</td><td><b>MED</b></td><td>Mediana (valor central — melhor que a média com valores extremos)</td><td><code>=MED(B2:B30)</code></td></tr>
+<tr><td class="num">72</td><td><b>MODO.ÚNICO</b></td><td>Valor mais frequente</td><td><code>=MODO.ÚNICO(B2:B30)</code></td></tr>
+<tr><td class="num">73</td><td><b>MAIOR</b></td><td>O N-ésimo maior valor</td><td><code>=MAIOR(B2:B30;3)</code></td></tr>
+<tr><td class="num">74</td><td><b>MENOR</b></td><td>O N-ésimo menor valor</td><td><code>=MENOR(B2:B30;3)</code></td></tr>
+<tr><td class="num">75</td><td><b>ORDEM.EQ</b></td><td>Posição de um valor no ranking</td><td><code>=ORDEM.EQ(B2;B$2:B$30)</code></td></tr>
+<tr><td class="num">76</td><td><b>DESVPAD.A</b></td><td>Desvio padrão (dispersão dos dados) — amostra</td><td><code>=DESVPAD.A(B2:B30)</code></td></tr>
+<tr><td class="num">77</td><td><b>FREQUÊNCIA</b></td><td>Quantos valores caem em cada faixa</td><td><code>=FREQUÊNCIA(B2:B30;E2:E5)</code></td></tr>
+</table>
+</div>
+</div>
+
+<!-- 10. Matrizes dinâmicas -->
+<div class="slide">
+<div class="header"><h2>10. Matrizes dinâmicas — o Excel moderno (78–86)</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>#</th><th>Função</th><th>Para que serve</th><th>Exemplo</th></tr>
+<tr><td class="num">78</td><td><b>ÚNICO</b></td><td>Lista sem repetições, viva e automática</td><td><code>=ÚNICO(C2:C100)</code></td></tr>
+<tr><td class="num">79</td><td><b>FILTRO</b></td><td>Extrai as linhas que atendem a um critério</td><td><code>=FILTRO(A2:D100;D2:D100="Pendente")</code></td></tr>
+<tr><td class="num">80</td><td><b>CLASSIFICAR</b></td><td>Devolve o intervalo ordenado</td><td><code>=CLASSIFICAR(A2:D100;4;-1)</code></td></tr>
+<tr><td class="num">81</td><td><b>SEQUÊNCIA</b></td><td>Gera 1, 2, 3... automaticamente</td><td><code>=SEQUÊNCIA(10)</code></td></tr>
+<tr><td class="num">82</td><td><b>TRANSPOR</b></td><td>Linhas viram colunas e vice-versa</td><td><code>=TRANSPOR(A2:D5)</code></td></tr>
+<tr><td class="num">83</td><td><b>EMPILHARV</b></td><td>Empilha vários intervalos num só</td><td><code>=EMPILHARV(Jan!A2:C50;Fev!A2:C50)</code></td></tr>
+<tr><td class="num">84</td><td><b>ALEATÓRIOENTRE</b></td><td>Número aleatório entre dois limites</td><td><code>=ALEATÓRIOENTRE(1;60)</code></td></tr>
+<tr><td class="num">85</td><td><b>LET</b></td><td>Dá nomes a partes da fórmula (legibilidade)</td><td><code>=LET(total;SOMA(B2:B30);total*1,1)</code></td></tr>
+<tr><td class="num">86</td><td><b>LAMBDA</b></td><td>Cria sua própria função reutilizável</td><td><code>=LAMBDA(x;x*1,23)(B2)</code></td></tr>
+</table>
+<div class="info-box">
+<p>Essas funções "<b>transbordam</b>": o resultado ocupa quantas células precisar. O erro <code>#DESPEJAR!</code> significa que há algo no caminho — limpe as células abaixo/ao lado.</p>
+</div>
+</div>
+</div>
+
+<!-- 11. Arredondamento -->
+<div class="slide">
+<div class="header"><h2>11. Arredondamento e números (87–93)</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>#</th><th>Função</th><th>Para que serve</th><th>Exemplo</th></tr>
+<tr><td class="num">87</td><td><b>ARREDONDAR.PARA.CIMA</b></td><td>Arredonda sempre para cima</td><td><code>=ARREDONDAR.PARA.CIMA(B2;0)</code></td></tr>
+<tr><td class="num">88</td><td><b>ARREDONDAR.PARA.BAIXO</b></td><td>Arredonda sempre para baixo</td><td><code>=ARREDONDAR.PARA.BAIXO(B2;0)</code></td></tr>
+<tr><td class="num">89</td><td><b>INT</b></td><td>Parte inteira (arredonda para baixo)</td><td><code>=INT(B2)</code></td></tr>
+<tr><td class="num">90</td><td><b>TRUNCAR</b></td><td>Corta as casas decimais, sem arredondar</td><td><code>=TRUNCAR(B2;1)</code></td></tr>
+<tr><td class="num">91</td><td><b>MOD</b></td><td>Resto da divisão (paridade, ciclos, escalas)</td><td><code>=MOD(A2;2)</code></td></tr>
+<tr><td class="num">92</td><td><b>MULT</b></td><td>Multiplica um intervalo inteiro</td><td><code>=MULT(B2:B5)</code></td></tr>
+<tr><td class="num">93</td><td><b>QUOCIENTE</b></td><td>Parte inteira da divisão</td><td><code>=QUOCIENTE(A2;B2)</code></td></tr>
+</table>
+<div class="info-box">
+<p><b>MOD em escalas de serviço:</b> <code>=MOD(A2-DataBase;3)=0</code> marca quem trabalha no esquema 24×72 a cada 3 dias a partir de uma data-base.</p>
+</div>
+</div>
+</div>
+
+<!-- 12. Financeiras e informação -->
+<div class="slide">
+<div class="header"><h2>12. Financeiras e informação (94–100)</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>#</th><th>Função</th><th>Para que serve</th><th>Exemplo</th></tr>
+<tr><td class="num">94</td><td><b>PGTO</b></td><td>Valor da parcela de um financiamento</td><td><code>=PGTO(1%;48;-30000)</code></td></tr>
+<tr><td class="num">95</td><td><b>VF</b></td><td>Valor futuro de aplicações mensais</td><td><code>=VF(0,8%;24;-500)</code></td></tr>
+<tr><td class="num">96</td><td><b>VP</b></td><td>Valor presente de uma série de pagamentos</td><td><code>=VP(1%;48;-800)</code></td></tr>
+<tr><td class="num">97</td><td><b>VPL</b></td><td>Valor presente líquido de um projeto</td><td><code>=VPL(10%;B2:B6)-B1</code></td></tr>
+<tr><td class="num">98</td><td><b>TIR</b></td><td>Taxa interna de retorno</td><td><code>=TIR(B1:B6)</code></td></tr>
+<tr><td class="num">99</td><td><b>ÉNÚM / ÉTEXTO / ÉCÉL.VAZIA</b></td><td>Testa o tipo do conteúdo (número, texto, vazio)</td><td><code>=SE(ÉNÚM(A2);"ok";"conferir")</code></td></tr>
+<tr><td class="num">100</td><td><b>ÉERROS</b></td><td>VERDADEIRO se a expressão dá qualquer erro</td><td><code>=SE(ÉERROS(A2/B2);0;A2/B2)</code></td></tr>
+</table>
+<div class="warn-box">
+<p>Nas financeiras, o sinal importa: dinheiro que <b>sai</b> do seu bolso entra <b>negativo</b> (por isso o <code>-30000</code>). E a taxa deve estar na mesma unidade do período (juros ao mês com prazo em meses).</p>
+</div>
+</div>
+</div>
+
+<!-- Erros -->
+<div class="slide">
+<div class="header"><h2>Bônus: decifrando os erros</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Erro</th><th>O que significa</th><th>Como resolver</th></tr>
+<tr><td><code>#N/D</code></td><td>A busca não encontrou o valor</td><td>Conferir a chave; SENÃODISP/SEERRO para mensagem amigável</td></tr>
+<tr><td><code>#REF!</code></td><td>Referência inválida (célula/linha excluída)</td><td>Refazer a referência; cuidado ao excluir colunas usadas</td></tr>
+<tr><td><code>#VALOR!</code></td><td>Tipo errado (texto numa conta)</td><td>Conferir números gravados como texto (canto verde)</td></tr>
+<tr><td><code>#DIV/0!</code></td><td>Divisão por zero ou por vazio</td><td>Envolver com <code>=SEERRO(...;"—")</code></td></tr>
+<tr><td><code>#NOME?</code></td><td>Nome de função digitado errado</td><td>Conferir grafia (acentos e pontos incluídos)</td></tr>
+<tr><td><code>#DESPEJAR!</code></td><td>Matriz dinâmica sem espaço para transbordar</td><td>Limpar as células no caminho do resultado</td></tr>
+<tr><td><code>########</code></td><td>Coluna estreita demais (não é erro)</td><td>Clique duplo na borda do cabeçalho da coluna</td></tr>
+</table>
+<div class="fire-box">
+<p><b>Ferramenta de diagnóstico:</b> <i>Fórmulas → Avaliar Fórmula</i> executa o cálculo passo a passo — perfeito para entender uma fórmula herdada de outra pessoa (ou gerada pelo Copilot).</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#0078d4;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 840px; opacity: 0.9;">Com <b>agregações e condicionais</b> você totaliza; com
+            <b>lógicas</b> decide; com <b>PROCX</b> cruza listas; com <b>texto e datas</b> limpa e controla prazos; com
+            <b>matrizes dinâmicas</b> constrói relatórios vivos; e com as <b>financeiras</b> projeta valores. Domine o
+            <code>$</code>, entenda os erros e guarde esta página nos favoritos — estas 100 fórmulas resolvem quase tudo.</p>
+<div style="margin-top: 40px;">
+<a href="topico-excel-fundamentos.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Fundamentos do Excel
+            </a>
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px; margin-left: 12px;">
+                Tópicos
+            </a>
+<a href="topico-excel-atalhos.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px; margin-left: 12px;">
+                Próximo: Atalhos do Excel <i class="fa-solid fa-arrow-right"></i>
+</a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Microsoft 365</p>
+</footer>
+</body>
+</html>

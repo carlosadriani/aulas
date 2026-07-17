@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com">
+<!-- Google Analytics 4 (gtag.js) + Consentimento LGPD -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHE86CNTZB"></script>
+<script src="/assets/js/analytics-consent.js"></script>
+<link rel="canonical" href="https://www.ajudaprofessor.com.br/Microsoft365/topico-powerpoint-fundamentos.html">
+<meta name="description" content="Fundamentos do Microsoft PowerPoint: interface, layouts e slide mestre, design, texto e imagens, transições e animações, modo apresentador e boas práticas.">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ajuda Professor">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Microsoft 365 - Fundamentos do Microsoft PowerPoint">
+<meta property="og:description" content="Interface, layouts e slide mestre, design, transições e animações, modo apresentador e boas práticas.">
+<meta property="og:url" content="https://www.ajudaprofessor.com.br/Microsoft365/topico-powerpoint-fundamentos.html">
+<meta property="og:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Microsoft 365 - Fundamentos do Microsoft PowerPoint">
+<meta name="twitter:description" content="Interface, layouts e slide mestre, design, transições e animações, modo apresentador e boas práticas.">
+<meta name="twitter:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Microsoft 365 - Fundamentos do Microsoft PowerPoint</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #0078d4; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #0078d4; color: white; padding: 13px 15px; text-align: left; }
+        .table td { padding: 10px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #0078d4; font-weight: bold; }
+        .info-box { border-left: 5px solid #0078d4; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .fire-box { border-left: 5px solid #d83b01; background: #fff5f2; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .num { color: #0078d4; font-weight: bold; }
+        code { background:#f1f5f9; padding:1px 5px; border-radius:4px; font-family:"Fira Code",monospace; font-size:0.92em; }
+        kbd { background:#1e293b; color:#f8fafc; border-radius:5px; padding:2px 8px; font-family:"Fira Code",monospace; font-size:0.88em; border-bottom:2px solid #0f172a; white-space:nowrap; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos do curso</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Microsoft 365
+            </h1>
+<p>PowerPoint — Fundamentos do Microsoft PowerPoint</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-file-powerpoint" style="font-size: 80px; margin-bottom: 30px; color: #0078d4;"></i>
+<h1>Fundamentos do PowerPoint</h1>
+<p style="font-size: 24px; opacity: 0.8;">Apresentações que informam — e prendem a atenção</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Conteúdo PowerPoint &nbsp;•&nbsp; Curso Tecnologias Microsoft 365</div>
+</div>
+
+<!-- Antes do software -->
+<div class="slide">
+<div class="header"><h2>Antes do software: a mensagem</h2></div>
+<div class="content">
+<p class="lead">Slide não é documento. O slide <span class="highlight">apoia quem fala</span> — quem lê tudo na tela dispensa
+            o apresentador. Comece sempre pelo roteiro:</p>
+<ul class="spaced" style="font-size:21px;">
+<li><b>Quem</b> é a plateia e <b>o que</b> ela precisa levar para casa? (1 frase);</li>
+<li>Estruture como história: <b>contexto → problema → solução → próximo passo</b>;</li>
+<li><b>Uma ideia por slide.</b> Se precisou de duas, são dois slides;</li>
+<li>Rascunhe no <b>modo Estrutura de Tópicos</b> (<i>Exibir</i>) ou numa folha de papel antes de abrir a caixa de ferramentas visual;</li>
+<li>Regra prática de quantidade: mais slides leves valem mais que poucos slides lotados.</li>
+</ul>
+<div class="info-box">
+<p><b>Teste do corredor:</b> se alguém passando pelo corredor entende o slide em 3 segundos, ele está bom. Se precisa parar e ler, tem texto demais.</p>
+</div>
+</div>
+</div>
+
+<!-- Interface e layouts -->
+<div class="slide">
+<div class="header"><h2>Interface, layouts e slide mestre</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3>O básico da tela</h3>
+<ul class="spaced">
+<li><b>Painel de miniaturas</b> à esquerda: arraste para reordenar; <kbd>Ctrl</kbd>+<kbd>M</kbd> cria slide novo;</li>
+<li><b>Modos de exibição:</b> Normal, Classificação de Slides (visão geral), Estrutura de Tópicos, Anotações;</li>
+<li><b>Seções</b> (botão direito no painel): agrupam blocos de slides em apresentações longas;</li>
+<li>Cada slide usa um <b>layout</b> (Título, Título e Conteúdo, Duas Partes...) — troque em <i>Página Inicial → Layout</i>.</li>
+</ul>
+</div>
+<div>
+<h3>Slide mestre: o "estilo" do PowerPoint</h3>
+<ul class="spaced">
+<li><i>Exibir → <b>Slide Mestre</b></i>: define fonte, cores, logotipo e posição dos elementos <b>de todos os slides de uma vez</b>;</li>
+<li>Logo da instituição no mestre = aparece em todos os slides, sem colar um por um;</li>
+<li>Salve como <b>modelo</b> (<code>.potx</code>) e a instituição inteira apresenta com a mesma identidade;</li>
+<li>Mesma lógica dos estilos do Word: formate a estrutura, não cada slide.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Design -->
+<div class="slide">
+<div class="header"><h2>Design: temas, cores e fontes</h2></div>
+<div class="content">
+<div class="grid-3">
+<div class="card">
+<h3><i class="fa-solid fa-palette" style="color:#0078d4;"></i> Temas</h3>
+<p>Guia <i>Design</i>: conjuntos prontos de cores, fontes e fundos. Escolha um e personalize as <b>variantes</b>. O <b>Designer</b> (ideias de design) sugere composições automáticas para o conteúdo do slide.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-droplet" style="color:#0078d4;"></i> Cores</h3>
+<p>2 ou 3 cores bastam: uma dominante, uma de destaque, neutros. Garanta <b>contraste</b> forte entre texto e fundo (texto escuro em fundo claro ou vice-versa) — pense na última fileira do auditório e no projetor fraco.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-font" style="color:#0078d4;"></i> Fontes</h3>
+<p>Uma família (duas no máximo). Tamanho mínimo <b>24 pt</b> para texto e 36–44 pt para títulos. Evite decorativas; priorize legibilidade (Segoe UI, Calibri, Arial).</p>
+</div>
+</div>
+<div class="warn-box">
+<p><b>Alinhamento não é detalhe:</b> use as guias inteligentes (linhas vermelhas ao arrastar), <i>Organizar → Alinhar</i> e a grade. Elementos desalinhados passam desleixo — mesmo que o conteúdo seja excelente.</p>
+</div>
+</div>
+</div>
+
+<!-- Conteúdo visual -->
+<div class="slide">
+<div class="header"><h2>Texto, imagens e outros conteúdos</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3>Texto que funciona</h3>
+<ul class="spaced">
+<li>Frases curtas, palavras-chave — não parágrafos;</li>
+<li>Máximo ~6 linhas por slide; o resto vai para as <b>anotações do orador</b>;</li>
+<li>Títulos que <b>afirmam</b>: "Atendimentos cresceram 18%" em vez de "Estatísticas";</li>
+<li>Listas: hierarquia com <kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd> na caixa de conteúdo.</li>
+</ul>
+</div>
+<div>
+<h3>Imagens e objetos</h3>
+<ul class="spaced">
+<li><i>Inserir → Imagens</i> (arquivo ou banco de imagens); use fotos grandes, de preferência em tela cheia com faixa de título;</li>
+<li><b>SmartArt</b> para processos e organogramas; <b>ícones</b> para substituir marcadores;</li>
+<li>Gráficos: cole <b>vinculado</b> do Excel para atualizar junto com a planilha;</li>
+<li>Vídeo e áudio: <i>Inserir → Mídia</i> — teste o som antes da apresentação;</li>
+<li><b>Compactar imagens</b> (<i>Formato da Imagem</i>) para o arquivo não ficar gigante.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Transições e animações -->
+<div class="slide">
+<div class="header"><h2>Transições e animações: tempero, não prato principal</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3>Transições (entre slides)</h3>
+<ul class="spaced">
+<li>Escolha <b>uma</b> transição sutil (Esmaecer) e aplique <i>a todos</i>;</li>
+<li>A transição <b>Transformar</b> (Morph) cria movimento sofisticado entre dois slides com elementos em comum — ótima para zoom em mapas e diagramas;</li>
+<li>Evite efeitos giratórios/sonoros — distraem e envelhecem a apresentação.</li>
+</ul>
+</div>
+<div>
+<h3>Animações (dentro do slide)</h3>
+<ul class="spaced">
+<li>Use para <b>revelar informação aos poucos</b> (lista item a item, camadas de um diagrama);</li>
+<li>Prefira <i>Aparecer/Esmaecer</i>; controle a ordem no <b>Painel de Animação</b>;</li>
+<li>Regra: a animação deve responder "por que este elemento precisa entrar depois?" — sem resposta, sem animação.</li>
+</ul>
+</div>
+</div>
+<div class="info-box">
+<p><b>Zoom de Resumo</b> (<i>Inserir → Zoom</i>): cria um "menu" clicável dos blocos da apresentação — útil em aulas e treinamentos para navegar fora da ordem linear.</p>
+</div>
+</div>
+</div>
+
+<!-- Apresentar -->
+<div class="slide">
+<div class="header"><h2>Hora de apresentar</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3>Modo Apresentador</h3>
+<ul class="spaced">
+<li><kbd>F5</kbd> apresenta do início; <kbd>Shift</kbd>+<kbd>F5</kbd> do slide atual;</li>
+<li>No projetor vai o slide; <b>na sua tela</b> ficam as anotações, o relógio e a prévia do próximo slide;</li>
+<li>Durante a apresentação: <kbd>B</kbd> escurece a tela (pausa para discussão), <kbd>Ctrl</kbd>+<kbd>L</kbd> vira apontador laser, digite o nº do slide + <kbd>Enter</kbd> para saltar;</li>
+<li><b>Ensaiar Intervalos</b> (<i>Apresentação de Slides</i>) cronometra cada slide;</li>
+<li><b>Preletor</b> (Presenter Coach): ensaio com feedback de IA sobre ritmo, muletas verbais e leitura de slide.</li>
+</ul>
+</div>
+<div>
+<h3>Distribuir e reutilizar</h3>
+<ul class="spaced">
+<li>Compartilhe pelo OneDrive para <b>coedição</b> (cada instrutor cuida de um bloco);</li>
+<li>Exporte em <b>PDF</b> para material de apoio (Ex.: folhetos com anotações);</li>
+<li><i>Arquivo → Exportar → Criar Vídeo</i> grava a apresentação narrada — vira videoaula;</li>
+<li><b>Apresentar no Teams:</b> compartilhe com o PowerPoint Live, que mantém o modo apresentador para você e navegação livre para o público.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Prática -->
+<div class="slide">
+<div class="header"><h2>Prática guiada</h2></div>
+<div class="content">
+<ul class="spaced" style="font-size:21px;">
+<li><span class="num">1.</span> Roteirize no papel uma instrução de 6 slides (tema livre: prevenção, procedimento interno, treinamento);</li>
+<li><span class="num">2.</span> No <b>Slide Mestre</b>, defina fonte, cores e o logotipo da instituição; salve como modelo <code>.potx</code>;</li>
+<li><span class="num">3.</span> Monte os slides usando <b>layouts</b> (nada de caixa de texto avulsa) — títulos que afirmam, texto mínimo;</li>
+<li><span class="num">4.</span> Insira uma imagem em tela cheia, um SmartArt de processo e um gráfico vinculado do Excel;</li>
+<li><span class="num">5.</span> Aplique <b>uma</b> transição para todos e animação de revelação em uma lista;</li>
+<li><span class="num">6.</span> Escreva as <b>anotações do orador</b> e ensaie com o <b>Preletor</b>; apresente em dupla usando o modo Apresentador.</li>
+</ul>
+<div class="fire-box">
+<p><b>Com IA:</b> depois de dominar o processo manual, repita o exercício pedindo o rascunho ao <b>Copilot</b> (a partir de um documento do Word) e compare: o que a IA acertou? O que você melhoraria? — é exatamente o fluxo do <a href="microsoft365-encontro02.html" style="color:#d83b01; font-weight:bold;">Encontro 02</a>.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#0078d4;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 840px; opacity: 0.9;">Boa apresentação nasce do <b>roteiro</b> (uma ideia por slide),
+            ganha consistência no <b>slide mestre</b> e nos <b>layouts</b>, comunica com <b>pouco texto, muito contraste e
+            títulos que afirmam</b>, usa transições e animações como tempero e brilha no <b>modo Apresentador</b> — com
+            anotações, ensaio e Preletor. O Designer e o Copilot aceleram a produção; o critério continua sendo seu.</p>
+<div style="margin-top: 40px;">
+<a href="topico-excel-fundamentos.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Fundamentos do Excel
+            </a>
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px; margin-left: 12px;">
+                Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Microsoft 365</p>
+</footer>
+</body>
+</html>
