@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com">
+<!-- Google Analytics 4 (gtag.js) + Consentimento LGPD -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHE86CNTZB"></script>
+<script src="/assets/js/analytics-consent.js"></script>
+<link rel="canonical" href="https://www.ajudaprofessor.com.br/Microsoft365/topico-excel-atalhos.html">
+<meta name="description" content="Guia de referência das teclas de atalho do Microsoft Excel em português: navegação, seleção, edição, formatação, linhas e colunas, fórmulas e filtros.">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ajuda Professor">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Microsoft 365 - Teclas de Atalho do Excel">
+<meta property="og:description" content="Guia dos atalhos do Excel em português: navegação, seleção, edição, formatação, linhas e colunas, fórmulas e filtros.">
+<meta property="og:url" content="https://www.ajudaprofessor.com.br/Microsoft365/topico-excel-atalhos.html">
+<meta property="og:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Microsoft 365 - Teclas de Atalho do Excel">
+<meta name="twitter:description" content="Guia dos atalhos do Excel em português: navegação, seleção, edição, formatação, linhas e colunas, fórmulas e filtros.">
+<meta name="twitter:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Microsoft 365 - Teclas de Atalho do Excel</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #0078d4; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #0078d4; color: white; padding: 13px 15px; text-align: left; }
+        .table td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #0078d4; font-weight: bold; }
+        .info-box { border-left: 5px solid #0078d4; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .fire-box { border-left: 5px solid #d83b01; background: #fff5f2; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .num { color: #0078d4; font-weight: bold; }
+        code { background:#f1f5f9; padding:1px 5px; border-radius:4px; font-family:"Fira Code",monospace; font-size:0.92em; }
+        kbd { background:#1e293b; color:#f8fafc; border-radius:5px; padding:2px 8px; font-family:"Fira Code",monospace; font-size:0.88em; border-bottom:2px solid #0f172a; white-space:nowrap; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos do curso</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Microsoft 365
+            </h1>
+<p>Excel — Teclas de Atalho do Microsoft Excel</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-keyboard" style="font-size: 80px; margin-bottom: 30px; color: #0078d4;"></i>
+<h1>Teclas de Atalho do Excel</h1>
+<p style="font-size: 24px; opacity: 0.8;">Navegue por milhares de linhas sem tocar no mouse</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Conteúdo Excel &nbsp;•&nbsp; Curso Tecnologias Microsoft 365</div>
+</div>
+
+<!-- Como usar -->
+<div class="slide">
+<div class="header"><h2>Como usar este guia</h2></div>
+<div class="content">
+<p class="lead">No Excel, os atalhos valem ainda mais que no Word: planilhas têm <span class="highlight">milhares de linhas</span>,
+            e navegar e selecionar com o mouse simplesmente não escala.</p>
+<ul class="spaced">
+<li>Atalhos do <b>Excel em português do Brasil</b>, Windows (área de trabalho); no Mac, troque <kbd>Ctrl</kbd> por <kbd>⌘</kbd> na maioria;</li>
+<li>Os três que mudam tudo: <kbd>Ctrl</kbd>+<kbd>setas</kbd> (saltar), <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>setas</kbd> (selecionar até a borda) e <kbd>F2</kbd> (editar a célula);</li>
+<li><kbd>Alt</kbd> sozinho mostra as letras de acesso da Faixa de Opções — qualquer comando sem mouse;</li>
+<li>Escolha <b>cinco por semana</b> e use até virar reflexo.</li>
+</ul>
+<div class="info-box">
+<p><b>Lembrete da versão em português:</b> como no Word, <kbd>Ctrl</kbd>+<kbd>B</kbd> = <b>salvar</b>, <kbd>Ctrl</kbd>+<kbd>N</kbd> = <b>negrito</b>, <kbd>Ctrl</kbd>+<kbd>T</kbd> = <b>selecionar tudo</b> e <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd> = <b>formatar como Tabela</b>.</p>
+</div>
+</div>
+</div>
+
+<!-- Navegação -->
+<div class="slide">
+<div class="header"><h2>Navegação e seleção</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<table class="table">
+<tr><th>Atalho</th><th>Navegar</th></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>↓</kbd>/<kbd>↑</kbd>/<kbd>←</kbd>/<kbd>→</kbd></td><td>Salta até a borda dos dados (fim/início da coluna ou linha)</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Home</kbd></td><td>Vai para A1</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>End</kbd></td><td>Vai para a última célula usada</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Page Down</kbd>/<kbd>Page Up</kbd></td><td>Próxima / anterior planilha (aba)</td></tr>
+<tr><td><kbd>F5</kbd></td><td>Ir para (célula, nome, especial)</td></tr>
+<tr><td><kbd>Tab</kbd> / <kbd>Enter</kbd></td><td>Célula à direita / abaixo (na seleção, percorre o bloco)</td></tr>
+</table>
+</div>
+<div>
+<table class="table">
+<tr><th>Atalho</th><th>Selecionar</th></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>setas</kbd></td><td>Seleciona até a borda dos dados (coluna inteira de dados em 1 toque)</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>*</kbd></td><td>Seleciona a região atual (bloco contíguo)</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>T</kbd></td><td>Selecionar tudo</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Espaço</kbd></td><td>Seleciona a coluna inteira</td></tr>
+<tr><td><kbd>Shift</kbd>+<kbd>Espaço</kbd></td><td>Seleciona a linha inteira</td></tr>
+<tr><td><kbd>Ctrl</kbd>+clique / <kbd>Shift</kbd>+clique</td><td>Seleção salteada / em bloco</td></tr>
+</table>
+</div>
+</div>
+<div class="info-box">
+<p><b>O combo mais usado do Excel:</b> clique no cabeçalho dos dados → <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>↓</kbd> → pronto, a coluna inteira de dados selecionada para copiar, formatar ou conferir a soma na barra de status.</p>
+</div>
+</div>
+</div>
+
+<!-- Edição -->
+<div class="slide">
+<div class="header"><h2>Edição e entrada de dados</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<table class="table">
+<tr><th>Atalho</th><th>Editar</th></tr>
+<tr><td><kbd>F2</kbd></td><td>Editar a célula (cursor dentro dela)</td></tr>
+<tr><td><kbd>Esc</kbd></td><td>Cancelar a edição</td></tr>
+<tr><td><kbd>Delete</kbd></td><td>Limpar o conteúdo da seleção</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Z</kbd> / <kbd>Ctrl</kbd>+<kbd>Y</kbd></td><td>Desfazer / refazer</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>C</kbd> / <kbd>X</kbd> / <kbd>V</kbd></td><td>Copiar / recortar / colar</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>V</kbd></td><td>Colar especial (valores, formatos, transpor)</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>L</kbd> / <kbd>Ctrl</kbd>+<kbd>U</kbd></td><td>Localizar / substituir</td></tr>
+</table>
+</div>
+<div>
+<table class="table">
+<tr><th>Atalho</th><th>Entrada rápida</th></tr>
+<tr><td><kbd>Alt</kbd>+<kbd>Enter</kbd></td><td>Quebra de linha dentro da célula</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Enter</kbd></td><td>Preenche toda a seleção com a mesma entrada</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>D</kbd></td><td>Copia a célula de cima para baixo (preencher abaixo)</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>E</kbd></td><td>Preenchimento Relâmpago (deduz o padrão)</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>;</kbd></td><td>Insere a data de hoje (fixa)</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>;</kbd></td><td>Insere a hora atual (fixa)</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>K</kbd></td><td>Inserir hiperlink</td></tr>
+</table>
+</div>
+</div>
+<div class="warn-box">
+<p><kbd>Ctrl</kbd>+<kbd>;</kbd> insere a data como <b>valor fixo</b> (não muda amanhã) — diferente de <code>=HOJE()</code>, que atualiza sempre. Use o fixo para registrar "quando lancei este dado".</p>
+</div>
+</div>
+</div>
+
+<!-- Formatação -->
+<div class="slide">
+<div class="header"><h2>Formatação</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<table class="table">
+<tr><th>Atalho</th><th>Ação</th></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>1</kbd></td><td>Caixa Formatar Células (a central de tudo)</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>N</kbd> / <kbd>I</kbd> / <kbd>S</kbd></td><td>Negrito / itálico / sublinhado</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd></td><td>Formatar como Tabela</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>$</kbd></td><td>Formato moeda com 2 casas</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>%</kbd></td><td>Formato percentual</td></tr>
+</table>
+</div>
+<div>
+<table class="table">
+<tr><th>Atalho</th><th>Ação</th></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>#</kbd></td><td>Formato de data</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>1</kbd></td><td>Número com separador de milhar e 2 casas</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>~</kbd></td><td>Formato Geral (remove formatação de número)</td></tr>
+<tr><td><kbd>F4</kbd> (fora da fórmula)</td><td>Repete a última ação (ex.: pintar célula)</td></tr>
+<tr><td><kbd>Alt</kbd>+<kbd>F1</kbd></td><td>Gráfico instantâneo da seleção</td></tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Linhas, colunas e estrutura -->
+<div class="slide">
+<div class="header"><h2>Linhas, colunas e planilhas</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<table class="table">
+<tr><th>Atalho</th><th>Linhas e colunas</th></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>=</kbd></td><td>Inserir células/linhas/colunas</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>-</kbd></td><td>Excluir células/linhas/colunas</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>9</kbd></td><td>Ocultar as linhas selecionadas</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>0</kbd></td><td>Ocultar as colunas selecionadas</td></tr>
+<tr><td>Clique duplo na borda do cabeçalho</td><td>Ajusta a largura ao conteúdo</td></tr>
+</table>
+</div>
+<div>
+<table class="table">
+<tr><th>Atalho</th><th>Planilhas e janelas</th></tr>
+<tr><td><kbd>Shift</kbd>+<kbd>F11</kbd></td><td>Nova planilha (aba)</td></tr>
+<tr><td><kbd>Ctrl</kbd>+arrastar a aba</td><td>Duplicar a planilha</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>B</kbd></td><td>Salvar</td></tr>
+<tr><td><kbd>F12</kbd></td><td>Salvar como</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>P</kbd></td><td>Imprimir (confira a área de impressão!)</td></tr>
+</table>
+</div>
+</div>
+<div class="info-box">
+<p><b>Congelar painéis</b> não tem atalho direto, mas merece menção: <i>Exibir → Congelar Painéis</i> mantém o cabeçalho visível ao rolar — indispensável em listas longas.</p>
+</div>
+</div>
+</div>
+
+<!-- Fórmulas e filtros -->
+<div class="slide">
+<div class="header"><h2>Fórmulas, filtros e análise</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<table class="table">
+<tr><th>Atalho</th><th>Fórmulas</th></tr>
+<tr><td><kbd>Alt</kbd>+<kbd>=</kbd></td><td>AutoSoma da região</td></tr>
+<tr><td><kbd>F4</kbd> (editando fórmula)</td><td>Alterna referência relativa/absoluta ($)</td></tr>
+<tr><td><kbd>Shift</kbd>+<kbd>F3</kbd></td><td>Assistente de inserir função</td></tr>
+<tr><td><kbd>F9</kbd></td><td>Recalcular tudo</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>'</kbd> (apóstrofo)</td><td>Copia a fórmula da célula de cima (editável)</td></tr>
+</table>
+</div>
+<div>
+<table class="table">
+<tr><th>Atalho</th><th>Filtros e análise</th></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd></td><td>Liga/desliga os filtros do cabeçalho</td></tr>
+<tr><td><kbd>Alt</kbd>+<kbd>↓</kbd> (no cabeçalho)</td><td>Abre o menu do filtro da coluna</td></tr>
+<tr><td><kbd>Alt</kbd>+<kbd>F1</kbd></td><td>Gráfico incorporado instantâneo</td></tr>
+<tr><td><kbd>F11</kbd></td><td>Gráfico em planilha separada</td></tr>
+<tr><td><kbd>Alt</kbd>+<kbd>Q</kbd></td><td>Pesquisar comando</td></tr>
+</table>
+</div>
+</div>
+<div class="fire-box">
+<p><b>Desafio dos 15:</b> mesma dinâmica da aula de Word — escolha 15 atalhos, uma semana de uso obrigatório, e cronometre uma tarefa real (conferir uma lista de 500 linhas) antes e depois.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#0078d4;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 840px; opacity: 0.9;">Comece pelo trio que muda o jogo — <kbd>Ctrl</kbd>+<kbd>setas</kbd>
+            para saltar, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>setas</kbd> para selecionar e <kbd>F2</kbd> para editar — e some
+            aos poucos a entrada rápida (<kbd>Ctrl</kbd>+<kbd>Enter</kbd>, <kbd>Ctrl</kbd>+<kbd>D</kbd>, <kbd>Ctrl</kbd>+<kbd>E</kbd>),
+            a formatação (<kbd>Ctrl</kbd>+<kbd>1</kbd>) e os filtros (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd>). Em listas de
+            milhares de linhas, o teclado não é luxo: é a diferença entre minutos e horas.</p>
+<div style="margin-top: 40px;">
+<a href="topico-excel-formulas.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> As 100 Fórmulas
+            </a>
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px; margin-left: 12px;">
+                Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Microsoft 365</p>
+</footer>
+</body>
+</html>

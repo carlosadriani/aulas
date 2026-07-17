@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com">
+<!-- Google Analytics 4 (gtag.js) + Consentimento LGPD -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHE86CNTZB"></script>
+<script src="/assets/js/analytics-consent.js"></script>
+<link rel="canonical" href="https://www.ajudaprofessor.com.br/Microsoft365/topico-word-fundamentos.html">
+<meta name="description" content="Fundamentos do Microsoft Word: interface, formatação de fonte e parágrafo, estilos, layout de página, tabelas, imagens, revisão e produtividade.">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ajuda Professor">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Microsoft 365 - Fundamentos do Microsoft Word">
+<meta property="og:description" content="Interface, formatação, estilos, layout de página, tabelas, imagens, revisão e produtividade no Word.">
+<meta property="og:url" content="https://www.ajudaprofessor.com.br/Microsoft365/topico-word-fundamentos.html">
+<meta property="og:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Microsoft 365 - Fundamentos do Microsoft Word">
+<meta name="twitter:description" content="Interface, formatação, estilos, layout de página, tabelas, imagens, revisão e produtividade no Word.">
+<meta name="twitter:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Microsoft 365 - Fundamentos do Microsoft Word</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #0078d4; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #0078d4; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #0078d4; color: white; padding: 13px 15px; text-align: left; }
+        .table td { padding: 10px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #0078d4; font-weight: bold; }
+        .info-box { border-left: 5px solid #0078d4; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .fire-box { border-left: 5px solid #d83b01; background: #fff5f2; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .num { color: #0078d4; font-weight: bold; }
+        code { background:#f1f5f9; padding:1px 5px; border-radius:4px; font-family:"Fira Code",monospace; font-size:0.92em; }
+        kbd { background:#1e293b; color:#f8fafc; border-radius:5px; padding:2px 8px; font-family:"Fira Code",monospace; font-size:0.88em; border-bottom:2px solid #0f172a; white-space:nowrap; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos do curso</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Microsoft 365
+            </h1>
+<p>Word — Fundamentos do Microsoft Word</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-file-word" style="font-size: 80px; margin-bottom: 30px; color: #0078d4;"></i>
+<h1>Fundamentos do Microsoft Word</h1>
+<p style="font-size: 24px; opacity: 0.8;">Da tela em branco ao documento profissional</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Conteúdo Word &nbsp;•&nbsp; Curso Tecnologias Microsoft 365</div>
+</div>
+
+<!-- Interface -->
+<div class="slide">
+<div class="header"><h2>Conhecendo a interface</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<ul class="spaced">
+<li><b>Faixa de Opções (Ribbon):</b> os comandos organizados em guias — <i>Página Inicial, Inserir, Layout, Referências, Revisão, Exibir</i>. Cada guia agrupa botões por tema;</li>
+<li><b>Barra de Ferramentas de Acesso Rápido:</b> atalhos fixos no topo (Salvar, Desfazer) — personalizável;</li>
+<li><b>Régua:</b> mostra margens, tabulações e recuos (ative em <i>Exibir → Régua</i>);</li>
+<li><b>Barra de status:</b> páginas, contagem de palavras, idioma e zoom;</li>
+<li><b>Pesquisar</b> (<kbd>Alt</kbd>+<kbd>Q</kbd>): digite o nome do comando que não encontra — o Word executa direto.</li>
+</ul>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-cloud-arrow-up" style="color:#0078d4;"></i> Salvar: a regra número 1</h3>
+<ul class="spaced" style="font-size:17px;">
+<li>Salve no <b>OneDrive</b> e ative o <b>AutoSalvar</b> (chave no canto superior esquerdo): cada alteração é gravada sozinha;</li>
+<li><b>Histórico de versões</b> (menu Arquivo → Informações) permite voltar a qualquer versão anterior;</li>
+<li>Formatos: <code>.docx</code> (padrão), <code>.pdf</code> (para distribuir), <code>.dotx</code> (modelo reutilizável).</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Edição básica -->
+<div class="slide">
+<div class="header"><h2>Edição: selecionar, mover e localizar</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Ação</th><th>Como fazer</th><th>Dica de velocidade</th></tr>
+<tr><td>Selecionar palavra</td><td>Clique duplo sobre ela</td><td>Clique triplo seleciona o parágrafo</td></tr>
+<tr><td>Selecionar linha</td><td>Clique na margem esquerda da linha</td><td>Arraste na margem para várias linhas</td></tr>
+<tr><td>Selecionar tudo</td><td><i>Página Inicial → Selecionar</i></td><td><kbd>Ctrl</kbd>+<kbd>T</kbd></td></tr>
+<tr><td>Copiar / recortar / colar</td><td>Botão direito ou grupo Área de Transferência</td><td><kbd>Ctrl</kbd>+<kbd>C</kbd> / <kbd>Ctrl</kbd>+<kbd>X</kbd> / <kbd>Ctrl</kbd>+<kbd>V</kbd></td></tr>
+<tr><td>Colar sem formatação</td><td><i>Colar Especial → Manter Somente Texto</i></td><td>Essencial ao trazer texto da internet</td></tr>
+<tr><td>Localizar e substituir</td><td><i>Página Inicial → Substituir</i></td><td><kbd>Ctrl</kbd>+<kbd>L</kbd> / <kbd>Ctrl</kbd>+<kbd>U</kbd></td></tr>
+<tr><td>Desfazer / refazer</td><td>Barra de Acesso Rápido</td><td><kbd>Ctrl</kbd>+<kbd>Z</kbd> / <kbd>Ctrl</kbd>+<kbd>R</kbd></td></tr>
+</table>
+<div class="info-box">
+<p><b>Localizar e substituir</b> vai além de texto: em <i>Mais → Especial</i> você troca quebras de parágrafo, espaços duplos e outros caracteres invisíveis — ótimo para limpar documentos colados de outras fontes.</p>
+</div>
+</div>
+</div>
+
+<!-- Fonte e parágrafo -->
+<div class="slide">
+<div class="header"><h2>Formatação de fonte e de parágrafo</h2></div>
+<div class="content">
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-font" style="color:#0078d4;"></i> Fonte (caracteres)</h3>
+<ul class="spaced" style="font-size:17px;">
+<li>Tipo e tamanho da letra; <b>negrito</b> (<kbd>Ctrl</kbd>+<kbd>N</kbd>), <i>itálico</i> (<kbd>Ctrl</kbd>+<kbd>I</kbd>), sublinhado (<kbd>Ctrl</kbd>+<kbd>S</kbd>);</li>
+<li>Cor, realce, sobrescrito/subscrito, maiúsculas (<kbd>Shift</kbd>+<kbd>F3</kbd> alterna);</li>
+<li><b>Pincel de Formatação:</b> copia a formatação de um trecho para outro (clique duplo nele para aplicar várias vezes);</li>
+<li><b>Limpar formatação:</b> volta o texto ao padrão.</li>
+</ul>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-align-left" style="color:#0078d4;"></i> Parágrafo (blocos)</h3>
+<ul class="spaced" style="font-size:17px;">
+<li>Alinhamentos: esquerda, centralizado (<kbd>Ctrl</kbd>+<kbd>E</kbd>), direita e <b>justificado</b> (<kbd>Ctrl</kbd>+<kbd>J</kbd>);</li>
+<li><b>Espaçamento entre linhas</b> (1,0 / 1,5 / duplo) e espaço antes/depois do parágrafo;</li>
+<li><b>Recuos:</b> da primeira linha (1,25 cm no padrão acadêmico) e do parágrafo inteiro — pela régua ou pela caixa Parágrafo;</li>
+<li>Marcadores, numeração e listas de vários níveis;</li>
+<li><kbd>Ctrl</kbd>+<kbd>*</kbd> (¶) mostra as <b>marcas ocultas</b> — enxergue quebras e espaços para diagnosticar problemas.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Estilos -->
+<div class="slide">
+<div class="header"><h2>Estilos: o segredo dos documentos profissionais</h2></div>
+<div class="content">
+<p class="lead">Um <span class="highlight">estilo</span> é um pacote de formatações com nome (Ex.: <i>Título 1</i>, <i>Normal</i>, <i>Citação</i>).
+            Em vez de formatar na mão parágrafo por parágrafo, você <b>aplica o estilo</b> — e o documento inteiro obedece.</p>
+<ul class="spaced">
+<li><b>Aplicar:</b> cursor no parágrafo → galeria de Estilos na Página Inicial;</li>
+<li><b>Modificar:</b> botão direito no estilo → <i>Modificar</i> — mude a fonte uma vez e <b>todos</b> os parágrafos daquele estilo se atualizam;</li>
+<li><b>Hierarquia:</b> Título 1 para capítulos, Título 2 para seções, Título 3 para subseções;</li>
+<li>Os títulos alimentam o <b>Sumário automático</b> (<i>Referências → Sumário</i>) e o <b>Painel de Navegação</b> (<i>Exibir</i>), que permite pular entre seções e reorganizar capítulos arrastando.</li>
+</ul>
+<div class="fire-box">
+<p><b>Por que insistimos nisso:</b> as aulas de formatação ABNT (TCC e artigo) dependem inteiramente de estilos bem configurados. Quem formata "na mão" refaz o trabalho a cada revisão; quem usa estilos ajusta tudo em segundos.</p>
+</div>
+</div>
+</div>
+
+<!-- Layout de página -->
+<div class="slide">
+<div class="header"><h2>Layout de página, quebras e numeração</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3>Guia Layout</h3>
+<ul class="spaced">
+<li><b>Margens:</b> predefinidas ou personalizadas (usaremos 3-3-2-2 cm no padrão ABNT);</li>
+<li><b>Orientação</b> (retrato/paisagem) e <b>tamanho</b> (A4);</li>
+<li><b>Colunas</b> para textos tipo jornal ou artigos de evento;</li>
+<li><b>Quebras:</b>
+<ul>
+<li><i>Quebra de página</i> (<kbd>Ctrl</kbd>+<kbd>Enter</kbd>): novo conteúdo começa em página nova — nunca "desça" com Enter;</li>
+<li><i>Quebra de seção:</i> divide o documento em partes com configurações independentes (margens, orientação, numeração).</li>
+</ul>
+</li>
+</ul>
+</div>
+<div>
+<h3>Cabeçalho, rodapé e números</h3>
+<ul class="spaced">
+<li>Clique duplo no topo/base da página para editar cabeçalho e rodapé;</li>
+<li><i>Inserir → Número de Página</i> para paginação automática;</li>
+<li>Com quebras de seção + <i>"Vincular ao Anterior"</i> desativado, cada seção pode ter numeração e cabeçalho próprios — é assim que o TCC mostra números só a partir da introdução (detalhado na aula de ABNT).</li>
+</ul>
+<div class="info-box" style="margin-top:14px;">
+<p><b>Enter não é ferramenta de layout.</b> Espaço vem de <i>espaçamento de parágrafo</i>; página nova vem de <i>quebra de página</i>; alinhamento vem de <i>recuo e tabulação</i>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Inserções -->
+<div class="slide">
+<div class="header"><h2>Tabelas, imagens e outros objetos</h2></div>
+<div class="content">
+<div class="grid-3">
+<div class="card">
+<h3><i class="fa-solid fa-table" style="color:#0078d4;"></i> Tabelas</h3>
+<p><i>Inserir → Tabela</i>. Use as guias <i>Design</i> e <i>Layout</i> (que aparecem ao clicar na tabela) para estilos, mesclar células, repetir linha de cabeçalho e ajustar automaticamente. <kbd>Tab</kbd> pula de célula em célula e cria linha nova na última.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-image" style="color:#0078d4;"></i> Imagens</h3>
+<p><i>Inserir → Imagens</i> (do computador ou de banco de imagens). O botão <b>Disposição do Texto</b> define como o texto contorna a figura — <i>Alinhado com o texto</i> é o mais estável para documentos formais. Use <b>Inserir Legenda</b> para numerar figuras.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-shapes" style="color:#0078d4;"></i> Outros objetos</h3>
+<p>Formas, ícones, SmartArt (diagramas), gráficos ligados ao Excel, caixas de texto, equações (<i>Inserir → Equação</i>) e símbolos. Tudo pela guia <i>Inserir</i>.</p>
+</div>
+</div>
+<div class="warn-box">
+<p><b>Documento institucional é sóbrio:</b> uma família de fonte, dois ou três tamanhos, cores da identidade visual. SmartArt e formas ajudam em manuais e instruções — não em ofícios.</p>
+</div>
+</div>
+</div>
+
+<!-- Revisão -->
+<div class="slide">
+<div class="header"><h2>Revisão: ortografia, alterações e comentários</h2></div>
+<div class="content">
+<ul class="spaced" style="font-size:21px;">
+<li><b>Editor</b> (<kbd>F7</kbd>): ortografia e gramática com sugestões de clareza e concisão — defina o idioma correto em <i>Revisão → Idioma</i>;</li>
+<li><b>Controlar Alterações:</b> registra cada edição (inserções, exclusões, trocas de formato); o autor decide <i>Aceitar</i> ou <i>Rejeitar</i> uma a uma — o padrão profissional para revisar documentos de outra pessoa;</li>
+<li><b>Comentários:</b> selecione o trecho → <i>Novo Comentário</i>; use <code>@nome</code> para notificar um colega (documento no OneDrive/SharePoint);</li>
+<li><b>Comparar:</b> <i>Revisão → Comparar</i> mostra as diferenças entre duas versões de um arquivo;</li>
+<li><b>Contagem de palavras</b> na barra de status — clique para detalhes (caracteres, parágrafos).</li>
+</ul>
+<div class="info-box">
+<p>Com o arquivo na nuvem, a <b>coedição em tempo real</b> substitui o vai-e-vem de anexos: cada revisor trabalha no mesmo documento, com alterações controladas e comentários.</p>
+</div>
+</div>
+</div>
+
+<!-- Produtividade -->
+<div class="slide">
+<div class="header"><h2>Produtividade: modelos, ditado e Copilot</h2></div>
+<div class="content">
+<div class="grid-3">
+<div class="card">
+<h3><i class="fa-solid fa-copy" style="color:#0078d4;"></i> Modelos</h3>
+<p>Salve documentos-padrão (ofício, memorando, relatório) como <b>modelo</b> (<code>.dotx</code>): cada novo uso abre uma cópia limpa, com estilos e cabeçalhos prontos. Padroniza a instituição inteira.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-microphone" style="color:#0078d4;"></i> Ditado</h3>
+<p><i>Página Inicial → Ditar</i>: fale e o Word escreve, com pontuação por comando de voz. Útil para rascunhar relatórios longos — revise depois com o Editor.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-wand-magic-sparkles" style="color:#0078d4;"></i> Copilot</h3>
+<p>Rascunha, reescreve, resume e responde perguntas sobre o documento — visto em detalhe no <a href="microsoft365-encontro02.html" style="color:#0078d4;">Encontro 02</a>. Fundamento sólido + IA = velocidade com qualidade.</p>
+</div>
+</div>
+<div class="fire-box">
+<p><b>Prática guiada:</b> crie um ofício do zero — configure margens, aplique estilos aos títulos, insira uma tabela de dados, numere as páginas, rode o Editor e salve como modelo <code>.dotx</code> e como PDF.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#0078d4;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 840px; opacity: 0.9;">O Word profissional se apoia em quatro pilares: <b>edição
+            eficiente</b> (seleção, colar especial, localizar/substituir), <b>estilos</b> (formatação com nome, sumário e
+            navegação automáticos), <b>layout consciente</b> (margens, quebras de página e de seção, numeração) e
+            <b>revisão colaborativa</b> (Editor, alterações controladas, comentários). Com esses fundamentos, as aulas de
+            formatação ABNT ficam simples — e o Copilot vira um acelerador, não uma muleta.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+<a href="topico-word-tcc-abnt.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px; margin-left: 12px;">
+                Próximo: TCC nas normas ABNT <i class="fa-solid fa-arrow-right"></i>
+</a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Microsoft 365</p>
+</footer>
+</body>
+</html>

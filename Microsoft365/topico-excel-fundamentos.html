@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com">
+<!-- Google Analytics 4 (gtag.js) + Consentimento LGPD -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHE86CNTZB"></script>
+<script src="/assets/js/analytics-consent.js"></script>
+<link rel="canonical" href="https://www.ajudaprofessor.com.br/Microsoft365/topico-excel-fundamentos.html">
+<meta name="description" content="Fundamentos do Microsoft Excel: interface, células e referências, fórmulas básicas, formatação, tabelas, classificação e filtros, gráficos e tabelas dinâmicas.">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ajuda Professor">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Microsoft 365 - Fundamentos do Microsoft Excel">
+<meta property="og:description" content="Interface, células e referências, fórmulas básicas, formatação, tabelas, filtros, gráficos e tabelas dinâmicas.">
+<meta property="og:url" content="https://www.ajudaprofessor.com.br/Microsoft365/topico-excel-fundamentos.html">
+<meta property="og:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Microsoft 365 - Fundamentos do Microsoft Excel">
+<meta name="twitter:description" content="Interface, células e referências, fórmulas básicas, formatação, tabelas, filtros, gráficos e tabelas dinâmicas.">
+<meta name="twitter:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Microsoft 365 - Fundamentos do Microsoft Excel</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #0078d4; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #0078d4; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #0078d4; color: white; padding: 13px 15px; text-align: left; }
+        .table td { padding: 10px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #0078d4; font-weight: bold; }
+        .info-box { border-left: 5px solid #0078d4; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .fire-box { border-left: 5px solid #d83b01; background: #fff5f2; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .num { color: #0078d4; font-weight: bold; }
+        code { background:#f1f5f9; padding:1px 5px; border-radius:4px; font-family:"Fira Code",monospace; font-size:0.92em; }
+        kbd { background:#1e293b; color:#f8fafc; border-radius:5px; padding:2px 8px; font-family:"Fira Code",monospace; font-size:0.88em; border-bottom:2px solid #0f172a; white-space:nowrap; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos do curso</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Microsoft 365
+            </h1>
+<p>Excel — Fundamentos do Microsoft Excel</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-file-excel" style="font-size: 80px; margin-bottom: 30px; color: #0078d4;"></i>
+<h1>Fundamentos do Microsoft Excel</h1>
+<p style="font-size: 24px; opacity: 0.8;">Da célula ao relatório: a base para dominar planilhas</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Conteúdo Excel &nbsp;•&nbsp; Curso Tecnologias Microsoft 365</div>
+</div>
+
+<!-- Interface -->
+<div class="slide">
+<div class="header"><h2>A anatomia de uma planilha</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<ul class="spaced">
+<li><b>Pasta de trabalho</b> (o arquivo <code>.xlsx</code>) contém <b>planilhas</b> (as abas na parte inferior);</li>
+<li>Cada planilha é uma grade de <b>colunas</b> (letras) e <b>linhas</b> (números); o encontro é a <b>célula</b> — endereço tipo <code>B4</code>;</li>
+<li>Um <b>intervalo</b> é um bloco de células: <code>B2:B30</code> (coluna), <code>A1:D10</code> (retângulo);</li>
+<li><b>Caixa de nome</b> (à esquerda da barra de fórmulas): mostra o endereço atual e permite nomear intervalos;</li>
+<li><b>Barra de fórmulas:</b> exibe o conteúdo real da célula — o que você vê na grade pode ser só o resultado formatado.</li>
+</ul>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-database" style="color:#0078d4;"></i> Tipos de dado</h3>
+<ul class="spaced" style="font-size:17px;">
+<li><b>Número:</b> alinha à direita; aceita cálculo;</li>
+<li><b>Texto:</b> alinha à esquerda; "10" como texto <b>não soma</b>;</li>
+<li><b>Data/hora:</b> por trás é um número (dias desde 1900) — por isso dá para subtrair datas;</li>
+<li><b>Fórmula:</b> sempre começa com <code>=</code>;</li>
+<li>Cuidado clássico: número gravado como texto (canto verde na célula) quebra somas e procuras.</li>
+</ul>
+</div>
+</div>
+<div class="info-box">
+<p>Salve no <b>OneDrive</b> com AutoSalvar ativo — as mesmas vantagens de versão e coedição vistas no Word valem para o Excel.</p>
+</div>
+</div>
+</div>
+
+<!-- Fórmulas básicas -->
+<div class="slide">
+<div class="header"><h2>Primeiras fórmulas e a alça de preenchimento</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3>Regras do jogo</h3>
+<ul class="spaced">
+<li>Toda fórmula começa com <code>=</code> e usa operadores <code>+ - * / ^</code> e comparações <code>= &lt;&gt; &gt; &lt; &gt;= &lt;=</code>;</li>
+<li>Argumentos separados por <b>ponto e vírgula</b> <code>;</code> (padrão brasileiro);</li>
+<li>Prefira <b>referências</b> a valores digitados: <code>=B2*C2</code> em vez de <code>=150*3</code> — mudou o dado, o resultado acompanha;</li>
+<li><kbd>Alt</kbd>+<kbd>=</kbd> insere a <b>AutoSoma</b>; a barra de status mostra soma/média/contagem de qualquer seleção.</li>
+</ul>
+</div>
+<div>
+<h3>Alça de preenchimento</h3>
+<ul class="spaced">
+<li>O quadradinho no canto da célula selecionada: <b>arraste</b> para copiar a fórmula para as células vizinhas;</li>
+<li>Clique <b>duplo</b> na alça: preenche até o fim da coluna vizinha;</li>
+<li>Também cria sequências: meses, dias da semana, 1-2-3...;</li>
+<li><b>Preenchimento Relâmpago</b> (<kbd>Ctrl</kbd>+<kbd>E</kbd>): digite um exemplo do resultado (Ex.: separar nome do sobrenome) e o Excel deduz o padrão para o resto da coluna.</li>
+</ul>
+</div>
+</div>
+<div class="code-box" style="font-size:17px;">
+=B2*C2&nbsp;&nbsp;&nbsp;<span style="color:#94a3b8;">// quantidade × valor unitário</span><br/>
+=SOMA(D2:D30)&nbsp;&nbsp;&nbsp;<span style="color:#94a3b8;">// total da coluna</span><br/>
+=MÉDIA(D2:D30)&nbsp;&nbsp;<span style="color:#94a3b8;">// média</span>
+        </div>
+</div>
+</div>
+
+<!-- Referências -->
+<div class="slide">
+<div class="header"><h2>Referências relativas, absolutas e entre planilhas</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<p class="lead">Ao copiar uma fórmula, as referências <span class="highlight">se movem junto</span>. O cifrão <code>$</code> trava a referência:</p>
+<ul class="spaced">
+<li><code>A2</code> — <b>relativa:</b> muda ao copiar;</li>
+<li><code>$A$2</code> — <b>absoluta:</b> nunca muda (Ex.: uma taxa fixa em F1);</li>
+<li><code>$A2</code> / <code>A$2</code> — <b>mista:</b> trava só a coluna ou só a linha;</li>
+<li>Atalho: selecione a referência na fórmula e pressione <kbd>F4</kbd> para alternar;</li>
+<li>Entre planilhas: <code>=Plan2!B4</code>; entre arquivos: <code>=[Controle.xlsx]Plan1!B4</code>.</li>
+</ul>
+</div>
+<div class="code-box" style="font-size:16px;">
+=B2*$F$1<br/><br/>
+<span style="color:#94a3b8;">// $F$1 = taxa fixa</span><br/>
+<span style="color:#94a3b8;">// continua F1 ao arrastar para baixo</span>
+            </div>
+</div>
+<div class="warn-box">
+<p>Esquecer o <code>$</code> em intervalos fixos é a causa nº 1 de fórmulas que "funcionavam" e quebram ao serem copiadas. Na dúvida, confira uma célula do meio da coluna com <kbd>F2</kbd> (mostra a fórmula com as referências coloridas).</p>
+</div>
+</div>
+</div>
+
+<!-- Formatação -->
+<div class="slide">
+<div class="header"><h2>Formatação de células e formatação condicional</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3>Formatar Células (<kbd>Ctrl</kbd>+<kbd>1</kbd>)</h3>
+<ul class="spaced">
+<li><b>Número:</b> casas decimais, separador de milhar, moeda (R$), percentual, data;</li>
+<li>Formatar <b>não altera o valor</b> — só a exibição (10,4999 formatado com 2 casas ainda soma como 10,4999);</li>
+<li><b>Alinhamento:</b> quebrar texto automaticamente, mesclar células (use com moderação — atrapalha classificação e fórmulas);</li>
+<li>Bordas, preenchimento e estilos de célula prontos.</li>
+</ul>
+</div>
+<div>
+<h3>Formatação condicional</h3>
+<ul class="spaced">
+<li><i>Página Inicial → Formatação Condicional</i>: a cor reage ao valor;</li>
+<li><b>Regras de destaque:</b> maior que, menor que, texto que contém, duplicatas;</li>
+<li><b>Barras de dados, escalas de cor e ícones:</b> leitura visual instantânea;</li>
+<li><b>Regra com fórmula:</b> pinte a <b>linha inteira</b> quando a data vencer: <code>=$E2&lt;HOJE()</code> aplicada a <code>$A2:$F200</code>.</li>
+</ul>
+</div>
+</div>
+<div class="info-box">
+<p><b>Exemplo pronto para usar:</b> controle de validade de EPIs com três regras — vermelho (vencido), amarelo (vence em 30 dias), verde (ok) — cada uma com sua fórmula sobre a coluna de datas.</p>
+</div>
+</div>
+</div>
+
+<!-- Tabelas -->
+<div class="slide">
+<div class="header"><h2>Tabelas formatadas: a base de tudo</h2></div>
+<div class="content">
+<p class="lead">Selecione seus dados e pressione <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd> (<i>Inserir → Tabela</i>). A faixa
+            vira uma <span class="highlight">Tabela</span> — e ganha superpoderes:</p>
+<ul class="spaced" style="font-size:20px;">
+<li><b>Filtros automáticos</b> no cabeçalho e linhas zebradas;</li>
+<li><b>Expansão automática:</b> nova linha herda fórmulas e formatação sozinha;</li>
+<li><b>Referências estruturadas:</b> <code>=SOMA(Tabela1[Valor])</code> — legível e sem quebrar quando a tabela cresce;</li>
+<li><b>Linha de totais</b> com um clique (soma, média, contagem por coluna);</li>
+<li>Alimenta <b>tabelas dinâmicas, gráficos e o Copilot</b> com dados organizados.</li>
+</ul>
+<div class="warn-box">
+<p><b>Regra de ouro dos dados:</b> uma linha por registro, uma coluna por informação, cabeçalho único na primeira linha, sem células mescladas, sem linhas em branco e sem "totais" no meio dos dados. Planilha organizada assim funciona com tudo — bagunçada, não funciona com nada.</p>
+</div>
+</div>
+</div>
+
+<!-- Classificar e filtrar -->
+<div class="slide">
+<div class="header"><h2>Classificar, filtrar e validar</h2></div>
+<div class="content">
+<div class="grid-3">
+<div class="card">
+<h3><i class="fa-solid fa-arrow-down-a-z" style="color:#0078d4;"></i> Classificar</h3>
+<p><i>Dados → Classificar</i>: por uma coluna (A→Z, maior→menor) ou por níveis (Ex.: por setor e, dentro dele, por data). Sempre selecione <b>uma célula da tabela</b> antes — nunca uma coluna isolada, para não desalinhar os dados.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-filter" style="color:#0078d4;"></i> Filtrar</h3>
+<p><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd> liga os filtros. Combine critérios (texto, número, data, cor). A barra de status mostra quantos registros ficaram visíveis. Filtro <b>oculta</b>, não apaga.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-list-check" style="color:#0078d4;"></i> Validação de dados</h3>
+<p><i>Dados → Validação de Dados</i>: crie <b>listas suspensas</b> (Ex.: status Pendente/Concluído) e restrinja entradas (datas válidas, números positivos). Menos digitação livre = menos erro.</p>
+</div>
+</div>
+<div class="info-box">
+<p><i>Dados → Remover Duplicatas</i> limpa registros repetidos — confira antes com a formatação condicional de valores duplicados.</p>
+</div>
+</div>
+</div>
+
+<!-- Gráficos -->
+<div class="slide">
+<div class="header"><h2>Gráficos: dados que falam</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3>Criando</h3>
+<ul class="spaced">
+<li>Selecione os dados → <i>Inserir → Gráficos Recomendados</i> (ou <kbd>Alt</kbd>+<kbd>F1</kbd> para o instantâneo);</li>
+<li>Guias <i>Design</i> e <i>Formatar</i> ajustam título, rótulos, legenda e cores;</li>
+<li><b>Minigráficos</b> (<i>Inserir → Minigráficos</i>): tendência dentro de uma única célula, ótimo para listas de indicadores.</li>
+</ul>
+</div>
+<div>
+<h3>Escolhendo o tipo certo</h3>
+<table class="table" style="font-size:17px;">
+<tr><th>Objetivo</th><th>Gráfico</th></tr>
+<tr><td>Comparar categorias</td><td>Colunas / barras</td></tr>
+<tr><td>Evolução no tempo</td><td>Linhas</td></tr>
+<tr><td>Participação no todo</td><td>Pizza/rosca (poucas fatias!)</td></tr>
+<tr><td>Relação entre 2 variáveis</td><td>Dispersão</td></tr>
+</table>
+</div>
+</div>
+<div class="warn-box">
+<p>Menos é mais: um gráfico, uma mensagem. Título que afirma algo ("Ocorrências caem 12% no 1º semestre") comunica melhor que um genérico ("Gráfico de ocorrências").</p>
+</div>
+</div>
+</div>
+
+<!-- Tabelas dinâmicas -->
+<div class="slide">
+<div class="header"><h2>Tabelas dinâmicas: o resumo em segundos</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<p class="lead">A <span class="highlight">tabela dinâmica</span> agrupa e totaliza milhares de linhas sem nenhuma fórmula.</p>
+<ul class="spaced">
+<li>Clique na tabela de dados → <i>Inserir → Tabela Dinâmica</i>;</li>
+<li>Arraste os campos para <b>Linhas</b>, <b>Colunas</b>, <b>Valores</b> (soma, contagem, média) e <b>Filtros</b>;</li>
+<li>Datas se agrupam sozinhas por mês/trimestre/ano;</li>
+<li><b>Segmentações</b> (slicers) criam botões de filtro clicáveis — cara de painel gerencial;</li>
+<li>Dados novos? <i>Analisar → Atualizar</i>.</li>
+</ul>
+</div>
+<div class="code-box" style="font-size:16px;">
+<span style="color:#94a3b8;">// Exemplo: ocorrências do ano</span><br/>
+Linhas:&nbsp;&nbsp;&nbsp;Tipo de ocorrência<br/>
+Colunas:&nbsp;&nbsp;Mês<br/>
+Valores:&nbsp;&nbsp;Contagem de registros<br/>
+Filtro:&nbsp;&nbsp;&nbsp;Bairro<br/><br/>
+<span style="color:#94a3b8;">// resultado: matriz tipo × mês,</span><br/>
+<span style="color:#94a3b8;">// filtrável por bairro, em 30 segundos</span>
+            </div>
+</div>
+</div>
+</div>
+
+<!-- Prática -->
+<div class="slide">
+<div class="header"><h2>Prática guiada e próximos passos</h2></div>
+<div class="content">
+<ul class="spaced" style="font-size:21px;">
+<li><span class="num">1.</span> Monte a planilha "Controle de Materiais": colunas Item, Categoria, Quantidade, Valor Unitário, Validade;</li>
+<li><span class="num">2.</span> Crie a coluna Total (<code>=C2*D2</code>) e arraste com a alça; formate como moeda;</li>
+<li><span class="num">3.</span> Converta em <b>Tabela</b> (<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd>) e adicione a linha de totais;</li>
+<li><span class="num">4.</span> Aplique <b>formatação condicional</b> na validade (vencido em vermelho) e uma <b>lista suspensa</b> na categoria;</li>
+<li><span class="num">5.</span> Classifique por categoria, filtre os vencidos e crie um <b>gráfico</b> de totais por categoria;</li>
+<li><span class="num">6.</span> Finalize com uma <b>tabela dinâmica</b>: total de valor por categoria e mês de validade.</li>
+</ul>
+<div class="fire-box">
+<p><b>Siga a trilha Excel deste curso:</b> as <a href="topico-excel-formulas.html" style="color:#d83b01; font-weight:bold;">100 Fórmulas Mais Usadas</a> para virar referência rápida, os <a href="topico-excel-atalhos.html" style="color:#d83b01; font-weight:bold;">atalhos de teclado</a> para ganhar velocidade — e o Copilot do <a href="microsoft365-encontro02.html" style="color:#d83b01; font-weight:bold;">Encontro 02</a> para acelerar tudo com IA.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#0078d4;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 840px; opacity: 0.9;">O Excel se domina em camadas: <b>células e referências</b>
+            (com o <code>$</code> no lugar certo), <b>fórmulas</b> ligadas a dados e não a números soltos, <b>dados organizados
+            como Tabela</b> (uma linha por registro), <b>formatação condicional</b> para enxergar exceções e <b>tabelas
+            dinâmicas</b> para resumir milhares de linhas em segundos. Essa base bem feita é o que permite ao Copilot — e a
+            você — ir longe.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+<a href="topico-excel-formulas.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px; margin-left: 12px;">
+                Próximo: As 100 Fórmulas <i class="fa-solid fa-arrow-right"></i>
+</a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Microsoft 365</p>
+</footer>
+</body>
+</html>
