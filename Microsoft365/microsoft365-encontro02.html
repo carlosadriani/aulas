@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com">
+<!-- Google Analytics 4 (gtag.js) + Consentimento LGPD -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHE86CNTZB"></script>
+<script src="/assets/js/analytics-consent.js"></script>
+<link rel="canonical" href="https://www.ajudaprofessor.com.br/Microsoft365/microsoft365-encontro02.html">
+<meta name="description" content="Encontro 02 do curso Tecnologias Microsoft 365: Word, Excel, PowerPoint e Outlook com Copilot e Agent Mode aplicados à rotina de trabalho.">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ajuda Professor">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Microsoft 365 - Encontro 02: Produtividade com Copilot">
+<meta property="og:description" content="Word, Excel, PowerPoint e Outlook com Copilot e Agent Mode aplicados à rotina de trabalho.">
+<meta property="og:url" content="https://www.ajudaprofessor.com.br/Microsoft365/microsoft365-encontro02.html">
+<meta property="og:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Microsoft 365 - Encontro 02: Produtividade com Copilot">
+<meta name="twitter:description" content="Word, Excel, PowerPoint e Outlook com Copilot e Agent Mode aplicados à rotina de trabalho.">
+<meta name="twitter:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Microsoft 365 - Encontro 02: Produtividade com Copilot</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #0078d4; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #0078d4; line-height: 1.7; }
+        .prompt-box { background: #1e293b; color: #a5f3fc; padding: 24px 28px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 17px; border-left: 8px solid #d83b01; line-height: 1.7; margin-top: 16px; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #0078d4; color: white; padding: 13px 15px; text-align: left; }
+        .table td { padding: 10px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #0078d4; font-weight: bold; }
+        .info-box { border-left: 5px solid #0078d4; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .fire-box { border-left: 5px solid #d83b01; background: #fff5f2; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .num { color: #0078d4; font-weight: bold; }
+        code { background:#f1f5f9; padding:1px 5px; border-radius:4px; font-family:"Fira Code",monospace; font-size:0.92em; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos do curso</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Microsoft 365
+            </h1>
+<p>Encontro 02 — Produtividade com Copilot: Word, Excel, PowerPoint e Outlook</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-wand-magic-sparkles" style="font-size: 80px; margin-bottom: 30px; color: #0078d4;"></i>
+<h1>Produtividade com Copilot</h1>
+<p style="font-size: 24px; opacity: 0.8;">Word, Excel, PowerPoint e Outlook turbinados com IA</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Encontro 02 &nbsp;•&nbsp; Curso Tecnologias Microsoft 365</div>
+</div>
+
+<!-- O que é o Copilot -->
+<div class="slide">
+<div class="header"><h2>O que é o Microsoft 365 Copilot?</h2></div>
+<div class="content">
+<p class="lead">O <span class="highlight">Copilot</span> é o assistente de IA integrado aos aplicativos do M365. Ele
+            <b>lê o contexto do seu trabalho</b> (o documento aberto, a planilha, o e-mail, os arquivos da organização) e executa
+            tarefas por instruções em português.</p>
+<div class="grid" style="margin-top:20px;">
+<div class="card">
+<h3><i class="fa-solid fa-comment-dots" style="color:#0078d4;"></i> Dois jeitos de usar</h3>
+<ul class="spaced">
+<li><b>Dentro dos apps:</b> um painel lateral no Word, Excel, PowerPoint, Outlook e Teams;</li>
+<li><b>Copilot Chat:</b> um chat central (no Teams ou em <code>m365.cloud.microsoft</code>) que pesquisa nos seus arquivos, e-mails e reuniões.</li>
+</ul>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-user-gear" style="color:#0078d4;"></i> Agent Mode (novidade 2026)</h3>
+<p>Desde abril de 2026, o Copilot no Word, Excel e PowerPoint tem <b>modo agente</b>: em vez de só sugerir, ele <b>executa</b> — cria seções, aplica fórmulas, monta slides — mostrando cada alteração para você aprovar.</p>
+</div>
+</div>
+<div class="info-box">
+<p><b>Princípio nº 1:</b> o Copilot é um <b>estagiário brilhante e apressado</b> — produz rápido, mas quem assina é você. Revisar é obrigatório, sempre.</p>
+</div>
+</div>
+</div>
+
+<!-- Anatomia de um bom prompt -->
+<div class="slide">
+<div class="header"><h2>Antes de tudo: como pedir bem (prompt)</h2></div>
+<div class="content">
+<p class="lead">A qualidade da resposta depende da qualidade do pedido. Use a fórmula <span class="highlight">C.T.R.F.</span>:</p>
+<table class="table">
+<tr><th>Elemento</th><th>Pergunta que responde</th><th>Exemplo</th></tr>
+<tr><td><b>C</b>ontexto</td><td>Qual a situação?</td><td>"Sou servidor público e atendi uma ocorrência de incêndio em residência..."</td></tr>
+<tr><td><b>T</b>arefa</td><td>O que fazer?</td><td>"...redija um relatório da ocorrência..."</td></tr>
+<tr><td><b>R</b>egras</td><td>Quais restrições?</td><td>"...em linguagem formal, com seções: dados, histórico, ações, recursos..."</td></tr>
+<tr><td><b>F</b>ormato</td><td>Como entregar?</td><td>"...em no máximo 1 página, com títulos em negrito."</td></tr>
+</table>
+<div class="prompt-box">
+"Sou servidor público e atuo no atendimento de emergências. A partir das anotações abaixo, redija o histórico de uma
+ocorrência de incêndio em vegetação, em linguagem formal e impessoal, com no máximo 3 parágrafos: [anotações do atendimento]"
+            </div>
+</div>
+</div>
+
+<!-- Word -->
+<div class="slide">
+<div class="header"><h2>Word + Copilot: documentos em minutos</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3>O que o Copilot faz no Word</h3>
+<ul class="spaced">
+<li><b>Rascunhar:</b> gera ofícios, memorandos e relatórios a partir de instruções ou de outro arquivo (<i>"com base em /planilha-vistorias, escreva..."</i>);</li>
+<li><b>Reescrever:</b> transforma anotações soltas em texto formal; ajusta o tom (mais direto, mais formal);</li>
+<li><b>Resumir:</b> um POP de 40 páginas vira um sumário executivo;</li>
+<li><b>Perguntar ao documento:</b> "quais prazos aparecem neste edital?";</li>
+<li><b>Editar por comentário:</b> escreva um comentário com a instrução e o Copilot aplica a mudança (novidade 2026).</li>
+</ul>
+</div>
+<div>
+<h3>Recursos clássicos que continuam essenciais</h3>
+<ul class="spaced">
+<li><b>Estilos</b> (Título 1, 2...) para padronizar e gerar sumário automático;</li>
+<li><b>Controlar alterações</b> para revisão entre setores;</li>
+<li><b>Coedição</b> em tempo real (arquivo na nuvem);</li>
+<li><b>Modelos</b> (.dotx) para ofícios padronizados da instituição.</li>
+</ul>
+<div class="fire-box" style="margin-top:16px;">
+<p><b>Prática:</b> transformar as anotações de um atendimento simulado em relatório formal com o Copilot — e depois revisar criticamente o resultado.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Excel -->
+<div class="slide">
+<div class="header"><h2>Excel + Copilot: dados que viram decisão</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3>O que o Copilot faz no Excel</h3>
+<ul class="spaced">
+<li><b>Analisar:</b> "quais os 5 tipos de ocorrência mais frequentes por mês?" — ele cria a tabela dinâmica e o gráfico;</li>
+<li><b>Fórmulas:</b> descreva o cálculo em português e receba a fórmula pronta (com explicação);</li>
+<li><b>Destacar:</b> aplica formatação condicional por instrução ("pinte de vermelho os EPIs vencidos");</li>
+<li><b>Agent Mode:</b> constrói a planilha inteira — estrutura, fórmulas e visuais — mostrando o passo a passo;</li>
+<li><b>Regras de pasta de trabalho:</b> instruções fixas que o Copilot obedece naquela planilha (novidade 2026).</li>
+</ul>
+</div>
+<div>
+<h3>Base que faz diferença</h3>
+<ul class="spaced">
+<li><b>Tabelas formatadas</b> (Ctrl+Alt+T): a base para tudo funcionar bem;</li>
+<li><b>Classificar e filtrar</b> sem bagunçar os dados;</li>
+<li><b>SOMA, MÉDIA, CONT.SE, SOMASE</b>: o kit de sobrevivência;</li>
+<li><b>PROCX</b> para cruzar listas (pessoal × curso × validade);</li>
+<li><b>Tabelas dinâmicas</b> para relatórios gerenciais.</li>
+</ul>
+<div class="prompt-box" style="font-size:15px;">
+"Crie uma coluna Situação que mostre VENCIDO se a data
+da coluna D for anterior a hoje, e OK caso contrário.
+Depois resuma quantos itens estão vencidos por seção."
+                </div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- PowerPoint -->
+<div class="slide">
+<div class="header"><h2>PowerPoint + Copilot: da pauta à apresentação</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3>O que o Copilot faz no PowerPoint</h3>
+<ul class="spaced">
+<li><b>Criar a partir de um arquivo:</b> aponte um relatório do Word e receba o rascunho do slide deck;</li>
+<li><b>Criar do zero:</b> "apresentação de 8 slides sobre prevenção de incêndio doméstico para escolas";</li>
+<li><b>Atualizar:</b> refaz um deck existente com dados novos, respeitando o modelo visual;</li>
+<li><b>Brand Kit:</b> usa os modelos aprovados da instituição (novidade 2026);</li>
+<li><b>Resumir e organizar:</b> reduz uma apresentação longa e sugere seções.</li>
+</ul>
+</div>
+<div>
+<h3>Boas práticas de slides</h3>
+<ul class="spaced">
+<li>1 ideia por slide; menos texto, mais imagem;</li>
+<li>Use o <b>modo Estrutura de Tópicos</b> para planejar antes de decorar;</li>
+<li><b>Anotações do orador</b> para o que você vai falar (o Copilot também as gera);</li>
+<li>Ensaie com o <b>Preletor</b> (Presenter Coach), que dá feedback de ritmo e vícios de linguagem.</li>
+</ul>
+<div class="fire-box" style="margin-top:16px;">
+<p><b>Prática:</b> gerar uma instrução de 6 slides sobre uso de extintores a partir de um texto-base, ajustando o resultado.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Outlook -->
+<div class="slide">
+<div class="header"><h2>Outlook + Copilot: caixa de entrada sob controle</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3>O que o Copilot faz no Outlook</h3>
+<ul class="spaced">
+<li><b>Resumir conversas:</b> uma thread com 20 respostas vira 5 linhas com o que importa;</li>
+<li><b>Rascunhar respostas:</b> indique a intenção ("aceitar, mas propor outra data") e ajuste o tom;</li>
+<li><b>Reescrever trechos:</b> selecione só uma parte do e-mail para melhorar (novidade 2026);</li>
+<li><b>Preparar reuniões:</b> resumo dos e-mails e arquivos relacionados ao convite.</li>
+</ul>
+</div>
+<div>
+<h3>Organização que sustenta</h3>
+<ul class="spaced">
+<li><b>Regras</b> para triagem automática (Ex.: mensagens da central de atendimento vão para pasta prioritária);</li>
+<li><b>Categorias coloridas</b> e pastas por assunto;</li>
+<li><b>Agenda:</b> convites com pauta, salas e lembretes;</li>
+<li><b>Assinatura padronizada</b> institucional.</li>
+</ul>
+<div class="warn-box" style="margin-top:16px;">
+<p><b>Cuidado:</b> e-mail gerado por IA continua sendo <b>seu</b> e-mail oficial. Leia antes de enviar — especialmente destinatários e anexos.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Prompts avançados -->
+<div class="slide">
+<div class="header"><h2>Engenharia de prompts: subindo o nível</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<h3>Técnicas que funcionam</h3>
+<ul class="spaced">
+<li><b>Persona:</b> "Aja como um revisor de textos oficiais..." — direciona tom e vocabulário;</li>
+<li><b>Exemplos:</b> mostre um modelo do resultado esperado ("siga o formato deste relatório: ...");</li>
+<li><b>Passo a passo:</b> "antes de responder, liste as informações que faltam";</li>
+<li><b>Iteração:</b> a primeira resposta é rascunho — peça ajustes ("mais curto", "tom mais formal", "em tabela");</li>
+<li><b>Crítica:</b> "aponte fragilidades e informações não verificadas na sua própria resposta".</li>
+</ul>
+</div>
+<div>
+<div class="prompt-box" style="font-size:15px;">
+"Aja como revisor de documentos oficiais da instituição.
+Analise o relatório abaixo e: 1) aponte inconsistências
+de datas e dados; 2) liste informações obrigatórias
+ausentes; 3) sugira a reescrita dos trechos ambíguos,
+mantendo o formato institucional. Apresente em tabela
+com colunas Problema / Trecho / Sugestão. [relatório]"
+                </div>
+<div class="info-box" style="margin-top:16px;">
+<p><b>Dica:</b> guarde os prompts que funcionaram numa biblioteca de prompts da equipe — o "manual de bolso" de IA da instituição.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Prática guiada -->
+<div class="slide">
+<div class="header"><h2>Prática guiada do Encontro 02</h2></div>
+<div class="content">
+<ul class="spaced" style="font-size:21px;">
+<li><span class="num">1.</span> <b>Word:</b> use o prompt C.T.R.F. para gerar um relatório de ocorrência simulada; depois peça ao Copilot para reduzi-lo a um parágrafo de resumo;</li>
+<li><span class="num">2.</span> <b>Excel:</b> na planilha de EPIs fornecida, peça ao Copilot a coluna "Situação" (vencido/OK), um resumo por seção e um gráfico;</li>
+<li><span class="num">3.</span> <b>PowerPoint:</b> gere uma apresentação a partir do relatório do passo 1, aplicando o modelo institucional;</li>
+<li><span class="num">4.</span> <b>Outlook:</b> escreva com o Copilot um e-mail encaminhando o relatório ao superior, em tom formal, e revise;</li>
+<li><span class="num">5.</span> <b>Revisão crítica:</b> em dupla, encontrem pelo menos <b>um erro ou imprecisão</b> em algo que a IA gerou hoje.</li>
+</ul>
+<div class="fire-box">
+<p><b>Desafio da semana:</b> escolher um documento real que você produz todo mês e refazê-lo com apoio do Copilot, comparando o tempo gasto.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#0078d4;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 840px; opacity: 0.9;">O <b>Copilot</b> acelera cada aplicativo: no <b>Word</b> ele
+            rascunha e reescreve; no <b>Excel</b> analisa e cria fórmulas; no <b>PowerPoint</b> monta apresentações a partir dos
+            seus documentos; no <b>Outlook</b> resume e responde. O segredo está no pedido — <b>Contexto, Tarefa, Regras,
+            Formato</b> — e na revisão final, que é sempre humana. No próximo e último encontro: automação com Forms, Lists e
+            Power Automate — e os agentes de IA em ação.</p>
+<div style="margin-top: 40px;">
+<a href="microsoft365-encontro01.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Encontro 01
+            </a>
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px; margin-left: 12px;">
+                Tópicos
+            </a>
+<a href="microsoft365-encontro03.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px; margin-left: 12px;">
+                Encontro 03 <i class="fa-solid fa-arrow-right"></i>
+</a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Microsoft 365</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com">
+<!-- Google Analytics 4 (gtag.js) + Consentimento LGPD -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHE86CNTZB"></script>
+<script src="/assets/js/analytics-consent.js"></script>
+<link rel="canonical" href="https://www.ajudaprofessor.com.br/Microsoft365/microsoft365-encontro01.html">
+<meta name="description" content="Encontro 01 do curso Tecnologias Microsoft 365: o ecossistema M365, trabalho na nuvem, OneDrive, Teams e SharePoint aplicados à rotina de trabalho.">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ajuda Professor">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Microsoft 365 - Encontro 01: Teams, OneDrive e SharePoint">
+<meta property="og:description" content="O ecossistema M365, trabalho na nuvem, OneDrive, Teams e SharePoint aplicados à rotina de trabalho.">
+<meta property="og:url" content="https://www.ajudaprofessor.com.br/Microsoft365/microsoft365-encontro01.html">
+<meta property="og:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Microsoft 365 - Encontro 01: Teams, OneDrive e SharePoint">
+<meta name="twitter:description" content="O ecossistema M365, trabalho na nuvem, OneDrive, Teams e SharePoint aplicados à rotina de trabalho.">
+<meta name="twitter:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Microsoft 365 - Encontro 01: O Ecossistema M365</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #0078d4; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1e3a8a; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #0078d4; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #0078d4; color: white; padding: 13px 15px; text-align: left; }
+        .table td { padding: 10px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #0078d4; font-weight: bold; }
+        .info-box { border-left: 5px solid #0078d4; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .fire-box { border-left: 5px solid #d83b01; background: #fff5f2; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .num { color: #0078d4; font-weight: bold; }
+        code { background:#f1f5f9; padding:1px 5px; border-radius:4px; font-family:"Fira Code",monospace; font-size:0.92em; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos do curso</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Microsoft 365
+            </h1>
+<p>Encontro 01 — O Ecossistema M365: Teams, OneDrive e SharePoint</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-cloud" style="font-size: 80px; margin-bottom: 30px; color: #0078d4;"></i>
+<h1>O Ecossistema Microsoft 365</h1>
+<p style="font-size: 24px; opacity: 0.8;">Nuvem, arquivos e colaboração: Teams, OneDrive e SharePoint</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Encontro 01 &nbsp;•&nbsp; Curso Tecnologias Microsoft 365</div>
+</div>
+
+<!-- Objetivos do encontro -->
+<div class="slide">
+<div class="header"><h2>O que vamos aprender hoje</h2></div>
+<div class="content">
+<ul class="spaced" style="font-size:22px;">
+<li><i class="fa-solid fa-circle-check" style="color:#0078d4;"></i> Entender <b>o que é o Microsoft 365</b> e por que ele muda a forma de trabalhar;</li>
+<li><i class="fa-solid fa-circle-check" style="color:#0078d4;"></i> Guardar e organizar arquivos no <b>OneDrive</b> — sem pendrive e sem "versão_final_2_agora_vai.docx";</li>
+<li><i class="fa-solid fa-circle-check" style="color:#0078d4;"></i> Compartilhar arquivos com <b>segurança</b> e editar em conjunto, em tempo real;</li>
+<li><i class="fa-solid fa-circle-check" style="color:#0078d4;"></i> Usar o <b>Teams</b> para conversas, equipes, canais e reuniões;</li>
+<li><i class="fa-solid fa-circle-check" style="color:#0078d4;"></i> Conhecer o <b>SharePoint</b> como repositório oficial da instituição.</li>
+</ul>
+<div class="fire-box">
+<p><b>Missão do dia:</b> ao final do encontro, cada equipe terá criado sua pasta compartilhada de vistorias, com os arquivos organizados e um canal no Teams para se comunicar.</p>
+</div>
+</div>
+</div>
+
+<!-- O que é o M365 -->
+<div class="slide">
+<div class="header"><h2>O que é o Microsoft 365?</h2></div>
+<div class="content">
+<p class="lead">O Microsoft 365 é um <span class="highlight">conjunto integrado de aplicativos e serviços na nuvem</span>:
+            os programas clássicos do Office (Word, Excel, PowerPoint, Outlook) + ferramentas de colaboração (Teams, OneDrive,
+            SharePoint) + automação (Forms, Lists, Planner, Power Automate) + inteligência artificial (<b>Copilot</b>).</p>
+<div class="grid-3" style="margin-top:24px;">
+<div class="card" style="text-align:center;">
+<i class="fa-solid fa-cloud-arrow-up" style="font-size:36px; color:#0078d4;"></i>
+<h3>Tudo na nuvem</h3>
+<p>Seus arquivos e programas acompanham você em qualquer computador, tablet ou celular — basta entrar com a conta institucional.</p>
+</div>
+<div class="card" style="text-align:center;">
+<i class="fa-solid fa-users" style="font-size:36px; color:#0078d4;"></i>
+<h3>Trabalho em equipe</h3>
+<p>Várias pessoas editam o mesmo documento ao mesmo tempo, sem gerar cópias nem mandar anexos de ida e volta.</p>
+</div>
+<div class="card" style="text-align:center;">
+<i class="fa-solid fa-robot" style="font-size:36px; color:#0078d4;"></i>
+<h3>IA integrada</h3>
+<p>O Copilot escreve, resume, analisa e cria dentro dos próprios aplicativos — veremos em profundidade nos próximos encontros.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- A lógica da nuvem -->
+<div class="slide">
+<div class="header"><h2>A mudança de mentalidade: do "meu computador" para a nuvem</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Antes (arquivo local)</th><th>Agora (arquivo na nuvem)</th></tr>
+<tr><td>O arquivo mora <b>em um computador</b> (ou pendrive)</td><td>O arquivo mora <b>na sua conta</b> — acessível de qualquer lugar</td></tr>
+<tr><td>Cada e-mail gera uma <b>cópia diferente</b> do documento</td><td>Existe <b>um único documento</b>; todos veem a mesma versão</td></tr>
+<tr><td>Se o HD queima ou a viatura leva o notebook, <b>perdeu</b></td><td>Backup automático + <b>histórico de versões</b> para restaurar</td></tr>
+<tr><td>"Quem está com a versão mais nova?"</td><td>Coedição em tempo real: cada um vê o cursor do outro</td></tr>
+<tr><td>Compartilhar = anexar (limite de tamanho, sem controle)</td><td>Compartilhar = <b>link com permissão</b> (ver ou editar, com prazo)</td></tr>
+</table>
+<div class="info-box">
+<p><b>Regra de ouro do curso:</b> documento de trabalho não se anexa, se <b>compartilha por link</b>. O anexo só é usado quando o destinatário é externo e precisa de uma cópia estática.</p>
+</div>
+</div>
+</div>
+
+<!-- OneDrive -->
+<div class="slide">
+<div class="header"><h2>OneDrive: seu HD na nuvem</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<p class="lead">O <span class="highlight">OneDrive</span> é o espaço <b>pessoal</b> de cada conta: 1 TB (ou mais) para seus arquivos de trabalho.</p>
+<ul class="spaced">
+<li><b>Enviar:</b> arraste arquivos para o navegador ou salve direto do Word/Excel;</li>
+<li><b>Organizar:</b> crie pastas por assunto (Ex.: <code>Ocorrências 2026</code>, <code>Escalas</code>, <code>Vistorias</code>);</li>
+<li><b>Sincronizar:</b> o app do OneDrive espelha as pastas no Windows — você usa o Explorador de Arquivos normalmente;</li>
+<li><b>Versões:</b> clique com o botão direito → <b>Histórico de versões</b> para voltar no tempo;</li>
+<li><b>Lixeira:</b> arquivos excluídos podem ser recuperados por até 93 dias.</li>
+</ul>
+</div>
+<div class="code-box" style="font-size:16px;">
+<span style="color:#94a3b8;">// Estrutura sugerida de pastas</span><br/>
+OneDrive/<br/>
+├── 01 Ocorrências/<br/>
+│&nbsp;&nbsp;&nbsp;├── 2026-01/<br/>
+│&nbsp;&nbsp;&nbsp;└── 2026-02/<br/>
+├── 02 Vistorias/<br/>
+├── 03 Escalas e Pessoal/<br/>
+├── 04 Materiais e EPIs/<br/>
+└── 05 Ofícios Expedidos/
+            </div>
+</div>
+<div class="warn-box">
+<p><b>Atenção:</b> o OneDrive é pessoal — se a pessoa for transferida ou desligada, os arquivos vão junto com a conta. Documentos <b>da instituição</b> devem morar no <b>SharePoint/Teams</b> (veremos adiante).</p>
+</div>
+</div>
+</div>
+
+<!-- Compartilhamento -->
+<div class="slide">
+<div class="header"><h2>Compartilhar com segurança</h2></div>
+<div class="content">
+<p class="lead">Ao clicar em <b>Compartilhar</b>, você decide <span class="highlight">quem</span> acessa e <span class="highlight">o que</span> pode fazer:</p>
+<table class="table">
+<tr><th>Opção</th><th>Quando usar</th><th>Risco</th></tr>
+<tr><td><b>Pessoas específicas</b></td><td>Documentos de trabalho da equipe — o padrão recomendado</td><td>Baixo: só quem foi listado entra</td></tr>
+<tr><td><b>Pessoas na organização</b></td><td>Comunicados e materiais internos gerais</td><td>Médio: qualquer colega com o link acessa</td></tr>
+<tr><td><b>Qualquer pessoa com o link</b></td><td>Raro — material público, sem dado sensível</td><td><b>Alto:</b> o link pode ser repassado a qualquer um</td></tr>
+</table>
+<ul class="spaced" style="margin-top:16px;">
+<li><b>Pode exibir</b> × <b>Pode editar</b>: conceda edição apenas a quem realmente vai alterar o documento;</li>
+<li>Defina <b>data de expiração</b> e <b>bloqueio de download</b> quando o conteúdo for sensível;</li>
+<li>Para remover o acesso: <b>Gerenciar acesso</b> → parar compartilhamento.</li>
+</ul>
+<div class="fire-box">
+<p><b>Exemplo real:</b> o relatório de uma ocorrência com dados de vítimas <b>nunca</b> deve circular com "qualquer pessoa com o link". Use pessoas específicas, sem download, com expiração.</p>
+</div>
+</div>
+</div>
+
+<!-- Teams: visão geral -->
+<div class="slide">
+<div class="header"><h2>Microsoft Teams: a sede digital da equipe</h2></div>
+<div class="content">
+<p class="lead">O <span class="highlight">Teams</span> reúne em um só lugar <b>conversas, reuniões, arquivos e aplicativos</b>. É a "central de comunicações" do M365.</p>
+<div class="grid-3" style="margin-top:24px;">
+<div class="card">
+<h3><i class="fa-solid fa-comments" style="color:#0078d4;"></i> Chat</h3>
+<p>Conversas 1-a-1 ou em grupo. Substitui o WhatsApp para assuntos de serviço: fica registrado, pesquisável e dentro da rede institucional.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-people-group" style="color:#0078d4;"></i> Equipes e canais</h3>
+<p>Uma <b>equipe</b> por setor ou operação (Ex.: "Setor Administrativo", "Vistorias"); <b>canais</b> por assunto dentro dela (Ex.: "Escalas", "Viaturas").</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-video" style="color:#0078d4;"></i> Reuniões</h3>
+<p>Videochamadas com compartilhamento de tela, gravação e <b>recapitulação inteligente</b>: a IA resume o que foi decidido e lista as pendências.</p>
+</div>
+</div>
+<div class="info-box">
+<p>Cada equipe do Teams tem uma aba <b>Arquivos</b>: é um espaço compartilhado (tecnicamente um site do SharePoint) onde os documentos pertencem <b>ao grupo</b>, não a uma pessoa.</p>
+</div>
+</div>
+</div>
+
+<!-- Teams: boas práticas -->
+<div class="slide">
+<div class="header"><h2>Teams na prática: boas práticas de comunicação</h2></div>
+<div class="content">
+<ul class="spaced" style="font-size:21px;">
+<li><b>@menção com moderação:</b> <code>@nome</code> notifica a pessoa; <code>@equipe</code> notifica todo mundo — use só quando for para todos;</li>
+<li><b>Responda na conversa</b> (thread), não com mensagem nova — mantém o assunto agrupado;</li>
+<li><b>Anúncios importantes</b> podem ser postados com destaque no canal Geral;</li>
+<li><b>Status</b> (Disponível, Ocupado, Ausente) ajuda a saber quem pode responder;</li>
+<li><b>Pesquisa</b> (barra superior): encontra mensagens, pessoas e arquivos antigos em segundos;</li>
+<li>Na dúvida entre chat e canal: assunto <b>da equipe</b> vai no canal; assunto <b>pessoal</b> vai no chat.</li>
+</ul>
+<div class="warn-box">
+<p><b>Reunião bem-feita:</b> agende pelo calendário do Teams, com pauta na descrição. Ative a transcrição — no Encontro 03 veremos como o Copilot transforma a gravação em ata automática.</p>
+</div>
+</div>
+</div>
+
+<!-- SharePoint -->
+<div class="slide">
+<div class="header"><h2>SharePoint: o arquivo oficial da instituição</h2></div>
+<div class="content">
+<div class="grid">
+<div>
+<p class="lead">O <span class="highlight">SharePoint</span> é a camada de <b>sites e bibliotecas de documentos</b> que sustenta o M365.</p>
+<ul class="spaced">
+<li><b>Sites de equipe:</b> criados automaticamente com cada equipe do Teams — guardam os arquivos compartilhados;</li>
+<li><b>Sites de comunicação:</b> "intranet" para publicar notícias, procedimentos operacionais padrão (POPs) e documentos oficiais;</li>
+<li><b>Bibliotecas:</b> pastas turbinadas, com metadados (Ex.: coluna "Tipo de ocorrência", "Status"), versões e aprovação;</li>
+<li><b>Permissões por site:</b> a chefia define quem vê e quem edita cada área.</li>
+</ul>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-sitemap" style="color:#0078d4;"></i> Onde guardar o quê?</h3>
+<table class="table" style="font-size:17px;">
+<tr><th>Arquivo</th><th>Local</th></tr>
+<tr><td>Rascunho pessoal</td><td>OneDrive</td></tr>
+<tr><td>Trabalho da equipe</td><td>Teams (canal → Arquivos)</td></tr>
+<tr><td>Documento oficial / POP</td><td>Site SharePoint</td></tr>
+<tr><td>Cópia para externo</td><td>Anexo (exceção)</td></tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Prática guiada -->
+<div class="slide">
+<div class="header"><h2>Prática guiada do Encontro 01</h2></div>
+<div class="content">
+<p class="lead">Mãos à obra — em duplas ou trios:</p>
+<ul class="spaced" style="font-size:21px;">
+<li><span class="num">1.</span> Entre em <code>office.com</code> com a conta institucional e reconheça o inicializador de aplicativos;</li>
+<li><span class="num">2.</span> No <b>OneDrive</b>, crie a estrutura de pastas sugerida e envie 2 arquivos de teste;</li>
+<li><span class="num">3.</span> <b>Compartilhe</b> um arquivo com o colega ao lado como "Pode exibir"; depois mude para "Pode editar" e observem a coedição simultânea;</li>
+<li><span class="num">4.</span> Restaure uma <b>versão anterior</b> do documento editado;</li>
+<li><span class="num">5.</span> No <b>Teams</b>, localize (ou crie) a equipe da turma, poste uma mensagem no canal com @menção e envie um arquivo na aba Arquivos;</li>
+<li><span class="num">6.</span> Agende uma <b>reunião de teste</b> de 15 minutos pelo calendário.</li>
+</ul>
+<div class="fire-box">
+<p><b>Desafio da semana:</b> montar a pasta "02 Vistorias" da sua equipe no canal do Teams, com subpastas por mês, e mover para lá os documentos que hoje estão espalhados em pendrives e e-mails.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#0078d4;">Resumindo</h1>
+<p style="font-size: 22px; max-width: 840px; opacity: 0.9;">O M365 é um <b>ecossistema integrado na nuvem</b>: o
+            <b>OneDrive</b> guarda seus arquivos pessoais com versões e compartilhamento seguro; o <b>Teams</b> concentra a
+            comunicação em equipes, canais e reuniões; e o <b>SharePoint</b> é o repositório oficial da instituição. Documento não
+            se anexa — se compartilha por link, com a permissão certa. No próximo encontro, o <b>Copilot</b> entra em cena para
+            acelerar Word, Excel, PowerPoint e Outlook.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+<a href="microsoft365-encontro02.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px; margin-left: 12px;">
+                Encontro 02 <i class="fa-solid fa-arrow-right"></i>
+</a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Microsoft 365</p>
+</footer>
+</body>
+</html>

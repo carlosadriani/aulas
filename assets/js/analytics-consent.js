@@ -123,9 +123,11 @@
     if (document.getElementById("ap-footer-links")) return;
     injectFooterStyles();
     var html =
+      '<div>' +
       '<a href="/privacidade.html">Privacidade</a>' +
       '<span aria-hidden="true"> &middot; </span>' +
-      '<a href="#" class="ap-cookies-link">Preferências de cookies</a>';
+      '<a href="#" class="ap-cookies-link">Preferências de cookies</a>' +
+      '</div>';
     var footer = document.querySelector(".site-footer");
     var node;
     if (footer) {

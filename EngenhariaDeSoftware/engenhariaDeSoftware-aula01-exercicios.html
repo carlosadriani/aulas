@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios Práticos: Engenharia de Software e Modelos de Processo</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #18bc9c;
+            --background-color: #f8f9fa;
+            --text-color: #333333;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--secondary-color);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+        }
+
+        header p {
+            margin: 0.5rem 0 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .instructions {
+            background-color: #e8f4f8;
+            border-left: 5px solid #2980b9;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+
+        .exercise-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .exercise-number {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .scenario {
+            background-color: #f1f5f9;
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin: 1rem 0;
+            font-style: italic;
+        }
+
+        .options-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .options-list li {
+            padding: 0.5rem;
+            margin: 0.3rem 0;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: #fafafa;
+        }
+
+        .feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #edf7ed;
+            border: 1px solid #c3e6cb;
+            color: #1e4620;
+            border-radius: 6px;
+            display: none;
+        }
+
+        .toggle-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .toggle-btn:hover {
+            background-color: #128f76;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            color: #7f8c8d;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.7rem; }
+            main { margin: 1rem auto; }
+        }
+    </style>
+    <script>
+        function toggleGabarito(id) {
+            var x = document.getElementById(id);
+            if (x.style.display === "none" || x.style.display === "") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Engenharia de Software</h1>
+        <p>Caderno de Exercícios Práticos – Modelos de Processo e Scrum</p>
+    </header>
+
+    <main>
+        <div class="instructions">
+            <strong>Instruções para os Alunos:</strong> Esta lista contém questões teóricas e estudos de caso baseados em cenários reais do mercado de tecnologia. Tente resolver as questões individualmente antes de consultar o gabarito comentado ao final de cada card.
+        </div>
+
+        <h2 class="section-title">Parte 1: Análise Conceitual e Teórica</h2>
+
+        <div class="exercise-card">
+            <span class="exercise-number">Exercício 1</span>
+            <p><strong>(Discursiva)</strong> Explique por que o surgimento da "Crise do Software" na década de 1968 evidenciou que a construção de sistemas complexos demandava mais do que apenas habilidades avançadas de programação. Qual o papel dos "Processos" nesse contexto?</p>
+            
+            <button class="toggle-btn" onclick="toggleGabarito('gabarito1')">Ver Gabarito Sugerido</button>
+            <div id="gabarito1" class="feedback">
+                <strong>Resposta Comentada:</strong> A Crise do Software mostrou que programar sem um método levava a custos imprevisíveis, prazos estourados e sistemas de baixa qualidade ou impossíveis de manter. O papel do "Processo" é fornecer uma estrutura disciplinada, definindo <em>quem</em> faz <em>o que</em>, <em>quando</em> e <em>como</em>, transformando o desenvolvimento artesanal em uma atividade de engenharia previsível e replicável.
+            </div>
+        </div>
+
+        <div class="exercise-card">
+            <span class="exercise-number">Exercício 2</span>
+            <p><strong>(Múltipla Escolha)</strong> O Modelo Cascata (Waterfall) é conhecido por sua abordagem rígida e sequencial. Assinale a alternativa que apresenta uma desvantagem crítica desse modelo ao lidar com sistemas modernos de larga escala:</p>
+            <ul class="options-list">
+                <li>A) A impossibilidade de documentar os requisitos de forma clara no início.</li>
+                <li>B) A alta flexibilidade que confunde os desenvolvedores no meio do projeto.</li>
+                <li>C) O alto risco percebido pelo cliente, já que um software funcional só é entregue próximo ao fim do ciclo de vida.</li>
+                <li>D) A falta de uma fase dedicada a testes de garantia de qualidade (QA).</li>
+            </ul>
+            
+            <button class="toggle-btn" onclick="toggleGabarito('gabarito2')">Ver Gabarito Sugerido</button>
+            <div id="gabarito2" class="feedback">
+                <strong>Alternativa Correta: C</strong><br>
+                <strong>Comentário:</strong> Como o Modelo Cascata exige que uma fase termine completamente para outra começar, os testes e a integração ocorrem apenas no final. Se houver um erro de interpretação de requisitos no início, o cliente só descobrirá quando o software estiver pronto, tornando as correções extremamente tardias e caras.
+            </div>
+        </div>
+
+        <h2 class="section-title">Parte 2: Estudos de Caso (Cenários Práticos)</h2>
+
+        <div class="exercise-card">
+            <span class="exercise-number">Exercício 3</span>
+            <p><strong>Estudo de Caso A: Escolha de Abordagem</strong></p>
+            <div class="scenario">
+                Uma startup de tecnologia está desenvolvendo um novo aplicativo de entrega de refeições focado em nichos específicos de restrição alimentar. O mercado é altamente dinâmico, os concorrentes mudam de estratégia rapidamente e o feedback do usuário inicial é vital para moldar as próximas funcionalidades.
+            </div>
+            <p>Com base nas características acima, qual abordagem de ciclo de vida você recomendaria (Tradicional/Cascata ou Ágil)? Justifique sua resposta analisando os critérios de risco e flexibilidade.</p>
+            
+            <button class="toggle-btn" onclick="toggleGabarito('gabarito3')">Ver Gabarito Sugerido</button>
+            <div id="gabarito3" class="feedback">
+                <strong>Resposta Comentada:</strong> Recomenda-se fortemente a abordagem <strong>Ágil</strong>. Startups inseridas em mercados dinâmicos lidam com alto nível de incerteza. Modelos ágeis reduzem o risco permitindo entregas incrementais (ex: um MVP - Produto Mínimo Viável) e loops frequentes de feedback dos usuários, viabilizando adaptações rápidas no escopo que seriam proibitivas ou muito onerosas no modelo Cascata.
+            </div>
+        </div>
+
+        <div class="exercise-card">
+            <span class="exercise-number">Exercício 4</span>
+            <p><strong>Estudo de Caso B: Dinâmica de Papéis no Scrum</strong></p>
+            <div class="scenario">
+                Durante uma reunião de planejamento da Sprint (Sprint Planning), o Diretor de Vendas da empresa (que não faz parte do Time Scrum) entra na sala e exige que a equipe inclua imediatamente um novo relatório de faturamento na Sprint atual, alegando que um grande cliente precisa disso para a próxima semana.
+            </div>
+            <p>Considerando o framework Scrum, descreva como o <strong>Product Owner (PO)</strong> e o <strong>Scrum Master (SM)</strong> devem agir diante dessa interrupção.</p>
+            
+            <button class="toggle-btn" onclick="toggleGabarito('gabarito4')">Ver Gabarito Sugerido</button>
+            <div id="gabarito4" class="feedback">
+                <strong>Resposta Comentada:</strong> 
+                <ul>
+                    <li>O <strong>Scrum Master</strong> atua como o protetor do time, blindando os desenvolvedores de interferências externas para manter o foco na meta da Sprint atual. Ele deve intervir diplomaticamente para explicar ao Diretor o funcionamento do framework.</li>
+                    <li>O <strong>Product Owner</strong> é a única autoridade para gerenciar o Product Backlog. O PO deve ouvir o Diretor de Vendas, avaliar o valor de negócio da requisição, e, se fizer sentido, priorizá-la no Backlog para as <em>próximas</em> Sprints, evitando alterar o escopo da Sprint que já está em andamento.</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Ajuda Professor - Material Didático de Engenharia de Software. Permitido o uso para fins educacionais.</p>
+    </footer>
+
+</body>
+</html>
