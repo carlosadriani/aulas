@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com">
+<!-- Google Analytics 4 (gtag.js) + Consentimento LGPD -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHE86CNTZB"></script>
+<script src="/assets/js/analytics-consent.js"></script>
+<link rel="canonical" href="https://www.ajudaprofessor.com.br/TecnologiasDigitaisDocente/topico-notebooklm-minicurso-iniciais.html">
+<meta name="description" content="Minicurso prático de NotebookLM para professores das séries iniciais: passo a passo e exercícios detalhados para usar a IA no planejamento e na alfabetização.">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ajuda Professor">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Minicurso NotebookLM na prática — Séries Iniciais">
+<meta property="og:description" content="Minicurso prático de NotebookLM para professores das séries iniciais: passo a passo e exercícios detalhados para usar a IA no planejamento e na alfabetização.">
+<meta property="og:url" content="https://www.ajudaprofessor.com.br/TecnologiasDigitaisDocente/topico-notebooklm-minicurso-iniciais.html">
+<meta property="og:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Minicurso NotebookLM na prática — Séries Iniciais">
+<meta name="twitter:description" content="Minicurso prático de NotebookLM para professores das séries iniciais: passo a passo e exercícios detalhados para usar a IA no planejamento e na alfabetização.">
+<meta name="twitter:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Minicurso NotebookLM na prática — Séries Iniciais</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #2b6cb0; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1a4971; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #2b6cb0; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #2b6cb0; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #2b6cb0; font-weight: bold; }
+        .info-box { border-left: 5px solid #2b6cb0; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .tip-box { border-left: 5px solid #10b981; background: #ecfdf5; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #2b6cb0; font-size: 26px; }
+        .steps { counter-reset: step; list-style: none; padding: 0; margin-top: 10px; }
+        .steps li { position: relative; padding: 14px 14px 14px 62px; margin-bottom: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; line-height: 1.6; }
+        .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; background: #2b6cb0; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .prompt-box { background: #1e293b; color: #e2e8f0; padding: 24px 28px; border-radius: 10px; border-left: 8px solid #2b6cb0; line-height: 1.7; font-size: 18px; margin-top: 20px; }
+        .prompt-box .label { display:inline-block; font-family:"Fira Code",monospace; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#38bdf8; margin-bottom:10px; }
+
+        /* ---- Estilos do minicurso ---- */
+        .encontro-cover { background: linear-gradient(135deg, #1a4971 0%, #2b6cb0 100%); color:#fff; justify-content:center; align-items:center; text-align:center; }
+        .encontro-cover h2 { color:#fff; font-size:46px; margin:10px 0; }
+        .encontro-badge { display:inline-block; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.35); color:#fff; padding:8px 22px; border-radius:50px; font-size:18px; font-weight:bold; letter-spacing:2px; text-transform:uppercase; }
+        .encontro-cover p { font-size:22px; opacity:.9; max-width:820px; }
+        .tag-encontro { display:inline-block; background:#2b6cb0; color:#fff; font-size:14px; font-weight:bold; letter-spacing:1px; text-transform:uppercase; padding:5px 14px; border-radius:6px; margin-bottom:6px; }
+        .exercise { border:2px solid #2b6cb0; border-radius:14px; padding:24px 28px; margin-top:24px; background:#ffffff; }
+        .exercise > h3 { margin:0 0 4px; font-size:26px; display:flex; align-items:center; gap:12px; }
+        .exercise .ex-num { background:#2b6cb0; color:#fff; width:40px; height:40px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+        .exercise .meta { display:flex; gap:12px; flex-wrap:wrap; margin:14px 0 8px; font-size:15px; }
+        .exercise .meta span { background:#eff6ff; color:#1a4971; padding:5px 12px; border-radius:6px; font-weight:bold; }
+        .exercise h4 { margin:18px 0 6px; color:#1a4971; font-size:19px; }
+        .result-box { border-left:5px solid #10b981; background:#ecfdf5; padding:14px 20px; border-radius:8px; margin-top:14px; }
+        .challenge-box { border-left:5px solid #8b5cf6; background:#f5f3ff; padding:14px 20px; border-radius:8px; margin-top:14px; }
+        .checklist { list-style:none; padding:0; margin-top:10px; }
+        .checklist li { padding:10px 10px 10px 40px; position:relative; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; margin-bottom:10px; line-height:1.5; }
+        .checklist li::before { content:"\f0c8"; font-family:"Font Awesome 6 Free"; font-weight:400; position:absolute; left:14px; top:11px; color:#2b6cb0; }
+        .rubric td, .rubric th { font-size:16px; }
+        .pill-row { display:flex; gap:12px; flex-wrap:wrap; margin-top:18px; }
+        .pill { background:#eff6ff; border:1px solid #bfdbfe; color:#1a4971; padding:8px 16px; border-radius:50px; font-weight:bold; font-size:16px; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Digitais na Prática Docente
+            </h1>
+<p>Minicurso NotebookLM na prática — Séries Iniciais</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-chalkboard-user" style="font-size:80px;margin-bottom:30px;color:#2b6cb0;"></i>
+<h1>NotebookLM na prática</h1>
+<p style="font-size: 24px; opacity: 0.85;">Minicurso para professores das <b>Séries Iniciais</b> — usar a IA a favor do planejamento, da alfabetização e da leitura</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Formação de Professores da Rede Municipal · Nível intermediário</div>
+</div>
+
+<!-- Apresentação do minicurso -->
+<div class="slide">
+<div class="header"><h2>Sobre este minicurso</h2></div>
+<div class="content">
+<p class="lead">Nestes encontros vamos aprender, <span class="highlight">na prática</span>, a usar o NotebookLM como
+                um assistente que estuda os <b>seus</b> materiais e ajuda a preparar aulas, atividades e recursos de
+                leitura para crianças em processo de alfabetização.</p>
+<div class="info-box">
+<p><b>Para quem é:</b> professoras e professores das séries iniciais (Educação Infantil ao 5º ano) que já usam
+                    o Google (Drive, Docs) no dia a dia e querem dar o próximo passo com a Inteligência Artificial.
+                    Não é preciso experiência prévia com IA — apenas vontade de experimentar.</p>
+</div>
+<div class="grid" style="margin-top:20px;">
+<div class="card">
+<h3><i class="fa-solid fa-bullseye"></i> O que você vai conseguir fazer</h3>
+<ul class="spaced">
+<li>Reunir seus materiais em um "caderno" de IA e conversar com eles.</li>
+<li>Gerar guias, resumos e um <b>podcast</b> de revisão a partir das suas fontes.</li>
+<li>Produzir atividades e roteiros de leitura prontos para a turma.</li>
+</ul>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-list-check"></i> Como vamos trabalhar</h3>
+<ul class="spaced">
+<li><b>4 encontros</b> curtos e práticos, com "mão na massa" em cada um.</li>
+<li>Cada encontro tem <b>exercícios detalhados</b> passo a passo.</li>
+<li>Ao final, um <b>projeto</b>: um kit de aula completo feito por você.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Pré-requisitos -->
+<div class="slide">
+<div class="header"><h2>Antes de começar: preparação</h2></div>
+<div class="content">
+<p>Para acompanhar as atividades, garanta que você tem tudo à mão. Faça este checklist na primeira aula:</p>
+<ul class="checklist">
+<li>Uma <b>conta Google</b> ativa (a mesma que você usa no Gmail ou no Google Sala de Aula).</li>
+<li>Acesso à internet em um <b>computador ou notebook</b> (a tela maior facilita muito nesta ferramenta).</li>
+<li>O endereço aberto no navegador: <b>notebooklm.google.com</b></li>
+<li>De <b>2 a 3 materiais seus</b> em formato digital para usar de exemplo: um PDF de apostila, um plano de
+                aula em Google Docs, ou um texto que você já usa em sala.</li>
+<li>Fones de ouvido (opcional), para ouvir o "podcast" gerado pela IA sem incomodar os colegas.</li>
+</ul>
+<div class="tip-box">
+<p><b>Dica de revisão:</b> se você ainda não conhece a ferramenta por dentro, leia antes o tópico
+                <a href="topico-notebooklm.html"><b>NotebookLM</b></a> desta disciplina. Ele explica os conceitos que
+                colocaremos em prática aqui.</p>
+</div>
+</div>
+</div>
+
+<!-- Panorama do minicurso -->
+<div class="slide">
+<div class="header"><h2>O caminho dos 4 encontros</h2></div>
+<div class="content">
+<div class="flow">
+<div class="node">1. Primeiros<br>passos</div>
+<div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+<div class="node">2. Gerar<br>recursos</div>
+<div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+<div class="node">3. Material<br>para a turma</div>
+<div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+<div class="node">4. Projeto<br>final</div>
+</div>
+<table class="table" style="margin-top:30px;">
+<tr><th>Encontro</th><th>Foco</th><th>Você sai com...</th></tr>
+<tr><td><b>1</b></td><td>Criar o caderno, adicionar fontes e fazer as primeiras perguntas com citações.</td><td>Um notebook seu, já funcionando.</td></tr>
+<tr><td><b>2</b></td><td>Gerar guia de estudo, FAQ, resumo, mapa mental e o Áudio Overview (podcast).</td><td>Um "kit" de recursos sobre um tema.</td></tr>
+<tr><td><b>3</b></td><td>Transformar tudo em material para crianças: roteiro de leitura, atividades e adaptações.</td><td>Atividades prontas para imprimir/usar.</td></tr>
+<tr><td><b>4</b></td><td>Montar uma sequência didática completa e compartilhar com cuidado (LGPD).</td><td>Um projeto final avaliado por rubrica.</td></tr>
+</table>
+</div>
+</div>
+
+<!-- ============================= ENCONTRO 1 ============================= -->
+<div class="slide encontro-cover">
+<span class="encontro-badge">Encontro 1</span>
+<h2>Primeiros passos com o seu caderno de IA</h2>
+<p>Criar um notebook, alimentar com as suas fontes e conversar com o material — conferindo cada citação.</p>
+</div>
+
+<!-- Passo a passo encontro 1 -->
+<div class="slide">
+<div class="header"><h2>Passo a passo: do zero à primeira pergunta</h2></div>
+<div class="content">
+<span class="tag-encontro">Encontro 1 · Demonstração guiada</span>
+<p>Vamos fazer juntos, a partir da tela inicial em <code>notebooklm.google.com</code>:</p>
+<ol class="steps">
+<li>Faça login com a sua <b>conta Google</b> e clique em <b>Criar novo</b>.</li>
+<li>Dê um <b>nome</b> ao caderno (clique no título, no alto). Ex.: <i>"Folclore brasileiro — 3º ano"</i>.</li>
+<li>Clique em <b>Adicionar fontes</b> e envie 2 materiais: um <b>PDF</b> e um texto <b>colado</b>.</li>
+<li>Aguarde alguns segundos enquanto a IA <b>lê e organiza</b> cada fonte.</li>
+<li>No campo de conversa, escreva a sua <b>primeira pergunta</b> em linguagem natural.</li>
+<li>Na resposta, clique em um número de <b>citação</b> (ex.: <b>[1]</b>) e veja o trecho original destacado.</li>
+</ol>
+<div class="info-box">
+<p><b>Tipos de fonte que você pode enviar:</b> PDF, Google Docs e Apresentações, texto colado, endereços de
+                sites (URL), vídeos do <b>YouTube</b> e arquivos de <b>áudio</b>. Um caderno comporta muitas fontes
+                (cerca de 50), então cabe a bibliografia inteira de um tema.</p>
+</div>
+</div>
+</div>
+
+<!-- Exercício 1.1 -->
+<div class="slide">
+<div class="header"><h2>Exercícios do Encontro 1</h2></div>
+<div class="content">
+<div class="exercise">
+<h3><span class="ex-num">1</span> Criando o seu primeiro caderno</h3>
+<div class="meta"><span><i class="fa-regular fa-clock"></i> 15 min</span><span><i class="fa-solid fa-signal"></i> Nível: básico</span><span><i class="fa-solid fa-user"></i> Individual</span></div>
+<h4>Objetivo</h4>
+<p>Criar um notebook próprio e adicionar duas fontes de conteúdo que você já usa em sala.</p>
+<h4>O que fazer</h4>
+<ol class="steps">
+<li>Escolha <b>um tema</b> que você vai trabalhar nas próximas semanas (ex.: <i>animais</i>, <i>higiene</i>,
+                <i>festas juninas</i>, <i>números até 100</i>).</li>
+<li>Crie um novo caderno e nomeie assim: <b>Tema — turma</b> (ex.: "Higiene — 2º ano B").</li>
+<li>Adicione a <b>1ª fonte</b>: um PDF (apostila, capítulo ou atividade que você já tem).</li>
+<li>Adicione a <b>2ª fonte</b>: cole um texto seu (uma cartilha, uma música, um poema, suas anotações).</li>
+</ol>
+<div class="result-box"><b>Resultado esperado:</b> um caderno nomeado, com 2 fontes já lidas pela IA (aparecem listadas na lateral, com um selo indicando que foram processadas).</div>
+</div>
+</div>
+</div>
+
+<!-- Exercício 1.2 -->
+<div class="slide">
+<div class="content" style="padding-top:30px;">
+<div class="exercise">
+<h3><span class="ex-num">2</span> Perguntando e conferindo as citações</h3>
+<div class="meta"><span><i class="fa-regular fa-clock"></i> 20 min</span><span><i class="fa-solid fa-signal"></i> Nível: básico</span><span><i class="fa-solid fa-user"></i> Individual</span></div>
+<h4>Objetivo</h4>
+<p>Fazer perguntas ao material e treinar o hábito mais importante: <b>clicar na citação</b> e conferir a fonte.</p>
+<h4>O que fazer</h4>
+<ol class="steps">
+<li>Faça <b>3 perguntas</b> ao seu caderno, uma de cada tipo abaixo.</li>
+<li>Em <b>cada resposta</b>, clique em pelo menos uma citação [n] e leia o trecho original.</li>
+<li>Anote: a citação <b>confirmou</b> o que a IA disse? Se não, marque para discutir na roda.</li>
+</ol>
+<div class="prompt-box">
+<span class="label">Modelos de pergunta</span>
+                • "Explique <b>[o tema]</b> com palavras simples, para uma criança de 7 anos."<br>
+                • "Liste 5 <b>palavras-chave</b> deste material para eu trabalhar na alfabetização."<br>
+                • "Quais <b>curiosidades</b> deste conteúdo podem despertar o interesse das crianças?"
+            </div>
+<div class="result-box"><b>Resultado esperado:</b> três respostas curtas, cada uma com uma citação conferida por você. Você percebe, na prática, a diferença entre uma IA que "chuta" e uma que responde a partir das suas fontes.</div>
+<div class="challenge-box"><b>Desafio (para quem terminar antes):</b> peça "reescreva a última resposta em <b>2 versões</b>: uma para a criança ler e outra para eu explicar aos pais na reunião". Compare os tons.</div>
+</div>
+</div>
+</div>
+
+<!-- ============================= ENCONTRO 2 ============================= -->
+<div class="slide encontro-cover">
+<span class="encontro-badge">Encontro 2</span>
+<h2>Gerando recursos com um clique</h2>
+<p>Transformar as suas fontes em guia de estudo, resumo, mapa mental e um podcast de revisão em português.</p>
+</div>
+
+<!-- Recursos automáticos -->
+<div class="slide">
+<div class="header"><h2>Os recursos que a IA gera para você</h2></div>
+<div class="content">
+<span class="tag-encontro">Encontro 2 · Conhecendo os recursos</span>
+<table class="table">
+<tr><th>Recurso</th><th>Para que serve nas séries iniciais</th></tr>
+<tr><td><b>Resumo</b></td><td>Ter, num parágrafo, a essência do material para planejar rápido.</td></tr>
+<tr><td><b>Guia de estudo</b></td><td>Base para montar perguntas de sondagem e atividades de fixação.</td></tr>
+<tr><td><b>Perguntas frequentes (FAQ)</b></td><td>Antecipar as dúvidas das crianças e preparar boas respostas.</td></tr>
+<tr><td><b>Mapa mental</b></td><td>Enxergar o tema em ramos — ótimo para virar um cartaz na parede.</td></tr>
+<tr><td><b>Áudio Overview (podcast)</b></td><td>Dois apresentadores de IA conversam sobre o tema, em português.</td></tr>
+</table>
+<div class="info-box">
+<p>Todos esses recursos também trazem <b>citações</b> às suas fontes, então você sempre consegue conferir de
+                onde a informação saiu. Pense neles como um monitor que prepara o material de apoio em segundos — mas que
+                você revisa antes de usar.</p>
+</div>
+</div>
+</div>
+
+<!-- Exercício 2.1 -->
+<div class="slide">
+<div class="header"><h2>Exercícios do Encontro 2</h2></div>
+<div class="content">
+<div class="exercise">
+<h3><span class="ex-num">3</span> Montando o "kit de recursos" do seu tema</h3>
+<div class="meta"><span><i class="fa-regular fa-clock"></i> 25 min</span><span><i class="fa-solid fa-signal"></i> Nível: intermediário</span><span><i class="fa-solid fa-user"></i> Individual</span></div>
+<h4>Objetivo</h4>
+<p>Gerar, no caderno do Encontro 1, quatro recursos diferentes e avaliar qual serve para qual momento da aula.</p>
+<h4>O que fazer</h4>
+<ol class="steps">
+<li>Gere um <b>Resumo</b> do material. Leia e destaque a frase que melhor abre a sua aula.</li>
+<li>Gere um <b>Guia de estudo</b>. Escolha 3 perguntas que viram atividade oral com a turma.</li>
+<li>Gere um <b>Mapa mental</b>. Observe os ramos: eles viram os "cantinhos" de um cartaz?</li>
+<li>Gere o <b>FAQ</b>. Marque a pergunta que você acha que uma criança realmente faria.</li>
+</ol>
+<div class="result-box"><b>Resultado esperado:</b> quatro recursos gerados e, ao lado de cada um, uma anotação sua de "onde uso isto na aula".</div>
+<div class="challenge-box"><b>Desafio:</b> refine um recurso com instrução extra — ex.: "reescreva o guia de estudo usando <b>apenas palavras que uma criança do 2º ano lê</b>, com frases de até 8 palavras".</div>
+</div>
+</div>
+</div>
+
+<!-- Exercício 2.2 -->
+<div class="slide">
+<div class="content" style="padding-top:30px;">
+<div class="exercise">
+<h3><span class="ex-num">4</span> Criando um podcast de revisão (Áudio Overview)</h3>
+<div class="meta"><span><i class="fa-regular fa-clock"></i> 20 min</span><span><i class="fa-solid fa-signal"></i> Nível: intermediário</span><span><i class="fa-solid fa-user"></i> Individual</span></div>
+<h4>Objetivo</h4>
+<p>Gerar um áudio no estilo "podcast", em português, e orientá-lo para a faixa etária da sua turma.</p>
+<h4>O que fazer</h4>
+<ol class="steps">
+<li>No painel de recursos, gere o <b>Áudio Overview</b>.</li>
+<li>Use a opção de <b>personalizar</b> e oriente o foco. Copie o modelo abaixo, adaptando o tema.</li>
+<li>Ouça 1 a 2 minutos e avalie: o tom está adequado? A linguagem está simples?</li>
+<li>Se precisar, gere de novo pedindo linguagem ainda <b>mais simples</b> e exemplos do cotidiano.</li>
+</ol>
+<div class="prompt-box">
+<span class="label">Instrução para personalizar o áudio</span>
+                "Conversem em <b>português</b>, com linguagem simples e carinhosa, como se explicassem para crianças de
+                6 a 8 anos. Usem exemplos do dia a dia, evitem termos difíceis e mantenham a conversa curta e animada."
+            </div>
+<div class="result-box"><b>Resultado esperado:</b> um episódio curto que você poderia tocar na rodinha, ou enviar aos responsáveis para ouvir com a criança em casa.</div>
+<div class="warn-box"><b>Atenção:</b> ouça o áudio inteiro antes de usar com as crianças. A IA pode escorregar em algum detalhe — a validação pedagógica é sempre sua.</div>
+</div>
+</div>
+</div>
+
+<!-- ============================= ENCONTRO 3 ============================= -->
+<div class="slide encontro-cover">
+<span class="encontro-badge">Encontro 3</span>
+<h2>Material sob medida para a turma</h2>
+<p>Transformar os recursos em atividades de alfabetização, roteiros de leitura e adaptações para diferentes ritmos.</p>
+</div>
+
+<!-- Estratégia encontro 3 -->
+<div class="slide">
+<div class="header"><h2>Da fonte ao material da criança</h2></div>
+<div class="content">
+<span class="tag-encontro">Encontro 3 · Produção de material</span>
+<p class="lead">Nas séries iniciais, quem conversa com a IA é o <span class="highlight">professor</span>. A criança
+                recebe o <b>produto final</b>: a história, a atividade, o cartaz, a música. Nosso trabalho é pedir bem e
+                revisar com carinho.</p>
+<div class="grid" style="margin-top:16px;">
+<div class="card">
+<h3><i class="fa-solid fa-spell-check"></i> Alfabetização</h3>
+<p>Peça listas de palavras por sílaba, textos com vocabulário controlado, caça-palavras e cruzadinhas simples
+                    a partir do seu tema.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-book-open"></i> Leitura e escrita</h3>
+<p>Gere pequenos textos, roteiros de contação de histórias e perguntas de interpretação em níveis diferentes.</p>
+</div>
+</div>
+<div class="warn-box">
+<p><b>Regra de ouro deste encontro:</b> tudo o que a IA produzir passa pelos <b>seus olhos</b> antes de chegar
+                à criança. Você corrige, ajusta ao nível da turma e garante que está adequado.</p>
+</div>
+</div>
+</div>
+
+<!-- Exercício 3.1 -->
+<div class="slide">
+<div class="header"><h2>Exercícios do Encontro 3</h2></div>
+<div class="content">
+<div class="exercise">
+<h3><span class="ex-num">5</span> Atividade de alfabetização a partir do tema</h3>
+<div class="meta"><span><i class="fa-regular fa-clock"></i> 30 min</span><span><i class="fa-solid fa-signal"></i> Nível: intermediário</span><span><i class="fa-solid fa-users"></i> Individual ou em dupla</span></div>
+<h4>Objetivo</h4>
+<p>Produzir uma folha de atividade pronta para imprimir, ancorada nas suas fontes e no nível da turma.</p>
+<h4>O que fazer</h4>
+<ol class="steps">
+<li>No seu caderno, peça uma <b>lista de 10 palavras</b> do tema, separadas em sílabas.</li>
+<li>Peça uma <b>atividade de completar lacunas</b> usando 5 dessas palavras.</li>
+<li>Peça <b>2 versões</b>: uma mais fácil (com banco de palavras) e uma mais difícil (sem banco).</li>
+<li>Revise, ajuste o que precisar e copie para um Google Docs para formatar e imprimir.</li>
+</ol>
+<div class="prompt-box">
+<span class="label">Modelo de pedido</span>
+                "Com base nas minhas fontes sobre <b>[tema]</b>, crie uma atividade de completar lacunas para crianças
+                em alfabetização (2º ano). Use 5 palavras do material. Faça <b>duas versões</b>: a versão A com um banco
+                de palavras no rodapé e a versão B sem o banco. Frases curtas e vocabulário simples."
+            </div>
+<div class="result-box"><b>Resultado esperado:</b> uma atividade diferenciada em dois níveis, pronta para atender ritmos diferentes na mesma turma.</div>
+</div>
+</div>
+</div>
+
+<!-- Exercício 3.2 -->
+<div class="slide">
+<div class="content" style="padding-top:30px;">
+<div class="exercise">
+<h3><span class="ex-num">6</span> Roteiro de contação de histórias</h3>
+<div class="meta"><span><i class="fa-regular fa-clock"></i> 25 min</span><span><i class="fa-solid fa-signal"></i> Nível: intermediário</span><span><i class="fa-solid fa-user"></i> Individual</span></div>
+<h4>Objetivo</h4>
+<p>Gerar um roteiro de contação com pausas para perguntas, a partir de um texto ou livro que você já usa.</p>
+<h4>O que fazer</h4>
+<ol class="steps">
+<li>Adicione ao caderno o <b>texto da história</b> (PDF, texto colado ou link).</li>
+<li>Peça um <b>roteiro de contação</b> dividido em início, meio e fim.</li>
+<li>Peça <b>3 perguntas de pausa</b> ("o que será que vai acontecer?") para engajar a turma.</li>
+<li>Peça uma <b>atividade de desenho</b> ou de recontar a história ao final.</li>
+</ol>
+<div class="result-box"><b>Resultado esperado:</b> um roteiro que cabe em uma folha, com momentos de interação marcados — pronto para a rodinha de leitura.</div>
+<div class="challenge-box"><b>Desafio:</b> gere um <b>Áudio Overview</b> só dessa história orientado para "contar de forma encantadora para crianças pequenas" e use como apoio ou para os pais lerem junto em casa.</div>
+</div>
+</div>
+</div>
+
+<!-- ============================= ENCONTRO 4 ============================= -->
+<div class="slide encontro-cover">
+<span class="encontro-badge">Encontro 4</span>
+<h2>Projeto final e uso responsável</h2>
+<p>Reunir tudo em uma sequência didática, compartilhar com segurança e proteger os dados das crianças.</p>
+</div>
+
+<!-- Privacidade -->
+<div class="slide">
+<div class="header"><h2>Uso responsável: proteger as crianças</h2></div>
+<div class="content">
+<span class="tag-encontro">Encontro 4 · Ética e LGPD</span>
+<p class="lead">Tudo o que você envia ao NotebookLM vai para um serviço na nuvem. Por isso, escolha
+                <span class="highlight">com cuidado</span> o que sobe para lá.</p>
+<div class="warn-box">
+<p><b>NÃO envie dados que identifiquem uma criança:</b> nomes completos, fotos, notas com nome, laudos,
+                endereços ou informações de saúde. Isso protege os pequenos e respeita a <b>LGPD</b>.</p>
+</div>
+<div class="tip-box">
+<p><b>Pode enviar com tranquilidade:</b> material didático, textos públicos, seus próprios planos e conteúdos
+                que você tem direito de usar. Se precisar trabalhar com algo da turma, <b>anonimize</b> antes (troque os
+                nomes por "Criança 1", "Criança 2").</p>
+</div>
+<p style="margin-top:16px;">Esse cuidado conversa diretamente com o tópico
+                <a href="topico-ia-responsavel.html"><b>IA Responsável, Privacidade e LGPD</b></a> — vale a leitura.</p>
+</div>
+</div>
+
+<!-- Exercício 4 - Projeto final -->
+<div class="slide">
+<div class="header"><h2>Projeto final do minicurso</h2></div>
+<div class="content">
+<div class="exercise">
+<h3><span class="ex-num">7</span> Meu kit de aula com NotebookLM</h3>
+<div class="meta"><span><i class="fa-regular fa-clock"></i> 40 min + apresentação</span><span><i class="fa-solid fa-signal"></i> Nível: aplicado</span><span><i class="fa-solid fa-users"></i> Individual</span></div>
+<h4>Objetivo</h4>
+<p>Montar, de ponta a ponta, um kit de aula sobre um tema real da sua turma, usando o que aprendemos.</p>
+<h4>O que entregar</h4>
+<ul class="checklist">
+<li>Um <b>caderno</b> nomeado, com pelo menos <b>3 fontes</b> processadas.</li>
+<li>Um <b>guia de estudo</b> ou <b>mapa mental</b> revisado por você.</li>
+<li>Uma <b>atividade diferenciada</b> (duas versões de dificuldade) para imprimir.</li>
+<li>Um <b>Áudio Overview</b> em português, orientado para a faixa etária.</li>
+<li>Um parágrafo curto: <b>como e quando</b> você usaria este kit em sala.</li>
+</ul>
+<h4>Como apresentar</h4>
+<p>Em <b>3 minutos</b>, mostre o caderno para o grupo, toque 30 segundos do áudio e conte qual problema real
+                da sua rotina esse kit resolve.</p>
+<div class="challenge-box"><b>Desafio final:</b> compartilhe o caderno com um colega da rede (modo somente leitura) e peça um retorno: o material está claro para quem não estava na sua aula?</div>
+</div>
+</div>
+</div>
+
+<!-- Rubrica -->
+<div class="slide">
+<div class="header"><h2>Como o projeto será avaliado</h2></div>
+<div class="content">
+<p>Use esta rubrica para se autoavaliar antes de apresentar. Ela também guia a conversa de devolutiva.</p>
+<table class="table rubric">
+<tr><th>Critério</th><th>Em desenvolvimento</th><th>Adequado</th><th>Excelente</th></tr>
+<tr><td><b>Fontes</b></td><td>1 fonte ou fontes frágeis</td><td>3 fontes pertinentes</td><td>Fontes ricas e bem escolhidas para o tema</td></tr>
+<tr><td><b>Uso dos recursos</b></td><td>Gerou 1 recurso</td><td>Gerou e revisou 2 recursos</td><td>Combinou vários recursos com ajustes finos</td></tr>
+<tr><td><b>Adequação à turma</b></td><td>Linguagem distante da faixa etária</td><td>Linguagem adequada ao ano</td><td>Diferenciação clara para ritmos diferentes</td></tr>
+<tr><td><b>Conferência das citações</b></td><td>Não conferiu</td><td>Conferiu os pontos principais</td><td>Conferiu e corrigiu o que a IA errou</td></tr>
+<tr><td><b>Uso responsável</b></td><td>Enviou dado sensível</td><td>Respeitou a privacidade</td><td>Anonimizou e explicou o cuidado</td></tr>
+</table>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#2b6cb0;">Parabéns!</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">Você concluiu o minicurso e agora tem um fluxo de
+            trabalho com o <b>NotebookLM</b>: reunir as suas fontes, conversar com elas conferindo as <b>citações</b>,
+            gerar <b>guias, mapas e podcasts</b> e transformar tudo em <b>material sob medida</b> para crianças em
+            alfabetização — sempre com <b>revisão pedagógica</b> e <b>proteção dos dados</b> dos pequenos. O melhor uso da
+            IA nas séries iniciais é aquele que <b>devolve tempo</b> para você fazer o que a máquina não faz: olhar nos
+            olhos e ensinar.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Digitais na Prática Docente</p>
+</footer>
+</body>
+</html>

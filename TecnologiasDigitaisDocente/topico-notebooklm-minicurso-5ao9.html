@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com">
+<!-- Google Analytics 4 (gtag.js) + Consentimento LGPD -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHE86CNTZB"></script>
+<script src="/assets/js/analytics-consent.js"></script>
+<link rel="canonical" href="https://www.ajudaprofessor.com.br/TecnologiasDigitaisDocente/topico-notebooklm-minicurso-5ao9.html">
+<meta name="description" content="Minicurso prático de NotebookLM para professores do 5º ao 9º ano: passo a passo e exercícios detalhados para pesquisa com fontes confiáveis, autonomia dos estudantes e projetos interdisciplinares.">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ajuda Professor">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Minicurso NotebookLM na prática — 5º ao 9º ano">
+<meta property="og:description" content="Minicurso prático de NotebookLM para professores do 5º ao 9º ano: pesquisa com fontes confiáveis, autonomia dos estudantes e projetos interdisciplinares.">
+<meta property="og:url" content="https://www.ajudaprofessor.com.br/TecnologiasDigitaisDocente/topico-notebooklm-minicurso-5ao9.html">
+<meta property="og:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Minicurso NotebookLM na prática — 5º ao 9º ano">
+<meta name="twitter:description" content="Minicurso prático de NotebookLM para professores do 5º ao 9º ano: pesquisa com fontes confiáveis, autonomia dos estudantes e projetos interdisciplinares.">
+<meta name="twitter:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Minicurso NotebookLM na prática — 5º ao 9º ano</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #2b6cb0; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #1a4971; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 19px; border-left: 8px solid #2b6cb0; line-height: 1.7; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #2b6cb0; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #2b6cb0; font-weight: bold; }
+        .info-box { border-left: 5px solid #2b6cb0; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .tip-box { border-left: 5px solid #10b981; background: #ecfdf5; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .arrow { color: #2b6cb0; font-size: 26px; }
+        .steps { counter-reset: step; list-style: none; padding: 0; margin-top: 10px; }
+        .steps li { position: relative; padding: 14px 14px 14px 62px; margin-bottom: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; line-height: 1.6; }
+        .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; background: #2b6cb0; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .prompt-box { background: #1e293b; color: #e2e8f0; padding: 24px 28px; border-radius: 10px; border-left: 8px solid #2b6cb0; line-height: 1.7; font-size: 18px; margin-top: 20px; }
+        .prompt-box .label { display:inline-block; font-family:"Fira Code",monospace; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#38bdf8; margin-bottom:10px; }
+
+        /* ---- Estilos do minicurso ---- */
+        .encontro-cover { background: linear-gradient(135deg, #1a4971 0%, #2b6cb0 100%); color:#fff; justify-content:center; align-items:center; text-align:center; }
+        .encontro-cover h2 { color:#fff; font-size:46px; margin:10px 0; }
+        .encontro-badge { display:inline-block; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.35); color:#fff; padding:8px 22px; border-radius:50px; font-size:18px; font-weight:bold; letter-spacing:2px; text-transform:uppercase; }
+        .encontro-cover p { font-size:22px; opacity:.9; max-width:820px; }
+        .tag-encontro { display:inline-block; background:#2b6cb0; color:#fff; font-size:14px; font-weight:bold; letter-spacing:1px; text-transform:uppercase; padding:5px 14px; border-radius:6px; margin-bottom:6px; }
+        .exercise { border:2px solid #2b6cb0; border-radius:14px; padding:24px 28px; margin-top:24px; background:#ffffff; }
+        .exercise > h3 { margin:0 0 4px; font-size:26px; display:flex; align-items:center; gap:12px; }
+        .exercise .ex-num { background:#2b6cb0; color:#fff; width:40px; height:40px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+        .exercise .meta { display:flex; gap:12px; flex-wrap:wrap; margin:14px 0 8px; font-size:15px; }
+        .exercise .meta span { background:#eff6ff; color:#1a4971; padding:5px 12px; border-radius:6px; font-weight:bold; }
+        .exercise h4 { margin:18px 0 6px; color:#1a4971; font-size:19px; }
+        .result-box { border-left:5px solid #10b981; background:#ecfdf5; padding:14px 20px; border-radius:8px; margin-top:14px; }
+        .challenge-box { border-left:5px solid #8b5cf6; background:#f5f3ff; padding:14px 20px; border-radius:8px; margin-top:14px; }
+        .checklist { list-style:none; padding:0; margin-top:10px; }
+        .checklist li { padding:10px 10px 10px 40px; position:relative; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; margin-bottom:10px; line-height:1.5; }
+        .checklist li::before { content:"\f0c8"; font-family:"Font Awesome 6 Free"; font-weight:400; position:absolute; left:14px; top:11px; color:#2b6cb0; }
+        .rubric td, .rubric th { font-size:16px; }
+        .pill-row { display:flex; gap:12px; flex-wrap:wrap; margin-top:18px; }
+        .pill { background:#eff6ff; border:1px solid #bfdbfe; color:#1a4971; padding:8px 16px; border-radius:50px; font-weight:bold; font-size:16px; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light"><header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Tecnologias Digitais na Prática Docente
+            </h1>
+<p>Minicurso NotebookLM na prática — 5º ao 9º ano</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-magnifying-glass-chart" style="font-size:80px;margin-bottom:30px;color:#2b6cb0;"></i>
+<h1>NotebookLM na prática</h1>
+<p style="font-size: 24px; opacity: 0.85;">Minicurso para professores do <b>5º ao 9º ano</b> — pesquisa com fontes confiáveis, autonomia dos estudantes e projetos interdisciplinares</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Formação de Professores da Rede Municipal · Nível intermediário</div>
+</div>
+
+<!-- Apresentação do minicurso -->
+<div class="slide">
+<div class="header"><h2>Sobre este minicurso</h2></div>
+<div class="content">
+<p class="lead">Nestes encontros vamos usar o NotebookLM em duas frentes: como <span class="highlight">assistente
+                do professor</span> para preparar aulas e avaliações, e como <span class="highlight">ferramenta de estudo
+                dos alunos</span>, ensinando-os a pesquisar com fontes confiáveis e a checar tudo o que a IA afirma.</p>
+<div class="info-box">
+<p><b>Para quem é:</b> professoras e professores do 5º ao 9º ano que já usam o Google no dia a dia e querem
+                integrar a IA de forma <b>pedagógica e crítica</b> — sem cair na "cola" e sem abrir mão do pensamento
+                dos estudantes. Não é preciso experiência anterior com IA.</p>
+</div>
+<div class="grid" style="margin-top:20px;">
+<div class="card">
+<h3><i class="fa-solid fa-bullseye"></i> O que você vai conseguir fazer</h3>
+<ul class="spaced">
+<li>Montar cadernos temáticos e interdisciplinares com fontes confiáveis.</li>
+<li>Gerar guias de estudo, linhas do tempo e podcasts de revisão.</li>
+<li>Planejar atividades em que o aluno usa a IA <b>com senso crítico</b>.</li>
+</ul>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-list-check"></i> Como vamos trabalhar</h3>
+<ul class="spaced">
+<li><b>4 encontros</b> práticos, com produção em cada um.</li>
+<li>Exercícios <b>passo a passo</b>, do básico ao aplicado em sala.</li>
+<li>Um <b>projeto final</b>: uma sequência didática avaliada por rubrica.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Pré-requisitos -->
+<div class="slide">
+<div class="header"><h2>Antes de começar: preparação</h2></div>
+<div class="content">
+<p>Faça este checklist na primeira aula para garantir que tudo funcione:</p>
+<ul class="checklist">
+<li>Uma <b>conta Google</b> ativa (a mesma do Gmail ou do Google Sala de Aula).</li>
+<li>Acesso à internet em um <b>computador ou notebook</b>.</li>
+<li>O endereço aberto no navegador: <b>notebooklm.google.com</b></li>
+<li>De <b>3 a 4 materiais</b> em formato digital sobre um tema da sua disciplina: PDFs, artigos, um capítulo do
+                livro didático, um vídeo do YouTube e/ou links de sites confiáveis.</li>
+<li>Uma ideia de <b>tema interdisciplinar</b> que você gostaria de desenvolver (ex.: água, energia, cidadania).</li>
+</ul>
+<div class="warn-box">
+<p><b>Sobre o uso pelos alunos:</b> ferramentas de IA costumam exigir <b>idade mínima</b> e conta apropriada.
+                Para os estudantes usarem diretamente, prefira <b>contas escolares</b> (Google Workspace for Education) e
+                sempre com <b>supervisão</b>. Onde isso não for possível, o professor conduz a ferramenta e projeta a
+                tela — os alunos participam pensando e checando junto.</p>
+</div>
+</div>
+</div>
+
+<!-- Panorama do minicurso -->
+<div class="slide">
+<div class="header"><h2>O caminho dos 4 encontros</h2></div>
+<div class="content">
+<div class="flow">
+<div class="node">1. Fundamentos<br>e fontes</div>
+<div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+<div class="node">2. Recursos<br>de estudo</div>
+<div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+<div class="node">3. Aluno<br>crítico</div>
+<div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+<div class="node">4. Projeto<br>interdisciplinar</div>
+</div>
+<table class="table" style="margin-top:30px;">
+<tr><th>Encontro</th><th>Foco</th><th>Você sai com...</th></tr>
+<tr><td><b>1</b></td><td>Criar o caderno, curar fontes confiáveis e perguntar conferindo citações.</td><td>Um notebook temático curado.</td></tr>
+<tr><td><b>2</b></td><td>Gerar guia de estudo, linha do tempo, mapa mental e Áudio Overview.</td><td>Um "kit" de revisão para a turma.</td></tr>
+<tr><td><b>3</b></td><td>Planejar atividades em que o aluno pesquisa, checa fontes e combate a desinformação.</td><td>Uma atividade investigativa.</td></tr>
+<tr><td><b>4</b></td><td>Montar uma sequência interdisciplinar e usar a IA de forma ética.</td><td>Um projeto final avaliado por rubrica.</td></tr>
+</table>
+</div>
+</div>
+
+<!-- ============================= ENCONTRO 1 ============================= -->
+<div class="slide encontro-cover">
+<span class="encontro-badge">Encontro 1</span>
+<h2>Fundamentos e curadoria de fontes</h2>
+<p>Criar o caderno, escolher fontes confiáveis e perguntar em linguagem natural — sempre conferindo as citações.</p>
+</div>
+
+<!-- Passo a passo encontro 1 -->
+<div class="slide">
+<div class="header"><h2>Passo a passo: do zero à primeira pesquisa</h2></div>
+<div class="content">
+<span class="tag-encontro">Encontro 1 · Demonstração guiada</span>
+<p>Vamos fazer juntos, a partir de <code>notebooklm.google.com</code>:</p>
+<ol class="steps">
+<li>Faça login com a <b>conta Google</b> e clique em <b>Criar novo</b>.</li>
+<li>Nomeie o caderno pelo tema e ano. Ex.: <i>"Revolução Industrial — 8º ano"</i>.</li>
+<li>Clique em <b>Adicionar fontes</b> e envie materiais de <b>tipos diferentes</b>: um PDF, um link de site e um
+                vídeo do <b>YouTube</b>.</li>
+<li>Aguarde a IA <b>ler e indexar</b> cada fonte.</li>
+<li>Faça a <b>primeira pergunta</b> em linguagem natural, como faria a um colega que leu tudo.</li>
+<li>Clique nas <b>citações [n]</b> da resposta e confira o trecho exato que a sustenta.</li>
+</ol>
+<div class="info-box">
+<p><b>Tipos de fonte aceitos:</b> PDF, Google Docs e Apresentações, texto colado, sites (URL), vídeos do
+                <b>YouTube</b> (usa a transcrição) e <b>áudio</b>. Cabem muitas fontes por caderno (cerca de 50) — espaço
+                de sobra para a bibliografia de um tema inteiro.</p>
+</div>
+</div>
+</div>
+
+<!-- Exercício 1.1 -->
+<div class="slide">
+<div class="header"><h2>Exercícios do Encontro 1</h2></div>
+<div class="content">
+<div class="exercise">
+<h3><span class="ex-num">1</span> Curadoria: montando um caderno confiável</h3>
+<div class="meta"><span><i class="fa-regular fa-clock"></i> 25 min</span><span><i class="fa-solid fa-signal"></i> Nível: intermediário</span><span><i class="fa-solid fa-user"></i> Individual</span></div>
+<h4>Objetivo</h4>
+<p>Reunir de 3 a 4 fontes <b>confiáveis e variadas</b> sobre um tema da sua disciplina, e refletir sobre a
+                qualidade de cada uma.</p>
+<h4>O que fazer</h4>
+<ol class="steps">
+<li>Escolha um <b>tema</b> do seu currículo (ex.: <i>ciclo da água</i>, <i>Independência do Brasil</i>, <i>frações</i>).</li>
+<li>Crie o caderno e adicione: um <b>capítulo/PDF</b>, um <b>site</b> confiável e um <b>vídeo do YouTube</b>.</li>
+<li>Para cada fonte, escreva uma linha: <b>por que</b> ela é confiável (autor, instituição, atualidade)?</li>
+<li>Faça uma pergunta de checagem: "Estas fontes <b>concordam</b> entre si? Onde <b>divergem</b>?"</li>
+</ol>
+<div class="result-box"><b>Resultado esperado:</b> um caderno com fontes justificadas e uma primeira noção de que boas respostas dependem de boas fontes — "fonte ruim, resposta ruim".</div>
+<div class="challenge-box"><b>Desafio:</b> adicione de propósito uma fonte fraca (um blog sem autor) e peça à IA para comparar. Observe como a resposta muda — isso vira um ótimo exemplo para os alunos.</div>
+</div>
+</div>
+</div>
+
+<!-- Exercício 1.2 -->
+<div class="slide">
+<div class="content" style="padding-top:30px;">
+<div class="exercise">
+<h3><span class="ex-num">2</span> Perguntar bem e conferir as citações</h3>
+<div class="meta"><span><i class="fa-regular fa-clock"></i> 20 min</span><span><i class="fa-solid fa-signal"></i> Nível: intermediário</span><span><i class="fa-solid fa-user"></i> Individual</span></div>
+<h4>Objetivo</h4>
+<p>Explorar diferentes tipos de pergunta e treinar o hábito de <b>verificar a fonte</b> antes de usar a resposta.</p>
+<h4>O que fazer</h4>
+<ol class="steps">
+<li>Faça <b>4 perguntas</b> ao caderno, uma de cada tipo do modelo abaixo.</li>
+<li>Em cada resposta, abra ao menos <b>uma citação</b> e verifique se ela sustenta a afirmação.</li>
+<li>Selecione <b>apenas 2 fontes</b> antes de uma pergunta e compare com a resposta usando todas.</li>
+</ol>
+<div class="prompt-box">
+<span class="label">Modelos de pergunta</span>
+                • <b>Compreensão:</b> "Explique <b>[o conceito]</b> em 3 níveis: simples, intermediário e aprofundado."<br>
+                • <b>Análise:</b> "Quais são as <b>causas e consequências</b> de [tema] segundo estas fontes?"<br>
+                • <b>Comparação:</b> "Onde estas fontes <b>concordam</b> e onde <b>discordam</b>?"<br>
+                • <b>Aplicação:</b> "Crie 3 <b>perguntas de prova</b> de níveis diferentes sobre este material."
+            </div>
+<div class="result-box"><b>Resultado esperado:</b> percepção clara de que a IA responde a partir das <b>suas</b> fontes e que a citação é o que permite confiar — ou corrigir.</div>
+</div>
+</div>
+</div>
+
+<!-- ============================= ENCONTRO 2 ============================= -->
+<div class="slide encontro-cover">
+<span class="encontro-badge">Encontro 2</span>
+<h2>Recursos de estudo para a turma</h2>
+<p>Guia de estudo, linha do tempo, mapa mental e podcast de revisão — material de apoio ancorado nas fontes.</p>
+</div>
+
+<!-- Recursos automáticos -->
+<div class="slide">
+<div class="header"><h2>Os recursos que a IA gera para você</h2></div>
+<div class="content">
+<span class="tag-encontro">Encontro 2 · Conhecendo os recursos</span>
+<table class="table">
+<tr><th>Recurso</th><th>Uso no 5º ao 9º ano</th></tr>
+<tr><td><b>Resumo</b></td><td>Visão geral do tema para abrir a aula ou revisar rapidamente.</td></tr>
+<tr><td><b>Guia de estudo</b></td><td>Conceitos-chave e perguntas de revisão — base para provas e listas.</td></tr>
+<tr><td><b>Linha do tempo</b></td><td>Eventos e datas em ordem — excelente para História e Ciências.</td></tr>
+<tr><td><b>Mapa mental</b></td><td>Tema organizado em ramos — vira esquema de estudo e cartaz.</td></tr>
+<tr><td><b>FAQ</b></td><td>Antecipa as dúvidas mais prováveis da turma.</td></tr>
+<tr><td><b>Áudio Overview (podcast)</b></td><td>Dois apresentadores de IA discutem o tema, em português.</td></tr>
+</table>
+<div class="info-box">
+<p>Todos trazem <b>citações</b> às fontes originais, mantendo a rastreabilidade. É como ter um monitor que
+                prepara o material de apoio em segundos — que você sempre revisa antes de distribuir.</p>
+</div>
+</div>
+</div>
+
+<!-- Exercício 2.1 -->
+<div class="slide">
+<div class="header"><h2>Exercícios do Encontro 2</h2></div>
+<div class="content">
+<div class="exercise">
+<h3><span class="ex-num">3</span> Kit de revisão para a prova</h3>
+<div class="meta"><span><i class="fa-regular fa-clock"></i> 30 min</span><span><i class="fa-solid fa-signal"></i> Nível: intermediário</span><span><i class="fa-solid fa-user"></i> Individual</span></div>
+<h4>Objetivo</h4>
+<p>Produzir um material de revisão completo a partir do caderno do Encontro 1.</p>
+<h4>O que fazer</h4>
+<ol class="steps">
+<li>Gere um <b>Guia de estudo</b> e escolha 5 perguntas para uma lista de revisão.</li>
+<li>Gere um <b>Mapa mental</b> e, se o tema tiver cronologia, uma <b>Linha do tempo</b>.</li>
+<li>Peça um <b>banco de 10 questões</b> (5 fáceis, 3 médias, 2 difíceis) com gabarito.</li>
+<li>Revise as questões: alguma ficou ambígua ou fora do nível? Ajuste.</li>
+</ol>
+<div class="prompt-box">
+<span class="label">Modelo de pedido</span>
+                "Com base nas minhas fontes, crie 10 questões sobre <b>[tema]</b> para o <b>[8º ano]</b>: 5 fáceis,
+                3 médias e 2 difíceis. Inclua o <b>gabarito comentado</b> e indique a <b>citação</b> que fundamenta cada
+                resposta."
+            </div>
+<div class="result-box"><b>Resultado esperado:</b> um kit de revisão (guia + mapa + banco de questões) pronto para distribuir no Google Sala de Aula.</div>
+<div class="challenge-box"><b>Desafio:</b> peça a versão do banco de questões <b>sem o gabarito</b> para os alunos e uma <b>com gabarito</b> para você — dois documentos de uma vez.</div>
+</div>
+</div>
+</div>
+
+<!-- Exercício 2.2 -->
+<div class="slide">
+<div class="content" style="padding-top:30px;">
+<div class="exercise">
+<h3><span class="ex-num">4</span> Podcast de revisão (Áudio Overview)</h3>
+<div class="meta"><span><i class="fa-regular fa-clock"></i> 20 min</span><span><i class="fa-solid fa-signal"></i> Nível: intermediário</span><span><i class="fa-solid fa-user"></i> Individual</span></div>
+<h4>Objetivo</h4>
+<p>Gerar um áudio de revisão em português, orientado ao ano e ao foco que você quer reforçar.</p>
+<h4>O que fazer</h4>
+<ol class="steps">
+<li>Gere o <b>Áudio Overview</b> e use a opção de <b>personalizar</b> o foco.</li>
+<li>Oriente o público e o objetivo (veja o modelo). Gere e ouça um trecho.</li>
+<li>Avalie: o nível está certo? Cobriu os pontos que caem na prova?</li>
+<li>Disponibilize à turma como revisão "para ouvir no caminho da escola".</li>
+</ol>
+<div class="prompt-box">
+<span class="label">Instrução para personalizar o áudio</span>
+                "Conversem em <b>português</b>, explicando para alunos do <b>8º ano</b>. Foquem nas <b>causas e
+                consequências</b> de [tema], deem exemplos concretos e terminem com 3 perguntas de revisão."
+            </div>
+<div class="result-box"><b>Resultado esperado:</b> um episódio de revisão que atende os alunos que aprendem melhor ouvindo, mantendo a ancoragem nas fontes.</div>
+<div class="warn-box"><b>Atenção:</b> ouça antes de compartilhar. Mesmo ancorado, o modelo pode interpretar mal um trecho — a validação é sua.</div>
+</div>
+</div>
+</div>
+
+<!-- ============================= ENCONTRO 3 ============================= -->
+<div class="slide encontro-cover">
+<span class="encontro-badge">Encontro 3</span>
+<h2>Formando o aluno crítico</h2>
+<p>Atividades em que o estudante pesquisa, confere citações e aprende a distinguir fonte confiável de desinformação.</p>
+</div>
+
+<!-- Estratégia encontro 3 -->
+<div class="slide">
+<div class="header"><h2>Da resposta pronta ao pensamento crítico</h2></div>
+<div class="content">
+<span class="tag-encontro">Encontro 3 · Aluno protagonista</span>
+<p class="lead">O risco da IA é virar <span class="highlight">"cola"</span>. A virada pedagógica é usar a citação e a
+                comparação de fontes para transformar a IA em uma ferramenta de <b>investigação</b>.</p>
+<div class="grid" style="margin-top:16px;">
+<div class="card">
+<h3><i class="fa-solid fa-check-double"></i> Checar a fonte</h3>
+<p>O aluno não aceita a resposta: clica na citação, lê o original e julga se a IA entendeu bem o trecho.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-triangle-exclamation"></i> Caçar a desinformação</h3>
+<p>Compara o que uma fonte confiável e uma fonte duvidosa dizem sobre o mesmo tema e explica a diferença.</p>
+</div>
+</div>
+<div class="warn-box">
+<p><b>Combinado com a turma:</b> a IA é ponto de <b>partida</b>, nunca de chegada. Todo trabalho precisa de
+                <b>verificação</b> na fonte e de <b>reescrita com as próprias palavras</b>.</p>
+</div>
+</div>
+</div>
+
+<!-- Exercício 3.1 -->
+<div class="slide">
+<div class="header"><h2>Exercícios do Encontro 3</h2></div>
+<div class="content">
+<div class="exercise">
+<h3><span class="ex-num">5</span> Planejando uma atividade investigativa</h3>
+<div class="meta"><span><i class="fa-regular fa-clock"></i> 30 min</span><span><i class="fa-solid fa-signal"></i> Nível: aplicado</span><span><i class="fa-solid fa-users"></i> Individual ou em dupla</span></div>
+<h4>Objetivo</h4>
+<p>Desenhar uma atividade em que os alunos usam (ou observam o professor usar) o NotebookLM para investigar um
+                tema e <b>verificar as fontes</b>.</p>
+<h4>O que fazer</h4>
+<ol class="steps">
+<li>Defina uma <b>pergunta-problema</b> instigante (ex.: "A água vai acabar?").</li>
+<li>Monte um caderno com 3 fontes: uma científica, uma jornalística e uma duvidosa.</li>
+<li>Crie um <b>roteiro para o aluno</b>: perguntar à IA, clicar nas citações e registrar o que confere e o que não.</li>
+<li>Peça à IA um <b>quadro comparativo</b> das fontes para os alunos analisarem criticamente.</li>
+</ol>
+<div class="prompt-box">
+<span class="label">Modelo de pedido</span>
+                "Monte um <b>quadro comparativo</b> do que cada uma das minhas fontes afirma sobre <b>[tema]</b>,
+                mostrando pontos de acordo, de desacordo e o que <b>não</b> está sustentado por citação."
+            </div>
+<div class="result-box"><b>Resultado esperado:</b> um plano de atividade investigativa, com roteiro do aluno e critérios de verificação — pronto para aplicar.</div>
+</div>
+</div>
+</div>
+
+<!-- Exercício 3.2 -->
+<div class="slide">
+<div class="content" style="padding-top:30px;">
+<div class="exercise">
+<h3><span class="ex-num">6</span> Detetive de fontes: caçando o "furo"</h3>
+<div class="meta"><span><i class="fa-regular fa-clock"></i> 25 min</span><span><i class="fa-solid fa-signal"></i> Nível: aplicado</span><span><i class="fa-solid fa-users"></i> Em dupla</span></div>
+<h4>Objetivo</h4>
+<p>Preparar uma dinâmica em que os alunos encontram uma afirmação <b>sem apoio</b> nas fontes e a corrigem.</p>
+<h4>O que fazer</h4>
+<ol class="steps">
+<li>Faça uma pergunta ampla e peça à IA para responder <b>marcando o que tem e o que não tem citação</b>.</li>
+<li>Escolha uma afirmação frágil e crie a tarefa: "prove ou refute usando a fonte original".</li>
+<li>Elabore 3 perguntas de discussão sobre <b>por que</b> conferir fontes importa na vida (redes sociais, notícias).</li>
+</ol>
+<div class="result-box"><b>Resultado esperado:</b> uma dinâmica curta de checagem de fatos que ensina, ao mesmo tempo, o conteúdo e a competência de verificar informação.</div>
+<div class="challenge-box"><b>Desafio:</b> conecte a atividade ao tópico <a href="topico-ia-responsavel.html"><b>IA Responsável</b></a> — discuta com a turma o que é plágio e por que "reescrever com as próprias palavras" é aprender de verdade.</div>
+</div>
+</div>
+</div>
+
+<!-- ============================= ENCONTRO 4 ============================= -->
+<div class="slide encontro-cover">
+<span class="encontro-badge">Encontro 4</span>
+<h2>Projeto interdisciplinar e ética</h2>
+<p>Reunir tudo em uma sequência didática interdisciplinar, com uso ético da IA e proteção dos dados dos alunos.</p>
+</div>
+
+<!-- Privacidade -->
+<div class="slide">
+<div class="header"><h2>Uso responsável: ética, LGPD e autoria</h2></div>
+<div class="content">
+<span class="tag-encontro">Encontro 4 · Ética e LGPD</span>
+<p class="lead">Tudo o que sobe para o NotebookLM vai para a nuvem. Escolha <span class="highlight">com
+                cuidado</span> o que você e os alunos enviam.</p>
+<div class="warn-box">
+<p><b>NÃO envie dados que identifiquem estudantes:</b> nomes completos, notas identificadas, laudos, fotos,
+                endereços ou dados de saúde. Isso respeita a <b>LGPD</b> e protege os adolescentes.</p>
+</div>
+<div class="tip-box">
+<p><b>Autoria e honestidade:</b> combine com a turma que a IA <b>apoia</b> a pesquisa, mas o trabalho final é
+                feito e assinado pelo aluno, com verificação nas fontes e reescrita própria. Copiar a resposta da IA é
+                plágio — refletir a partir dela é aprender.</p>
+</div>
+<p style="margin-top:16px;">Aprofunde no tópico
+                <a href="topico-ia-responsavel.html"><b>IA Responsável, Privacidade e LGPD</b></a>.</p>
+</div>
+</div>
+
+<!-- Exercício 4 - Projeto final -->
+<div class="slide">
+<div class="header"><h2>Projeto final do minicurso</h2></div>
+<div class="content">
+<div class="exercise">
+<h3><span class="ex-num">7</span> Sequência didática interdisciplinar</h3>
+<div class="meta"><span><i class="fa-regular fa-clock"></i> 45 min + apresentação</span><span><i class="fa-solid fa-signal"></i> Nível: aplicado</span><span><i class="fa-solid fa-users"></i> Individual ou por área</span></div>
+<h4>Objetivo</h4>
+<p>Planejar uma sequência de 2 a 3 aulas sobre um tema interdisciplinar, integrando o NotebookLM de forma
+                pedagógica e crítica.</p>
+<h4>O que entregar</h4>
+<ul class="checklist">
+<li>Um <b>caderno</b> temático com pelo menos <b>4 fontes confiáveis e variadas</b>.</li>
+<li>Um <b>kit de revisão</b> (guia de estudo + mapa mental ou linha do tempo).</li>
+<li>Uma <b>atividade investigativa</b> com roteiro de verificação de fontes para o aluno.</li>
+<li>Um <b>Áudio Overview</b> em português, orientado ao ano.</li>
+<li>Um <b>plano</b> de 2–3 aulas dizendo em qual momento a IA entra — e onde o aluno pensa sozinho.</li>
+</ul>
+<h4>Como apresentar</h4>
+<p>Em <b>4 minutos</b>: mostre o caderno, toque 30 segundos do áudio e explique como a sequência desenvolve
+                <b>conteúdo</b> e <b>pensamento crítico</b> ao mesmo tempo.</p>
+<div class="challenge-box"><b>Desafio final:</b> planeje a versão em que os <b>próprios alunos</b> montam um mini-caderno (com contas escolares e supervisão) e apresentam a checagem de fontes que fizeram.</div>
+</div>
+</div>
+</div>
+
+<!-- Rubrica -->
+<div class="slide">
+<div class="header"><h2>Como o projeto será avaliado</h2></div>
+<div class="content">
+<p>Use esta rubrica para se autoavaliar antes de apresentar. Ela também orienta a devolutiva.</p>
+<table class="table rubric">
+<tr><th>Critério</th><th>Em desenvolvimento</th><th>Adequado</th><th>Excelente</th></tr>
+<tr><td><b>Curadoria de fontes</b></td><td>Poucas fontes ou pouco confiáveis</td><td>4 fontes confiáveis</td><td>Fontes variadas, confiáveis e bem justificadas</td></tr>
+<tr><td><b>Uso dos recursos</b></td><td>Gerou 1 recurso</td><td>Combinou 2–3 recursos revisados</td><td>Integração fluida de vários recursos com ajustes</td></tr>
+<tr><td><b>Pensamento crítico</b></td><td>IA como resposta pronta</td><td>Prevê verificação de citações</td><td>Ensina checagem de fontes e combate à desinformação</td></tr>
+<tr><td><b>Interdisciplinaridade</b></td><td>Uma disciplina só</td><td>Conexão entre 2 áreas</td><td>Integração rica e significativa entre áreas</td></tr>
+<tr><td><b>Ética e LGPD</b></td><td>Enviou dado sensível</td><td>Respeitou privacidade e autoria</td><td>Trabalhou privacidade e autoria explicitamente com a turma</td></tr>
+</table>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#2b6cb0;">Parabéns!</h1>
+<p style="font-size: 22px; max-width: 820px; opacity: 0.9;">Você concluiu o minicurso e domina um fluxo com o
+            <b>NotebookLM</b>: <b>curar fontes confiáveis</b>, conversar com elas conferindo as <b>citações</b>, gerar
+            <b>guias, linhas do tempo, mapas e podcasts</b> e planejar atividades em que o aluno <b>pesquisa, verifica e
+            pensa</b> — com uso <b>ético</b> e <b>proteção dos dados</b>. No 5º ao 9º ano, o maior ganho da IA não é dar
+            respostas prontas: é criar oportunidades para os estudantes aprenderem a <b>duvidar, checar e concluir</b> por
+            conta própria.</p>
+<div style="margin-top: 40px;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Tecnologias Digitais na Prática Docente</p>
+</footer>
+</body>
+</html>
