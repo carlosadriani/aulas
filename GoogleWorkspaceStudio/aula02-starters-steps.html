@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHE86CNTZB"></script>
+<script src="/assets/js/analytics-consent.js"></script>
+<link rel="canonical" href="https://www.ajudaprofessor.com.br/GoogleWorkspaceStudio/aula02-starters-steps.html">
+<meta name="description" content="Aula 2 — Starters e Steps no Google Workspace Studio: gatilhos, ações dos apps Google, variáveis, encadeamento e passos de IA (Ask Gemini, Extract, Check If, Decide, Filter).">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ajuda Professor">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Google Workspace Studio — Aula 2: Starters e Steps">
+<meta property="og:description" content="Gatilhos, ações dos apps Google, variáveis, encadeamento e passos de IA no Google Workspace Studio.">
+<meta property="og:url" content="https://www.ajudaprofessor.com.br/GoogleWorkspaceStudio/aula02-starters-steps.html">
+<meta property="og:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Google Workspace Studio — Aula 2: Starters e Steps">
+<meta name="twitter:description" content="Gatilhos, ações dos apps Google, variáveis, encadeamento e passos de IA no Google Workspace Studio.">
+<meta name="twitter:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Google Workspace Studio — Aula 2: Starters e Steps</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #6c4cd8; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #4a2f9e; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; align-items: start; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 18px; border-left: 8px solid #6c4cd8; line-height: 1.7; white-space: pre-wrap; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #6c4cd8; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #6c4cd8; font-weight: bold; }
+        .info-box { border-left: 5px solid #6c4cd8; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .tip-box { border-left: 5px solid #10b981; background: #ecfdf5; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .ex-box { border-left: 5px solid #ea4335; background: #fef2f2; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .node.gemini { background: #6c4cd8; }
+        .flow .arrow { color: #6c4cd8; font-size: 26px; }
+        .steps { counter-reset: step; list-style: none; padding: 0; margin-top: 10px; }
+        .steps li { position: relative; padding: 14px 14px 14px 62px; margin-bottom: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; line-height: 1.6; }
+        .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 16px; top: 22px; width: 32px; height: 32px; background: #6c4cd8; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .prompt-box { background: #1e293b; color: #e2e8f0; padding: 24px 28px; border-radius: 10px; border-left: 8px solid #6c4cd8; line-height: 1.7; font-size: 18px; margin-top: 20px; }
+        .prompt-box .label { display:inline-block; font-family:"Fira Code",monospace; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#38bdf8; margin-bottom:10px; }
+        .agenda { list-style: none; padding: 0; }
+        .agenda li { display:flex; gap:18px; align-items:flex-start; padding:14px 0; border-bottom:1px dashed #e2e8f0; line-height:1.5; }
+        .agenda .t { flex:0 0 120px; font-family:"Fira Code",monospace; color:#6c4cd8; font-weight:700; }
+        .pill { display:inline-block; background:#ede9fe; color:#4a2f9e; padding:4px 12px; border-radius:50px; font-size:14px; font-weight:700; margin:2px; }
+        .kbd { font-family:"Fira Code",monospace; background:#1e293b; color:#38bdf8; padding:2px 8px; border-radius:5px; font-size:0.9em; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light">
+<header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Google Workspace Studio
+            </h1>
+<p>Aula 2 — Starters e Steps: construindo flows</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-diagram-project" style="font-size:80px;margin-bottom:30px;color:#6c4cd8;"></i>
+<h1>Aula 2 — Starters e Steps</h1>
+<p style="font-size: 24px; opacity: 0.85;">Gatilhos, ações, variáveis e os passos de IA que dão inteligência ao fluxo</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Carga horária: 4 horas · Google Workspace Studio</div>
+</div>
+
+<!-- Agenda -->
+<div class="slide">
+<div class="header"><h2>Roteiro de 4h</h2></div>
+<div class="content">
+<ul class="agenda">
+<li><span class="t">00:00–00:15</span><span><b>Retomada.</b> A anatomia do flow e o briefing matinal da Aula 1.</span></li>
+<li><span class="t">00:15–01:00</span><span><b>Starters.</b> As três famílias de gatilhos, uma a uma.</span></li>
+<li><span class="t">01:00–01:45</span><span><b>Steps dos apps Google.</b> Gmail, Sheets, Drive, Docs, Agenda, Chat, Tasks.</span></li>
+<li><span class="t">01:45–02:00</span><span><i>Intervalo.</i></span></li>
+<li><span class="t">02:00–02:45</span><span><b>Variáveis e encadeamento.</b> Como a saída de um passo alimenta o próximo.</span></li>
+<li><span class="t">02:45–03:30</span><span><b>Passos de IA.</b> Ask Gemini, Extract, Summarize, Check If, Decide, Filter.</span></li>
+<li><span class="t">03:30–04:00</span><span><b>Laboratório.</b> Dois flows completos: triagem de e-mails e captura de anexos.</span></li>
+</ul>
+</div>
+</div>
+
+<!-- Starters: visão geral -->
+<div class="slide">
+<div class="header"><h2>Starters: as três famílias de gatilhos</h2></div>
+<div class="content">
+<p class="lead">O <span class="highlight">Starter</span> é o evento que dispara o fluxo. Todos os gatilhos do
+                Studio caem em uma destas três categorias:</p>
+<div class="grid-3">
+<div class="card">
+<h3><i class="fa-solid fa-envelope"></i> Comunicação</h3>
+<p>Eventos de mensagens: <b>chegou um novo e-mail</b> (com um filtro/rótulo), uma mensagem no Chat, etc.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-table-cells"></i> Mudança de dados</h3>
+<p>Alterações de estado: <b>uma nova linha em uma Planilha</b>, um formulário respondido, um arquivo novo.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-clock"></i> Temporal / Manual</h3>
+<p><b>Agendado</b> (todo dia às 8h) ou <b>manual</b> (você clica para rodar / roda a partir do Gmail).</p>
+</div>
+</div>
+<div class="info-box">
+<p>Escolher o Starter certo é a decisão de design mais importante do fluxo: ele define <b>quando</b> e
+                    <b>com que dados</b> tudo começa. Um Starter mal escolhido gera fluxos que disparam demais (ruído) ou
+                    de menos (perdem eventos).</p>
+</div>
+</div>
+</div>
+
+<!-- Starters em detalhe -->
+<div class="slide">
+<div class="header"><h2>Escolhendo e configurando o Starter</h2></div>
+<div class="content">
+<table class="table">
+<tr><th>Starter</th><th>Dispara quando…</th><th>Bom para</th></tr>
+<tr><td><b>E-mail recebido</b></td><td>Chega e-mail que casa com um filtro (remetente, rótulo, palavra)</td><td>Triagem, salvar anexos, respostas</td></tr>
+<tr><td><b>Nova linha na Planilha</b></td><td>Uma linha é adicionada a uma aba</td><td>Processar cadastros, pedidos, respostas de Forms</td></tr>
+<tr><td><b>Agendado</b></td><td>Em um horário/frequência definidos</td><td>Relatórios e resumos periódicos</td></tr>
+<tr><td><b>Manual</b></td><td>Você aciona sob demanda</td><td>Tarefas pontuais, testes, "botão" de rotina</td></tr>
+</table>
+<div class="tip-box">
+<p><b>Boa prática:</b> comece com o gatilho <b>mais específico possível</b>. Em "e-mail recebido", use filtros
+                    (de um remetente, com um rótulo) para o fluxo não disparar a cada mensagem da caixa.</p>
+</div>
+<div class="warn-box">
+<p>Nem todo evento imaginável existe como Starter, e a lista evolve. Se o gatilho que você quer não existe,
+                    às vezes dá para simular com um agendamento que <b>verifica</b> a condição periodicamente.</p>
+</div>
+</div>
+</div>
+
+<!-- Steps dos apps Google -->
+<div class="slide">
+<div class="header"><h2>Steps dos apps Google (ações)</h2></div>
+<div class="content">
+<p>Os <span class="highlight">Steps</span> executam ações. Os mais comuns operam sobre os próprios apps do
+                Workspace:</p>
+<table class="table">
+<tr><th>App</th><th>Ações típicas</th></tr>
+<tr><td><b><i class="fa-solid fa-envelope"></i> Gmail</b></td><td>Enviar e-mail, criar rascunho de resposta, aplicar rótulo, marcar com estrela, arquivar</td></tr>
+<tr><td><b><i class="fa-solid fa-table-cells"></i> Planilhas</b></td><td>Adicionar linha, atualizar uma linha/célula existente</td></tr>
+<tr><td><b><i class="fa-brands fa-google-drive"></i> Drive</b></td><td>Criar pasta, salvar anexo, mover/copiar arquivo</td></tr>
+<tr><td><b><i class="fa-solid fa-file-lines"></i> Docs</b></td><td>Criar documento, anexar conteúdo a um documento</td></tr>
+<tr><td><b><i class="fa-solid fa-calendar-days"></i> Agenda</b></td><td>Criar evento, ler próximos eventos</td></tr>
+<tr><td><b><i class="fa-solid fa-comment"></i> Chat</b></td><td>Enviar mensagem para um espaço ou pessoa</td></tr>
+<tr><td><b><i class="fa-solid fa-list-check"></i> Tasks</b></td><td>Criar tarefa</td></tr>
+</table>
+<div class="info-box">
+<p>Repare no par <b>ler × escrever</b>: alguns passos <b>obtêm</b> dados (ler próximos eventos) e outros
+                    <b>alteram</b> dados (adicionar linha). Combinar leitura + IA + escrita é a receita da maioria dos
+                    fluxos úteis.</p>
+</div>
+</div>
+</div>
+
+<!-- Variáveis e encadeamento -->
+<div class="slide">
+<div class="header"><h2>Variáveis: a cola entre os passos</h2></div>
+<div class="content">
+<p class="lead">Cada passo produz uma <span class="highlight">saída</span> (output). Essa saída fica disponível
+                como <b>variável</b> para os passos seguintes usarem como <b>entrada</b> (input).</p>
+<div class="flow">
+<div class="node">E-mail recebido<br/><small>saída: assunto, corpo, anexos</small></div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node gemini">Resumir<br/><small>entrada: corpo → saída: resumo</small></div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Enviar no Chat<br/><small>entrada: resumo</small></div>
+</div>
+<div class="info-box">
+<p>Na prática, ao configurar um passo você verá um seletor para <b>inserir variáveis</b> dos passos
+                    anteriores (por exemplo, "corpo do e-mail", "nome do remetente", "resumo gerado"). É assim que os
+                    dados fluem pela esteira.</p>
+</div>
+<div class="tip-box">
+<p><b>Modelo mental:</b> pense em cada passo como uma função — recebe entradas, devolve saídas. Encadear
+                    passos é compor funções. Quem já programou reconhece o padrão de <i>pipeline</i>.</p>
+</div>
+</div>
+</div>
+
+<!-- Passos de IA -->
+<div class="slide">
+<div class="header"><h2>Os passos de IA: onde o Gemini pensa</h2></div>
+<div class="content">
+<p>Além das ações mecânicas, o Studio traz passos que usam o Gemini para <span class="highlight">interpretar,
+                gerar e decidir</span>. São eles que transformam um fluxo em um <b>agente</b>:</p>
+<table class="table">
+<tr><th>Passo de IA</th><th>O que faz</th></tr>
+<tr><td><b>Ask Gemini</b> (Perguntar ao Gemini)</td><td>Uso geral: gerar texto, reescrever, responder, analisar</td></tr>
+<tr><td><b>Summarize / Recap</b> (Resumir)</td><td>Condensar um conteúdo longo em pontos-chave</td></tr>
+<tr><td><b>Extract</b> (Extrair)</td><td>Puxar dados estruturados segundo um <i>schema</i> que você define</td></tr>
+<tr><td><b>Check If</b> (Verificar se)</td><td>Condição com lógica E/OU — ramifica o fluxo</td></tr>
+<tr><td><b>Decide</b> (Decidir)</td><td>Pede ao Gemini um julgamento entre opções</td></tr>
+<tr><td><b>Filter</b> (Filtrar)</td><td>Percorre uma lista e mantém itens que atendem a um critério</td></tr>
+</table>
+<div class="tip-box">
+<p>Guarde a distinção: <b>Ask/Summarize</b> geram conteúdo; <b>Extract</b> estrutura dados; <b>Check If /
+                    Decide / Filter</b> controlam o <b>fluxo</b> com base em julgamento semântico. Vamos aprofundar cada
+                    um na Aula 3.</p>
+</div>
+</div>
+</div>
+
+<!-- Check If e Decide -->
+<div class="slide">
+<div class="header"><h2>Lógica com IA: Check If e Decide</h2></div>
+<div class="content">
+<p>Fluxos raramente são uma linha reta. Muitas vezes precisamos de "<b>só faça isto se…</b>". É aí que entram
+                os passos de condição:</p>
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-code-branch"></i> Check If</h3>
+<p>Avalia uma condição (com <b>E/OU</b>) e ramifica: se verdadeiro, segue por um caminho; senão, por outro.
+                        Ex.: <i>"se o e-mail contém uma fatura E é de um fornecedor conhecido"</i>.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-scale-balanced"></i> Decide</h3>
+<p>Delega o julgamento ao Gemini: <i>"classifique a prioridade deste e-mail como Alta, Média ou Baixa"</i>.
+                        A saída (a categoria) orienta os próximos passos.</p>
+</div>
+</div>
+<div class="warn-box">
+<p><b>Cuidado com decisões da IA.</b> Um julgamento do Gemini é uma <b>estimativa</b>, não uma certeza. Para
+                    ações irreversíveis (excluir, enviar a clientes), prefira que a IA <b>sugira</b> e um humano
+                    <b>confirme</b>.</p>
+</div>
+</div>
+</div>
+
+<!-- Laboratório 1: triagem de e-mails -->
+<div class="slide">
+<div class="header"><h2>Laboratório 1 — Triagem de e-mails prioritários</h2></div>
+<div class="content">
+<p>Vamos montar um agente que identifica e-mails importantes e avisa você, sem mexer no que não deve.</p>
+<div class="flow">
+<div class="node">E-mail recebido</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node gemini">Decide<br/><small>prioridade?</small></div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Aplicar rótulo</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Notificar no Chat</div>
+</div>
+<ol class="steps" style="margin-top:24px;">
+<li><b>Starter:</b> "E-mail recebido" (opcionalmente filtrado por caixa de entrada principal).</li>
+<li><b>Decide:</b> peça ao Gemini para classificar a prioridade em <i>Alta / Média / Baixa</i>, explicando o
+                critério (ex.: pedidos diretos, prazos, remetentes-chave).</li>
+<li><b>Check If:</b> continue apenas quando a prioridade for <b>Alta</b>.</li>
+<li><b>Ação — rótulo:</b> aplique o rótulo "Prioritário" no e-mail.</li>
+<li><b>Ação — Chat:</b> envie uma mensagem: "📌 E-mail prioritário de {remetente}: {assunto}".</li>
+<li><b>Teste</b> com um e-mail real de exemplo e ajuste o critério do <i>Decide</i> conforme o resultado.</li>
+</ol>
+<div class="tip-box">
+<p>Esse fluxo <b>informa</b> e <b>organiza</b>, mas não apaga nem responde nada — é seguro para produção.</p>
+</div>
+</div>
+</div>
+
+<!-- Laboratório 2: anexos -->
+<div class="slide">
+<div class="header"><h2>Laboratório 2 — Capturar anexos e registrar no Sheets</h2></div>
+<div class="content">
+<p>Um clássico do escritório: quando chega um e-mail com anexo, guardar o arquivo no Drive e registrar os
+                dados numa planilha — automaticamente.</p>
+<div class="flow">
+<div class="node">E-mail c/ anexo</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Salvar anexo no Drive</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node gemini">Extract<br/><small>dados do e-mail</small></div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Adicionar linha no Sheets</div>
+</div>
+<ol class="steps" style="margin-top:24px;">
+<li><b>Starter:</b> "E-mail recebido" com filtro para mensagens que têm anexo (ex.: rótulo "Notas").</li>
+<li><b>Ação — Drive:</b> salve o anexo numa pasta específica (lembre-se: escrever em Drive
+                <b>compartilhado</b> pode ter restrições; use uma pasta sua).</li>
+<li><b>Extract:</b> defina um <i>schema</i> — por exemplo <span class="kbd">{ remetente, data, valor, descrição }</span>
+                — e o Gemini extrai esses campos do e-mail.</li>
+<li><b>Ação — Sheets:</b> adicione uma linha com os campos extraídos + o link do arquivo salvo.</li>
+<li><b>Teste</b> e verifique se os campos vieram corretos; refine o schema e a instrução.</li>
+</ol>
+<div class="info-box">
+<p>Este é o padrão <b>ler → estruturar (IA) → escrever</b>, um dos mais úteis de todos. Você o reaproveitará
+                    em dezenas de cenários.</p>
+</div>
+</div>
+</div>
+
+<!-- Boas práticas de construção -->
+<div class="slide">
+<div class="header"><h2>Boas práticas ao montar flows</h2></div>
+<div class="content">
+<ul class="spaced">
+<li><b>Um objetivo por fluxo.</b> Fluxos enxutos são fáceis de entender, testar e corrigir.</li>
+<li><b>Nomeie com clareza.</b> "Triagem — e-mails prioritários" é melhor que "Fluxo 3".</li>
+<li><b>Teste com dados reais</b> antes de ativar; comece por ações que não alteram nada.</li>
+<li><b>Trate o caminho de erro.</b> O que acontece se o e-mail não tiver anexo? Se a IA não achar o valor?</li>
+<li><b>Documente a intenção</b> em uma descrição — seu "eu do futuro" agradece.</li>
+<li><b>Respeite os limites</b> (nº de passos): se estourar, quebre em dois fluxos encadeados.</li>
+</ul>
+<div class="tip-box">
+<p>Pense como engenheiro de software: <b>entrada → processamento → saída</b>, com casos de borda previstos.
+                    Um bom flow é um pequeno sistema — merece o mesmo cuidado de design.</p>
+</div>
+</div>
+</div>
+
+<!-- Exercícios -->
+<div class="slide">
+<div class="header"><h2>Exercícios da Aula 2</h2></div>
+<div class="content">
+<div class="ex-box">
+<p><b>1.</b> Para cada tarefa, indique o <b>Starter</b> ideal e justifique: (a) avisar a equipe quando um
+                    formulário for respondido; (b) enviar um resumo semanal toda sexta às 17h; (c) salvar toda nota
+                    fiscal que chega por e-mail.</p>
+</div>
+<div class="ex-box">
+<p><b>2.</b> Reproduza o <b>Laboratório 1</b> (triagem de e-mails). Ajuste o critério do <i>Decide</i> e
+                    documente como a classificação mudou. Entregue prints do fluxo e de uma execução.</p>
+</div>
+<div class="ex-box">
+<p><b>3.</b> Reproduza o <b>Laboratório 2</b> (anexos → Sheets). Projete o <i>schema</i> do <b>Extract</b> para
+                    o seu caso e explique cada campo escolhido.</p>
+</div>
+<div class="ex-box">
+<p><b>4. Desafio.</b> Desenhe (em papel ou diagrama) um fluxo com pelo menos um <b>Check If</b> que trate um
+                    <b>caminho de erro</b> (ex.: "se não houver anexo, apenas registre um aviso"). Identifique variáveis
+                    de entrada e saída de cada passo.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#6c4cd8;">Resumo da Aula 2</h1>
+<p style="font-size: 22px; max-width: 860px; opacity: 0.9;">Os <b>Starters</b> se dividem em três famílias —
+            <b>comunicação, mudança de dados e temporal/manual</b> — e definem quando o fluxo começa. Os <b>Steps</b>
+            executam ações nos apps Google (Gmail, Sheets, Drive, Docs, Agenda, Chat, Tasks), e as <b>variáveis</b>
+            transportam dados de um passo ao seguinte, formando uma esteira. Os <b>passos de IA</b> — Ask Gemini,
+            Summarize, Extract, Check If, Decide e Filter — acrescentam interpretação, estruturação e decisão. Você
+            construiu dois agentes completos: triagem de e-mails e captura de anexos. Na Aula 3, mergulhamos fundo na
+            <b>IA</b>: Gems, prompts, extração estruturada e casos avançados.</p>
+<div style="margin-top: 40px; display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
+<a href="aula01-fundamentos.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Aula 1
+            </a>
+<a href="aula03-agentes-gemini.html" style="color: #fff; background:#6c4cd8; text-decoration: none; padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+                Ir para a Aula 3 <i class="fa-solid fa-arrow-right"></i>
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Google Workspace Studio — Aula 2</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHE86CNTZB"></script>
+<script src="/assets/js/analytics-consent.js"></script>
+<link rel="canonical" href="https://www.ajudaprofessor.com.br/GoogleWorkspaceStudio/aula03-agentes-gemini.html">
+<meta name="description" content="Aula 3 — Agentes de IA com Gemini no Workspace Studio: raciocínio semântico, Gems, arquivos de conhecimento, engenharia de prompt, extração estruturada e casos avançados.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ajuda Professor">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Google Workspace Studio — Aula 3: Agentes de IA com Gemini">
+<meta property="og:description" content="Raciocínio semântico, Gems, arquivos de conhecimento, engenharia de prompt e casos avançados no Google Workspace Studio.">
+<meta property="og:url" content="https://www.ajudaprofessor.com.br/GoogleWorkspaceStudio/aula03-agentes-gemini.html">
+<meta property="og:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Google Workspace Studio — Aula 3: Agentes de IA com Gemini">
+<meta name="twitter:description" content="Raciocínio semântico, Gems, arquivos de conhecimento, engenharia de prompt e casos avançados no Google Workspace Studio.">
+<meta name="twitter:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Google Workspace Studio — Aula 3: Agentes de IA com Gemini</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #6c4cd8; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #4a2f9e; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; align-items: start; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 17px; border-left: 8px solid #6c4cd8; line-height: 1.7; white-space: pre-wrap; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #6c4cd8; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #6c4cd8; font-weight: bold; }
+        .info-box { border-left: 5px solid #6c4cd8; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .tip-box { border-left: 5px solid #10b981; background: #ecfdf5; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .ex-box { border-left: 5px solid #ea4335; background: #fef2f2; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .node.gemini { background: #6c4cd8; }
+        .flow .arrow { color: #6c4cd8; font-size: 26px; }
+        .steps { counter-reset: step; list-style: none; padding: 0; margin-top: 10px; }
+        .steps li { position: relative; padding: 14px 14px 14px 62px; margin-bottom: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; line-height: 1.6; }
+        .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 16px; top: 22px; width: 32px; height: 32px; background: #6c4cd8; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .prompt-box { background: #1e293b; color: #e2e8f0; padding: 24px 28px; border-radius: 10px; border-left: 8px solid #6c4cd8; line-height: 1.7; font-size: 18px; margin-top: 20px; }
+        .prompt-box .label { display:inline-block; font-family:"Fira Code",monospace; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#38bdf8; margin-bottom:10px; }
+        .agenda { list-style: none; padding: 0; }
+        .agenda li { display:flex; gap:18px; align-items:flex-start; padding:14px 0; border-bottom:1px dashed #e2e8f0; line-height:1.5; }
+        .agenda .t { flex:0 0 120px; font-family:"Fira Code",monospace; color:#6c4cd8; font-weight:700; }
+        .pill { display:inline-block; background:#ede9fe; color:#4a2f9e; padding:4px 12px; border-radius:50px; font-size:14px; font-weight:700; margin:2px; }
+        .kbd { font-family:"Fira Code",monospace; background:#1e293b; color:#38bdf8; padding:2px 8px; border-radius:5px; font-size:0.9em; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light">
+<header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Google Workspace Studio
+            </h1>
+<p>Aula 3 — Agentes de IA com Gemini</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-gem" style="font-size:80px;margin-bottom:30px;color:#6c4cd8;"></i>
+<h1>Aula 3 — Agentes de IA</h1>
+<p style="font-size: 24px; opacity: 0.85;">Raciocínio, Gems, engenharia de prompt e extração estruturada</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Carga horária: 4 horas · Google Workspace Studio</div>
+</div>
+
+<!-- Agenda -->
+<div class="slide">
+<div class="header"><h2>Roteiro de 4h</h2></div>
+<div class="content">
+<ul class="agenda">
+<li><span class="t">00:00–00:30</span><span><b>Regra × raciocínio.</b> Por que a IA muda o que é possível automatizar.</span></li>
+<li><span class="t">00:30–01:20</span><span><b>Gems.</b> Instruções persistentes e arquivos de conhecimento do Drive.</span></li>
+<li><span class="t">01:20–01:35</span><span><i>Intervalo.</i></span></li>
+<li><span class="t">01:35–02:20</span><span><b>Engenharia de prompt</b> dentro dos passos + <b>Extract</b> com schema.</span></li>
+<li><span class="t">02:20–03:30</span><span><b>Estúdio de casos.</b> Assistente de reuniões, relatório semanal, faturas, onboarding.</span></li>
+<li><span class="t">03:30–04:00</span><span><b>Teste, refino e avaliação</b> de qualidade das saídas + exercícios.</span></li>
+</ul>
+</div>
+</div>
+
+<!-- Regra vs raciocínio -->
+<div class="slide">
+<div class="header"><h2>Regra rígida × raciocínio semântico</h2></div>
+<div class="content">
+<p class="lead">A diferença entre uma macro comum e um agente está aqui: a IA <span class="highlight">entende o
+                sentido</span> do conteúdo, não apenas palavras exatas.</p>
+<table class="table">
+<tr><th></th><th>Regra rígida</th><th>Raciocínio (Gemini)</th></tr>
+<tr><td><b>Como decide</b></td><td>Casamento exato ("contém a palavra X")</td><td>Interpreta significado e contexto</td></tr>
+<tr><td><b>"É urgente?"</b></td><td>Precisa listar todas as palavras urgentes</td><td>Avalia o tom e a intenção da mensagem</td></tr>
+<tr><td><b>Fragilidade</b></td><td>Quebra com sinônimos e variações</td><td>Generaliza, mas pode errar o julgamento</td></tr>
+<tr><td><b>Manutenção</b></td><td>Muitas regras para cobrir casos</td><td>Uma boa instrução cobre muitos casos</td></tr>
+</table>
+<div class="warn-box">
+<p>O poder tem preço: o raciocínio é <b>probabilístico</b>. Ganhamos flexibilidade, mas precisamos
+                    <b>testar</b> e prever o erro. "Confia, mas verifica."</p>
+</div>
+</div>
+</div>
+
+<!-- Gems -->
+<div class="slide">
+<div class="header"><h2>Gems: dando memória e contexto à IA</h2></div>
+<div class="content">
+<p>Um <span class="highlight">Gem</span> é um conjunto de instruções personalizadas para o Gemini — uma
+                "persona" com regras e contexto que você reutiliza nos seus fluxos.</p>
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-scroll"></i> Instruções</h3>
+<p>Definem <b>quem</b> a IA é e <b>como</b> deve agir: tom, formato, o que evitar, exemplos do estilo
+                        desejado. Ex.: "Escreva sempre em português formal, em até 3 parágrafos".</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-folder-open"></i> Arquivos de conhecimento</h3>
+<p>Documentos do <b>Drive</b> (manuais, SOPs, guia de marca, FAQ) anexados ao Gem, para que as respostas
+                        reflitam o <b>contexto da sua organização</b>.</p>
+</div>
+</div>
+<div class="tip-box">
+<p><b>Por que usar Gems?</b> Sem contexto, a IA produz respostas genéricas e "robóticas". Com um Gem bem
+                    instruído e alimentado por conhecimento, as saídas ficam <b>consistentes</b> e <b>com a cara</b> da
+                    organização — em todos os fluxos que usam aquele Gem.</p>
+</div>
+</div>
+</div>
+
+<!-- Engenharia de prompt nos passos -->
+<div class="slide">
+<div class="header"><h2>Engenharia de prompt dentro dos passos</h2></div>
+<div class="content">
+<p>Ao configurar um passo <b>Ask Gemini</b>, você escreve a instrução que ele seguirá. Vale a mesma anatomia
+                de um bom prompt — agora com <b>variáveis</b> do fluxo:</p>
+<div class="flow">
+<div class="node">PAPEL</div>
+<span class="arrow"><i class="fa-solid fa-plus"></i></span>
+<div class="node">TAREFA</div>
+<span class="arrow"><i class="fa-solid fa-plus"></i></span>
+<div class="node">CONTEXTO<br/><small>(variáveis)</small></div>
+<span class="arrow"><i class="fa-solid fa-plus"></i></span>
+<div class="node">FORMATO</div>
+</div>
+<div class="prompt-box">
+<span class="label">Prompt de um passo Ask Gemini</span><br/>
+                Aja como assistente executivo. Escreva um rascunho de resposta cordial e objetivo para o e-mail abaixo,
+                em português, com no máximo 4 frases, propondo dois horários de reunião.<br/>
+                E-mail: <b>{{corpo_do_email}}</b> · Remetente: <b>{{nome_remetente}}</b>
+            </div>
+<div class="info-box">
+<p>O trecho <span class="kbd">{{corpo_do_email}}</span> é uma <b>variável</b> inserida do passo anterior. O
+                    mesmo prompt roda para cada e-mail, sempre com o conteúdo certo.</p>
+</div>
+</div>
+</div>
+
+<!-- Extract com schema -->
+<div class="slide">
+<div class="header"><h2>Extração estruturada: o passo Extract</h2></div>
+<div class="content">
+<p class="lead">O <span class="highlight">Extract</span> transforma texto livre em <b>dados organizados</b>. Você
+                define um <i>schema</i> (os campos) e o Gemini preenche a partir do conteúdo.</p>
+<div class="code-box">Schema de exemplo (pedido de compra):
+{
+  "fornecedor":      texto,
+  "numero_nota":     texto,
+  "data_emissao":    data,
+  "valor_total":     número,
+  "itens":           lista de texto
+}</div>
+<div class="info-box">
+<p>Com os campos preenchidos, o passo seguinte (Sheets, Docs, Chat) usa cada um como variável. É a ponte
+                    entre o mundo <b>não estruturado</b> (e-mails, PDFs, mensagens) e o mundo <b>estruturado</b>
+                    (planilhas, bancos) — um problema clássico que a IA resolve muito bem.</p>
+</div>
+<div class="tip-box">
+<p><b>Dica de qualidade:</b> descreva cada campo (o que é, formato esperado) e diga o que fazer quando o dado
+                    <b>não existir</b> (ex.: deixar em branco). Isso reduz "invenções".</p>
+</div>
+</div>
+</div>
+
+<!-- Caso 1: reuniões -->
+<div class="slide">
+<div class="header"><h2>Caso 1 — Assistente de reuniões</h2></div>
+<div class="content">
+<p>Um agente que prepara e encerra reuniões para você.</p>
+<div class="flow">
+<div class="node">Agendado / Evento</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node gemini">Resumir<br/><small>pauta + anexos</small></div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node gemini">Extract<br/><small>action items</small></div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Enviar no Chat / rascunho</div>
+</div>
+<ul class="spaced" style="margin-top:22px;">
+<li><b>Antes:</b> resume os próximos eventos do dia (participantes, anexos) e manda no Chat.</li>
+<li><b>Depois:</b> a partir das notas, <b>extrai os action items</b>, <b>traduz</b> se necessário e prepara um
+                <b>rascunho de e-mail</b> de follow-up para você revisar e enviar.</li>
+</ul>
+<div class="info-box">
+<p>Perceba a composição: <b>Resumir + Extract + gerar rascunho</b>. Três passos de IA encadeados fazem o
+                    trabalho de um assistente.</p>
+</div>
+</div>
+</div>
+
+<!-- Caso 2: relatório semanal -->
+<div class="slide">
+<div class="header"><h2>Caso 2 — Relatório semanal automático</h2></div>
+<div class="content">
+<div class="flow">
+<div class="node">Agendado<br/><small>sexta, 17h</small></div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Ler dados<br/><small>Sheets</small></div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node gemini">Ask Gemini<br/><small>redigir relatório</small></div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">Criar Doc + avisar</div>
+</div>
+<ol class="steps" style="margin-top:24px;">
+<li><b>Starter agendado:</b> toda sexta às 17h.</li>
+<li><b>Ler a planilha</b> de acompanhamento da semana.</li>
+<li><b>Ask Gemini:</b> "resuma os números em um relatório de 1 página, destacando conquistas, riscos e
+                próximos passos, em tom executivo".</li>
+<li><b>Criar um Doc</b> com o texto e <b>notificar no Chat</b> com o link.</li>
+</ol>
+<div class="tip-box">
+<p>Use um <b>Gem</b> "Relatórios da Equipe" com o formato e o tom padronizados — assim todo relatório sai
+                    consistente, semana após semana.</p>
+</div>
+</div>
+</div>
+
+<!-- Caso 3 e 4 -->
+<div class="slide">
+<div class="header"><h2>Casos 3 e 4 — Faturas e Onboarding</h2></div>
+<div class="content">
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-file-invoice-dollar"></i> Processamento de faturas</h3>
+<p><b>E-mail com fatura</b> → <b>Extract</b> (fornecedor, valor, vencimento) → <b>salvar PDF no Drive</b> →
+                        <b>registrar no Sheets</b> → <b>Check If</b> valor alto → <b>avisar</b> o responsável.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-user-plus"></i> Onboarding de novo colaborador</h3>
+<p><b>Nova linha</b> na planilha de admissões → <b>criar pasta</b> no Drive → <b>gerar</b> um checklist e um
+                        e-mail de boas-vindas (rascunho) → <b>criar tarefas</b> para o RH.</p>
+</div>
+</div>
+<div class="info-box">
+<p>Ambos seguem o mesmo esqueleto: um <b>gatilho</b>, um pouco de <b>IA</b> para interpretar/gerar, e
+                    <b>ações</b> que organizam e comunicam. Depois de dominar o padrão, você adapta para qualquer
+                    processo.</p>
+</div>
+<div class="warn-box">
+<p>Em faturas e onboarding há <b>dados sensíveis</b> (valores, dados pessoais). Trate com cuidado — tema da
+                    Aula 4.</p>
+</div>
+</div>
+</div>
+
+<!-- Qualidade das saídas -->
+<div class="slide">
+<div class="header"><h2>Instruções que evitam saídas "robóticas"</h2></div>
+<div class="content">
+<p>A diferença entre uma saída sofrível e uma excelente está quase sempre na <span class="highlight">instrução</span>.
+                Alguns princípios:</p>
+<ul class="spaced">
+<li><b>Seja explícito no formato:</b> tamanho, tom, estrutura ("3 bullets", "tom acolhedor", "sem jargão").</li>
+<li><b>Dê exemplos</b> do estilo desejado (few-shot): "siga o modelo: […]".</li>
+<li><b>Defina o que NÃO fazer:</b> "não invente dados", "se faltar informação, escreva [pendente]".</li>
+<li><b>Use um Gem</b> com o guia de marca e o vocabulário da organização.</li>
+<li><b>Peça verificação:</b> "liste as suposições que você fez" ajuda a auditar.</li>
+</ul>
+<div class="tip-box">
+<p><b>Ciclo de refino:</b> teste com dados reais → leia criticamente a saída → ajuste a instrução ou o Gem →
+                    repita. Duas ou três iterações costumam levar de "ok" a "ótimo".</p>
+</div>
+</div>
+</div>
+
+<!-- Teste e avaliação -->
+<div class="slide">
+<div class="header"><h2>Testar e avaliar a qualidade</h2></div>
+<div class="content">
+<p>Como saber se o agente está bom o suficiente para "soltar" em produção? Avalie de forma estruturada:</p>
+<table class="table">
+<tr><th>Critério</th><th>Pergunta-guia</th></tr>
+<tr><td><b>Correção</b></td><td>Os fatos e números estão certos? Houve alucinação?</td></tr>
+<tr><td><b>Completude</b></td><td>Todos os campos/pontos esperados apareceram?</td></tr>
+<tr><td><b>Consistência</b></td><td>Rodando de novo com entradas parecidas, o resultado é estável?</td></tr>
+<tr><td><b>Segurança</b></td><td>A ação é reversível? Precisa de confirmação humana?</td></tr>
+<tr><td><b>Tom/formato</b></td><td>Está adequado ao público e ao padrão da organização?</td></tr>
+</table>
+<div class="info-box">
+<p><b>Estratégia:</b> monte um pequeno "conjunto de teste" com 5–10 entradas variadas (incluindo casos
+                    difíceis e vazios) e rode o fluxo em todas. Se passar nesse conjunto, ganhou confiança para ativar.</p>
+</div>
+</div>
+</div>
+
+<!-- Exercícios -->
+<div class="slide">
+<div class="header"><h2>Exercícios da Aula 3</h2></div>
+<div class="content">
+<div class="ex-box">
+<p><b>1. Gem.</b> Crie um Gem "Comunicação Institucional" com instruções de tom e um arquivo de conhecimento
+                    (um guia de estilo que você escrever). Use-o em um passo Ask Gemini e compare a saída com e sem o Gem.</p>
+</div>
+<div class="ex-box">
+<p><b>2. Extract.</b> Projete um schema para extrair dados de um e-mail de inscrição em evento
+                    (nome genérico, curso, período, dúvida). Explique como tratou campos ausentes.</p>
+</div>
+<div class="ex-box">
+<p><b>3. Caso completo.</b> Construa o <b>relatório semanal</b> (Caso 2) a partir de uma planilha de exemplo.
+                    Refine a instrução em pelo menos 2 iterações e registre o que melhorou.</p>
+</div>
+<div class="ex-box">
+<p><b>4. Avaliação.</b> Monte um conjunto de teste com 5 entradas (uma delas "difícil" e uma "vazia") para o
+                    seu agente e preencha a tabela de critérios (correção, completude, consistência, segurança, tom).</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#6c4cd8;">Resumo da Aula 3</h1>
+<p style="font-size: 22px; max-width: 860px; opacity: 0.9;">A IA acrescenta <b>raciocínio semântico</b> —
+            entender sentido, não só palavras. Os <b>Gems</b> dão à IA instruções persistentes e <b>arquivos de
+            conhecimento</b> do Drive, produzindo saídas consistentes e com a identidade da organização. Dentro dos
+            passos, a <b>engenharia de prompt</b> (papel, tarefa, contexto com variáveis, formato) e o <b>Extract</b> com
+            <i>schema</i> convertem texto livre em dados úteis. Vimos quatro casos avançados — reuniões, relatórios,
+            faturas e onboarding — todos sobre o mesmo esqueleto <b>gatilho → IA → ações</b>. E aprendemos a <b>testar e
+            avaliar</b> a qualidade antes de ativar. Na Aula 4: integrações externas, extensibilidade, governança e o
+            <b>projeto final</b>.</p>
+<div style="margin-top: 40px; display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
+<a href="aula02-starters-steps.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Aula 2
+            </a>
+<a href="aula04-integracoes-governanca.html" style="color: #fff; background:#6c4cd8; text-decoration: none; padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+                Ir para a Aula 4 <i class="fa-solid fa-arrow-right"></i>
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Google Workspace Studio — Aula 3</p>
+</footer>
+</body>
+</html>

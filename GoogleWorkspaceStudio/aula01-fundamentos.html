@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com">
+<!-- Google Analytics 4 (gtag.js) + Consentimento LGPD -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHE86CNTZB"></script>
+<script src="/assets/js/analytics-consent.js"></script>
+<link rel="canonical" href="https://www.ajudaprofessor.com.br/GoogleWorkspaceStudio/aula01-fundamentos.html">
+<meta name="description" content="Aula 1 — Fundamentos do Google Workspace Studio: automação de processos, no-code, IA generativa, agentes, anatomia de um flow e o primeiro fluxo prático.">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ajuda Professor">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Google Workspace Studio — Aula 1: Fundamentos">
+<meta property="og:description" content="Automação de processos, no-code, IA generativa e agentes, a anatomia de um flow e o primeiro fluxo prático no Google Workspace Studio.">
+<meta property="og:url" content="https://www.ajudaprofessor.com.br/GoogleWorkspaceStudio/aula01-fundamentos.html">
+<meta property="og:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Google Workspace Studio — Aula 1: Fundamentos">
+<meta name="twitter:description" content="Automação de processos, no-code, IA generativa e agentes, a anatomia de um flow e o primeiro fluxo prático no Google Workspace Studio.">
+<meta name="twitter:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Google Workspace Studio — Aula 1: Fundamentos</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&amp;family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/slides.css" rel="stylesheet"/>
+<style>
+        body { background-color: #0f172a; font-family: "DM Sans", sans-serif; color: #f8fafc; }
+        .slide { background: #ffffff; color: #1e293b; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; justify-content: center; align-items: center; text-align: center; }
+        .header { padding: 40px 60px; background: #f8fafc; border-bottom: 5px solid #6c4cd8; }
+        h1 { font-size: 60px; color: #ffffff; }
+        h2 { font-size: 40px; color: #1e293b; }
+        h3 { color: #4a2f9e; }
+        .content { flex-grow: 1; padding: 40px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; align-items: start; }
+        .code-box { background: #1e293b; color: #38bdf8; padding: 30px; border-radius: 8px; font-family: "Fira Code", monospace; font-size: 18px; border-left: 8px solid #6c4cd8; line-height: 1.7; white-space: pre-wrap; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .table th { background: #6c4cd8; color: white; padding: 15px; text-align: left; }
+        .table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .highlight { color: #6c4cd8; font-weight: bold; }
+        .info-box { border-left: 5px solid #6c4cd8; background: #f0f9ff; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .warn-box { border-left: 5px solid #f59e0b; background: #fffbeb; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .tip-box { border-left: 5px solid #10b981; background: #ecfdf5; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .ex-box { border-left: 5px solid #ea4335; background: #fef2f2; padding: 20px 24px; border-radius: 8px; margin-top: 20px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px; }
+        .card h3 { margin-top: 0; }
+        .lead { font-size: 24px; line-height: 1.6; }
+        ul.spaced li { margin-bottom: 12px; line-height: 1.6; }
+        .flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .flow .node { background: #1e293b; color: #fff; padding: 16px 20px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .flow .node.gemini { background: #6c4cd8; }
+        .flow .arrow { color: #6c4cd8; font-size: 26px; }
+        .steps { counter-reset: step; list-style: none; padding: 0; margin-top: 10px; }
+        .steps li { position: relative; padding: 14px 14px 14px 62px; margin-bottom: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; line-height: 1.6; }
+        .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 16px; top: 22px; width: 32px; height: 32px; background: #6c4cd8; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .prompt-box { background: #1e293b; color: #e2e8f0; padding: 24px 28px; border-radius: 10px; border-left: 8px solid #6c4cd8; line-height: 1.7; font-size: 18px; margin-top: 20px; }
+        .prompt-box .label { display:inline-block; font-family:"Fira Code",monospace; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#38bdf8; margin-bottom:10px; }
+        .agenda { list-style: none; padding: 0; }
+        .agenda li { display:flex; gap:18px; align-items:flex-start; padding:14px 0; border-bottom:1px dashed #e2e8f0; line-height:1.5; }
+        .agenda .t { flex:0 0 120px; font-family:"Fira Code",monospace; color:#6c4cd8; font-weight:700; }
+        .pill { display:inline-block; background:#ede9fe; color:#4a2f9e; padding:4px 12px; border-radius:50px; font-size:14px; font-weight:700; margin:2px; }
+        .kbd { font-family:"Fira Code",monospace; background:#1e293b; color:#38bdf8; padding:2px 8px; border-radius:5px; font-size:0.9em; }
+    </style>
+<link href="../assets/css/site.css" rel="stylesheet"/>
+</head>
+<body class="slides-light">
+<header class="site-header" style="width:100%;">
+<div class="site-header__inner">
+<a class="site-header__back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Tópicos da disciplina</a>
+<h1>
+<img alt="Ajuda Professor" src="/imagens/AjudaProfessor-logo.png" width="100"/>
+                Google Workspace Studio
+            </h1>
+<p>Aula 1 — Fundamentos, automação e o primeiro flow</p>
+</div>
+</header>
+
+<!-- Capa -->
+<div class="slide hero">
+<i class="fa-solid fa-wand-magic-sparkles" style="font-size:80px;margin-bottom:30px;color:#6c4cd8;"></i>
+<h1>Aula 1 — Fundamentos</h1>
+<p style="font-size: 24px; opacity: 0.85;">Automação de processos, IA generativa, agentes e a anatomia de um flow</p>
+<div style="margin-top: 40px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;">
+            Carga horária: 4 horas · Google Workspace Studio</div>
+</div>
+
+<!-- Agenda da aula -->
+<div class="slide">
+<div class="header"><h2>O que veremos hoje (roteiro de 4h)</h2></div>
+<div class="content">
+<ul class="agenda">
+<li><span class="t">00:00–00:40</span><span><b>Bloco 1 — Contexto.</b> Automação de processos, RPA, no-code/low-code e por que a IA muda esse jogo.</span></li>
+<li><span class="t">00:40–01:30</span><span><b>Bloco 2 — Conceitos.</b> IA generativa, o que é um <i>agente</i> e o que é o Google Workspace Studio.</span></li>
+<li><span class="t">01:30–01:45</span><span><i>Intervalo.</i></span></li>
+<li><span class="t">01:45–02:40</span><span><b>Bloco 3 — Anatomia.</b> Starter + Steps + Variáveis + camada Gemini. A interface do Studio.</span></li>
+<li><span class="t">02:40–03:40</span><span><b>Bloco 4 — Mão na massa.</b> Construindo o primeiro flow: um "briefing matinal" do e-mail.</span></li>
+<li><span class="t">03:40–04:00</span><span><b>Bloco 5 — Fechamento.</b> Limites, governança, exercícios e prévia da Aula 2.</span></li>
+</ul>
+<div class="info-box">
+<p><b>Objetivo de aprendizagem:</b> ao final desta aula, o estudante será capaz de explicar o que é o
+                    Workspace Studio, situá-lo no mapa das ferramentas de automação, descrever a estrutura de um flow e
+                    construir um fluxo simples do zero.</p>
+</div>
+</div>
+</div>
+
+<!-- Contexto: automação -->
+<div class="slide">
+<div class="header"><h2>Por que automação? O problema do trabalho repetitivo</h2></div>
+<div class="content">
+<p class="lead">Todo profissional de tecnologia — e todo usuário de escritório — perde horas em tarefas
+                <span class="highlight">repetitivas, previsíveis e de baixo valor</span>: copiar dados de um e-mail para
+                uma planilha, salvar anexos, montar relatórios, avisar a equipe, arquivar mensagens.</p>
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-hourglass-half"></i> O custo escondido</h3>
+<p>Cada microtarefa parece rápida, mas somadas consomem uma fatia enorme da semana. Pior: são fontes de
+                        <b>erro humano</b> (esquecer, digitar errado, perder o prazo).</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-robot"></i> A ideia da automação</h3>
+<p>Descrever a tarefa <b>uma vez</b> para que o computador a execute <b>sempre</b>, sozinho, no momento certo.
+                        É o coração da <b>automação de processos</b>.</p>
+</div>
+</div>
+<div class="tip-box">
+<p>Na Engenharia de Software isso tem nome: <b>hiperautomação</b> — combinar automação de fluxos com
+                    inteligência artificial para automatizar não só tarefas mecânicas, mas também <b>decisões</b>.</p>
+</div>
+</div>
+</div>
+
+<!-- Escala no-code / low-code -->
+<div class="slide">
+<div class="header"><h2>Do código ao no-code: um espectro</h2></div>
+<div class="content">
+<p>Existem muitas maneiras de automatizar. Elas variam no quanto exigem de programação:</p>
+<table class="table">
+<tr><th>Abordagem</th><th>Como se automatiza</th><th>Quem usa</th></tr>
+<tr><td><b>Código tradicional</b></td><td>Escrever um programa (Python, Java, Apps Script)</td><td>Desenvolvedores</td></tr>
+<tr><td><b>Low-code</b></td><td>Montagem visual com um pouco de código quando necessário</td><td>Devs e analistas técnicos</td></tr>
+<tr><td><b>No-code</b></td><td>Montagem 100% visual, por blocos, sem programar</td><td>Qualquer usuário de negócio</td></tr>
+<tr><td><b>IA / linguagem natural</b></td><td>Você <i>descreve</i> o que quer; a IA monta o fluxo</td><td>Todos — inclusive quem nunca automatizou</td></tr>
+</table>
+<div class="info-box">
+<p>O <b>Google Workspace Studio</b> vive na fronteira mais nova desse espectro: é <b>no-code</b> e, ao mesmo
+                    tempo, <b>movido por IA</b>. Você pode arrastar blocos <i>ou</i> simplesmente escrever, em português,
+                    o que deseja automatizar — e o Gemini monta o rascunho do fluxo.</p>
+</div>
+</div>
+</div>
+
+<!-- IA generativa e agentes -->
+<div class="slide">
+<div class="header"><h2>IA generativa, LLMs e a ideia de "agente"</h2></div>
+<div class="content">
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-brain"></i> IA generativa</h3>
+<p>Modelos de linguagem (LLMs) como o <b>Gemini</b> que <b>geram conteúdo novo</b> — texto, resumos,
+                        classificações, decisões — a partir de instruções em linguagem natural.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-user-gear"></i> Agente de IA</h3>
+<p>Um software que <b>percebe</b> um evento, <b>raciocina</b> com ajuda de um LLM e <b>age</b> —
+                        executando tarefas em nome do usuário, com autonomia limitada e supervisão.</p>
+</div>
+</div>
+<div class="info-box">
+<p><b>Regra rígida × raciocínio.</b> Uma automação clássica segue regras fixas ("se o assunto contém a palavra
+                    <i>fatura</i>, mova para a pasta X"). Um agente pode ir além: "<i>decida</i> se este e-mail é urgente
+                    considerando o contexto" — algo que exigiria dezenas de regras para aproximar. Essa capacidade de
+                    <b>julgar semanticamente</b> é o que a IA acrescenta à automação.</p>
+</div>
+<p style="margin-top:16px;">No Workspace Studio, cada fluxo que você cria é, na prática, um pequeno
+                <b>agente</b>: ele fica atento a um gatilho e executa uma sequência de passos, usando o Gemini sempre que
+                precisa "pensar".</p>
+</div>
+</div>
+
+<!-- O que é o Workspace Studio -->
+<div class="slide">
+<div class="header"><h2>O que é o Google Workspace Studio</h2></div>
+<div class="content">
+<p class="lead">O <span class="highlight">Google Workspace Studio</span> é a plataforma <b>no-code de automação e
+                agentes de IA</b> integrada ao Google Workspace, movida pelo <b>Gemini</b>. Ela permite criar fluxos que
+                conectam Gmail, Drive, Planilhas, Agenda, Chat, Docs e ferramentas externas — sem escrever código.</p>
+<table class="table">
+<tr><th>Aspecto</th><th>Detalhe</th></tr>
+<tr><td><b>Endereço</b></td><td><span class="kbd">studio.workspace.google.com</span></td></tr>
+<tr><td><b>Nome anterior</b></td><td>Lançado como <b>Google Workspace Flows</b>; evoluiu para <b>Workspace Studio</b></td></tr>
+<tr><td><b>Motor de IA</b></td><td>Gemini (integrado nativamente ao Workspace)</td></tr>
+<tr><td><b>Proposta</b></td><td>"Descreva o que quer automatizar em linguagem natural e a IA cria o fluxo"</td></tr>
+<tr><td><b>Gerenciamento</b></td><td>Criar e acompanhar fluxos a partir do próprio Gmail, Chat e Drive</td></tr>
+</table>
+<div class="warn-box">
+<p><b>Produto novo e em evolução.</b> O Studio é recente e recebe mudanças frequentes (recursos, limites,
+                    disponibilidade por plano). Nesta disciplina apresentamos os conceitos estáveis; para valores exatos
+                    e novidades, sempre confira a documentação oficial do Google Workspace.</p>
+</div>
+</div>
+</div>
+
+<!-- Comparativo com outras ferramentas -->
+<div class="slide">
+<div class="header"><h2>Onde o Studio se encaixa: comparando ferramentas</h2></div>
+<div class="content">
+<p>Para o profissional de ADS, é essencial saber <b>quando usar cada ferramenta</b>. O Studio não substitui
+                tudo — ele ocupa um espaço específico:</p>
+<table class="table">
+<tr><th>Ferramenta</th><th>Natureza</th><th>Melhor para</th></tr>
+<tr><td><b>Workspace Studio</b></td><td>No-code + IA, nativo do Workspace</td><td>Automatizar tarefas do dia a dia dentro do Google, com decisões da IA</td></tr>
+<tr><td><b>Google Apps Script</b></td><td>Código (JavaScript)</td><td>Lógica complexa, loops, integrações sob medida</td></tr>
+<tr><td><b>Google AppSheet</b></td><td>No-code de <i>apps</i></td><td>Criar aplicativos com telas e banco de dados</td></tr>
+<tr><td><b>Zapier / Make / Power Automate</b></td><td>iPaaS (integração entre nuvens)</td><td>Conectar centenas de apps de fornecedores diferentes</td></tr>
+</table>
+<div class="tip-box">
+<p><b>Como decidir:</b> se a tarefa vive dentro do Google e envolve "julgar" conteúdo (resumir, classificar,
+                    decidir), o Studio é a escolha natural. Se precisa de laços, condicionais aninhadas ou integrações
+                    exóticas, considere o Apps Script. Voltaremos a essa fronteira na Aula 4.</p>
+</div>
+</div>
+</div>
+
+<!-- Pré-requisitos e acesso -->
+<div class="slide">
+<div class="header"><h2>Pré-requisitos e como acessar</h2></div>
+<div class="content">
+<ol class="steps">
+<li><b>Conta elegível:</b> o Studio está disponível em planos <b>Business</b>, <b>Enterprise</b> e
+                <b>Education</b> do Google Workspace (não em contas Gmail pessoais gratuitas).</li>
+<li><b>Liberação do administrador:</b> em ambientes corporativos, alguns recursos podem depender de ativação no
+                <b>Admin Console</b> (Gemini para Workspace / recursos de IA).</li>
+<li><b>Acesso:</b> abra <span class="kbd">studio.workspace.google.com</span> e faça login com a conta
+                Workspace. Também é possível iniciar fluxos a partir do Gmail e do Chat.</li>
+<li><b>Permissões de dados:</b> o Studio age <b>com as suas permissões</b> — só acessa o que a sua conta já
+                pode acessar.</li>
+</ol>
+<div class="info-box">
+<p><b>Para esta disciplina:</b> use a conta institucional fornecida. Se algum recurso não aparecer, pode ser
+                    questão de liberação do plano ou do administrador — anote e seguimos com os conceitos e a
+                    demonstração guiada.</p>
+</div>
+</div>
+</div>
+
+<!-- Anatomia de um flow -->
+<div class="slide">
+<div class="header"><h2>A anatomia de um flow</h2></div>
+<div class="content">
+<p class="lead">Todo fluxo do Studio é feito de quatro elementos. Entender essa estrutura é entender a
+                ferramenta inteira:</p>
+<div class="flow">
+<div class="node">STARTER<br/><small>(gatilho)</small></div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">STEP 1</div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node gemini">STEP 2<br/><small>(Gemini)</small></div>
+<span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+<div class="node">STEP 3</div>
+</div>
+<table class="table" style="margin-top:26px;">
+<tr><th>Elemento</th><th>O que é</th><th>Exemplo</th></tr>
+<tr><td><b>Starter</b> (gatilho)</td><td>O evento que <i>dispara</i> o fluxo</td><td>"Chegou um novo e-mail"; "São 8h de todo dia útil"</td></tr>
+<tr><td><b>Steps</b> (passos)</td><td>As ações executadas em sequência</td><td>Resumir, salvar no Drive, enviar mensagem no Chat</td></tr>
+<tr><td><b>Variáveis</b></td><td>Dados que passam de um passo para o outro</td><td>O texto do e-mail vira entrada do passo de resumo</td></tr>
+<tr><td><b>Gemini</b></td><td>A camada de inteligência dos passos de IA</td><td>Resumir, classificar, extrair, decidir</td></tr>
+</table>
+<div class="tip-box">
+<p><b>Ideia-chave:</b> a <b>saída</b> de qualquer passo pode virar a <b>entrada</b> de um passo seguinte. É
+                    assim que se constroem "esteiras" de dados — encadeando passos simples em automações poderosas.</p>
+</div>
+</div>
+</div>
+
+<!-- A interface -->
+<div class="slide">
+<div class="header"><h2>Um tour pela interface</h2></div>
+<div class="content">
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-list-check"></i> Painel de flows</h3>
+<p>Lista seus fluxos, mostra se estão <b>ativos</b> ou pausados e dá acesso ao <b>histórico de execuções</b>
+                        para depurar.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-diagram-project"></i> Editor de flow</h3>
+<p>A tela onde você monta o fluxo: escolhe o <b>Starter</b>, adiciona <b>Steps</b> em sequência e configura
+                        cada um.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-comment-dots"></i> Modo linguagem natural</h3>
+<p>Um campo onde você <b>descreve</b> a automação; o Gemini gera um rascunho de fluxo que você refina.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-gem"></i> Gems e conhecimento</h3>
+<p>Instruções e arquivos de contexto (do Drive) que personalizam o comportamento da IA. Aprofundamos na
+                        Aula 3.</p>
+</div>
+</div>
+<div class="info-box">
+<p>Não decore botões: as telas mudam. Foque no <b>modelo mental</b> — Starter, Steps, Variáveis, Gemini. Com
+                    ele, você se orienta em qualquer versão da interface.</p>
+</div>
+</div>
+</div>
+
+<!-- Modo linguagem natural -->
+<div class="slide">
+<div class="header"><h2>O jeito mais rápido de começar: descrever</h2></div>
+<div class="content">
+<p>O grande diferencial do Studio é permitir criar por <span class="highlight">linguagem natural</span>. Em vez
+                de montar bloco a bloco, você descreve a intenção e o Gemini propõe o fluxo:</p>
+<div class="prompt-box">
+<span class="label">Descrição em linguagem natural</span><br/>
+                Todo dia útil, às 8h, verifique meus e-mails não lidos do dia anterior, faça um resumo dos mais
+                importantes e me envie esse resumo como uma mensagem no Google Chat.
+            </div>
+<div class="info-box">
+<p>A partir dessa frase, o Studio monta um rascunho com: um <b>Starter agendado</b> (8h, dias úteis), um
+                    <b>passo de IA</b> para resumir os e-mails e um <b>passo de ação</b> para enviar no Chat. Você então
+                    <b>revisa, ajusta e ativa</b>.</p>
+</div>
+<div class="tip-box">
+<p>Descrever bem é uma habilidade — a mesma "anatomia de prompt" do Gemini (papel, tarefa, contexto, formato)
+                    vale aqui. Vamos treinar isso ao longo do curso.</p>
+</div>
+</div>
+</div>
+
+<!-- Primeiro flow prático -->
+<div class="slide">
+<div class="header"><h2>Mão na massa: seu primeiro flow — "Briefing matinal"</h2></div>
+<div class="content">
+<p>Vamos construir, passo a passo, um agente que resume seus e-mails toda manhã. Faremos das duas formas:
+                descrevendo e depois inspecionando os blocos gerados.</p>
+<ol class="steps">
+<li>Acesse <span class="kbd">studio.workspace.google.com</span> e clique em <b>criar um novo flow</b>.</li>
+<li>No campo de descrição, cole o texto do slide anterior e peça para o Gemini <b>gerar o fluxo</b>.</li>
+<li>Confira o <b>Starter</b>: deve ser do tipo <b>agendado</b> (temporal), configurado para 8h em dias úteis.</li>
+<li>Confira o <b>passo de IA</b> (Resumir/Ask Gemini): ajuste a instrução para "liste no máximo 5 e-mails, com
+                remetente e uma frase de resumo cada".</li>
+<li>Confira o <b>passo de ação</b> (enviar no Chat): selecione o espaço ou a mensagem direta de destino.</li>
+<li>Clique em <b>testar</b> (executar agora) para ver o resultado sem esperar as 8h.</li>
+<li>Se estiver bom, <b>ative</b> o fluxo. Pronto: você criou seu primeiro agente.</li>
+</ol>
+<div class="warn-box">
+<p><b>Atenção ao testar:</b> alguns passos agem sobre dados reais (marcar, arquivar, enviar). No aprendizado,
+                    prefira ações "seguras" — resumir e notificar — antes de ações que <b>alteram</b> dados.</p>
+</div>
+</div>
+</div>
+
+<!-- Limites e cotas -->
+<div class="slide">
+<div class="header"><h2>Limites e cotas: conheça as fronteiras</h2></div>
+<div class="content">
+<p class="lead">Toda ferramenta tem restrições. Conhecê-las evita frustração e orienta o <b>design</b> dos seus
+                fluxos:</p>
+<ul class="spaced">
+<li><b>Tamanho do fluxo:</b> há um teto de passos por fluxo (na ordem de <b>~20 steps</b>) — fluxos gigantes
+                precisam ser quebrados.</li>
+<li><b>Quantidade de fluxos:</b> limite por conta (na ordem de <b>~100 flows</b>).</li>
+<li><b>Sem laços nem condicionais aninhadas complexas:</b> a lógica é sequencial; ramificações são simples.</li>
+<li><b>Envio de e-mail com cautela:</b> em várias situações o Studio favorece <b>criar rascunhos</b> em vez de
+                enviar automaticamente, e há restrições para escrever em arquivos <b>compartilhados</b> do Drive.</li>
+<li><b>Cotas de execução:</b> o número de execuções por mês varia conforme o plano.</li>
+</ul>
+<div class="info-box">
+<p>Esses números <b>mudam</b> com o tempo. O que não muda é o princípio: <b>projete fluxos enxutos</b>, com um
+                    objetivo claro. Se ficou complexo demais, é sinal de que talvez precise de Apps Script (Aula 4).</p>
+</div>
+</div>
+</div>
+
+<!-- Governança e privacidade -->
+<div class="slide">
+<div class="header"><h2>Segurança, privacidade e governança (introdução)</h2></div>
+<div class="content">
+<p>Automatizar com IA sobre dados corporativos exige responsabilidade. O Studio traz salvaguardas — e você
+                precisa conhecê-las:</p>
+<div class="grid">
+<div class="card">
+<h3><i class="fa-solid fa-user-shield"></i> Escopo de acesso</h3>
+<p>Um fluxo só acessa dados que <b>o usuário que o iniciou</b> já pode acessar. Ele não "fura" permissões.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-lock"></i> Propriedade dos dados</h3>
+<p>Os dados do cliente <b>permanecem do cliente</b> e não são usados para publicidade, seguindo os
+                        compromissos do Workspace e do Gemini.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-clipboard-list"></i> Auditoria</h3>
+<p>Ações ficam registradas; administradores têm <b>logs</b> e controles no Admin Console.</p>
+</div>
+<div class="card">
+<h3><i class="fa-solid fa-triangle-exclamation"></i> Responsabilidade humana</h3>
+<p>A IA pode errar. Quem responde pelo resultado é a <b>pessoa</b> — revise antes de automatizar ações
+                        sensíveis.</p>
+</div>
+</div>
+<div class="warn-box">
+<p>Aprofundaremos governança, LGPD e boas práticas de segurança na <b>Aula 4</b>. Por ora, guarde a regra de
+                    ouro: <b>comece por fluxos que informam, não que alteram</b>.</p>
+</div>
+</div>
+</div>
+
+<!-- Exercícios -->
+<div class="slide">
+<div class="header"><h2>Exercícios da Aula 1</h2></div>
+<div class="content">
+<div class="ex-box">
+<p><b>1. Conceitual.</b> Explique, com suas palavras, a diferença entre uma automação por <i>regras rígidas</i>
+                    e um <i>agente de IA</i>. Dê um exemplo de tarefa docente ou administrativa para cada.</p>
+</div>
+<div class="ex-box">
+<p><b>2. Mapa de ferramentas.</b> Para cada cenário, escolha a ferramenta mais adequada (Studio, Apps Script,
+                    AppSheet ou iPaaS) e justifique: (a) resumir e-mails diariamente; (b) criar um app de controle de
+                    estoque com telas; (c) um cálculo com laço sobre 10.000 linhas; (d) conectar Salesforce a Mailchimp.</p>
+</div>
+<div class="ex-box">
+<p><b>3. Prática.</b> Construa o flow "Briefing matinal" desta aula. Faça um <b>teste</b> (executar agora) e
+                    tire um print do resultado no Chat. Anote uma melhoria que faria na instrução do resumo.</p>
+</div>
+<div class="ex-box">
+<p><b>4. Design.</b> Escreva, em linguagem natural, a descrição de um fluxo útil para a sua rotina de estudante
+                    de ADS (ex.: organizar anexos de trabalhos). Identifique nela o Starter e os Steps.</p>
+</div>
+</div>
+</div>
+
+<!-- Encerramento -->
+<div class="slide hero">
+<h1 style="color:#6c4cd8;">Resumo da Aula 1</h1>
+<p style="font-size: 22px; max-width: 860px; opacity: 0.9;">O <b>Google Workspace Studio</b> é uma plataforma
+            <b>no-code de automação com IA</b>, integrada ao Workspace e movida pelo <b>Gemini</b>, acessível em
+            <b>studio.workspace.google.com</b>. Todo fluxo tem a mesma anatomia — <b>Starter + Steps + Variáveis +
+            Gemini</b> — e pode ser criado descrevendo a intenção em linguagem natural. A ferramenta ocupa um espaço
+            próprio entre Apps Script, AppSheet e os iPaaS, e traz <b>limites</b> (poucos passos, sem laços) e
+            <b>salvaguardas</b> (escopo de acesso, auditoria). Você já construiu seu primeiro agente: o briefing matinal.
+            Na próxima aula, dissecamos <b>todos os Starters e Steps</b>.</p>
+<div style="margin-top: 40px; display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
+<a href="index.html" style="color: #cbd5e1; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+<i class="fa-solid fa-arrow-left"></i> Voltar aos Tópicos
+            </a>
+<a href="aula02-starters-steps.html" style="color: #fff; background:#6c4cd8; text-decoration: none; padding: 10px 24px; border-radius: 50px; font-size: 16px;">
+                Ir para a Aula 2 <i class="fa-solid fa-arrow-right"></i>
+            </a>
+</div>
+</div>
+
+<footer class="site-footer" style="width:100%;">
+<p>© 2026 Prof. MSc. Carlos A. L. Schaeffer | Google Workspace Studio — Aula 1</p>
+</footer>
+</body>
+</html>
