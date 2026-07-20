@@ -3,18 +3,21 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com">
     <!-- Google Analytics 4 (gtag.js) + Consentimento LGPD -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHE86CNTZB"></script>
     <script src="/assets/js/analytics-consent.js"></script>
     <link rel="canonical" href="https://www.ajudaprofessor.com.br/">
-    <meta name="description" content="Portal de materiais didáticos do Prof. MSc. Carlos Schaeffer para o curso de Análise e Desenvolvimento de Sistemas: redes, cloud, segurança, organização de computadores, planilhas e mais.">
+    <meta name="description"
+        content="Portal de materiais didáticos do Prof. MSc. Carlos Schaeffer para o curso de Análise e Desenvolvimento de Sistemas: redes, cloud, segurança, organização de computadores, planilhas e mais.">
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Ajuda Professor">
     <meta property="og:locale" content="pt_BR">
     <meta property="og:title" content="Ajuda Professor - Prof. MSc. Carlos Schaeffer">
-    <meta property="og:description" content="Portal de materiais didáticos do Prof. MSc. Carlos Schaeffer para o curso de Análise e Desenvolvimento de Sistemas: redes, cloud, segurança, organização de computadores, planilhas e mais.">
+    <meta property="og:description"
+        content="Portal de materiais didáticos do Prof. MSc. Carlos Schaeffer para o curso de Análise e Desenvolvimento de Sistemas: redes, cloud, segurança, organização de computadores, planilhas e mais.">
     <meta property="og:url" content="https://www.ajudaprofessor.com.br/">
     <meta property="og:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
     <meta property="og:image:width" content="1200">
@@ -22,7 +25,8 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Ajuda Professor - Prof. MSc. Carlos Schaeffer">
-    <meta name="twitter:description" content="Portal de materiais didáticos do Prof. MSc. Carlos Schaeffer para o curso de Análise e Desenvolvimento de Sistemas: redes, cloud, segurança, organização de computadores, planilhas e mais.">
+    <meta name="twitter:description"
+        content="Portal de materiais didáticos do Prof. MSc. Carlos Schaeffer para o curso de Análise e Desenvolvimento de Sistemas: redes, cloud, segurança, organização de computadores, planilhas e mais.">
     <meta name="twitter:image" content="https://www.ajudaprofessor.com.br/imagens/og-share.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajuda Professor - Prof. MSc. Carlos Schaeffer</title>
@@ -42,47 +46,61 @@
         <div class="toolbar">
             <div class="toolbar__search">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="search" data-role="search" placeholder="Pesquisar por conteúdo..." aria-label="Pesquisar disciplinas">
+                <input type="search" data-role="search" placeholder="Pesquisar por conteúdo..."
+                    aria-label="Pesquisar disciplinas">
             </div>
             <button class="toolbar__btn" data-role="fav-filter" type="button">
                 <i class="fa-solid fa-star"></i> Só favoritas
             </button>
-            <p class="toolbar__hint">Dica: clique na estrela para favoritar e arraste os cards para reordenar — suas escolhas ficam salvas neste navegador.</p>
+            <p class="toolbar__hint">Dica: clique na estrela para favoritar e arraste os cards para reordenar — suas
+                escolhas ficam salvas neste navegador.</p>
         </div>
         <div class="topic-grid" data-course="portal" id="topicGrid">
 
-            <article class="topic-card" data-id="google-workspace-studio" data-keywords="google workspace studio flows automação no-code agentes ia inteligência artificial gemini fluxos flow gatilho starter steps gmail sheets drive chat produtividade">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
-                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
-                <div class="topic-card__icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                <!-- <span class="topic-card__badge">Novo</span> -->
-                <h2 class="topic-card__title">Google Workspace Studio</h2>
-                <p class="topic-card__desc">Automação no-code e agentes de IA com Gemini no Google Workspace. Curso de 4 aulas: fundamentos, flows, agentes e integrações/governança.</p>
-                <a class="topic-card__link" href="GoogleWorkspaceStudio/index.html">Acessar conteúdo</a>
-            </article>
 
-            <article class="topic-card" data-id="tecnologias-digitais-docente" data-keywords="tecnologias digitais prática docente professores formação google drive docs forms agenda gemini chatgpt notebooklm canva sala de aula ia inteligência artificial ferramentas ensino">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="tecnologias-digitais-docente"
+                data-keywords="tecnologias digitais prática docente professores formação google drive docs forms agenda gemini chatgpt notebooklm canva sala de aula ia inteligência artificial ferramentas ensino">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-laptop-file"></i></div>
                 <!-- <span class="topic-card__badge">Formação</span> -->
                 <h2 class="topic-card__title">Tecnologias Digitais na Prática Docente</h2>
-                <p class="topic-card__desc">Formação de professores no uso pedagógico de ferramentas digitais: Google Workspace, IA (Gemini, ChatGPT, NotebookLM), Canva e uso ético.</p>
+                <p class="topic-card__desc">Formação de professores no uso pedagógico de ferramentas digitais: Google
+                    Workspace, IA (Gemini, ChatGPT, NotebookLM), Canva e uso ético.</p>
                 <a class="topic-card__link" href="TecnologiasDigitaisDocente/index.html">Acessar conteúdo</a>
             </article>
 
-            <article class="topic-card" data-id="microsoft365" data-keywords="microsoft 365 office teams onedrive sharepoint word excel powerpoint outlook forms lists planner power automate copilot ia inteligência artificial">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="google-workspace-studio"
+                data-keywords="google workspace studio flows automação no-code agentes ia inteligência artificial gemini fluxos flow gatilho starter steps gmail sheets drive chat produtividade">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
+                <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
+                <div class="topic-card__icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <!-- <span class="topic-card__badge">Novo</span> -->
+                <h2 class="topic-card__title">Google Workspace Studio</h2>
+                <p class="topic-card__desc">Automação no-code e agentes de IA com Gemini no Google Workspace. Curso de 4
+                    aulas: fundamentos, flows, agentes e integrações/governança.</p>
+                <a class="topic-card__link" href="GoogleWorkspaceStudio/index.html">Acessar conteúdo</a>
+            </article>
+
+            <article class="topic-card" data-id="microsoft365"
+                data-keywords="microsoft 365 office teams onedrive sharepoint word excel powerpoint outlook forms lists planner power automate copilot ia inteligência artificial">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-brands fa-microsoft"></i></div>
                 <!-- <span class="topic-card__badge">Extensão</span> -->
                 <h2 class="topic-card__title">Tecnologias Microsoft 365</h2>
-                <p class="topic-card__desc">Curso de Tecnologias Microsoft 365: Teams, OneDrive, SharePoint, Office, automação e IA com Copilot.</p>
+                <p class="topic-card__desc">Curso de Tecnologias Microsoft 365: Teams, OneDrive, SharePoint, Office,
+                    automação e IA com Copilot.</p>
                 <a class="topic-card__link" href="Microsoft365/index.html">Acessar conteúdo</a>
             </article>
 
-            <article class="topic-card" data-id="planilhas" data-keywords="planilha de cálculo excel célula coluna linha fórmula drive">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="planilhas"
+                data-keywords="planilha de cálculo excel célula coluna linha fórmula drive">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-book"></i></div>
                 <!-- <span class="topic-card__badge">Apoio</span> -->
@@ -91,8 +109,10 @@
                 <a class="topic-card__link" href="google_planilhas/index.html">Acessar</a>
             </article>
 
-            <article class="topic-card" data-id="dicionario" data-keywords="dicionário informática glossário termos vídeos catálogo conceitos">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="dicionario"
+                data-keywords="dicionário informática glossário termos vídeos catálogo conceitos">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-book"></i></div>
                 <!-- <span class="topic-card__badge">Apoio</span> -->
@@ -101,43 +121,55 @@
                 <a class="topic-card__link" href="DicionarioDeInformatica/index.html">Acessar catálogo</a>
             </article>
 
-            <article class="topic-card" data-id="org-computadores" data-keywords="organização computadores hardware cpu memória von neumann nível 1 fundamentos">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="org-computadores"
+                data-keywords="organização computadores hardware cpu memória von neumann nível 1 fundamentos">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-microchip"></i></div>
                 <!-- <span class="topic-card__badge">Nível I</span> -->
                 <h2 class="topic-card__title">Organização de Computadores</h2>
-                <p class="topic-card__desc">Arquitetura e organização: von Neumann, CPU, memórias, E/S, bases numéricas e sistemas operacionais.</p>
+                <p class="topic-card__desc">Arquitetura e organização: von Neumann, CPU, memórias, E/S, bases numéricas
+                    e sistemas operacionais.</p>
                 <a class="topic-card__link" href="OrganizacaoDeComputadores/index.html">Acessar conteúdo</a>
             </article>
 
-            <article class="topic-card" data-id="servicos-redes" data-keywords="redes serviços lan wan tcp ip osi protocolos roteamento nível 3">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="servicos-redes"
+                data-keywords="redes serviços lan wan tcp ip osi protocolos roteamento nível 3">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-network-wired"></i></div>
                 <!-- <span class="topic-card__badge">Nível III</span> -->
                 <h2 class="topic-card__title">Serviços de Redes</h2>
-                <p class="topic-card__desc">Fundamentos de redes, arquiteturas, modelos OSI e TCP/IP, protocolos e a camada de transporte.</p>
+                <p class="topic-card__desc">Fundamentos de redes, arquiteturas, modelos OSI e TCP/IP, protocolos e a
+                    camada de transporte.</p>
                 <a class="topic-card__link" href="ServicosDeRedes/index.html">Acessar conteúdo</a>
             </article>
 
-            <article class="topic-card" data-id="cloud-computing" data-keywords="cloud computação nuvem aws azure iaas paas saas serverless nível 3">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="cloud-computing"
+                data-keywords="cloud computação nuvem aws azure iaas paas saas serverless nível 3">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-cloud-sun"></i></div>
                 <!-- <span class="topic-card__badge">Nível III</span> -->
                 <h2 class="topic-card__title">Cloud Computing</h2>
-                <p class="topic-card__desc">Fundamentos da nuvem, definição NIST, evolução histórica e glossário técnico essencial.</p>
+                <p class="topic-card__desc">Fundamentos da nuvem, definição NIST, evolução histórica e glossário técnico
+                    essencial.</p>
                 <a class="topic-card__link" href="CloudComputing/index.html">Acessar conteúdo</a>
             </article>
 
-            <article class="topic-card" data-id="seguranca" data-keywords="segurança informação ataques ransomware ddos phishing risco vulnerabilidade owasp">
-                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i class="fa-regular fa-star"></i></button>
+            <article class="topic-card" data-id="seguranca"
+                data-keywords="segurança informação ataques ransomware ddos phishing risco vulnerabilidade owasp">
+                <button class="topic-card__fav" type="button" aria-label="Favoritar"><i
+                        class="fa-regular fa-star"></i></button>
                 <span class="topic-card__drag" aria-hidden="true"><i class="fa-solid fa-grip-vertical"></i></span>
                 <div class="topic-card__icon"><i class="fa-solid fa-shield-halved"></i></div>
                 <!-- <span class="topic-card__badge">Nível III</span> -->
                 <h2 class="topic-card__title">Gestão de Segurança da Informação</h2>
-                <p class="topic-card__desc">Conceitos de risco, anatomia dos ataques modernos e estratégias de mitigação para gestores.</p>
+                <p class="topic-card__desc">Conceitos de risco, anatomia dos ataques modernos e estratégias de mitigação
+                    para gestores.</p>
                 <a class="topic-card__link" href="GestaoDeSegurancaDaInformacao/index.html">Acessar conteúdo</a>
             </article>
 
