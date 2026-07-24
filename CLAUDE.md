@@ -5,9 +5,9 @@ Mantenha este arquivo **atualizado** quando uma decisão mudar.
 
 ## Visão geral
 
-Site de materiais didáticos do **Prof. MSc. Carlos Adriani Lara Schaeffer** para o curso de
-graduação **Análise e Desenvolvimento de Sistemas (ADS)**. Conteúdo em **português**.
-Público: estudantes. É um **site estático** (HTML/CSS/JS), organizado por disciplina.
+Site de materiais didáticos do **Prof. MSc. Carlos Adriani Lara Schaeffer**. Conteúdo em **português**.
+Público: estudantes e demais interessados.
+É um **site estático** (HTML/CSS/JS), organizado por disciplina.
 
 - Domínio público: **https://www.ajudaprofessor.com.br**
 - Repositório: **github.com/carlosadriani/aulas**
@@ -47,7 +47,7 @@ banner de cookies e injeção dos links de rodapé ("Apoie o projeto", "Privacid
 
 Ao criar ou editar uma página de tópico, seguir estas convenções:
 
-- **Idioma e tom:** português (pt-BR), didático, claro e acessível a estudantes de ADS.
+- **Idioma e tom:** português (pt-BR), didático, claro e acessível a estudantes de graduação.
   Explicar o "porquê", não só o "o quê". Usar exemplos, analogias e progressão do simples
   ao avançado.
 - **Profundidade:** cada tópico deve ter explicação **aprofundada** (não superficial), que é
