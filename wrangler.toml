@@ -1,0 +1,16 @@
+# Configuração da Cloudflare Pages + Functions + D1.
+# O binding e o database_id também podem ser definidos pelo painel (Settings → Functions).
+name = "ajudaprofessor"
+compatibility_date = "2024-11-01"
+pages_build_output_dir = "."
+
+[[d1_databases]]
+binding = "DB"                 # nome usado no código: env.DB
+database_name = "ajudaprofessor"
+database_id = "PREENCHER_APOS_CRIAR"   # saída de: wrangler d1 create ajudaprofessor
+
+# As variáveis/segredos abaixo NÃO ficam aqui (são sensíveis). Configure-os assim:
+#   Painel: Pages → seu projeto → Settings → Environment variables
+#     GOOGLE_CLIENT_ID       (texto)
+#     GOOGLE_CLIENT_SECRET   (marcar "Encrypt")
+#     SESSION_SECRET         (marcar "Encrypt")  -> gere com: openssl rand -hex 32
